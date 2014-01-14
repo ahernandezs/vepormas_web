@@ -1,0 +1,122 @@
+$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+
+@import 'sass-bootstrap/lib/bootstrap';
+
+body, html, #mainDiv {
+    height: 100%;
+    font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+}
+
+.login_back {
+    background: black url("../images/bg_hme.jpg") center center no-repeat;
+    background-size: cover;
+    height: 100%;
+
+    .home_header {
+        color: #FFF;
+
+        p {
+            margin-top: 20px;
+        }
+
+        a, a:hover {
+            margin-top: 5px;
+            color: #FFF;
+            background:none!important;
+        }
+    }
+
+    .logo { 
+        background: url("../images/logo.png");
+        background-size: cover;
+        height: 50px;
+        margin: 0 auto 10px auto;
+        width: 222px;
+    }
+
+    .login-form {
+        background: #FFF;
+        margin-top: 80px;
+        padding: 30px;
+        width: 300px;
+        text-align: center;
+        color: #999;
+
+        p {
+            font-size: 18px;
+            margin-top: 30px;
+            margin-bottom: 16px;
+        }
+
+        input {
+            border: none;
+            box-shadow: none;
+            -moz-box-shadow: none;
+            -webkit-box-shadow: none;
+            padding: 10px 0px 15px 0px;
+            width: 80%;
+
+        }
+
+        .border {
+            font-size: 16px;
+            border-bottom: 1px solid #bdbdbd;
+            width: 100%;
+
+            .btn_login {
+                background: url("../images/btn_login.png") no-repeat;
+                width: 25px;
+                height: 25px;
+                border: none;
+                margin-top: 2px;
+            }
+        }
+
+        input[type="checkbox"] {
+            width: 12px!important;
+            height: 12px!important;
+            float: none;
+        }
+
+        .registration {
+            border-top: 1px solid #bdbdbd;
+            margin-top: 20px;
+            margin-left: -30px;
+            padding-top: 20px;
+            width: 300px;
+        }
+    }
+
+    .rounded { 
+        -webkit-border-radius: 7px; 
+        -moz-border-radius: 7px; 
+        border-radius: 7px; 
+    }
+
+    .shadow { 
+        -webkit-box-shadow: 0 0 20px 0 #6f6f6f; 
+        box-shadow: 0 0 20px 0 #6f6f6f; 
+    }
+
+    .home_footer {
+        color: #FFF;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        font-size: 11px;
+
+        .logo {
+            background: url("../images/logo_foot.png") no-repeat;
+            width: 28px;
+            height: 28px;
+        }
+
+        a, a:hover {
+            color: #FFF;
+        }
+    }
+}
+
+
+
