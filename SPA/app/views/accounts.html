@@ -238,55 +238,63 @@
 		<!-- Banners -->
 
 		<div class="row">
-			<div class="col-md-4">
-				<img class="img-responsive" src="/images/viaja_banner.png">
+			<div class="col-md-4 col-sm-6">
+				<div class="banner">
+					<img src="/images/viaja_banner.png">
+				</div>
 			</div>
-			<div class="col-md-4">
-				<img src="/images/ishop_banner.png">
+			<div class="col-md-4 col-sm-6">
+				<div class="banner">
+					<img src="/images/ishop_banner.png">
+				</div>
 			</div>
-			<div class="col-md-4">
-				<img src="/images/roger_banner.png">
+			<div class="col-md-4 col-sm-6">
+				<div class="banner">
+					<img src="/images/roger_banner.png">
+				</div>
 			</div>
 		</div>
 
 		<div class="row">
-			<p>This is the accounts view: {{userInformation}}</p>
-			<p>session id: {{userSessionId}}</p>
-		</div>
+			<div class="col-md-12">
+				<div class="tools">
+					<div class="row">
+						<div class="col-md-4">
+							<span class="download-text">Descarga nuestra App:</span>
+						</div>
+						<div class="col-md-3">
+							<select class="form-control">
+								<option>Tipo de teléfono</option>
+								<option>Android</option>
+								<option>iPhone</option>
+								<option>Blackberry</option>
+							</select>
+						</div>
+						<div class="col-md-3">
+							<input type="text" class="form-control" placeholder="Número celular">
+						</div>
+						<div class="col-md-2">
+							<button class="btn btn-info btn-block">Descargar</button>
+						</div>
+					</div>
 
-		<div class="row">
-			<div class="row">
-				<div class="col-md-3">
-					Descarga nuestra App:
-				</div>
-				<div class="col-md-3">
-					<select class="form-control">
-						<option>Tipo de teléfono</option>
-						<option>Android</option>
-						<option>iPhone</option>
-						<option>Blackberry</option>
-					</select>
-				</div>
-				<div class="col-md-3">
-					<input type="text">
-				</div>
-				<div class="col-md-3">
-					<button class="btn btn-info">Descargar</button>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-3">
-					Recibe alertas y notificaciones de tus movimientos
-				</div>
-				<div class="col-md-3">
-					Incrementa la seguridad de autenticación
-				</div>
-				<div class="col-md-3">
-					Escanea y paga tus recibos
-				</div>
-				<div class="col-md-3">
-					<button class="btn btn-default">Más información</button>
+					<div class="row tip-text">
+						<div class="col-md-4">
+							<span class="iphone-tip pull-left"></span>
+							Recibe alertas y notificaciones de tus movimientos
+						</div>
+						<div class="col-md-3">
+							<span class="lock-tip pull-left"></span>
+							Incrementa la seguridad de autenticación
+						</div>
+						<div class="col-md-3">
+							<span class="ticket-tip pull-left"></span>
+							Escanea y paga tus recibos
+						</div>
+						<div class="col-md-2">
+							<button class="btn btn-default btn-block">Más información</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

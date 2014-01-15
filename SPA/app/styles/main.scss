@@ -273,3 +273,58 @@ body, html, #mainDiv {
         text-align: center;
     }
 }
+
+.banner {
+    margin: 10px 0px;
+}
+
+.tools {
+    padding: 20px;
+    margin: 10px 0;
+    background: #FFF;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    font-family: Arial, sans-serif;
+
+    .row {
+        margin: 0 0 10px 0;
+    }
+
+    .download-text {
+        font-size: 24px;
+        color: #5b5b5b;
+    }
+
+
+    .tip-text {
+        color: #999999;
+    }
+
+    .iphone-tip {
+        background: url(../images/iphone_icon.png) no-repeat; 
+        margin: -5px 0 0 -10px;
+        width: 50px;
+        height: 50px;
+        display: block;
+    }
+
+    .lock-tip {
+        background: url(../images/lock_icon.png) no-repeat; 
+        margin: -5px 0 0 -10px;
+        width: 50px;
+        height: 50px;
+        display: block;
+    }
+
+    .ticket-tip {
+        background: url(../images/ticket_icon.png) no-repeat; 
+        margin: -5px 0 0 -10px;
+        width: 50px;
+        height: 50px;
+        display: block;
+    }
+}
+
+
+
