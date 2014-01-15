@@ -326,5 +326,21 @@ body, html, #mainDiv {
     }
 }
 
+.footer {
+    background: #FFFFFF;
+    color: #999999;
+    font-size: 11px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    padding: 10px 0;
+    font-family: Arial, sans-serif;
 
+    a, a:hover {
+        margin-left: 30px;
+        color: #999999;
+    }
+
+}
 
