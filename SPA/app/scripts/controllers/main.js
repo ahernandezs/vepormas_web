@@ -36,7 +36,19 @@ var abankingApp = angular.module('spaApp')
  *the accounts controller. For now on, only display get the user user information from
  * service and put it in scope
  */
-abankingApp.controller('AccountsCtrl', function ($scope,$http,userInformationService) {
+abankingApp.controller('AccountsCtrl', function ($scope,$http,userInformationService,$location) {
+	$http({
+		url: '/Abanking-Core/accounts',
+		method: 'GET',
+		headers: {'X-BANK-TOKEN': '1', 'X-AUTH-TOKEN': userInformationService.getUserSessionId}
+	}).
+	success(function(data, status, headers) {
+		$scope.accounts = data.accounts;
+		console.log(data);
+	}).
+	error(function(data, status) {
+		console.log(data, status);
+	});
 	$scope.userInformation = userInformationService.getUserInformation();
 	$scope.userSessionId = userInformationService.getUserSessionId();
 });

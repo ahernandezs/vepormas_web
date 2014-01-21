@@ -65,178 +65,121 @@
 		<!-- Accounts -->
 
 		<div class="row">
-			<div class="col-md-3 col-sm-6">
+			<div class="col-md-3 col-sm-6" ng-repeat="account in accounts">
 				<div class="account">
-					<h2>Clásica *012</h2>
-					<img src="/images/cuenta_clasica.png">
-					<div class="row date-section">
-						Fecha de corte:
-						<span class="pull-right">
-							24 Oct 2013
-						</span>
-					</div>
-					<div class="amounts-section">
-						<div class="radio">
-							<label>
-								<input type="radio" name="optionRadios" id="account1_optionRadio1" value="option1" checked>
-								Pago total
-								<span class="pull-right amount">$9,000.00</span>
-							</label>
+					<h2>{{account.name}} {{account.last_digits}}</h2>
+					<img src="/images/cuenta_{{account.image.large | lowercase}}.png">
+
+					<div ng-switch="account.account_type">
+						<div ng-switch-when="CREDIT_CARD">
+							<div class="row date-section">
+								Fecha de corte:
+								<span class="pull-right">
+									{{account.cut_date | date:'mediumDate'}}
+								</span>
+							</div>
+
+							<div class="amounts-section">
+								<div class="radio">
+									<label>
+										<input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio1" value="current" checked>
+										Pago total
+										<span class="pull-right amount">{{account.balance.current | currency}}</span>
+									</label>
+								</div>
+								<div class="radio">
+									<label>
+										<input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio2" value="minimal">
+										Pago mínimo
+										<span class="pull-right amount">{{account.balance.min_payment | currency}}</span>
+									</label>
+								</div>
+								<div class="radio">
+									<label>
+										<input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio3" value="total">
+										Pago sin intereses
+										<span class="pull-right amount">{{account.balance.total_payment | currency}}</span>
+									</label>
+								</div>
+								<div class="radio">
+									<label>
+										<div class="row">
+											<div class="col-xs-6">
+												<input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio4" value="other">
+												Otra cantidad
+											</div>
+											<div class="col-xs-6">
+												<input type="text" class="form-control input-sm">
+											</div>
+										</div>
+									</label>
+								</div>
+							</div>
+
+							<div class="buttons">
+								<a class="pull-left" href="#">Movimientos</a>
+								<button class="btn btn-info btn-sm pull-right">Pagar tarjeta</button>
+							</div>
 						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="optionRadios" id="account1_optionRadio2" value="option2">
-								Pago mínimo
-								<span class="pull-right amount">$1,000.00</span>
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="optionRadios" id="account1_optionRadio3" value="option3">
-								Pago sin intereses
-								<span class="pull-right amount">$5,000.00</span>
-							</label>
-						</div>
-						<div class="radio">
-							<label>
+
+						<div ng-switch-when="SAVINGS">
+							<div class="row date-section text-center">
+								Desde {{account.balance.from | date:'longDate'}}
+							</div>
+
+							<div class="amounts-section">
+								<div class="row text-center">
+									<span class="available">Disponible:</span> <span class="available-amount">{{account.balance.current | currency}}</span>
+								</div>
 								<div class="row">
-									<div class="col-xs-6">
-										<input type="radio" name="optionRadios" id="account1_optionRadio4" value="option4">
-										Otra cantidad
+									<div class="col-md-6 pull-left">
+										Depósitos:
 									</div>
-									<div class="col-xs-6">
-										<input type="text" class="form-control input-sm">
+									<div class="col-md-6 pull-right amount">
+										{{account.balance.deposits | currency}}
 									</div>
 								</div>
-							</label>
-						</div>
-					</div>
-
-					<div class="buttons">
-						<a class="pull-left" href="#">Movimientos</a>
-						<button class="btn btn-info btn-sm pull-right">Pagar tarjeta</button>
-					</div>
-
-				</div>
-			</div>
-
-			<div class="col-md-3 col-sm-6">
-				<div class="account">
-					<h2>B-smart *890</h2>
-					<img src="/images/cuenta_bsmart.png">
-					<div class="row date-section">
-						Fecha de corte:
-						<span class="pull-right">
-							24 Oct 2013
-						</span>
-					</div>
-					<div class="amounts-section">
-						<div class="radio">
-							<label>
-								<input type="radio" name="optionRadiosBsmart" id="account1_optionRadio1" value="option1" checked>
-								Pago total
-								<span class="pull-right amount">$42,000.00</span>
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="optionRadiosBsmart" id="account1_optionRadio2" value="option2">
-								Pago mínimo
-								<span class="pull-right amount">$1,200.00</span>
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="optionRadiosBsmart" id="account1_optionRadio3" value="option3">
-								Pago sin intereses
-								<span class="pull-right amount">$31,000.00</span>
-							</label>
-						</div>
-						<div class="radio">
-							<label>
 								<div class="row">
-									<div class="col-xs-6">
-										<input type="radio" name="optionRadiosBsmart" id="account1_optionRadio4" value="option4">
-										Otra cantidad
+									<div class="col-md-6 pull-left">
+										Pagos:
 									</div>
-									<div class="col-xs-6">
-										<input type="text" class="form-control input-sm">
+									<div class="col-md-6 pull-right amount">
+										{{account.balance.payments | currency}}
 									</div>
 								</div>
-							</label>
-						</div>
-					</div>
+								<div class="row">
+									<div class="col-md-6 pull-left">
+										Retiros:
+									</div>
+									<div class="col-md-6 pull-right amount">
+										{{account.balance.withdrawals | currency}}
+									</div>
+								</div>
+							</div>
 
-					<div class="buttons">
-						<a class="pull-left" href="#">Movimientos</a>
-						<button class="btn btn-info btn-sm pull-right">Pagar tarjeta</button>
+							<div class="buttons">
+								<a href="#">Ver más</a>
+							</div>
+						</div>
+
+						<div ng-switch-when="TRANSFER">
+							<div class="row date-section text-center">
+								Número: {{account.number}}
+							</div>
+
+							<div class="amounts-section">
+								<img src="/images/cuenta_transfer_balance.png">
+							</div>
+
+							<div class="buttons">
+								<a href="#">Ver más</a>
+							</div>
+						</div>
 					</div>
 
 				</div>
 			</div>
 
-			<div class="col-md-3 col-sm-6">
-				<div class="account">
-					<h2>Perfiles *012</h2>
-					<img src="/images/cuenta_perfiles.png">
-					<div class="row date-section text-center">
-						Desde Marzo 17, 2012
-					</div>
-					<div class="amounts-section">
-						<div class="row text-center">
-							<span class="available">Disponible:</span> <span class="available-amount">$15,000.00</span>
-						</div>
-						<div class="row">
-							<div class="col-md-6 pull-left">
-								Depósitos:
-							</div>
-							<div class="col-md-6 pull-right amount">
-								$15,000.00
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6 pull-left">
-								Pagos:
-							</div>
-							<div class="col-md-6 pull-right amount">
-								$730.00
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-md-6 pull-left">
-								Retiros:
-							</div>
-							<div class="col-md-6 pull-right amount">
-								$1,000.00
-							</div>
-						</div>
-					</div>
-
-					<div class="buttons">
-						<a href="#">Ver más</a>
-					</div>
-
-				</div>
-			</div>
-
-			<div class="col-md-3 col-sm-6">
-				<div class="account">
-					<h2>Transfer</h2>
-					<img src="/images/cuenta_transfer.png">
-					<div class="row date-section text-center">
-						Número: 55 1234 5678
-					</div>
-					<div class="amounts-section">
-						<img src="/images/cuenta_transfer_balance.png">
-					</div>
-
-					<div class="buttons">
-						<a href="#">Ver más</a>
-					</div>
-
-				</div>
-
-			</div>
 		</div>
 
 		<!-- Banners -->
