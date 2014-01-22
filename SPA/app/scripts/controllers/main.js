@@ -30,6 +30,28 @@ var abankingApp = angular.module('spaApp')
 			$scope.status = status;
 		});
 	};
+
+	$scope.logout = function() {
+		$http({
+			url: '/Abanking-Core/users/logout',
+			method: 'GET',
+			headers: {'X-BANK-TOKEN': '1', 'X-AUTH-TOKEN': userInformationService.getUserSessionId}
+		}).
+		success(function(data, status, headers) {
+			//get the session token from the response and store it in the user service
+			userInformationService.setUserSessionId(headers('X-AUTH-TOKEN'));
+			//get the user information from the response content
+			userInformationService.setUserInformation(data);
+			$scope.message = 'logout successful';
+			$scope.status = status;
+			$location.path( '/' );
+		}).
+        error(function(data, status) {
+			//put an error message in the scope
+			$scope.errorMessage = 'logout failed';
+			$scope.status = status;
+		});
+	}
 });
 
 /**
@@ -44,7 +66,6 @@ abankingApp.controller('AccountsCtrl', function ($scope,$http,userInformationSer
 	}).
 	success(function(data, status, headers) {
 		$scope.accounts = data.accounts;
-		console.log(data);
 	}).
 	error(function(data, status) {
 		console.log(data, status);
