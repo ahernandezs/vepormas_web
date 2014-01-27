@@ -4,7 +4,7 @@
  * login controller
  * inject a login function in the scope
  */
-var abankingApp = angular.module('spaApp')
+angular.module('spaApp')
   .controller('LoginCtrl', function ($scope,$http,userInformationService,$location) {
 	/**
 	 * the login function connect the Rest-API: if the response status is OK, redirect to route "accounts",
@@ -54,46 +54,4 @@ var abankingApp = angular.module('spaApp')
 	}
 });
 
-/**
- *the accounts controller. For now on, only display get the user user information from
- * service and put it in scope
- */
-abankingApp.controller('AccountsCtrl', function ($scope,$http,userInformationService,$location) {
-	$http({
-		url: '/Abanking-Core/accounts',
-		method: 'GET',
-		headers: {'X-BANK-TOKEN': '1', 'X-AUTH-TOKEN': userInformationService.getUserSessionId}
-	}).
-	success(function(data, status, headers) {
-		$scope.accounts = data.accounts;
-	}).
-	error(function(data, status) {
-		console.log(data, status);
-	});
-	$scope.userInformation = userInformationService.getUserInformation();
-	$scope.userSessionId = userInformationService.getUserSessionId();
-});
 
-/**
- * the user information service. use to save in global scope the user pieces of information
- */
-abankingApp.service('userInformationService', function() {
-	var userInformation;
-	var userSessionId;
-
-	this.setUserInformation = function(newObj) {
-		userInformation=newObj;
-	};
-
-	this.getUserInformation = function(){
-		return userInformation;
-	};
-
-	this.setUserSessionId = function(newObj) {
-		userSessionId=newObj;
-	};
-
-	this.getUserSessionId = function(){
-		return userSessionId;
-	};
-});
