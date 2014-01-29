@@ -1,25 +1,15 @@
 'use strict';
 
 /**
- * the user information service. use to save in global scope the user pieces of information
+ * api initializer factory
  */
-angular.module('spaApp').service('userInformationService', function() {
-	var userInformation;
-	var userSessionId;
 
-	this.setUserInformation = function(newObj) {
-		userInformation=newObj;
-	};
-
-	this.getUserInformation = function(){
-		return userInformation;
-	};
-
-	this.setUserSessionId = function(newObj) {
-		userSessionId=newObj;
-	};
-
-	this.getUserSessionId = function(){
-		return userSessionId;
-	};
+angular.module('spaApp').factory('api', function ($http, $cookieStore) {
+    return {
+        init: function (token) {
+            // this is the token of the bank
+            $http.defaults.headers.common['X-BANK-TOKEN'] = 1;
+            $http.defaults.headers.common['X-AUTH-TOKEN'] = token || $cookieStore.get('token');
+        }
+    };
 });

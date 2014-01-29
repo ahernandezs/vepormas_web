@@ -1,14 +1,17 @@
 'use strict';
 
-angular.module('spaApp', [
+var app = angular.module('spaApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
   'ngRoute'
-])
-  .config(function ($routeProvider) {
+]);
+
+app.config(function ($routeProvider, $locationProvider, $httpProvider) {
+    $httpProvider.responseInterceptors.push('httpInterceptor');
+
     $routeProvider
-      .when('/', {
+      .when('/login', {
         templateUrl: 'views/login.html',
         controller: 'LoginCtrl'
       })
@@ -17,7 +20,10 @@ angular.module('spaApp', [
         controller: 'AccountsCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/accounts'
       });
   });
 
+app.run(function(api) {
+  api.init();
+});
