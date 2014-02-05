@@ -5,7 +5,7 @@
  */
 angular.module('spaApp').controller('AccountsCtrl', function ($scope,$http,$location) {
 	$http({
-		url: '/Abanking-Core/accounts',
+		url: '/api/accounts',
 		method: 'GET'
 	}).
 	success(function(data, status, headers) {
