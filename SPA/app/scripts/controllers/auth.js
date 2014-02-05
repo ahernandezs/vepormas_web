@@ -50,6 +50,7 @@ angular.module('spaApp')
 			$scope.errorMessage = 'logout failed';
 			$scope.status = status;
 			$cookieStore.remove('token');
+			$location.path( '/login' );
 		});
 	}
 });

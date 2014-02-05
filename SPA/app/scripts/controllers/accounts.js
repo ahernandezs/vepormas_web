@@ -13,5 +13,6 @@ angular.module('spaApp').controller('AccountsCtrl', function ($scope,$http,$loca
 	}).
 	error(function(data, status) {
 		console.log(data, status);
+		$location.path( '/login' );
 	});
 });
