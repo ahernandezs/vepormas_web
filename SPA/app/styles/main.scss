@@ -133,17 +133,17 @@ body, html, #mainDiv {
 }
 
 .main-menu {
-    background: #f9faf2 url(../images/bg_banamex.png);
+    background: #4dc1dc url(../images/header_bg.png);
     width: auto;
-    height: 60px;
+    height: 50px;
     border-radius: 0;
     -moz-border-radius: 0;
     -webkit-border-radius: 0;
 
     .bank-logo {
-        background: url(../images/bank_logo.png) 0 5px no-repeat !important;
+        background: url(../images/bank_logo.png) 0 0px no-repeat !important;
         width: 189px;
-        height: 60px;
+        height: 50px;
         display: block;
         float: left;
         margin-right: 10px;
@@ -152,7 +152,7 @@ body, html, #mainDiv {
     }
 
     .nav li {
-        margin: 20px 20px 0 15px !important;
+        margin: 14px 20px 0 15px !important;
         font-size: 12px;
         color: #FFF;
 
@@ -186,7 +186,7 @@ body, html, #mainDiv {
 }
 
 .content > .container {
-    padding: 72px 0;
+    padding: 62px 0;
 }
 
 .title h1 {
@@ -210,7 +210,6 @@ body, html, #mainDiv {
 .account {
     padding: 0;
     margin: 10px 0;
-    height: 370px;
     background: #FFF;
     border: 1px solid #e3e3e3;
     border-radius: 5px;
@@ -271,6 +270,7 @@ body, html, #mainDiv {
     .buttons {
         padding: 0 10px;
         text-align: center;
+        height: 40px;
     }
 }
 
