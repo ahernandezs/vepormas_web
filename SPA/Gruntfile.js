@@ -70,9 +70,9 @@ module.exports = function (grunt) {
       },
       proxies: [
         {
-          context: '/Abanking-Core',
+          context: '/api',
           host: 'localhost',
-          port: 8080,
+          port: 9001,
           https: false,
           changeOrigin: false,
           xforward: false

@@ -12,7 +12,7 @@ angular.module('spaApp')
 	 */
 	$scope.login=function(){
 		$http({
-			url: '/Abanking-Core/users/login',
+			url: '/api/login',
 			method: 'POST',
 			data: JSON.stringify({'username':$scope.username, 'password':$scope.password,'access_media': 'SPA'})
 		}).
@@ -35,7 +35,7 @@ angular.module('spaApp')
 
 	$scope.logout = function() {
 		$http({
-			url: '/Abanking-Core/users/logout',
+			url: '/api/logout',
 			method: 'GET'
 		}).
 		success(function(data, status, headers) {
@@ -50,6 +50,7 @@ angular.module('spaApp')
 			$scope.errorMessage = 'logout failed';
 			$scope.status = status;
 			$cookieStore.remove('token');
+			$location.path( '/login' );
 		});
 	}
 });
