@@ -5,7 +5,7 @@
  */
 angular.module('spaApp').controller('AccountsCtrl', function ($scope,$http,$location) {
 	$http({
-		url: '/api/accounts',
+		url: 'http://abanking-ext-api.herokuapp.com/api/accounts',
 		method: 'GET'
 	}).
 	success(function(data, status, headers) {

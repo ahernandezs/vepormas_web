@@ -12,7 +12,7 @@ angular.module('spaApp')
 	 */
 	$scope.login=function(){
 		$http({
-			url: '/api/login',
+			url: 'http://abanking-ext-api.herokuapp.com/api/login',
 			method: 'POST',
 			data: JSON.stringify({'username':$scope.username, 'password':$scope.password,'access_media': 'SPA'})
 		}).
@@ -35,7 +35,7 @@ angular.module('spaApp')
 
 	$scope.logout = function() {
 		$http({
-			url: '/api/logout',
+			url: 'http://abanking-ext-api.herokuapp.com/api/logout',
 			method: 'GET'
 		}).
 		success(function(data, status, headers) {
