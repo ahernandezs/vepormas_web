@@ -1,0 +1,100 @@
+<div class="detail-header">
+  <h3>Detalle de cuenta:</h3>
+  {{account.name}} {{account.last_digits}}
+</div>
+
+<div ng-if="account.account_type == 'CREDIT_CARD'">
+  <p>
+  Fecha de corte:
+  <span class="pull-right">
+    {{account.cut_date | date:'mediumDate'}}
+  </span>
+  </p>
+
+  <div class="amounts-section">
+    <div class="radio">
+      <label>
+        <input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio1" value="current" checked>
+        Pago total
+        <span class="pull-right amount">{{account.balance.current | currency}}</span>
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio2" value="minimal">
+        Pago mínimo
+        <span class="pull-right amount">{{account.balance.min_payment | currency}}</span>
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio3" value="total">
+        Pago sin intereses
+        <span class="pull-right amount">{{account.balance.total_payment | currency}}</span>
+      </label>
+    </div>
+    <div class="radio">
+      <label>
+        <div class="row">
+          <div class="col-xs-6">
+            <input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio4" value="other">
+            Otra cantidad
+          </div>
+          <div class="col-xs-6">
+            <input type="text" class="form-control input-sm">
+          </div>
+        </div>
+      </label>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <button class="btn btn-info btn-sm pull-right">Pagar tarjeta</button>
+  </div>
+</div>
+
+<div ng-if="account.account_type == 'SAVINGS' || account.account_type == 'CHECKS' || account.account_type == 'DEBIT_CARD'">
+  <p>
+  Desde {{account.balance.from | date:'longDate'}}
+  </p>
+
+  <div class="amounts-section">
+    <p>
+    Disponible:
+    <span class="pull-right amount">
+      {{account.balance.current | currency}}
+    </span>
+  </div>
+  </p>
+  <p>
+  Depósitos:
+  <span class="pull-right amount">
+    {{account.balance.deposits | currency}}
+  </span>
+  </p>
+  <p>
+  Pagos:
+  <span class="pull-right amount">
+    {{account.balance.payments | currency}}
+  </span>
+  </p>
+  <p>
+  Retiros:
+  <span class="pull-right amount">
+    {{account.balance.withdrawals | currency}}
+  </span>
+  </p>
+</div>
+
+
+<div ng-if="account.account_type == 'TRANSFER'">
+  <div class="row date-section text-center">
+    Número: {{account.number}}
+  </div>
+
+  <div class="amounts-section">
+    <img src="/images/cuenta_transfer_balance.png">
+  </div>
+
+</div>
+

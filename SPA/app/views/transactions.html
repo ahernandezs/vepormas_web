@@ -1,188 +1,94 @@
+<div ng-include="'views/partials/main-header.html'"></div>
+
 <div class="account-header">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-2">
-				<h4>{{ account.balance.current | currency }}</h4>
-				<p>Total disponible</p>
-			</div>
-			<div class="col-md-6">
-				<img ng-src="/images/cuenta_{{account.account_type | lowercase}}.png" class="transaction-account">
-				<h4 class="account-name">{{account.name}} <span class="last-digits">{{account.last_digits}}</span></h4>
-			</div>
-			<div class="col-md-4">
-				<button type="button" class="btn btn-default btn-alert pull-right">
-					<span class="glyphicon glyphicon-phone"></span>
-					alertas
-				</button>
-			</div>
-		</div>
-	</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2">
+        <h4>{{ account.balance.current | currency }}</h4>
+        <p>Total disponible</p>
+      </div>
+      <div class="col-md-6">
+        <img ng-src="/images/cuenta_{{account.account_type | lowercase}}.png" class="transaction-account">
+        <h4 class="account-name">{{account.name}} <span class="last-digits">{{account.last_digits}}</span></h4>
+      </div>
+      <div class="col-md-4">
+        <button type="button" class="btn btn-default btn-alert pull-right">
+          <span class="glyphicon glyphicon-phone"></span>
+          alertas
+        </button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="account-menu">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-7 col-lg-8">
-				<div class="row">
-					<div class="col-md-6">
-						<input class="form-control input-sm" type="search" placeholder="Buscar en movimientos"/>
-						<i class="glyphicon glyphicon-search"></i>
-					</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 col-lg-8">
+        <div class="row">
+          <div class="col-md-6">
+            <input class="form-control input-sm" type="search" placeholder="Buscar en movimientos"/>
+            <i class="glyphicon glyphicon-search"></i>
+          </div>
 
-					<div class="col-md-6">
-						<div class="account-menu-buttons pull-right">
-							<h5>Ordenar por:</h5>
-							<div class="btn-group btn-group-sm">
-								<button type="button" class="btn btn-default">Fecha</button>
-								<button type="button" class="btn btn-default">Monto</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+          <div class="col-md-6">
+            <div class="account-menu-buttons pull-right">
+              <h5>Ordenar por:</h5>
+              <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-default">Fecha</button>
+                <button type="button" class="btn btn-default">Monto</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-			<div class="col-md-5 col-lg-4">
-				<div class="account-menu-buttons pull-right">
-				<h5>Pagar:</h5>
-				<div class="btn-group btn-group-sm">
-				<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-briefcase"></span> Servicios</button>
-					<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-credit-card"></span> Tarjetas</button>
-				</div>
+      <div class="col-md-5 col-lg-4">
+        <div class="account-menu-buttons pull-right">
+          <h5>Pagar:</h5>
+          <div class="btn-group btn-group-sm">
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-briefcase"></span> Servicios</button>
+            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-credit-card"></span> Tarjetas</button>
+          </div>
 
-				<button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-transfer"></span> Traspasos</button>
-				</div>
-			</div>
-		</div>
-	</div>
+          <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-transfer"></span> Traspasos</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div class="transactions">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-7 col-lg-8 pull-left">
-				<div ng-repeat="transaction in transactions">
-					<div class="row transaction" ng-class-odd="'transaction-odd'">
-					<div class="col-md-2">
-						<p>{{transaction.created_at | date:'MMM'}}</p>
-						<h5>{{transaction.created_at | date:'dd'}}</h5>
-					</div>
-					<div class="col-md-5">
-						<span class="description">{{transaction.description}}</span>
-					</div>
-					<div class="col-md-3">
-						<span class="category">{{transaction.type}}</span>
-					</div>
-					<div class="col-md-2">
-						<span class="pull-right amount">
-							{{transaction.amount | currency}}
-						</span>
-					</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-5 col-lg-4 pull-right">
-				<div class="detail-header">
-					<h3>Detalle de cuenta:</h3>
-					{{account.name}} {{account.last_digits}}
-				</div>
-
-				<div ng-if="account.account_type == 'CREDIT_CARD'">
-					<p>
-						Fecha de corte:
-						<span class="pull-right">
-							{{account.cut_date | date:'mediumDate'}}
-						</span>
-					</p>
-
-					<div class="amounts-section">
-						<div class="radio">
-							<label>
-								<input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio1" value="current" checked>
-								Pago total
-								<span class="pull-right amount">{{account.balance.current | currency}}</span>
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio2" value="minimal">
-								Pago mínimo
-								<span class="pull-right amount">{{account.balance.min_payment | currency}}</span>
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio3" value="total">
-								Pago sin intereses
-								<span class="pull-right amount">{{account.balance.total_payment | currency}}</span>
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<div class="row">
-									<div class="col-xs-6">
-										<input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio4" value="other">
-										Otra cantidad
-									</div>
-									<div class="col-xs-6">
-										<input type="text" class="form-control input-sm">
-									</div>
-								</div>
-							</label>
-						</div>
-					</div>
-
-					<div class="buttons">
-						<button class="btn btn-info btn-sm pull-right">Pagar tarjeta</button>
-					</div>
-				</div>
-
-				<div ng-if="account.account_type == 'SAVINGS' || account.account_type == 'CHECKS' || account.account_type == 'DEBIT_CARD'">
-					<p>
-						Desde {{account.balance.from | date:'longDate'}}
-					</p>
-
-					<div class="amounts-section">
-						<p>
-							Disponible:
-							<span class="pull-right amount">
-								{{account.balance.current | currency}}
-							</span>
-						</div>
-						</p>
-						<p>
-							Depósitos:
-							<span class="pull-right amount">
-								{{account.balance.deposits | currency}}
-							</span>
-						</p>
-						<p>
-							Pagos:
-							<span class="pull-right amount">
-								{{account.balance.payments | currency}}
-							</span>
-						</p>
-						<p>
-							Retiros:
-							<span class="pull-right amount">
-								{{account.balance.withdrawals | currency}}
-							</span>
-						</p>
-					</div>
-
-				</div>
-
-				<div ng-if="account.account_type == 'TRANSFER'">
-					<div class="row date-section text-center">
-						Número: {{account.number}}
-					</div>
-
-					<div class="amounts-section">
-						<img src="/images/cuenta_transfer_balance.png">
-					</div>
-
-				</div>
-
-			</div>
-		</div>
-	</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7 col-lg-8 pull-left">
+        <div ng-repeat="transaction in transactions">
+          <div class="row transaction" ng-class="{selected: transaction._transaction_id === currentTransaction._transaction_id}" 
+            ng-class-odd="'transaction-odd'" ng-click="showTransactionDetail(transaction)" id="txn-{{transaction._transaction_id}}">
+            <div class="col-md-2">
+              <p>{{transaction.created_at | date:'MMM'}}</p>
+              <h5>{{transaction.created_at | date:'dd'}}</h5>
+            </div>
+            <div class="col-md-5">
+              <span class="description">{{transaction.description}}</span>
+            </div>
+            <div class="col-md-3">
+              <span class="category">{{transaction.type}}</span>
+            </div>
+            <div class="col-md-2">
+              <span class="pull-right amount">
+                {{transaction.amount | currency}}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 col-lg-4 pull-right">
+        <div ng-show="showAccount" ng-include="'views/partials/account-detail.html'"></div>
+        <div ng-show="showTxnDetail" ng-include="'views/partials/transaction-detail.html'"></div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<div ng-include="'views/partials/main-footer.html'"></div>
