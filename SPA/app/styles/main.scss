@@ -429,6 +429,7 @@ body, html, #mainDiv {
         padding: 8px 25px 13px 17px;
         line-height: 40px;
         font-size: 16px;
+        cursor: pointer;
 
         p {
             font-size: 10px;
@@ -452,6 +453,10 @@ body, html, #mainDiv {
 
     .transaction-odd {
         background: #F4F7FA;
+    }
+
+    .selected {
+      background-color: #DEDEDE;
     }
 
     .detail-header {
