@@ -19,6 +19,10 @@ app.config(function ($routeProvider, $locationProvider, $httpProvider) {
         templateUrl: 'views/accounts.html',
         controller: 'AccountsCtrl'
       })
+      .when('/accounts/:accountId/transactions', {
+        templateUrl: 'views/transactions.html',
+        controller: 'TransactionsCtrl'
+      })
       .otherwise({
         redirectTo: '/accounts'
       });
