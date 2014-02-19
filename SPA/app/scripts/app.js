@@ -29,5 +29,6 @@ app.config(function ($routeProvider, $locationProvider, $httpProvider) {
   });
 
 app.run(function(api) {
+  api.config();
   api.init();
 });
