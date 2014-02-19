@@ -2,7 +2,7 @@
 
 angular.module('spaApp').controller('TransactionsCtrl', function($scope, $http, $location, $routeParams) {
   $http({
-    url: 'http://abanking-ext-api.herokuapp.com/api/accounts/' + $routeParams.accountId + '/transactions',
+    url: $scope.restAPIBaseUrl+'/accounts/' + $routeParams.accountId + '/transactions',
     method: 'GET'
   }).
     success(function(data, status, headers) {
