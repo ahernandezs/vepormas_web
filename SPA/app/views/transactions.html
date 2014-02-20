@@ -12,7 +12,7 @@
         <h4 class="account-name">{{account.name}} <span class="last-digits">{{account.last_digits}}</span></h4>
       </div>
       <div class="col-md-4">
-        <button type="button" class="btn btn-default btn-alert pull-right">
+        <button type="button" class="btn btn-info btn-alert pull-right">
           <span class="glyphicon glyphicon-phone"></span>
           alertas
         </button>
@@ -27,8 +27,10 @@
       <div class="col-md-7 col-lg-8">
         <div class="row">
           <div class="col-md-6">
-            <input class="form-control input-sm" type="search" placeholder="Buscar en movimientos"/>
-            <i class="glyphicon glyphicon-search"></i>
+            <div class=left-inner-addon>
+              <i class="glyphicon glyphicon-search"></i>
+              <input class="form-control input-sm" type="search" placeholder="Buscar en movimientos"/>
+            </div>
           </div>
 
           <div class="col-md-6">
@@ -47,7 +49,7 @@
         <div class="account-menu-buttons pull-right">
           <h5>Pagar:</h5>
           <div class="btn-group btn-group-sm">
-            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-briefcase"></span> Servicios</button>
+            <button ng-click="showServices()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-briefcase"></span> Servicios</button>
             <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-credit-card"></span> Tarjetas</button>
           </div>
 
@@ -83,9 +85,27 @@
           </div>
         </div>
       </div>
-      <div class="col-md-5 col-lg-4 pull-right">
-        <div ng-show="showAccount" ng-include="'views/partials/account-detail.html'"></div>
-        <div ng-show="showTxnDetail" ng-include="'views/partials/transaction-detail.html'"></div>
+      <div class="col-md-5 col-lg-4 pull-right" ng-switch on="selection">
+
+        <div ng-switch-when="transaction">
+          <div ng-include="'views/partials/transaction-detail.html'"></div>
+        </div>
+        <div ng-switch-when="services">
+          <div ng-include="'views/partials/services.html'"></div>
+        </div>
+        <div ng-switch-when="servicespayment">
+          <div ng-include="'views/partials/services-payment.html'"></div>
+        </div>
+        <div ng-switch-when="servicespaymenttoken">
+          <div ng-include="'views/partials/services-token.html'"></div>
+        </div>
+        <div ng-switch-when="applyservicespayment">
+          <div ng-include="'views/partials/service-applied.html'"></div>
+        </div>
+        <div ng-switch-default>
+          <div ng-include="'views/partials/account-detail.html'"></div>
+        </div>
+
       </div>
     </div>
   </div>
