@@ -1,22 +1,25 @@
-<div class="detail-header">
-  <input type="text" ng-model="currentTransaction.description" class="form-control" placeholder="Descripción" autofocus>
+<div class="right-section-default">
+  <br />
+  <div class="detail-header">
+    <input type="text" ng-model="currentTransaction.description" class="form-control" placeholder="Descripción" autofocus>
+  </div>
+
+  <p>{{currentTransaction.created_at | date:'EEEE, MMM d yyyy h:mm a'}}</p>
+  <br/>
+
+  <p>Monto: {{currentTransaction.amount | currency}}</p>
+  <br/>
+
+  <p>Subir foto/pdf:</p>
+  <br/>
+
+  <input type="file" value="" />
+  <br/>
+
+  <span ng-if="currentTransaction.location.coordinates">
+    <img ng-src="{{ 'http://maps.google.com/maps/api/staticmap?center=' +
+    currentTransaction.location.coordinates.lat + ',' + currentTransaction.location.coordinates.lng +
+    '&zoom=15&size=360x160&maptype=roadmap&markers=color:blue%7Clabel:S%7C' +
+    currentTransaction.location.coordinates.lat + ',' + currentTransaction.location.coordinates.lng + '&sensor=false'}}">
+  </span>
 </div>
-
-<p>{{currentTransaction.created_at | date:'EEEE, MMM d yyyy h:mm a'}}</p>
-<br/>
-
-<p>Monto: {{currentTransaction.amount | currency}}</p>
-<br/>
-
-<p>Subir foto/pdf:</p>
-<br/>
-
-<input type="file" value="" />
-<br/>
-
-<span ng-if="currentTransaction.location.coordinates">
-  <img ng-src="{{ 'http://maps.google.com/maps/api/staticmap?center=' + 
-  currentTransaction.location.coordinates.lat + ',' + currentTransaction.location.coordinates.lng + 
-  '&zoom=15&size=360x160&maptype=roadmap&markers=color:blue%7Clabel:S%7C' + 
-  currentTransaction.location.coordinates.lat + ',' + currentTransaction.location.coordinates.lng + '&sensor=false'}}">
-</span>
