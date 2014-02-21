@@ -50,7 +50,7 @@
           <h5>Pagar:</h5>
           <div class="btn-group btn-group-sm">
             <button ng-click="showServices()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-briefcase"></span> Servicios</button>
-            <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-credit-card"></span> Tarjetas</button>
+            <button ng-click="showCards()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-credit-card"></span> Tarjetas</button>
           </div>
 
           <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-transfer"></span> Traspasos</button>
@@ -101,6 +101,18 @@
         </div>
         <div ng-switch-when="applyservicespayment">
           <div ng-include="'views/partials/service-applied.html'"></div>
+        </div>
+        <div ng-switch-when="cards">
+          <div ng-include="'views/partials/cards.html'"></div>
+        </div>
+        <div ng-switch-when="cardspayment">
+          <div ng-include="'views/partials/cards-payment.html'"></div>
+        </div>
+        <div ng-switch-when="cardspaymenttoken">
+          <div ng-include="'views/partials/cards-token.html'"></div>
+        </div>
+        <div ng-switch-when="applycardpayment">
+          <div ng-include="'views/partials/card-applied.html'"></div>
         </div>
         <div ng-switch-default>
           <div ng-include="'views/partials/account-detail.html'"></div>

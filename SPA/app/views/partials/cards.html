@@ -1,0 +1,29 @@
+<div class="right-section">
+
+  <div class="submenu-blue">
+    <h5>Pagar tarjeta
+      <span ng-click="close()" class="glyphicon glyphicon-remove pull-right alose-button"></span>
+    </h5>
+  </div>
+
+  <div class="side-block">
+    <span class="pull-right">
+      <button class="btn btn-default" type="submit">
+        &nbsp;
+        <span class="glyphicon glyphicon-credit-card"></span>
+        <span class="glyphicon glyphicon-plus"></span>
+        &nbsp;
+      </button>
+    </span>
+    <p>Da de alta una tarjeta de crédito o débito</p>
+    <br />
+  </div>
+
+  <p>
+    Tarjeta de crédito a pagar:
+  </p>
+
+  <select class="form-control" ng-model="$parent.$parent.selectedCard" ng-options="a.name + ' ' + a.lastdigits for a in cards" ng-change="updateCard()">
+    <option value="">Selecciona una tarjeta</option>
+  </select>
+</div>
