@@ -53,7 +53,7 @@
             <button ng-click="showCards()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-credit-card"></span> Tarjetas</button>
           </div>
 
-          <button type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-transfer"></span> Traspasos</button>
+          <button ng-click="showTransfers()" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-transfer"></span> Traspasos</button>
         </div>
       </div>
     </div>
@@ -113,6 +113,18 @@
         </div>
         <div ng-switch-when="applycardpayment">
           <div ng-include="'views/partials/card-applied.html'"></div>
+        </div>
+        <div ng-switch-when="transfers">
+          <div ng-include="'views/partials/transfers.html'"></div>
+        </div>
+        <div ng-switch-when="transferspayment">
+          <div ng-include="'views/partials/transfers-payment.html'"></div>
+        </div>
+        <div ng-switch-when="transferspaymenttoken">
+          <div ng-include="'views/partials/transfers-token.html'"></div>
+        </div>
+        <div ng-switch-when="applytransferpayment">
+          <div ng-include="'views/partials/transfer-applied.html'"></div>
         </div>
         <div ng-switch-default>
           <div ng-include="'views/partials/account-detail.html'"></div>

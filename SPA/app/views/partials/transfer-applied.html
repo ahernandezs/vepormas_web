@@ -2,17 +2,18 @@
 
   <div class="submenu-green">
     <h5>
-      Tu pago ha sido aplicado
+      Tu traspaso ha sido aplicado
       <span ng-click="close()" class="glyphicon glyphicon-remove pull-right close-button"></span>
     </h5>
   </div>
 
   <div class="green-message">
+
     <div class="side-block">
       <div class="row">
         <div class="col-md-12">
           <p>Cuenta de depósito:</p>
-          &nbsp <label for="">{{card.current.name}} {{card.current.lastdigits}}</label>
+          &nbsp <label for="">{{beneficiary.current.alias}} - {{beneficiary.current.currency}} - {{beneficiary.current.lastdigits}}</label>
         </div>
       </div>
     </div>
@@ -34,7 +35,7 @@
         </div>
         <div class="col-md-5">
           <p>Importe:</p>
-          &nbsp <label for="">$500.00</label>
+          &nbsp <label for="">{{transfer.amount | currency}}</label>
         </div>
       </div>
     </div>
@@ -47,10 +48,30 @@
         </div>
         <div class="col-md-5">
           <p>Fecha:</p>
-          &nbsp <label for="">19/02/2014</label>
+          &nbsp <label for="">{{transfer.date}}</label>
         </div>
       </div>
     </div>
+
+    <div class="side-block" ng-show="transfer.sendmail">
+      <label>
+        Beneficiario notificado
+      </label>
+    </div>
+
+    <div class="side-block" ng-show="transfer.sendmail">
+      <div class="row">
+        <div class="col-md-7">
+          <p>Email:</p>
+          &nbsp <label for="">{{beneficiary.current.email}}</label>
+        </div>
+        <div class="col-md-5">
+          <p>Mensaje:</p>
+          &nbsp <label for="">{{transfer.message}}</label>
+        </div>
+      </div>
+    </div>
+
 
     <br />
 
@@ -71,7 +92,7 @@
       <div class="col-md-6">
         <span class="glyphicon glyphicon-briefcase"></span>
         &nbsp
-        <a href="">{{card.current.name}} {{card.current.lastdigits}}</a>
+        <a href="">{{beneficiary.current.alias}} {{beneficiary.current.currency}} {{beneficiary.current.lastdigits}}</a>
       </div>
       <div class="col-md-3">
         <a href="">18/01/2014</a>
@@ -84,7 +105,7 @@
       <div class="col-md-6">
         <span class="glyphicon glyphicon-briefcase"></span>
         &nbsp
-        <a href="">{{card.current.name}} {{card.current.lastdigits}}</a>
+        <a href="">{{beneficiary.current.alias}} {{beneficiary.current.currency}} {{beneficiary.current.lastdigits}}</a>
       </div>
       <div class="col-md-3">
         <a href="">19/12/2013</a>
@@ -97,7 +118,7 @@
       <div class="col-md-6">
         <span class="glyphicon glyphicon-briefcase"></span>
         &nbsp
-        <a href="">{{card.current.name}} {{card.current.lastdigits}}</a>
+        <a href="">{{beneficiary.current.alias}} {{beneficiary.current.currency}} {{beneficiary.current.lastdigits}}</a>
       </div>
       <div class="col-md-3">
         <a href="">16/10/2013</a>
@@ -110,7 +131,7 @@
       <div class="col-md-6">
         <span class="glyphicon glyphicon-briefcase"></span>
         &nbsp
-        <a href="">{{card.current.name}} {{card.current.lastdigits}}</a>
+        <a href="">{{beneficiary.current.alias}} {{beneficiary.current.currency}} {{beneficiary.current.lastdigits}}</a>
       </div>
       <div class="col-md-3">
         <a href="">19/09/2013</a>

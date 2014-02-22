@@ -61,6 +61,10 @@ angular.module('spaApp').controller('TransactionsCtrl', function($scope, $http, 
     $scope.selection = "cards";
     $scope.currentTransaction = undefined;
 
+    $scope.card = {
+      current : null
+    };
+
     $scope.cards =
       [
         {id: 1, name: "Roberto Rivera López", lastdigits: "**123"},
@@ -88,4 +92,53 @@ angular.module('spaApp').controller('TransactionsCtrl', function($scope, $http, 
     $scope.selection = 'applycardpayment';
   }
 
+  $scope.showTransfers = function() {
+    $scope.selection = "transfers";
+    $scope.currentTransaction = undefined;
+
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+
+    var yyyy = today.getFullYear();
+    if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} today = dd+'/'+mm+'/'+yyyy;
+
+    $scope.beneficiary = {
+      current : null
+    };
+
+    $scope.transfer = {
+      amount: "",
+      date: today,
+      sendmail: false,
+      message: ""
+    };
+
+
+    $scope.beneficiaries =
+      [
+        {id: 1, name: "Roberto Rivera López", lastdigits: "**123", alias: "primo", currency: "MXN", bankname: "BBVA Bancomer", bankicon: "", email: "robert@gmail.com"},
+        {id: 2, name: "Luis López Pérez", lastdigits: "**234", alias: "tío", currency: "MXN", bankname: "BBVA Bancomer", bankicon: "", email: "llopez@gmail.com"},
+        {id: 3, name: "Perla García Gómez", lastdigits: "**345", alias: "mamá", currency: "MXN", bankname: "Banamex", bankicon: "", email: "pgarcia@gmail.com"},
+        {id: 4, name: "Alicia Rubinstein", lastdigits: "**456", alias: "prima", currency: "MXN", bankname: "Banorte", bankicon: "", email: "arubinstein@gmail.com"}
+    ];
+
+  }
+
+  $scope.updateTransfer = function() {
+    $scope.selection = "transferspayment";
+  }
+
+  $scope.showTransferPaymentToken = function() {
+    $scope.selection = 'transferspaymenttoken';
+    $scope.token = undefined;
+
+    $timeout( function() {
+      $scope.token = true;
+    },2000);
+  }
+
+  $scope.applyTransferPayment = function() {
+    $scope.selection = 'applytransferpayment';
+  }
 });
