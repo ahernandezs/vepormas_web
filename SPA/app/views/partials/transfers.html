@@ -1,7 +1,7 @@
 <div class="right-section">
 
   <div class="submenu-blue">
-    <h5>Pagar tarjeta
+    <h5>Traspaso
       <span ng-click="close()" class="glyphicon glyphicon-remove pull-right alose-button"></span>
     </h5>
   </div>
@@ -10,20 +10,20 @@
     <span class="pull-right">
       <button class="btn btn-default" type="submit">
         &nbsp;
-        <span class="glyphicon glyphicon-credit-card"></span>
+        <span class="glyphicon glyphicon-user"></span>
         <span class="glyphicon glyphicon-plus"></span>
         &nbsp;
       </button>
     </span>
-    <p>Da de alta una tarjeta de crédito o débito</p>
+    <p>Da de alta un beneficiario</p>
     <br />
   </div>
 
   <p>
-    Tarjeta de crédito a pagar:
+    Cuenta de depósito:
   </p>
 
-  <select class="form-control" ng-model="card.current" ng-options="a.name + ' ' + a.lastdigits for a in cards" ng-change="updateCard()">
-    <option data-icon="icon-calendar" value="">Selecciona una tarjeta</option>
+  <select class="form-control" ng-model="beneficiary.current" ng-options="a.alias + ' - ' + a.currency + ' - ' + a.lastdigits for a in beneficiaries" ng-change="updateTransfer()">
+    <option data-icon="icon-calendar" value="">Seleccione una cuenta</option>
   </select>
 </div>

@@ -9,7 +9,7 @@
   <div class="side-block">
     <p>Tarjeta de crédito a pagar:</p>
     <br />
-    <select class="form-control" ng-model="$parent.$parent.selectedCard" ng-options="a.name + ' ' + a.lastdigits for a in cards" ng-change="updateCard()">
+    <select class="form-control" ng-model="card.current" ng-options="a.name + ' ' + a.lastdigits for a in cards" ng-change="updateCard()">
       <option value="">Selecciona una tarjeta</option>
     </select>
 
