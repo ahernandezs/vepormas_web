@@ -20,7 +20,7 @@
       <div class="col-md-3 col-sm-6" ng-repeat="account in accounts">
         <div class="account">
           <h2>{{account.name}} {{account.last_digits}}</h2>
-          <a ng-href="#/accounts/{{account._account_id}}/transactions"><img ng-src="/images/cuenta_{{account.account_type | lowercase}}.png" class="img-responsive"></a>
+          <a ng-href="#/accounts/{{account._account_id}}/transactions" ng-class="account.account_type | lowercase"></a>
 
           <div ng-if="account.account_type == 'CREDIT_CARD'">
             <div class="row date-section">
@@ -119,7 +119,7 @@
             </div>
 
             <div class="amounts-section">
-              <img src="/images/cuenta_transfer_balance.png">
+              <img src="/images/accounts/cuenta_transfer_balance.png">
             </div>
 
             <div class="buttons">
