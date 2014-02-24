@@ -9,7 +9,7 @@ body, html, #mainDiv {
 }
 
 .login_back {
-    background: black url("../images/bg_hme.jpg") center center no-repeat;
+    background: black url("/images/bg_hme.jpg") center center no-repeat;
     background-size: cover;
     height: 100%;
 
@@ -28,7 +28,7 @@ body, html, #mainDiv {
     }
 
     .logo { 
-        background: url("../images/logo.png");
+        background: url("/images/logo.png");
         background-size: cover;
         height: 50px;
         margin: 0 auto 10px auto;
@@ -65,7 +65,7 @@ body, html, #mainDiv {
             width: 100%;
 
             .btn_login {
-                background: url("../images/btn_login.png") no-repeat;
+                background: url("/images/btn_login.png") no-repeat;
                 width: 25px;
                 height: 25px;
                 border: none;
@@ -108,7 +108,7 @@ body, html, #mainDiv {
         font-size: 11px;
 
         .logo {
-            background: url("../images/logo_foot.png") no-repeat;
+            background: url("/images/logo_foot.png") no-repeat;
             width: 28px;
             height: 28px;
         }
@@ -133,7 +133,7 @@ body, html, #mainDiv {
 }
 
 .main-menu {
-    background: #4dc1dc url(../images/header_bg.png);
+    background: #4dc1dc url(/images/header_bg.png);
     width: auto;
     height: 50px;
     border-radius: 0;
@@ -141,7 +141,7 @@ body, html, #mainDiv {
     -webkit-border-radius: 0;
 
     .bank-logo {
-        background: url(../images/bank_logo.png) 0 0px no-repeat !important;
+        background: url(/images/bank_logo.png) 0 0px no-repeat !important;
         width: 189px;
         height: 50px;
         display: block;
@@ -294,7 +294,7 @@ body, html, #mainDiv {
     }
 
     .iphone-tip {
-        background: url(../images/iphone_icon.png) no-repeat; 
+        background: url(/images/iphone_icon.png) no-repeat; 
         margin: -5px 0 0 -10px;
         width: 50px;
         height: 50px;
@@ -302,7 +302,7 @@ body, html, #mainDiv {
     }
 
     .lock-tip {
-        background: url(../images/lock_icon.png) no-repeat; 
+        background: url(/images/lock_icon.png) no-repeat; 
         margin: -5px 0 0 -10px;
         width: 50px;
         height: 50px;
@@ -310,7 +310,7 @@ body, html, #mainDiv {
     }
 
     .ticket-tip {
-        background: url(../images/ticket_icon.png) no-repeat; 
+        background: url(/images/ticket_icon.png) no-repeat; 
         margin: -5px 0 0 -10px;
         width: 50px;
         height: 50px;
@@ -362,12 +362,14 @@ body, html, #mainDiv {
         font-size: 14px;
     }
 
-    .transaction-account {
-        margin-top: 10px;
-        margin-right: 10px;
-        height: 40px;
-        float: left;
+    .small {
+      margin-top: 10px;
+      margin-right: 10px;
+      height: 40px;
+      width: 60px;
+      float: left;
     }
+
 }
 
 .left-inner-addon {
@@ -562,4 +564,40 @@ body, html, #mainDiv {
       background-color: #0bd5a5;
       border-color: #0bd5a5;
     }
+}
+
+.savings {
+  background-image: url("/images/accounts/cuenta_savings.png");
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-position:center;
+  height:140px;
+  display: block;
+}
+
+.checks {
+  background-image: url("/images/accounts/cuenta_checks.png");
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-position:center;
+  height:140px;
+  display: block;
+}
+
+.credit_card {
+  background-image: url("/images/accounts/cuenta_credit_card.png");
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-position:center;
+  height:140px;
+  display: block;
+}
+
+.debit_card {
+  background-image: url("/images/accounts/cuenta_debit_card.png");
+  background-repeat:no-repeat;
+  background-size:contain;
+  background-position:center;
+  height:140px;
+  display: block;
 }

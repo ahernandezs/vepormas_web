@@ -8,7 +8,7 @@
         <p>Total disponible</p>
       </div>
       <div class="col-md-6">
-        <img ng-src="/images/cuenta_{{account.account_type | lowercase}}.png" class="transaction-account">
+        <div href="" ng-class="account.account_type | lowercase" class="small"></div>
         <h4 class="account-name">{{account.name}} <span class="last-digits">{{account.last_digits}}</span></h4>
       </div>
       <div class="col-md-4">
