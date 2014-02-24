@@ -14,8 +14,10 @@ angular.module('spaApp').factory('api', function ($http, $cookieStore,$rootScope
     },
     config: function(){
     	$http.get('spa.properties').then(function (response) {
-        	$rootScope.restAPIBaseUrl = response.data.restAPBaseIUrl;
-      	});     	
+        	  $rootScope.restAPIBaseUrl = response.data.restAPBaseIUrl;
+            $rootScope.subscribeKey = response.data.subscribeKey;
+            $rootScope.publishKey = response.data.publishKey;
+        });     	
     }
   };
 });

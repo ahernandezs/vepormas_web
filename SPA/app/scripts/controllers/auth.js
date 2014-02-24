@@ -24,6 +24,9 @@ angular.module('spaApp')
 
       $cookieStore.put('token', token);
 
+      //loading PubNub
+      $scope.initPubNub();
+
       $location.path( '/accounts' );
     }).
       error(function(data, status) {
@@ -31,6 +34,7 @@ angular.module('spaApp')
       $scope.errorMessage = 'login failed';
       $scope.status = status;
     });
+
   };
 
   $scope.logout = function() {
