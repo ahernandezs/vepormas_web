@@ -141,4 +141,23 @@ angular.module('spaApp').controller('TransactionsCtrl', function($scope, $http, 
   $scope.applyTransferPayment = function() {
     $scope.selection = 'applytransferpayment';
   }
+
+  $scope.sorting = {
+    column : 'created_at',
+    descending : true
+  };
+
+  $scope.selectSortingClass = function(column){
+    return column == $scope.sorting.column && 'glyphicon-chevron-'+($scope.sorting.descending?'down':'up');
+  }
+
+  $scope.changeSorting = function(column) {
+    var sort = $scope.sorting;
+    if (sort.column == column) {
+      sort.descending = !sort.descending;
+    } else {
+      sort.column = column;
+      sort.descending = false;
+    }
+  }
 });
