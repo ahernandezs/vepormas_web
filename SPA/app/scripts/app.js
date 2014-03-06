@@ -4,7 +4,8 @@ var app = angular.module('spaApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'pubnub.angular.service'
 ]);
 
 app.config(function ($routeProvider, $locationProvider, $httpProvider) {
@@ -24,7 +25,7 @@ app.config(function ($routeProvider, $locationProvider, $httpProvider) {
         controller: 'TransactionsCtrl'
       })
       .otherwise({
-        redirectTo: '/accounts'
+        redirectTo: '/login'
       });
   });
 

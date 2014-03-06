@@ -1,19 +1,8 @@
 'use strict';
 
-angular.module('spaApp').controller('TransactionsCtrl', function($scope, $http, $location, $routeParams, $timeout) {
+angular.module('spaApp').controller('TransactionsCtrl', function($rootScope, $scope, $http, $location, $routeParams, $timeout, accountsProvider) {
 
-  $http({
-    url: $scope.restAPIBaseUrl+'/accounts/' + $routeParams.accountId + '/transactions',
-    method: 'GET'
-  }).
-    success(function(data, status, headers) {
-    $scope.account = data.account;
-    $scope.transactions = data.transactions;
-  }).
-    error(function(data, status) {
-    console.log(data, status);
-    $location.path( '/login' );
-  });
+  accountsProvider.getAccount($routeParams.accountId);
 
   $scope.selection = "";
   $scope.currentTransaction = undefined;

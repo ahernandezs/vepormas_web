@@ -4,12 +4,12 @@
   <div class="container">
     <div class="row">
       <div class="col-md-2">
-        <h4>{{ account.balance.current | currency }}</h4>
+        <h4>{{ currentAccount.balance.current | currency }}</h4>
         <p>Total disponible</p>
       </div>
       <div class="col-md-6">
         <div href="" ng-class="account.account_type | lowercase" class="small"></div>
-        <h4 class="account-name">{{account.name}} <span class="last-digits">{{account.last_digits}}</span></h4>
+        <h4 class="account-name">{{currentAccount.name}} <span class="last-digits">{{currentAccount.last_digits}}</span></h4>
       </div>
       <div class="col-md-4">
         <button type="button" class="btn btn-info btn-alert pull-right">
@@ -64,7 +64,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-7 col-lg-8 pull-left">
-        <div ng-repeat="transaction in transactions">
+        <div ng-repeat="transaction in currentAccount.transactions">
           <div class="row transaction" ng-class="{selected: transaction._transaction_id === currentTransaction._transaction_id}" 
             ng-class-odd="'transaction-odd'" ng-click="showTransactionDetail(transaction)" id="txn-{{transaction._transaction_id}}">
             <div class="col-md-2">
