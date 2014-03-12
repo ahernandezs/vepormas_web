@@ -38,4 +38,7 @@ app.run(function ($rootScope, PubNub, accountsProvider, $cookieStore) {
         //suscribePubNub($cookieStore.get('token'));
     }
 
+    if($cookieStore.get('token')) {
+      $rootScope.initPubNub();
+    }
 });

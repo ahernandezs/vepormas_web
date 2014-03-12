@@ -20,11 +20,10 @@ angular.module('spaApp')
       //get the session token from the response and store it in a cookieStore
       var token = headers('X-AUTH-TOKEN');
 
-      api.init(token);
-
       $cookieStore.put('token', token);
 
-      //loading PubNub
+      api.init();
+
       $scope.initPubNub();
 
       $location.path( '/accounts' );
