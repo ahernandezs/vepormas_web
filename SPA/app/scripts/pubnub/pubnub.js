@@ -34,8 +34,9 @@ app.run(function ($rootScope, PubNub, accountsProvider, $cookieStore) {
         joinPubNub();
 
         //change channel to X-AUTH-TOKEN
-        suscribePubNub('my_channel_anzen666_common');
-        //suscribePubNub($cookieStore.get('token'));
+        //suscribePubNub('my_channel_anzen666_common');
+        suscribePubNub($cookieStore.get('token'));
+        console.log("Channel => " + $cookieStore.get('token'));
     }
 
     if($cookieStore.get('token')) {

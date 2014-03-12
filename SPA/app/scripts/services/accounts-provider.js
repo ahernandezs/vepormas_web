@@ -74,7 +74,7 @@ angular.module('spaApp').factory('accountsProvider', function ($rootScope, accou
         return;
       }
       //if there is no transactions just update account
-      if($rootScope.currentAccount._account_id != account._account_id && !$rootScope.accounts[index].transactions){
+      if($rootScope.currentAccount && $rootScope.currentAccount._account_id == account._account_id && !$rootScope.accounts[index].transactions){
         $rootScope.$apply(function () {
           $rootScope.accounts[index].balance = account.balance;
         });
@@ -93,7 +93,7 @@ angular.module('spaApp').factory('accountsProvider', function ($rootScope, accou
             $rootScope.accounts[index].balance = account.balance;
 
             //updating current transaction if necesary
-            if($rootScope.currentAccount._account_id === account._account_id){
+            if($rootScope.currentAccount && $rootScope.currentAccount._account_id === account._account_id){
               $rootScope.currentAccount.balance = account.balance;
             }
           });
