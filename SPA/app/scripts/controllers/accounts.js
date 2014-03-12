@@ -3,6 +3,5 @@
 /**
  * The accounts controller. Gets accounts passing auth parameters
  */
-angular.module('spaApp').controller('AccountsCtrl', function ($scope,$http,$location, accountsProvider) {
-  accountsProvider.getAccounts();
+angular.module('spaApp').controller('AccountsCtrl', function ($scope) {
 });

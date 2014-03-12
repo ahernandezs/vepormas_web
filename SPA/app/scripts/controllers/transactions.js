@@ -1,8 +1,9 @@
 'use strict';
 
-angular.module('spaApp').controller('TransactionsCtrl', function($rootScope, $scope, $http, $location, $routeParams, $timeout, accountsProvider) {
+angular.module('spaApp').controller('TransactionsCtrl', function($scope, $routeParams, $timeout, accountsProvider) {
 
-  accountsProvider.getAccount($routeParams.accountId);
+  accountsProvider.getAccountTransactions($routeParams.accountId).then(function(data) {
+  });
 
   $scope.selection = "";
   $scope.currentTransaction = undefined;

@@ -18,14 +18,24 @@ app.config(function ($routeProvider, $locationProvider, $httpProvider) {
       })
       .when('/accounts', {
         templateUrl: 'views/accounts.html',
-        controller: 'AccountsCtrl'
+        controller: 'AccountsCtrl',
+        resolve: {
+          accounts: function(accountsProvider) {
+            return accountsProvider.getAccounts();
+          }
+        }
       })
       .when('/accounts/:accountId/transactions', {
         templateUrl: 'views/transactions.html',
-        controller: 'TransactionsCtrl'
+        controller: 'TransactionsCtrl',
+        resolve: {
+          accounts: function(accountsProvider) {
+            return accountsProvider.getAccounts();
+          }
+        }
       })
       .otherwise({
-        redirectTo: '/login'
+        redirectTo: '/accounts'
       });
   });
 
