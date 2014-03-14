@@ -1,12 +1,39 @@
 'use strict';
 
-angular.module('spaApp').controller('TransactionsCtrl', function($scope, $routeParams, $timeout, accountsProvider) {
+angular.module('spaApp').controller('TransactionsCtrl', function($rootScope, $scope, $location, $routeParams, $timeout, accountsProvider) {
 
-  accountsProvider.getAccountTransactions($routeParams.accountId).then(function(data) {
-  });
+  try{
+    var index = accountsProvider.getAccountIndex($routeParams.accountId);
+  }catch(err){
+    $location.path( '/accounts' );
+  }
+  //set the rootScope current account
+  $rootScope.currentAccount = $rootScope.accounts[index];
 
   $scope.selection = "";
   $scope.currentTransaction = undefined;
+
+  //manage pagination
+  $scope.paginationBusy = false;
+  $scope.numPage = 0;
+  
+  //invoked by the infinite-scroller component
+  $scope.nextPage = function() {
+    if ($scope.paginationBusy) return;
+    $scope.paginationBusy = true;
+    accountsProvider.getAccountTransactions($routeParams.accountId,$scope.numPage,10).then(
+      function(data) {
+        //everything went fine: we increment the page number for further request
+        $scope.numPage=$scope.numPage+1;
+        $scope.paginationBusy = false;
+      },
+      function(data) {
+        //TODO: display an error message to the user
+        $scope.paginationBusy = false;
+        console.log(data);
+      }
+    );
+  };
 
   $scope.showTransactionDetail = function(transaction) {
     if($scope.currentTransaction && $scope.currentTransaction._transaction_id === transaction._transaction_id) {
@@ -150,4 +177,6 @@ angular.module('spaApp').controller('TransactionsCtrl', function($scope, $routeP
       sort.descending = false;
     }
   }
+
+ 
 });
