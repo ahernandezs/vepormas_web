@@ -13,7 +13,7 @@ angular.module('spaApp').factory('accountsProvider', function ($rootScope, accou
           return i;
         }
       }
-      return -1;
+      throw new Error("account does not exist");
     },
 
     getAccounts: function () {
@@ -35,33 +35,46 @@ angular.module('spaApp').factory('accountsProvider', function ($rootScope, accou
       return deferred.promise;
     },
 
-    getAccountTransactions: function (accountId) {
+    getAccountTransactions: function (accountId, numPage, size) {
       var index = this.getAccountIndex(accountId);
-
-      //TODO: handle this error
-      if(index<0) {
-        return;
-      }
-
+      var currentAccount = $rootScope.accounts[index];
       var deferred = $q.defer();
-
-      //if accounts has undefinied transactions get transactions from API
-      if(!$rootScope.accounts[index].transactions) {
-        console.log('getting transactions for account ' + accountId);
-        accountsService.getAccount(accountId).success(function(data, status, headers) {
-          $rootScope.accounts[index].transactions = data.transactions;
-          $rootScope.currentAccount = $rootScope.accounts[index];
-          $rootScope.currentAccount.transactions = data.transactions;
-          deferred.resolve();
-        }).error(function(data, status) {
-          console.log(data, status);
-          return deferred.reject("Error getting transactions");
-        });
-      } else {
-        $rootScope.currentAccount = $rootScope.accounts[index];
+      //we already have all the transactions
+      if(currentAccount.allTransactionsLoaded == true){
         deferred.resolve();
+      }else{
+        //if accounts has undefinied transactions get transactions from API
+        if(!$rootScope.accounts[index].transactions || $rootScope.accounts[index].transactions.length <= (numPage+1)*size) {
+          console.log('getting transactions for account ' + accountId);
+          accountsService.getAccount(accountId,numPage, size).success(function(data, status, headers) {
+            
+            if(data.transactions){
+              if(!currentAccount.transactions){
+                currentAccount.transactions = new Array();
+              }            
+              var items = data.transactions;
+              var currentAccountTransactions = currentAccount.transactions;
+              for (var i = 0; i < items.length; i++) {
+                currentAccountTransactions.push(items[i]);
+              }
+              //if it is the last page
+              if(items.length < size){
+                currentAccount.allTransactionsLoaded=true;
+              }
+            }//no transaction returned, we are not willing to invoke the service no more?
+            else{
+              currentAccount.allTransactionsLoaded=true;
+            }
+            deferred.resolve();
+          }).error(function(data, status) {
+            console.log(data, status);
+            return deferred.reject("Error getting transactions");
+          });
+        } else {
+          currentAccount = $rootScope.accounts[index];
+          deferred.resolve();
+        }
       }
-
       //fill currentAccount with rootScope data
 
       return deferred.promise;
