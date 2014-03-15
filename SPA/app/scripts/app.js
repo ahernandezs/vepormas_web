@@ -40,7 +40,21 @@ app.config(function ($routeProvider, $locationProvider, $httpProvider) {
       });
   });
 
-app.run(function(api) {
+app.run(function(api, $window, $rootScope) {
   api.config();
   api.init();
+
+  $window.onbeforeunload = function(e) {
+    var message = "Te vas a salir de ABanking, ¿estás seguro?";
+    e = e || $window.event;
+    e.preventDefault = true;
+    e.cancelBubble = true;
+    if($rootScope.session_token) {
+    e.returnValue = message;
+
+    return message;
+    }
+  }
 });
+
+

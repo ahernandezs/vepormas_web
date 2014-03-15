@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('spaApp').factory('httpInterceptor', function httpInterceptor ($q, $window, $location, $cookieStore) {
+angular.module('spaApp').factory('httpInterceptor', function httpInterceptor ($q, $window, $location, $rootScope) {
   return function (promise) {
     var success = function (response) {
       return response;
@@ -15,8 +15,8 @@ angular.module('spaApp').factory('httpInterceptor', function httpInterceptor ($q
       }
 
       if (response.status === 400 || response.status === 503) {
-        $cookieStore.remove('token');
-        console.log("Status 401 or 400");
+        $rootScope.session_token = null;
+        console.log("Status 400 or 503");
         $location.url('/login');
       }
 
