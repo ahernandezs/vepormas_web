@@ -64,25 +64,28 @@
   <div class="container">
     <div class="row">
       <div class="col-md-7 col-lg-8 pull-left">
-        <div ng-repeat="transaction in currentAccount.transactions | orderBy:sorting.column:sorting.descending | filter:keyword">
-          <div class="row transaction" ng-class="{selected: transaction._transaction_id === currentTransaction._transaction_id}" 
-            ng-class-odd="'transaction-odd'" ng-click="showTransactionDetail(transaction)" id="txn-{{transaction._transaction_id}}">
-            <div class="col-md-2">
-              <p>{{transaction.created_at | date:'MMM'}}</p>
-              <h5>{{transaction.created_at | date:'dd'}}</h5>
-            </div>
-            <div class="col-md-5">
-              <span class="description">{{transaction.description}}</span>
-            </div>
-            <div class="col-md-3">
-              <span class="category">{{transaction.type}}</span>
-            </div>
-            <div class="col-md-2">
-              <span class="pull-right amount">
-                {{transaction.amount | currency}}
-              </span>
+        <div infinite-scroll="nextPage()" infinite-scroll-disabled="busy" infinite-scroll-distance="1">
+          <div ng-repeat="transaction in currentAccount.transactions | orderBy:sorting.column:sorting.descending | filter:keyword">
+            <div class="row transaction" ng-class="{selected: transaction._transaction_id === currentTransaction._transaction_id}" 
+              ng-class-odd="'transaction-odd'" ng-click="showTransactionDetail(transaction)" id="txn-{{transaction._transaction_id}}">
+              <div class="col-md-2">
+                <p>{{transaction.created_at | date:'MMM'}}</p>
+                <h5>{{transaction.created_at | date:'dd'}}</h5>
+              </div>
+              <div class="col-md-5">
+                <span class="description">{{transaction.description}}</span>
+              </div>
+              <div class="col-md-3">
+                <span class="category">{{transaction.type}}</span>
+              </div>
+              <div class="col-md-2">
+                <span class="pull-right amount">
+                  {{transaction.amount | currency}}
+                </span>
+              </div>
             </div>
           </div>
+          <div ng-show="paginationBusy">Cargando transaciones...</div>
         </div>
       </div>
       <div class="col-md-5 col-lg-4 pull-right" ng-switch on="selection">
