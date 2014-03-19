@@ -30,7 +30,7 @@ angular.module('spaApp')
     }).
       error(function(data, status) {
       //put an error message in the scope
-      $scope.errorMessage = 'login failed';
+      $scope.errorMessage = data.message;
       $scope.status = status;
     });
 
