@@ -14,7 +14,7 @@ angular.module('spaApp').factory('httpInterceptor', function httpInterceptor ($q
         $location.url('/login');
       }
 
-      if (response.status === 401 || response.status === 400 || response.status === 503) {
+      if (response.status === 400 || response.status === 503) {
         $cookieStore.remove('token');
         console.log("Status 401 or 400");
         $location.url('/login');
