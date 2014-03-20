@@ -1,6 +1,6 @@
 'use strict'
 
-app.run(function ($rootScope, PubNub, accountsProvider) {
+app.run(['$rootScope', 'PubNub', 'accountsProvider', function ($rootScope, PubNub, accountsProvider) {
 
     //conectando a PubNub
     var joinPubNub = function () {
@@ -42,4 +42,4 @@ app.run(function ($rootScope, PubNub, accountsProvider) {
     if($rootScope.session_token) {
       $rootScope.initPubNub();
     }
-});
+}]);

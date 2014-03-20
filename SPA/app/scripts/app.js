@@ -9,7 +9,7 @@ var app = angular.module('spaApp', [
   'infinite-scroll'
 ]);
 
-app.config(function ($routeProvider, $locationProvider, $httpProvider) {
+app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
     $httpProvider.responseInterceptors.push('httpInterceptor');
 
     $routeProvider
@@ -21,26 +21,26 @@ app.config(function ($routeProvider, $locationProvider, $httpProvider) {
         templateUrl: 'views/accounts.html',
         controller: 'AccountsCtrl',
         resolve: {
-          accounts: function(accountsProvider) {
+          accounts: ['accountsProvider', function(accountsProvider) {
             return accountsProvider.getAccounts();
-          }
+          }]
         }
       })
       .when('/accounts/:accountId/transactions', {
         templateUrl: 'views/transactions.html',
         controller: 'TransactionsCtrl',
         resolve: {
-          accounts: function(accountsProvider) {
+          accounts: ['accountsProvider', function(accountsProvider) {
             return accountsProvider.getAccounts();
-          }
+          }]
         }
       })
       .otherwise({
         redirectTo: '/accounts'
       });
-  });
+  }]);
 
-app.run(function(api, $window, $rootScope) {
+app.run(['api', '$window', '$rootScope', function(api, $window, $rootScope) {
   api.config();
   api.init();
 
@@ -55,6 +55,6 @@ app.run(function(api, $window, $rootScope) {
     return message;
     }
   }
-});
+}]);
 
 

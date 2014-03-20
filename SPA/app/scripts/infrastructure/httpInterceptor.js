@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('spaApp').factory('httpInterceptor', function httpInterceptor ($q, $window, $location, $rootScope) {
+angular.module('spaApp').factory('httpInterceptor', ['$q', '$window', '$location', '$rootScope', function httpInterceptor ($q, $window, $location, $rootScope) {
   return function (promise) {
     var success = function (response) {
       return response;
@@ -25,4 +25,4 @@ angular.module('spaApp').factory('httpInterceptor', function httpInterceptor ($q
 
     return promise.then(success, error);
   };
-});
+}]);

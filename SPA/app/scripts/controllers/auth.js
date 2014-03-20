@@ -5,7 +5,7 @@
  * inject a login function in the scope
  */
 angular.module('spaApp')
-.controller('LoginCtrl', function ($scope,$http,$location, api, $rootScope) {
+.controller('LoginCtrl', ['$scope', '$http', '$location', 'api', '$rootScope', function ($scope,$http,$location, api, $rootScope) {
   /**
    * the login function connect the Rest-API: if the response status is OK, redirect to route "accounts",
    * else put an error message in the scope
@@ -56,6 +56,6 @@ angular.module('spaApp')
       $location.path( '/login' );
     });
   }
-});
+}]);
 
 

@@ -4,7 +4,7 @@
  * api initializer factory
  */
 
-angular.module('spaApp').factory('api', function ($http, $rootScope) {
+angular.module('spaApp').factory('api', ['$http', '$rootScope', function ($http, $rootScope) {
   var hasBeenConfigured = false;
   return {
     init: function (token) {
@@ -20,4 +20,4 @@ angular.module('spaApp').factory('api', function ($http, $rootScope) {
       $rootScope.publishKey = "pub-c-d49c709c-8d0c-40ed-aaa6-66cbc20683d0";
     }
   };
-});
+}]);
