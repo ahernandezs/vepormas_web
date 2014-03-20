@@ -1,6 +1,6 @@
 'use strict'
 
-app.run(function ($rootScope, PubNub, accountsProvider, $cookieStore) {
+app.run(['$rootScope', 'PubNub', 'accountsProvider', function ($rootScope, PubNub, accountsProvider) {
 
     //conectando a PubNub
     var joinPubNub = function () {
@@ -35,11 +35,11 @@ app.run(function ($rootScope, PubNub, accountsProvider, $cookieStore) {
 
         //change channel to X-AUTH-TOKEN
         //suscribePubNub('my_channel_anzen666_common');
-        suscribePubNub($cookieStore.get('token'));
-        console.log("Channel => " + $cookieStore.get('token'));
+        suscribePubNub($rootScope.session_token);
+        console.log("Channel => " + $rootScope.session_token);
     }
 
-    if($cookieStore.get('token')) {
+    if($rootScope.session_token) {
       $rootScope.initPubNub();
     }
-});
+}]);

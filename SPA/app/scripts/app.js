@@ -9,7 +9,7 @@ var app = angular.module('spaApp', [
   'infinite-scroll'
 ]);
 
-app.config(function ($routeProvider, $locationProvider, $httpProvider) {
+app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
     $httpProvider.responseInterceptors.push('httpInterceptor');
 
     $routeProvider
@@ -21,26 +21,40 @@ app.config(function ($routeProvider, $locationProvider, $httpProvider) {
         templateUrl: 'views/accounts.html',
         controller: 'AccountsCtrl',
         resolve: {
-          accounts: function(accountsProvider) {
+          accounts: ['accountsProvider', function(accountsProvider) {
             return accountsProvider.getAccounts();
-          }
+          }]
         }
       })
       .when('/accounts/:accountId/transactions', {
         templateUrl: 'views/transactions.html',
         controller: 'TransactionsCtrl',
         resolve: {
-          accounts: function(accountsProvider) {
+          accounts: ['accountsProvider', function(accountsProvider) {
             return accountsProvider.getAccounts();
-          }
+          }]
         }
       })
       .otherwise({
         redirectTo: '/accounts'
       });
-  });
+  }]);
 
-app.run(function(api) {
+app.run(['api', '$window', '$rootScope', function(api, $window, $rootScope) {
   api.config();
   api.init();
-});
+
+  $window.onbeforeunload = function(e) {
+    var message = "Te vas a salir de ABanking, ¿estás seguro?";
+    e = e || $window.event;
+    e.preventDefault = true;
+    e.cancelBubble = true;
+    if($rootScope.session_token) {
+    e.returnValue = message;
+
+    return message;
+    }
+  }
+}]);
+
+

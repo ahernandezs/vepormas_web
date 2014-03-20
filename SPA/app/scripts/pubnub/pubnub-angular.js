@@ -1,6 +1,6 @@
 (function() {
   'use strict';
-  angular.module('pubnub.angular.service', []).factory('PubNub', function($rootScope) {
+  angular.module('pubnub.angular.service', []).factory('PubNub', ['$rootScope', function($rootScope) {
     var c, k, _i, _len, _ref;
     c = {
       '_instance': null,
@@ -154,6 +154,6 @@
       return "pn-presence:" + channel;
     };
     return c;
-  });
+  }]);
 
 }).call(this);

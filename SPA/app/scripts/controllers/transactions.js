@@ -1,6 +1,7 @@
 'use strict';
 
-angular.module('spaApp').controller('TransactionsCtrl', function($rootScope, $scope, $location, $routeParams, $timeout, accountsProvider) {
+angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$timeout', 'accountsProvider', 
+                                    function($rootScope, $scope, $location, $routeParams, $timeout, accountsProvider) {
 
   try{
     var index = accountsProvider.getAccountIndex($routeParams.accountId);
@@ -179,4 +180,4 @@ angular.module('spaApp').controller('TransactionsCtrl', function($rootScope, $sc
   }
 
  
-});
+}]);

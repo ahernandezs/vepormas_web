@@ -4,7 +4,7 @@
  * api initializer factory
  */
 
-angular.module('spaApp').factory('accountsProvider', function ($rootScope, accountsService, $q) {
+angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsService', '$q', function ($rootScope, accountsService, $q) {
 
   return {
     getAccountIndex: function (accountId) {
@@ -113,4 +113,4 @@ angular.module('spaApp').factory('accountsProvider', function ($rootScope, accou
         }
     }
   };
-});
+}]);
