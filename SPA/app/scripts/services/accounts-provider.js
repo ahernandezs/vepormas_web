@@ -44,18 +44,13 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
         deferred.resolve();
       }else{
         //if accounts has undefinied transactions get transactions from API
-        if(!$rootScope.accounts[index].transactions || $rootScope.accounts[index].transactions.length <= (numPage+1)*size) {
-          console.log('getting transactions for account ' + accountId);
+          console.log('getting transactions for account ' + accountId + ' from page ' + numPage);
           accountsService.getAccount(accountId,numPage, size).success(function(data, status, headers) {
             
             if(data.transactions){
-              if(!currentAccount.transactions){
-                currentAccount.transactions = new Array();
-              }            
               var items = data.transactions;
-              var currentAccountTransactions = currentAccount.transactions;
               for (var i = 0; i < items.length; i++) {
-                currentAccountTransactions.push(items[i]);
+                $rootScope.transactions.push(items[i]);
               }
               //if it is the last page
               if(items.length < size){
@@ -70,10 +65,6 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
             console.log(data, status);
             return deferred.reject("Error getting transactions");
           });
-        } else {
-          currentAccount = $rootScope.accounts[index];
-          deferred.resolve();
-        }
       }
       //fill currentAccount with rootScope data
 

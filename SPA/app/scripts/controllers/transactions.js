@@ -17,7 +17,10 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
   //manage pagination
   $scope.paginationBusy = false;
   $scope.numPage = 0;
-  
+
+  $rootScope.transactions = new Array();
+  $rootScope.currentAccount.allTransactionsLoaded = false;
+
   //invoked by the infinite-scroller component
   $scope.nextPage = function() {
     if ($scope.paginationBusy) return;
