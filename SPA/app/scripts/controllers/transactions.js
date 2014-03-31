@@ -15,25 +15,78 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
   $scope.currentTransaction = undefined;
 
   //manage pagination
-  $scope.paginationBusy = false;
-  $scope.numPage = 0;
-
+  var paginationBusy = false;
+  var prefetchBusy = false;
+  var error = false;
+  $scope.numPage = 0;  
   $rootScope.transactions = new Array();
   $rootScope.currentAccount.allTransactionsLoaded = false;
 
   //invoked by the infinite-scroller component
+  var numberOfAttemptsForPrefetch = 0; 
+  var MAX_NUMBER_OF_ATTEMPTS_FOR_PREFETCH = 2;
+
+  /**
+  * reinitialize the user-transactions' load-status
+  */
+  function reinitLoadStatusToFalse(){
+    paginationBusy = false;
+    error=false;
+    prefetchBusy = false;
+  };
+
+  /**
+  * return true if the server did not answer yet or if the transaction
+  * prefetch asynchronous-task has ended on the server-side. In this last case, we may retry after
+  * having waiting a bit
+  */
+  $scope.clientOrServerBusy = function(){
+    return paginationBusy || prefetchBusy;
+  }
+
+  /**
+  * return true if an error occurrd while getting the user's transactions
+  */
+  $scope.error = function(){
+    return error;
+  }
+
+  /**
+  * load a page: this function is automatically called by the infinite-scrolling component when user
+  * reached the transactions at the page's bottom
+  */
   $scope.nextPage = function() {
-    if ($scope.paginationBusy) return;
-    $scope.paginationBusy = true;
+
+    if (paginationBusy) return;
+    
+    paginationBusy = true;
     accountsProvider.getAccountTransactions($routeParams.accountId,$scope.numPage,10).then(
       function(data) {
         //everything went fine: we increment the page number for further request
         $scope.numPage=$scope.numPage+1;
-        $scope.paginationBusy = false;
+        reinitLoadStatusToFalse();
       },
       function(data) {
-        //TODO: display an error message to the user
-        $scope.paginationBusy = false;
+        reinitLoadStatusToFalse();
+        if(data.status == 404){
+          //if the maximum number of attempts has not been reached
+          if(numberOfAttemptsForPrefetch < MAX_NUMBER_OF_ATTEMPTS_FOR_PREFETCH){
+            numberOfAttemptsForPrefetch++;
+            prefetchBusy = true;
+            $timeout( function() {
+              $scope.nextPage();
+            },2000);
+
+          }
+          //the maximum number of attempts has been reached, the user will be notified with an error
+          else{
+            error=true;
+          }
+        }
+        //if another error (different from prefetch) is encountered
+        else{
+          error=true;
+        }
         console.log(data);
       }
     );
