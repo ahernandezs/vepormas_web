@@ -63,7 +63,7 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
             deferred.resolve();
           }).error(function(data, status) {
             console.log(data, status);
-            return deferred.reject("Error getting transactions");
+            return deferred.reject({"status": status, "mesage": "Error getting transactions"});
           });
       }
       //fill currentAccount with rootScope data

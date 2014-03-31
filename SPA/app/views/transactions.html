@@ -60,8 +60,8 @@
   </div>
 </div>
 
-<div class="transactions">
-  <div class="container">
+<div class="transactions">  
+   <div class="container">
     <div class="row">
       <div class="col-md-7 col-lg-8 pull-left">
         <div infinite-scroll="nextPage()" infinite-scroll-disabled="busy" infinite-scroll-distance="1">
@@ -85,7 +85,8 @@
               </div>
             </div>
           </div>
-          <div ng-show="paginationBusy">Cargando transaciones...</div>
+          <div ng-show="clientOrServerBusy()">Cargando transaciones...</div>
+          <div ng-show="error()">Problema mientras cargando sus transaciones</div>
         </div>
       </div>
       <div class="col-md-5 col-lg-4 pull-right" ng-switch on="selection">
