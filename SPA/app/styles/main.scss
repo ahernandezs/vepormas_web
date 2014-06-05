@@ -98,7 +98,6 @@ body, html, #mainDiv {
         -webkit-box-shadow: 0 0 20px 0 #6f6f6f; 
         box-shadow: 0 0 20px 0 #6f6f6f; 
     }
-
     .home_footer {
         color: #FFF;
         position: fixed;
@@ -123,6 +122,9 @@ body, html, #mainDiv {
     position: fixed;
     width: 100%;
     z-index: 999;
+    .main-menu .nav .dropdown-menu li{
+        color: black !important;
+    }
 }
 
 .status-navbar {
