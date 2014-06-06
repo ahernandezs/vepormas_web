@@ -604,7 +604,6 @@ body, html, #mainDiv {
   display: block;
 }
 
-
 //Styles made from developers
 .borderDown{
     border-bottom:1px solid #bbb;
@@ -821,4 +820,26 @@ h3 {
     text-align: center;
     border-bottom: 1px solid #cccccc;
 
+}
+
+//Styles made from developers
+.borderDown{
+    border-bottom:1px solid #bbb;
+    margin-top:35px;
+    margin-bottom:25px;
+}
+.titleCard{
+   text-align: center;
+   color: #01A9DB;
+   font-size: 25px;
+   margin-top:20px;
+   padding:10px;
+   border-bottom: 1px solid #cccccc;
+}
+.space{
+ margin-bottom: 20px;   
+}
+
+.account-header{
+    z-index:1;
 }

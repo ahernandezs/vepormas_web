@@ -30,7 +30,7 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
       .when('/admin-card',{
         templateUrl: 'views/partials/administrationCards.html'
       })
-
+ 
       .when('/contract',{
         templateUrl: 'views/partials/contract.html'
       })
