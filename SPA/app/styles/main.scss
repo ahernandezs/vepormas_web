@@ -1,6 +1,7 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
+@import 'compass';
 
 body, html, #mainDiv {
     height: 100%;
@@ -122,7 +123,7 @@ body, html, #mainDiv {
     position: fixed;
     width: 100%;
     z-index: 999;
-    .main-menu .nav .dropdown-menu li{
+    .main-menu .nav .dropdown-menu li a{
         color: black !important;
     }
 }
@@ -602,4 +603,37 @@ body, html, #mainDiv {
   background-position:center;
   height:140px;
   display: block;
+}
+
+.caja{
+border:1px solid #ccc;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;overflow:hidden;clear:both;background:#e6e8e7;margin:10px 0;
+    .col-md-4{
+            padding-top:5px;
+            padding-bottom:5px;
+            height:40px;
+    }
+}
+
+.caja .col-md-4 p{
+    text-align:center;
+    color: rgb(58, 151, 210);
+    text-transform: uppercase;
+    padding-top: 5px;
+    span{
+        color: #666;
+    }
+}
+
+.span1{
+border-right: 1px solid #ccc;
+background-color: #e0ddd2;
+}
+.span2{
+border-right: 1px solid #ccc;
+// needs latest Compass, add '@import "compass"' to your scss
+background-color: #cecbc0;
+}
+.span3{
+background-color: #bab7ab;
+    text-align: center;
 }
