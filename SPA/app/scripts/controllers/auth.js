@@ -21,6 +21,8 @@ angular.module('spaApp')
       var token = headers('X-AUTH-TOKEN');
 
       $rootScope.session_token = token;
+      $rootScope.last_access_date = data.last_access_date;
+      $rootScope.last_access_media = data.last_access_media;
 
       api.init();
 
