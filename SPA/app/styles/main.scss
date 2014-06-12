@@ -1,7 +1,6 @@
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 
 @import 'sass-bootstrap/lib/bootstrap';
-@import 'compass';
 
 body, html, #mainDiv {
     height: 100%;
@@ -605,7 +604,7 @@ body, html, #mainDiv {
   display: block;
 }
 
-.caja{
+.box{
 border:1px solid #ccc;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;overflow:hidden;clear:both;background:#e6e8e7;margin:10px 0;
     .col-md-4{
             padding-top:5px;
@@ -614,7 +613,7 @@ border:1px solid #ccc;border-radius:5px;-moz-border-radius:5px;-webkit-border-ra
     }
 }
 
-.caja .col-md-4 p{
+.box .col-md-4 p{
     text-align:center;
     color: rgb(58, 151, 210);
     text-transform: uppercase;
