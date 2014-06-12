@@ -130,6 +130,12 @@
         <div ng-switch-when="applytransferpayment">
           <div ng-include="'views/partials/transfer-applied.html'"></div>
         </div>
+         <div ng-switch-when="addbeneficiary">
+          <div ng-include="'views/partials/add-beneficiary.html'"></div>
+        </div>
+        <div ng-switch-when="addbeneficiaryconfirm">
+          <div ng-include="'views/partials/add-beneficiary-confirm.html'"></div>
+        </div>
         <div ng-switch-default>
           <div ng-include="'views/partials/account-detail.html'"></div>
         </div>

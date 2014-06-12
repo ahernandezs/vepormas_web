@@ -1,0 +1,27 @@
+<div class="right-section">
+	<div class="submenu-blue">
+		 <h5>El beneficiario ha sido dado de alta: 
+		   <span ng-click="close()" class="glyphicon glyphicon-remove pull-right alose-button"></span>
+		 </h5>
+	</div>
+  	<form ng-submit="authorize()">
+	  <div class="side-block">
+	  	<p>Nombre:</p>
+	  	<input type="text" class="form-control input-normal" value="{{names}}" disabled>
+	  	<br>
+	  	<p>Clabe/Tarjeta/Celular:</p>
+	  	<input type="text" class="form-control input-normal" value="{{clabe}}" disabled>
+	  	<br>
+	  	<p>Importe m&aacute;ximo:</p>
+	  	<input type="text" class="form-control input-normal" value="{{amount}}" disabled>
+	  	<br>
+	  </div>
+	  <div>
+	  	<p>Email:</p>
+	  	<input type="text" class="form-control input-normal" value="{{email}}" disabled>
+	  	<br>
+	  	<p>Tel&eacute;fono celular:</p>
+	  	<input type="text" class="form-control input-normal" value="{{number}}" disabled>
+	  </div>
+	</form>
+</div>
