@@ -40,6 +40,16 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
           }]
         }
       })
+      .when('/accounts-clabe', {
+        templateUrl: 'views/partials/accounts-clabe.html',
+        controller: 'ClabeCtrl',
+        url: 'accounts-clabe',
+        resolve: {
+          accounts: ['accountsProvider', function(accountsProvider) {
+            return accountsProvider.getAccounts();
+          }]
+        }
+      })
       .otherwise({
         redirectTo: '/accounts'
       });

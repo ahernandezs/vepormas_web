@@ -199,10 +199,28 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
 
   }
 
-  $scope.updateTransfer = function() {
-    $scope.selection = "transferspayment";
+  $scope.showAddBeneficiary = function(){
+    $scope.selection="addbeneficiary";
   }
 
+  $scope.updateTransfer = function() {
+    $scope.selection = "transferspayment";
+  }    
+
+  $scope.authorize = function(nombre, clabe1, importe, correo, telefono){
+     console.log($scope.names);
+     $scope.names=nombre;
+     $scope.clabe=clabe1;
+     $scope.amount=importe;
+     $scope.email=correo;
+     $scope.number=telefono;
+     $scope.selection = "addbeneficiaryconfirm";
+  }
+
+  $scope.test = function(){
+    console.log ("begin invoke function");
+  }
+  
   $scope.showTransferPaymentToken = function() {
     $scope.selection = 'transferspaymenttoken';
     $scope.token = undefined;

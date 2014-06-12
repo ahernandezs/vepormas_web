@@ -27,7 +27,7 @@ body, html, #mainDiv {
         }
     }
 
-    .logo { 
+    .logo {
         background: url("/images/logo.png");
         background-size: cover;
         height: 50px;
@@ -88,15 +88,15 @@ body, html, #mainDiv {
         }
     }
 
-    .rounded { 
-        -webkit-border-radius: 7px; 
-        -moz-border-radius: 7px; 
-        border-radius: 7px; 
+    .rounded {
+        -webkit-border-radius: 7px;
+        -moz-border-radius: 7px;
+        border-radius: 7px;
     }
 
-    .shadow { 
-        -webkit-box-shadow: 0 0 20px 0 #6f6f6f; 
-        box-shadow: 0 0 20px 0 #6f6f6f; 
+    .shadow {
+        -webkit-box-shadow: 0 0 20px 0 #6f6f6f;
+        box-shadow: 0 0 20px 0 #6f6f6f;
     }
     .home_footer {
         color: #FFF;
@@ -296,7 +296,7 @@ body, html, #mainDiv {
     }
 
     .iphone-tip {
-        background: url(/images/iphone_icon.png) no-repeat; 
+        background: url(/images/iphone_icon.png) no-repeat;
         margin: -5px 0 0 -10px;
         width: 50px;
         height: 50px;
@@ -304,7 +304,7 @@ body, html, #mainDiv {
     }
 
     .lock-tip {
-        background: url(/images/lock_icon.png) no-repeat; 
+        background: url(/images/lock_icon.png) no-repeat;
         margin: -5px 0 0 -10px;
         width: 50px;
         height: 50px;
@@ -312,7 +312,7 @@ body, html, #mainDiv {
     }
 
     .ticket-tip {
-        background: url(/images/ticket_icon.png) no-repeat; 
+        background: url(/images/ticket_icon.png) no-repeat;
         margin: -5px 0 0 -10px;
         width: 50px;
         height: 50px;
@@ -619,9 +619,42 @@ body, html, #mainDiv {
    border-bottom: 1px solid #cccccc;
 }
 .space{
- margin-bottom: 20px;   
+ margin-bottom: 20px;
 }
 
 .account-header{
     z-index:1;
+}
+
+.box{
+border:1px solid #ccc;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px;overflow:hidden;clear:both;background:#e6e8e7;margin:10px 0;
+    .col-md-4{
+            padding-top:5px;
+            padding-bottom:5px;
+            height:40px;
+    }
+}
+
+.box .col-md-4 p{
+    text-align:center;
+    color: rgb(58, 151, 210);
+    text-transform: uppercase;
+    padding-top: 5px;
+    span{
+        color: #666;
+    }
+}
+
+.span1{
+border-right: 1px solid #ccc;
+background-color: #e0ddd2;
+}
+.span2{
+border-right: 1px solid #ccc;
+// needs latest Compass, add '@import "compass"' to your scss
+background-color: #cecbc0;
+}
+.span3{
+background-color: #bab7ab;
+    text-align: center;
 }

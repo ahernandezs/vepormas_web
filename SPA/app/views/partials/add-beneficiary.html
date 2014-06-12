@@ -1,0 +1,45 @@
+<div class="right-section">
+	<!--end false-->
+		<!--div ng-switch-when="true">
+		  <div class="submenu-blue">
+		    <h5>Lo has logrado: 
+		      <span ng-click="close()" class="glyphicon glyphicon-remove pull-right alose-button"></span>
+		    </h5>
+		  </div>
+		</div><!--end false-->
+	<!--/div><!--end switch-->
+
+  	<form name="myForm" ng-submit="authorize(nombre, clabe1, importe, correo, telefono)" novalidate>
+  		<div ng-show="myForm.$valid">
+		  <div class="submenu-blue">
+			<button class="btn btn-sm btn-primary" type="submit"><span class="glyphicon glyphicon-check">Autorizar</span></button>
+			 <a ng-click="close()" class="btn btn-sm btn-warning"><span class="glyphicon glyphicon-remove alose-button">Cancelar</span></a>
+		  </div>
+		</div><!--end ng-show-->
+  		<div ng-hide="myForm.$valid">
+		  <div class="submenu-blue">
+		    <h5>Da de alta un beneficiario: 
+		      <span ng-click="close()" class="glyphicon glyphicon-remove pull-right alose-button"></span>
+		    </h5>
+		  </div>				
+		</div><!--end ng-hide-->
+	  <div class="side-block">
+	  	<p>Nombre:</p>
+	  	<input type="text" name="nombre" class="form-control input-normal" ng-model="nombre" required>
+	  	<br>
+	  	<p>Clabe/Tarjeta/Celular:</p>
+	  	<input type="text" name="clabe1" class="form-control input-normal" placeholder="Banamex / Bancomer / Transfer" ng-model="clabe1" required>
+	  	<br>
+	  	<p>Importe m&aacute;ximo:</p>
+	  	<input type="text" name="importe" class="form-control input-normal" ng-model="importe" required>
+	  	<br>
+	  </div>
+	  <div>
+	  	<p>Email:</p>
+	  	<input type="text" name="correo" class="form-control input-normal" ng-model="correo" required>
+	  	<br>
+	  	<p>Tel&eacute;fono celular:</p>
+	  	<input type="text" name="telefono" class="form-control input-normal"  ng-model="telefono" required>
+	  </div>
+	</form>
+</div>
