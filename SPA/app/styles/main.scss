@@ -98,7 +98,6 @@ body, html, #mainDiv {
         -webkit-box-shadow: 0 0 20px 0 #6f6f6f; 
         box-shadow: 0 0 20px 0 #6f6f6f; 
     }
-
     .home_footer {
         color: #FFF;
         position: fixed;
@@ -123,6 +122,9 @@ body, html, #mainDiv {
     position: fixed;
     width: 100%;
     z-index: 999;
+    .main-menu .nav .dropdown-menu li a{
+        color: black !important;
+    }
 }
 
 .status-navbar {
@@ -600,4 +602,26 @@ body, html, #mainDiv {
   background-position:center;
   height:140px;
   display: block;
+}
+
+//Styles made from developers
+.borderDown{
+    border-bottom:1px solid #bbb;
+    margin-top:35px;
+    margin-bottom:25px;
+}
+.titleCard{
+   text-align: center;
+   color: #01A9DB;
+   font-size: 25px;
+   margin-top:20px;
+   padding:10px;
+   border-bottom: 1px solid #cccccc;
+}
+.space{
+ margin-bottom: 20px;   
+}
+
+.account-header{
+    z-index:1;
 }
