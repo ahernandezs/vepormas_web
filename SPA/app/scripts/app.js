@@ -51,6 +51,13 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
         resolve: {
           accounts: ['accountsProvider', function(accountsProvider) {
             return accountsProvider.getAccounts();
+      .when('/administration/checks', {
+        templateUrl: 'views/partials/administration-checks.html',
+        controller: 'ChecksCtrl',
+         resolve: {
+          check_accounts: ['checkAccountsProvider', function(checkAccountsProvider) {
+            return checkAccountsProvider.getCheckAccounts();
+
           }]
         }
       })
