@@ -19,7 +19,7 @@
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>
         <a class="bank-logo" href="#"></a>
       </div>
-    <div class="collapse navbar-collapse">
+      <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Cuentas</a></li>
           <li><a href="#">Inversiones</a></li>
@@ -27,14 +27,15 @@
           <li><a href="#">Impuestos</a></li>
         </ul>
 
+
   <!-- Collect the nav links, forms, and other content for toggling -->
- 
-        <form class="navbar-form pull-right">
-            <a type="submit" ng-controller="LoginCtrl" class="btn btn-warning btn-sm"  ng-click="logout()">Cerrar sesi&oacute;n</a>
-        </form>
-        <ul class="nav navbar-nav pull-right">
+
+      <form class="navbar-form pull-right">
+          <a type="submit" ng-controller="LoginCtrl" class="btn btn-warning btn-sm"  ng-click="logout()">Cerrar sesión</a>
+      </form>
+     <ul class="nav navbar-nav pull-right">
           <li class="dropdown">
-            <a class="dropdown-toggle btn-info btn-sm" data-toggle="dropdown"> John Doe <strong class="caret"></strong></a>
+            <a class="dropdown-toggle" data-toggle="dropdown"> John Doe <strong class="caret"></strong></a>
             <ul class="dropdown-menu">
               <li>
                 <a href="/#/accounts-clabe">Cuentas Clabe</a>
@@ -54,8 +55,11 @@
             </ul>
           </li>
         </ul><!-- end nav pull-right-->
-    </div><!--End collapse navbar-collapse-->
-   </div><!--End container-->
+      </div>
+
+    </div>
+  </div>
+  <div>
     {{errorMessage}}
   </div>
 </div>
