@@ -30,11 +30,15 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
       .when('/admin-card',{
         templateUrl: 'views/partials/administrationCards.html'
       })
- 
+
       .when('/contract',{
         templateUrl: 'views/partials/contract.html'
       })
-
+      
+      .when('/configuration',{
+        templateUrl: 'views/partials/configuration.html'
+      })
+      
       .when('/accounts/:accountId/transactions', {
         templateUrl: 'views/transactions.html',
         controller: 'TransactionsCtrl',
