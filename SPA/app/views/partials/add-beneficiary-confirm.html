@@ -1,27 +1,25 @@
-<div class="right-section">
-	<div class="submenu-blue">
+<div class="right-section" >
+	<div class="submenu-green">
 		 <h5>El beneficiario ha sido dado de alta: 
 		   <span ng-click="close()" class="glyphicon glyphicon-remove pull-right alose-button"></span>
 		 </h5>
 	</div>
-  	<form ng-submit="authorize()">
+  	<form>
 	  <div class="side-block">
 	  	<p>Nombre:</p>
-	  	<input type="text" class="form-control input-normal" value="{{names}}" disabled>
+	  	<input type="text" class="form-control input-normal" ng-model="benef.name" disabled> </input>
 	  	<br>
 	  	<p>Clabe/Tarjeta/Celular:</p>
-	  	<input type="text" class="form-control input-normal" value="{{clabe}}" disabled>
+	  	<input type="text" class="form-control input-normal" ng-model="benef.clabe" disabled>
 	  	<br>
 	  	<p>Importe m&aacute;ximo:</p>
-	  	<input type="text" class="form-control input-normal" value="{{amount}}" disabled>
+	  	<input type="text" class="form-control input-normal" ng-model="benef.amount" disabled>
 	  	<br>
-	  </div>
-	  <div>
 	  	<p>Email:</p>
-	  	<input type="text" class="form-control input-normal" value="{{email}}" disabled>
+	  	<input type="text" class="form-control input-normal" ng-model="benef.email" disabled>
 	  	<br>
-	  	<p>Tel&eacute;fono celular:</p>
-	  	<input type="text" class="form-control input-normal" value="{{number}}" disabled>
+	  	<p>Tel&eacute;fono Celular:</p>
+	  	<input type="text" class="form-control input-normal" ng-model="benef.phone" disabled>
 	  </div>
 	</form>
 </div>
