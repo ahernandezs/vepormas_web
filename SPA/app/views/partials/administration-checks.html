@@ -1,0 +1,58 @@
+ <div ng-include="'views/partials/main-header.html'"></div>
+<div class="content">
+  <div class="container">
+    <div class="row  row-fluid pull-center ">
+       <h3 >Administraci&oacute;n de Chequeras</h3>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+      <div class="row" ng-repeat="cuenta in check_accounts" >
+          <div class="checks noback row-fluid">
+            <div class="col-md-4 img">
+              <img src="/images/cheque.png" alt="CHEQUERA" ng-if="cuenta.checks_enabled==true">
+              <img src="/images/cheque_des.png" alt="CHEQUERA" ng-if="cuenta.checks_enabled==false">
+              <br /><br />
+              <button class="btn_orange" ng-if="cuenta.checks_enabled==true">Inscribir a Chequera Protegida</button>
+              <button class="btn_des" ng-if="cuenta.checks_enabled==false">Inscribir a Chequera Protegida</button>
+            </div>
+            <div class="col-md-7">
+              <h2 class="pull-left">Chequera Cuenta <b>{{cuenta.account_subtype}}</b>: <span>***{{cuenta.last_digits}}</span></h2>
+              <button class="btn_blue pull-right" ng-if="cuenta.checks_enabled==false">Solicitar Chequera</button>
+              <table ng-if="cuenta.last_checks.length>0">
+                <thead>
+                  <tr>
+                    <td class="cheque">Cheque</td>
+                    <td>Estatus</td>
+                    <td class="importe">Importe</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="check in cuenta.last_checks" >
+                    <td class="cheque">34</td>
+                    <td class="estatus_ok" ng-if="check.check_state=='Liberado'">Liberado</td>
+                    <td class="estatus_error" ng-if="check.check_state=='Rechazado'">Rechazado</td>
+                    <td class="importe">$14,201.00</td>
+                  </tr>
+                 
+                </tbody>
+              </table>
+            </div>
+            <div class="span1 pull-right" ng-if="cuenta.checks_enabled==true">
+              <img src="/images/check.png" alt="OK" />
+              <p>
+                <b>{{cuenta.approved_checks}}</b><br />liberados
+              </p>
+              <br />
+              <img src="/images/warning.png" alt="ERROR" />
+              <p>
+                <b>{{cuenta.rejected_checks}}</b><br />rechazados
+              </p>
+            </div>
+          </div><br />
+        </div>
+        
+      </div>
+      </div>
+      </div>
+    </div>
+    <div ng-include="'views/partials/main-footer.html'"></div>
