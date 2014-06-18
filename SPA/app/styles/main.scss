@@ -604,7 +604,6 @@ body, html, #mainDiv {
   display: block;
 }
 
-
 //Styles made from developers
 .borderDown{
     border-bottom:1px solid #bbb;
@@ -658,7 +657,7 @@ background-color: #cecbc0;
 .span3{
 background-color: #bab7ab;
     text-align: center;
-
+}
 .noback {
     background-image: none;
 
@@ -821,4 +820,68 @@ h3 {
     text-align: center;
     border-bottom: 1px solid #cccccc;
 
+}
+
+//Styles made from developers
+.borderDown{
+    border-bottom:1px solid #bbb;
+    margin-top:35px;
+    margin-bottom:25px;
+}
+.titleCard{
+   text-align: center;
+   color: #01A9DB;
+   font-size: 25px;
+   margin-top:20px;
+   padding:10px;
+   border-bottom: 1px solid #cccccc;
+}
+.space{
+ margin-bottom: 20px;   
+}
+
+.account-header{
+    z-index:1;
+}
+
+.marging{
+   text-align: center;
+   margin-bottom: 20px;
+   margin-top:20px;
+   padding:10px;
+   border-bottom: 1px solid #cccccc;
+   border-left: 1px solid #cccccc;
+   border-right: 1px solid #cccccc;
+   border-top: 1px solid #cccccc;
+   
+}
+
+.box-center{
+    text-align:center;
+}
+
+input.input-box{
+    backgroud-color:#fff;
+    border: 1px solid #ccc;
+    padding:4px 6px;
+    border-radius:3px;
+    width:50%;
+}
+
+.margingConf{
+   text-align: center;
+   border-bottom: 1px solid #cccccc;
+   border-left: 1px solid #cccccc;
+   border-right: 1px solid #cccccc;
+   border-top: 1px solid #cccccc;
+   background-color: #D8D8D8;
+}
+
+.margingConf1{
+   text-align: center;
+   border-bottom: 1px solid #cccccc;
+   border-left: 1px solid #cccccc;
+   border-right: 1px solid #cccccc;
+   border-top: 1px solid #cccccc;
+   height:48px;
 }

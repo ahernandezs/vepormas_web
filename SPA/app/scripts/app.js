@@ -34,7 +34,11 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
       .when('/contract',{
         templateUrl: 'views/partials/contract.html'
       })
-
+      
+      .when('/configuration',{
+        templateUrl: 'views/partials/configuration.html'
+      })
+      
       .when('/accounts/:accountId/transactions', {
         templateUrl: 'views/transactions.html',
         controller: 'TransactionsCtrl',
@@ -51,6 +55,9 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
         resolve: {
           accounts: ['accountsProvider', function(accountsProvider) {
             return accountsProvider.getAccounts();
+         }]
+        }
+      })      
       .when('/administration/checks', {
         templateUrl: 'views/partials/administration-checks.html',
         controller: 'ChecksCtrl',
