@@ -234,6 +234,34 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
     $scope.selection = 'applytransferpayment';
   }
 
+  $scope.showAddBeneficiary = function() {
+    $scope.selection = "addbeneficiary";
+    $scope.benef={
+      name:'',
+      clabe:'',
+      amount:'',
+      email:'',
+      phone:''
+    };
+  }
+
+  $scope.confirmBeneficiary = function() {
+    $scope.selection="addbeneficiaryconfirm";
+  }
+
+  $scope.showAddCard = function() {
+    $scope.selection = "addcard";
+    $scope.benef={
+      name:'',
+      card:'',
+      amount:''
+    };
+  }
+
+  $scope.confirmCard = function() {
+    $scope.selection="addcardconfirm";
+  }
+
   $scope.sorting = {
     column : 'created_at',
     descending : true
