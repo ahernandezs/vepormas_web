@@ -27,15 +27,15 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
         }
       })
 
-      .when('/admin-card',{
+      .when('/administration/admin-card',{
         templateUrl: 'views/partials/administrationCards.html'
       })
 
-      .when('/contract',{
+      .when('/administration/contract',{
         templateUrl: 'views/partials/contract.html'
       })
       
-      .when('/configuration',{
+      .when('/administration/configuration',{
         templateUrl: 'views/partials/configuration.html'
       })
       
@@ -48,7 +48,7 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
           }]
         }
       })
-      .when('/accounts-clabe', {
+      .when('/administration/accounts-clabe', {
         templateUrl: 'views/partials/accounts-clabe.html',
         controller: 'ClabeCtrl',
         url: 'accounts-clabe',
