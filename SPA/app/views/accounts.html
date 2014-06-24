@@ -41,7 +41,7 @@
               <div class="radio">
                 <label>
                   <input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio2" value="minimal">
-                  Pago mínimo
+                  Pago m&iacute;nimo
                   <span class="pull-right amount">{{account.balance.min_payment | currency}}</span>
                 </label>
               </div>
@@ -84,7 +84,7 @@
               </div>
               <div class="row">
                 <div class="col-md-6 pull-left">
-                  Depósitos:
+                  Dep&oacute;sitos:
                 </div>
                 <div class="col-md-6 pull-right amount">
                   {{account.balance.deposits | currency}}
@@ -109,13 +109,13 @@
             </div>
 
             <div class="buttons">
-              <a href="#">Ver más</a>
+              <a href="#">Ver m&aacute;s</a>
             </div>
           </div>
 
           <div ng-if="account.account_type == 'TRANSFER'">
             <div class="row date-section text-center">
-              Número: {{account.number}}
+              N&uacute;mero: {{account.number}}
             </div>
 
             <div class="amounts-section">
@@ -161,7 +161,7 @@
             </div>
             <div class="col-md-3">
               <select class="form-control">
-                <option>Tipo de teléfono</option>
+                <option>Tipo de tel&eacute;fono</option>
                 <option>Android</option>
                 <option>iPhone</option>
                 <option>Blackberry</option>
@@ -182,14 +182,14 @@
             </div>
             <div class="col-md-3">
               <span class="lock-tip pull-left"></span>
-              Incrementa la seguridad de autenticación
+              Incrementa la seguridad de autenticaci&oacute;n
             </div>
             <div class="col-md-3">
               <span class="ticket-tip pull-left"></span>
               Escanea y paga tus recibos
             </div>
             <div class="col-md-2">
-              <button class="btn btn-default btn-block">Más información</button>
+              <button class="btn btn-default btn-block">Más informaci&oacute;n</button>
             </div>
           </div>
         </div>
