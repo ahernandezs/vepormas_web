@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$timeout', 'accountsProvider', 
-                                    function($rootScope, $scope, $location, $routeParams, $timeout, accountsProvider) {
+angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$timeout', 'accountsProvider','thirdAccountProvider',
+                                    function($rootScope, $scope, $location, $routeParams, $timeout, accountsProvider, thirdAccountProvider) {
 
   try{
     var index = accountsProvider.getAccountIndex($routeParams.accountId);
@@ -188,14 +188,11 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
       message: ""
     };
 
-
-    $scope.beneficiaries =
-      [
-        {id: 1, name: "Roberto Rivera López", lastdigits: "**123", alias: "primo", currency: "MXN", bankname: "BBVA Bancomer", bankicon: "", email: "robert@gmail.com"},
-        {id: 2, name: "Luis López Pérez", lastdigits: "**234", alias: "tío", currency: "MXN", bankname: "BBVA Bancomer", bankicon: "", email: "llopez@gmail.com"},
-        {id: 3, name: "Perla García Gómez", lastdigits: "**345", alias: "mamá", currency: "MXN", bankname: "Banamex", bankicon: "", email: "pgarcia@gmail.com"},
-        {id: 4, name: "Alicia Rubinstein", lastdigits: "**456", alias: "prima", currency: "MXN", bankname: "Banorte", bankicon: "", email: "arubinstein@gmail.com"}
-    ];
+    thirdAccountProvider.getThirdAccounts().then(
+      function(data){
+        $scope.beneficiaries = $rootScope.thirdAccounts.beneficiaries;
+      }
+    );
 
   }
 
