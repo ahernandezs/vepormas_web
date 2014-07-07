@@ -28,7 +28,7 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
       })
 
       .when('/administration/admin-card',{
-        templateUrl: 'views/partials/administrationCards.html'
+        templateUrl: 'views/partials/administration-cards.html'
       })
 
       .when('/administration/contract',{
