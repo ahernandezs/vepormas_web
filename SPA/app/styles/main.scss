@@ -125,6 +125,10 @@ body, html, #mainDiv {
     .main-menu .nav .dropdown-menu li a{
         color: black !important;
     }
+
+    .nav a {
+        background: none !important;
+     }
 }
 
 .status-navbar {
@@ -837,7 +841,7 @@ h3 {
    border-bottom: 1px solid #cccccc;
 }
 .space{
- margin-bottom: 20px;   
+ margin-bottom: 20px;
 }
 
 .account-header{
@@ -853,7 +857,7 @@ h3 {
    border-left: 1px solid #cccccc;
    border-right: 1px solid #cccccc;
    border-top: 1px solid #cccccc;
-   
+
 }
 
 .box-center{
