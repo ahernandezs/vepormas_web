@@ -189,6 +189,23 @@ body, html, #mainDiv {
     .btn-logout:hover {
         background: #e78007;
     }
+
+    .user .dropdown-menu {
+      border-radius: 6px;
+
+      li {
+        margin: 0 !important;
+
+        a {
+          padding: 5px 15px!important;
+        }
+
+      }
+
+      li:hover {
+        background-color: #F4F8FB;
+      }
+    }
 }
 
 .content > .container {
