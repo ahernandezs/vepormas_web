@@ -242,7 +242,8 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
     };
   }
 
-  $scope.confirmBeneficiary = function() {
+  $scope.confirmBeneficiary = function(name, clabe, amount, email, phone) {
+    thirdAccountProvider.setBeneficiary(name, clabe, amount, email, phone);
     $scope.selection="addbeneficiaryconfirm";
   }
 
