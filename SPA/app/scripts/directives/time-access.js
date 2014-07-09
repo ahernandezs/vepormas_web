@@ -33,5 +33,7 @@ angular.module('spaApp')
         timeoutId = $interval(function() {
           updateTime();
         }, 1000);
+
+        updateTime();
     }};
 }]);
