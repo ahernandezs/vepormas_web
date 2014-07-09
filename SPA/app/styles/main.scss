@@ -248,6 +248,7 @@ body, html, #mainDiv {
         color: #00559c;
         text-align: center;
         font-weight: bold;
+        height: 30px;
     }
 
     .date-section {
@@ -280,6 +281,11 @@ body, html, #mainDiv {
             font-weight: bold;
         }
 
+    }
+
+    .amounts-section-transfer {
+      height: 295px !important;
+      padding-top: 20px;
     }
 
     .buttons {
