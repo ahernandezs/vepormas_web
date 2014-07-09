@@ -45,8 +45,8 @@
         </div>
       </div>
 
-      <div class="col-md-5 col-lg-4">
-        <div class="account-menu-buttons pull-right">
+      <div class="col-md-5 col-lg-4 pull-right">
+        <div class="account-menu-buttons">
           <h5>Pagar:</h5>
           <div class="btn-group btn-group-sm">
             <button ng-click="showServices()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-briefcase"></span> Servicios</button>
@@ -60,13 +60,13 @@
   </div>
 </div>
 
-<div class="transactions">  
+<div class="transactions">
    <div class="container">
     <div class="row">
       <div class="col-md-7 col-lg-8 pull-left">
         <div infinite-scroll="nextPage()" infinite-scroll-disabled="busy" infinite-scroll-distance="1">
           <div ng-repeat="transaction in transactions | orderBy:sorting.column:sorting.descending | filter:keyword">
-            <div class="row transaction" ng-class="{selected: transaction._transaction_id === currentTransaction._transaction_id}" 
+            <div class="row transaction" ng-class="{selected: transaction._transaction_id === currentTransaction._transaction_id}"
               ng-class-odd="'transaction-odd'" ng-click="showTransactionDetail(transaction)" id="txn-{{transaction._transaction_id}}">
               <div class="col-md-2">
                 <p>{{transaction.created_at | date:'MMM'}}</p>
@@ -141,7 +141,7 @@
         </div>
         <div ng-switch-when="addcardconfirm">
           <div ng-include="'views/partials/add-card-confirm.html'"></div>
-        </div> 
+        </div>
 
         <div ng-switch-default>
           <div ng-include="'views/partials/account-detail.html'"></div>
