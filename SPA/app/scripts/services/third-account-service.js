@@ -5,12 +5,9 @@ angular.module('spaApp')
 	this.getThirdAcounts = function(){
 		return $http({
 				url: $rootScope.restAPIBaseUrl+'/externalaccounts',
-				//url: '/scripts/services/third-account-beneficiaries-JSON.js',
 				method: 'GET',
-				headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': '1'}
+				headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
 		});
-
-
 	},
 
 	this.setBeneficiary = function(name, clabe, amount, email, phone){
@@ -23,24 +20,24 @@ angular.module('spaApp')
 					'amount':amount,
 					'email':email,
 					'phone':phone
-				}),
-				headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': '1'}
+				})
+				//,headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
 		});
 	},
 
 	this.deleteThirdAccount = function(thirdAccountID){
 		return $http({
 				url: $rootScope.restAPIBaseUrl+'/'+thirdAccountID,
-				method: 'DELETE',
-				headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': '1'}
+				method: 'DELETE'
+				//,headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
 		});
 	}
 
 	this.deleteThirdAccount = function(thirdAccountID){
 		return $http({
 				url: $rootScope.restAPIBaseUrl+'/'+thirdAccountID,
-				method: 'PUT',
-				headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': '1'}
+				method: 'PUT'
+				//,headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN']}
 		});
 	}
 }]);
