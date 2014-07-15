@@ -26,19 +26,6 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
           }]
         }
       })
-
-      .when('/administration/admin-card',{
-        templateUrl: 'views/partials/administration-cards.html'
-      })
-
-      .when('/administration/contract',{
-        templateUrl: 'views/partials/contract.html'
-      })
-      
-      .when('/administration/configuration',{
-        templateUrl: 'views/partials/configuration.html'
-      })
-      
       .when('/accounts/:accountId/transactions', {
         templateUrl: 'views/transactions.html',
         controller: 'TransactionsCtrl',
@@ -48,8 +35,19 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
           }]
         }
       })
+      .when('/administration/admin-card',{
+        templateUrl: 'views/partials/admin/cards.html'
+      })
+
+      .when('/administration/contract',{
+        templateUrl: 'views/partials/admin/contract.html'
+      })
+      
+      .when('/administration/configuration',{
+        templateUrl: 'views/partials/admin/configuration.html'
+      })
       .when('/administration/accounts-clabe', {
-        templateUrl: 'views/partials/accounts-clabe.html',
+        templateUrl: 'views/partials/admin/clabe.html',
         controller: 'ClabeCtrl',
         url: 'accounts-clabe',
         resolve: {
@@ -59,7 +57,7 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
         }
       })      
       .when('/administration/checks', {
-        templateUrl: 'views/partials/administration-checks.html',
+        templateUrl: 'views/partials/admin/checks.html',
         controller: 'ChecksCtrl',
          resolve: {
           check_accounts: ['checkAccountsProvider', function(checkAccountsProvider) {

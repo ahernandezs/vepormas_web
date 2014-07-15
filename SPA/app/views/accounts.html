@@ -1,4 +1,4 @@
-<div ng-include="'views/partials/main-header.html'"></div>
+<div ng-include="'views/partials/layout/main-header.html'"></div>
 
 <div class="content">
   <div class="container">
@@ -17,7 +17,7 @@
     <!-- Accounts -->
 
     <div class="row">
-      <div class="col-md-3 col-sm-6" ng-repeat="account in accounts">
+      <div class="col-md-3 col-sm-6" ng-repeat="account in accounts | filter: { account_type : '!' + 'INVESTMENT'}">
         <div class="account">
           <h2>{{account.name}} {{account.last_digits}}</h2>
           <a ng-href="#/accounts/{{account._account_id}}/transactions" ng-class="account.account_type | lowercase"></a>
@@ -198,4 +198,4 @@
   </div>
 </div>
 
-<div ng-include="'views/partials/main-footer.html'"></div>
+<div ng-include="'views/partials/layout/main-footer.html'"></div>

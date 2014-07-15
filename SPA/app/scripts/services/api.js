@@ -9,7 +9,7 @@ angular.module('spaApp').factory('api', ['$http', '$rootScope', function ($http,
   return {
     init: function (token) {
       // this is the token of the bank
-      $http.defaults.headers.common['X-BANK-TOKEN'] = 3;
+      $http.defaults.headers.common['X-BANK-TOKEN'] = 2;
       $http.defaults.headers.common['X-AUTH-TOKEN'] = token || $rootScope.session_token;
 
       console.log("Executes init & token = " + $rootScope.session_token);
