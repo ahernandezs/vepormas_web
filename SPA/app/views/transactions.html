@@ -1,4 +1,4 @@
-<div ng-include="'views/partials/main-header.html'"></div>
+<div ng-include="'views/partials/layout/main-header.html'"></div>
 
 <div class="account-header">
   <div class="container">
@@ -95,52 +95,52 @@
           <div ng-include="'views/partials/transaction-detail.html'"></div>
         </div>
         <div ng-switch-when="services">
-          <div ng-include="'views/partials/services.html'"></div>
+          <div ng-include="'views/partials/services/services.html'"></div>
         </div>
         <div ng-switch-when="servicespayment">
-          <div ng-include="'views/partials/services-payment.html'"></div>
+          <div ng-include="'views/partials/services/services-payment.html'"></div>
         </div>
         <div ng-switch-when="servicespaymenttoken">
-          <div ng-include="'views/partials/services-token.html'"></div>
+          <div ng-include="'views/partials/services/services-token.html'"></div>
         </div>
         <div ng-switch-when="applyservicespayment">
-          <div ng-include="'views/partials/service-applied.html'"></div>
+          <div ng-include="'views/partials/services/service-applied.html'"></div>
         </div>
         <div ng-switch-when="cards">
-          <div ng-include="'views/partials/cards.html'"></div>
+          <div ng-include="'views/partials/cards/cards.html'"></div>
         </div>
         <div ng-switch-when="cardspayment">
-          <div ng-include="'views/partials/cards-payment.html'"></div>
+          <div ng-include="'views/partials/cards/cards-payment.html'"></div>
         </div>
         <div ng-switch-when="cardspaymenttoken">
-          <div ng-include="'views/partials/cards-token.html'"></div>
+          <div ng-include="'views/partials/cards/cards-token.html'"></div>
         </div>
         <div ng-switch-when="applycardpayment">
-          <div ng-include="'views/partials/card-applied.html'"></div>
+          <div ng-include="'views/partials/cards/card-applied.html'"></div>
         </div>
         <div ng-switch-when="transfers">
-          <div ng-include="'views/partials/transfers.html'"></div>
+          <div ng-include="'views/partials/transfers/transfers.html'"></div>
         </div>
         <div ng-switch-when="transferspayment">
-          <div ng-include="'views/partials/transfers-payment.html'"></div>
+          <div ng-include="'views/partials/transfers/transfers-payment.html'"></div>
         </div>
         <div ng-switch-when="transferspaymenttoken">
-          <div ng-include="'views/partials/transfers-token.html'"></div>
+          <div ng-include="'views/partials/transfers/transfers-token.html'"></div>
         </div>
         <div ng-switch-when="applytransferpayment">
-          <div ng-include="'views/partials/transfer-applied.html'"></div>
+          <div ng-include="'views/partials/transfers/transfer-applied.html'"></div>
         </div>
         <div ng-switch-when="addbeneficiary">
-          <div ng-include="'views/partials/add-beneficiary.html'"></div>
+          <div ng-include="'views/partials/transfers/add-beneficiary.html'"></div>
         </div>
         <div ng-switch-when="addbeneficiaryconfirm">
-          <div ng-include="'views/partials/add-beneficiary-confirm.html'"></div>
+          <div ng-include="'views/partials/transfers/add-beneficiary-confirm.html'"></div>
         </div>
         <div ng-switch-when="addcard">
-          <div ng-include="'views/partials/add-card.html'"></div>
+          <div ng-include="'views/partials/cards/add-card.html'"></div>
         </div>
         <div ng-switch-when="addcardconfirm">
-          <div ng-include="'views/partials/add-card-confirm.html'"></div>
+          <div ng-include="'views/partials/cards/add-card-confirm.html'"></div>
         </div>
 
         <div ng-switch-default>
@@ -151,4 +151,4 @@
   </div>
 </div>
 
-<div ng-include="'views/partials/main-footer.html'"></div>
+<div ng-include="'views/partials/layout/main-footer.html'"></div>
