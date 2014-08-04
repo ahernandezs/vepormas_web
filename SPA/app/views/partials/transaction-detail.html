@@ -1,7 +1,7 @@
 <div class="right-section-default">
   <br />
   <div class="detail-header">
-    <input type="text" ng-model="currentTransaction.description" class="form-control" placeholder="Descripción" autofocus>
+    <input type="text" ng-model="currentTransaction.description" class="form-control" placeholder="Descripción" autofocus maxlength="40">
   </div>
 
   <p>{{currentTransaction.created_at | date:'EEEE, MMM d yyyy h:mm a'}}</p>

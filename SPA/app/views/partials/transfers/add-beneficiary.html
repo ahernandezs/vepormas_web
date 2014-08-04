@@ -21,21 +21,21 @@
 		</div><!--end ng-hide-->
 	  <div class="side-block">
 	  	<p>Nombre:</p>
-	  	<input type="text" name="nombre" class="form-control input-normal" ng-model="benef.name" ng-pristine ng-invalid required>
+		<input type="text" name="nombre" class="form-control input-normal" ng-model="benef.name" ng-pristine ng-invalid required maxlength="25">
 	  	<br>
 	  	<p>Clabe/Tarjeta/Celular:</p>
-	  	<input type="text" name="clabe" class="form-control input-normal" placeholder="Banamex / Bancomer / Transfer" ng-model="benef.clabe" ng-pristine ng-invalid required>
+		<input type="text" name="clabe" class="form-control input-normal" placeholder="Banamex / Bancomer / Transfer" ng-model="benef.clabe" ng-pristine ng-invalid required maxlength="25" numbers-only="numbers-only">
 	  	<br>
 	  	<p>Importe m&aacute;ximo:</p>
-	  	<input type="number" name="importe" class="form-control input-normal" ng-model="benef.amount" min="0" ng-pristine ng-invalid required>
+	  	<input type="number" name="importe" class="form-control input-normal" ng-model="benef.amount" min="0" ng-pristine ng-invalid required numbers-only="numbers-only" maxlength="25">
 	  	<br>
 	  </div>
 	  <div>
 	  	<p>Email:</p>
-	  	<input type="email" name="correo" class="form-control input-normal" ng-model="benef.email" ng-pristine ng-invalid required>
+		<input type="email" name="correo" class="form-control input-normal" ng-model="benef.email" ng-pristine ng-invalid required maxlength="25">
 	  	<br>
 	  	<p>Tel&eacute;fono celular:</p>
-	  	<input type="number" name="telefono" class="form-control input-normal"  ng-model="benef.phone" ng-pristine ng-invalid ng-minlength="10" ng-maxlenth="10" placeholder="10 d&iacute;gitos" required>
+	  	<input type="number" name="telefono" class="form-control input-normal"  ng-model="benef.phone" ng-pristine ng-invalid ng-minlength="10" ng-maxlenth="10" placeholder="10 d&iacute;gitos" required numbers-only="numbers-only" maxlength="15">
 	  </div>
 	</form>
 </div>
