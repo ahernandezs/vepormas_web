@@ -19,7 +19,7 @@
     <div class="row">
       <div class="col-md-8">
         <p>Importe:</p>
-        <input type="text" class="form-control input-sm" placeholder="Monto" ng-model="transfer.amount">
+        <input type="text" class="form-control input-sm" placeholder="Monto" ng-model="transfer.amount" numbers-only="numbers-only" maxlength="25">
       </div>
       <div class="col-md-4">
         <p>
@@ -27,7 +27,7 @@
         Fecha:
         </p>
 
-        <input type="text" class="form-control input-sm" placeholder="Fecha" ng-model="transfer.date">
+        <input type="text" class="form-control input-sm" placeholder="Fecha" ng-model="transfer.date" jqdatepicker>
       </div>
     </div>
   </div>

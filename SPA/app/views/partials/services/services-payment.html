@@ -21,11 +21,11 @@
     <div class="row">
       <div class="col-md-8">
         <p>L&iacute;nea de captura:</p>
-        <input type="text" class="form-control input-sm" placeholder="Línea de captura" value="MMM130347384573">
+        <input type="text" class="form-control input-sm" placeholder="Línea de captura" value="MMM130347384573" maxlength="25">
       </div>
       <div class="col-md-4">
         <p>D&iacute;gito global:</p>
-        <input type="text" class="form-control input-sm" placeholder="Dígito global" value="8797">
+        <input type="text" class="form-control input-sm" placeholder="Dígito global" value="8797" maxlength="15" numbers-only="numbers-only" ng-model="globla_digit">
       </div>
     </div>
   </div>
@@ -38,7 +38,7 @@
           Fecha:
         </div>
         <div class="col-sm-5">
-          <input type="text" class="form-control input-sm" placeholder="Fecha" value="19/02/2014">
+          <input type="text" class="form-control input-sm" placeholder="Fecha" value="19/02/2014" jqdatepicker ng-model="date">
         </div>
       </div>
     </div>

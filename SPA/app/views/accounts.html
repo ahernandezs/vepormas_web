@@ -60,7 +60,7 @@
                       Otra cantidad
                     </div>
                     <div class="col-xs-6">
-                      <input type="text" class="form-control input-sm" numbers-only="numbers-only" ng-model="other_amount">
+                      <input type="text" class="form-control input-sm" numbers-only="numbers-only" ng-model="other_amount" maxlength="15">
                     </div>
                   </div>
                 </label>
@@ -168,7 +168,7 @@
               </select>
             </div>
             <div class="col-md-3">
-              <input type="text" class="form-control" placeholder="Número celular">
+              <input type="tel" class="form-control" placeholder="Número celular" numbers-only="numbers-only" ng-model="cell_phone_number" maxlength="14">
             </div>
             <div class="col-md-2">
               <button class="btn btn-info btn-block">Descargar</button>
