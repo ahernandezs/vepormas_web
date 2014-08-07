@@ -1,22 +1,12 @@
 <div ng-include="'views/partials/layout/main-header.html'"></div>
 
-<div class="account-header">
+<div class="account-header container">
   <div class="container">
     <div class="row">
-      <div class="col-md-2">
-        <h4>{{ currentAccount.balance.current | currency }}</h4>
-        <p>Total disponible</p>
-      </div>
-      <div class="col-md-6">
-        <div href="" ng-class="currentAccount.account_type | lowercase" class="small"></div>
-        <h4 class="account-name">{{currentAccount.name}} <span class="last-digits">{{currentAccount.last_digits}}</span></h4>
-      </div>
-      <div class="col-md-4">
-        <button type="button" class="btn btn-info btn-alert pull-right">
-          <span class="glyphicon glyphicon-phone"></span>
-          alertas
-        </button>
-      </div>
+        <h4 class="pull-left">{{ currentAccount.balance.current | currency }}
+        <p>Total disponible</p></h4>
+        <!--<div href="" ng-class="currentAccount.account_type | lowercase" class="small"></div>-->
+        <h4 class="account-name pull-left">{{currentAccount.name}} <span class="last-digits">{{currentAccount.last_digits}}</span></h4>
     </div>
   </div>
 </div>
@@ -35,11 +25,13 @@
 
           <div class="col-md-6">
             <div class="account-menu-buttons pull-right">
-              <h5>Ordenar por:</h5>
-              <div class="btn-group btn-group-sm">
-                <button type="button" class="btn btn-default" ng-click="changeSorting('created_at')">Fecha <span ng-class="selectSortingClass('created_at')" class="glyphicon"/></button>
-                <button type="button" class="btn btn-default" ng-click="changeSorting('amount')">Monto <span ng-class="selectSortingClass('amount')" class="glyphicon"/></button>
-              </div>
+              <!--<h5>Ordenar por:</h5>-->
+              
+                <button type="button" class="btn" ng-click="changeSorting('created_at')">Fecha 
+                  <!--<span ng-class="selectSortingClass('created_at')" class="glyphicon"/>--></button>
+                <button type="button" class="btn" ng-click="changeSorting('amount')">Monto 
+                  <!--<span ng-class="selectSortingClass('amount')" class="glyphicon"/>--></button>
+              
             </div>
           </div>
         </div>
@@ -48,12 +40,9 @@
       <div class="col-md-5 col-lg-4 pull-right">
         <div class="account-menu-buttons">
           <h5>Pagar:</h5>
-          <div class="btn-group btn-group-sm">
-            <button ng-click="showServices()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-briefcase"></span> Servicios</button>
-            <button ng-click="showCards()" type="button" class="btn btn-default"><span class="glyphicon glyphicon-credit-card"></span> Tarjetas</button>
-          </div>
-
-          <button ng-click="showTransfers()" type="button" class="btn btn-default btn-sm"><span class="glyphicon glyphicon-transfer"></span> Traspasos</button>
+            <button ng-click="showServices()" type="button" class="btn"><span class="glyphicon glyphicon-briefcase"></span> Servicios</button>
+            <button ng-click="showCards()" type="button" class="btn"><span class="glyphicon glyphicon-credit-card"></span> Tarjetas</button>
+            <button ng-click="showTransfers()" type="button" class="btn"><span class="glyphicon glyphicon-transfer"></span> Traspasos</button>
         </div>
       </div>
     </div>
@@ -69,8 +58,8 @@
             <div class="row transaction" ng-class="{selected: transaction._transaction_id === currentTransaction._transaction_id}"
               ng-class-odd="'transaction-odd'" ng-click="showTransactionDetail(transaction)" id="txn-{{transaction._transaction_id}}">
               <div class="col-md-2">
-                <p>{{transaction.created_at | date:'MMM'}}</p>
-                <h5>{{transaction.created_at | date:'dd'}}</h5>
+                <h5>{{transaction.created_at | date:'dd'}}
+                  <span> {{transaction.created_at | date:'MMM'}}</span></h5>
               </div>
               <div class="col-md-5">
                 <span class="description">{{transaction.description}}</span>
