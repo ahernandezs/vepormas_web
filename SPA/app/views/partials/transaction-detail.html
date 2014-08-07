@@ -1,21 +1,16 @@
 <div class="right-section-default">
-  <br />
   <div class="detail-header">
-    <input type="text" ng-model="currentTransaction.description" class="form-control" placeholder="Descripción" autofocus maxlength="40">
+    <!--<input type="text" ng-model="currentTransaction.description" class="form-control" placeholder="Descripción" autofocus maxlength="40">-->
+   <h3>{{currentTransaction.description}}</h3>
+
   </div>
-
   <p>{{currentTransaction.created_at | date:'EEEE, MMM d yyyy h:mm a'}}</p>
-  <br/>
-
-  <p>Monto: {{currentTransaction.amount | currency}}</p>
-  <br/>
-
+  <p>Monto: <strong>{{currentTransaction.amount | currency}}</strong></p>
+  <!--<br/>
   <p>Subir foto/pdf:</p>
   <br/>
-
-  <input type="file" value="" />
-  <br/>
-
+  <input type="file" value="Subir Foto / PDF" />
+  <br/>-->
   <span ng-if="currentTransaction.location.coordinates">
     <img ng-src="{{ 'http://maps.google.com/maps/api/staticmap?center=' +
     currentTransaction.location.coordinates.lat + ',' + currentTransaction.location.coordinates.lng +

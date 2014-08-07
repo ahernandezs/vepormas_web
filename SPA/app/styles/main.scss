@@ -5,9 +5,10 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 body, html, #mainDiv {
     height: 100%;
     font-family: Arial, sans-serif;
-    background-color: #f2f3f3;
+    background: #f2f3f3;
     -webkit-font-smoothing:antialiased;
     font-size: 13px;
+    color:#434040;
 }
 //VARS
 $primary-color:#1d6caf;
@@ -54,6 +55,18 @@ $aux-button-bottom: #e26419;
   font-size: 14px;
   -webkit-font-smoothing:antialiased;
 }
+.btn-info{
+  @include gradient_top_bottom($secondary-color, $secondary-button-bottom);
+}
+.btn-info:hover, .btn-info:active{
+  @include gradient_top_bottom($secondary-button-bottom, $secondary-color);
+}
+.btn-default{
+  border:1px solid #cccccc;
+}
+.btn-default:hover, .btn-default:active{
+  background:#efefef;
+}
 .alert-danger{
   border:none;
 }
@@ -74,7 +87,6 @@ $aux-button-bottom: #e26419;
             margin-top: 5px;
             color: #FFF;
             background:none!important;
-            @include anim_transicion_ease(0.5s);
         }
     }
 
@@ -118,7 +130,6 @@ $aux-button-bottom: #e26419;
           color:white;
           margin:10px 0;
           width: 100%;
-          @include anim_transicion_ease(0.5s);
         }
         .btn:hover, .btn:active{
           @include gradient_top_bottom($primary-button-bottom, $primary-color);
@@ -158,7 +169,6 @@ $aux-button-bottom: #e26419;
             color: #FFF;
             padding:0 7px;
             border-right:1px solid white;
-            @include anim_transicion_ease(0.5s);
         }
 
         a:last-child{
@@ -179,7 +189,15 @@ $aux-button-bottom: #e26419;
         background: none !important;
      }
 }
-
+.btn-alertas{
+  background:white;
+  padding: 7px 10px;
+  margin:13px 10px 0 0;
+  border-bottom:1px solid $primary-button-bottom;
+}
+.btn-alertas:hover{
+  background:#efefef;
+}
 .status-navbar {
     background: $secondary-color;
     color: #FFF;
@@ -190,7 +208,6 @@ $aux-button-bottom: #e26419;
       color:white;
       padding: 0 7px;
       border-right:1px solid white;
-      @include anim_transicion_ease(0.5s);
     }
     a:last-child{
       border:none;
@@ -220,7 +237,7 @@ $aux-button-bottom: #e26419;
     }
 
     .nav li.active a{
-        font-size: 13px;
+        font-size: 14px;
         font-weight: bold;
         color: rgba(255,255,255,1)
     }
@@ -246,11 +263,11 @@ $aux-button-bottom: #e26419;
         margin-top:13px;
         color:white;
         @include gradient_top_bottom($aux-color, $aux-button-bottom);
-        @include box_shadow($primary-button-bottom);
+        border-bottom:1px solid $primary-button-bottom;
     }
 
     .btn-logout:hover, .btn-logout:active {
-      @include gradient_top_bottom($aux-button-bottom, $aux-color);
+       @include gradient_top_bottom($aux-button-bottom, $aux-color);
     }
 
     .user .dropdown-menu {
@@ -258,7 +275,6 @@ $aux-button-bottom: #e26419;
 
       li {
         margin: 0 !important;
-        @include anim_transicion_ease(0.5s);
 
         a {
           padding: 5px 15px!important;
@@ -273,7 +289,7 @@ $aux-button-bottom: #e26419;
 }
 
 .content > .container {
-    padding: 62px 0;
+    padding: 90px 0;
 }
 
 .title h1 {
@@ -285,17 +301,32 @@ $aux-button-bottom: #e26419;
 .btn-alert {
     margin: 20px 30px 0 0;
 }
-
+section.scroll{
+  height: 430px;
+  padding: 10px 10px 0 10px;
+  overflow-y:hidden;
+  overflow-x:scroll;
+  position: relative;
+}
+section.scroll > .scroll{
+  width:200% !important; 
+}
 .account {
-    padding: 0;
-    margin: 10px 0;
+    width:230px;
+    padding: 10px 15px;
+    margin: 10px 20px;
     background: #FFF;
-    border: 1px solid #e3e3e3;
+    border: 1px solid #efefef;
     @include border_radius(5px);
-
-    font-size: 12px;
-    font-family: Arial, sans-serif;
-    line-height: 25px;
+    @include box_shadow(#e3e3e3);
+    
+    a{
+      display: block;
+      width:80px;
+      height: 80px;
+      margin: auto;
+      @include border_radius(50%);
+    }
 
     img {
         width: auto;
@@ -306,43 +337,44 @@ $aux-button-bottom: #e26419;
     }
 
     h2 {
-        font-size: 18px;
-        color: #00559c;
+        font-size: 14px;
+        margin:10px;
+        color: $primary-color;
         text-align: center;
         font-weight: bold;
         height: 30px;
     }
 
     .date-section {
-        margin: 0 0px;
-        padding: 5px 5px;
-        color: #000;
-        background: #fafafa;
+        margin:10px 0 0 0;
+        padding: 5px 10px;
+        background: white;
+        border-top:1px solid #efefef;
+        font-weight: bold;
     }
 
     .amounts-section {
-        border-top: 1px solid #e3e3e3;
-        border-bottom: 1px solid #e3e3e3;
-        padding: 5px 10px 0px 10px;
-        color: #979797;
-        margin-bottom: 10px;
-        height: 145px;
+        border-top: 1px solid #efefef;
+        border-bottom: 1px solid #efefef;
+        padding: 5px 0;
+        height: 144px;
+        line-height: 25px;
 
-        .amount {
-            font-size: 14px;
+        .col-xs-4{
+          padding: 0; 
+        }
+
+        .amount, .available-amount {
             font-weight: bold;
+            text-align: right;
         }
 
         .available {
-            color: #00ab82;
+            color: $secondary-color;
         }
-
-        .available-amount {
-            color: #000;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
+    }
+    .amounts-section > .row{
+          margin: 0;
     }
 
     .amounts-section-transfer {
@@ -351,9 +383,16 @@ $aux-button-bottom: #e26419;
     }
 
     .buttons {
-        padding: 0 10px;
+        margin-top:10px;
         text-align: center;
         height: 40px;
+        line-height: 40px;
+        a, a:hover, a:active{
+          color:$primary-color;
+        }
+        .btn{
+          padding:7px 10px;
+        }
     }
 }
 
@@ -415,7 +454,6 @@ $aux-button-bottom: #e26419;
     bottom: 0;
     width: 100%;
     height: 30px;
-    padding: 0 3em;
     line-height: 30px;
     font-family: Arial, sans-serif;
 
@@ -423,7 +461,6 @@ $aux-button-bottom: #e26419;
         color: #999999;
         padding:0 7px;
         border-left:1px solid #999999;
-        @include anim_transicion_ease(0.5s);
     }
     a:first-child{
       margin-left: 5px;
@@ -432,7 +469,7 @@ $aux-button-bottom: #e26419;
 }
 
 .account-header {
-    top: 70px;
+    top: 85px;
     background-color: #f2f3f3;
     position: fixed;
     z-index: 1;
@@ -443,17 +480,18 @@ $aux-button-bottom: #e26419;
     }
 
     .last-digits {
-        color: #999999;
+        color: $aux-color;
     }
 
     h4 {
-        font-size: 24px;
-    }
-
-    p {
-        color: #5b5b5b;
-        margin-top: -5px;
-        font-size: 14px;
+        font-size: 22px;
+        color:$primary-color;
+      
+      p{
+        font-size: 13px;
+        color:#434040;
+        text-align: center;
+      }
     }
 
     .small {
@@ -468,10 +506,11 @@ $aux-button-bottom: #e26419;
 
 .left-inner-addon {
   position: relative;
-  margin-top: 5px;
+  margin-top: 8px;
 
   input {
     padding-left: 30px;
+
   }
 
   i {
@@ -482,33 +521,44 @@ $aux-button-bottom: #e26419;
 }
 
 .account-menu {
-    top: 140px;
-    background-color: #EDEDED;
+    top: 150px;
+    background:white;
     position: fixed;
     z-index: 900;
     width: 100%;
+    padding-bottom: 5px;
 
+    .account-menu-buttons.pull-right .btn{
+      background:none;
+      border:none;
+      color:#434040;
+      box-shadow:none;
+    }
+    .account-menu-buttons.pull-right .btn:hover, .account-menu-buttons.pull-right .btn:active, .account-menu-buttons.pull-right .btn.active{
+      background:rgba(29, 108, 175, 0.6);
+      border:none;
+      color:white;
+    }
     .account-menu-buttons {
         margin-top: 7px;
 
         h5 {
             float: left;
-            font-size: 12px;
-            color: #6b6b6b;
+            color:$primary-color;
+            font-size: 13px;
+            font-weight: bold;
             margin-right: 10px;
         }
-        .btn-group {
-            float: left;
+        .btn{
+              float: left;
+              background:rgba(0, 201, 146, 0.6);
+              color:white;
+              margin: 0 5px;
+              padding: 7px;
+              @include border_radius(3px);
         }
-
-        .btn-default {
-            border: 1px solid #DEDEDE;
-            background-color: #F3F3F3;
-            @include anim_transicion_ease(0.5s);
-        }
-
-        .btn-default:hover {
-            background-color: #EDEDED;
+        .btn:hover, .btn:active{
+          background:rgba(0, 201, 146, 0.8);
         }
     }
 }
@@ -516,21 +566,41 @@ $aux-button-bottom: #e26419;
 .right-section-default {
   position: fixed;
   width: 30%;
-  top: 200px;
+  top: 220px;
+  background:#e6e6e6;
+  padding: 15px;
+  @include border_radius(5px);
+
+  img{
+    width:100%;
+    margin-top: 40px;
+    border:1px solid white;
+  }
 }
 
 .right-section {
   position: fixed;
   width: 30%;
-  top: 140px;
+  top: 220px;
   z-index: 901;
+  @include border_radius(5px);
+  overflow: hidden;
 
+  .left-inner-addon, p{
+    margin:10px;
+    padding: 0;
+  }
+
+  .btn{
+    padding: 7px 10px;
+    margin-right:10px;
+  }
   .close-button {
     cursor: pointer;
   }
 
   .submenu-blue {
-    background-color: #05589d;
+    background:$primary-color;
     padding: 2px 20px;
     color: #FFF;
   }
@@ -597,31 +667,25 @@ $aux-button-bottom: #e26419;
 
 .transactions {
     padding-top: 220px;
-    color: #666666;
     margin-bottom: 100px;
 
     .transaction {
         padding: 8px 25px 13px 17px;
-        line-height: 40px;
-        font-size: 16px;
+        line-height: 25px;
+        font-size: 14px;
         cursor: pointer;
 
-        p {
-            font-size: 10px;
-            margin-top: 5px;
-            line-height: 10px;
-            color: #999999;
-        }
-
         h5 {
-            margin-bottom: 0px;
-            line-height: 16px;
-            color: #999999;
+            line-height: 14px;
+
+            span {
+            font-size: 11px;
+            text-transform: uppercase;
+            }
         }
 
         .category {
             font-size: 12px;
-            color: #999999;
         }
 
     }
@@ -631,17 +695,29 @@ $aux-button-bottom: #e26419;
     }
 
     .selected {
-      background-color: #DEDEDE;
+      background-color: #e6e6e6;
     }
 
     .detail-header {
+
         padding-bottom: 10px;
         margin-bottom: 10px;
-        border-bottom: 1px solid #DEDEDE;
+        border-bottom: 1px solid white;
+
+        h3{
+          color:$primary-color;
+          font-size:18px;
+          margin: 10px 0 20px 0;
+        }
+    }
+    .detail-header +p{
+      margin-top:20px;
     }
 
     .amount {
-            font-size: 16px;
+            font-size: 14px;
+            color:$primary-color;
+            font-weight: bold;
         }
 
     .last-services {
@@ -662,39 +738,23 @@ $aux-button-bottom: #e26419;
 }
 
 .savings {
-  background-image: url("/images/accounts/cuenta_savings.png");
-  background-repeat:no-repeat;
-  background-size:contain;
-  background-position:center;
-  height:140px;
-  display: block;
+  background: url("/images/accounts/cuenta_savings.png") no-repeat center center;
+  background-size:auto 90px;
 }
 
 .checks {
-  background-image: url("/images/accounts/cuenta_checks.png");
-  background-repeat:no-repeat;
-  background-size:contain;
-  background-position:center;
-  height:140px;
-  display: block;
+  background: url("/images/accounts/cuenta_checks.png") no-repeat center center;
+  background-size:auto 90px;
 }
 
 .credit_card {
-  background-image: url("/images/accounts/cuenta_credit_card.png");
-  background-repeat:no-repeat;
-  background-size:contain;
-  background-position:center;
-  height:140px;
-  display: block;
+  background: url("/images/accounts/cuenta_credit_card.png") no-repeat center center;
+  background-size:auto 90px;
 }
 
 .debit_card {
-  background-image: url("/images/accounts/cuenta_debit_card.png");
-  background-repeat:no-repeat;
-  background-size:contain;
-  background-position:center;
-  height:140px;
-  display: block;
+  background: url("/images/accounts/cuenta_debit_card.png") no-repeat center center;
+  background-size:auto 90px;
 }
 
 //Styles made from developers
@@ -789,8 +849,8 @@ background-color: #bab7ab;
 }
 
 input.input-box{
-    backgroud-color:#fff;
-    border: 1px solid #ccc;
+    backgroud:#fff;
+    border: 1px solid #efefef;
     padding:4px 6px;
     @include border_radius(3px);
     width:50%;

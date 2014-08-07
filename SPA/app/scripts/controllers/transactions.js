@@ -265,6 +265,11 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
     descending : true
   };
 
+  $('.account-menu-buttons.pull-right .btn').click(function(){
+    $('.account-menu-buttons.pull-right .btn').removeClass('active');
+    $(this).addClass('active');
+  });
+
   $scope.selectSortingClass = function(column){
     return column == $scope.sorting.column && 'glyphicon-chevron-'+($scope.sorting.descending?'down':'up');
   }
