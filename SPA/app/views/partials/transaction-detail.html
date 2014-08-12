@@ -12,7 +12,7 @@
   <input type="file" value="Subir Foto / PDF" />
   <br/>-->
   <span ng-if="currentTransaction.location.coordinates">
-    <img ng-src="{{ 'http://maps.google.com/maps/api/staticmap?center=' +
+    <img ng-src="{{ 'https://maps.google.com/maps/api/staticmap?center=' +
     currentTransaction.location.coordinates.lat + ',' + currentTransaction.location.coordinates.lng +
     '&zoom=15&size=360x160&maptype=roadmap&markers=color:blue%7Clabel:S%7C' +
     currentTransaction.location.coordinates.lat + ',' + currentTransaction.location.coordinates.lng + '&sensor=false'}}">
