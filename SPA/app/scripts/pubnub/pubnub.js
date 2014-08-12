@@ -8,7 +8,8 @@ app.run(['$rootScope', 'PubNub', 'accountsProvider', function ($rootScope, PubNu
 
         PubNub.init({
             subscribe_key: $rootScope.subscribeKey,
-            publish_key: $rootScope.subscribeKey
+            publish_key: $rootScope.subscribeKey,
+            ssl: true
         });
     }
 
