@@ -16,7 +16,7 @@
             <div class="row date-section">
               Fecha de corte:
               <span class="pull-right">
-                {{account.cut_date | date:'mediumDate'}}
+                {{account.balance.cut_date | date:'mediumDate'}}
               </span>
             </div>
 
@@ -65,7 +65,7 @@
 
           <div ng-if="account.account_type == 'SAVINGS' || account.account_type == 'CHECKS' || account.account_type == 'DEBIT_CARD'">
             <div class="row date-section">
-              Desde {{account.balance.from | date:'longDate'}}
+              Desde {{account.balance.created_at | date:'longDate'}}
             </div>
 
             <div class="amounts-section">
