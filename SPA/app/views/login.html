@@ -26,7 +26,7 @@
       <label class="border">
         <input type="password" ng-model="password"  class="form-control" placeholder="Contraseña" value="A1234567" required>
       </label>
-      <button class="btn" type="submit">Entrar</button>
+      <button ng-disabled="loginButtonStatus.disabled" class="btn" type="submit">{{loginButtonStatus.text}}</button>
       <label class="checkbox">
         <input type="checkbox"> Recordarme
       </label>

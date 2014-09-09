@@ -14,7 +14,18 @@ angular.module('spaApp')
     $location.path('/accounts');
   }
 
+  $scope.buttonStatus = function(text, status) {
+    $scope.loginButtonStatus = {
+      text: text,
+      disabled: status
+    }
+  };
+
+  $scope.buttonStatus("Entrar", false);
+
   $scope.login=function(){
+    $scope.buttonStatus("Entrando ...", true);
+
     $http({
       url: $scope.restAPIBaseUrl+'/login',
       method: 'POST',
@@ -38,7 +49,9 @@ angular.module('spaApp')
       //put an error message in the scope
       $scope.errorMessage = data.message;
       $scope.status = status;
+      $scope.buttonStatus("Entrar", false);
     });
+
 
   };
 
