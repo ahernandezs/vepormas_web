@@ -10,7 +10,22 @@ angular.module('spaApp')
    * the login function connect the Rest-API: if the response status is OK, redirect to route "accounts",
    * else put an error message in the scope
    */
+  if($rootScope.session_token && $location.$$path === '/login') {
+    $location.path('/accounts');
+  }
+
+  $scope.buttonStatus = function(text, status) {
+    $scope.loginButtonStatus = {
+      text: text,
+      disabled: status
+    }
+  };
+
+  $scope.buttonStatus("Entrar", false);
+
   $scope.login=function(){
+    $scope.buttonStatus("Entrando ...", true);
+
     $http({
       url: $scope.restAPIBaseUrl+'/login',
       method: 'POST',
@@ -34,7 +49,9 @@ angular.module('spaApp')
       //put an error message in the scope
       $scope.errorMessage = data.message;
       $scope.status = status;
+      $scope.buttonStatus("Entrar", false);
     });
+
 
   };
 
