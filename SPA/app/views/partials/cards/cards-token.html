@@ -9,7 +9,6 @@
         <span ng-click="close()" class="glyphicon glyphicon-remove pull-right close-button"></span>
       </h5>
     </div>
-
     <div class="yellow-message">
       <p>Ingresa manualmente tu clave din&aacute;mica</p>
       <div class="row">
@@ -26,6 +25,7 @@
 
     </div>
   </div>
+<div style="overflow-y: scroll;height:200px">
 
   <div ng-show="!token">
     <div class="submenu-yellow">
@@ -44,7 +44,7 @@
   </div> 
 
   <div class="side-block">
-    <p>Tarjeta de cr&oacute;dito a pagar:</p>
+    <p>Tarjeta de cr&eacute;dito a pagar:</p>
     <br />
     <select class="form-control" ng-model="card.current" ng-options="a.name + ' ' + a.lastdigits for a in cards" ng-change="updateCard()">
       <option value="">Selecciona una tarjeta</option>
@@ -103,5 +103,5 @@
       </div>
     </div>
   </div>
-
+</div>
 </div>
