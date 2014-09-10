@@ -49,6 +49,19 @@ $aux-button-bottom: #e26419;
 }
 
 //BOOTSTRAP RESET
+.ui-datepicker{
+  background:white;
+  padding:10px;
+  @include border_radius(5px);
+
+  table, div{
+    width:200px;
+
+    .ui-datepicker-next{
+      float:right;
+    }
+  }
+}
 .btn{
   border:none;
   padding: 7px 0;
