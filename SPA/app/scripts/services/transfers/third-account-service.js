@@ -21,7 +21,7 @@ angular.module('spaApp')
 					'email':email,
 					'phone':phone
 				})
-				//,headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
+				,headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
 		});
 	},
 
