@@ -1,0 +1,84 @@
+/*
+|-------------------------------------------------------------------------------------
+|	Scaffolding
+|-------------------------------------------------------------------------------------
+*/
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+
+// Default higlight, .hightlight(fondo,color)
+@include hightlight($orange);
+
+// If there's any bootstrap variable overwrite
+// for this particular project
+body {
+	background-color: 	$body-bg;
+	color: 				$text-color;
+	font-family: 		$font-family-base;
+	font-size: 			$font-size-base;
+	line-height: 		$line-height;
+}
+
+// Bootstrap set weight to 500
+// This cause problem when using custom fonts
+h1, h2, h3, h4, h5, h6 { font-weight: $header-font-weight; }
+
+h1, h2, h3 { margin: 0; }
+
+
+// Links
+// Remove the outline and the underline
+a {
+	display: block;
+	color: inherit;
+	text-decoration: none;
+	@include transition($transition);
+
+	p > & { display: inline; }
+
+	&:hover,
+	&:active,
+	&:focus {
+		color: $link-hover-color;
+  		outline: 0;
+  		text-decoration: none;
+	}
+	// Remove the blue Webkit background when element is tapped
+	& , button {
+	    -webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+}
+
+// Almost never use the list element as list so
+// There's a mixin to normalize the style
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+// Adjust margin top in an ul within an li
+li {
+	ul {
+		margin-top: 1rem;
+	}
+}
+// Set label font weight to normal
+label {
+	font-weight: normal;
+}
+p {
+	margin: 0;
+}
+
+/*
+|------------------------------------------------
+|	Browser Upgrade Prompt
+|------------------------------------------------
+*/
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}

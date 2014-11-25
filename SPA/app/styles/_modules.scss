@@ -1,0 +1,67 @@
+@import "modules/button";
+@import "modules/bootstrap-select";
+
+/*
+|-------------------------------------------------------------------------------------
+|	Sticky footer
+|-------------------------------------------------------------------------------------
+*/
+html, body { height: 100%; }
+// body:before { content:""; height:100%; float:left; width:0; margin-top:-32767px;/ } /*Opera Fix*/
+.outter { min-height: 100%; position: relative; }
+main { overflow: auto; padding-bottom: 30px; }
+footer { position: relative; margin-top: -30px; height: 30px; clear:both; }
+// main { display:table;height:100% } /*IE8 Fix*/
+/*
+|-------------------------------------------------------------------------------------
+|	Wrapper
+|-------------------------------------------------------------------------------------
+*/
+.wrapper {
+	@include clearfix();
+	width: 1000px;
+	margin: auto;
+	position: relative;
+}
+/*
+|-------------------------------------------------------------------------------------
+|	Logos
+|-------------------------------------------------------------------------------------
+*/
+.logo { @include hide-text(); }
+
+/*
+|-------------------------------------------------------------------------------------
+|	Random
+|-------------------------------------------------------------------------------------
+*/
+.amount { &:before { content: "$"; margin-right: 2px; } }
+
+i { display: none; }
+
+button { &:focus { @include formFocus($orange); } }
+input { &:focus { @include formFocus($orange); } }
+
+/*
+|-------------------------------------------------------------------------------------
+|	Social links
+|-------------------------------------------------------------------------------------
+*/
+.social-links {
+	float: right;
+	font-size: 26px;
+
+	li {
+		float: left;
+
+		&:first-child {
+			margin-right: 20px;
+		}
+	}
+	span {
+		@include hide-text;
+	}
+}
+
+
+
