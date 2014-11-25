@@ -11,7 +11,7 @@ header {
 
 	.logo {
 		@include size(105px,80px);
-		background: transparent url(../img/logo-consubanco.svg) center center no-repeat;
+		background: transparent url(../images/logo-consubanco.svg) center center no-repeat;
 		background-size: cover;
 		float: left;
 		display: inline;
