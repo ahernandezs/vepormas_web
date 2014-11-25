@@ -1,0 +1,51 @@
+.nav {
+	color: #FFF;
+	float: left;
+
+	ul {
+		@include clearfix;
+	}
+	li {
+		float: left;
+	}
+	a {
+		color: inherit;
+
+		&:hover {
+			color: $orange;
+		}
+	}
+}
+.products-nav {
+	margin-top: 50px;
+	margin-left: 34px;
+
+	li {
+		&.active a {
+			background-color: #FFF;
+			border-radius: 4px 4px 0 0;
+			color: $blue;
+		}
+	}
+	a {
+		padding: 10px 16px;
+		margin-left: 10px;
+
+		&:first-child { margin: 0; }
+	}
+}
+.login-nav {
+	margin-left: 60px;
+	font-weight: 300;
+
+	li {
+		border-left:1px solid;
+		border-right:1px solid;
+		line-height: 2.2;
+		padding: 0 18px;
+
+		&:first-child {
+			border-right: none;
+		}
+	}
+}

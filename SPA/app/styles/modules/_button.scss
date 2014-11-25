@@ -1,0 +1,32 @@
+button:not([type*=submit]),
+.search {
+	border:none;
+	border-radius: 4px;
+	color: #FFF;
+	font-size: 13px;
+	font-weight: 300;
+	padding: 6px 8px;
+}
+.orange {
+	background-color: $orange;
+}
+.blue {
+	background-color: $blue;
+}
+.double-btn {
+	button {
+		float: left;
+		padding: 6px 10px;
+
+		&:first-child {
+			border-radius: $radius 0 0 $radius;
+			margin-right: 1px;
+		}
+		+ button {
+			border-radius: 0 $radius $radius 0;
+		}
+	}
+}
+button.search {
+	span { @include hide-text; }
+}

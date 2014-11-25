@@ -1,0 +1,73 @@
+header {
+	@include clearfix();
+	background-color: $blue;
+	color: #FFF;
+	padding: 10px 0;
+	// padding: 10px 0 0;
+
+	h1, h2, h3, h5, h6 { margin: 0; }
+
+	h4 { margin: 0 0 2px; }
+
+	.logo {
+		@include size(105px,80px);
+		background: transparent url(../img/logo-consubanco.svg) center center no-repeat;
+		background-size: cover;
+		float: left;
+		display: inline;
+	}
+}
+.user-session {
+	float: right;
+	display: inline-block;
+	margin-top: 30px;
+
+	> div, > button {
+		display: inline-block;
+		vertical-align: bottom;
+	}
+	.date {
+		font-size: 13px;
+		opacity: .8;
+	}
+	button {
+		margin-left: 14px;
+	}
+}
+/*
+|-------------------------------------------------------------------------------------
+|	Top row
+|-------------------------------------------------------------------------------------
+*/
+.fix-top {
+	@include clearfix();
+	position: absolute;
+	left: 140px; right: 0;
+	top: 0;
+
+	font-size: 13px;
+	opacity: .8;
+
+	.date {
+		float: left;
+	}
+}
+.sub-menu {
+	float: right;
+
+	li {
+		float: left;
+		display: inline;
+
+		&:first-child a:before { content:""; margin: 0; }
+	}
+	a {
+		color: inherit;
+		margin-right: 10px;
+
+		&:before {
+			content: "|";
+			margin-right: 10px;
+		}
+	}
+}

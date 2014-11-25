@@ -1,0 +1,11 @@
+footer {
+	background-color: #FFF;
+	border-top: 1px solid $gray;
+	color: $inactiveText;
+	font-size: 14px;
+	line-height: 30px;
+
+	p, a { display: inline; }
+	p { float: left; }
+	a { float: right; }
+}
