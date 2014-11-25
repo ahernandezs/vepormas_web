@@ -1,47 +1,125 @@
-<div class="login_back">
-  <header class="home_header container">
-    <p class="pull-left">Bienvenido a ABanking</p>
-    <ul class="nav pull-right">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Idioma: Espa&ntilde;ol <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Espa&ntilde;ol</a></li>
-          <li class="divider"></li>
-          <li><a href="#">English</a></li>
+<div>
+     <div class="outter login"> <!-- sticky footer wrapper -->
+        <header>
+            <div class="wrapper">
+                <!-- =============================================================== -->
+
+                <h1 class="logo">Consubanco</h1>
+
+                <!-- =============================================================== -->
+                <div class="align">
+                    <nav class="nav login-nav">
+                        <ul>
+                            <li><a href="#">Productos</a></li>
+                            <li><a href="#">Contáctanos</a></li>
+                        </ul>
+                    </nav>
+                    <!-- =============================================================== -->
+                    <!-- module -->
+                    <!-- Social Links -->
+                    <ul class="social-links">
+                        <li><a href="#"><i class="fa fa-facebook"></i><span>Facebook</span></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"><span>Twitter</span></i></a></li>
+                    </ul>
+                    <!-- Branch Locator -->
+                    <form class="branches-locator">
+                        <input type="text" placeholder="Buscar Sucursales">
+                        <select name="state" id="state" class="selectpicker" data-width="100px" data-size="10" data-style="orange" title="Estado">
+                            <option value="">Estado</option>
+                            <option value="Aguascalientes">Aguascalientes</option>
+                            <option value="Baja California">Baja California</option>
+                            <option value="Baja California Sur">Baja California Sur</option>
+                            <option value="Campeche">Campeche</option>
+                            <option value="Chiapas">Chiapas</option>
+                            <option value="Chihuahua">Chihuahua</option>
+                            <option value="Coahuila">Coahuila</option>
+                            <option value="Colima">Colima</option>
+                            <option value="Distrito Federal">Distrito Federal</option>
+                            <option value="Durango">Durango</option>
+                            <option value="Estado de México">Estado de México</option>
+                            <option value="Guanajuato">Guanajuato</option>
+                            <option value="Guerrero">Guerrero</option>
+                            <option value="Hidalgo">Hidalgo</option>
+                            <option value="Jalisco">Jalisco</option>
+                            <option value="Michoacán">Michoacán</option>
+                            <option value="Morelos">Morelos</option>
+                            <option value="Nayarit">Nayarit</option>
+                            <option value="Nuevo León">Nuevo León</option>
+                            <option value="Oaxaca">Oaxaca</option>
+                            <option value="Puebla">Puebla</option>
+                            <option value="Querétaro">Querétaro</option>
+                            <option value="Quintana Roo">Quintana Roo</option>
+                            <option value="San Luis Potosí">San Luis Potosí</option>
+                            <option value="Sinaloa">Sinaloa</option>
+                            <option value="Sonora">Sonora</option>
+                            <option value="Tabasco">Tabasco</option>
+                            <option value="Tamaulipas">Tamaulipas</option>
+                            <option value="Tlaxcala">Tlaxcala</option>
+                            <option value="Veracruz">Veracruz</option>
+                            <option value="Yucatán">Yucatán</option>
+                            <option value="Zacatecas">Zacatecas</option>
+                        </select>
+                        <button type="submit" class="search orange"><i class="fa fa-search"></i><span>Buscar</span></button>
+                    </form>
+                </div>
+            </div>
+        </header>
+        <!-- =============================================================== -->
+        <main>
+            <div class="wrapper">
+                    <!--
+                    |____________________________________________________________________________
+                    |
+                    |   Fisrt Column
+                    |____________________________________________________________________________
+                -->
+                <div>
+                    <h2>Bienvenido a Consubanco</h2>
+                    <p>
+                        <strong>Un gran beneficio, un gran Banco.</strong>
+                        Tarjeta de Crédito, <strong>¡Descúbrelo!</strong>
+                    </p>
+                </div>
+                    <!--
+                    |____________________________________________________________________________
+                    |
+                    |   Second Column
+                    |____________________________________________________________________________
+                -->
+                <div>
+                    <form class="user-login">
+                        <label for="user"><strong>Iniciar sesión</strong></label>
+                        <input type="text" name="user" id="user" placeholder="Usuario">
+                        <hr>
+                        <input class="orange" type="submit" value="Continuar">
+
+                    </form>
+                    <form class="user-registration">
+                        <label for="user-register"><strong>¿Eres nuevo aquí?</strong> Regístrate</label>
+                        <hr>
+                        <input type="text" name="user-register" id="user-register" placeholder="No. Cliente / No. Cuenta">
+                        <input type="text" name="contract-number" name="contract-number" id="contract-number" placeholder="Folio de Contrato de Banca Digital">
+                        <input class="orange" type="submit" value="Regístrate">
+                    </form>
+                </div>
+                <!-- =============================================================== -->
+            </div> <!-- wrapper ends here -->
+        </main>
+        <!-- /*
+        |________________________________________________________________________________
+        |
+        |    Bottom action call
+        |________________________________________________________________________________
+        */ -->
+        <ul class="action-call-apps">
+            <li><a href="#apple">Apple Store</a></li>
+            <li><a href="#play">Play Store</a></li>
         </ul>
-      </li>
-    </ul>
-  </header>
-
-  <section class="container login-form shadow rounded" ng-controller="LoginCtrl">
-    <div class="logo"></div>
-    <form class="form-signin" ng-submit="login()">
-      <!--<p>Inicia sesión</p>-->
-      <div class="alert alert-danger" ng-if="errorMessage">
-        {{errorMessage}}
-      </div>
-      <label class="border">
-        <input type="text" ng-model="username" class="form-control" placeholder="Usuario" value="1234502" required autofocus>
-      </label>
-      <label class="border">
-        <input type="password" ng-model="password"  class="form-control" placeholder="Contraseña" value="A1234567" required>
-      </label>
-      <button ng-disabled="loginButtonStatus.disabled" class="btn" type="submit">{{loginButtonStatus.text}}</button>
-      <label class="checkbox">
-        <input type="checkbox"> Recordarme
-      </label>
-    </form>
-    <div class="registration text-center">
-      ¿Eres nuevo? Reg&iacute;strate
-    </div>
-  </section>
-
-  <footer class="home_footer container text-center">
-        <a href="javascript:void(0);">&iquest;Olvidaste tu contrase&ntilde;a?</a>
-        <a href="javascript:void(0);">Sobre nosotros</a>
-        <a href="javascript:void(0);">Busca por internet</a>
-        <a href="javascript:void(0);">Banca m&oacute;vil</a>
-        <a href="javascript:void(0);">Privacidad</a>
-        &copy; 2014 Anzen Soluciones S.A. de C.V.
-  </footer>
+    </div> <!-- sticky footer wrapper ends here -->
+    <footer>
+        <div class="wrapper">
+            <p class="copy">Consubanco &copy;2014</p>
+            <a href="#" class="legal">Términos, Condiciones de Uso y Privacidad</a>
+        </div>
+    </footer>
 </div>

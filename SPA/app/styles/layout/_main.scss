@@ -286,7 +286,7 @@ main {
 	margin-top: 30px;
 }
 .login {
-	background: url(../img/bg-login.jpg) 0 0 no-repeat;
+	background: url(../images/bg-login.jpg) 0 0 no-repeat;
 	background-size: cover;
 
 	 main {
@@ -413,11 +413,11 @@ main {
 		background-repeat: no-repeat;
 
 		&[href*=apple] {
-			background-image: url(../img/logo-apple-store.svg);
+			background-image: url(../images/logo-apple-store.svg);
 			width: 169px;
 		}
 		&[href*=play] {
-			background-image: url(../img/logo-google-play.svg);
+			background-image: url(../images/logo-google-play.svg);
 			width: 144px;
 		}
 	}
