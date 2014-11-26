@@ -4,36 +4,37 @@
 |-------------------------------------------------------------------------------------
 */
 
-$radius: 6px;
+$radius: 	6px;
+$fullWidth: 1200px;
 
 //	Grises
 $gris03: #F7F7F7; $gris06: #F0F0F0; $gris10: #E6E6E6; $gris20: #CCC; $gris30: #B3B3B3; $gris40: #999; $gris50: #808080; $gris60: #666; $gris70: #4D4D4D; $gris80: #333;
 
-$orange: #FC651B;
-$blue: #2976b6;
-$lblue: #4CA1D8;
-$inactiveText: $gris40;
-$activeText: $gris60;
-$lgray: $gris06;
-$gray: $gris20;
-$dgray: $gris50;
+$orange: 		#FC651B;
+$blue: 			#2976b6;
+$lblue: 		#4CA1D8;
+$bwhite:		lighten($lblue,30);
+$inactiveText: 	$gris40;
+$activeText: 	$gris60;
+$lgray: 		$gris06;
+$gray: 			$gris20;
+$dgray: 		$gris50;
 
-// $regular: 'Source Sans Pro', sans-serif;
-// $bold: 'Lato', sans-serif;
+$regular: 		'Lato', sans-serif;
 
 // $body-bg:          #F6F6F6;
 // $text-color:       #73879C;
 
-$font-size-base: 	15px;
-$line-height:      	1.26;
-$header-font-weight: normal;
+$font-size-base: 		15px;
+$line-height:      		1.26;
+$header-font-weight: 	700;
 
-// $font-family-base: 		$regular;
-// $headings-font-family: 	$bold;
+$font-family-base: 		$regular;
+$headings-font-family: 	$regular;
 // $headings-color: 		#506A85;
 
 // $link-color: #6DC1DE;
-$link-hover-color: $orange;
+$link-hover-color: lighten($lblue,24);
 
 // Bootstrap labels
 // $brand-primary: 		$blue;

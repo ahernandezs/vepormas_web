@@ -1,26 +1,76 @@
+$headerBottom: 16px;
+$headerTop: 10px;
+
 header {
+	@include hightlight(#FFF, $blue);
 	@include clearfix();
 	background-color: $blue;
 	color: #FFF;
-	padding: 10px 0;
-	// padding: 10px 0 0;
+	height: 118px;
 
 	h1, h2, h3, h5, h6 { margin: 0; }
 
 	h4 { margin: 0 0 2px; }
 
+	> .wrapper {
+		height: 100%;
+	}
+
 	.logo {
-		@include size(105px,80px);
+		@include size(121px, 92px);
 		background: transparent url(../images/logo-consubanco.svg) center center no-repeat;
 		background-size: cover;
-		float: left;
 		display: inline;
+		float: left;
+		margin-top: $headerTop;
+
+		a {
+			height: 100%;
+		}
 	}
 }
+/*
+|-------------------------------------------------------------------------------------
+|	Main navigation
+|-------------------------------------------------------------------------------------
+*/
+.nav {
+	color: #FFF;
+	bottom: -1px;
+	font-weight: 700;
+	left: 170px;
+	position: absolute;
+
+	ul {
+		@include clearfix;
+	}
+	li {
+		float: left;
+
+		&.active a {
+			background-color: #FFF;
+			border-radius: 4px 4px 0 0;
+			color: $blue;
+		}
+	}
+	a {
+		padding: 12px 16px $headerBottom;
+		margin-left: 10px;
+		&:first-child { margin: 0; }
+	}
+}
+/*
+|-------------------------------------------------------------------------------------
+|	User session (It's a module, this style will be relocated)
+|-------------------------------------------------------------------------------------
+*/
 .user-session {
-	float: right;
-	display: inline-block;
-	margin-top: 30px;
+	// float: right;
+	// display: inline-block;
+	position: absolute;
+	right: 0;
+	bottom: $headerBottom;
+	margin-top: 50px;
 
 	> div, > button {
 		display: inline-block;
@@ -28,25 +78,23 @@ header {
 	}
 	.date {
 		font-size: 13px;
-		opacity: .8;
+		color: $bwhite;
 	}
 	button {
-		margin-left: 14px;
+		margin-left: 50px;
 	}
 }
 /*
 |-------------------------------------------------------------------------------------
-|	Top row
+|	Top row (maybe module)
 |-------------------------------------------------------------------------------------
 */
 .fix-top {
 	@include clearfix();
 	position: absolute;
-	left: 140px; right: 0;
-	top: 0;
-
 	font-size: 13px;
-	opacity: .8;
+	left: 184px; right: 0;
+	top: $headerTop;
 
 	.date {
 		float: left;
@@ -68,6 +116,9 @@ header {
 		&:before {
 			content: "|";
 			margin-right: 10px;
+		}
+		&:hover {
+			text-decoration: underline;
 		}
 	}
 }

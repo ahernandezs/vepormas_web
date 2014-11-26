@@ -1,0 +1,196 @@
+/*
+|-------------------------------------------------------------------------------------
+|	Login
+|-------------------------------------------------------------------------------------
+*/
+.branches-locator {
+	// background-color: #fff;
+	border-radius: 4px 0 0 4px;
+	float: right;
+	margin-right: 30px;
+	padding-left: 10px;
+	position: relative;
+
+	> input[type*=text] {
+		border: none;
+		border-radius: 4px 0 0 4px;
+		float: left;
+		line-height: 36px;
+		min-width: 300px;
+		padding-left: 14px;
+		padding: 0 0 0 14px;
+	}
+	.bootstrap-select {
+		background: white;
+		border-left: 1px solid $gray;
+		color: $dgray;
+		float: left !important;
+		height: 36px;
+		width: 100px;
+
+		.btn {
+			background: transparent;
+			color: $dgray;
+			height: 100%;
+			padding-left: 14px;
+		}
+	}
+	.search {
+		border-radius: 0 4px 4px 0;
+		font-size: 16px;
+		float: left;
+		margin: 0;
+		padding: 8px 12px;
+		position: relative;
+	}
+}
+.align {
+	margin-top: 30px;
+}
+.login {
+
+	.outter {
+		background: url(../images/bg-login.jpg) 0 0 no-repeat;
+		background-size: cover;
+	}
+
+	 main {
+	 	.wrapper > div {
+	 		display: inline;
+	 		float: right;
+	 		padding-top: 40px;
+
+	 		form {
+	 			background-color: #fff;
+	 			border-radius: 4px;
+	 		}
+
+	 		&:first-child {
+				color: #FFF;
+	 			float: left;
+	 			position: relative;
+
+				h2 {
+					@include text-shadow(#000);
+					text-transform: uppercase;
+					margin-bottom: 16px;
+					font-size: 32px;
+				}
+	 		}
+	 	}
+	}
+}
+.welcome {
+	p {
+		@include text-shadow(#000);
+		font-size: 28px;
+		strong:first-child {
+			display: block;
+		}
+	}
+}
+.user-login,
+.user-registration {
+	padding: 14px 18px;
+	width: 380px;
+	hr {
+		margin: 14px 0;
+	}
+	label {
+		color: $blue;
+		display: block;
+		text-align: center;
+
+		a {
+			display: inline;
+		}
+	}
+	input {
+		border-radius: 4px;
+		border: 1px solid $gray;
+		padding: 10px;
+		width: 100%;
+
+		&:first-child {
+			margin-bottom: 10px;
+		}
+		&[type*=submit] {
+			color: #FFF;
+			border: none;
+		}
+	}
+	.search {
+		padding: 8px;
+		border: none;
+	}
+}
+.user-login {
+	margin: 0 0 20px;
+
+	label {
+		padding: 10px 0;
+		text-transform: uppercase;
+	}
+	.alert {
+		background-color: $blue;
+		border-radius: 4px;
+		display: block;
+		color: #FFF;
+		margin-top: 20px;
+		padding: 10px 14px;
+
+		i {
+			float: right;
+		}
+	}
+}
+.user-registration {
+	input[name*=contract-number] {
+		margin: 10px 0;
+	}
+}
+.action-call-apps {
+	@include rgbabg(#FFF, .9);
+	border-radius: 4px;
+	left: 0;
+	padding: 10px;
+	padding: 14px;
+	position: absolute;
+	top: 150%;
+
+	&:before {
+		color: $orange;
+		content: "Descarga nuestra aplicación:";
+		display: block;
+		font-size: 16px;
+		padding-bottom: 10px;
+		text-align: center;
+	}
+	ul {
+		@include clearfix;
+	}
+	li {
+		float: left;
+
+		&:first-child {
+			border-right: 1px solid $gray;
+			margin-right: 10px;
+			padding-right: 10px;
+		}
+	}
+	a {
+		@include hide-text;
+		height: 50px;
+		background-size: contain;
+		background-repeat: no-repeat;
+
+		&[href*=apple] {
+			background-image: url(../images/logo-apple-store.svg);
+			width: 169px;
+		}
+		&[href*=play] {
+			background-image: url(../images/logo-google-play.svg);
+			width: 144px;
+		}
+	}
+}
