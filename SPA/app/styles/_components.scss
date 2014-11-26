@@ -23,6 +23,9 @@ p {
 		color: $blue;
 	}
 }
+span.block {
+	display: block;
+}
 .row {
 	@include row;
 }
