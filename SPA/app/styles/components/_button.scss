@@ -45,6 +45,7 @@ input[type*=submit] {
 		}
 		+ button {
 			border-radius: 0 $radius $radius 0;
+			margin-left: 0;
 		}
 	}
 }

@@ -16,11 +16,31 @@
                             <li>Finalizado</li>
                         </ul>
                     </div>
+                    
                     <div ng-switch on="selection">
-                        <div ng-switch-when="step1">
-                          <div ng-include="'views/partials/register/step1.html'"></div>
+                        <div class="animate-switch" ng-switch-when="one">
+                            <div ng-include="'views/partials/register/first-step.html'"/>
+                        </div>
+                        <div class="animate-switch" ng-switch-when="two">
+                            <div ng-include="'views/partials/register/second-step.html'"/>
+                        </div>
+                        <div class="animate-switch" ng-switch-when="three">
+                            <div ng-include="'views/partials/register/third-step.html'"/>
+                        </div>
+                        <div class="animate-switch" ng-switch-when="four">
+                            <div ng-include="'views/partials/register/fourth-step.html'"/>
+                        </div>
+                        <div class="animate-switch" ng-switch-when="five">
+                            <div ng-include="'views/partials/register/fifth-step.html'"/>
+                        </div>
+                        <div class="animate-switch" ng-switch-when="six">
+                            <div ng-include="'views/partials/register/sixth-step.html'"/>
+                        </div>
+                        <div class="animate-switch" ng-switch-default>
+                            <div ng-include="'views/partials/register/first-step.html'"/>
                         </div>
                     </div>
+                    
                 </div>
             </div>
         </main>
