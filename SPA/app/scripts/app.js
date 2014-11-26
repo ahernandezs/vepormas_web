@@ -23,51 +23,13 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
         /*resolve: {
           accounts: ['accountsProvider', function(accountsProvider) {
             return accountsProvider.getAccounts();
-          }]
-        }*/
+          }]*/
       })
-      .when('/accounts/:accountId/transactions', {
-        templateUrl: 'views/transactions.html',
-        controller: 'TransactionsCtrl',
-        resolve: {
-          accounts: ['accountsProvider', function(accountsProvider) {
-            return accountsProvider.getAccounts();
-          }]
-        }
-      })
-      .when('/administration/admin-card',{
-        templateUrl: 'views/partials/admin/cards.html'
-      })
-
-      .when('/administration/contract',{
-        templateUrl: 'views/partials/admin/contract.html'
-      })
-      
-      .when('/administration/configuration',{
-        templateUrl: 'views/partials/admin/configuration.html'
-      })
-      .when('/administration/accounts-clabe', {
-        templateUrl: 'views/partials/admin/clabe.html',
-        controller: 'ClabeCtrl',
-        url: 'accounts-clabe',
-        resolve: {
-          accounts: ['accountsProvider', function(accountsProvider) {
-            return accountsProvider.getAccounts();
-         }]
-        }
-      })      
-      .when('/administration/checks', {
-        templateUrl: 'views/partials/admin/checks.html',
-        controller: 'ChecksCtrl',
-         resolve: {
-          check_accounts: ['checkAccountsProvider', function(checkAccountsProvider) {
-            return checkAccountsProvider.getCheckAccounts();
-
-          }]
-        }
+      .when('/register',{
+        templateUrl: 'views/register.html'
       })
       .otherwise({
-        redirectTo: '/accounts'
+        redirectTo: '/login'
       });
   }]);
 
