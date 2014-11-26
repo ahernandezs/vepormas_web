@@ -1,35 +1,6 @@
 <div class="login">
     <div class="outter"> <!-- sticky footer wrapper -->
-            <header>
-                <div class="wrapper">
-                    <!-- =============================================================== -->
-
-                    <h1 class="logo"><a href="#">Consubanco</a></h1>
-
-                    <!-- =============================================================== -->
-                    <nav class="nav">
-                        <ul>
-                            <li><a href="productos.html">Productos</a></li>
-                            <li><a href="#">Nosotros</a></li>
-                            <li><a href="#">Contáctanos</a></li>
-                        </ul>
-                    </nav>
-                    <!-- =============================================================== -->
-                    <div class="fix-top">
-                        <div class="date">
-                            <span>Lunes 25 de julio del 2014</span>, <span>Ciudad de México</span>
-                        </div>
-                        <ul class="sub-menu">
-                            <ul>
-                                <li><a href="#">Sucursales y Módulos de Atención</a></li>
-                                <li><a href="#">Contacto</a></li>
-                                <li><a href="#">Ayuda</a></li>
-                                <li><a href="#">Tour</a></li>
-                            </ul>
-                        </ul>
-                    </div>
-                </div>
-            </header>
+            <div ng-include="'views/partials/layout/login-header.html'"/>
             <!-- =============================================================== -->
             <main>
                 <div class="wrapper">
@@ -79,10 +50,5 @@
                 </div> <!-- wrapper ends here -->
             </main>
         </div> <!-- sticky footer wrapper ends here -->
-        <footer>
-            <div class="wrapper">
-                <p class="copy">Consubanco &copy;2014</p>
-                <a href="#" class="legal">Términos, Condiciones de Uso y Privacidad</a>
-            </div>
-        </footer>
+    <div ng-include="'views/partials/layout/main-footer.html'"></div>
 </div>
