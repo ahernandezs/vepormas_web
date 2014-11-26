@@ -1,0 +1,70 @@
+.registration {
+	// components
+	h2, h3 {
+		color: $blue;
+	}
+	button {
+		width: 120px;
+	}
+	dl {
+		@include clearfix;
+		margin-bottom: 30px;
+	}
+	dt, dd {
+		float: left;
+		display: inline;
+		line-height: 2.3;
+		width: 50%;
+	}
+	.outter {
+		background-color: $gris03;
+	}
+	main {
+		color: $gris60;
+		font-size: 16px;
+		padding-top: 40px;
+
+		> .wrapper {
+			background-color: $lgray;
+			background-clip: padding-box;
+			border: 1px solid $gray;
+			border-radius: $radius;
+		}
+	}
+	.row > div {
+		min-height: 520px;
+	}
+	// modules
+	.steps {
+		@include column(3);
+		height: 100%;
+
+		h3 {
+			font-weight: 400;
+			margin-top: 40px;
+			text-align: center;
+		}
+		ul {
+			float: right;
+			font-size: 18px;
+			line-height: 3.4;
+			margin-right: auto;
+			margin-top: 30px;
+			width: 60%;
+		}
+		li {
+		}
+	}
+	.record {
+		@include column(9);
+		background-color: #fff;
+		border-radius: 0 4px 4px 0;
+		padding: 30px;
+	}
+	.data {
+		@include column(8);
+	}
+	.extras {
+		@include column(4);
+	}
+}

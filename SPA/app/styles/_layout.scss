@@ -3,7 +3,11 @@
 |	Layout
 |-------------------------------------------------------------------------------------
 */
-@import "layout/nav";
+@import "layout/sticky-footer";
+
 @import "layout/header";
-@import "layout/main";
+
 @import "layout/footer";
+
+// All purpose layout
+@import "layout/main";

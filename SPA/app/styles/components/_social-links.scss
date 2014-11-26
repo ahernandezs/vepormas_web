@@ -1,11 +1,20 @@
 /*
 |-------------------------------------------------------------------------------------
-|	Less than 479px
+|	Social links
 |-------------------------------------------------------------------------------------
 */
-%max-width-screen-phone-portrait {
+.social-links {
+	float: right;
+	font-size: 26px;
 
-}
-@media ( max-width: $screen-phone-portrait ) {
-	@extend %max-width-screen-phone-portrait;
+	li {
+		float: left;
+
+		&:first-child {
+			margin-right: 20px;
+		}
+	}
+	span {
+		@include hide-text;
+	}
 }
