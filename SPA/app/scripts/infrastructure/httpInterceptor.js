@@ -9,7 +9,7 @@ angular.module('spaApp').factory('httpInterceptor', ['$q', '$window', '$location
     var error = function (response) {
       // TODO: Seems that in some time we don't get response.status
 
-      if (!response.status) {
+      /*if (!response.status) {
         console.log("Response undefined");
         $location.url('/login');
       }
@@ -21,7 +21,7 @@ angular.module('spaApp').factory('httpInterceptor', ['$q', '$window', '$location
       }
 
       return $q.reject(response);
-    };
+    };*/
 
     return promise.then(success, error);
   };

@@ -10,7 +10,7 @@ var app = angular.module('spaApp', [
 ]);
 
 app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
-    $httpProvider.responseInterceptors.push('httpInterceptor');
+    //$httpProvider.responseInterceptors.push('httpInterceptor');
 
     $routeProvider
       .when('/login', {
@@ -20,11 +20,11 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
       .when('/accounts', {
         templateUrl: 'views/accounts.html',
         controller: 'AccountsCtrl',
-        resolve: {
+        /*resolve: {
           accounts: ['accountsProvider', function(accountsProvider) {
             return accountsProvider.getAccounts();
           }]
-        }
+        }*/
       })
       .when('/accounts/:accountId/transactions', {
         templateUrl: 'views/transactions.html',

@@ -1,58 +1,41 @@
-<header class="header">
-  <div class="status-navbar">
-      <div class="container">
-        <div class="pull-left">
-          <time-access date='{{last_access_date}}' media='{{last_access_media}}'/>
-        </div>
-        <nav class="pull-right">
-          <a href="#">Cont&aacute;ctanos</a>
-          <a href="#">Sucursales</a>
-          <a href="#">www.abanking.com</a>
-        </nav>
-      </div>
-  </div>
-  <div class="navbar main-menu" role="navigation">
-    <div class="container">
-      <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>-->
-      <a class="bank-logo" href="#"></a>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Cuentas</a></li>
-        <li><a href="#">Inversiones</a></li>
-        <li><a href="#">Afore</a></li>
-        <li><a href="#">Impuestos</a></li>
-      </ul>        
+<header>
+    <div class="wrapper">
+        <!-- =============================================================== -->
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-      <form class="pull-right">
-        <button type="button" class="btn btn-alertas">
-          <span class="glyphicon glyphicon-phone"></span>
-          alertas
-        </button>
-          <a type="submit" ng-controller="LoginCtrl" class="btn btn-logout"  ng-click="logout()">Cerrar sesi&oacute;n</a>
-      </form>
-      <ul class="nav navbar-nav pull-right user">
-          <li class="dropdown">
-            <a href="" class="dropdown-toggle" role="button" data-toggle="dropdown"> John Doe <strong class="caret"></strong></a>
-            <ul class="dropdown-menu" role="menu">
-              <li>
-                <a href="/#/administration/accounts-clabe">Cuentas CLABE</a>
-              </li>
-              <li>
-                <a href="/#/administration/contract">Contratos</a>
-              </li>
-              <li>
-                <a href="/#/administration/configuration">Configuraci&oacute;n</a>
-              </li>
-              <li>
-                <a href="/#/administration/admin-card">Administraci&oacute;n de Tarjetas</a>
-              </li>
-              <li>
-                <a href="/#/administration/checks">Administraci&oacute;n de Chequeras</a>
-              </li>
+        <h1 class="logo"><a href="/">Consubanco</a></h1>
+
+        <!-- =============================================================== -->
+        <nav class="nav ">
+            <ul>
+                <li class="active"><a href="#">Mis Productos</a></li>
+                <li><a href="#">Pagos y Transferencias</a></li>
+                <li><a href="#">Inversiones</a></li>
+                <li><a href="#">Administración</a></li>
             </ul>
-          </li>
-        </ul><!-- end nav pull-right-->
-   </div><!--End container-->
-    {{errorMessage}}
-  </div>
+        </nav>
+        <!-- =============================================================== -->
+        <!-- module -->
+        <div class="user-session">
+            <div class="user-log">
+                <h6>Bienvenido</h6>
+                <h4 class="user">Abel Becerra Castro</h4>
+                <p class="date">Último acceso: <span>17/05/2014</span> a las <span>23:34:54</span>
+                </p>
+            </div>
+            <button class="orange">Cerrar Sesión</button>
+        </div>
+        <div class="fix-top">
+            <div class="date">
+                <span>Lunes 25 de julio del 2014</span>, <span>Ciudad de México</span>
+            </div>
+            <ul class="sub-menu">
+                <ul>
+                    <li><a href="#">Sucursales y Módulos de Atención</a></li>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Ayuda</a></li>
+                    <li><a href="#">Tour</a></li>
+                </ul>
+            </ul>
+        </div>
+    </div>
 </header>
