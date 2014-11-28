@@ -31,12 +31,11 @@
                     |____________________________________________________________________________
                     -->
                     <div>
-                        <form class="user-login">
+                        <form class="user-login" ng-submit="checkUser()">
                             <label for="user"><strong>Iniciar sesión</strong></label>
-                            <input type="text" name="user" id="user" placeholder="Usuario">
+                            <input type="text" name="user" id="user" ng-model="username" placeholder="Usuario">
                             <hr>
                             <input class="blue" type="submit" value="Continuar">
-
                         </form>
                         <form class="user-registration">
                             <label for="user-register"><strong>¿Eres nuevo aquí?</strong> <a href="registro.html">Regístrate</a></label>
