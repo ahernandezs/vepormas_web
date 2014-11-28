@@ -25,4 +25,5 @@ angular.module('spaApp').factory('httpInterceptor', ['$q', '$window', '$location
 
     return promise.then(success, error);
   };
+}
 }]);

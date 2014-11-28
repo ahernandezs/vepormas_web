@@ -5,7 +5,6 @@ var app = angular.module('spaApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'pubnub.angular.service',
   'infinite-scroll'
 ]);
 
