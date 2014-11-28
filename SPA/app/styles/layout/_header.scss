@@ -6,7 +6,7 @@ header {
 	@include clearfix();
 	background-color: $blue;
 	color: #FFF;
-	height: 118px;
+	height: 118px !important;
 
 	h1, h2, h3, h5, h6 { margin: 0; }
 
