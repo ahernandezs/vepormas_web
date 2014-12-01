@@ -115,6 +115,17 @@ angular.module('spaApp')
 
   };
 
+  /**
+    Function for validate data before register
+  **/
+  $scope.register = function(client,contract){
+      //TODO:Veryfy with REST service if exists contract?
+      $location.path( '/register');
+  }
+
+  /**
+    Function for logout application
+  **/
   $scope.logout = function() {
   }
 
