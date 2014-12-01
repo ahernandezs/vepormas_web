@@ -5,35 +5,35 @@
             <div class="wrapper">
                 <div class="row">
                     <div class="steps">
-                        <h3>Registro de Usuario</h3>
-                        <progress max="100" value="0"></progress>
+                        <h3>Registro de Usuario {{selection}}</h3>
+                        <progress max="5" value="{{selection-1}}"></progress>
                         <ul>
-                            <li ng-class="selection=='one' ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection='one'">Confirmaci&oacute;n</a></li>
-                            <li ng-class="selection=='two' ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection='two'">Registro</a></li>
-                            <li ng-class="selection=='three' ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection='three'">Nivel de Seguridad</a></li>
-                            <li ng-class="selection=='four' ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection='four'">Notificaciones</a></li>
-                            <li ng-class="selection=='five' ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection='five'">Token</a></li>
-                            <li ng-class="selection=='six' ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection='six'">Finalizado</a></li>
+                            <li ng-class="selection>=1?'active' : ''"><a href="javascript:void(0);" ng-click="selection=1">Confirmaci&oacute;n</a></li>
+                            <li ng-class="selection>=2 ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection=2">Registro</a></li>
+                            <li ng-class="selection>=3 ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection=3">Nivel de Seguridad</a></li>
+                            <li ng-class="selection>=4 ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection=4">Notificaciones</a></li>
+                            <li ng-class="selection>=5 ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection=5">Token</a></li>
+                            <li ng-class="selection>=6 ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection=6">Finalizado</a></li>
                         </ul>
                     </div>
                     
                     <div ng-switch on="selection">
-                        <div class="animate-switch" ng-switch-when="one">
+                        <div class="animate-switch" ng-switch-when="1">
                             <div ng-include="'views/partials/register/first-step.html'"/>
                         </div>
-                        <div class="animate-switch" ng-switch-when="two">
+                        <div class="animate-switch" ng-switch-when="2">
                             <div ng-include="'views/partials/register/second-step.html'"/>
                         </div>
-                        <div class="animate-switch" ng-switch-when="three">
+                        <div class="animate-switch" ng-switch-when="3">
                             <div ng-include="'views/partials/register/security-level.html'"/>
                         </div>
-                        <div class="animate-switch" ng-switch-when="four">
+                        <div class="animate-switch" ng-switch-when="4">
                             <div ng-include="'views/partials/register/fourth-step.html'"/>
                         </div>
-                        <div class="animate-switch" ng-switch-when="five">
+                        <div class="animate-switch" ng-switch-when="5">
                             <div ng-include="'views/partials/register/fifth-step.html'"/>
                         </div>
-                        <div class="animate-switch" ng-switch-when="six">
+                        <div class="animate-switch" ng-switch-when="6">
                             <div ng-include="'views/partials/register/terminate.html'"/>
                         </div>
                         <div class="animate-switch" ng-switch-default>

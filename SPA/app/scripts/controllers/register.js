@@ -2,6 +2,6 @@
 
 angular.module('spaApp').controller('RegisterCtrl', ['$scope', function ($scope) {
 
-	$scope.selection = "one";
+	$scope.selection = 1;
 
 }]);
