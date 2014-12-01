@@ -90,9 +90,7 @@
 	}
 }
 .user-login,
-.user-registration,
-.register-pass,
-.contact-form {
+.user-registration {
 	padding: 14px 18px;
 	width: 380px;
 	hr {
@@ -107,6 +105,69 @@
 			display: inline;
 		}
 	}
+	input.rojo {
+		border-radius: 4px;
+		border: 1px solid red;
+	}
+
+	.incorrectUser{
+		margin: 2px auto;
+	 	background:url(https://cdn1.iconfinder.com/data/icons/toolbar-signs/512/delete-128.png) no-repeat left center;
+	 	background-size:15px;
+	 	color:red;
+	 	font-size: 14px;
+	 	font-style: italic;
+	 	padding: 10px 10px 10px 30px;
+	}
+
+	.buttons{
+		overflow:hidden;
+		margin: 10px auto;
+		input{
+			float:left;
+			width:48%;
+		}
+		input:first-child{
+			margin-right: 4%
+		}
+	}
+
+	p {
+		text-align: center;
+		margin: 8px auto;
+		color:$dgray;
+	 	font-size: 10px;
+	}
+
+	h2 {
+		text-align: center;
+		margin: 5px;
+		color: $blue;
+	 	font-size: 16px;
+	}
+
+	h3 {
+		text-align: center;
+		margin: 10px;
+		color:$dgray;
+	 	font-size: 20px;
+	}
+
+	.blue-min{
+		text-align: center;
+		margin: 10px;
+		color:$blue;
+		font-weight: bold;
+	 	font-size: 14px;
+	}
+
+	.gray-min{
+		text-align: center;
+		margin: 10px auto;
+		color: $dgray;
+	 	font-size: 12px;
+	}
+
 	input {
 		border-radius: 4px;
 		border: 1px solid $gray;
@@ -195,4 +256,15 @@
 			width: 144px;
 		}
 	}
+}
+
+/* center radio below label */
+	.radioGroupBelow label{
+  	display: inline-block;
+  	text-align: center;
+  	margin: 0 0.2em;
+ 	input[type="radio"] {
+    display: block;
+    margin: 0.5em auto;
+  }
 }

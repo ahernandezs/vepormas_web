@@ -31,12 +31,8 @@
                     |____________________________________________________________________________
                     -->
                     <div>
-                        <form class="user-login" ng-submit="checkUser()">
-                            <label for="user"><strong>Iniciar sesión</strong></label>
-                            <input type="text" name="user" id="user" ng-model="username" placeholder="Usuario">
-                            <hr>
-                            <input class="blue" type="submit" value="Continuar">
-                        </form>
+                        <div ng-include="'views/partials/login/user_login.html'" ng-hide="showImageLogin"/>
+                        <div ng-include="'views/partials/login/image_login.html'" ng-show="showImageLogin"/>
                         <form class="user-registration">
                             <label for="user-register"><strong>¿Eres nuevo aquí?</strong> <a href="registro.html">Regístrate</a></label>
                             <hr>

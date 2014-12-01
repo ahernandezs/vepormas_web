@@ -1,0 +1,23 @@
+<form class="user-login" >
+    <h2>BIENVENIDO</h2>
+    <h3>Abel</h3>
+	<hr>
+
+ <a class="blue-min">Nivel de seguridad adicional</a>
+ <a class="gray-min">Selecciona la imagen que elegiste al registrarte</a>
+<!-- images -->
+<div class="radioGroupBelow" align="center">
+   <label for="{{image.id}}" ng-repeat="image in images">  <img src="{{image.url}}" height="60" >
+        <input type="radio" name="imagegroup" ng-model="$parent.selectedImage" value="{{image.id}}">
+    </label>
+</div>
+<!-- images -->
+    <hr>
+    <input ng-class="incorrectData ? 'rojo' : ''" type="password" name="password" ng-model="password" id="password" placeholder="Password">
+
+<div class="buttons">
+    <input class="blue" type="submit" value="Cancelar" ng-click="reset()">
+    <input class="blue" type="submit" value="Continuar" ng-click="login(password)">
+</div>
+<p>¿Olvidaste tu contraseña? Comunicate con nosotros al 01 800 800 32 24</p>
+</form>

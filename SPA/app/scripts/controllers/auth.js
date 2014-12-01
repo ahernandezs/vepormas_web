@@ -14,30 +14,88 @@ angular.module('spaApp')
     $location.path('/accounts');
   }
 
+  $scope.images = [
+  {id:'00001', url: 'http://icons.iconarchive.com/icons/yellowicon/game-stars/256/Mario-icon.png'},
+  {id:'00002', url: 'http://icons.iconarchive.com/icons/yellowicon/game-stars/256/Mario-icon.png'},
+  {id:'00003', url: 'http://icons.iconarchive.com/icons/yellowicon/game-stars/256/Mario-icon.png'},
+  {id:'00004', url: 'http://icons.iconarchive.com/icons/yellowicon/game-stars/256/Mario-icon.png'},
+  ];
 
-  $scope.checkUser = function(){
+  $scope.username;
+  $scope.password;
+ 
+  $scope.incorrectData = false;
+  $scope.showImageLogin = false;
+
+  $scope.loginUser=function(user){
+    if(user=="rafa"){//next
+        $scope.showImageLogin = true;
+        $scope.incorrectData = false;
+    }
+    else{//error
+      $scope.incorrectData = true;
+    }
+  }
+
+  $scope.loginPassword=function(password){
+    if(password=="pass"){//doLogin
+      alert('doLogin()');
+    }
+    else{//error
+      $scope.incorrectData = true;
+    }
+  }
+
+  $scope.reset=function(){
+  // $scope.user.name = "";
+  // $scope.user.password = "";
+  $scope.incorrectData = false;
+  $scope.showImageLogin = false;
+  }
+
+
+ $scope.selectedImage;
+  $scope.login=function(selectedValue){
+    $scope.buttonStatus("Entrando ...", true);
+
+    if(!selectedValue){ //no image selected
+      console.log("No image selected")
+      return;
+    }
+
+    console.log("image selected "+selectedValue);
+  
+  };
+
+  $scope.checkUser = function(username){
+    var json = JSON.stringify({'user_login':username,'client_application_id': 'PROSA-DIG'});
+    console.log(json);
     $http({
       url: $scope.restAPIBaseUrl+'/checkLogin',
       method: 'POST',
-      data: JSON.stringify({'user_login':$scope.username,'client_application_id': 'PROSA-DIG'})
+      data: json
     }).
       success(function(data, status, headers) {
+        $scope.showImageLogin = true;
+        $scope.username = username;
         console.log(data);
+       $scope.incorrectData = false;
     }).
       error(function(data, status) {
       $scope.errorMessage = data.message;
       $scope.status = status;
+      $scope.incorrectData = true;
     });
   }
 
   /**
     Function for authenticate
   **/
-  $scope.login = function(){
+  $scope.login = function(password){
     $http({
       url: $scope.restAPIBaseUrl+'/login',
       method: 'POST',
-      data: JSON.stringify({'user_login':$scope.username, 'password':$scope.password,'client_application_id': 'PROSA-DIG'})
+      data: JSON.stringify({'user_login':$scope.username, 'password':password,'client_application_id': 'PROSA-DIG'})
     }).
       success(function(data, status, headers) {
       var token = headers('X-AUTH-TOKEN');
@@ -46,13 +104,13 @@ angular.module('spaApp')
       $rootScope.last_access_media = data.last_access_media;
 
       api.init();
-
       $location.path( '/accounts' );
     }).
       error(function(data, status) {
       //put an error message in the scope
       $scope.errorMessage = data.message;
       $scope.status = status;
+      $scope.incorrectData = true;
     });
 
   };
