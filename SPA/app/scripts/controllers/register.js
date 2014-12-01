@@ -9,4 +9,10 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope', function ($scope)
 	$scope.bankBranch = 'Eduardo Molina';
 	$scope.date = '18/JUN/2014';
 
+	/**
+		Function for navigate when complete step .
+	**/
+	 $scope.completeStep =function(nextStep){
+		$scope.selection = nextStep;
+	 }
 }]);
