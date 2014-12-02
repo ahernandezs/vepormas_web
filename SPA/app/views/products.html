@@ -1,0 +1,70 @@
+
+    <div class="products">
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <!-- =============================================================== -->
+
+        <!-- Content starts -->
+
+        <!-- =============================================================== -->
+        <div class="outter"> <!-- sticky footer wrapper -->
+            <header>
+                <div class="wrapper">
+                    <!-- =============================================================== -->
+
+                    <h1 class="logo"><a href="/">Consubanco</a></h1>
+
+                    <!-- =============================================================== -->
+                    <nav class="nav ">
+                        <ul>
+                            <li class="active"><a href="#">Mis Productos</a></li>
+                            <li><a href="#">Pagos y Transferencias</a></li>
+                            <li><a href="#">Inversiones</a></li>
+                            <li><a href="#">Administración</a></li>
+                        </ul>
+                    </nav>
+                    <!-- =============================================================== -->
+                    <!-- module -->
+                    <div class="user-session">
+                        <div class="user-log">
+                            <h6>Bienvenido</h6>
+                            <h4 class="user">Abel Becerra Castro</h4>
+                            <p class="date">Último acceso: <span>17/05/2014</span> a las <span>23:34:54</span>
+                            </p>
+                        </div>
+                        <button class="orange">Cerrar Sesión</button>
+                    </div>
+                    <div class="fix-top">
+                        <div class="date">
+                            <span>Lunes 25 de julio del 2014</span>, <span>Ciudad de México</span>
+                        </div>
+                        <ul class="sub-menu">
+                            <ul>
+                                <li><a href="#">Sucursales y Módulos de Atención</a></li>
+                                <li><a href="#">Contacto</a></li>
+                                <li><a href="#">Ayuda</a></li>
+                                <li><a href="#">Tour</a></li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            <!-- =============================================================== -->
+            <main>
+                <div class="wrapper">
+                    <div class="row">
+                        <!-- first column -->
+                        <!-- actions column ends -->
+                         <div ng-include="'views/partials/products/product.html'"/>
+                        <!-- second column -->
+                        <div class="product-details">
+                         <div ng-include="'views/partials/products/product-details.html'"/>
+                         <div ng-include="'views/partials/products/product-transactions.html'"/>
+                        </div> <!-- second column ends -->
+                    </div> <!-- row end -->
+                    <!-- =============================================================== -->
+                </div> <!-- main wrapper ends -->
+            </main>
+        </div>
+        </div>
