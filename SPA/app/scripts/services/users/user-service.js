@@ -1,7 +1,18 @@
 'use strict';
 
 angular.module('spaApp')
-  .service('registerService', ['$http','$rootScope',function ($http, $rootScope) {
+  .service('userService', ['$http','$rootScope',function ($http, $rootScope) {
+	this.getUser = function(clientOrAccount, Folio){
+		return $http({
+				url: $rootScope.restAPIBaseUrl+'/preregister',
+				method: 'POST',
+				data: JSON.stringify({
+					'applicationId':clientOrAccount,
+					'digitalBankId':Folio
+				})
+		});
+	}
+
 	this.setUser = function(applicationId, digitalBankId, bankUserName, identifier, password , email, cellPhone, imageId, imageGroupId ,cardId ,customerId ){
 		return $http({
 				url: $rootScope.restAPIBaseUrl+'/register',

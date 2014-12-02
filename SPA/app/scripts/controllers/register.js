@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('spaApp').controller('RegisterCtrl', ['$scope', function ($scope) {
+angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'userProvider' , function ($scope, $location, userProvider) {
 
 	$scope.selection = 1;
 
@@ -15,4 +15,19 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope', function ($scope)
 	 $scope.completeStep =function(nextStep){
 		$scope.selection = nextStep;
 	 }
+
+	 /**
+		Function for go to login page
+	 **/
+	 $scope.gotoLogin =function(){
+		$location.path( '/login' );
+	 }
+
+	 /**
+		Function for register
+	 **/
+	 $scope.registerCustomer =function(){
+		//TODO:implements REST  method register
+	};
+
 }]);

@@ -5,7 +5,7 @@
  * inject a login function in the scope
  */
 angular.module('spaApp')
-.controller('LoginCtrl', ['$scope', '$http', '$location', 'api', '$rootScope', function ($scope,$http,$location, api, $rootScope) {
+.controller('LoginCtrl', ['$scope', '$http', '$location', 'api', '$rootScope', 'userProvider', function ($scope,$http,$location, api, $rootScope, userProvider) {
   /**
    * the login function connect the Rest-API: if the response status is OK, redirect to route "accounts",
    * else put an error message in the scope
@@ -47,8 +47,6 @@ angular.module('spaApp')
   }
 
   $scope.reset=function(){
-  // $scope.user.name = "";
-  // $scope.user.password = "";
   $scope.incorrectData = false;
   $scope.showImageLogin = false;
   }
@@ -67,6 +65,10 @@ angular.module('spaApp')
   
   };
 
+  /************************ Navigation ***********************************/
+  /**
+    Function for verify if exist user
+  **/
   $scope.checkUser = function(username){
     var json = JSON.stringify({'user_login':username,'client_application_id': 'PROSA-DIG'});
     console.log(json);
@@ -89,7 +91,7 @@ angular.module('spaApp')
   }
 
   /**
-    Function for authenticate
+    Function for authenticate user through middleware
   **/
   $scope.login = function(password){
     $http({
@@ -118,8 +120,9 @@ angular.module('spaApp')
   /**
     Function for validate data before register
   **/
-  $scope.register = function(client,contract){
+  $scope.preRegister = function(client,contract){
       //TODO:Veryfy with REST service if exists contract?
+      //userProvider.verifyUser();
       $location.path( '/register');
   }
 
