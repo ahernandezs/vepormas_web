@@ -126,13 +126,6 @@ angular.module('spaApp')
       $location.path( '/register');
   }
 
-  /**
-    Function for logout application
-  **/
-  $scope.logout = function() {
-  }
-
-
 }]);
 
 

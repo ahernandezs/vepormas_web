@@ -7,15 +7,6 @@
 angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsService', '$q', function ($rootScope, accountsService, $q) {
 
   return {
-    getAccountIndex: function (accountId) {
-      for (var i = 0; i < $rootScope.accounts.length; i++) {
-        if ($rootScope.accounts[i]._account_id == accountId) {
-          return i;
-        }
-      }
-      throw new Error("account does not exist");
-    },
-
     getAccounts: function () {
       var deferred = $q.defer();
 
@@ -69,39 +60,6 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
       //fill currentAccount with rootScope data
 
       return deferred.promise;
-    },
-
-    addNewTransaction: function (user, transaction, account) {
-      var index = this.getAccountIndex(account._account_id);
-
-      if (index < 0) {
-        return;
-      }
-      //if there is no transactions just update account
-      if($rootScope.currentAccount && $rootScope.currentAccount._account_id == account._account_id && !$rootScope.accounts[index].transactions){
-        $rootScope.$apply(function () {
-          $rootScope.accounts[index].balance = account.balance;
-        });
-      } else
-        //update account and add new transaction
-        {
-          //getting account transactions
-          if(!$rootScope.accounts[index].transactions) {
-            $rootScope.accounts[index].transactions = [transaction];
-          } else {
-            //adding new transaction on index 0
-            $rootScope.accounts[index].transactions.splice(0,0,transaction)
-          }
-
-          $rootScope.$apply(function () {
-            $rootScope.accounts[index].balance = account.balance;
-
-            //updating current transaction if necesary
-            if($rootScope.currentAccount && $rootScope.currentAccount._account_id === account._account_id){
-              $rootScope.currentAccount.balance = account.balance;
-            }
-          });
-        }
     }
   };
 }]);
