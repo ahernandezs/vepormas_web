@@ -10,7 +10,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
 	$scope.date = '18/JUN/2014';
 
 	/**
-		Function for navigate when complete step .
+		Function for navigate when step complete  .
 	**/
 	 $scope.completeStep =function(nextStep){
 		$scope.selection = nextStep;
