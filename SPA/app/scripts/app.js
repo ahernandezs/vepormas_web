@@ -28,6 +28,10 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
       })
+      .when('/products',{
+        templateUrl: 'views/products.html',
+        controller: 'ProductsCtrl'
+      })
       .otherwise({
         redirectTo: '/login'
       });
