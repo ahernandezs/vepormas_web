@@ -8,6 +8,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
 	$scope.nameClient = 'Alfonzo Perez Tovar';
 	$scope.bankBranch = 'Eduardo Molina';
 	$scope.date = '18/JUN/2014';
+    $scope.registerData = {};
 
 	/**
 		Function for navigate when step complete  .
