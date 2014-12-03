@@ -5,9 +5,9 @@
         <hr>
         <div class="user-data">
             <form class="register-pass">
-                <input type="text" name="user" id="user" placeholder="No. de cliente &sol; No. de cuenta">
-                <input type="text" name="user" id="user" placeholder="Contrase&ntilde;a">
-                <input type="text" name="user" id="user" placeholder="Confirmar contrase&ntilde;a">
+                <input type="text" ng-model="registerData.clientID" placeholder="No. de cliente &sol; No. de cuenta">
+                <input type="text" ng-model="registerData.password" placeholder="Contrase&ntilde;a">
+                <input type="text" ng-model="registerData.repeatPass" placeholder="Confirmar contrase&ntilde;a">
             </form>
             <button class="blue" ng-click="completeStep(3)">Confirmar</button>
             <button class="blue">Cancelar</button>
