@@ -2,21 +2,16 @@
 
 var mockModule = angular.module('spaApp');
 
-mockModule.service('mockService', function($http, $q) {
-    var _this = this;
+mockModule.service('mockService', function($http) {
+    return {
+        checkLogin: function () {
 
-    this.promiseToHaveData = function() {
-        var defer = $q.defer();
+            var obj = {content:null};
 
-        $http.get('checkLogin-response.json')
-            .success(function(data) {
-                angular.extend(_this, data);
-                defer.resolve();
-            })
-            .error(function() {
-                defer.reject('could not find someFile.json');
+            $http.get('checkLogin-response.json').success(function(data) {
+        // you can do some processing here
+        obj.content = data;
             });
-
-        return defer.promise;
+        }
     }
 });

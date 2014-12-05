@@ -38,14 +38,14 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
       });
   }]);
 
-app.run(['api', '$window', '$rootScope','$httpBackend', function(api, $window, $rootScope,$httpBackend) {
+app.run(['api', '$window', '$rootScope','$httpBackend','mockService', function(api, $window, $rootScope,$httpBackend,mockService) {
   api.config();
   api.init();
 
-        //Escape string to be able to use it in a regular expression
-        function regEsc(str) {
-            return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
-        }
+  //Escape string to be able to use it in a regular expression
+  function regEsc(str) {
+      return str.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+  }
   //When backend receives a request to the views folder, pass it through
   $httpBackend.whenGET( RegExp( regEsc( 'views/' ) ) ).passThrough();
   //Only load mocks if config says so
