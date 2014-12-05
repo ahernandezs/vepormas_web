@@ -12,10 +12,11 @@ angular.module('spaApp').factory('api', ['$http', '$rootScope', function ($http,
       $http.defaults.headers.common['X-BANK-TOKEN'] = 4;
       $http.defaults.headers.common['X-AUTH-TOKEN'] = token || $rootScope.session_token;
 
-      console.log("Executes init & token = " + $rootScope.session_token);
+      //console.log("Executes init & token = " + $rootScope.session_token);
     },
     config: function(){
       $rootScope.restAPIBaseUrl = "http://192.168.0.10:8080/Abanking-Core";
+      $rootScope.useMocks = true;
     }
   };
 }]);
