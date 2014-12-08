@@ -5,61 +5,57 @@
       <div class="wrapper">
                 <div class="wrapper">
                     <div class="row">
-                        <!-- first column -->
                         <div class="actions">
                             <tc/>
 							<investments/>
 							<account/>
 							<credits/>
-                        </div> <!-- actions column ends -->
-                        <!-- second column -->
+                        </div>
                         <div class="product-details">
-                            <div class="header"> <!-- top row -->
+                            <div class="header">
                                 <h2 class="title">
-                                    <a href="#"><i class="fa fa-minus-square"></i></a>
+                                    <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'fa fa-minus-square' : 'fa fa-plus-square'"></i></a>
                                     Consutarjeta Naranja ***12345
                                     <span>Cuenta</span>
                                 </h2>
                                 <div class="payment-actions">
                                     <div>
                                         <div>
-                                            <p class="amount">760.00</p>
+                                            <p class="amount">{{accountHeader.minimumPayment}}</p>
                                             <button class="blue">Pago mínimo</button>
                                         </div>
                                         <div>
-                                            <p class="amount">1,520.00</p>
+                                            <p class="amount">{{accountHeader.noInterest}}</p>
                                             <button class="blue">Pago para no <span class="block">generar intereses</span></button>
                                         </div>
                                         <div>
-                                            <p class="amount">2,123.00</p>
+                                            <p class="amount">{{accountHeader.totalPayment}}</p>
                                             <button class="blue">Pago total</button>
                                         </div>
                                     </div>
                                 </div>
                                 <a href="#"><i class="fa fa-file-pdf-o"></i>Estados <span>de cuenta</span></a>
-                            </div> <!-- ends top row -->
-                            <!-- =============================================================== -->
-                            <div class="box"> <!-- expended box -->
+                            </div>
+                            <hr ng-show='!showAccountHeader'>
+                            <div class="box" ng-show='showAccountHeader'>
                                 <ul>
-                                    <li>Fecha de corte:         <span>29/Oct/2014</span></li>
-                                    <li>Fecha límite de pago:   <span>15/Oct/2014</span></li>
-                                    <li>Límite de pago:         <span class="amount">760.00</span></li>
-                                    <li>Saldo al corte:         <span class="amount">2,123.00</span></li>
+                                    <li>Fecha de corte:         <span>{{accountHeader.cutDate}}</span></li>
+                                    <li>Fecha límite de pago:   <span>{{accountHeader.limitDate}}</span></li>
+                                    <li>Límite de pago:         <span class="amount">{{accountHeader.limitPayment}}</span></li>
+                                    <li>Saldo al corte:         <span class="amount">{{accountHeader.cutBalance}}</span></li>
                                 </ul>
                                 <ul>
-                                    <li>Saldo actual:                   <span class="amount">2,123.00</span></li>
-                                    <li>Pago para no generar intereses: <span class="amount">1,520.00</span></li>
-                                    <li>Saldo vencido:                  <span class="amount">0.00</span></li>
-                                    <li>Límite de crédito:              <span class="amount">5,000.00</span></li>
-                                    <li>Crédito disponible:             <span class="amount">3,000.00</span></li>
+                                    <li>Saldo actual:                   <span class="amount">{{accountHeader.currentBalance}}</span></li>
+                                    <li>Pago para no generar intereses: <span class="amount">{{accountHeader.noInterest}}</span></li>
+                                    <li>Saldo vencido:                  <span class="amount">{{accountHeader.dueCurrent}}</span></li>
+                                    <li>Límite de crédito:              <span class="amount">{{accountHeader.limitCredit}}</span></li>
+                                    <li>Crédito disponible:             <span class="amount">{{accountHeader.availableCredit}}</span></li>
                                 </ul>
-                            </div> <!-- box ends -->
-                            <!-- =============================================================== -->
+                            </div>
                             <form class="search">
                                 <input type="search" name="movements" id="movements" placeholder="Buscar movimientos">
                                 <button type="submit"><i class="fa fa-search"></i><span>Buscar</span></button>
                             </form>
-                            <!-- =============================================================== -->
                             <div class="transactions">
                                 <div class="filter">
                                     <span>Ver por:</span>
@@ -80,7 +76,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="year"><td>2014</td><td></td><td></td><td></td><td></td></tr>
+                                        <tr class="year"><td>2014</td><td colspan="5"></tr>
                                         <tr>
                                             <td><span>sep</span><span>18</span></td>
                                             <td>001</td>
@@ -119,11 +115,10 @@
                                     </tbody>
                                 </table>
                             </div>
-                        </div> <!-- second column ends -->
-                    </div> <!-- row end -->
-                    <!-- =============================================================== -->
-                </div> <!-- main wrapper ends -->
-      </div> <!-- main wrapper ends -->
+                        </div>
+                    </div>
+                </div>
+      </div>
     </main>
     <div ng-include="'views/partials/layout/main-footer.html'"></div>
   </div>
