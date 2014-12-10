@@ -15,10 +15,10 @@ angular.module('spaApp')
   }
 
   $scope.images = [
-  {id:'00001', url: 'http://icons.iconarchive.com/icons/yellowicon/game-stars/256/Mario-icon.png'},
-  {id:'00002', url: 'http://icons.iconarchive.com/icons/yellowicon/game-stars/256/Mario-icon.png'},
-  {id:'00003', url: 'http://icons.iconarchive.com/icons/yellowicon/game-stars/256/Mario-icon.png'},
-  {id:'00004', url: 'http://icons.iconarchive.com/icons/yellowicon/game-stars/256/Mario-icon.png'},
+  {id:'00001', url: './../../images/perro.png'},
+  {id:'00002', url: './../../images/playa.png'},
+  {id:'00003', url: './../../images/puerto.png'},
+  {id:'00004', url: './../../images/bosque.png'},
   ];
 
   $scope.username;
@@ -75,7 +75,8 @@ angular.module('spaApp')
     $http({
       url: $scope.restAPIBaseUrl+'/checkLogin',
       method: 'POST',
-      data: json
+      data: json,
+      headers: {'Content-Type': 'application/json','X-BANK-TOKEN': '4'}
     }).
       success(function(data, status, headers) {
         $scope.showImageLogin = true;
