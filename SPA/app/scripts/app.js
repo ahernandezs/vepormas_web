@@ -24,6 +24,10 @@ app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($r
             return accountsProvider.getAccounts();
           }]*/
       })
+      .when('/investments', {
+        templateUrl: 'views/investments.html',
+        controller: 'InvestmentsCtrl',
+      })
       .when('/register',{
         templateUrl: 'views/register.html',
         controller: 'RegisterCtrl'
