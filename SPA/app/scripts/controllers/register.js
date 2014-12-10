@@ -10,6 +10,13 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
 	$scope.date = '18/JUN/2014';
     $scope.registerData = {};
 
+
+    $scope.images = [
+    {id:'00001', url: './../../images/perro.png'},
+    {id:'00002', url: './../../images/playa.png'},
+    {id:'00003', url: './../../images/puerto.png'},
+    {id:'00004', url: './../../images/bosque.png'},
+    ];
 	/**
 		Function for navigate when step complete  .
 	**/

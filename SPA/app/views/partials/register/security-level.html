@@ -4,22 +4,13 @@
         <p>Selecciona una imagen la cual tendr&aacute;s que validar cada que accedas a Consubanco digital.</p>
         <hr>
         <div class="user-data">
-            <table>
-                <tr>
-                    <td><img src="./../../images/perro.png" alt="perro" width="100" height="100"></td>
-                    <td><img src="./../../images/playa.png" alt="playa" width="100" height="100"></td>
-                    <td><img src="./../../images/puerto.png" alt="puerto" width="100" height="100"></td>
-                    <td><img src="./../../images/bosque.png" alt="bosque" width="100" height="100"></td>
-                    <td>&orarr;</td>
-                </tr>
-                <tr>
-                    <td><input type="radio" ng-model="registerData.picture" value="perro"></td>
-                    <td><input type="radio" ng-model="registerData.picture" value="playa"></td>
-                    <td><input type="radio" ng-model="registerData.picture" value="puerto"></td>
-                    <td><input type="radio" ng-model="registerData.picture" value="bosque"></td>
-                    <td>&nbsp;</td>
-                </tr>    
-            </table>
+            <!-- images -->
+            <div class="radioGroupBelow" align="center">
+               <label for="{{image.id}}" ng-repeat="image in images">  <img src="{{image.url}}" height="60" >
+                    <input type="radio" name="imagegroup" ng-model="$parent.selectedImage" value="{{image.id}}">
+                </label>
+            </div>
+            <!-- images -->
             <br>
             <button class="orange" ng-click="completeStep(4)">Continuar</button>
             <button class="blue">Cancelar</button>

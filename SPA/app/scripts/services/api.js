@@ -16,7 +16,7 @@ angular.module('spaApp').factory('api', ['$http', '$rootScope', function ($http,
     },
     config: function(){
       $rootScope.restAPIBaseUrl = "http://192.168.0.10:8080/Abanking-Core";
-      $rootScope.useMocks = true;
+      $rootScope.useMocks = false;
     }
   };
 }]);
