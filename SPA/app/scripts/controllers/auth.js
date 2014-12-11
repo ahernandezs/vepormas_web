@@ -98,7 +98,8 @@ angular.module('spaApp')
     $http({
       url: $scope.restAPIBaseUrl+'/login',
       method: 'POST',
-      data: JSON.stringify({'user_login':$scope.username, 'password':password,'client_application_id': 'PROSA-DIG'})
+      data: JSON.stringify({'user_login':$scope.username, 'password':password,'client_application_id': 'PROSA-DIG'}) ,
+      headers: {'Content-Type': 'application/json','X-BANK-TOKEN': '4'}
     }).
       success(function(data, status, headers) {
       var token = headers('X-AUTH-TOKEN');
