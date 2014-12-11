@@ -50,8 +50,8 @@
                                 <button class="blue">Buscar</button>
                             </form>
                             <div class="transactions">
-                                <table class="details">
-                                    <thead>
+                                <table ng-table="tableParams" class="details">
+                                   <thead>
                                         <tr>
                                             <th scope="col">Fecha</th>
                                             <th scope="col">N. de Transacci&oacute;n</th>
@@ -60,44 +60,13 @@
                                             <th scope="col">Monto</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr class="year"><td>2014</td><td colspan="5"></tr>
-                                        <tr>
-                                            <td><span>sep</span><span>18</span></td>
-                                            <td>001</td>
-                                            <td>Palacio de Hierro</td>
-                                            <td>Pago</td>
-                                            <td>25,000.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span>sep</span><span>18</span></td>
-                                            <td>002</td>
-                                            <td>American Express</td>
-                                            <td>Retiro</td>
-                                            <td>54,000.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span>sep</span><span>18</span></td>
-                                            <td>003</td>
-                                            <td>Tiempo aire Josefina</td>
-                                            <td>Pago</td>
-                                            <td>300.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span>sep</span><span>18</span></td>
-                                            <td>004</td>
-                                            <td>Martí</td>
-                                            <td>Pago</td>
-                                            <td>5,000.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span>sep</span><span>18</span></td>
-                                            <td>005</td>
-                                            <td>Starbucks</td>
-                                            <td>Pago</td>
-                                            <td>250.00</td>
-                                        </tr>
-                                    </tbody>
+                                    <tr ng-repeat="accounts in $data">
+                                        <td>{{accounts.date}}</td>
+                                        <td>{{accounts.transactionNumber}}</td>
+                                        <td>{{accounts.description}}</td>
+                                        <td>{{accounts.operationType}}</td>
+                                        <td>{{accounts.amount}}</td>
+                                    </tr>
                                 </table>
                             </div>
                         </div>

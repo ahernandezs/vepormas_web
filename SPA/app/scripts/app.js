@@ -5,7 +5,8 @@ var app = angular.module('spaApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'infinite-scroll'
+  'infinite-scroll',
+  'ngTable'
 ]);
 
 app.config(['$routeProvider', '$locationProvider', '$httpProvider', function ($routeProvider, $locationProvider, $httpProvider) {
