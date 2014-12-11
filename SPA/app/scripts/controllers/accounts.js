@@ -23,16 +23,16 @@ angular.module('spaApp').controller('AccountsCtrl', ['$scope', '$location', func
 							'limitCredit':'5,000.00',
 							'availableCredit':'3,000.00'};
 
-	$scope.accounts = [{ name:'Consutarjeta Naranja1', lastDigits:'*********12345', totalAmount:'50000',type:1},
-					   { name:'Consutarjeta Naranja2', lastDigits:'*********12346', totalAmount:'60000',type:1},
-					   { name:'Consutarjeta Naranja3', lastDigits:'*********12314', totalAmount:'70000',type:1},
-					   { name:'Consuinversión', lastDigits:'Vista', totalAmount:'50000',type:2},
-					   { name:'Consuinversión', lastDigits:'CEDE', totalAmount:'60000',type:2},
-					   { name:'Consupagaré', lastDigits:'', totalAmount:'70000',type:2},
-					   { name:'Cuenta1', lastDigits:'*********12345', totalAmount:'70000',type:3},
-					   { name:'Cuenta2', lastDigits:'*********12345', totalAmount:'70000',type:3},
-					   { name:'Crédito Institucional', lastDigits:'', totalAmount:'70000',type:4},
-					   { name:'Crédito Institucional', lastDigits:'', totalAmount:'70000',type:4},
+	$scope.accounts = [{ accountId:'001', name:'Consutarjeta Naranja1', lastDigits:'*********12345', totalAmount:'50000',type:1},
+					   { accountId:'002', name:'Consutarjeta Naranja2', lastDigits:'*********12346', totalAmount:'60000',type:1},
+					   { accountId:'003', name:'Consutarjeta Naranja3', lastDigits:'*********12314', totalAmount:'70000',type:1},
+					   { accountId:'004', name:'Consuinversión', lastDigits:'Vista', totalAmount:'50000',type:2},
+					   { accountId:'005', name:'Consuinversión', lastDigits:'CEDE', totalAmount:'60000',type:2},
+					   { accountId:'006', name:'Consupagaré', lastDigits:'', totalAmount:'70000',type:2},
+					   { accountId:'008', name:'Cuenta1', lastDigits:'*********12345', totalAmount:'70000',type:3},
+					   { accountId:'007', name:'Cuenta2', lastDigits:'*********12345', totalAmount:'70000',type:3},
+					   { accountId:'009', name:'Crédito Institucional', lastDigits:'', totalAmount:'70000',type:4},
+					   { accountId:'010', name:'Crédito Institucional', lastDigits:'', totalAmount:'70000',type:4},
 					   ];
   /**
     Function for logout application
@@ -40,5 +40,10 @@ angular.module('spaApp').controller('AccountsCtrl', ['$scope', '$location', func
   $scope.logout = function() {
 	$location.path('/login');
   }
+
+   $scope.selectAccount = function(accountId) {
+    $scope.activeClass = accountId;
+    console.log(accountId);
+  };
 
 }]);
