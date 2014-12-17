@@ -39,11 +39,58 @@ angular.module('spaApp').controller('AccountsCtrl', ['$scope', '$location', func
   **/
   $scope.logout = function() {
 	$location.path('/login');
-  }
+  };
 
-   $scope.selectAccount = function(accountId) {
+   $scope.selectAccount = function(accountId, type) {
     $scope.activeClass = accountId;
     console.log(accountId);
+    
+    switch (type) {
+        case 1:
+            console.log('Tarjeta de Credito');
+            break;
+        case 2:
+            console.log('Inversiones');
+            break;
+        case 3:
+            console.log('Cuentas');
+            $scope.loadAccountsHeader(accountId);
+            break;
+        case 4:
+            console.log('Creditos');
+            $scope.loadCreditsHeader(accountId);
+            break;
+        default:
+            break;
+    }
   };
+                       
+    $scope.loadAccountsHeader = function(accountId) {
+        console.log('here');
+        $scope.accountHeader = {
+                       'availableMoney' : '7,000.00',
+                       'period' : '12 / 09 / 2014 al 12 / 10 / 2014',
+                       'funds' : '10,000.00',
+                       'fundsGood' : '5,000.00',
+                       'totalFunds' : '15,000.00'
+        };
+    };
+    
+    $scope.loadCreditsHeader = function(accountId) {
+        console.log('here');
+        $scope.accountHeader = {
+                       'availableMoney' : '7,000.00',
+                       'startDate' : '21 / ABR / 2014',
+                       'creditAmount' : '40,000.00',
+                       'appliedPayments' : '20',
+                       'discountAmount' : '1,500.00',
+                       'paymentCycle' : 'Mensual',
+                       'overdueAmount' : '0.00',
+                       'nextPaymentAmount' : '200.00',
+                       'nextPaymentDate' : '15 / OCT / 2014',
+                       'daysOverdue' : '0',
+                       'dependence' : 'Empresa'
+        };
+    };
 
 }]);

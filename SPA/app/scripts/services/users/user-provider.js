@@ -13,9 +13,9 @@ angular.module('spaApp')
       return deferred.promise;      
     },
 
-    registerUser: function(clientNumber, nameClient, bankBranch, date){
+    registerUser: function(identifier, cardId, imageId, password, email, cellPhone){
       var deferred = $q.defer();
-      userService.setUser(clientNumber, nameClient, bankBranch, date).success(function(data, status, headers){
+      userService.setUser(identifier, cardId, imageId, password, email, cellPhone).success(function(data, status, headers){
         deferred.resolve();
       }).error(function(data, status){
         return deferred.reject('Error to register user');
