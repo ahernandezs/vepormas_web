@@ -1,0 +1,27 @@
+<form>
+    Fecha inicio
+    <input type="search">
+    Fecha fin
+    <input type="search">
+    <button class="blue">Buscar</button>
+</form>
+<div class="transactions">
+    <table ng-table="tableParams" class="details">
+     <thead>
+        <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">N. de Transacci&oacute;n</th>
+            <th scope="col">Descripci&oacute;n</th>
+            <th scope="col">Tipo de operaci&oacute;n</th>
+            <th scope="col">Monto</th>
+        </tr>
+    </thead>
+    <tr ng-repeat="accounts in $data">
+        <td>{{accounts.date}}</td>
+        <td>{{accounts.transactionNumber}}</td>
+        <td>{{accounts.description}}</td>
+        <td>{{accounts.operationType}}</td>
+        <td>{{accounts.amount}}</td>
+    </tr>
+    </table>
+</div>

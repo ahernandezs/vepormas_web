@@ -1,29 +1,5 @@
-<div class="right-section">
-
-  <div class="submenu-blue">
-    <h5>Pagar tarjeta
-      <span ng-click="close()" class="glyphicon glyphicon-remove pull-right alose-button"></span>
-    </h5>
-  </div>
-
-  <div class="side-block">
-    <span class="pull-right">
-      <button class="btn btn-default" type="submit" ng-click="showAddCard()">
-        &nbsp;
-        <span class="glyphicon glyphicon-credit-card"></span>
-        <span class="glyphicon glyphicon-plus"></span>
-        &nbsp;
-      </button>
-    </span>
-    <p>Da de alta una tarjeta de cr&eacute;dito o d&eacute;bito</p>
-    <br />
-  </div>
-
-  <p>
-    Tarjeta de cr&eacute;dito a pagar:
-  </p>
-
-  <select class="form-control" ng-model="card.current" ng-options="a.name + ' ' + a.lastdigits for a in cards" ng-change="updateCard()">
-    <option data-icon="icon-calendar" value="">Selecciona una tarjeta</option>
-  </select>
-</div>
+<!-- second column -->
+<div class="product-details">
+    <div ng-include="'views/partials/cards/detail.html'"/>
+    <div ng-include="'views/partials/cards/transactions.html'"/>
+</div> <!-- second column ends -->

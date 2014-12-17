@@ -13,6 +13,7 @@ var app = angular.module('spaApp', [
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
   $urlRouterProvider.otherwise("/login");
+  //$httpProvider.responseInterceptors.push('httpInterceptor');
   $stateProvider
     .state('login', {
     url: '/login',
@@ -20,10 +21,23 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     controller: 'LoginCtrl'
     })
 
-    .state('accounts', {
+    .state('dashboard', {
+    //abstract: true,
     url: '/accounts',
-    templateUrl: 'views/accounts.html',
-    controller: 'AccountsCtrl'
+    templateUrl: 'views/dashboard.html',
+    controller: 'DashBoardCtrl'
+    })
+
+    .state('dashboard.credit', {
+    url: '/credit/:accountId',
+    templateUrl: 'views/partials/cards/cards.html',
+    //controller: 'AccountDetailCtrl'
+    })
+
+    .state('dashboard.investment', {
+    url: '/investment/:accountId',
+    templateUrl: 'views/partials/investment/investments.html',
+    //controller: 'AccountDetailCtrl'
     })
 
     .state('register', {
@@ -31,6 +45,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     templateUrl: 'views/register.html',
     controller: 'RegisterCtrl'
     })
+
   }]);
 
 app.run(['api', '$window', '$rootScope',function(api, $window, $rootScope) {
@@ -49,5 +64,6 @@ app.run(['api', '$window', '$rootScope',function(api, $window, $rootScope) {
     }
   }
 }]);
+
 
 

@@ -1,79 +1,59 @@
-<div class="products">
-   <div class="outter">
-    <div ng-include="'views/partials/layout/main-header.html'"></div>
-    <main>
-      <div class="wrapper">
-                <div class="wrapper">
-                    <div class="row">
-                        <div class="actions">
-                            <tc/>
-							<investments/>
-							<account/>
-							<credits/>
-                        </div>
-                        <div class="product-details">
-                            <div class="header">
-                                <h2 class="title">
-                                    <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'fa fa-minus-square' : 'fa fa-plus-square'"></i></a>
-                                    Consuinversi&oacute;n CEDE
-                                    <span>Inversi&oacute;n</span>
-                                </h2>
-                                <div class="payment-actions">
-                                    <div>
-                                        <div>
-                                            <p class="amount">{{investmentHeader.available}}</p>
-                                            <span>Saldo disponible</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr ng-show='!showAccountHeader'>
-                            <div class="box" ng-show='showAccountHeader'>
-                                <ul>
-                                    <li>Fecha de inicio:                            <span>{{accountHeader.cutDate}}</span></li>
-                                    <li>Fecha de vencimiento:                       <span>{{accountHeader.limitDate}}</span></li>
-                                    <li>Intereses:                                  <span class="amount">{{accountHeader.limitPayment}}</span></li>
-                                    <li>Fecha de &uacute;ltima renovaci&oacute;n:   <span class="amount">{{accountHeader.cutBalance}}</span></li>
-                                </ul>
-                                <ul>
-                                    <li>Tasa de inter&eacute;s:     <span class="amount">{{accountHeader.currentBalance}}</span></li>
-                                    <li>Porcentaje de ISR:          <span class="amount">{{accountHeader.noInterest}}</span></li>
-                                    <li>Monto del ISR:              <span class="amount">{{accountHeader.dueCurrent}}</span></li>
-                                    <li>Monto del rendimiento:      <span class="amount">{{accountHeader.limitCredit}}</span></li>
-                                </ul>
-                            </div>
-                            <form>
-                                Fecha inicio
-                                <input type="search">
-                                Fecha fin
-                                <input type="search">
-                                <button class="blue">Buscar</button>
-                            </form>
-                            <div class="transactions">
-                                <table ng-table="tableParams" class="details">
-                                   <thead>
-                                        <tr>
-                                            <th scope="col">Fecha</th>
-                                            <th scope="col">N. de Transacci&oacute;n</th>
-                                            <th scope="col">Descripci&oacute;n</th>
-                                            <th scope="col">Tipo de operaci&oacute;n</th>
-                                            <th scope="col">Monto</th>
-                                        </tr>
-                                    </thead>
-                                    <tr ng-repeat="accounts in $data">
-                                        <td>{{accounts.date}}</td>
-                                        <td>{{accounts.transactionNumber}}</td>
-                                        <td>{{accounts.description}}</td>
-                                        <td>{{accounts.operationType}}</td>
-                                        <td>{{accounts.amount}}</td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
+
+<div class="product-details">
+    <div class="header">
+        <h2 class="title">
+            <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'fa fa-minus-square' : 'fa fa-plus-square'"></i></a>
+            Consuinversi&oacute;n CEDE
+            <span>Inversi&oacute;n</span>
+        </h2>
+        <div class="payment-actions">
+            <div>
+                <div>
+                    <p class="amount">{{investmentHeader.available}}</p>
+                    <span>Saldo disponible</span>
                 </div>
-      </div>
-    </main>
-    <div ng-include="'views/partials/layout/main-footer.html'"></div>
-  </div>
-</div>
+            </div>
+        </div>
+    </div>
+    <hr ng-show='!showAccountHeader'>
+    <div class="box" ng-show='showAccountHeader'>
+        <ul>
+            <li>Fecha de inicio:                            <span>{{accountHeader.cutDate}}</span></li>
+            <li>Fecha de vencimiento:                       <span>{{accountHeader.limitDate}}</span></li>
+            <li>Intereses:                                  <span class="amount">{{accountHeader.limitPayment}}</span></li>
+            <li>Fecha de &uacute;ltima renovaci&oacute;n:   <span class="amount">{{accountHeader.cutBalance}}</span></li>
+        </ul>
+        <ul>
+            <li>Tasa de inter&eacute;s:     <span class="amount">{{accountHeader.currentBalance}}</span></li>
+            <li>Porcentaje de ISR:          <span class="amount">{{accountHeader.noInterest}}</span></li>
+            <li>Monto del ISR:              <span class="amount">{{accountHeader.dueCurrent}}</span></li>
+            <li>Monto del rendimiento:      <span class="amount">{{accountHeader.limitCredit}}</span></li>
+        </ul>
+    </div>
+    <form>
+        Fecha inicio
+        <input type="search">
+        Fecha fin
+        <input type="search">
+        <button class="blue">Buscar</button>
+    </form>
+    <div class="transactions">
+        <table ng-table="tableParams" class="details">
+           <thead>
+                <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">N. de Transacci&oacute;n</th>
+                    <th scope="col">Descripci&oacute;n</th>
+                    <th scope="col">Tipo de operaci&oacute;n</th>
+                    <th scope="col">Monto</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="accounts in $data">
+                <td>{{accounts.date}}</td>
+                <td>{{accounts.transactionNumber}}</td>
+                <td>{{accounts.description}}</td>
+                <td>{{accounts.operationType}}</td>
+                <td>{{accounts.amount}}</td>
+            </tr>
+        </table>
+    </div>
