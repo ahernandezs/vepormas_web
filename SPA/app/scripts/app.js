@@ -7,13 +7,11 @@ var app = angular.module('spaApp', [
   'ngRoute',
   'infinite-scroll',
   'ngTable',
-  'ui.router',
-  'infinite-scroll'
+  'ui.router'
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
-    //$httpProvider.responseInterceptors.push('httpInterceptor');
   $urlRouterProvider.otherwise("/login");
   $stateProvider
     .state('login', {

@@ -13,23 +13,20 @@ angular.module('spaApp')
 		});
 	}
 
-	this.setUser = function(applicationId, digitalBankId, bankUserName, identifier, password , email, cellPhone, imageId, imageGroupId ,cardId ,customerId ){
+	this.setUser = function(identifier, cardId, imageId, password, email, cellPhone){
 		return $http({
 				url: $rootScope.restAPIBaseUrl+'/register',
 				method: 'POST',
 				data: JSON.stringify({
-					'applicationId':applicationId,
-					'digitalBankId':digitalBankId,
-					'bankUserName':bankUserName,
-					'identifier':identifier,
-					'phone':phone,
-					'password': password,
-					'email': email,
-					'cellPhone' : cellPhone ,
-					'imageId': imageId ,
-					'imageGroupId' : imageGroupId ,
-					'cardId' : cardId ,
-					'customerId' : customerId
+					'identifier': {
+                        'name':name,
+                        'value':value
+                    },
+					'card_id':cardId,
+					'image_id':imageId,
+					'password':password,
+					'e_mail':email,
+					'phone': cellPhone
 				})
 		});
 	}

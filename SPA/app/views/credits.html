@@ -67,22 +67,14 @@
                             <div class="header">
                                 <h2 class="title">
                                     <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'fa fa-minus-square' : 'fa fa-plus-square'"></i></a>
-                                    Consutarjeta Naranja ***12345
+                                    Credito Institucional 1 ***12345
                                     <span>Cuenta</span>
                                 </h2>
                                 <div class="payment-actions">
                                     <div>
                                         <div>
-                                            <p class="amount">{{accountHeader.minimumPayment}}</p>
-                                            <button class="blue">Pago mínimo</button>
-                                        </div>
-                                        <div>
-                                            <p class="amount">{{accountHeader.noInterest}}</p>
-                                            <button class="blue">Pago para no <span class="block">generar intereses</span></button>
-                                        </div>
-                                        <div>
-                                            <p class="amount">{{accountHeader.totalPayment}}</p>
-                                            <button class="blue">Pago total</button>
+                                            <p class="amount">{{accountHeader.availableMoney}}</p>
+                                            <button class="blue">Saldo disponible</button>
                                         </div>
                                     </div>
                                 </div>
@@ -91,17 +83,18 @@
                             <hr ng-show='!showAccountHeader'>
                             <div class="box" ng-show='showAccountHeader'>
                                 <ul>
-                                    <li>Fecha de corte:         <span>{{accountHeader.cutDate}}</span></li>
-                                    <li>Fecha límite de pago:   <span>{{accountHeader.limitDate}}</span></li>
-                                    <li>Límite de pago:         <span class="amount">{{accountHeader.limitPayment}}</span></li>
-                                    <li>Saldo al corte:         <span class="amount">{{accountHeader.cutBalance}}</span></li>
+                                    <li>Fecha de otorgamiento:              <span>{{accountHeader.startDate}}</span></li>
+                                    <li>Monto del credito:                  <span class="amount">{{accountHeader.creditAmount}}</span></li>
+                                    <li>Numero de pagos pactados:           <span>{{accountHeader.appliedPayments}}</span></li>
+                                    <li>Monto de descuento:                 <span class="amount">{{accountHeader.discountAmount}}</span></li>
+                                    <li>Frecuencia de pago:                 <span>{{accountHeader.paymentCycle}}</span></li>
                                 </ul>
                                 <ul>
-                                    <li>Saldo actual:                   <span class="amount">{{accountHeader.currentBalance}}</span></li>
-                                    <li>Pago para no generar intereses: <span class="amount">{{accountHeader.noInterest}}</span></li>
-                                    <li>Saldo vencido:                  <span class="amount">{{accountHeader.dueCurrent}}</span></li>
-                                    <li>Límite de crédito:              <span class="amount">{{accountHeader.limitCredit}}</span></li>
-                                    <li>Crédito disponible:             <span class="amount">{{accountHeader.availableCredit}}</span></li>
+                                    <li>Monto vencido:                      <span class="amount">{{accountHeader.overdueAmount}}</span></li>
+                                    <li>Monto de proximo pago:              <span class="amount">{{accountHeader.nextPaymentAmount}}</span></li>
+                                    <li>Fecha de proximo pago:              <span>{{accountHeader.nextPaymentDate}}</span></li>
+                                    <li>Dias de atraso:                     <span>{{accountHeader.daysOverdue}}</span></li>
+                                    <li>Dependencia:                        <span>{{accountHeader.dependence}}</span></li>
                                 </ul>
                             </div>
                             <form class="search">
@@ -110,59 +103,67 @@
                             </form>
                             <div class="transactions">
                                 <div class="filter">
-                                    <span>Ver por:</span>
-                                    <div class="double-btn">
-                                        <button class="orange">Periodo actual</button>
-                                        <button class="blue">Periodo anterior</button>
+                                    <div class="inline" style="display:flex;">
+                                        <p>Fecha inicio</p>
+                                        <input type="date">
+                                        <p>Fecha fin</p>
+                                        <input type="date">
                                     </div>
-                                    <a href="#" class="help"><i class="fa fa-question-circle"></i><span>Ayuda</span></a>
+                                    <div class="single-btn">
+                                        <button class="orange">Buscar</button>
+                                    </div>
                                 </div>
                                 <table class="details">
                                     <thead>
                                         <tr>
-                                            <th scope="col">Fecha</th>
-                                            <th scope="col">N. de autorización</th>
+                                            <th scope="col">Fecha de descuento</th>
                                             <th scope="col">Descripción</th>
-                                            <th scope="col">Tipo de operación</th>
-                                            <th scope="col">Monto</th>
+                                            <th scope="col">Capital</th>
+                                            <th scope="col">Interes e IVA</th>
+                                            <th scope="col">Total</th>
+                                            <th scope="col">Fecha de aplicación</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr class="year"><td>2014</td><td colspan="5"></tr>
                                         <tr>
                                             <td><span>sep</span><span>18</span></td>
-                                            <td>001</td>
                                             <td>Palacio de Hierro</td>
-                                            <td>Pago</td>
+                                            <td>$1,000.00</td>
+                                            <td>$1,500.00</td>
                                             <td>25,000.00</td>
+                                            <td>19 SEP 2014</td>
                                         </tr>
                                         <tr>
                                             <td><span>sep</span><span>18</span></td>
-                                            <td>002</td>
                                             <td>American Express</td>
-                                            <td>Retiro</td>
-                                            <td>54,000.00</td>
+                                            <td>$1,000.00</td>
+                                            <td>$1,500.00</td>
+                                            <td>25,000.00</td>
+                                            <td>19 SEP 2014</td>
                                         </tr>
                                         <tr>
                                             <td><span>sep</span><span>18</span></td>
-                                            <td>003</td>
                                             <td>Tiempo aire Josefina</td>
-                                            <td>Pago</td>
-                                            <td>300.00</td>
+                                            <td>$1,000.00</td>
+                                            <td>$1,500.00</td>
+                                            <td>25,000.00</td>
+                                            <td>19 SEP 2014</td>
                                         </tr>
                                         <tr>
                                             <td><span>sep</span><span>18</span></td>
-                                            <td>004</td>
                                             <td>Martí</td>
-                                            <td>Pago</td>
-                                            <td>5,000.00</td>
+                                            <td>$1,000.00</td>
+                                            <td>$1,500.00</td>
+                                            <td>25,000.00</td>
+                                            <td>19 SEP 2014</td>
                                         </tr>
                                         <tr>
                                             <td><span>sep</span><span>18</span></td>
-                                            <td>005</td>
                                             <td>Starbucks</td>
-                                            <td>Pago</td>
-                                            <td>250.00</td>
+                                            <td>$1,000.00</td>
+                                            <td>$1,500.00</td>
+                                            <td>25,000.00</td>
+                                            <td>19 SEP 2014</td>
                                         </tr>
                                     </tbody>
                                 </table>
