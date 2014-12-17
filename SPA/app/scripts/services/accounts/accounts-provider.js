@@ -26,6 +26,23 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
       return deferred.promise;
     },
 
+    getTransactions: function(accountId, numPage, size){
+
+      var deferred = $q.defer();
+      console.log('getting transactions');
+
+      accountsService.getTransactions(accountId, numPage, size).success(function(data, status, headers) {
+        $rootScope.transactions = data.transactions;
+        deferred.resolve();
+      }).error(function(data, status) {
+        console.log(data, status);
+        return deferred.reject("Error getting transactions");
+      });
+
+      return deferred.promise;
+
+    }
+
     getAccountTransactions: function (accountId, numPage, size) {
       var index = this.getAccountIndex(accountId);
       var currentAccount = $rootScope.accounts[index];
