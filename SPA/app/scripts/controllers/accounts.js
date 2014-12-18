@@ -3,7 +3,7 @@
 /**
  * The accounts controller. Gets accounts passing auth parameters
  */
-angular.module('spaApp').controller('AccountsCtrl', ['$scope', '$location', function ($scope, $location) {
+angular.module('spaApp').controller('AccountsCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider) {
 	//TODO: temporal binding
 	$scope.completeName = 'ABEL BECERRA CASTRO';
 	$scope.date = '17/05/2014';
@@ -34,6 +34,15 @@ angular.module('spaApp').controller('AccountsCtrl', ['$scope', '$location', func
 					   { accountId:'009', name:'Crédito Institucional', lastDigits:'', totalAmount:'70000',type:4},
 					   { accountId:'010', name:'Crédito Institucional', lastDigits:'', totalAmount:'70000',type:4},
 					   ];
+
+    //accountsProvider.getTransactions($routeParams.accountId,$scope.numPage,10).then(
+    accountsProvider.getTransactions("89123456789213450-INV",0,100).then(
+      function(data) {
+			$scope.transactions = $rootScope.transactions;
+			console.log($scope.transactions);
+      }
+    );
+
   /**
     Function for logout application
   **/
