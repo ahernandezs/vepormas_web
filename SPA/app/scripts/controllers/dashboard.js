@@ -3,7 +3,7 @@
 /**
  * The accounts controller. Gets accounts passing auth parameters
  */
-angular.module('spaApp').controller('AccountsCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider) {
+angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider) {
 	//TODO: temporal binding
 	$scope.completeName = 'ABEL BECERRA CASTRO';
 	$scope.date = '17/05/2014';
@@ -47,19 +47,21 @@ angular.module('spaApp').controller('AccountsCtrl', ['$rootScope', '$scope', '$l
     Function for logout application
   **/
   $scope.logout = function() {
-	$location.path('/login');
+	$location.path('login');
   };
 
-   $scope.selectAccount = function(accountId, type) {
+  $scope.selectAccount = function(accountId, type) {
     $scope.activeClass = accountId;
     console.log(accountId);
     
     switch (type) {
         case 1:
             console.log('Tarjeta de Credito');
+            $location.path('/accounts/credit/'+accountId);
             break;
         case 2:
             console.log('Inversiones');
+            $location.path('/accounts/investment/'+accountId);
             break;
         case 3:
             console.log('Cuentas');
@@ -102,4 +104,5 @@ angular.module('spaApp').controller('AccountsCtrl', ['$rootScope', '$scope', '$l
         };
     };
 
+  $scope.selectAccount('001',1);
 }]);
