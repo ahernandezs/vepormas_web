@@ -23,19 +23,12 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
 							'limitCredit':'5,000.00',
 							'availableCredit':'3,000.00'};
 
-	$scope.accounts = [{ accountId:'001', name:'Consutarjeta Naranja1', lastDigits:'*********12345', totalAmount:'50000',type:1},
-					   { accountId:'002', name:'Consutarjeta Naranja2', lastDigits:'*********12346', totalAmount:'60000',type:1},
-					   { accountId:'003', name:'Consutarjeta Naranja3', lastDigits:'*********12314', totalAmount:'70000',type:1},
-					   { accountId:'004', name:'Consuinversión', lastDigits:'Vista', totalAmount:'50000',type:2},
-					   { accountId:'005', name:'Consuinversión', lastDigits:'CEDE', totalAmount:'60000',type:2},
-					   { accountId:'006', name:'Consupagaré', lastDigits:'', totalAmount:'70000',type:2},
-					   { accountId:'008', name:'Cuenta1', lastDigits:'*********12345', totalAmount:'70000',type:3},
-					   { accountId:'007', name:'Cuenta2', lastDigits:'*********12345', totalAmount:'70000',type:3},
-					   { accountId:'009', name:'Crédito Institucional', lastDigits:'', totalAmount:'70000',type:4},
-					   { accountId:'010', name:'Crédito Institucional', lastDigits:'', totalAmount:'70000',type:4},
-					   ];
-
-    //accountsProvider.getTransactions($routeParams.accountId,$scope.numPage,10).then(
+    accountsProvider.getAccounts().then(
+      function(data) {
+      $scope.accounts = $rootScope.accounts;
+      console.log($scope.accounts);
+      }
+    );
     accountsProvider.getTransactions("89123456789213450-INV",0,100).then(
       function(data) {
 			$scope.transactions = $rootScope.transactions;
@@ -55,19 +48,19 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
     console.log(accountId);
     
     switch (type) {
-        case 1:
+        case 'TDC':
             console.log('Tarjeta de Credito');
             $location.path('/accounts/credit/'+accountId);
             break;
-        case 2:
+        case 'INV':
             console.log('Inversiones');
             $location.path('/accounts/investment/'+accountId);
             break;
-        case 3:
+        case 'DEP':
             console.log('Cuentas');
             $scope.loadAccountsHeader(accountId);
             break;
-        case 4:
+        case 'CXN':
             console.log('Creditos');
             $scope.loadCreditsHeader(accountId);
             break;
@@ -116,5 +109,5 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
       "available_credit": 45000
    }
 
-  $scope.selectAccount('001',1);
+  $scope.selectAccount( $scope.accounts[0]._account_id, $scope.accounts[0].account_type);
 }]);

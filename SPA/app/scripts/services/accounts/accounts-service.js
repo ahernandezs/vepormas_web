@@ -11,6 +11,10 @@ angular.module('spaApp')
             return $http.get($rootScope.restAPIBaseUrl+'/accounts');
         };
 
+        this.getAccountDetail = function (accountId) {
+            return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId);
+        };
+
         this.getTransactions = function(accountId, numPage, size) {
 			return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions?page='+numPage+'&size='+size);
         }
