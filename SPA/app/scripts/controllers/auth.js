@@ -14,13 +14,6 @@ angular.module('spaApp')
   //  $location.path('/accounts');
   //}
 
-  $scope.images = [
-  {id:'00001', url: './../../images/perro.png'},
-  {id:'00002', url: './../../images/playa.png'},
-  {id:'00003', url: './../../images/puerto.png'},
-  {id:'00004', url: './../../images/bosque.png'},
-  ];
-
   $scope.username;
   $scope.password;
  
@@ -81,8 +74,10 @@ angular.module('spaApp')
       success(function(data, status, headers) {
         $scope.showImageLogin = true;
         $scope.username = username;
+        $scope.client_name = data.client_name;
         console.log(data);
-       $scope.incorrectData = false;
+        $scope.images = data.images;
+        $scope.incorrectData = false;
     }).
       error(function(data, status) {
       $scope.errorMessage = data.message;
@@ -104,9 +99,8 @@ angular.module('spaApp')
       success(function(data, status, headers) {
       var token = headers('X-AUTH-TOKEN');
       $rootScope.session_token = token;
-      $rootScope.last_access_date = data.last_access_date;
-      $rootScope.last_access_media = data.last_access_media;
-
+      $rootScope.last_access_date = data.last_access_date
+      $rootScope.last_access_media = data.last_client_application_id;
       api.init();
       $location.path( '/accounts' );
     }).

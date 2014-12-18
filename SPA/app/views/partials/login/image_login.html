@@ -1,14 +1,14 @@
 <form class="user-login" >
     <h2>BIENVENIDO</h2>
-    <h3>Abel</h3>
+    <h3>{{client_name}}</h3>
 	<hr>
 
  <a class="blue-min">Nivel de seguridad adicional</a>
  <a class="gray-min">Selecciona la imagen que elegiste al registrarte</a>
 <!-- images -->
 <div class="radioGroupBelow" align="center">
-   <label for="{{image.id}}" ng-repeat="image in images">  <img src="{{image.url}}" height="60" >
-        <input type="radio" name="imagegroup" ng-model="$parent.selectedImage" value="{{image.id}}">
+   <label for="{{image.id}}" ng-repeat="image in images">  <img src="{{restAPIBaseUrl}}/{{image.url}}" height="60" >
+        <input type="radio" name="imagegroup" ng-model="$parent.selectedImage" value="{{image.image_id}}">
     </label>
 </div>
 <!-- images -->
