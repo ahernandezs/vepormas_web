@@ -41,7 +41,7 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
 
       return deferred.promise;
 
-    }
+    },
 
     getAccountTransactions: function (accountId, numPage, size) {
       var index = this.getAccountIndex(accountId);
