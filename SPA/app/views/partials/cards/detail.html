@@ -7,15 +7,15 @@
     <div class="payment-actions">
         <div>
             <div>
-                <p class="amount">{{min_payment}}</p>
+                <p class="amount">{{creditsHeader.minimum_payment}}</p>
                 <button class="blue">Pago mínimo</button>
             </div>
             <div>
-                <p class="amount">{{not_interest_payment}}</p>
+                <p class="amount">{{creditsHeader.no_interes_payment_due}}</p>
                 <button class="blue">Pago para no <span class="block">generar intereses</span></button>
             </div>
             <div>
-                <p class="amount">{{total_payment}}</p>
+                <p class="amount">{{creditsHeader.minimum_payment}}</p>
                 <button class="blue">Pago total</button>
             </div>
         </div>
@@ -25,16 +25,16 @@
 <!-- =============================================================== -->
 <div class="box"> <!-- expended box -->
     <ul>
-        <li>Fecha de corte:         <span>{{cut_date}}</span></li>
-        <li>Fecha l&iacute;mite de pago:   <span>{{limit_date_payment}}</span></li>
-        <li>L&iacute;mite de pago:         <span class="amount">{{limit_payment}}}</span></li>
-        <li>Saldo al corte:         <span class="amount">{{cut_date_balance}}</span></li>
+        <li>Fecha de corte:         <span>{{creditsHeader.cycle_date}}</span></li>
+        <li>Fecha l&iacute;mite de pago:   <span>{{creditsHeader.payment_due_date}}</span></li>
+        <li>L&iacute;mite de pago:         <span class="amount">{{creditsHeader.credit_limit}}</span></li>
+        <li>Saldo al corte:         <span class="amount">{{creditsHeader.statement_balance}}</span></li>
     </ul>
     <ul>
-        <li>Saldo actual:                   <span class="amount">{{actual_balance}}</span></li>
-        <li>Pago para no generar intereses: <span class="amount">{{not_interest_payment}}</span></li>
-        <li>Saldo vencido:                  <span class="amount">{{due_balance}}</span></li>
-        <li>L&iacute;mite de cr&eacute;dito:<span class="amount">{{credit_limit}}</span></li>
-        <li>Crédito disponible:             <span class="amount">{{credit_available}}</span></li>
+        <li>Saldo actual:                   <span class="amount">{{creditsHeader.current_balance}}</span></li>
+        <li>Pago para no generar intereses: <span class="amount">{{creditsHeader.no_interes_payment_due}}</span></li>
+        <li>Saldo vencido:                  <span class="amount">{{creditsHeader.delinquent_balance}}</span></li>
+        <li>L&iacute;mite de cr&eacute;dito:<span class="amount">{{creditsHeader.credit_limit}}</span></li>
+        <li>Crédito disponible:             <span class="amount">{{creditsHeader.available_credit}}</span></li>
     </ul>
 </div> <!-- box ends -->

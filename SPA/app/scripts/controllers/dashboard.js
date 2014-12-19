@@ -47,7 +47,7 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
     Function for logout application
   **/
   $scope.logout = function() {
-	$location.path('login');
+	 $location.path('login');
   };
 
   $scope.selectAccount = function(accountId, type) {
@@ -86,23 +86,35 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
                        'totalFunds' : '15,000.00'
         };
     };
-    
+
     $scope.loadCreditsHeader = function(accountId) {
-        console.log('here');
-        $scope.accountHeader = {
-                       'availableMoney' : '7,000.00',
-                       'startDate' : '21 / ABR / 2014',
-                       'creditAmount' : '40,000.00',
-                       'appliedPayments' : '20',
-                       'discountAmount' : '1,500.00',
-                       'paymentCycle' : 'Mensual',
-                       'overdueAmount' : '0.00',
-                       'nextPaymentAmount' : '200.00',
-                       'nextPaymentDate' : '15 / OCT / 2014',
-                       'daysOverdue' : '0',
-                       'dependence' : 'Empresa'
-        };
+        //TODO get it from middle
+        $scope.creditsHeader =  {
+          "cycle_date": 1391580000000,
+          "payment_due_date": 1399611600000,
+          "credit_limit": 55000,
+          "statement_balance": 834.55,
+          "no_interes_payment_due": 345.77,
+          "current_balance": 123.55,
+          "cycle_day": 11,
+          "minimum_payment": 456,
+          "delinquent_balance": 28345.99,
+          "available_credit": 45000
+       }
     };
+
+    $scope.creditsHeader =  {
+      "cycle_date": 1391580000000,
+      "payment_due_date": 1399611600000,
+      "credit_limit": 55000,
+      "statement_balance": 834.55,
+      "no_interes_payment_due": 345.77,
+      "current_balance": 123.55,
+      "cycle_day": 11,
+      "minimum_payment": 456,
+      "delinquent_balance": 28345.99,
+      "available_credit": 45000
+   }
 
   $scope.selectAccount('001',1);
 }]);
