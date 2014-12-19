@@ -118,8 +118,9 @@ angular.module('spaApp')
   **/
   $scope.preRegister = function(client,contract){
       //TODO:Veryfy with REST service if exists contract?
-      //userProvider.verifyUser();
-      $location.path( '/register');
+      userProvider.verifyUser(client, contract).then(function() {
+        $location.path( '/register');
+      });
   }
 
 }]);

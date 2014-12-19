@@ -7,8 +7,9 @@ angular.module('spaApp')
 				url: $rootScope.restAPIBaseUrl+'/preregister',
 				method: 'POST',
 				data: JSON.stringify({
-					'applicationId':clientOrAccount,
-					'digitalBankId':Folio
+					'client_id':clientOrAccount,
+					'folio_id':Folio,
+                    'client_application_id': 'PROSA-DIG'
 				})
 		});
 	}
