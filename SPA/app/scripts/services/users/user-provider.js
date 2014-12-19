@@ -1,13 +1,16 @@
 'use strict';
 
 angular.module('spaApp')
-.factory('userProvider', ['$q','$rootScope','userService',function ($q, $rootScope, userService) {
+.factory('userProvider', ['$q','$rootScope','userService', function ($q, $rootScope, userService) {
   return {
     verifyUser: function(clientOrAccount,folio){
       var deferred = $q.defer();
       userService.getUser(clientOrAccount, folio).success(function(data, status, headers){
+          console.log(JSON.stringify(data));
+          $rootScope.preData = data;
         deferred.resolve();
       }).error(function(data, status){
+          console.log('error');
         return deferred.reject('Error to get user');
       })
       return deferred.promise;      

@@ -1,22 +1,24 @@
 'use strict';
 
-angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'userProvider' , function ($scope, $location, userProvider) {
+angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'userProvider', '$rootScope' , function ($scope, $location, userProvider, $rootScope) {
 
 	$scope.selection = 1;
-
-	$scope.clientNumber = 'XXXXXX0435';
-	$scope.nameClient = 'Alfonzo Perez Tovar';
 	$scope.bankBranch = 'Eduardo Molina';
-	$scope.date = '18/JUN/2014';
     $scope.registerData = {};
-
-
-    $scope.images = [
-    {id:'00001', url: './../../images/perro.png'},
-    {id:'00002', url: './../../images/playa.png'},
-    {id:'00003', url: './../../images/puerto.png'},
-    {id:'00004', url: './../../images/bosque.png'},
-    ];
+    
+    $scope.init = function() {
+        $scope.contract = $rootScope.preData.contract;
+        $scope.nameClient = $scope.contract.name;
+        $scope.clientNumber = $scope.contract.client_id;
+        var temp = new Date($scope.contract.created_at);
+        $scope.date = temp.getDay() + ' / ' + temp.getMonth() + ' / ' + temp.getFullYear();
+        $scope.images = {};
+        for (var i = 0; i < $rootScope.preData.images.length; i++) {
+            $scope.images[i] = { 'id' : $rootScope.preData.images[i].image_id, 'url' : 'http://192.168.0.10:8080/Abanking-Core/' + $rootScope.preData.images[i].url };
+        }
+        console.log( $scope.images );
+    };
+    
 	/**
 		Function for navigate when step complete  .
 	**/
