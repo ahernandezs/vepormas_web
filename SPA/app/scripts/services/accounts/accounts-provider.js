@@ -27,7 +27,6 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
     },
 
     getAccountDetail: function(accountId) {
-
       var deferred = $q.defer();
       console.log('getting account details');
 

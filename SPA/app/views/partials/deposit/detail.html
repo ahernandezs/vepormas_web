@@ -1,0 +1,27 @@
+<div class="header">
+    <h2 class="title">
+        <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'fa fa-minus-square' : 'fa fa-plus-square'"></i></a>
+        Consucuenta 1 ***12345
+        <span>Cuenta</span>
+    </h2>
+    <div class="payment-actions">
+        <div>
+            <div>
+                <p class="amount">{{accountDetail.current_balance}}</p>
+                <button class="blue">Saldo disponible</button>
+            </div>
+        </div>
+    </div>
+    <a href="#"><i class="fa fa-file-pdf-o"></i>Estados <span>de cuenta</span></a>
+</div>
+<hr ng-show='!showAccountHeader'>
+<div class="box" ng-show='showAccountHeader'>
+    <ul>
+        <li>Periodo:        <span>{{accountDetail.period}}</span></li>
+        <li>Saldo:          <span class="amount">{{accountDetail.last_amount_withdrawal}}</span></li>
+    </ul>
+    <ul>
+        <li>Saldo salvo buen cobro:     <span class="amount">{{accountDetail.last_amount_deposit}}</span></li>
+        <li>Saldo Total:                <span class="amount">{{accountDetail.available_Balance}}</span></li>
+    </ul>
+</div>

@@ -31,7 +31,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     .state('dashboard.credit', {
     url: '/credit/:accountId',
     templateUrl: 'views/partials/cards/cards.html',
-    //controller: 'AccountDetailCtrl'
+    controller: 'AccountDetailCtrl'
     })
 
     .state('dashboard.creditcard', {
@@ -44,6 +44,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
       url: '/investment/:accountId',
       templateUrl: 'views/partials/investment/investments.html',
       controller: 'InvestmentsCtrl'
+    })
+
+    .state('dashboard.deposit', {
+    url: '/deposit/:accountId',
+    templateUrl: 'views/partials/deposit/deposit.html',
+    controller: 'AccountDepositDetailCtrl'
     })
 
     .state('register', {

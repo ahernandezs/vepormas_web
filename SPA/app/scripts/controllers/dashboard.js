@@ -30,13 +30,6 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
       console.log($scope.accounts);
       }
     );
-    accountsProvider.getTransactions("89123456789213450-INV",0,100).then(
-      function(data) {
-			$scope.transactions = $rootScope.transactions;
-			console.log($scope.transactions);
-      }
-    );
-
   /**
     Function for logout application
   **/
@@ -46,6 +39,8 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
 
   $scope.selectAccount = function(accountId, type) {
     $scope.activeClass = accountId;
+    $scope.selectedAcccountId = accountId;
+    $scope.selectedAccountType = type;
     console.log(accountId);
     
     switch (type) {
@@ -59,7 +54,7 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
             break;
         case 'DEP':
             console.log('Cuentas');
-            $scope.loadAccountsHeader(accountId);
+            $location.path('/accounts/deposit/'+accountId);            
             break;
         case 'CXN':
             console.log('Creditos');
