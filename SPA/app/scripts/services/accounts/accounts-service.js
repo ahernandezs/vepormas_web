@@ -11,7 +11,8 @@ angular.module('spaApp')
             return $http.get($rootScope.restAPIBaseUrl+'/accounts');
         };
 
-        this.getAccountDetail = function (accountId) {
+        this.getAccountsDetail = function (accountId) {
+            console.log('executing: '+$rootScope.restAPIBaseUrl+'/accounts/'+accountId);
             return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId);
         };
 

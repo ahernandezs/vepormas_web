@@ -26,6 +26,7 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
     accountsProvider.getAccounts().then(
       function(data) {
       $scope.accounts = $rootScope.accounts;
+      $scope.selectAccount( $scope.accounts[0]._account_id, $scope.accounts[0].account_type);
       console.log($scope.accounts);
       }
     );
@@ -50,7 +51,7 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
     switch (type) {
         case 'TDC':
             console.log('Tarjeta de Credito');
-            $location.path('/accounts/credit/'+accountId);
+            $location.path('/accounts/creditcard/'+accountId);
             break;
         case 'INV':
             console.log('Inversiones');
@@ -80,34 +81,4 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
         };
     };
 
-    $scope.loadCreditsHeader = function(accountId) {
-        //TODO get it from middle
-        $scope.creditsHeader =  {
-          "cycle_date": 1391580000000,
-          "payment_due_date": 1399611600000,
-          "credit_limit": 55000,
-          "statement_balance": 834.55,
-          "no_interes_payment_due": 345.77,
-          "current_balance": 123.55,
-          "cycle_day": 11,
-          "minimum_payment": 456,
-          "delinquent_balance": 28345.99,
-          "available_credit": 45000
-       }
-    };
-
-    $scope.creditsHeader =  {
-      "cycle_date": 1391580000000,
-      "payment_due_date": 1399611600000,
-      "credit_limit": 55000,
-      "statement_balance": 834.55,
-      "no_interes_payment_due": 345.77,
-      "current_balance": 123.55,
-      "cycle_day": 11,
-      "minimum_payment": 456,
-      "delinquent_balance": 28345.99,
-      "available_credit": 45000
-   }
-
-  $scope.selectAccount( $scope.accounts[0]._account_id, $scope.accounts[0].account_type);
 }]);
