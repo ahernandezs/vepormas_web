@@ -13,15 +13,7 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
       if(!$rootScope.accounts) {
         console.log('getting accounts');
         accountsService.getAccounts().success(function(data, status, headers) {
-          var tdc = data.credit_card;
-          var deposits = data.deposits;
-          var investment = data.investment;
-          var loan = data.loan;
-          var result = tdc.concat(deposits);
-          result = result.concat(investment);
-          result = result.concat(loan);
-          console.log(result);
-          $rootScope.accounts = result;
+          $rootScope.accounts = data.accounts;
           deferred.resolve();
         }).error(function(data, status) {
           console.log(data, status);
@@ -34,21 +26,18 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
       return deferred.promise;
     },
 
-    getAccountDetail: function (accountId) {
-      var deferred = $q.defer();
+    getAccountDetail: function(accountId) {
 
-      if(!$rootScope.accounts) {
-        console.log('getting account detail');
-        accountsService.getAccounts(accountId).success(function(data, status, headers) {
-          $rootScope.accounts = data.accounts;
-          deferred.resolve();
-        }).error(function(data, status) {
-          console.log(data, status);
-          return deferred.reject("Error getting account detail");
-        });
-      } else {
+      var deferred = $q.defer();
+      console.log('getting account details');
+
+      accountsService.getAccountsDetail(accountId).success(function(data, status, headers) {
+        $rootScope.accounts = data;
         deferred.resolve();
-      }
+      }).error(function(data, status) {
+        console.log(data, status);
+        return deferred.reject("Error getting account detail");
+      });
 
       return deferred.promise;
     },

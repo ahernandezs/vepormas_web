@@ -34,6 +34,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     //controller: 'AccountDetailCtrl'
     })
 
+    .state('dashboard.creditcard', {
+      url: '/creditcard/:accountId',
+      templateUrl: 'views/partials/cards/cards.html',
+      controller: 'creditCardCtrl'
+    })
+
     .state('dashboard.investment', {
     url: '/investment/:accountId',
     templateUrl: 'views/partials/investment/investments.html',
