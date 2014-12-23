@@ -1,6 +1,7 @@
 <div class="registration">
     <div class="outter">
-        <div ng-include="'views/partials/layout/login-header.html'"/>
+        <div ng-include="'views/partials/layout/login-header.html'">
+        </div>
         <main>
             <div class="wrapper">
                 <div class="row">
@@ -19,25 +20,32 @@
                     
                     <div ng-switch on="selection">
                         <div class="animate-switch" ng-switch-when="1">
-                            <div ng-include="'views/partials/register/first-step.html'"/>
+                            <div ng-include="'views/partials/register/first-step.html'">
+                            </div>
                         </div>
                         <div class="animate-switch" ng-switch-when="2">
-                            <div ng-include="'views/partials/register/second-step.html'"/>
+                            <div ng-include="'views/partials/register/second-step.html'">
+                            </div>
                         </div>
                         <div class="animate-switch" ng-switch-when="3">
-                            <div ng-include="'views/partials/register/security-level.html'"/>
+                            <div ng-include="'views/partials/register/security-level.html'">
+                            </div>
                         </div>
                         <div class="animate-switch" ng-switch-when="4">
-                            <div ng-include="'views/partials/register/fourth-step.html'"/>
+                            <div ng-include="'views/partials/register/fourth-step.html'">
+                            </div>
                         </div>
                         <div class="animate-switch" ng-switch-when="5">
-                            <div ng-include="'views/partials/register/fifth-step.html'"/>
+                            <div ng-include="'views/partials/register/fifth-step.html'">
+                            </div>
                         </div>
                         <div class="animate-switch" ng-switch-when="6">
-                            <div ng-include="'views/partials/register/terminate.html'"/>
+                            <div ng-include="'views/partials/register/terminate.html'">
+                            </div>
                         </div>
                         <div class="animate-switch" ng-switch-default>
-                            <div ng-include="'views/partials/register/first-step.html'"/>
+                            <div ng-include="'views/partials/register/first-step.html'">
+                            </div>
                         </div>
                     </div>
                     
