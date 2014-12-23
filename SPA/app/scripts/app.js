@@ -41,9 +41,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     })
 
     .state('dashboard.investment', {
-    url: '/investment/:accountId',
-    templateUrl: 'views/partials/investment/investments.html',
-    //controller: 'AccountDetailCtrl'
+      url: '/investment/:accountId',
+      templateUrl: 'views/partials/investment/investments.html',
+      controller: 'InvestmentsCtrl'
     })
 
     .state('register', {

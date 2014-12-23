@@ -7,7 +7,7 @@
     <div class="payment-actions">
         <div>
             <div>
-                <p class="amount">{{investmentHeader.available}}</p>
+                <p class="amount">{{investmentHeader.amount}}</p>
                 <span>Saldo disponible</span>
             </div>
         </div>
@@ -16,15 +16,15 @@
 <hr ng-show='!showAccountHeader'>
 <div class="box" ng-show='showAccountHeader'>
     <ul>
-        <li>Fecha de inicio:                            <span>{{accountHeader.cutDate}}</span></li>
-        <li>Fecha de vencimiento:                       <span>{{accountHeader.limitDate}}</span></li>
-        <li>Intereses:                                  <span class="amount">{{accountHeader.limitPayment}}</span></li>
-        <li>Fecha de &uacute;ltima renovaci&oacute;n:   <span class="amount">{{accountHeader.cutBalance}}</span></li>
+        <li>Fecha de inicio:                            <span>{{investmentHeader.startDate}}</span></li>
+        <li>Fecha de vencimiento:                       <span>{{investmentHeader.expiration_date}}</span></li>
+        <li>Intereses:                                  <span class="amount">{{investmentHeader.interest_rate}}</span></li>
+        <li>Fecha de &uacute;ltima renovaci&oacute;n:   <span class="amount">{{investmentHeader.last_renewal_date}}</span></li>
     </ul>
     <ul>
-        <li>Tasa de inter&eacute;s:     <span class="amount">{{accountHeader.currentBalance}}</span></li>
-        <li>Porcentaje de ISR:          <span class="amount">{{accountHeader.noInterest}}</span></li>
-        <li>Monto del ISR:              <span class="amount">{{accountHeader.dueCurrent}}</span></li>
-        <li>Monto del rendimiento:      <span class="amount">{{accountHeader.limitCredit}}</span></li>
+        <li>Tasa de inter&eacute;s:     <span class="amount">{{investmentHeader.interest_rate}}</span></li>
+        <li>Porcentaje de ISR:          <span class="amount">{{investmentHeader.isr_taxt}}</span></li>
+        <li>Monto del ISR:              <span class="amount">{{investmentHeader.isr_taxt_amount}}</span></li>
+        <li>Monto del rendimiento:      <span class="amount">{{investmentHeader.return_rate_amount}}</span></li>
     </ul>
 </div>
