@@ -7,7 +7,7 @@
     <div class="payment-actions">
         <div>
             <div>
-                <p class="amount">{{accountDetail.current_balance}}</p>
+                <p class="amount">{{accountDetail.available_Balance}}</p>
                 <button class="blue">Saldo disponible</button>
             </div>
         </div>
@@ -17,11 +17,11 @@
 <hr ng-show='!showAccountHeader'>
 <div class="box" ng-show='showAccountHeader'>
     <ul>
-        <li>Periodo:        <span>{{accountDetail.period}}</span></li>
-        <li>Saldo:          <span class="amount">{{accountDetail.last_amount_withdrawal}}</span></li>
+        <li>Periodo:        <span>{{accountDetail.startDate | date:'dd-MM-yyyy' }} a {{accountDetail.endDate | date:'dd-MM-yyyy' }}</span></li>
+        <li>Saldo:          <span class="amount">{{accountDetail.total_balance}}</span></li>
     </ul>
     <ul>
         <li>Saldo salvo buen cobro:     <span class="amount">{{accountDetail.last_amount_deposit}}</span></li>
-        <li>Saldo Total:                <span class="amount">{{accountDetail.available_Balance}}</span></li>
+        <li>Saldo Total:                <span class="amount">{{accountDetail.confirmation_balance}}</span></li>
     </ul>
 </div>
