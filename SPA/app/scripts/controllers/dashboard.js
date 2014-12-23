@@ -5,9 +5,8 @@
  */
 angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider) {
 	//TODO: temporal binding
-	$scope.completeName = 'ABEL BECERRA CASTRO';
-	$scope.date = '17/05/2014';
-	$scope.time = '23:34:54';
+	$scope.completeName = $rootScope.client_name;
+	$scope.date = $rootScope.last_access_date;
 
 	$scope.showAccountHeader = true;
 
