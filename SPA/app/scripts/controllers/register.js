@@ -4,6 +4,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
 
 	$scope.selection = 1;
 	$scope.bankBranch = 'Eduardo Molina';
+    // Stores the register data
     $scope.registerData = {};
     
     $scope.init = function() {
@@ -14,7 +15,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         $scope.date = temp.getDay() + ' / ' + temp.getMonth() + ' / ' + temp.getFullYear();
         $scope.images = {};
         for (var i = 0; i < $rootScope.preData.images.length; i++) {
-            $scope.images[i] = { 'id' : $rootScope.preData.images[i].image_id, 'url' : 'http://192.168.0.10:8080/Abanking-Core/' + $rootScope.preData.images[i].url };
+            $scope.images[i] = { 'id' : $rootScope.preData.images[i].image_id, 'url' : $rootScope.restAPIBaseUrl + '/' + $rootScope.preData.images[i].url };
         }
         console.log( $scope.images );
     };
@@ -36,8 +37,11 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
 	 /**
 		Function for register
 	 **/
-	 $scope.registerCustomer =function(){
-		//TODO:implements REST  method register
+	 $scope.registerCustomer = function () {
+         var identifier = { 'name' : 'cuenta', 'value' : 'cuenta' };
+		/*userProvider.registerUser(identifier, $scope.clientNumber).then( function() {
+            
+        });*/
 	};
 
 }]);
