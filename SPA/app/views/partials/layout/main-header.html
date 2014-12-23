@@ -19,7 +19,7 @@
             <div class="user-log">
                 <h6>Bienvenido</h6>
                 <h4 class="user">{{completeName}}</h4>
-                <p class="date">&Uacute;ltimo acceso: <span>{{date}}</span> a las <span>{{time}}</span>
+                <p class="date">&Uacute;ltimo acceso: <span>{{date | date:'dd-MM-yyyy'}}</span> a las <span>{{date | date:'hh:mm'}}</span>
                 </p>
             </div>
             <button class="orange" ng-click="logout()">Cerrar Sesi&oacute;n</button>

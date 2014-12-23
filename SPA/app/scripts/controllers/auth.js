@@ -101,6 +101,7 @@ angular.module('spaApp')
       $rootScope.session_token = token;
       $rootScope.last_access_date = data.last_access_date
       $rootScope.last_access_media = data.last_client_application_id;
+      $rootScope.client_name = data.client_name;
       api.init();
       $location.path( '/accounts' );
     }).
