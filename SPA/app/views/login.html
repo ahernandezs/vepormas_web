@@ -1,6 +1,7 @@
 <div class="login">
     <div class="outter"> <!-- sticky footer wrapper -->
-            <div ng-include="'views/partials/layout/login-header.html'"/>
+      <div ng-include="'views/partials/layout/login-header.html'">
+      </div>
             <!-- =============================================================== -->
             <main>
                 <div class="wrapper">
@@ -31,8 +32,10 @@
                     |____________________________________________________________________________
                     -->
                     <div>
-                        <div ng-include="'views/partials/login/user_login.html'" ng-hide="showImageLogin"/>
-                        <div ng-include="'views/partials/login/image_login.html'" ng-show="showImageLogin"/>
+                        <div ng-include="'views/partials/login/user_login.html'" ng-hide="showImageLogin">
+                        </div>
+                        <div ng-include="'views/partials/login/image_login.html'" ng-show="showImageLogin">
+                        </div>
                         <form class="user-registration" ng-submit="preRegister(client,contract)">
                             <label for="user-register"><strong>¿Eres nuevo aqu&iacute;?</strong> <a href="registro.html">Reg&iacute;strate</a></label>
                             <hr>
@@ -45,5 +48,6 @@
                 </div> <!-- wrapper ends here -->
             </main>
         </div> <!-- sticky footer wrapper ends here -->
-    <div ng-include="'views/partials/layout/main-footer.html'"></div>
+    <div ng-include="'views/partials/layout/main-footer.html'">
+    </div>
 </div>
