@@ -7,7 +7,7 @@ angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', '
 
     accountsProvider.getAccountDetail($stateParams.accountId+'-INV').then(
       function(data) {
-        $scope.investmentHeader = $rootScope.accounts.investment;
+        $scope.investmentHeader = $rootScope.accountDetail.investment;
       }
     );
 

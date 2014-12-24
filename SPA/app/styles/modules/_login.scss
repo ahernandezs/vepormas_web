@@ -213,7 +213,8 @@
 	}
 }
 .action-call-apps {
-	@include rgbabg(#FFF, .9);
+	//@include rgbabg(#FFF, .9);
+	background-color : rgba(255, 255, 255, 0.901961);
 	border-radius: 4px;
 	left: 0;
 	padding: 10px;
