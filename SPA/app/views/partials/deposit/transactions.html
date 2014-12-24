@@ -25,39 +25,11 @@
         </thead>
         <tbody>
             <tr class="year"><td>2014</td><td></td><td></td><td></td><td></td></tr>
-            <tr>
-                <td><span>sep</span><span>18</span></td>
-                <td>001</td>
-                <td>Palacio de Hierro</td>
-                <td>Pago</td>
-                <td>25,000.00</td>
-            </tr>
-            <tr>
-                <td><span>sep</span><span>18</span></td>
-                <td>002</td>
-                <td>American Express</td>
-                <td>Retiro</td>
-                <td>54,000.00</td>
-            </tr>
-            <tr>
-                <td><span>sep</span><span>18</span></td>
-                <td>003</td>
-                <td>Tiempo aire Josefina</td>
-                <td>Pago</td>
-                <td>300.00</td>
-            </tr>
-            <tr>
-                <td><span>sep</span><span>18</span></td>
-                <td>004</td>
-                <td>Martí</td>
-                <td>Pago</td>
-                <td>5,000.00</td>
-            </tr>
-            <tr>
-                <td><span>sep</span><span>18</span></td>
-                <td>005</td>
-                <td>Starbucks</td>
-                <td>Pago</td>
-                <td>250.00</td>
-            </tr>
+                <tr ng-repeat="trans in accountTransactions">
+                    <td>{{trans.movementDate | date:'dd-MM-yyyy' }}</td>
+                    <td>{{trans._transaction_id}}</td>
+                    <td>{{trans.description}}</td>
+                    <td>{{trans.operationType}}</td>
+                    <td>{{trans.amount}}</td>
+                </tr>
         </tbody>
