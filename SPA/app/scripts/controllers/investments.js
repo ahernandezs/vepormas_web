@@ -11,8 +11,8 @@ angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', '
       }
     );
 
-    var data = [{date: "Sep 18", transactionNumber: "001", description: "La corbata", operationType: "Pago", amount: "3000"},
-                {date: "Ago 19", transactionNumber: "002", description: "Solid Gold", operationType: "Pago", amount: "5400"}];
+    var data = [{date: "Sep 18", transactionNumber: "001", description: "empresa 1", operationType: "Pago", amount: "3000"},
+                {date: "Ago 19", transactionNumber: "002", description: "empresa 2", operationType: "Pago", amount: "5400"}];
 
 
     $scope.tableParams = new ngTableParams({
