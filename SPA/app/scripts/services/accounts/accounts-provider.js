@@ -31,7 +31,7 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
       console.log('getting account details');
 
       accountsService.getAccountsDetail(accountId).success(function(data, status, headers) {
-        $rootScope.accounts = data;
+        $rootScope.accountDetail = data;
         deferred.resolve();
       }).error(function(data, status) {
         console.log(data, status);
