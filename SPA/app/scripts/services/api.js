@@ -15,8 +15,8 @@ angular.module('spaApp').factory('api', ['$http', '$rootScope', function ($http,
       //console.log("Executes init & token = " + $rootScope.session_token);
     },
     config: function(){
-      $rootScope.restAPIBaseUrl = "http://192.168.0.10:8080/Abanking-Core";
-      //$rootScope.restAPIBaseUrl = "http://localhost:18080/Abanking-Core";
+      //$rootScope.restAPIBaseUrl = "http://192.168.0.10:8080/Abanking-Core";
+      $rootScope.restAPIBaseUrl = 'http://54.219.49.155/Abanking-Core';
       $rootScope.useMocks = false;
     }
   };

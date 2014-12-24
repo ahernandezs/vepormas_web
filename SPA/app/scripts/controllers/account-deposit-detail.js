@@ -7,7 +7,7 @@
 
 	accountsProvider.getAccountDetail($scope.selectedAcccountId+'-'+$scope.selectedAccountType).then(
 		function(data) {
-			$scope.accountDetail = $rootScope.accounts;
+			$scope.accountDetail = $rootScope.accountDetail;
 		});
 
 	accountsProvider.getTransactions($scope.selectedAcccountId+'-'+$scope.selectedAccountType, 0, 100).then(
