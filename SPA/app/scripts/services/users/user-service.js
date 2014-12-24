@@ -31,4 +31,12 @@ angular.module('spaApp')
 				})
 		});
 	}
+
+	this.logout = function(){
+		return $http({
+			url: $rootScope.restAPIBaseUrl+'/logout',
+			method: 'GET'
+		});
+	}
+
 }]);

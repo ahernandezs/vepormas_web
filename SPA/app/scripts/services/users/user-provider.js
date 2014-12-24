@@ -24,7 +24,18 @@ angular.module('spaApp')
         return deferred.reject('Error to register user');
       })
       return deferred.promise;
+    },
+
+    logout: function(){
+      var deferred = $q.defer();
+      userService.logout().success(function(data, status, headers){
+        deferred.resolve();
+      }).error(function(data, status){
+        return deferred.reject('Error in logout');
+      })
+      return  deferred.promise;
     }
+
   }
 }
 ]);

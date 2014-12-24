@@ -3,7 +3,7 @@
 /**
  * The accounts controller. Gets accounts passing auth parameters
  */
-angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider) {
+angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider) {
 	//TODO: temporal binding
 	$scope.completeName = $rootScope.client_name;
 	$scope.date = $rootScope.last_access_date;
@@ -33,7 +33,11 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
     Function for logout application
   **/
   $scope.logout = function() {
-	 $location.path('login');
+    userProvider.logout().then(
+      function(data) {
+      console.log('logout: '+data);
+    });
+    $location.path('login');
   };
 
   $scope.selectAccount = function(accountId, type) {
