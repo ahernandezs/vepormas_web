@@ -7,7 +7,7 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 
     accountsProvider.getAccountDetail($stateParams.accountId+'-TDC').then(
       function(data) {
-      		$scope.creditsHeader = $rootScope.accounts.credit_card;
+		$scope.creditsHeader = $rootScope.accountDetail.credit_card;
       }
     );
 
