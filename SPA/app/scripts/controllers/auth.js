@@ -45,7 +45,6 @@ angular.module('spaApp')
   }
 
 
- $scope.selectedImage;
   $scope.login=function(selectedValue){
     $scope.buttonStatus("Entrando ...", true);
 
@@ -89,11 +88,11 @@ angular.module('spaApp')
   /**
     Function for authenticate user through middleware
   **/
-  $scope.login = function(password){
+  $scope.login = function(password,selectedImage){
     $http({
       url: $scope.restAPIBaseUrl+'/login',
       method: 'POST',
-      data: JSON.stringify({'user_login':$scope.username, 'password':password,'client_application_id': 'PROSA-DIG'}) ,
+      data: JSON.stringify({'user_login':$scope.username, 'password':password,'client_application_id': 'PROSA-DIG' , 'imageId': selectedImage }) ,
       headers: {'Content-Type': 'application/json','X-BANK-TOKEN': '4'}
     }).
       success(function(data, status, headers) {
