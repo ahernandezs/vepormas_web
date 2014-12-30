@@ -14,6 +14,7 @@
 <!-- images -->
     <hr>
     <input ng-class="incorrectData ? 'rojo' : ''" type="password" name="password" ng-model="password" id="password" placeholder="Password">
+    <div class="incorrectUser" ng-show="incorrectData"> {{errorMessage}}</div>
 
 <div class="buttons">
     <input class="blue" type="submit" value="Cancelar" ng-click="reset()">
