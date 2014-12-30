@@ -79,7 +79,15 @@ angular.module('spaApp')
         $scope.incorrectData = false;
     }).
       error(function(data, status) {
-      $scope.errorMessage = data.message;
+      if(status === 400){
+        $scope.errorMessage = 'Existe una sesíón vigente en otra aplicación';
+      }
+      if(status === 406){
+        $scope.errorMessage = 'Error en el servicio';
+      }
+      if(status === 503){
+        $scope.errorMessage = 'Error en el servicio';
+      }
       $scope.status = status;
       $scope.incorrectData = true;
     });
@@ -106,7 +114,23 @@ angular.module('spaApp')
     }).
       error(function(data, status) {
       //put an error message in the scope
-      $scope.errorMessage = data.message;
+      if(status === 400){
+          if(data.code === 500)
+            $scope.errorMessage = 'El password o imagen son incorrectos';
+          if(data.code === 510)
+            $scope.errorMessage = 'Ya existe una sesión vigente';
+          if(data.code === 301)
+            $scope.errorMessage = 'No has ingresado el usuario o imagen';
+      }
+      if(status === 423){
+        $scope.errorMessage = 'Existe una sesíón vigente en otra aplicación';
+      }
+      if(status === 503){
+        $scope.errorMessage = 'Error en el servicio';
+      }
+      if(status === 504){
+        $scope.errorMessage = 'Tiempo de respuesta excedido';
+      }
       $scope.status = status;
       $scope.incorrectData = true;
     });
