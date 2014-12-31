@@ -41,12 +41,12 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
       return deferred.promise;
     },
 
-    getTransactions: function(accountId, numPage, size){
+    getTransactions: function(accountId, params){
 
       var deferred = $q.defer();
       console.log('getting transactions');
 
-      accountsService.getTransactions(accountId, numPage, size).success(function(data, status, headers) {
+      accountsService.getTransactions(accountId, params).success(function(data, status, headers) {
         $rootScope.transactions = data.transactions;
         deferred.resolve();
       }).error(function(data, status) {

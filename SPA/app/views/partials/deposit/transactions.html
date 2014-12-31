@@ -6,12 +6,15 @@
 <!-- =============================================================== -->
 <div class="transactions">
     <div class="filter">
-        <span>Ver por:</span>
-        <div class="double-btn">
-            <button class="orange">Periodo actual</button>
-            <button class="blue">Periodo anterior</button>
+        <div class="inline" style="display:flex;">
+            <p>Fecha inicio</p>
+            <input type="date" ng-model="date_start">
+            <p>Fecha fin</p>
+            <input type="date" ng-model="date_end">
         </div>
-        <a href="#" class="help"><i class="fa fa-question-circle"></i><span>Ayuda</span></a>
+        <div class="single-btn">
+            <button class="orange" ng-click="getTransactions(date_start, date_end)">Buscar</button>
+        </div>
     </div>
     <table class="details">
         <thead>
