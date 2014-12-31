@@ -19,11 +19,15 @@ angular.module('spaApp')
 
             var options = '';
             options = params.numPage ? options+'&page='+params.numPage : options ;
-            options = params.size ? options+'&size='+params.numPage : options ;
-            options = params.date_start ? options+'&date_start='+params.date_start : options ;
-            options = params.date_end ? options+'&date_start='+params.date_end : options ;
+            options = params.size ? options+'&size='+params.size : options ;
 
-            console.log('Enviando: '+$rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions?'+options);
+            var search = '';
+            search = params.date_start ? search+'date_start='+params.date_start : search ;
+            search = params.date_end ? search+'&date_end='+params.date_end : search ;
+
+            options = search !=='' ?options+'&search="'+encodeURIComponent(search)+'"':options;
+
+            console.log('Sending: '+$rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions?'+options);
 
 			return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions?'+options);
         }
