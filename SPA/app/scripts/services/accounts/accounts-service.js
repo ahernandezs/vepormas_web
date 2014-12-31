@@ -15,8 +15,17 @@ angular.module('spaApp')
             return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId);
         };
 
-        this.getTransactions = function(accountId, numPage, size) {
-			return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions?page='+numPage+'&size='+size);
+        this.getTransactions = function(accountId, params) {
+
+            var options = '';
+            options = params.numPage ? options+'&page='+params.numPage : options ;
+            options = params.size ? options+'&size='+params.numPage : options ;
+            options = params.date_start ? options+'&date_start='+params.date_start : options ;
+            options = params.date_end ? options+'&date_start='+params.date_end : options ;
+
+            console.log('Enviando: '+$rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions?'+options);
+
+			return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions?'+options);
         }
 
 }]);

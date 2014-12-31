@@ -18,8 +18,8 @@ angular.module('spaApp').factory('api', ['$http', '$rootScope', function ($http,
       // Use this link for deployment
       $rootScope.restAPIBaseUrl = $("#linkApiRoot").attr("href");
       // Use these or similar link for development
-      //$rootScope.restAPIBaseUrl = "http://localhost:18080/Abanking-Core";
-      //$rootScope.restAPIBaseUrl = 'http://54.219.49.155/Abanking-Core';
+      $rootScope.restAPIBaseUrl = "http://localhost:18080/Abanking-Core";
+      $rootScope.restAPIBaseUrl = 'http://54.219.49.155/Abanking-Core';
       $rootScope.useMocks = false;
     }
   };
