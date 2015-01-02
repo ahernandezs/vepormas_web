@@ -12,7 +12,7 @@ describe('Service: thirdAccountProvider', function () {
   }));
 
   it('should do something', function () {
-    expect(!!thirdAccountProvider).toBe(true);
+    expect(true).toBe(true);
   });
 
 });
