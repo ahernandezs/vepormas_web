@@ -7,7 +7,7 @@
  <a class="gray-min">Selecciona la imagen que elegiste al registrarte</a>
 <!-- images -->
 <div class="radioGroupBelow" align="center">
-   <label for="{{image.id}}" ng-repeat="image in images">  <img src="{{restAPIBaseUrl}}/{{image.url}}" height="60" >
+   <label for="{{image.id}}" ng-repeat="image in images">  <img ng-src="{{restAPIBaseUrl}}/{{image.url}}" height="60" >
         <input type="radio" name="imagegroup" ng-model="$parent.selectedImage" value="{{image.image_id}}">
     </label>
 </div>
