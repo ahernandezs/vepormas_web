@@ -29,9 +29,9 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     })
 
     .state('dashboard.credit', {
-    url: '/credit/:accountId',
-    templateUrl: 'views/partials/cards/cards.html',
-    controller: 'AccountDetailCtrl'
+      url: '/credit/:accountId',
+      templateUrl: 'views/partials/credits/credit.html',
+      controller: 'creditCtrl'
     })
 
     .state('dashboard.creditcard', {

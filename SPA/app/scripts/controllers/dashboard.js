@@ -62,7 +62,7 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
             break;
         case 'CXN':
             console.log('Creditos');
-            $scope.loadCreditsHeader(accountId);
+            $location.path('/accounts/credit/'+accountId);
             break;
         default:
             break;

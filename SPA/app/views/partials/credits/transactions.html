@@ -1,0 +1,39 @@
+    <form class="search">
+        <div class="filter">
+            <div class="inline" style="display:flex;">
+                Buscar por rango de fechas
+                <p>Fecha inicial</p>
+                <input type="date" ng-model="date_start">
+                <p>Fecha final</p>
+                <input type="date" ng-model="date_end">
+                <div class="single-btn">
+                    <button class="orange" ng-click="getTransactions(date_start, date_end)">Buscar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+<div class="transactions">    
+    <table class="details">
+        <thead>
+            <tr>
+                <th scope="col">Fecha de descuento</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Capital</th>
+                <th scope="col">Interés e IVA</th>
+                <th scope="col">Total</th>
+                <th scope="col">Fecha de aplicación</th>
+
+            </tr>
+        </thead>
+        <tbody>
+                <tr ng-repeat="trans in creditTransactions">
+                    <td>{{trans.discountDate | date:'dd-MM-yyyy' }}</td>
+                    <td>{{trans.description}}</td>
+                    <td>{{trans.amount}}</td>
+                    <td>{{trans.interest}}</td>
+                    <td>{{trans.total}}</td>
+                    <td>{{trans.applicationDate | date:'dd-MM-yyyy' }}</td>
+                </tr>
+        </tbody>
+    </table>
+</div>

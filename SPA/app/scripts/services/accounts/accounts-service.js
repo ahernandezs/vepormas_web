@@ -25,7 +25,7 @@ angular.module('spaApp')
             search = params.date_start ? search+'date_start='+params.date_start : search ;
             search = params.date_end ? search+'&date_end='+params.date_end : search ;
 
-            options = search !=='' ?options+'&search="'+encodeURIComponent(search)+'"':options;
+            options = search !=='' ?options+'&search='+encodeURIComponent(search):options;
 
             console.log('Sending: '+$rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions?'+options);
 
