@@ -36,8 +36,9 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
     userProvider.logout().then(
       function(data) {
       console.log('logout: '+data);
+      $rootScope.session_token = null;
+      $location.path('login');
     });
-    $location.path('login');
   };
 
   $scope.selectAccount = function(accountId, type) {
