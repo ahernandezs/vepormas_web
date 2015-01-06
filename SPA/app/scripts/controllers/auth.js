@@ -7,12 +7,16 @@
 angular.module('spaApp')
 .controller('LoginCtrl', ['$scope', '$http', '$location', 'api', '$rootScope', 'userProvider', function ($scope,$http,$location, api, $rootScope, userProvider) {
   /**
+   * If user has a valid session token keep him in dashboard
+   */
+
+  if($rootScope.session_token && $location.$$path === '/login') {
+    $location.path('/accounts');
+  }
+  /**
    * the login function connect the Rest-API: if the response status is OK, redirect to route "accounts",
    * else put an error message in the scope
    */
-  //if($rootScope.session_token && $location.$$path === '/login') {
-  //  $location.path('/accounts');
-  //}
 
   $scope.username;
   $scope.password;
