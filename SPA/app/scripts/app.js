@@ -57,6 +57,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     templateUrl: 'views/register.html',
     controller: 'RegisterCtrl'
     })
+  
+    .state('transactions', {
+        url: '/transactions',
+        templateUrl: 'views/dashboards/transactions.html',
+        controller: 'MyTransactionsCtrl'
+    })
 
   }]);
 

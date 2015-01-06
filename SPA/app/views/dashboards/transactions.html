@@ -1,0 +1,63 @@
+<div class="products">
+    <div class="outter">
+        <div ng-include="'views/partials/layout/main-header.html'"></div>
+        <main>
+            <div class="wrapper">
+                <div class="wrapper">
+                    <div class="row">
+                        <div class="actions">
+                            <h2>Mis Operaciones</h2>
+                            <div class="section">
+                                <div class="payment">
+                                    <p>Hacer un pago</p>
+                                </div>
+                                <div class="transfer">
+                                    <p>Hacer una transferencia</p>
+                                </div>
+                            </div>
+                            <h2>Mis Beneficiarios</h2>
+                            <div class="section">
+                                <div class="beneficiary">
+                                    <p>Agregar un nuevo beneficiario</p>
+                                </div>
+                            </div>
+                            <div class="help">
+                                <h2>Ayuda</h2>
+                            </div>
+                        </div>
+                        <h2>Transferencia de cuentas</h2>
+                        <div class="message">
+                            <span class="content">La transferencia ha sido exitosa con numero de autorizacion 123456</span>
+                            <span class="button">Imprimir</span>
+                        </div>
+                        <table>
+                            <td>
+                                <tr>Cuenta retiro:</tr>
+                                <tr>Consucuenta ***12344 - MXN: $10,000.00</tr>
+                            </td>
+                            <td>
+                                <tr>Cuenta deposito:</tr>
+                                <tr>Consutarjeta Basica ***88776 - MXN: $24,000.00</tr>
+                            </td>
+                            <td>
+                                <tr>Importe:</tr>
+                                <tr>$5,000.00</tr>
+                            </td>
+                            <td>
+                                <tr>Concepto:</tr>
+                                <tr>Renta casa</tr>
+                            </td>
+                            <td>
+                                <tr>Hora de la transferencia:</tr>
+                                <tr>13:49 hrs.</tr>
+                            </td>
+                        </table>
+                        <div ui-view>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div ng-include="'views/partials/layout/main-footer.html'"></div>
+    </div>
+</div>
