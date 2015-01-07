@@ -1,0 +1,19 @@
+<div>
+    <h2>Transferencia de cuentas</h2>
+    <p>Ingresa los datos para la transferencia</p>
+    <div class="progress"></div>
+    <hr>
+    <form>
+        <select ng-model="firstAccount" name="first-account">
+            <option value="Cuenta retiro" selected>Cuenta retiro</option>
+        </select></br>
+    <select ng-model="secondAccount" name="second-account">
+        <option value="Cuenta deposito" selected>Cuenta deposito</option>
+    </select></br>
+        <input type="text" ng-model="amount" name="amount" id="amount" placeholder="Importe"></br>
+        <input type="text" ng-model="concept" name="concept" id="concept" placeholder="Concepto"></br>
+    </form>
+    <hr>
+    <input class="blue" type="submit" value="Cancelar">
+    <input class="orange" type="submit" value="Continuar">
+</div>

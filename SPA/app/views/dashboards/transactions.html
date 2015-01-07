@@ -25,33 +25,7 @@
                                 <h2>Ayuda</h2>
                             </div>
                         </div>
-                        <h2>Transferencia de cuentas</h2>
-                        <div class="message">
-                            <span class="content">La transferencia ha sido exitosa con numero de autorizacion 123456</span>
-                            <span class="button">Imprimir</span>
-                        </div>
-                        <table>
-                            <td>
-                                <tr>Cuenta retiro:</tr>
-                                <tr>Consucuenta ***12344 - MXN: $10,000.00</tr>
-                            </td>
-                            <td>
-                                <tr>Cuenta deposito:</tr>
-                                <tr>Consutarjeta Basica ***88776 - MXN: $24,000.00</tr>
-                            </td>
-                            <td>
-                                <tr>Importe:</tr>
-                                <tr>$5,000.00</tr>
-                            </td>
-                            <td>
-                                <tr>Concepto:</tr>
-                                <tr>Renta casa</tr>
-                            </td>
-                            <td>
-                                <tr>Hora de la transferencia:</tr>
-                                <tr>13:49 hrs.</tr>
-                            </td>
-                        </table>
+                        <div ng-include="'views/partials/mytransfers/capture-data.html'"></div>
                         <div ui-view>
                         </div>
                     </div>
