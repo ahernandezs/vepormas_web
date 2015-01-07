@@ -1,6 +1,6 @@
 <div>
     <h2>Transferencia de cuentas</h2>
-    <div class="progress"></div>
+    <progress max="3" value="{{selection}}"></progress>
     <hr>
     <div class="message">
         <span class="content">La transferencia ha sido exitosa con numero de autorizacion 123456</span>
@@ -29,6 +29,6 @@
             </tr>
     </table>
     <hr>
-    <input class="blue" type="submit" value="Finalizar">
-    <input class="orange" type="submit" value="Realizar otro pago">
+    <input class="blue" type="submit" value="Finalizar" ng-click="completeStep(3)">
+    <input class="orange" type="submit" value="Realizar otro pago" ng-click="completeStep(1)">
 </div>

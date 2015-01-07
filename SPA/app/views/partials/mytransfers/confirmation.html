@@ -1,7 +1,7 @@
 <div>
     <h2>Pago de cuentas</h2>
     <p>Confirma los datos para el pago</p>
-    <div class="progress"></div>
+    <progress max="3" value="{{selection}}"></progress>
     <hr>
     <table>
         <tr>
@@ -26,6 +26,6 @@
         </tr>
     </table>
     <hr>
-    <input class="blue" type="submit" value="Regresar">
-    <input class="orange" type="submit" value="Continuar">
+    <input class="blue" type="submit" value="Regresar" ng-click="completeStep(1)">
+    <input class="orange" type="submit" value="Continuar" ng-click="completeStep(3)">
 </div>
