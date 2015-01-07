@@ -1,7 +1,7 @@
 <div>
     <h2>Transferencia de cuentas</h2>
     <p>Ingresa los datos para la transferencia</p>
-    <div class="progress"></div>
+    <progress max="3" value="{{selection}}"></progress>
     <hr>
     <form>
         <select ng-model="firstAccount" name="first-account">
@@ -14,6 +14,6 @@
         <input type="text" ng-model="concept" name="concept" id="concept" placeholder="Concepto"></br>
     </form>
     <hr>
-    <input class="blue" type="submit" value="Cancelar">
-    <input class="orange" type="submit" value="Continuar">
+    <input class="blue" type="submit" value="Cancelar" ng-click="completeStep(1)">
+    <input class="orange" type="submit" value="Continuar" ng-click="completeStep(2)">
 </div>
