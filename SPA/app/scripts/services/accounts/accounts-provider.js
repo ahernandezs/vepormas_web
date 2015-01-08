@@ -47,6 +47,7 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
       console.log('getting transactions');
 
       accountsService.getTransactions(accountId, params).success(function(data, status, headers) {
+        console.log('accountsProvider.getTransactions: '+JSON.stringify(data));
         $rootScope.transactions = data.transactions;
         deferred.resolve();
       }).error(function(data, status) {
