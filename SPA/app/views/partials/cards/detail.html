@@ -1,6 +1,6 @@
  <div class="header"> <!-- top row -->
     <h2 class="title">
-        <a href="#"><i class="fa fa-minus-square"></i></a>
+        <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'fa fa-minus-square' : 'fa fa-plus-square'"></i></a>
         {{nameAccount}}
         <span>Cuenta</span>
     </h2>
@@ -23,7 +23,8 @@
     <a href="#"><i class="fa fa-file-pdf-o"></i>Estados <span>de cuenta</span></a>
 </div> <!-- ends top row -->
 <!-- =============================================================== -->
-<div class="box"> <!-- expended box -->
+<hr ng-show='!showAccountHeader'>
+<div class="box" ng-show='showAccountHeader'> <!-- expended box -->
     <ul>
         <li>Fecha de corte:         <span>{{creditsHeader.cycle_date | date:'dd-MM-yyyy' }}</span></li>
         <li>Fecha l&iacute;mite de pago:   <span>{{creditsHeader.payment_due_date | date:'dd-MM-yyyy' }}</span></li>

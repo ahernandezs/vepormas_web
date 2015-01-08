@@ -16,7 +16,6 @@ angular.module('spaApp').controller('creditCtrl', ['$scope', '$location', '$stat
 
 	accountsProvider.getTransactions($scope.selectedAcccountId+'-'+$scope.selectedAccountType, params).then(
 		function(data){
-			console.log('en el getTransactions de credit '+$rootScope.transactions);
 			$scope.creditTransactions = $rootScope.transactions;
 		});
 
