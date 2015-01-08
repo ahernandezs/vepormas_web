@@ -18,55 +18,44 @@ angular.module('spaApp')
    * else put an error message in the scope
    */
 
-  $scope.username;
-  $scope.password;
+  $scope.username = "";
+  $scope.password = "";
  
   $scope.incorrectData = false;
   $scope.showImageLogin = false;
 
-  $scope.loginUser=function(user){
-    if(user=="rafa"){//next
-        $scope.showImageLogin = true;
-        $scope.incorrectData = false;
-    }
-    else{//error
-      $scope.incorrectData = true;
-    }
-  }
-
-  $scope.loginPassword=function(password){
-    if(password=="pass"){//doLogin
-      alert('doLogin()');
-    }
-    else{//error
-      $scope.incorrectData = true;
-    }
-  }
+  $scope.checkingUser = false;
+  $scope.isLogin = false;
 
   $scope.reset=function(){
-  $scope.incorrectData = false;
-  $scope.showImageLogin = false;
+    $scope.checkingUser = false;
+    $scope.incorrectData = false;
+    $scope.showImageLogin = false;
+    $scope.username = "";
+    $scope.password = "";
   }
 
-
-  $scope.login=function(selectedValue){
-    $scope.buttonStatus("Entrando ...", true);
-
-    if(!selectedValue){ //no image selected
-      console.log("No image selected")
-      return;
-    }
-
-    console.log("image selected "+selectedValue);
-  
-  };
 
   /************************ Navigation ***********************************/
   /**
     Function for verify if exist user
   **/
-  $scope.checkUser = function(username){
-    var json = JSON.stringify({'user_login':username,'client_application_id': 'PROSA-DIG'});
+  $scope.checkUser = function(){
+    $scope.checkingUser = true;
+    $scope.incorrectData = false;
+
+    console.log($scope.username);
+
+    if(!$scope.username.trim()) {
+      $scope.checkingUser = false;
+      $scope.incorrectData = true;
+
+      $scope.errorMessage = 'Por favor, introduzca un usuario válido';
+
+      return;
+    }
+
+    var json = JSON.stringify({'user_login':$scope.username,'client_application_id': 'PROSA-DIG'});
     console.log(json);
     $http({
       url: $scope.restAPIBaseUrl+'/checkLogin',
@@ -74,37 +63,60 @@ angular.module('spaApp')
       data: json,
       headers: {'Content-Type': 'application/json','X-BANK-TOKEN': '4'}
     }).
-      success(function(data, status, headers) {
-        $scope.showImageLogin = true;
-        $scope.username = username;
-        $scope.client_name = data.client_name;
-        console.log(data);
-        $scope.images = data.images;
-        $scope.incorrectData = false;
+    success(function(data, status, headers) {
+      $scope.showImageLogin = true;
+      $scope.client_name = data.client_name;
+      console.log(data);
+      $scope.images = data.images;
+      $scope.incorrectData = false;
+      $scope.checkingUser = false;
     }).
-      error(function(data, status) {
+    error(function(data, status) {
+      console.log("Status : ", status);
+      $scope.errorMessage = 'Error en el servicio, intente más tarde';
       if(status === 400){
-        $scope.errorMessage = 'Existe una sesíón vigente en otra aplicación';
+        $scope.errorMessage = 'Existe una sesión vigente en otra aplicación';
       }
-      if(status === 406){
-        $scope.errorMessage = 'Error en el servicio';
-      }
-      if(status === 503){
-        $scope.errorMessage = 'Error en el servicio';
+      if(status === 406 || status === 503 || status === 0){
+        $scope.errorMessage = 'Error en el servicio, intente más tarde';
       }
       $scope.status = status;
       $scope.incorrectData = true;
+      $scope.checkingUser = false;
     });
+  
   }
 
   /**
     Function for authenticate user through middleware
   **/
-  $scope.login = function(password,selectedImage){
+  $scope.login = function(){
+    $scope.isLogin = true;
+    $scope.incorrectData = false;
+    console.log("usuario, password, selectedImage", $scope.username, $scope.password, $scope.selectedImage);
+
+    if(!$scope.password.trim() || !$scope.selectedImage) {
+      $scope.isLogin = false;
+      $scope.incorrectData = true;
+
+      $scope.errorMessage = 'Por favor, seleccione su imagen e introduzca su contraseña';
+
+      return;
+    }
+
+    if(!$scope.selectedImage) {
+      $scope.isLogin = false;
+      $scope.incorrectData = true;
+
+      $scope.errorMessage = 'Por favor, seleccione una imagen';
+
+      return;
+    }
+
     $http({
       url: $scope.restAPIBaseUrl+'/login',
       method: 'POST',
-      data: JSON.stringify({'user_login':$scope.username, 'password':password,'client_application_id': 'PROSA-DIG' , 'image_id': selectedImage }) ,
+      data: JSON.stringify({'user_login':$scope.username, 'password':$scope.password,'client_application_id': 'PROSA-DIG' , 'image_id': $scope.selectedImage.toString() }) ,
       headers: {'Content-Type': 'application/json','X-BANK-TOKEN': '4'}
     }).
       success(function(data, status, headers) {
@@ -118,25 +130,30 @@ angular.module('spaApp')
     }).
       error(function(data, status) {
       //put an error message in the scope
+      console.log("Status, code : ", status, data.code);
+      $scope.errorMessage = 'Error en el servicio, intente más tarde';
       if(status === 400){
           if(data.code === 500)
             $scope.errorMessage = 'El password o imagen son incorrectos';
           if(data.code === 510)
-            $scope.errorMessage = 'Ya existe una sesión vigente';
+            $scope.errorMessage = 'Existe una sesión vigente en otra aplicación';
           if(data.code === 301)
-            $scope.errorMessage = 'No has ingresado el usuario o imagen';
+            $scope.errorMessage = 'Por favor, introduzca su contraseña y seleccione su imagen';
+          if(data.code === 501)
+            $scope.errorMessage = 'Su usuario ha sido bloqueado por intentos fallidos';
       }
       if(status === 423){
-        $scope.errorMessage = 'Existe una sesíón vigente en otra aplicación';
+        $scope.errorMessage = 'Existe una sesión vigente en otra aplicación';
       }
       if(status === 503){
-        $scope.errorMessage = 'Error en el servicio';
+        $scope.errorMessage = 'Error en el servicio, intente más tarde';
       }
       if(status === 504){
-        $scope.errorMessage = 'Tiempo de respuesta excedido';
+        $scope.errorMessage = 'Tiempo de respuesta excedido, por favor intente más tarde';
       }
       $scope.status = status;
       $scope.incorrectData = true;
+      $scope.isLogin = false;
     });
 
   };

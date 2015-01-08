@@ -1,7 +1,7 @@
 <form class="user-login">
     <label for="user"><strong>Iniciar sesión</strong></label>
-    <input ng-class="incorrectData ? 'rojo' : ''" ng-model="username" type="text" name="user" id="user" placeholder="Usuario">
-    <div class="incorrectUser" ng-show="incorrectData"> ¡Usuario incorrecto! favor de verificarlo</div>
+    <input ng-class="incorrectData ? 'rojo' : ''" ng-model="$parent.username" type="text" name="user" id="user" placeholder="Usuario" maxlength="20">
+    <div class="incorrectUser" ng-show="incorrectData">{{errorMessage}}</div>
     <hr>
-    <input class="blue" type="submit" value="Continuar" ng-click="checkUser(username)">
+    <input ng-disabled="checkingUser" class="blue" type="submit" value="Continuar" ng-click="checkUser()">
 </form>
