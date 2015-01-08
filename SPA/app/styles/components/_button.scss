@@ -30,6 +30,9 @@ input[type*=submit] {
 	&.orange {
 		background-color: $orange;
  	}
+  &:disabled {
+    background-color: $gray;
+  }
 }
 .search {
 	@extend %button-style;

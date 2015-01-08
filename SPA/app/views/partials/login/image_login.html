@@ -7,18 +7,18 @@
  <a class="gray-min">Selecciona la imagen que elegiste al registrarte</a>
 <!-- images -->
 <div class="radioGroupBelow" align="center">
-   <label for="{{image.id}}" ng-repeat="image in images">  <img ng-src="{{restAPIBaseUrl}}/{{image.url}}" height="60" >
-        <input type="radio" name="imagegroup" ng-model="$parent.selectedImage" value="{{image.image_id}}">
+   <label ng-repeat="image in images">  <img ng-src="{{restAPIBaseUrl}}/{{image.url}}" height="60" >
+        <input type="radio" name="imagegroup" ng-model="$parent.$parent.selectedImage" ng-value="image.image_id">
     </label>
 </div>
 <!-- images -->
     <hr>
-    <input ng-class="incorrectData ? 'rojo' : ''" type="password" name="password" ng-model="password" id="password" placeholder="Password">
+    <input ng-class="incorrectData ? 'rojo' : ''" type="password" name="password" ng-model="$parent.password" id="password" placeholder="Password" maxlength="20">
     <div class="incorrectUser" ng-show="incorrectData"> {{errorMessage}}</div>
 
 <div class="buttons">
     <input class="blue" type="submit" value="Cancelar" ng-click="reset()">
-    <input class="blue" type="submit" value="Continuar" ng-click="login(password,selectedImage)">
+    <input ng-disabled="isLogin" class="blue" type="submit" value="Continuar" ng-click="login()">
 </div>
 <p>¿Olvidaste tu contrase&ntilde;a? Comunicate con nosotros al 01 800 800 32 24</p>
 </form>
