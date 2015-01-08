@@ -1,0 +1,50 @@
+/*
+|-------------------------------------------------------------------------------------
+|	Left menu
+|-------------------------------------------------------------------------------------
+*/
+.content {
+    float: right;
+    width: 70.8333333333%;
+    margin: 0 1.0416666667%;
+    .header {
+        height: 52px;
+        h2, p { float: left; width: 70%; }
+        p { color: grey; }
+        progress {
+            float: right;
+            margin: -15px 0 0 0;
+        }
+    }
+    input, select {
+        border-radius: 4px;
+        border: 1px solid #CCC;
+        padding: 10px;
+        width: 70%;
+        margin-top: 15px
+    }
+    select {
+        background-color: white;
+        padding: 6px;
+    }
+    input[type='submit'] {
+        width: 120px;
+        color: white;
+        margin-right: 20px;
+        font-weight: 300;
+        padding: 8px 10px;
+    }
+}
+.option {
+    border: 1px solid #CCC;
+    border-radius: 6px 6px 0 0;
+    padding: 14px 40px 14px 20px;
+    position: relative;
+    font-weight: bold;
+}
+.help {
+    h2 { color: grey; }
+    .option {
+        font-weight: normal;
+    }
+}
