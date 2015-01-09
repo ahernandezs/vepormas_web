@@ -1,10 +1,15 @@
-<div>
-    <h2>Transferencia de cuentas</h2>
-    <progress max="3" value="{{selection}}"></progress>
+<div class="content">
+    <div class="header">
+        <h2>Transferencia de cuentas</h2>
+        <p></p>
+        <progress max="3" value="{{selection}}"></progress>
+    </div>
     <hr>
     <div class="message">
-        <span class="content">La transferencia ha sido exitosa con numero de autorizacion 123456</span>
-        <span class="button">Imprimir</span>
+        <p>La transferencia ha sido exitosa con numero de autorizacion 123456</p>
+        <div class="print">
+            <p>Imprimir</p>
+        </div>
     </div>
     <table>
             <tr>
@@ -17,7 +22,7 @@
             </tr>
             <tr>
                 <td>Importe:</td>
-                <td>$5,000.00</td>
+                <td class="bolder">$5,000.00</td>
             </tr>
             <tr>
                 <td>Concepto:</td>
@@ -30,5 +35,5 @@
     </table>
     <hr>
     <input class="blue" type="submit" value="Finalizar" ng-click="completeStep(3)">
-    <input class="orange" type="submit" value="Realizar otro pago" ng-click="completeStep(1)">
+    <input class="orange larger" type="submit" value="Realizar otro pago" ng-click="completeStep(1)">
 </div>
