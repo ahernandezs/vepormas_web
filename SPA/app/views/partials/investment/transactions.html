@@ -1,10 +1,14 @@
-<form>
-    Fecha inicio
-    <input type="search">
-    Fecha fin
-    <input type="search">
-    <button class="blue">Buscar</button>
-</form>
+<div class="filter">
+    <div class="inline" style="display:flex;">
+        <p>Fecha inicio</p>
+        <input type="date" ng-model="date_start">
+        <p>Fecha fin</p>
+        <input type="date" ng-model="date_end">
+    </div>
+    <div class="single-btn">
+        <button class="orange" ng-click="getTransactions(date_start, date_end)">Buscar</button>
+    </div>
+</div>
 <div class="transactions">
     <table ng-table="tableParams" class="details">
      <thead>
@@ -16,12 +20,12 @@
             <th scope="col">Monto</th>
         </tr>
     </thead>
-    <tr ng-repeat="accounts in $data">
-        <td>{{accounts.date}}</td>
-        <td>{{accounts.transactionNumber}}</td>
-        <td>{{accounts.description}}</td>
-        <td>{{accounts.operationType}}</td>
-        <td>{{accounts.amount}}</td>
+    <tr ng-repeat="trans in investmentTransactions">
+        <td>{{trans.movementDate | date:'dd-MM-yyyy' }}</td>
+        <td>{{trans._transaction_id}}</td>
+        <td>{{trans.description}}</td>
+        <td>{{trans.operationType}}</td>
+        <td>{{trans.amount}}</td>
     </tr>
     </table>
 </div>

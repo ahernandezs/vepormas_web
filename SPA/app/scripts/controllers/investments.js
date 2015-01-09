@@ -5,25 +5,28 @@
  */
 angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', 'ngTableParams',  '$stateParams', 'accountsProvider', '$rootScope', function ($scope, $location, ngTableParams, $stateParams, accountsProvider, $rootScope) {
 
-    accountsProvider.getAccountDetail($stateParams.accountId+'-INV').then(
+    var params = {};
+    params.numPage = 0;
+    params.size = 100;
+
+    accountsProvider.getAccountDetail($stateParams.accountId+'-'+$scope.selectedAccountType).then(
       function(data) {
         $scope.investmentHeader = $rootScope.accountDetail.investment;
       }
     );
 
-    var data = [{date: "Sep 18", transactionNumber: "001", description: "empresa 1", operationType: "Pago", amount: "3000"},
-                {date: "Ago 19", transactionNumber: "002", description: "empresa 2", operationType: "Pago", amount: "5400"}];
+    accountsProvider.getTransactions($scope.selectedAcccountId+'-'+$scope.selectedAccountType, params).then(
+        function(data){
+            $scope.investmentTransactions = $rootScope.transactions;
+        });
 
-
-    $scope.tableParams = new ngTableParams({
-        page: 1,            // show first page
-        count: 10           // count per page
-    }, {
-        total: data.length, // length of data
-        getData: function($defer, params) {
-            $defer.resolve(data.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-        }
-    });
-
+    $scope.getTransactions = function(date_start, date_end){
+        params.date_end = date_end;
+        params.date_start = date_start;
+        accountsProvider.getTransactions($scope.selectedAcccountId+'-'+$scope.selectedAccountType, params).then(
+            function(data){
+                $scope.investmentTransactions = $rootScope.transactions;
+        });
+    }
 
 }]);
