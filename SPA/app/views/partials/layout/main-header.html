@@ -7,10 +7,14 @@
         <!-- =============================================================== -->
         <nav class="nav ">
             <ul>
-                <li class="active"><a href="#">Mis Productos</a></li>
-                <li><a href="#">Pagos y Transferencias</a></li>
-                <li><a href="#">Inversiones</a></li>
-                <li><a href="#">Administraci&oacute;n</a></li>
+                <li ng-click="selectNavigatOption('products')"
+                    data-ng-class="{'active': activeNavigationOption == 'products'}" > <a href="#">Mis Productos</a></li>
+                <li ng-click="selectNavigatOption('payments')"
+                    data-ng-class="{'active': activeNavigationOption == 'payments'}"><a href="#">Pagos y Transferencias</a></li>
+                <li ng-click="selectNavigatOption('investments')"
+                    data-ng-class="{'active': activeNavigationOption == 'investments'}"><a href="#">Inversiones</a></li>
+                <li ng-click="selectNavigatOption('dmin')"
+                    data-ng-class="{'active': activeNavigationOption == 'admin'}"><a href="#">Administraci&oacute;n</a></li>
             </ul>
         </nav>
         <!-- =============================================================== -->
