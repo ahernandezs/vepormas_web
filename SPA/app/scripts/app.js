@@ -89,7 +89,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         url: 'transfers',
         views: {
         'transferContent' : {
-          templateUrl: 'views/payments.html'
+          templateUrl: 'views/transfers.html'
         }
       }
     })
