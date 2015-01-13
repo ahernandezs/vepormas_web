@@ -9,6 +9,7 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 	params.numPage = 0;
 	params.size = 100;
 
+	console.log('Ejecutando creditCardCtrl--------------------------->');
     accountsProvider.getAccountDetail($stateParams.accountId+'-TDC').then(
       function(data) {
 		$scope.creditsHeader = $rootScope.accountDetail.credit_card;
