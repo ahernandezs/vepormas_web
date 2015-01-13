@@ -78,20 +78,21 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         }
       }
     })
+  
+    .state('dashboard.transfers', {
+        url: 'accounts/transfers',
+        views: {
+        'transferContent' : {
+          templateUrl: 'views/transfers.html',
+          controller: 'TransfersCtrl'
+        }
+      }
+    })
 
     .state('register', {
     url: '/register',
     templateUrl: 'views/register.html',
     controller: 'RegisterCtrl'
-    })
-  
-    .state('dashboard.transfers', {
-        url: 'transfers',
-        views: {
-        'transferContent' : {
-          templateUrl: 'views/transfers.html'
-        }
-      }
     })
 
   }]);
