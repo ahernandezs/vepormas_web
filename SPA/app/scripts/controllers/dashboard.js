@@ -25,7 +25,7 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
     accountsProvider.getAccounts().then(
       function(data) {
       $scope.accounts = $rootScope.accounts;
-      $scope.selectAccount( $scope.accounts[0]._account_id, $scope.accounts[0].account_type);
+      $scope.selectAccount( $scope.accounts[0]);
       console.log($scope.accounts);
       }
     );
@@ -41,10 +41,15 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
     });
   };
 
-  $scope.selectAccount = function(accountId, type) {
+  $scope.selectAccount = function(accountSelected) {
+
+    var accountId = accountSelected._account_id;
+    var type = accountSelected.account_type;
+
     $scope.activeClass = accountId;
     $scope.selectedAcccountId = accountId;
     $scope.selectedAccountType = type;
+    $scope.activeAccountName = accountSelected.name + ' ' + accountSelected.maskedAccountNumber;
     console.log(accountId);
     
     switch (type) {
