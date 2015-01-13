@@ -22,12 +22,6 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
   };
 
 
-  $scope.payments = function () {
-    $location.path('transfers');
-    console.log('payments');
-  }
-
-
   $scope.selectNavigatOption = function(selectedOption){
     console.log('Selected Option --->' + selectedOption);
     switch(selectedOption) {
@@ -37,8 +31,8 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
           console.log($location.path());
         break;
 
-        case 'payments':
-          $scope.activeNavigationOption = 'payments';
+        case 'transfers':
+          $scope.activeNavigationOption = 'transfers';
           $location.path('transfers');
           console.log($location.path());
         break;
