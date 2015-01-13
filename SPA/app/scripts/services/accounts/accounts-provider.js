@@ -58,6 +58,18 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
 
     },
 
+    transferOwnAccounts: function(sourceAccount, destinationAccount, amount, description, completionDate){
+
+      var deferred = $q.defer();
+      accountsService.setBeneficiary(sourceAccount, destinationAccount, amount, description, completionDate).success(function(data, status, headers){
+        deferred.resolve();
+      }).error(function(data, status){
+        return deferred.reject('Error Transfer  Accounts');
+      })
+
+    },
+
+
     getAccountTransactions: function (accountId, numPage, size) {
       var index = this.getAccountIndex(accountId);
       var currentAccount = $rootScope.accounts[index];
