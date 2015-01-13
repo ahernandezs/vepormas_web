@@ -80,7 +80,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     })
   
     .state('dashboard.transfers', {
-        url: 'accounts/transfers',
+        url: 'transfers',
         views: {
         'transferContent' : {
           templateUrl: 'views/transfers.html',

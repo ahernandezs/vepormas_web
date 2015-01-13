@@ -30,6 +30,21 @@ angular.module('spaApp')
             console.log('Sending: '+$rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions?'+options);
 
 			return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions?'+options);
+        };
+
+        this.postTransfer = function(sourceAccount, destinationAccount, amount, description, completionDate){
+            return $http({
+                url: $rootScope.restAPIBaseUrl+'/accounts/'+sourceAccount+'/transactions',
+                method: 'POST',
+                data: JSON.stringify({
+                    'sourceAccount':sourceAccount,
+                    'destinationAccount':destinationAccount,
+                    'amount':amount,
+                    'description':description,
+                    'completionDate':completionDate
+                })
+                ,headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
+            });
         }
 
 }]);
