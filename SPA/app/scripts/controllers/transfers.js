@@ -7,11 +7,18 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 	
     $scope.selection = 1;
     
+
+	accountsProvider.getAccounts().then(
+	function(data) {
+		$scope.ownAccounts = $rootScope.accounts;
+		}
+	);
+
+
     /**
      * Function to navigate between steps.
 	 */
 	 $scope.completeStep = function(nextStep) {
 		$scope.selection = nextStep;
 	 };
-     
 }]);
