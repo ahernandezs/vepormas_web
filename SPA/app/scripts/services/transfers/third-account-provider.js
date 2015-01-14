@@ -21,33 +21,22 @@ angular.module('spaApp')
       return deferred.promise;
       },
 
-      setBeneficiary: function(name, clabe, amount, email, phone){
-
+      registerThirdAccount: function(alias, beneficiaryName, e_mail, rfc, phone,accountNumber,otp){
         var deferred = $q.defer();
-        thirdAccountService.setBeneficiary(name, clabe, amount, email, phone).success(function(data, status, headers){
-            deferred.resolve();
-        }).error(function(data, status){
-            return deferred.reject('Error setting beneficiary');
-        })
-        return deferred.promise;
-      },
-
-      deleteThirdAccount:function (thirdAccountID){
-        var deferred = $q.defer();
-        thirdAccountService.deleteThirdAccount(thirdAccountID).success(function(data, status, headers){
-            deferred.resolve();
-        }).error(function(data, status){
-            return deferred.reject('Error deleting third account');
-        })
-        return deferred.promise;
-      },
-
-      updateThirdAccount: function(thirdAccountID){
-        var deferred = $q.defer();
-        thirdAccountService.updateThirdAccount(thirdAccountID).success(function(data, status, headers){
+        thirdAccountService.registerThirdAccount(thirdAccountID).success(function(data, status, headers){
             deferred.resolve();
         }).error(function(data, status){
             return deferred.reject('Error updating third account');
+        })
+        return deferred.promise;
+      },
+
+      unregisterThirdAccount:function(thirdAccountID,otp){
+        var deferred = $q.defer();
+        thirdAccountService.unregisterThirdAccount(thirdAccountID).success(function(data, status, headers){
+            deferred.resolve();
+        }).error(function(data, status){
+            return deferred.reject('Error deleting third account');
         })
         return deferred.promise;
       }
