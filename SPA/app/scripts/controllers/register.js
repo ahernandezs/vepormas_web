@@ -42,15 +42,15 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
 	  */
 	$scope.confirmPassword = function () {
 		if(! $scope.registerData.password){
-			$scope.incorrectData = true;
-		$scope.errorMessage = "Las contraseñas no puede estar vacías";
+		  $scope.incorrectData = true;
+		  $scope.errorMessage = "Las contraseñas no puede estar vacías";
 		}else if($scope.registerData.password == $scope.registerData.repeatPass){
         	$scope.incorrectData = false;
         	$scope.errorMessage = null;
         	$scope.completeStep(3);
         }else{
         	$scope.incorrectData = true;
-		$scope.errorMessage = "Las contraseñas ingresadas no coinciden";
+            $scope.errorMessage = "Las contraseñas ingresadas no coinciden";
         }
 	};
 
@@ -64,7 +64,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         	$scope.completeStep(4);
         }else{
         	$scope.incorrectData = true;
-		$scope.errorMessage = "Debe elegir una imagen";
+            $scope.errorMessage = "Debe elegir una imagen";
         }
 	};
 

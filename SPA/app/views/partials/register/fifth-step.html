@@ -5,7 +5,6 @@
         <hr>
         <div class="user-data">
             <form class="contact-form">
-
                 <input type="text" class="input-token" ng-model="registerData.token" placeholder="No. de Serie del Token">
                 <input type="text" class="input-otp" ng-model="registerData.opt1" placeholder="OPT 1">
                 <input type="text" class="input-otp" ng-model="registerData.opt2" placeholder="OPT 2">
@@ -17,7 +16,6 @@
             <div class="error" ng-show="incorrectData">{{errorMessage}}</div>
             <button class="blue" ng-click="gotoLogin()">Regresar</button>
             <button class="orange" ng-click="confirmToken()">Continuar</button>
-            
         </div>
     </div>
     <div class="help">
