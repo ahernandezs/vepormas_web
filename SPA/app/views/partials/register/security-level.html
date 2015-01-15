@@ -7,13 +7,14 @@
             <!-- images -->
             <div class="radioGroupBelow" align="center">
                <label for="{{image.id}}" ng-repeat="image in images">  <img src="{{image.url}}" height="60" >
-                    <input type="radio" name="imagegroup" ng-model="$parent.selectedImage" value="{{image.id}}">
+                    <input type="radio" name="imagegroup" ng-model="registerData.selectedImage" value="{{image.id}}">
                 </label>
             </div>
             <!-- images -->
             <br>
-            <button class="orange" ng-click="completeStep(4)">Continuar</button>
-            <button class="blue">Cancelar</button>
+            <div class="error" ng-show="incorrectData">{{errorMessage}}</div>
+            <button class="orange" ng-click="confirmImage()">Continuar</button>
+            <button class="blue" ng-click="gotoLogin()">Cancelar</button>
         </div>
     </div>
     <div class="help">
