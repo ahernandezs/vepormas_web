@@ -43,14 +43,14 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
 	$scope.confirmPassword = function () {
 		if(! $scope.registerData.password){
 			$scope.incorrectData = true;
-        	$scope.errorMessage = "Las contrasenas no puede ser vacia";
+		$scope.errorMessage = "Las contraseñas no puede estar vacías";
 		}else if($scope.registerData.password == $scope.registerData.repeatPass){
         	$scope.incorrectData = false;
         	$scope.errorMessage = null;
         	$scope.completeStep(3);
         }else{
         	$scope.incorrectData = true;
-        	$scope.errorMessage = "Las contrasenas ingresadas no son iguales";
+		$scope.errorMessage = "Las contraseñas ingresadas no coinciden";
         }
 	};
 
@@ -64,7 +64,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         	$scope.completeStep(4);
         }else{
         	$scope.incorrectData = true;
-        	$scope.errorMessage = "Se debe escoger una imagen";
+		$scope.errorMessage = "Debe elegir una imagen";
         }
 	};
 
@@ -76,28 +76,28 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         $scope.errorMessage = null;
         if(! $scope.registerData.contactType){
             $scope.incorrectData = true;
-            $scope.errorMessage = "una manera de contactarle debe ser escogida";
+            $scope.errorMessage = "Debe elegir una medio de notificación";
         }else{
             if($scope.registerData.email){
                 if($scope.registerData.email != $scope.registerData.repeatEmail){
                     $scope.incorrectData = true;
-                    $scope.errorMessage = "Los emails ingresados no son iguales";
+                    $scope.errorMessage = "Los correos electrónicos no coinciden";
                 }
             }else{
                 if($scope.registerData.contactType == "byEmail"){
                     $scope.incorrectData = true;
-                    $scope.errorMessage = "Se debe ingresar un email";
+                    $scope.errorMessage = "Debes ingresar una dirección de correo electrónico";
                 }
             }
             if($scope.registerData.cellphone){
                 if($scope.registerData.cellphone != $scope.registerData.repeatCellphone){
                     $scope.incorrectData = true;
-                    $scope.errorMessage = "Los numero de telefonos ingresados no son iguales";
+                    $scope.errorMessage = "Los numeros de celular ingresados no coinciden";
                 }
             }else{
                 if($scope.registerData.contactType == "byCellPhone"){
                     $scope.incorrectData = true;
-                    $scope.errorMessage = "Se debe ingresar un numero de telefono";
+                    $scope.errorMessage = "Debe ingresar un número de celular";
                 }
             }
         }
@@ -114,7 +114,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         $scope.errorMessage = null;
         if(! $scope.registerData.acceptLegalMention){
             $scope.incorrectData = true;
-            $scope.errorMessage = "debe acuerdar con los terminos de Consubanco";
+            $scope.errorMessage = "Debe aceptar los términos de Consubanco";
         }
         if(! $scope.incorrectData){
             userProvider.registerUser($scope.clientNumber, $scope.registerData.selectedImage,
@@ -125,7 +125,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
                 },
                 function(data, status) {
                     $scope.incorrectData = true;
-                    $scope.errorMessage = "un errore occuro";
+                    $scope.errorMessage = "Ha ocurrido un error en el registro";
                 }
             );
         }
