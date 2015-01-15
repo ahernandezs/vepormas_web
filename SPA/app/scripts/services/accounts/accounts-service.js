@@ -37,11 +37,10 @@ angular.module('spaApp')
                 url: $rootScope.restAPIBaseUrl+'/accounts/'+sourceAccount+'/transactions',
                 method: 'POST',
                 data: JSON.stringify({
-                    'sourceAccount':sourceAccount,
-                    'destinationAccount':destinationAccount,
+                    'account_id_destination':destinationAccount,
                     'amount':amount,
                     'description':description,
-                    'completionDate':completionDate
+                    'completion_date':completionDate
                 })
                 ,headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
             });

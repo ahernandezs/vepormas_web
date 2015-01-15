@@ -27,4 +27,17 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 	 $scope.completeStep = function(nextStep) {
 		$scope.selection = nextStep;
 	 };
+
+    $scope.sendTransfer = function() {
+        console.log('datos transferen
+        var source = $scope.transfer.account._account_id + '-' + $scope.transfer.account.account_type
+        var destination = $scope.transfer.destination._account_id + '-' + $scope.transfer.destination.account_type;
+        accountsProvider.transferOwnAccounts(source, destination, 
+                                             $scope.transfer.amount, $scope.transfer.concept).then(
+            function(data) {
+                console.log(data);
+            }
+        );
+    };
+     
 }]);

@@ -61,11 +61,13 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
     transferOwnAccounts: function(sourceAccount, destinationAccount, amount, description, completionDate){
 
       var deferred = $q.defer();
-      accountsService.setBeneficiary(sourceAccount, destinationAccount, amount, description, completionDate).success(function(data, status, headers){
+      accountsService.postTransfer(sourceAccount, destinationAccount, amount, description, completionDate).success(function(data, status, headers){
         deferred.resolve();
       }).error(function(data, status){
         return deferred.reject('Error Transfer  Accounts');
-      })
+      });
+        
+        return deferred.promise;
 
     },
 
