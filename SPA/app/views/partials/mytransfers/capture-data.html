@@ -6,14 +6,12 @@
     </div>
     <hr>
     <form>
-        <select  ng-model="firstAccount" name="first-account" ng-options="item.name group by 'Cuentas Propias' for item in ownAccounts" >
-                <option value="" >Cuenta retiro</option>
+        <select ng-init="transfer.account = ownAccounts[0]" ng-model="transfer.account" name="first-account" ng-options="item.name group by 'Cuentas Propias' for item in ownAccounts">
         </select></br>
-    <select ng-model="secondAccount" name="second-account" ng-options="item.name group by 'Cuentas Propias'  for item in ownAccounts" >
-        <option value="" selected>Cuenta deposito</option>
-    </select></br>
-        <input type="text" ng-model="amount" name="amount" id="amount" placeholder="Importe"></br>
-        <input type="text" ng-model="concept" name="concept" id="concept" placeholder="Concepto"></br>
+        <select ng-model="transfer.destination" name="second-account" ng-options="item.name group by 'Cuentas Propias' for item in ownAccounts">
+        </select></br>
+        <input type="text" ng-model="transfer.amount" name="amount" id="amount" placeholder="Importe"></br>
+        <input type="text" ng-model="transfer.concept" name="concept" id="concept" placeholder="Concepto"></br>
     </form>
     <hr>
     <input class="blue" type="submit" value="Cancelar" ng-click="completeStep(1)">
