@@ -1,0 +1,35 @@
+<div>
+ <div class="header"> <!-- top row -->
+    <a href="#"><i class="fa fa-file-pdf-o"></i>Estados <span>de cuenta</span></a>
+    {{activeAccountName}}
+</div> <!-- ends top row -->
+<hr>
+<form class="search">
+    <div class="filter">
+        <div class="inline" style="display:flex;">
+            Filtra tu b&uactue;squeda por año o por mes
+            <input type="date" ng-model="year" placeholder="año">
+            <input type="date" ng-model="month" placeholder="mes">
+            <div class="single-btn">
+                <button class="orange" ng-click="getStatements(year, month)">Buscar</button>
+            </div>
+        </div>
+    </div>
+</form>
+<div class="transactions">    
+    <table class="details">
+        <thead>
+            <tr>
+                <th scope="col" colspan="3">2014</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr ng-repeat="statement in statements">
+                    <td>{{statement.month}}</td>
+                    <td>Descargar PDF</td>
+                    <td>Imprimir</td>
+                </tr>
+        </tbody>
+    </table>
+</div>
+</div>
