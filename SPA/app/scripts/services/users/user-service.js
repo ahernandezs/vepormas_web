@@ -10,25 +10,23 @@ angular.module('spaApp')
 					'client_id':clientOrAccount,
 					'folio_id':Folio,
                     'client_application_id': 'PROSA-DIG'
-				})
+				}),
+				headers: {'Content-Type': 'application/json'}
 		});
 	}
 
-	this.setUser = function(identifier, cardId, imageId, password, email, cellPhone){
+	this.setUser = function(identifier, imageId, password, email, cellPhone){
 		return $http({
 				url: $rootScope.restAPIBaseUrl+'/register',
 				method: 'POST',
 				data: JSON.stringify({
-					'identifier': {
-                        'name':name,
-                        'value':value
-                    },
-					'card_id':cardId,
+					'identifier': identifier,
 					'image_id':imageId,
 					'password':password,
 					'e_mail':email,
 					'phone': cellPhone
-				})
+				}),
+				headers: {'X-REGISTER-TOKEN': $rootScope.registerToken}
 		});
 	}
 
