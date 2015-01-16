@@ -66,7 +66,7 @@
                         <div class="product-details">
                             <div class="header">
                                 <h2 class="title">
-                                    <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'fa fa-minus-square' : 'fa fa-plus-square'"></i></a>
+                                    <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'ico-menos' : 'ico-mas'"></i></a>
                                     Credito Institucional 1 ***12345
                                     <span>Cuenta</span>
                                 </h2>
@@ -78,7 +78,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="#"><i class="fa fa-file-pdf-o"></i>Estados <span>de cuenta</span></a>
+                                <a href="#"><i class="ico-estados"></i>Estados <span>de cuenta</span></a>
                             </div>
                             <hr ng-show='!showAccountHeader'>
                             <div class="box" ng-show='showAccountHeader'>
@@ -99,7 +99,7 @@
                             </div>
                             <form class="search">
                                 <input type="search" name="movements" id="movements" placeholder="Buscar movimientos">
-                                <button type="submit"><i class="fa fa-search"></i><span>Buscar</span></button>
+                                <button type="submit"><i class="ico-search"></i><span>Buscar</span></button>
                             </form>
                             <div class="transactions">
                                 <div class="filter">
@@ -173,6 +173,6 @@
                 </div>
       </div>
     </main>
-    <div ng-include="'views/partials/layout/main-footer.html'"></div>
+    <footer ng-include="'views/partials/layout/main-footer.html'"></footer>
   </div>
 </div>

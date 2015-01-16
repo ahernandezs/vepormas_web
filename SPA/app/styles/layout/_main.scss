@@ -4,7 +4,12 @@
 |-------------------------------------------------------------------------------------
 */
 main {
-	padding-top: 20px;
+	padding:0;
+	width: 100%;
+	position: absolute;
+	top:118px;
+	bottom:30px;
+	left:0;
 }
 /*
 |-------------------------------------------------------------------------------------
@@ -25,7 +30,7 @@ body {
 	@include clearfix();
 	width: $fullWidth;
 	margin: auto;
-	position: relative;
+	//position: relative;
 }
 
 

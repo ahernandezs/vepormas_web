@@ -4,40 +4,49 @@
         <p>Recibe alertas al instante en tu tel&eacute;fono celular y&sol;o correo electr&oacute;nico, cada vez que se realice un movimiento en tus cuentas.</p>
 <hr>
         <div class="user-data">
+
             <form class="contact-form" name="contactForm">
-                <input type="email" name="email" ng-model="registerData.email" placeholder="Correo electr&oacute;nico">
-                <input type="email" name="repeatEmail" ng-model="registerData.repeatEmail" placeholder="Confirma correo electr&oacute;nico">
+                <input type="text" name="email" class="input-mail" ng-model="registerData.email" placeholder="Correo electr&oacute;nico">
+                <input type="text" name="repeatEmail" class="input-mail" ng-model="registerData.repeatEmail" placeholder="Confirma correo electr&oacute;nico">
                 <div class="error" ng-show="contactForm.email.$error.email">Email invalido</div>
-                <input type="text" ng-model="registerData.cellphone" placeholder="Celular">
-                <input type="text" ng-model="registerData.repeatCellphone" placeholder="Confirma celular">
+                <input type="text" class="input-mobile" ng-model="registerData.cellphone" placeholder="Celular">
+                <input type="text" class="input-mobile" ng-model="registerData.repeatCellphone" placeholder="Confirma celular">
                 <div class="separate">
                     <p>&iquest;Por qu&eacute; medio quieres ser notificado&quest;</p>
-                    <input type="radio" ng-model="registerData.contactType" name="type-contact" id="byEmail" value="byEmail">
-                    <p>E-mail</p>
-                    <input type="radio" ng-model="registerData.contactType" name="type-contact" id="byCellphone" value="byCellphone">
-                    <p>Celular</p>
+                    <label>
+                        <span>E-mail</span>
+                        <input type="radio" ng-model="registerData.contactType" name="type-contact" id="byEmail" value="byEmail"></label>
+                    <label>
+                        <span>Celular</span>
+                    <input type="radio" ng-model="registerData.contactType" name="type-contact" id="byCellphone" value="byCellphone"></label>
                 </div>
             </form>
-            <div class="separate">
-                <div class="error" ng-show="incorrectData">{{errorMessage}}</div>
-                <button class="blue" ng-click="confirmContactInformation()">Confirmar</button>
-                <button class="blue" ng-click="gotoLogin()">Cancelar</button>
-            </div>
+            <div class="error" ng-show="incorrectData">{{errorMessage}}</div>
+            <button class="blue" ng-click="gotoLogin()">Regresar</button>
+            <button class="orange" ng-click="confirmContactInformation()">Continuar</button>
         </div>
     </div>
     <div class="help">
+        <h3>Ayuda</h3>
         <div>
-            <i class="fa fa-comments-o"></i>
+            <i class="ico-alerta"></i>
+            <p class="blue">Llena todos los campos</p>
+            <p>
+                Es muy importante que llenes todos los campos para que tu registro se  realice con éxito.
+            </p>
+        </div>  
+        <div>
+            <i class="ico-duda"></i>
             <p class="blue">&iquest;Por qu&eacute; ingresar estos datos&quest;</p>
             <p>
-                Al ingresar tu correo electr&oacute;nico y celular se te har&aacute;n llegar las notificaciones de tus operaciones realizadas en tus cuentas.
+                Al ingresar tu correo electrónico y celular  se te harán llegar las notificaciones de tus  operaciones realizadas en tus cuentas.
             </p>
         </div>
         <div>
-            <i class="fa fa-keyboard-o"></i>
-            <p class="blue">&iquest;Necesitas ayuda&quest;</p>
+            <i class="ico-ayuda"></i>
+            <p class="blue">¿Necesitas ayuda?</p>
             <p>
-                Comun&iacute;cate con nosotros al 01 800 800 3224.
+               Comunícate con nosotros al 01 800 800 3224.  
             </p>
         </div>
     </div>

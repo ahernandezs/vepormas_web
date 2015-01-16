@@ -4,6 +4,10 @@ $headerTop: 10px;
 header {
 	@include hightlight(#FFF, $blue);
 	@include clearfix();
+	position: fixed;
+	width: 100%;
+	top:0;
+	left:0;
 	background-color: $blue;
 	color: #FFF;
 	height: 118px !important;
@@ -14,6 +18,7 @@ header {
 
 	> .wrapper {
 		height: 100%;
+		position: relative;
 	}
 
 	.logo {
@@ -65,23 +70,31 @@ header {
 |-------------------------------------------------------------------------------------
 */
 .user-session {
-	// float: right;
-	// display: inline-block;
-	position: absolute;
-	right: 0;
+	height:67px;
+	width: 30%;
+	margin-top: 40px;
+	display: inline;
+	float:right;
 	bottom: $headerBottom;
-	margin-top: 50px;
-
-	> div, > button {
-		display: inline-block;
-		vertical-align: bottom;
+	overflow:hidden;
+	> div{
+		float:left;
+		width: 65%;
+		h6{
+			font-size: 14px;
+		}
+		h4{
+			font-size: 16px;
+		}
+	}
+	> button{
+		width: 35%;
+		float:right;
+		margin-top: 32px;
 	}
 	.date {
 		font-size: 13px;
 		color: $bwhite;
-	}
-	button {
-		margin-left: 50px;
 	}
 }
 /*

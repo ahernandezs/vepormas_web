@@ -3,7 +3,7 @@
 	border-radius: 4px;
 	color: #FFF;
 	// font-size: 13px;
-	font-weight: 300;
+	font-weight: bold;
 	padding: 8px 10px;
 }
 button:not([type*=submit]) {
@@ -26,9 +26,11 @@ button:not([type*=submit]) {
 input[type*=submit] {
 	&.blue {
 		background-color: $blue;
+		font-weight: bold;
 	}
 	&.orange {
 		background-color: $orange;
+		font-weight: bold;
  	}
   &:disabled {
     background-color: $gray;

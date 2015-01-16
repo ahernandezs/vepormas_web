@@ -5,32 +5,36 @@
         <hr>
         <div class="user-data">
             <form class="register-pass">
-                <div>
-                    <input type="text" ng-model="registerData.clientID" placeholder="No. de cliente">
-                </div>
-                <div>
-                    <input type="text" ng-model="registerData.password" placeholder="Contrase&ntilde;a">
-                    <input type="text" ng-model="registerData.repeatPass" placeholder="Confirmar contrase&ntilde;a">
-                </div>
+                <input type="text" class="input-cuenta" ng-model="registerData.clientID" placeholder="No. de cliente">
+                <input type="password" class="input-password" ng-model="registerData.password" placeholder="Contrase&ntilde;a">
+                <input type="password" class="input-password" ng-model="registerData.repeatPass" placeholder="Confirmar contrase&ntilde;a">
             </form>
             <div class="error" ng-show="incorrectData">{{errorMessage}}</div>
-            <button class="blue" ng-click="confirmPassword()">Confirmar</button>
-            <button class="blue" ng-click="gotoLogin()">Cancelar</button>
+            <button class="blue" ng-click="confirmPassword()">Regresar</button>
+            <button class="orange" ng-click="confirmPassword()">Continuar</button>
         </div>
     </div>
     <div class="help">
+        <h3>Ayuda</h3>
         <div>
-            <i class="fa fa-comments-o"></i>
-            <p class="blue">&iquest;No. de cuenta o No. de cliente&quest;</p>
+            <i class="ico-alerta"></i>
+            <p class="blue">Llena todos los campos</p>
             <p>
-                Elige entre estas dos opciones la cual te permitir&aacute; el acceso a tu banca digital.
+                Es muy importante que llenes todos los campos para que tu registro se realice con éxito.
             </p>
         </div>
         <div>
-            <i class="fa fa-keyboard-o"></i>
+            <i class="ico-duda"></i>
+            <p class="blue">¿No. de cuenta, No. de cliente o No. de Tarjeta? </p>
+            <p>
+                Elige entre estas dos opciones  la cual te permitirá el acceso a tu banca digital.
+            </p>
+        </div>
+        <div>
+            <i class="ico-duda"></i>
             <p class="blue">Contrase&ntilde;a</p>
             <p>
-                Debe tener de 8 a 10 caracteres, esta contrase&ntilde;a te permitir&aacute; el acceso a tu banca digital.
+                Debe tener de 8 a 10 caracteres, esta contraseña te permitirá el acceso a tu banca digital.
             </p>
         </div>
     </div>

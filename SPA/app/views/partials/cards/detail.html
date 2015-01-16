@@ -1,7 +1,7 @@
 <div>
  <div class="header"> <!-- top row -->
     <h2 class="title">
-        <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'fa fa-minus-square' : 'fa fa-plus-square'"></i></a>
+        <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'ico-menos' : 'ico-mas'"></i></a>
         {{activeAccountName}}
         <span>Cuenta</span>
     </h2>
@@ -21,7 +21,8 @@
             </div>
         </div>
     </div>
-    <a ng-click='getStatements();'><i class="fa fa-file-pdf-o"></i>Estados <span>de cuenta</span></a>
+
+    <a ng-click='getStatements();'><i class="ico-estados"></i>Estados <span>de cuenta</span></a>
 </div> <!-- ends top row -->
 <!-- =============================================================== -->
 <hr ng-show='!showAccountHeader'>
