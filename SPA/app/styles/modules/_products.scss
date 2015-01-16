@@ -206,6 +206,12 @@ hr[ng-show="!showAccountHeader"]{
 		margin-bottom: 2px;
 	}
 }
+.box + .buscador-fechas{
+	overflow:hidden;
+	> *{
+		float: left;
+	}
+}
 .box {
 	@include clearfix;
 	background-color: $lgray;
@@ -267,6 +273,64 @@ hr[ng-show="!showAccountHeader"]{
 		background-size:25px;
 	}
 }
+.search + .transactions .filter .inline{
+	padding:0;
+	margin: -4px 0 0 10%;
+	p{
+		width: 35%;
+	}
+}
+.search .inline{
+	padding:0;
+	p{
+		width: 26%;
+	}
+	button{
+		color:white;
+	}
+}
+.inline{
+	overflow: hidden;
+	padding:10px;
+	h4{
+		color:$dgray;
+		width: 33%;
+		padding-top:10px;
+		font-size: 14px;
+	}
+	h4, p{
+		float:left;
+		margin: 0 5px;
+	}
+	button{
+		float:right;
+	}
+	i{
+		display: inline-block;
+		width: 30px;
+		height: 33px;
+		background:url(../images/ico-calendario.png) no-repeat center top;
+		background-size:28px;
+		vertical-align: bottom;
+		margin-left: 5px;
+	}
+	input{
+		padding:8px;
+		width: 40%;
+		border:1px solid $gray;
+		@include border-radius(4px);
+	}
+	input:focus{
+		box-shadow:none;
+		border-color:$orange;
+	}
+	p{
+		width: 25%;
+		color:$dgray;
+		font-size: 14px;
+	}
+	
+}
 .transactions {
 	@extend .tabular-data;
 
@@ -278,7 +342,7 @@ hr[ng-show="!showAccountHeader"]{
 		top:-39px;
 
 		> * { display: inline-block; vertical-align: middle;}
-
+		
 		span {
 			margin-right: 4px;
 		}
