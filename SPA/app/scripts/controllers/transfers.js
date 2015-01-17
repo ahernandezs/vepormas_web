@@ -5,7 +5,8 @@
  */
 angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider) {
 	
-    $scope.selection = 1;
+    $scope.selection = 4;
+    $scope.beneficiary = {};
     $scope.transfer = {};
     $scope.transfer.account;
     $scope.transfer.destination;
@@ -15,8 +16,8 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     
 
 	accountsProvider.getAccounts().then(
-	function(data) {
-		$scope.ownAccounts = $rootScope.accounts;
+	   function(data) {
+           $scope.ownAccounts = $rootScope.accounts;
 		}
 	);
 
@@ -29,7 +30,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 	 };
 
     $scope.sendTransfer = function() {
-        var source = $scope.transfer.account._account_id + '-' + $scope.transfer.account.account_type
+        var source = $scope.transfer.account._account_id + '-' + $scope.transfer.account.account_type;
         var destination = $scope.transfer.destination._account_id + '-' + $scope.transfer.destination.account_type;
         accountsProvider.transferOwnAccounts(source, destination, 
                                              $scope.transfer.amount, $scope.transfer.concept).then(

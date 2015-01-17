@@ -1,0 +1,45 @@
+<div class="content">
+    <div class="header">
+        <h2>Alta nuevo beneficiario</h2>
+        <p></p>
+        <progress max="3" value="{{selection -3}}"></progress>
+    </div>
+    <hr>
+    <div class="message">
+        <p>El nuevo beneficiario se ha dado de alta, numero de autorizacion <span class="autorization">123456</span></p>
+    </div>
+    <table>
+        <tr>
+            <td>Nombre:</td>
+            <td>{{beneficiary.name}}</td>
+        </tr>
+        <tr>
+            <td>Alias:</td>
+            <td>{{beneficiary.aka}}</td>
+        </tr>
+        <tr>
+            <td>T. Debito:</td>
+            <td>{{transfer.amount}}</td>
+        </tr>
+        <tr>
+            <td>Correo electronico:</td>
+            <td>{{beneficiary.email}}</td>
+        </tr>
+        <tr>
+            <td>Celular:</td>
+            <td>{{beneficiary.phone}}</td>
+        </tr>
+        <tr>
+            <td>Fecha de aplicacion:</td>
+            <td>{{beneficiary.date}}</td>
+        </tr>
+    </table>
+    <hr>
+    <div class="note">
+        <p>Por disposicion de segurida de la Comision Nacional Bancaria y de valores (CNBV) </br>
+            <span class="boulder">la cuenta podra ser utilizada en 30 minutos.</span>
+        </p>
+    </div>
+    <input class="blue" type="submit" value="Finalizar" ng-click="completeStep(3)">
+    <input class="orange larger" type="submit" value="Realizar otro pago" ng-click="">
+</div>
