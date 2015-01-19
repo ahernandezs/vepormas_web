@@ -89,6 +89,16 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
       }
     })
 
+    .state('dashboard.administration', {
+        url: 'administration',
+        views: {
+        'administration' : {
+          templateUrl: 'views/administration.html',
+          controller: 'adminCtrl'
+        }
+      }
+    })
+
     .state('register', {
     url: '/register',
     templateUrl: 'views/register.html',
