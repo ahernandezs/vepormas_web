@@ -1,0 +1,41 @@
+<div class="content">
+    <div class="header">
+        <h2>Alta nuevo beneficiario</h2>
+        <p>Confirma los datos para dar de alta a un nuevo beneficiario</p>
+        <progress max="3" value="{{selection -3}}"></progress>
+    </div>
+    <hr>
+    <form>
+        <input type="password" ng-model="beneficiary.token" name="token" id="token" placeholder="Introduce el c&oacute;digo que se ha generado en tu Token F&iacute;sico">
+        <hr>
+        <table>
+            <tr>
+                <td>Nombre:</td>
+                <td>{{beneficiary.name}}</td>
+            </tr>
+            <tr>
+                <td>Alias:</td>
+                <td>{{beneficiary.aka}}</td>
+            </tr>
+            <tr>
+                <td>T. Debito:</td>
+                <td>{{transfer.amount}}</td>
+            </tr>
+            <tr>
+                <td>Correo electronico:</td>
+                <td>{{beneficiary.email}}</td>
+            </tr>
+            <tr>
+                <td>Celular:</td>
+                <td>{{beneficiary.phone}}</td>
+            </tr>
+            <tr>
+                <td>Fecha de aplicacion:</td>
+                <td>{{beneficiary.date}}</td>
+            </tr>
+        </table>
+    </form>
+    <hr>
+    <input class="blue" type="submit" value="Regresar" ng-click="completeStep(4)">
+    <input class="blue" type="submit" value="Continuar" ng-click="completeStep(6)">
+</div>
