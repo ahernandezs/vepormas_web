@@ -50,7 +50,7 @@ angular.module('spaApp')
       $scope.checkingUser = false;
       $scope.incorrectData = true;
 
-      $scope.errorMessage = 'Por favor, introduzca un usuario válido';
+      $scope.errorMessage = '!Usuario incorrecto¡ favor de verificarlo';
 
       return;
     }

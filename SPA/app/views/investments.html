@@ -2,7 +2,7 @@
 <div class="product-details">
     <div class="header">
         <h2 class="title">
-            <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'fa fa-minus-square' : 'fa fa-plus-square'"></i></a>
+            <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'ico-menos' : 'ico-mas'"></i></a>
             Consuinversi&oacute;n CEDE
             <span>Inversi&oacute;n</span>
         </h2>
@@ -10,7 +10,7 @@
             <div>
                 <div>
                     <p class="amount">{{investmentHeader.available}}</p>
-                    <span>Saldo disponible</span>
+                    <span class="blue">Saldo disponible</span>
                 </div>
             </div>
         </div>
@@ -30,10 +30,10 @@
             <li>Monto del rendimiento:      <span class="amount">{{accountHeader.limitCredit}}</span></li>
         </ul>
     </div>
-    <form>
-        Fecha inicio
+    <form class="buscador-fechas">
+        <p>Fecha inicial:</p>
         <input type="search">
-        Fecha fin
+        <p>Fecha final:</p>
         <input type="search">
         <button class="blue">Buscar</button>
     </form>

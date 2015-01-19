@@ -1,19 +1,20 @@
 <form class="user-login" >
     <h2>BIENVENIDO</h2>
     <h3>{{client_name}}</h3>
-	<hr>
 
  <a class="blue-min">Nivel de seguridad adicional</a>
  <a class="gray-min">Selecciona la imagen que elegiste al registrarte</a>
 <!-- images -->
 <div class="radioGroupBelow" align="center">
+    <div>
    <label ng-repeat="image in images">  <img ng-src="{{restAPIBaseUrl}}/{{image.url}}" height="60" >
         <input type="radio" name="imagegroup" ng-model="$parent.$parent.selectedImage" ng-value="image.image_id">
     </label>
+    </div>
 </div>
 <!-- images -->
-    <hr>
-    <input ng-class="incorrectData ? 'rojo' : ''" type="password" name="password" ng-model="$parent.password" id="password" placeholder="Password" maxlength="20">
+    
+    <input ng-class="incorrectData ? 'rojo' : ''" type="password" name="password" ng-model="$parent.password" id="password" placeholder="Contraseña" maxlength="20">
     <div class="incorrectUser" ng-show="incorrectData"> {{errorMessage}}</div>
 
 <div class="buttons">

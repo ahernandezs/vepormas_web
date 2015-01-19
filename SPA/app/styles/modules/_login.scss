@@ -93,11 +93,8 @@
 }
 .user-login,
 .user-registration {
-	padding: 14px 18px;
+	padding: 15px 18px;
 	width: 380px;
-	hr {
-		margin: 14px 0;
-	}
 	label {
 		color: $blue;
 		display: block;
@@ -107,27 +104,35 @@
 			display: inline;
 		}
 	}
+	input,input:focus{
+		box-shadow:none;
+	}
 	input.rojo {
 		border-radius: 4px;
-		border: 1px solid red;
+		border: 1px solid #e00101;
+	}
+	input[type="submit"]:hover, input[type="submit"]:active{
+		background-color:$orange;
 	}
 
 	.incorrectUser{
 		margin: 2px auto;
-	 	background:url(https://cdn1.iconfinder.com/data/icons/toolbar-signs/512/delete-128.png) no-repeat left center;
+	 	background:url(../images/ico-error.png) no-repeat left top;
 	 	background-size:15px;
-	 	color:red;
-	 	font-size: 14px;
+	 	color:#e00101;
+	 	font-size: 13px;
 	 	font-style: italic;
-	 	padding: 10px 10px 10px 30px;
+	 	margin-top: -10px;
+	 	padding: 0 10px 10px 30px;
 	}
 
 	.buttons{
 		overflow:hidden;
-		margin: 10px auto;
+		margin: 0 auto;
 		input{
 			float:left;
 			width:48%;
+			margin-bottom: 0 !important;
 		}
 		input:first-child{
 			margin-right: 4%
@@ -136,7 +141,7 @@
 
 	p {
 		text-align: center;
-		margin: 8px auto;
+		margin: 5px auto 0 auto;
 		color:$dgray;
 	 	font-size: 10px;
 	}
@@ -150,9 +155,11 @@
 
 	h3 {
 		text-align: center;
-		margin: 10px;
+		margin: 15px -18px;
+		padding-bottom: 15px;
+		border-bottom: 1px solid #f4f4f4;
 		color:$dgray;
-	 	font-size: 20px;
+	 	font-size: 17px;
 	}
 
 	.blue-min{
@@ -196,6 +203,19 @@
 		padding: 10px 0;
 		text-transform: uppercase;
 	}
+	input[type="text"]{
+		margin-bottom: 15px;
+		background:url(../images/ico-usuario-login.png) no-repeat 95% center, white;
+		background-size:25px;
+	}
+	input[type="password"]{
+		background:url(../images/ico-password-login.png) no-repeat 95% center, white;
+		background-size:25px;
+		margin-bottom: 15px;
+	}
+	input[type="text"]:focus, input[type="password"]:focus{
+		border-color:$orange;
+	}
 	.alert {
 		background-color: $blue;
 		border-radius: 4px;
@@ -210,8 +230,14 @@
 	}
 }
 .user-registration {
+	label{
+		margin-bottom: 20px;
+	}
 	input[name*=contract-number] {
 		margin: 10px 0;
+	}
+	input[type="text"]:focus{
+		border-color:$orange;
 	}
 }
 .action-call-apps {
@@ -226,7 +252,7 @@
 
 	&:before {
 		color: $orange;
-		content: "Descarga nuestra aplicaci&oacute;n:";
+		content: "Descarga nuestra aplicación:";
 		display: block;
 		font-size: 16px;
 		padding-bottom: 10px;
@@ -262,13 +288,27 @@
 }
 
 /* center radio below label */
-	.radioGroupBelow label{
-  	display: inline-block;
-  	text-align: center;
-  	margin: 0 0.2em;
- 	input[type="radio"] {
-    display: block;
-    margin: 0.5em auto;
-    width: auto;
-  }
+
+.radioGroupBelow {
+	height:120px;
+	overflow:hidden;
+	overflow-x:scroll;
+	margin:0 -18px 15px -18px;
+	border-bottom: 1px solid #f4f4f4;
+	div{
+		width: 200%;
+	}
+	img{
+		@include border-radius(4px);
+	}
+	label{
+	  	display: inline-block;
+	  	text-align: center;
+	  	margin: 0 0.2em;
+	 	input[type="radio"] {
+		    display: block;
+		    margin: 0.3em auto;
+		    width: auto;
+		}
+	}
 }

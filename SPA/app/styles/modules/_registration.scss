@@ -1,3 +1,34 @@
+.input-importe{
+	font-size:24px;
+}
+.input-cuenta{
+        	background:url(../images/ico-cuenta.png) no-repeat 95% center;
+        	background-size: 25px;
+        }
+        .input-usuario{
+        	background:url(../images/ico-usuario-login.png) no-repeat 95% center;
+        	background-size: 25px;
+        }
+        .input-password{
+        	background:url(../images/ico-password-login.png) no-repeat 95% center;
+        	background-size: 25px;
+        }
+        .input-mail{
+        	background:url(../images/ico-mail.png) no-repeat 95% center;
+        	background-size: 25px;
+        }
+        .input-mobile{
+        	background:url(../images/ico-mobile.png) no-repeat 95% center;
+        	background-size: 25px;
+        }
+        .input-token{
+        	background:url(../images/ico-token.png) no-repeat 95% center;
+        	background-size: 25px;
+        }
+        .input-otp{
+        	background:url(../images/ico-otp.png) no-repeat 95% center;
+        	background-size: 25px;
+        }
 .registration {
 	// components
 	h2, h3 {
@@ -25,10 +56,10 @@
 		padding-top: 40px;
 
 		> .wrapper {
-			background-color: $lgray;
-			border-radius: $radius;
+			background-color: #f7f7f7;
+			/*border-radius: $radius;
 			border: 1px solid $gray;
-			box-shadow: 0px 1px 3px rgba(0,0,0,0.14);
+			box-shadow: 0px 1px 3px rgba(0,0,0,0.14);*/
 		}
 	}
 	.row > div {
@@ -36,8 +67,14 @@
 	}
 	// modules
 	.steps {
+		position: relative;
+		margin-right: 0 !important;
 		@include column(2.8);
 		height: 100%;
+		border-radius:5px 0 0 5px;
+		border-top: 1px solid $gray;
+		border-left: 1px solid $gray;
+		border-bottom: 1px solid $gray;
 
 		h3 {
 			font-weight: 400;
@@ -51,12 +88,70 @@
 			margin-top: 30px;
 			width: 100%;
 		}
+		li.active{
+			a{
+				color:$green;
+			}
+		}
+		li:first-child{
+			background:url(../images/ico-registro-confirmacion.png) no-repeat left center;
+			background-size:35px;
+		}
+		li:nth-child(2){
+			background:url(../images/ico-registro-usuario.png) no-repeat 2px center;
+			background-size:30px;
+		}
+		li:nth-child(3){
+			background:url(../images/ico-registro-seguridad.png) no-repeat 2px center;
+			background-size:30px;
+		}
+		li:nth-child(4){
+			background:url(../images/ico-registro-notificacion.png) no-repeat 2px center;
+			background-size:30px;
+		}
+		li:nth-child(5){
+			background:url(../images/ico-registro-token.png) no-repeat 2px center;
+			background-size:30px;
+		}
+		li:nth-child(6){
+			background:url(../images/ico-registro-finalizado.png) no-repeat 2px center;
+			background-size:30px;
+		}
+		li.active:nth-child(2){
+			background:url(../images/ico-registro-usuario-a.png) no-repeat left center;
+			background-size:35px;
+		}
+		li.active:nth-child(3){
+			background:url(../images/ico-registro-seguridad-a.png) no-repeat left center;
+			background-size:35px;
+		}
+		li.active:nth-child(4){
+			background:url(../images/ico-registro-notificacion-a.png) no-repeat left center;
+			background-size:35px;
+		}
+		li.active:nth-child(5){
+			background:url(../images/ico-registro-token-a.png) no-repeat left center;
+			background-size:35px;
+		}
+		li.active:nth-child(6){
+			background:url(../images/ico-registro-finalizado-a.png) no-repeat left center;
+			background-size:35px;
+		}
 		li {
 			margin-left: 14%;
 			padding-left: 21%;
 			position: relative;
+			margin-bottom: 15px;
 
-			&:before {
+			a{
+				font-weight: bold;
+				font-size: 15px;
+			}
+			a:hover{
+				color:$green
+			}
+
+			/*&:before {
 				background: $gray;
 				border-radius: 50%;
 				box-shadow: 0 3px 2px rgba(0,0,0,.14) inset;
@@ -76,21 +171,21 @@
 				position: absolute;
 				top: 20%;
 				width: 36px;
-			}
+			}*/
 		}
 		progress {
 			@include rotate(90deg);
 			-webkit-appearance: none;
 			appearance: none;
-			height: 11px;
-			left: -8.2%;
+			height: 8px;
+			left: -39.5%;
 			position: absolute;
 			top: 280px;
 			width: 310px;
 
 			&::-webkit-progress-bar {
-				background-color: $gray;
-				box-shadow: 0 2px 0px rgba(0,0,0,.14) inset;
+				background-color: #d2d2d2;
+				box-shadow: 0 1px 0px rgba(0,0,0,.14) inset;
 			}
 			&::-webkit-progress-value{
 				background-color: $green;
@@ -99,25 +194,65 @@
 	}
 	.record {
 		@include column(9.2);
-		background-color: #fff;
-		border-radius: 0 4px 4px 0;
-		padding: 30px 20px;
-        min-height: 520px;
+		//background-color: #fff;
+		margin-left: 0 !important;
+		//padding: 30px 20px;
 	}
 	.data {
+		background-color: #fff;
+		margin-left: 0 !important;
+		padding: 30px;
+		min-height: 520px;
+		border-radius:0 5px 5px 0;
+		border-top: 1px solid $gray;
+		border-right: 1px solid $gray;
+		border-bottom: 1px solid $gray;
 		@include column(6.4);
 		@include push(0.2);
 		@include pull(.4);
         input {
             margin-bottom: 10px;
         }
+        h2 + p{
+        	font-size: 14px;
+        }
+        .user-data{
+        	p{  
+        		font-size: 14px;
+	        	margin-bottom: 20px;
+        	}
+        	ol{
+        		margin: 0 0 20px 0;
+        		li{
+	        		font-size: 14px;
+	        		list-style:none;
+	        		margin:0 0 12px 0;
+	        		padding-left: 25px;
+	        		background:url(../images/ico-ok.png) no-repeat left center;
+	        		background-size:15px;
+	        	}
+        	}
+        }
         .separate {
             width: 100%;
             height: 50px;
-            margin-top: 20px;
-            p:first-child {
+            margin: 15px 0;
+            overflow: hidden;
+            p{
                 width: 48%;
                 float: left;
+                font-size:14px;
+            }
+            label{
+            	display: block;
+            	float: right;
+            	font-size: 14px;
+            	overflow: hidden;
+            	margin-right: 10px;
+            	span{
+            		float:left;
+            		padding-top:10px;
+            	}
             }
             input {
                 width: initial;
@@ -133,38 +268,96 @@
             }
         }
         .termns {
+        	font-size: 14px;
+        	overflow: hidden;
+        	display: block;
+        	width: 100%;
+        	margin-bottom: 30px;
+        	span{
+        		display: block;
+        		float: right;
+        		width: 90%;
+        		a{
+        			color:$blue;
+        			text-decoration:underline;
+        			display: inline;
+        		}
+        	}
             input {
                 width: initial;
-                float: left;
                 margin: 11px 10px;
             }
+        }
+        input[type="text"], input[type="password"]{
+        	display: block;
+        	width: 100%;
+        	box-shadow:none;
+        	border:1px solid $gray;
+        	padding:10px;
+        	margin-bottom: 15px;
+        	@include border-radius(4px);
+        }
+        input[type="text"]:focus, input[type="password"]:focus{
+        	border-color:$orange;
+        }
+        input[type="password"] + input[type="password"]{
+        	margin-bottom: 30px;
         }
 	}
 	.help {
 		@include column(5);
-		margin-top: 95px;
-
+		margin-top: 20px;
+		h3{
+			font-weight: normal;
+			margin: 0 0 55px 10px
+		}
 		i {
-			color: $blue;
-			font-size: 40px;
-			left: 0;
+			left:12px;
+			border-right:1px  solid $blue;
 			position: absolute;
+			display: block;
 			top: 50%;
+			width: 55px;
+			height: 50px;
 			@include translate(0,-50%);
+		}
+		.ico-ayuda{
+			background: url(../images/ico-ayuda.png) no-repeat left center;
+			background-size:45px;
+		}
+		.ico-token{
+			background: url(../images/ico-ayuda-token.png) no-repeat left center;
+			background-size:45px;
+		}
+		.ico-alerta{
+			background: url(../images/ico-ayuda-alerta.png) no-repeat left center;
+			background-size:45px;
+		}
+		.ico-duda{
+			background: url(../images/ico-ayuda-duda.png) no-repeat left center;
+			background-size:45px;
 		}
 		> div {
 			padding-left: 80px;
 			position: relative;
+			padding:20px;
+			border:1px solid $blue;
+			@include border-radius(5px);
 
-			&:before {
+			/*&:before {
 				background: $blue;
 				content: "";
 				height: 100%;
 				left: 60px;
 				position: absolute;
 				width: 2px;
+			}*/
+			p{
+				padding-left: 60px;
 			}
-
+			p + p{
+				font-size: 12px;
+			}
 			+ div {
 				margin-top: 30px;
 			}

@@ -3,25 +3,101 @@
 |	Left menu
 |-------------------------------------------------------------------------------------
 */
+.select-style:active{
+    border-color:$orange;
+}
+.select-style{
+    width: 70%;
+    padding: 0;
+    margin: 15px 0 0 0;
+    border: 1px solid $gray;
+    @include border-radius(4px);
+    background: #fff url(../images/ico-abajo.png) no-repeat 95% center;
+    background-size:25px;
+    select {
+        color:$dgray;
+        width: 90%;
+        padding: 10px !important;
+        margin: 0 !important;
+        border: none !important;
+        box-shadow: none;
+        background:transparent;
+        -webkit-appearance: none;
+           -moz-appearance: none;
+                appearance: none;
+    }
+    select:focus {
+        outline: none;
+    }
+}
 .content {
     float: right;
     width: 70.8333333333%;
     margin: 0 1.0416666667%;
-    .header {
-        height: 52px;
-        h2, p { float: left; width: 70%; }
-        p { color: grey; }
-        progress {
-            float: right;
-            margin: -15px 0 0 0;
+    margin-top:40px;
+    .double-btn{
+        border-top: 1px solid $gray;
+        margin-top: 30px;
+        input{
+            border:none;
+            font-weight: bold !important;
+            font-size: 14px;
         }
     }
-    input, select {
+    .header {
+        position: relative;
+        border-bottom: 1px solid $gray;
+        padding-bottom: 15px;
+        min-height:60px;
+        overflow: hidden;
+        h2, p { float: left; width: 67%; }
+        p { color: grey; }
+        .progress{
+            position: absolute;
+            top:34px;
+            right: 0;
+            width: 33%;
+            p{
+                text-transform: uppercase;
+                font-size: 10px;
+                color:$dgray;
+                text-align: center;
+                float: left;
+                width: 33%;
+            }
+            p.orange{
+                color:$orange;
+            }
+        }
+        progress {
+            float: right;
+            width: 33%;
+            margin: -15px 0 0 0;
+            -webkit-appearance: none;
+            appearance: none;
+            height:10px;
+            overflow: hidden;
+            @include border-radius(10px);
+
+            &::-webkit-progress-bar {
+                background-color: #d2d2d2;
+                box-shadow: 0 1px 0px rgba(0,0,0,.14) inset;
+            }
+            &::-webkit-progress-value{
+                background-color: $orange;
+            }
+        }
+    }
+    input {
         border-radius: 4px;
         border: 1px solid #CCC;
         padding: 10px;
         width: 70%;
         margin-top: 15px
+    }
+    input:focus{
+        border-color:$orange;
+        box-shadow:none;
     }
     select {
         background-color: white;
@@ -37,9 +113,10 @@
     .larger { width: 145px !important; }
     table {
         width: 100%;
+        margin-top: 15px;
         tr td:first-child {
             width: 30%;
-            height: 30px;
+            height: 40px;
         }
         .bolder {
             font-size: 150%;
@@ -47,41 +124,103 @@
         }
     }
     .message {
-        border: 1px solid green;
+        border: 1px solid $green;
         height: 70px;
-        margin-bottom: 15px;
+        margin: 15px 0;
+        background:url(../images/ico-hecho.png) no-repeat 20px center;
+        background-size:40px;
+        @include border-radius(2px);
         p:first-child {
             float: left;
-            margin: 25px 0 0 60px;
+            margin: 25px 0 0 80px;
+            color: $green;
+            span{
+                font-weight: bold;
+            }
         }
         .print {
             float: right;
             width: 15%;
             height: 100%;
             background-color: azure;
-            p { margin: 35px 0 0 40px; }
+            p { 
+                background:url(../images/ico-impresora.png) no-repeat center 13px;
+                background-size:25px;
+                margin:0 0 0 43px;
+                padding-top:43px; 
+                font-size: 12px;
+                color:$blue;
+            }
         }
     }
 }
 .option {
     border: 1px solid #CCC;
     border-radius: 3px 3px 0 0;
-    padding: 14px 40px 14px 20px;
+    padding: 20px 40px 20px 20px;
     position: relative;
     font-weight: bold;
+    background: url(../images/ico-adelante.png) no-repeat right center;
+    background-size:25px;
     &.active {
-		background-color: $orange;
 		border: none;
 		color: #FFF;
+        background: url(../images/ico-adelante-a.png) no-repeat right center, $orange;
+        background-size:25px;
+        a{color: #FFF;}
 		&:after { color: #FFF; }
+        i{
+            background: url(../images/ico-beneficiario-a.png) no-repeat center center;
+            background-size:25px;
+        }
 	}
     &:last-child {
         border-radius: 0 0 3px 3px;
     }
+    a{
+        color:black;
+    }
+}
+.beneficiarios-widget{
+    .option{
+        padding: 20px 10px;
+        @include border-radius(4px);
+        .beneficiary{
+            height: 25px;
+            line-height: 25px;
+            i{
+                display:block;
+                float:left;
+                margin-right: 5px;
+                width: 25px;
+                height: 25px;
+                background: url(../images/ico-beneficiario.png) no-repeat center center;
+                background-size:25px;
+            }
+        }
+    }
 }
 .help {
-    h2 { color: grey; }
+    h2 {
+        color: grey;
+        margin-top: 30px;
+    }
     .option {
+        background:none;
         font-weight: normal;
+        padding: 20px 10px;
+        @include border-radius(4px);
+        a{
+            color:$blue;
+            font-size: 14px;
+            display: block;
+            margin-bottom: 8px;
+        }
+        a:hover{
+            text-decoration: underline;
+        }
+        a:last-child{
+            margin: 0;
+        }
     }
 }

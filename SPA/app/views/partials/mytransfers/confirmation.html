@@ -3,8 +3,13 @@
         <h2>Pago de cuentas</h2>
         <p>Confirma los datos para el pago</p>
         <progress max="3" value="{{selection}}"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p class="orange">confirmación</p>
+            <p>comprobación</p>
+        </div>
     </div>
-    <hr>
+    
     <table>
         <tr>
             <td>Cuenta retiro:</td>
@@ -27,7 +32,8 @@
             <td>{{transfer.date}}</td>
         </tr>
     </table>
-    <hr>
+   <div class="double-btn">
     <input class="blue" type="submit" value="Regresar" ng-click="completeStep(1)">
     <input class="orange" type="submit" value="Continuar" ng-click="completeStep(3)">
+</div>
 </div>

@@ -1,7 +1,7 @@
 <div class="login">
     <div class="outter"> <!-- sticky footer wrapper -->
-      <div ng-include="'views/partials/layout/login-header.html'">
-      </div>
+      <header ng-include="'views/partials/layout/login-header.html'">
+      </header>
             <!-- =============================================================== -->
             <main>
                 <div class="wrapper">
@@ -38,7 +38,6 @@
                         </div>
                         <form class="user-registration" ng-submit="preRegister(client,contract)">
                             <label for="user-register"><strong>¿Eres nuevo aqu&iacute;?</strong> <a href="registro.html">Reg&iacute;strate</a></label>
-                            <hr>
                             <input type="text" ng-model="client" name="user-register" id="user-register" placeholder="No. Cliente / No. Cuenta">
                             <input type="text" ng-model="contract" name="contract-number" name="contract-number" id="contract-number" placeholder="Folio de Contrato de Banca Digital">
                             <input class="blue" type="submit" value="Regístrate">
@@ -48,6 +47,6 @@
                 </div> <!-- wrapper ends here -->
             </main>
         </div> <!-- sticky footer wrapper ends here -->
-    <div ng-include="'views/partials/layout/main-footer.html'">
-    </div>
+    <footer ng-include="'views/partials/layout/main-footer.html'">
+    </footer>
 </div>

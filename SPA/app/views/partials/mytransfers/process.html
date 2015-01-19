@@ -3,10 +3,15 @@
         <h2>Transferencia de cuentas</h2>
         <p></p>
         <progress max="3" value="{{selection}}"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p class="orange">confirmación</p>
+            <p class="orange">comprobación</p>
+        </div>
     </div>
-    <hr>
+    
     <div class="message">
-        <p>La transferencia ha sido exitosa con numero de autorizacion 123456</p>
+        <p>La transferencia ha sido exitosa con numero de autorizacion <span>123456</span></p>
         <div class="print">
             <p>Imprimir</p>
         </div>
@@ -33,7 +38,9 @@
             <td>{{transfer.date}}</td>
         </tr>
     </table>
-    <hr>
-    <input class="blue" type="submit" value="Finalizar" ng-click="completeStep(3)">
-    <input class="orange larger" type="submit" value="Realizar otro pago" ng-click="sendTransfer()">
+
+    <div class="double-btn">
+        <input class="blue" type="submit" value="Finalizar" ng-click="completeStep(3)">
+        <input class="orange larger" type="submit" value="Realizar otro pago" ng-click="completeStep()">
+    </div>
 </div>
