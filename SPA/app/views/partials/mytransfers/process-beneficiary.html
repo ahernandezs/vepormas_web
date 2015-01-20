@@ -3,8 +3,12 @@
         <h2>Alta nuevo beneficiario</h2>
         <p></p>
         <progress max="3" value="{{selection -3}}"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p class="orange">confirmación</p>
+            <p class="orange">comprobación</p>
+        </div>
     </div>
-    <hr>
     <div class="message">
         <p>El nuevo beneficiario se ha dado de alta, numero de autorizacion <span class="autorization">123456</span></p>
     </div>
@@ -40,6 +44,6 @@
             <span class="boulder">la cuenta podra ser utilizada en 30 minutos.</span>
         </p>
     </div>
-    <input class="blue" type="submit" value="Finalizar" ng-click="completeStep(3)">
-    <input class="orange larger" type="submit" value="Realizar otro pago" ng-click="sendBeneficiary()">
+    <input class="blue" type="submit" value="Finalizar" ng-click="completeStep(4)">
+    <input class="orange larger" type="submit" value="Agregar nuevo beneficiario" ng-click="sendBeneficiary()">
 </div>

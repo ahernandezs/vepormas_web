@@ -3,8 +3,12 @@
         <h2>Alta nuevo beneficiario</h2>
         <p>Ingresa los datos para dar de alta a un nuevo beneficiario</p>
         <progress max="3" value="{{selection -3}}"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p>confirmación</p>
+            <p>comprobación</p>
+        </div>
     </div>
-    <hr>
     <form>
         <input type="text" ng-model="beneficiary.name" name="name" id="name" placeholder="Nombre beneficiario"></br>
         <input type="text" ng-model="beneficiary.aka" name="aka" id="aka" placeholder="Alias"></br>
