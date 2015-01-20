@@ -42,8 +42,9 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
           console.log($location.path());
         break;
 
-        case 'admin':
-          $scope.activeNavigationOption = 'admin';
+        case 'administration':
+          $scope.activeNavigationOption = 'administration';
+          $location.path('administration');
           console.log($location.path());
         break;
     }
