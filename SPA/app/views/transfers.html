@@ -3,7 +3,7 @@
     <div class="section">
         <ul>
             <li class="option"><a>Hacer un pago</a></li>
-            <li class="option" ng-class="selection>=1 && selection < 4?'active' : ''"  ng-click="selection=1"><a>Hacer una transferencia</a></li>
+            <li class="option" ng-class="selection>=1 && selection < 4?'active' : ''" ng-click="selection=1"><a>Hacer una transferencia</a></li>
         </ul>
     </div>
     <div class="beneficiarios-widget">
@@ -24,6 +24,7 @@
             </div>
         </div>
     </div>
+</div>
 <div ng-switch on="selection">
     <div class="animate-switch" ng-switch-when="1">
         <div ng-include="'views/partials/mytransfers/capture-data.html'">
