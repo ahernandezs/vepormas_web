@@ -19,7 +19,7 @@
         </tr>
         <tr>
             <td>T. Debito:</td>
-            <td>{{transfer.amount}}</td>
+            <td>{{beneficiary.account}}</td>
         </tr>
         <tr>
             <td>Correo electronico:</td>
@@ -41,5 +41,5 @@
         </p>
     </div>
     <input class="blue" type="submit" value="Finalizar" ng-click="completeStep(3)">
-    <input class="orange larger" type="submit" value="Realizar otro pago" ng-click="">
+    <input class="orange larger" type="submit" value="Realizar otro pago" ng-click="sendBeneficiary()">
 </div>

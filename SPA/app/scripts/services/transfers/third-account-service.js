@@ -1,4 +1,4 @@
-s'use strict';
+'use strict';
 
 angular.module('spaApp')
 .service('thirdAccountService', ['$http','$rootScope',function ($http, $rootScope) {
@@ -10,7 +10,7 @@ angular.module('spaApp')
 		});
 	},
 
-	this.registerThirdAccount = function(alias, beneficiaryName, e_mail, rfc, phone,accountNumber,otp){
+	this.registerThirdAccount = function(alias, beneficiaryName, e_mail, phone, accountNumber, otp){
 		return $http({
 			url: $rootScope.restAPIBaseUrl+'/externalaccounts',
 			method: 'POST',
@@ -18,8 +18,7 @@ angular.module('spaApp')
 				'alias':alias,
 				'beneficiary':{
 					'beneficiary_name': beneficiaryName,
-					'e_mail': email,
-					'rfc': rfc,
+					'e_mail': e_mail,
 					'phone': phone
 				},
 				'account_number':accountNumber,

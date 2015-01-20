@@ -3,9 +3,9 @@
 /**
  * The transactions controller. For transactions between own accounts.
  */
-angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider) {
+angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', 'thirdAccountProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider, thirdAccountProvider) {
 	
-    $scope.selection = 4;
+    $scope.selection = 1;
     $scope.beneficiary = {};
     $scope.transfer = {};
     $scope.transfer.account;
@@ -35,6 +35,18 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         accountsProvider.transferOwnAccounts(source, destination, 
                                              $scope.transfer.amount, $scope.transfer.concept).then(
             function(data) {
+                console.log(data);
+            }
+        );
+    };
+    
+    $scope.sendBeneficiary = function() {
+        // account = 18 digitos (002123456789012347) y token correcto
+        thirdAccountProvider.registerThirdAccount($scope.beneficiary.aka, $scope.beneficiary.name,
+                                                 $scope.beneficiary.email, $scope.beneficiary.phone,
+                                                 $scope.beneficiary.account, $scope.beneficiary.token).then(
+            function(data) {
+                console.log('resultado');
                 console.log(data);
             }
         );
