@@ -5,10 +5,11 @@
         <progress max="3" value="{{selection -3}}"></progress>
         <div class="progress">
             <p class="orange">captura</p>
-            <p class="orange">confirmación</p>
-            <p class="orange">comprobación</p>
+            <p>confirmación</p>
+            <p>comprobación</p>
         </div>
     </div>
+
     <div class="message">
         <p>El nuevo beneficiario se ha dado de alta, numero de autorizacion <span class="autorization">123456</span></p>
     </div>
@@ -38,12 +39,13 @@
             <td>{{beneficiary.date}}</td>
         </tr>
     </table>
-    <hr>
     <div class="note">
         <p>Por disposicion de segurida de la Comision Nacional Bancaria y de valores (CNBV) </br>
             <span class="boulder">la cuenta podra ser utilizada en 30 minutos.</span>
         </p>
     </div>
+    <div class="double-btn">
     <input class="blue" type="submit" value="Finalizar" ng-click="completeStep(4)">
     <input class="orange larger" type="submit" value="Agregar nuevo beneficiario" ng-click="sendBeneficiary()">
+</div>
 </div>

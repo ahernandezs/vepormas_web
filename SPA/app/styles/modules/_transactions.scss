@@ -30,6 +30,10 @@
         outline: none;
     }
 }
+input[name="account"] + p{
+    font-size: 12px;
+    margin-top: 3px;
+}
 .content {
     float: right;
     width: 70.8333333333%;

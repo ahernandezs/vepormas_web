@@ -10,15 +10,16 @@
         </div>
     </div>
     <form>
-        <input type="text" ng-model="beneficiary.name" name="name" id="name" placeholder="Nombre beneficiario"></br>
-        <input type="text" ng-model="beneficiary.aka" name="aka" id="aka" placeholder="Alias"></br>
-        <input type="text" ng-model="beneficiary.account" name="account" id="account" placeholder="Cuenta &#x0002F; CLABE &#x0002F; T. Cr&eacute;dito &#x0002F; T. D&eacute;bito"></br>
-        <hr>
+        <input type="text" ng-model="beneficiary.name" name="name" id="name" placeholder="Nombre beneficiario" class="input-usuario">
+        <input type="text" ng-model="beneficiary.aka" name="aka" id="aka" placeholder="Alias">
+        <input type="text" ng-model="beneficiary.account" name="account" id="account" placeholder="Cuenta &#x0002F; CLABE &#x0002F; T. Cr&eacute;dito &#x0002F; T. D&eacute;bito">
+        
         <p>Datos para notificar al beneficiario &#x00028;opcional&#x00029;</p>
-        <input type="email" ng-model="beneficiary.email" name="email" id="email" placeholder="Correo elctr&oacute;nico"></br>
-        <input type="text" ng-model="beneficiary.phone" name="phone" id="phone" placeholder="Celular">
+        <input type="email" ng-model="beneficiary.email" name="email" id="email" placeholder="Correo elctr&oacute;nico" class="input-mail">
+        <input type="text" ng-model="beneficiary.phone" name="phone" id="phone" placeholder="Celular" class="input-mail">
     </form>
-    <hr>
+    <div class="double-btn">
     <input class="blue" type="submit" value="Cancelar" ng-click="completeStep(4)">
-    <input class="blue" type="submit" value="Continuar" ng-click="completeStep(5)">
+    <input class="orange" type="submit" value="Continuar" ng-click="completeStep(5)">
+    </div>
 </div>
