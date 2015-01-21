@@ -5,16 +5,18 @@
         <hr>
         <div class="user-data">
             <form class="contact-form">
-                <input type="text" class="input-token" ng-model="registerData.token" placeholder="No. de Serie del Token">
-                <input type="text" class="input-otp" ng-model="registerData.opt1" placeholder="OPT 1">
-                <input type="text" class="input-otp" ng-model="registerData.opt2" placeholder="OPT 2">
+                <input type="text" ng-model="registerData.token" placeholder="No. de Serie del Token">
+                <div>
+                    <input type="text" ng-model="registerData.opt1" placeholder="OPT 1">
+                    <input type="text" ng-model="registerData.opt2" placeholder="OPT 2">
+                </div>
                 <label class="termns">
                     <input type="checkbox" name="legal" id="legal" value="yes" ng-model="registerData.acceptLegalMention">
                     <span>He le&iacute;do y acepto los <a href="#">T&eacute;rminos y Condiciones</a> de Consubanco.</span>
                 </label>
             </form>
-            <div class="error" ng-show="incorrectData">{{errorMessage}}</div>
-            <button class="blue" ng-click="gotoLogin()">Regresar</button>
+            <div class="error" ng-show="error">{{errorMessage}}</div>
+            <button class="blue" ng-click="gotoLogin()">Cancelar</button>
             <button class="orange" ng-click="confirmToken()">Continuar</button>
         </div>
     </div>

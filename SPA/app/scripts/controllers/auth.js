@@ -50,7 +50,7 @@ angular.module('spaApp')
       $scope.checkingUser = false;
       $scope.incorrectData = true;
 
-      $scope.errorMessage = '!Usuario incorrecto¡ favor de verificarlo';
+      $scope.errorMessage = 'Por favor, introduzca un usuario válido';
 
       return;
     }
@@ -163,8 +163,8 @@ angular.module('spaApp')
   **/
   $scope.preRegister = function(client,contract){
       //TODO:Veryfy with REST service if exists contract?
-      userProvider.verifyUser(client, contract).then(function(data) {
-        $rootScope.preData = data;
+      userProvider.setClientId(client);
+      userProvider.preRegisterUser(contract).then(function(data) {
         $location.path( '/register');
       });
   }
