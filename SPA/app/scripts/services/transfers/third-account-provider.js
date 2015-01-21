@@ -21,9 +21,9 @@ angular.module('spaApp')
       return deferred.promise;
       },
 
-      registerThirdAccount: function(alias, beneficiaryName, e_mail, rfc, phone,accountNumber,otp){
+      registerThirdAccount: function(alias, beneficiaryName, e_mail, phone, accountNumber, otp){
         var deferred = $q.defer();
-        thirdAccountService.registerThirdAccount(thirdAccountID).success(function(data, status, headers){
+        thirdAccountService.registerThirdAccount(alias, beneficiaryName, e_mail, phone, accountNumber, otp).success(function(data, status, headers){
             deferred.resolve();
         }).error(function(data, status){
             return deferred.reject('Error updating third account');

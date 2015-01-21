@@ -3,23 +3,25 @@
     <div class="section">
         <ul>
             <li class="option"><a>Hacer un pago</a></li>
-            <li class="option" ng-class="selection>=1?'active' : ''"><a>Hacer una transferencia</a></li>
+            <li class="option" ng-class="selection>=1 && selection < 4?'active' : ''" ng-click="selection=1"><a>Hacer una transferencia</a></li>
         </ul>
     </div>
     <div class="beneficiarios-widget">
         <h2>Mis Beneficiarios</h2>
-        <div class="option">
+        <div class="section">
             <div class="beneficiary">
-                <p><i></i>Agregar un nuevo beneficiario</p>
+                <ul>
+                    <li class="option" ng-class="selection>=4 && selection < 7?'active' : ''" ng-click="selection=4">Agregar un nuevo beneficiario</li>
+                </ul>
             </div>
         </div>
-    </div>
-    <div class="help">
-        <h2>Ayuda</h2>
-        <div class="option">
-            <a>¿Necesitas ayuda para elegir el tipo de pago que vas a realizar?</a>
-            <a>¿Como hacer un pago? (Ver video)</a>
-            <a>¿Como utilizo mi dispositivo movil?</a>
+        <div class="help">
+            <h2>Ayuda</h2>
+            <div class="option">
+                <a>¿Necesitas ayuda para elegir el tipo de pago que vas a realizar?</a>
+                <a>¿Como hacer un pago? (Ver video)</a>
+                <a>¿Como utilizo mi dispositivo movil?</a>
+            </div>
         </div>
     </div>
 </div>
