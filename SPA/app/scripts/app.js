@@ -112,7 +112,7 @@ app.run(['api', '$window', '$rootScope',function(api, $window, $rootScope) {
   api.init();
 
   $window.onbeforeunload = function(e) {
-    var message = 'Te vas a salir de Consubanco, ¿est&aacute;s seguro?';
+    var message = 'Te vas a salir de Consubanco, ¿estás seguro?';
     e = e || $window.event;
     e.preventDefault = true;
     e.cancelBubble = true;
