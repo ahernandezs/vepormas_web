@@ -13,8 +13,8 @@
             <!-- images -->
             <br>
             <div class="error" ng-show="error">{{errorMessage}}</div>
-            <button class="blue" ng-click="gotoLogin()">Cancelar</button>
-            <button class="orange" ng-click="confirmImage()">Continuar</button>
+            <button ng-click="gotoLogin()">Cancelar</button>
+            <button ng-click="confirmImage()" ng-disabled="true">Continuar</button>
         </div>
     </div>
    <div class="help">

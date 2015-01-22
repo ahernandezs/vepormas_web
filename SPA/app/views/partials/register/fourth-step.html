@@ -24,8 +24,8 @@
             </form>
             <div class="error" ng-show="error">{{errorMessage}}</div>
             <div class="separate">
-                <button class="blue" ng-click="gotoLogin()">Cancelar</button>
-                <button class="orange" ng-click="confirmContactInformation()">Continuar</button>
+                <button ng-click="gotoLogin()">Cancelar</button>
+                <button ng-click="confirmContactInformation()" ng-disabled="true">Continuar</button>
             </div>
         </div>
     </div>

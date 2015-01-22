@@ -6,7 +6,7 @@
 	font-weight: bold;
 	padding: 8px 10px;
 }
-button:not([type*=submit]) {
+/*button:not([type*=submit]) {
 	@extend %button-style;
 
 	&.blue {
@@ -22,8 +22,25 @@ button:not([type*=submit]) {
 		margin-left: 20px;
 	}
 
+}*/
+input[type="submit"], button{
+	@extend %button-style;
+	background-color: $blue;
+	font-weight: bold;
+	border-color:$blue !important;
 }
-input[type*=submit] {
+input[type="submit"]:disabled, input[type="submit"]:disabled:hover, input[type="submit"]:disabled:active,
+button:disabled, button:disabled:hover, button:disabled:active{
+	background-color: white;
+	font-weight: bold;
+	color:$orange;
+	border:1px solid $orange !important;
+}
+input[type="submit"]:hover, input[type="submit"]:active, button:hover, button:active{
+	background-color: $orange;
+	border-color:$orange !important;
+}
+/*input[type*=submit] {
 	&.blue {
 		background-color: $blue;
 		font-weight: bold;
@@ -45,7 +62,7 @@ input[type*=submit] {
   &:disabled {
     background-color: $gray;
   }
-}
+}*/
 .search {
 	@extend %button-style;
 }

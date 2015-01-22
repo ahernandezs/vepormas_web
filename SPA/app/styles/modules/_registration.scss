@@ -31,6 +31,7 @@
         }
 .registration {
 	// components
+	padding-top:50px;
 	h2, h3 {
 		color: $blue;
 	}
@@ -43,14 +44,14 @@
 	}
 	dt, dd {
 		float: left;
-		display: inline;
+		display: block;
 		line-height: 2.3;
 		width: 50%;
 	}
 	.outter {
 		background-color: $gris03;
 	}
-	main {
+	.main {
 		color: $gris60;
 		font-size: 16px;
 		padding-top: 40px;

@@ -11,6 +11,7 @@ footer {
 	line-height: 30px;
 
 	p, a { display: inline; }
+	a:hover,a:active{text-decoration: underline; color:$inactiveText}
 	p { float: left; }
 	a { float: right; }
 }
