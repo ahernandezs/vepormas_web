@@ -1,0 +1,55 @@
+<div class="actions" style="border: solid 1px #D3D3D3; right: 0; position: absolute;">
+    <h2>&nbsp;&nbsp;&nbsp;Resumen de beneficiarios</h2>
+    <br>
+    <div>
+        <ul>
+            <li style="color:#2976b6" class="option">Cuentas consubanco     <span style="float:right">5</span></li>
+            <li style="color:#2976b6" class="option">Otros bancos           <span style="float:right">3</span></li>
+            <li style="color:#2976b6" class="option" ng-click="addedThisMonth = !addedThisMonth">Agregados este mes     <span style="float:right">2</span></li>
+                <table class="transactions" ng-show="addedThisMonth">
+                    <thead>
+                        <tr>
+                           <th>Nombre</th>
+                            <th>Cuenta</th>
+                            <th>Fecha de alta</th>
+                        </tr>   
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Joel Bravo Flores</td>
+                           <td>***48348</td>
+                            <td>12/12/12</td>
+                        </tr>
+                        <tr>
+                            <td>Claudia Flores</td>
+                            <td>***45688</td>
+                            <td>11/11/11</td>
+                        </tr>
+                    </tbody>
+                </table>
+            <li style="color:#2976b6" class="option" ng-click="paysThisMonth = !paysThisMonth">Pagos este mes         <span style="float:right">3</span></li>
+                <table class="transactions" ng-show="paysThisMonth">
+                    <thead>
+                        <tr>
+                           <th>Nombre</th>
+                            <th>Cuenta</th>
+                            <th>Fecha de alta</th>
+                        </tr>   
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Joel Bravo Flores</td>
+                           <td>***48348</td>
+                            <td>12/12/12</td>
+                        </tr>
+                        <tr>
+                            <td>Claudia Flores</td>
+                            <td>***45688</td>
+                            <td>11/11/11</td>
+                        </tr>
+                    </tbody>
+                </table>
+            <li style="color:#2976b6" class="option">Eliminados este mes    <span style="float:right">3</span></li>
+        </ul>
+    </div>
+</div>
