@@ -1,6 +1,6 @@
-<form class="user-login">
+<form class="user-login" name="userLoginForm">
     <label for="user"><strong>Iniciar sesión</strong></label>
-    <input ng-class="incorrectData ? 'rojo' : ''" ng-model="$parent.username" type="text" name="user" id="user" placeholder="Usuario" maxlength="20">
-    <div class="incorrectUser" ng-show="incorrectData">{{errorMessage}}</div>
-    <input ng-disabled="checkingUser" class="blue" type="submit" value="Continuar" ng-click="checkUser()">
+    <input ng-class="incorrectData ? 'rojo' : ''" ng-model="loginData.username" type="text" name="user" id="user" placeholder="Usuario" maxlength="20" required>
+    <div class="error" ng-show="incorrectData">{{errorMessage}}</div>
+    <input type="submit" value="Continuar" ng-click="checkUser()" ng-disabled="userLoginForm.$invalid">
 </form>

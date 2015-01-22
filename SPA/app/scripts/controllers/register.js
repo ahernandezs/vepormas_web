@@ -2,132 +2,148 @@
 
 angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'userProvider', '$rootScope' , function ($scope, $location, userProvider, $rootScope) {
 
+    // the register-flow's current-step
 	$scope.selection = 1;
-	$scope.bankBranch = '';
-    // Stores the register data
+    
+    // stores the register's data inputed by the user
     $scope.registerData = {};
 
-    $scope.incorrectData = false;
-    $scope.errorMessage = "";
+    // is there an error in the register flow
+    $scope.error = false;
+
+    // the error's message (is incorrectData is true)
+    $scope.errorMessage = null;
     
+    /**
+     * initialize the scope with the model's data (coming from the preRegister operation)
+     */
     $scope.init = function() {
-        $scope.contract = $rootScope.preData.contract;
+        var preRegisterData = userProvider.getPreRegistrationData();
+        $scope.contract = preRegisterData.contract;
         $scope.nameClient = $scope.contract.name;
         $scope.clientNumber = $scope.contract.client_id;
+        $scope.bankBranch = $scope.contract.branch_name;
         var temp = new Date($scope.contract.created_at);
         $scope.date = temp.getDay() + ' / ' + temp.getMonth() + ' / ' + temp.getFullYear();
         $scope.images = {};
-        for (var i = 0; i < $rootScope.preData.images.length; i++) {
-            $scope.images[i] = { 'id' : $rootScope.preData.images[i].image_id, 'url' : $rootScope.restAPIBaseUrl + '/' + $rootScope.preData.images[i].url };
+        for (var i = 0; i < preRegisterData.images.length; i++) {
+            $scope.images[i] = { 'id' : preRegisterData.images[i].image_id, 'url' : $rootScope.restAPIBaseUrl + '/' + preRegisterData.images[i].url };
         }
         console.log( $scope.images );
     };
     
 	/**
-		Function for navigate when step complete  .
-	**/
-	 $scope.completeStep =function(nextStep){
+	 * go to the next flow's step
+	 */
+	 $scope.completeStep = function(nextStep){
+        $scope.error = false;
+        $scope.errorMessage = null;
 		$scope.selection = nextStep;
 	 }
 
-	 /**
-		Function for go to login page
-	 **/
-	 $scope.gotoLogin =function(){
+	/**
+	 * go back to the login page
+	 */
+	$scope.gotoLogin =function(){
+        $scope.selection = 1;
+        $scope.registerData = {};
+        $scope.error = false;
+        $scope.errorMessage = null;
 		$location.path( '/login' );
 	 }
 
-	 /**
-	  * validate the client's password
-	  */
+	/**
+	 * validate the client's password
+	 */
 	$scope.confirmPassword = function () {
 		if(! $scope.registerData.password){
-			$scope.incorrectData = true;
-		$scope.errorMessage = "Las contraseñas no puede estar vacías";
-		}else if($scope.registerData.password == $scope.registerData.repeatPass){
-        	$scope.incorrectData = false;
-        	$scope.errorMessage = null;
-        	$scope.completeStep(3);
+            setError("Las contraseñas no puede estar vacías");
+		}else if($scope.registerData.password != $scope.registerData.repeatPass){
+            setError("Las contraseñas ingresadas no coinciden");
         }else{
-        	$scope.incorrectData = true;
-		$scope.errorMessage = "Las contraseñas ingresadas no coinciden";
+            // set the model and go to the next step
+            userProvider.setPassword($scope.registerData.password);
+            $scope.completeStep(3);
         }
 	};
 
 	/**
-	  * validate the client's image
-	  */
+	 * validate the client's image
+	 */
 	$scope.confirmImage = function () {
         if($scope.registerData.selectedImage){
-        	$scope.incorrectData = false;
-        	$scope.errorMessage = null;
+            // set the model and go to the next step
+        	userProvider.setImageId($scope.registerData.selectedImage);
         	$scope.completeStep(4);
         }else{
-        	$scope.incorrectData = true;
-		$scope.errorMessage = "Debe elegir una imagen";
+            setError("Debe elegir una imagen");
         }
 	};
 
 	/**
-	  * validate the client's contact-information (phone number and email)
-	  */
+	 * validate the client's contact-information (phone number and email)
+	 */
 	$scope.confirmContactInformation = function () {
-        $scope.incorrectData = false;
-        $scope.errorMessage = null;
+        var error =false;
         if(! $scope.registerData.contactType){
-            $scope.incorrectData = true;
-            $scope.errorMessage = "Debe elegir una medio de notificación";
+            error = true;
+            setError("Debe elegir una medio de notificación");
         }else{
             if($scope.registerData.email){
                 if($scope.registerData.email != $scope.registerData.repeatEmail){
-                    $scope.incorrectData = true;
-                    $scope.errorMessage = "Los correos electrónicos no coinciden";
+                    error = true;
+                    setError("Los correos electrónicos no coinciden");
                 }
             }else{
                 if($scope.registerData.contactType == "byEmail"){
-                    $scope.incorrectData = true;
-                    $scope.errorMessage = "Debes ingresar una dirección de correo electrónico";
+                    error = true;
+                    setError("Debes ingresar una dirección de correo electrónico");
                 }
             }
             if($scope.registerData.cellphone){
                 if($scope.registerData.cellphone != $scope.registerData.repeatCellphone){
-                    $scope.incorrectData = true;
-                    $scope.errorMessage = "Los numeros de celular ingresados no coinciden";
+                    error = true;
+                    setError("Los numeros de celular ingresados no coinciden");
                 }
             }else{
                 if($scope.registerData.contactType == "byCellPhone"){
-                    $scope.incorrectData = true;
-                    $scope.errorMessage = "Debe ingresar un número de celular";
+                    error = true;
+                    setError("Debe ingresar un número de celular");
                 }
             }
         }
-        if(!$scope.incorrectData){
+        //we could use the $scope.incorrectData instead of a local variable "error", but it show more clarity this way
+        if(! error){
+            userProvider.setEmail($scope.registerData.email);
+            userProvider.setPhoneNumber($scope.registerData.cellphone);
             $scope.completeStep(5);
         }
 	};
 
-    /*
+    /**
      * confirm token 
      */
     $scope.confirmToken = function () {
-        $scope.incorrectData = false;
-        $scope.errorMessage = null;
         if(! $scope.registerData.acceptLegalMention){
-            $scope.incorrectData = true;
-            $scope.errorMessage = "Debe aceptar los términos de Consubanco";
-        }
-        if(! $scope.incorrectData){
-            userProvider.registerUser($scope.clientNumber, $scope.registerData.selectedImage,
-                $scope.registerData.password, $scope.registerData.email,$scope.registerData.cellphone).then(
+            setError("Debe aceptar los términos de Consubanco");
+        }else{
+            userProvider.registerUser().then(
                 function(data) {
                     console.log("register succeed");
                     $scope.completeStep(6);
                 },
                 function(data, status) {
-                    $scope.incorrectData = true;
-                    $scope.errorMessage = "Ha ocurrido un error en el registro";
+                    setError("Ha ocurrido un error en el registro");
                 }
             );
         }
+    };
+
+    /**
+     * private method: set an error on the register flow
+     */
+    function setError(errorMessage){
+        $scope.error = true;
+        $scope.errorMessage = errorMessage;
     };
 }]);

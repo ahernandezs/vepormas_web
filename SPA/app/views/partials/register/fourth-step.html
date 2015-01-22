@@ -4,10 +4,9 @@
         <p>Recibe alertas al instante en tu tel&eacute;fono celular y&sol;o correo electr&oacute;nico, cada vez que se realice un movimiento en tus cuentas.</p>
 <hr>
         <div class="user-data">
-
             <form class="contact-form" name="contactForm">
-                <input type="text" name="email" class="input-mail" ng-model="registerData.email" placeholder="Correo electr&oacute;nico">
-                <input type="text" name="repeatEmail" class="input-mail" ng-model="registerData.repeatEmail" placeholder="Confirma correo electr&oacute;nico">
+                <input type="email" name="email" class="input-mail" ng-model="registerData.email" placeholder="Correo electr&oacute;nico">
+                <input type="email" name="repeatEmail" class="input-mail" ng-model="registerData.repeatEmail" placeholder="Confirma correo electr&oacute;nico">
                 <div class="error" ng-show="contactForm.email.$error.email">Email invalido</div>
                 <input type="text" class="input-mobile" ng-model="registerData.cellphone" placeholder="Celular">
                 <input type="text" class="input-mobile" ng-model="registerData.repeatCellphone" placeholder="Confirma celular">
@@ -15,15 +14,19 @@
                     <p>&iquest;Por qu&eacute; medio quieres ser notificado&quest;</p>
                     <label>
                         <span>E-mail</span>
-                        <input type="radio" ng-model="registerData.contactType" name="type-contact" id="byEmail" value="byEmail"></label>
+                        <input type="radio" ng-model="registerData.contactType" name="type-contact" id="byEmail" value="byEmail">
+                    </label>
                     <label>
                         <span>Celular</span>
-                    <input type="radio" ng-model="registerData.contactType" name="type-contact" id="byCellphone" value="byCellphone"></label>
+                        <input type="radio" ng-model="registerData.contactType" name="type-contact" id="byCellPhone" value="byCellPhone">
+                    </label>
                 </div>
             </form>
-            <div class="error" ng-show="incorrectData">{{errorMessage}}</div>
-            <button class="blue" ng-click="gotoLogin()">Regresar</button>
-            <button class="orange" ng-click="confirmContactInformation()">Continuar</button>
+            <div class="error" ng-show="error">{{errorMessage}}</div>
+            <div class="separate">
+                <button class="blue" ng-click="gotoLogin()">Cancelar</button>
+                <button class="orange" ng-click="confirmContactInformation()">Continuar</button>
+            </div>
         </div>
     </div>
     <div class="help">
