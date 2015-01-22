@@ -1,0 +1,28 @@
+<div class="content">
+    <div class="header">
+        <h2>Pago de cuentas</h2>
+        <p>Ingresa los datos para el pago</p>
+        <progress max="3" value="{{selection}}"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p>confirmación</p>
+            <p>comprobación</p>
+        </div>
+    </div>
+    <form>
+        <div class="select-style">
+            <select ng-model="payment.account" ng-options="item.name group by 'Cuentas Propias' for item in ownAccounts">
+                <option value="" >Cuenta retiro</option>
+            </select>
+        </div>
+        <div class="select-style">
+            <select ng-model="payment.destiny" ng-options="item.name group by 'Cuentas Propias' for item in ownAccounts">
+                <option value="" >TDC para pago</option>
+            </select>
+        </div>
+        <input type="text" ng-model="payment.amount" placeholder="Importe" class="input-importe">
+    </form>
+    <hr>
+    <input class="blue" type="submit" value="Cancelar" ng-click="completeStep(1)">
+    <input class="blue" type="submit" value="Continuar" ng-click="completeStep(2)">
+</div>

@@ -1,0 +1,39 @@
+<div class="content">
+    <div class="header">
+        <h2>Pago de cuentas</h2>
+        <p></p>
+        <progress max="3" value="{{selection}}"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p class="orange">confirmación</p>
+            <p class="orange">comprobación</p>
+        </div>
+    </div>
+    <div class="message">
+        <p>Tu pago se ha realizado con exito con numero de autorizacion <span class="autorization">123456</span></p>
+         <div class="print">
+            <p>Imprimir</p>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <td>Cuenta Retiro:</td>
+            <td>{{payment.account.name}}</td>
+        </tr>
+        <tr>
+            <td>TDC para pago:</td>
+            <td>{{payment.destiny.name}}</td>
+        </tr>
+        <tr>
+            <td>Importe:</td>
+            <td class="bolder">${{payment.amount}}</td>
+        </tr>
+        <tr>
+            <td>Hora de la transferencia:</td>
+            <td>{{today}}</td>
+        </tr>
+    </table>
+    <hr>
+    <input class="blue" type="submit" value="Finalizar" ng-click="completeStep(1)">
+    <input class="orange larger" type="submit" value="Realizar otro pago" ng-click="sendPayment()">
+</div>
