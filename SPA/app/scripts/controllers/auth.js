@@ -17,10 +17,7 @@ angular.module('spaApp')
    * the login function connect the Rest-API: if the response status is OK, redirect to route "accounts",
    * else put an error message in the scope
    */
-
-  $scope.username = "";
-  $scope.password = "";
- 
+  $scope.loginData = {};
   $scope.incorrectData = false;
   $scope.showImageLogin = false;
 
@@ -44,18 +41,18 @@ angular.module('spaApp')
     $scope.checkingUser = true;
     $scope.incorrectData = false;
 
-    console.log($scope.username);
+    console.log($scope.loginData.username);
 
-    if(!$scope.username.trim()) {
+    if(!$scope.loginData.username.trim()) {
       $scope.checkingUser = false;
       $scope.incorrectData = true;
 
-      $scope.errorMessage = 'Por favor, introduzca un usuario válido';
+      $scope.errorMessage = '!Usuario incorrecto¡ favor de verificarlo';
 
       return;
     }
 
-    var json = JSON.stringify({'user_login':$scope.username,'client_application_id': 'PROSA-DIG'});
+    var json = JSON.stringify({'user_login':$scope.loginData.username,'client_application_id': 'PROSA-DIG'});
     console.log(json);
     $http({
       url: $scope.restAPIBaseUrl+'/checkLogin',
@@ -74,12 +71,6 @@ angular.module('spaApp')
     error(function(data, status) {
       console.log("Status : ", status);
       $scope.errorMessage = 'Error en el servicio, intente más tarde';
-      if(status === 400){
-        $scope.errorMessage = 'Existe una sesión vigente en otra aplicación';
-      }
-      if(status === 406 || status === 503 || status === 0){
-        $scope.errorMessage = 'Error en el servicio, intente más tarde';
-      }
       $scope.status = status;
       $scope.incorrectData = true;
       $scope.checkingUser = false;
@@ -95,7 +86,7 @@ angular.module('spaApp')
     $scope.incorrectData = false;
     console.log("usuario, password, selectedImage", $scope.username, $scope.password, $scope.selectedImage);
 
-    if(!$scope.password.trim() || !$scope.selectedImage) {
+    if(!$scope.loginData.password.trim() || !$scope.loginData.selectedImage) {
       $scope.isLogin = false;
       $scope.incorrectData = true;
 
@@ -104,7 +95,7 @@ angular.module('spaApp')
       return;
     }
 
-    if(!$scope.selectedImage) {
+    if(!$scope.loginData.selectedImage) {
       $scope.isLogin = false;
       $scope.incorrectData = true;
 
@@ -116,7 +107,7 @@ angular.module('spaApp')
     $http({
       url: $scope.restAPIBaseUrl+'/login',
       method: 'POST',
-      data: JSON.stringify({'user_login':$scope.username, 'password':$scope.password,'client_application_id': 'PROSA-DIG' , 'image_id': $scope.selectedImage.toString() }) ,
+      data: JSON.stringify({'user_login':$scope.loginData.username, 'password':$scope.loginData.password,'client_application_id': 'PROSA-DIG' , 'image_id': $scope.loginData.selectedImage.toString() }) ,
       headers: {'Content-Type': 'application/json','X-BANK-TOKEN': '4'}
     }).
       success(function(data, status, headers) {

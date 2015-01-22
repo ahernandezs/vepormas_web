@@ -19,7 +19,7 @@ angular.module('spaApp').factory('api', ['$http', '$rootScope', function ($http,
       $rootScope.restAPIBaseUrl = $("#linkApiRoot").attr("href");
       // Use these or similar link for development
       //$rootScope.restAPIBaseUrl = "http://192.168.210.136/Abanking-Core";
-      //$rootScope.restAPIBaseUrl = "http://localhost:18080/Abanking-Core";
+      $rootScope.restAPIBaseUrl = "http://projects.anzen.com.mx:8082/Abanking-Core";
       //$rootScope.restAPIBaseUrl = 'http://192.168.0.10:80/Abanking-Core';
       //$rootScope.restAPIBaseUrl = 'http://192.168.0.10:80/Abanking-Core';
       $rootScope.useMocks = false;
