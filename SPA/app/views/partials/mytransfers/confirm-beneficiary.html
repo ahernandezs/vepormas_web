@@ -5,13 +5,13 @@
         <progress max="3" value="{{selection -3}}"></progress>
         <div class="progress">
             <p class="orange">captura</p>
-            <p class="orange">confirmación</p>
+            <p>confirmación</p>
             <p>comprobación</p>
         </div>
     </div>
     <form>
-        <input type="password" ng-model="beneficiary.token" name="token" id="token" placeholder="Introduce el c&oacute;digo que se ha generado en tu Token F&iacute;sico">
-        <hr>
+        <input class="input-token" type="password" ng-model="beneficiary.token" name="token" id="token" placeholder="Introduce el c&oacute;digo que se ha generado en tu Token F&iacute;sico">
+        
         <table>
             <tr>
                 <td>Nombre:</td>
@@ -39,7 +39,7 @@
             </tr>
         </table>
     </form>
-    <hr>
+    <div class="double-btn">
     <input class="blue" type="submit" value="Regresar" ng-click="completeStep(4)">
-    <input class="blue" type="submit" value="Continuar" ng-click="completeStep(6)">
+    <input class="blue disabled" type="submit" value="Continuar" ng-click="completeStep(6)"></div>
 </div>

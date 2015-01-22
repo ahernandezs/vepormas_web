@@ -28,6 +28,16 @@ input[type*=submit] {
 		background-color: $blue;
 		font-weight: bold;
 	}
+	&.blue.disabled, &.blue.disabled:hover {
+		background-color: white;
+		font-weight: bold;
+		color:$orange;
+		border:1px solid $orange;
+	}
+	&.blue:hover {
+		background-color: $orange;
+		font-weight: bold;
+	}
 	&.orange {
 		background-color: $orange;
 		font-weight: bold;
