@@ -26,7 +26,10 @@
                 <p class="date">&Uacute;ltimo acceso: <span>{{date | date:'dd-MM-yyyy'}}</span> a las <span>{{date | date:'hh:mm'}}</span>
                 </p>
             </div>
-            <button class="orange" ng-click="logout()">Cerrar Sesi&oacute;n</button>
+            <form ng-show="useLogoutForm" action="/logout" method="get">
+              <button class="orange">Cerrar Sesi&oacute;n</button>
+            </form>
+            <button ng-hide="useLogoutForm" class="orange" ng-click="logout()">Cerrar Sesi&oacute;n</button>
         </div>
         <div class="fix-top">
             <div class="date">
