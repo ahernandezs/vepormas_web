@@ -3,6 +3,9 @@
 |	Left menu
 |-------------------------------------------------------------------------------------
 */
+.animate-switch {
+    border: none !important;
+}
 .select-style:active{
     border-color:$orange;
 }
@@ -35,8 +38,6 @@ input[name="account"] + p{
     margin-top: 3px;
 }
 .content {
-    float: right;
-    width: 70.8333333333%;
     margin: 0 1.0416666667%;
     margin-top:40px;
     .double-btn{
@@ -49,9 +50,10 @@ input[name="account"] + p{
         }
     }
     .header {
+        margin: 0;
         position: relative;
         border-bottom: 1px solid $gray;
-        padding-bottom: 15px;
+        padding: 0 10px 15px 10px;
         min-height:60px;
         overflow: hidden;
         h2, p { float: left; width: 67%; }
