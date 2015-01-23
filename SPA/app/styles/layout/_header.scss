@@ -91,6 +91,7 @@ header {
 		width: 35%;
 		float:right;
 		margin-top: 32px;
+		background-color:$orange !important;
 	}
 	.date {
 		font-size: 13px;
@@ -124,12 +125,11 @@ header {
 	}
 	a {
 		color: inherit;
+		padding-right: 10px;
 		margin-right: 10px;
+		border-right:1px solid white;
+		line-height: 0.8em;
 
-		&:before {
-			content: "|";
-			margin-right: 10px;
-		}
 		&:hover {
 			text-decoration: underline;
 		}

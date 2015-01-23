@@ -112,13 +112,6 @@
 		border-radius: 4px;
 		border: 1px solid #e00101;
 	}
-	input[type="submit"]{
-		background-color:$orange;
-	}
-
-	input[type="submit"]:disabled {
-		background-color:$blue;
-	}
 
 	.incorrectUser{
 		margin: 2px auto;
@@ -190,10 +183,6 @@
 
 		&:first-child {
 			margin-bottom: 10px;
-		}
-		&[type*=submit] {
-			color: #FFF;
-			border: none;
 		}
 	}
 	.search {

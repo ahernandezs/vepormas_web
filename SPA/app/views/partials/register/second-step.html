@@ -13,8 +13,8 @@
             <div class="error" ng-show="error">{{errorMessage}}</div>
             <div class="error" ng-show="registerPasswordForm.password.$error.pattern">Su contraseña no puede haber más de dos caracteres consecutivos numéricos o alfabéticos</div>
             <div class="error" ng-show="registerPasswordForm.password.$error.minlength">Su contraseña debe tener al menos 8 caracteres</div>
-            <button class="blue" ng-click="gotoLogin()">Cancelar</button>
-            <button class="orange" ng-click="confirmPassword()">Continuar</button>
+            <button ng-click="gotoLogin()">Cancelar</button>
+            <button ng-click="confirmPassword()" ng-disabled="true">Continuar</button>
         </div>
     </div>
    <div class="help">
