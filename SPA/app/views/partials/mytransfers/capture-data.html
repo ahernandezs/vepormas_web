@@ -2,7 +2,7 @@
     <div class="header">
         <h2>Transferencia de cuentas</h2>
         <p>Ingresa los datos para la transferencia</p>
-        <progress max="3" value="{{selection}}"></progress>
+        <progress max="3" value="{{selection - 3}}"></progress>
         <div class="progress">
             <p class="orange">captura</p>
             <p>confirmación</p>
@@ -10,9 +10,8 @@
         </div>
     </div>
     <form>
-
         <div class="select-style">
-            <select  ng-init="transfer.account = ownAccounts[0]" ng-model="transfer.account" name="first-account" ng-options="item.name group by 'Cuentas Propias' for item in ownAccounts">
+            <select ng-model="transfer.account" name="first-account" ng-options="item.name group by 'Cuentas Propias' for item in ownAccounts">
                 <option value="" >Cuenta retiro</option>
             </select>
         </div>
@@ -25,7 +24,7 @@
         <input ype="text" ng-model="transfer.concept" name="concept" id="concept" placeholder="Concepto" class="input-mail">
     </form>
     <div class="double-btn">
-        <input class="blue" type="submit" value="Cancelar" ng-click="completeStep(1)">
-        <input class="blue disabled" type="submit" value="Continuar" ng-click="completeStep(2)">
+        <input class="blue" type="submit" value="Cancelar" ng-click="completeStep(4)">
+        <input class="blue disabled" type="submit" value="Continuar" ng-click="completeStep(5)">
     </div>
 </div>

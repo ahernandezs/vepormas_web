@@ -2,7 +2,7 @@
     <div class="header">
         <h2>Pago de cuentas</h2>
         <p>Confirma los datos para el pago</p>
-        <progress max="3" value="{{selection}}"></progress>
+        <progress max="3" value="{{selection - 3}}"></progress>
         <div class="progress">
             <p class="orange">captura</p>
             <p class="orange">confirmación</p>
@@ -32,8 +32,8 @@
             <td>{{transfer.date}}</td>
         </tr>
     </table>
-   <div class="double-btn">
-    <input class="blue" type="submit" value="Regresar" ng-click="completeStep(1)">
-    <input class="blue disabled" type="submit" value="Continuar" ng-click="completeStep(3)">
-</div>
+    <div class="double-btn">
+        <input class="blue" type="submit" value="Regresar" ng-click="completeStep(4)">
+        <input class="blue disabled" type="submit" value="Continuar" ng-click="completeStep(6)">
+    </div>
 </div>

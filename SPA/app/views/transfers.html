@@ -2,8 +2,8 @@
     <h2>Mis Operaciones</h2>
     <div class="section">
         <ul>
-            <li class="option"><a>Hacer un pago</a></li>
-            <li class="option" ng-class="selection>=1 && selection < 4?'active' : ''" ng-click="selection=1"><a>Hacer una transferencia</a></li>
+            <li class="option" ng-class="selection>=1 && selection < 4?'active' : ''" ng-click="selection=1"><a>Hacer un pago</a></li>
+            <li class="option" ng-class="selection>=4 && selection < 7?'active' : ''" ng-click="selection=4"><a>Hacer una transferencia</a></li>
         </ul>
     </div>
     <div class="beneficiarios-widget">
@@ -11,7 +11,7 @@
         <div class="section">
             <div class="beneficiary">
                 <ul>
-                    <li class="option" ng-class="selection>=4 && selection < 7?'active' : ''" ng-click="selection=4">Agregar un nuevo beneficiario</li>
+                    <li class="option" ng-class="selection>=7 && selection < 10?'active' : ''" ng-click="selection=7">Agregar un nuevo beneficiario</li>
                 </ul>
             </div>
         </div>
@@ -27,26 +27,38 @@
 </div>
 <div ng-switch on="selection">
     <div class="animate-switch" ng-switch-when="1">
-        <div ng-include="'views/partials/mytransfers/capture-data.html'">
+        <div ng-include="'views/partials/mytransfers/capture-payment.html'">
         </div>
     </div>
     <div class="animate-switch" ng-switch-when="2">
-        <div ng-include="'views/partials/mytransfers/confirmation.html'">
+        <div ng-include="'views/partials/mytransfers/confirm-payment.html'">
         </div>
     </div>
     <div class="animate-switch" ng-switch-when="3">
-        <div ng-include="'views/partials/mytransfers/process.html'">
+        <div ng-include="'views/partials/mytransfers/process-payment.html'">
         </div>
     </div>
     <div class="animate-switch" ng-switch-when="4">
-        <div ng-include="'views/partials/mytransfers/capture-beneficiary.html'">
+        <div ng-include="'views/partials/mytransfers/capture-data.html'">
         </div>
     </div>
     <div class="animate-switch" ng-switch-when="5">
-        <div ng-include="'views/partials/mytransfers/confirm-beneficiary.html'">
+        <div ng-include="'views/partials/mytransfers/confirmation.html'">
         </div>
     </div>
     <div class="animate-switch" ng-switch-when="6">
+        <div ng-include="'views/partials/mytransfers/process.html'">
+        </div>
+    </div>
+    <div class="animate-switch" ng-switch-when="7">
+        <div ng-include="'views/partials/mytransfers/capture-beneficiary.html'">
+        </div>
+    </div>
+    <div class="animate-switch" ng-switch-when="8">
+        <div ng-include="'views/partials/mytransfers/confirm-beneficiary.html'">
+        </div>
+    </div>
+    <div class="animate-switch" ng-switch-when="9">
         <div ng-include="'views/partials/mytransfers/process-beneficiary.html'">
         </div>
     </div>

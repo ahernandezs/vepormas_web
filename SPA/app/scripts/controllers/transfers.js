@@ -7,6 +7,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 	
     $scope.selection = 1;
     $scope.beneficiary = {};
+    $scope.payment = {};
     $scope.transfer = {};
     $scope.transfer.account;
     $scope.transfer.destination;
