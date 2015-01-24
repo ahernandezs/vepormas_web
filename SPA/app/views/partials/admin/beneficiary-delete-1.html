@@ -1,56 +1,104 @@
 <div class="actions" style="border: solid 1px #D3D3D3; right: 0; position: absolute;">
-    <h2>&nbsp;&nbsp;&nbsp;Paty huerta</h2>
-    <input type="button" value="Eliminar" style='width:200px;'>
+  
+<div ng-switch on="stage">
+  <div ng-switch-when="1">
+    <table width="100%">
+        <tr>
+            <td><h3>&nbsp;&nbsp;&nbsp;{{selectedAccount.name}}</h3></td>
+            <td align="right"><button class="orange" ng-click="siguiente()">Eliminar</button></td>
+        </tr>
+    </table>
+  </div>
+  <div ng-switch-when="2">
+    <h3>Eliminar Beneficiario</h3>
+    ¿Est&aacute;s seguro de querer eliminar al beneficiario?
+  </div>
+  <div ng-switch-when="3">
+      aqui se pide el codigo
+  </div>
+  <div ng-switch-when="4">
+      el resultado
+  </div>
+</div>
+
+
     <br>
-    <div>
-        <ul>
-            <li style="color:#2976b6" class="option">Cuentas consubanco     <span style="float:right">5</span></li>
-            <li style="color:#2976b6" class="option">Otros bancos           <span style="float:right">3</span></li>
-            <li style="color:#2976b6" class="option" ng-click="addedThisMonth = !addedThisMonth">Agregados este mes     <span style="float:right">2</span></li>
-                <table class="transactions" ng-show="addedThisMonth">
-                    <thead>
-                        <tr>
-                           <th>Nombre</th>
-                            <th>Cuenta</th>
-                            <th>Fecha de alta</th>
-                        </tr>   
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Joel Bravo Flores</td>
-                           <td>***48348</td>
-                            <td>12/12/12</td>
-                        </tr>
-                        <tr>
-                            <td>Claudia Flores</td>
-                            <td>***45688</td>
-                            <td>11/11/11</td>
-                        </tr>
-                    </tbody>
-                </table>
-            <li style="color:#2976b6" class="option" ng-click="paysThisMonth = !paysThisMonth">Pagos este mes         <span style="float:right">3</span></li>
-                <table class="transactions" ng-show="paysThisMonth">
-                    <thead>
-                        <tr>
-                           <th>Nombre</th>
-                            <th>Cuenta</th>
-                            <th>Fecha de alta</th>
-                        </tr>   
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Joel Bravo Flores</td>
-                           <td>***48348</td>
-                            <td>12/12/12</td>
-                        </tr>
-                        <tr>
-                            <td>Claudia Flores</td>
-                            <td>***45688</td>
-                            <td>11/11/11</td>
-                        </tr>
-                    </tbody>
-                </table>
-            <li style="color:#2976b6" class="option">Eliminados este mes    <span style="float:right">3</span></li>
-        </ul>
-    </div>
+    <hr>
+    <h2>Datos del beneficiario</h2>
+        <table width="100%">
+            <tr>
+                <td>Nombre</td>
+                <td align="right">{{selectedAccount.name}}</td>
+            </tr>
+            <tr>
+                <td>Alias</td>
+                <td align="right">{{selectedAccount.name}}</td>
+            </tr>
+            <tr>
+                <td>Tipo de cuenta</td>
+                <td align="right">{{selectedAccount.account_type}}</td>
+            </tr>
+            <tr>
+                <td>No. de cuenta</td>
+                <td align="right">{{selectedAccount.maskedAccountNumber}}</td>
+            </tr>
+        </table>
+    <hr>
+    <h2>Datos para notificar al beneficiario</h2>
+    <table width="100%">
+        <tr>
+            <td>Correo electrónico</td>
+            <td align="right">paty@huerta.com</td>
+        </tr>
+        <tr>
+            <td>Celular</td>
+            <td align="right">(55)5612-3123</td>
+        </tr>
+    </table>
+    <hr>
+
+
+
+  <div ng-switch on="stage">
+      <div ng-switch-when="1">
+        <h2>&Uacute;ltimos pagos</h2>
+        <table class="transactions" width="100%">
+            <thead>
+            <tr>
+                <td>Fecha</td>
+                <td>Concepto</td>
+                <td>Monto</td>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01/01/01</td>
+                    <td>Renta de casa</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td>01/01/01</td>
+                    <td>Mensualidad carro</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td>01/01/01</td>
+                    <td>Abono chiquito</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+      <div ng-switch-when="2">
+        <button class="blue" ng-click="siguiente()">Aceptar</button>
+        <button class="blue" ng-click="">Regresar</button>
+      </div>
+      <div ng-switch-when="3">
+        <button class="blue" ng-click="siguiente()">Aceptar</button>
+        <button class="blue" ng-click="">Regresar</button>
+      </div>
+      <div ng-switch-when="4">
+          el resultado
+      </div>
+  </div>
 </div>

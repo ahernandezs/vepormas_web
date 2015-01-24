@@ -13,19 +13,22 @@
             </tr>   
         </thead>
         <tbody>
-            <tr ng-repeat="accounts in third_accounts" ng-click="selectBeneficiary()">
-                <td>{{accounts.productName}}</td>
+            <tr ng-repeat="accounts in third_accounts" ng-click="selectBeneficiary(accounts);">
+                <td>{{accounts.name}}</td>
                 <td>{{accounts.maskedAccountNumber}}</td>
-                <td>{{accounts.hirdPartyGUID}}</td>
+                <td>{{accounts.same_bank}}</td>
                 <td>{{accounts.account_type}}</td>
             </tr>
         </tbody>
     </table>
 </div>
-
-<div ng-switch on="selection">
+<div ng-switch on="action">
     <div ng-switch-when="1">
         <div ng-include="'views/partials/admin/beneficiary-list.html'">
+        </div>
+    </div>
+    <div ng-switch-when="2">
+        <div ng-include="'views/partials/admin/beneficiary-delete-1.html'">
         </div>
     </div>
 </div>
