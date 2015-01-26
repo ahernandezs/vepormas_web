@@ -14,10 +14,10 @@
     ¿Est&aacute;s seguro de querer eliminar al beneficiario?
   </div>
   <div ng-switch-when="3">
-      aqui se pide el codigo
+    <input type="text" ng-model="token_number" placeholder="Introduce el numero generado en tu Token" class="token"/>
   </div>
   <div ng-switch-when="4">
-      el resultado
+    ¡La baja se ha realizado con &Eacute;xito!
   </div>
 </div>
 
@@ -96,9 +96,6 @@
       <div ng-switch-when="3">
         <button class="blue" ng-click="siguiente()">Aceptar</button>
         <button class="blue" ng-click="">Regresar</button>
-      </div>
-      <div ng-switch-when="4">
-          el resultado
       </div>
   </div>
 </div>
