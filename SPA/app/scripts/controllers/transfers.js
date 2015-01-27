@@ -30,27 +30,47 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 		$scope.selection = nextStep;
 	 };
 
+    /**
+     * Send transfer to an own account.
+     */
     $scope.sendTransfer = function() {
-        var source = $scope.transfer.account._account_id + '-' + $scope.transfer.account.account_type;
-        var destination = $scope.transfer.destination._account_id + '-' + $scope.transfer.destination.account_type;
-        accountsProvider.transferOwnAccounts(source, destination, 
+        console.log( $scope.transfer.account );
+        accountsProvider.transferOwnAccounts($scope.transfer.account._account_id, $scope.transfer.destination._account_id, 
                                              $scope.transfer.amount, $scope.transfer.concept).then(
             function(data) {
                 console.log(data);
             }
         );
+        $scope.selection = 6;
     };
     
+    /**
+     * Send beneficiary data to service.
+     */
     $scope.sendBeneficiary = function() {
         // account = 18 digitos (002123456789012347) y token correcto
         thirdAccountProvider.registerThirdAccount($scope.beneficiary.aka, $scope.beneficiary.name,
                                                  $scope.beneficiary.email, $scope.beneficiary.phone,
                                                  $scope.beneficiary.account, $scope.beneficiary.token).then(
             function(data) {
-                console.log('resultado');
                 console.log(data);
             }
         );
     };
-     
+
+    /**
+     * Send payment to service.
+     */
+    $scope.sendPayment = function() {
+        if ($scope.payment.amount == 'payment.other')
+            $scope.payment.amount = $scope.payment.other;
+        
+        console.log( $scope.payment );
+        accountsProvider.transferOwnAccounts($scope.payment.account._account_id, $scope.payment.destiny._account_id, 
+                                             $scope.payment.amount).then(
+            function(data) {
+                console.log(data);
+            }
+        );
+    };
 }]);
