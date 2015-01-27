@@ -23,6 +23,18 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 
 	      return deferred.promise;
 	    },
+
+	    deleteAccount: function(id, otp){
+			var deferred = $q.defer();
+			adminService.deleteAccount(id, otp).success(function(data, status, headers) {
+				deferred.resolve();
+			}).error(function(data, status) {
+				console.log(data, status);
+				return deferred.reject("Error deleting accounts");
+			});
+			return deferred.promise;
+	    },
+
 	};
 
 }]);
