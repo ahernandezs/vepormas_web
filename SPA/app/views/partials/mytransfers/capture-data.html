@@ -16,7 +16,7 @@
             </select>
         </div>
         <div class="select-style">
-            <select ng-model="transfer.destination" name="second-account" ng-options="item.name group by 'Cuentas Propias' for item in ownAccounts | filter: { account_type: 'DEP' }">
+            <select ng-model="transfer.destination" name="second-account" ng-options="item.name group by 'Cuentas Propias' for item in ownAccounts | filter: { account_type: 'DEP', _account_id: '!' + transfer.account._account_id }">
                 <option value="" selected>Cuenta deposito</option>
             </select>
         </div>

@@ -9,10 +9,10 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.beneficiary = {};
     $scope.payment = {};
     $scope.transfer = {};
-    $scope.transfer.account;
+    /*$scope.transfer.account;
     $scope.transfer.destination;
     $scope.transfer.amount;
-    $scope.transfer.concept;
+    $scope.transfer.concept;*/
     $scope.transfer.date = 'today';
     
 
@@ -34,7 +34,10 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
      * Send transfer to an own account.
      */
     $scope.sendTransfer = function() {
-        console.log( $scope.transfer.account );
+        console.log( 'account: ' + $scope.transfer.account._account_id );
+        console.log( 'destination: ' + $scope.transfer.destination._account_id );
+        console.log( 'amount: ' + $scope.transfer.amount );
+        console.log( 'concept: ' + $scope.transfer.concept );
         accountsProvider.transferOwnAccounts($scope.transfer.account._account_id, $scope.transfer.destination._account_id, 
                                              $scope.transfer.amount, $scope.transfer.concept).then(
             function(data) {
