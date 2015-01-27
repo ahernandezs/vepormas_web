@@ -37,7 +37,8 @@
             </div>
         </span>
     </form>
-    <hr>
-    <input class="blue" type="submit" value="Cancelar" ng-click="completeStep(1)">
-    <input class="blue" type="submit" value="Continuar" ng-click="sendPayment()">
+    <div class="double-btn">
+    <input type="submit" value="Cancelar" ng-click="completeStep(1)">
+    <input type="submit" value="Continuar" ng-disabled="true" ng-click="sendPayment()">
+</div>
 </div>

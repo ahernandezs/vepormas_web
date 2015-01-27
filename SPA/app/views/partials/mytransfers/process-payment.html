@@ -33,7 +33,8 @@
             <td>{{today}}</td>
         </tr>
     </table>
-    <hr>
-    <input class="blue" type="submit" value="Finalizar" ng-click="completeStep(1)">
-    <input class="orange larger" type="submit" value="Realizar otro pago" ng-click="sendPayment()">
+    <div class="double-btn">
+    <input type="submit" value="Finalizar" ng-click="completeStep(1)">
+    <input class="larger" type="submit" value="Realizar otro pago" ng-click="sendPayment()">
+</div>
 </div>

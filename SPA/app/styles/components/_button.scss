@@ -33,7 +33,7 @@ input[type="submit"]:disabled, input[type="submit"]:disabled:hover, input[type="
 button:disabled, button:disabled:hover, button:disabled:active{
 	background-color: white;
 	font-weight: bold;
-	color:$orange;
+	color:$orange !important;
 	border:1px solid $orange !important;
 }
 input[type="submit"]:hover, input[type="submit"]:active, button:hover, button:active{
