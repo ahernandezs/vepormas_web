@@ -1,14 +1,15 @@
 <div class="header">
     <h2 class="title">
         <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'ico-menos' : 'ico-mas'"></i></a>
-        {{activeAccountName}}
+        {{investmentHeader.product.productName}}
         <span>Inversi&oacute;n</span>
     </h2>
     <div class="payment-actions">
         <div>
             <div>
                 <p class="amount">{{investmentHeader.amount}}</p>
-                <span>Saldo disponible</span>
+                <span ng-hide="investmetCategory=='VISTA'">Saldo disponible</span>
+                <span ng-show="investmetCategory=='VISTA'">Saldo</span>
             </div>
         </div>
     </div>
@@ -39,7 +40,7 @@
         </ul>
         <ul>
             <li>Saldo Invertido:                                    <span>{{investmentHeader.amount}}%</span></li>
-            <li>Tasa de inter&eacute;s del &uactue;ltimo periodo:   <span class="amount">{{investmentHeader.interest_rate}}</span></li>
+            <li>Tasa de inter&eacute;s del &uacute;ltimo periodo:   <span class="amount">{{investmentHeader.interest_rate}}</span></li>
         </ul>
     </div>
 </div>
