@@ -25,7 +25,7 @@
     $scope.selectedAcccountId = accountId;
     $scope.selectedAccountType = type;
     $scope.activeAccountName = accountSelected.name + ' ' + accountSelected.maskedAccountNumber;
-    console.log(accountId);
+    $scope.investmetCategory = accountSelected.category;
     
     switch (type) {
         case 'TDC':

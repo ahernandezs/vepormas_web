@@ -1,0 +1,100 @@
+<div class="actions">
+  
+<div ng-switch on="stage">
+  <div ng-switch-when="1">
+    <table width="100%">
+        <tr>
+            <td><h3>{{selectedAccount.name}}</h3></td>
+            <td align="right"><button class="orange" ng-click="siguiente()">Eliminar</button></td>
+        </tr>
+    </table>
+  </div>
+  <div ng-switch-when="2">
+    <h3>Eliminar Beneficiario</h3>
+    ¿Est&aacute;s seguro de querer eliminar al beneficiario?
+  </div>
+  <div ng-switch-when="3">
+    <input type="text" ng-model="data.otp" placeholder="Introduce el numero generado en tu Token" class="token"/>
+  </div>
+  <div ng-switch-when="4">
+    ¡La baja se ha realizado con &Eacute;xito!
+  </div>
+</div>
+    <br>
+    <hr>
+    <h2>Datos del beneficiario</h2>
+        <table width="100%">
+            <tr>
+                <td>Nombre</td>
+                <td align="right">{{selectedAccount.name}}</td>
+            </tr>
+            <tr>
+                <td>Alias</td>
+                <td align="right">{{selectedAccount.name}}</td>
+            </tr>
+            <tr>
+                <td>Tipo de cuenta</td>
+                <td align="right">{{selectedAccount.account_type}}</td>
+            </tr>
+            <tr>
+                <td>No. de cuenta</td>
+                <td align="right">{{selectedAccount.maskedAccountNumber}}</td>
+            </tr>
+        </table>
+    <hr>
+    <h2>Datos para notificar al beneficiario</h2>
+    <table width="100%">
+        <tr>
+            <td>Correo electrónico</td>
+            <td align="right">paty@huerta.com</td>
+        </tr>
+        <tr>
+            <td>Celular</td>
+            <td align="right">(55)5612-3123</td>
+        </tr>
+    </table>
+    <hr>
+
+
+
+  <div ng-switch on="stage">
+      <div ng-switch-when="1">
+        <h2>&Uacute;ltimos pagos</h2>
+        <table class="transactions" width="100%">
+            <thead>
+            <tr>
+                <td>Fecha</td>
+                <td>Concepto</td>
+                <td>Monto</td>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>01/01/01</td>
+                    <td>Renta de casa</td>
+                    <td>8000</td>
+                </tr>
+                <tr>
+                    <td>01/01/01</td>
+                    <td>Mensualidad carro</td>
+                    <td>10000</td>
+                </tr>
+                <tr>
+                    <td>01/01/01</td>
+                    <td>Abono chiquito</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+      </div>
+      <div ng-switch-when="2">
+        <button class="blue larger" ng-click="siguiente()">Aceptar</button>
+        <button class="blue larger" ng-click="">Regresar</button>
+      </div>
+      <div ng-switch-when="3">
+        <button class="blue larger" ng-click="delete(data.otp);siguiente();">Aceptar</button>
+        <button class="blue larger" ng-click="">Regresar</button>
+      </div>
+  </div>
+</div>
+x
