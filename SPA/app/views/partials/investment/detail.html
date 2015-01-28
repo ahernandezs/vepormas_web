@@ -8,8 +8,7 @@
         <div>
             <div>
                 <p class="amount">{{investmentHeader.amount}}</p>
-                <span ng-hide="investmetCategory=='VISTA'">Saldo disponible</span>
-                <span ng-show="investmetCategory=='VISTA'">Saldo</span>
+                <span>Saldo</span>
             </div>
         </div>
     </div>
@@ -18,21 +17,20 @@
 
 <div ng-hide="investmetCategory=='VISTA'">
     <div class="box" ng-show='showAccountHeader'>
-            <ul>
-                <li>Fecha de inicio:        <span>{{investmentHeader.startDate | date:'dd-MM-yyyy' }}</span></li>
-                <li>Fecha de vencimiento:   <span>{{investmentHeader.expiration_date | date:'dd-MM-yyyy' }}</span></li>
-                <li>Intereses:              <span class="amount">{{investmentHeader.interest_rate}}</span></li>
-                <li>Fecha de &uacute;ltima renovaci&oacute;n: <span>{{investmentHeader.last_renewal_date | date:'dd-MM-yyyy'}}</span></li>
-            </ul>
-            <ul>
-                <li>Tasa de inter&eacute;s:     <span>{{investmentHeader.interest_rate}}%</span></li>
-                <li>Porcentaje de ISR:          <span>{{investmentHeader.isr_taxt}}%</span></li>
-                <li>Monto del ISR:              <span class="amount">{{investmentHeader.isr_taxt_amount}}</span></li>
-                <li>Monto del rendimiento:      <span class="amount">{{investmentHeader.return_rate_amount}}</span></li>
-            </ul>
+        <ul>
+            <li>Fecha de inicio de inversi&oacute;n:    <span>{{investmentHeader.startDate | date:'dd-MM-yyyy' }}</span></li>
+            <li>Plazo de inversi&oacute;n:              <span>{{investmentHeader.expiration_date | date:'dd-MM-yyyy'}}</span></li>
+            <li>Fecha de vencimiento de inversi&oacute;n:<span>{{investmentHeader.last_renewal_date | date:'dd-MM-yyyy' }}</span></li>
+            <li>Fecha de vencimiento de inter&eacute;s:  <span>{{investmentHeader.expiration_date | date:'dd-MM-yyyy' }}</span></li>
+        </ul>
+        <ul>
+            <li>Intereses generados:    <span>{{investmentHeader.projected_interest_amount}}%</span></li>
+            <li>Porcentaje de ISR:      <span>{{investmentHeader.isr_taxt}}%</span></li>
+            <li>Monto del ISR:          <span class="amount">{{investmentHeader.isr_taxt_amount}}</span></li>
+            <li>Intereses por pagar:    <span class="amount">{{investmentHeader.interest_rate}}</span></li>
+        </ul>
     </div>
 </div>
-
 <div ng-show="investmetCategory=='VISTA'">
     <div class="box" ng-show='showAccountHeader'>
         <ul>
