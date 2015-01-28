@@ -23,7 +23,7 @@ header {
 
 	.logo {
 		@include size(121px, 92px);
-		background: transparent url(/images/logo-consubanco.svg) center center no-repeat;
+		background: transparent url(../images/logo-consubanco.svg) center center no-repeat;
 		background-size: cover;
 		display: inline;
 		float: left;
@@ -39,6 +39,27 @@ header {
 |	Main navigation
 |-------------------------------------------------------------------------------------
 */
+@-webkit-keyframes spin{
+	0% {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}
+}
+@keyframes spin{
+	0% {-webkit-transform: rotate(0deg);}
+    100% {-webkit-transform: rotate(360deg);}
+}
+
+.loader{
+	display:none;
+	position: absolute;
+	z-index: 999;
+	width:50px;
+	height:50px;
+	background:url(../images/loader.png) no-repeat center center;
+	background-size:50px;
+	-webkit-animation: spin 1s infinite linear; 
+    animation: spin 1s infinite linear;
+}
+
 .nav {
 	color: #FFF;
 	bottom: -1px;
