@@ -62,7 +62,7 @@
 			margin-right: 2%;
 			border:1px solid $gray;
 			@include border-radius(4px);
-			background: url(/images/ico-lupa.png) no-repeat 98% center, white;
+			background: url(../images/ico-lupa.png) no-repeat 98% center, white;
 			background-size:30px;
 		}
 		button, button:hover, button:active{
@@ -79,7 +79,7 @@
 				float:left;
 				width:30px;
 				height: 20px;
-				background:url(/images/ico-usuario-azul.png) no-repeat center center;
+				background:url(../images/ico-usuario-azul.png) no-repeat center center;
 				background-size:23px;
 			}
 		}

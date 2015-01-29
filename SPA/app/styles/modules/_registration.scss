@@ -2,31 +2,31 @@
 	font-size:24px;
 }
 .input-cuenta{
-        	background:url(/images/ico-cuenta.png) no-repeat 95% center;
+          background:url(../images/ico-cuenta.png) no-repeat 95% center;
         	background-size: 25px;
         }
         .input-usuario{
-        	background:url(/images/ico-usuario-login.png) no-repeat 95% center;
+          background:url(../images/ico-usuario-login.png) no-repeat 95% center;
         	background-size: 25px;
         }
         .input-password{
-        	background:url(/images/ico-password-login.png) no-repeat 95% center;
+          background:url(../images/ico-password-login.png) no-repeat 95% center;
         	background-size: 25px;
         }
         .input-mail{
-        	background:url(/images/ico-mail.png) no-repeat 95% center;
+          background:url(../images/ico-mail.png) no-repeat 95% center;
         	background-size: 25px;
         }
         .input-mobile{
-        	background:url(/images/ico-mobile.png) no-repeat 95% center;
+          background:url(../images/ico-mobile.png) no-repeat 95% center;
         	background-size: 25px;
         }
         .input-token{
-        	background:url(/images/ico-token.png) no-repeat 95% center;
+          background:url(../images/ico-token.png) no-repeat 95% center;
         	background-size: 25px;
         }
         .input-otp{
-        	background:url(/images/ico-otp.png) no-repeat 95% center;
+          background:url(../images/ico-otp.png) no-repeat 95% center;
         	background-size: 25px;
         }
 .registration {
@@ -95,47 +95,47 @@
 			}
 		}
 		li:first-child{
-			background:url(/images/ico-registro-confirmacion.png) no-repeat left center;
+			background:url(../images/ico-registro-confirmacion.png) no-repeat left center;
 			background-size:35px;
 		}
 		li:nth-child(2){
-			background:url(/images/ico-registro-usuario.png) no-repeat 2px center;
+			background:url(../images/ico-registro-usuario.png) no-repeat 2px center;
 			background-size:30px;
 		}
 		li:nth-child(3){
-			background:url(/images/ico-registro-seguridad.png) no-repeat 2px center;
+			background:url(../images/ico-registro-seguridad.png) no-repeat 2px center;
 			background-size:30px;
 		}
 		li:nth-child(4){
-			background:url(/images/ico-registro-notificacion.png) no-repeat 2px center;
+			background:url(../images/ico-registro-notificacion.png) no-repeat 2px center;
 			background-size:30px;
 		}
 		li:nth-child(5){
-			background:url(/images/ico-registro-token.png) no-repeat 2px center;
+			background:url(../images/ico-registro-token.png) no-repeat 2px center;
 			background-size:30px;
 		}
 		li:nth-child(6){
-			background:url(/images/ico-registro-finalizado.png) no-repeat 2px center;
+			background:url(../images/ico-registro-finalizado.png) no-repeat 2px center;
 			background-size:30px;
 		}
 		li.active:nth-child(2){
-			background:url(/images/ico-registro-usuario-a.png) no-repeat left center;
+			background:url(../images/ico-registro-usuario-a.png) no-repeat left center;
 			background-size:35px;
 		}
 		li.active:nth-child(3){
-			background:url(/images/ico-registro-seguridad-a.png) no-repeat left center;
+			background:url(../images/ico-registro-seguridad-a.png) no-repeat left center;
 			background-size:35px;
 		}
 		li.active:nth-child(4){
-			background:url(/images/ico-registro-notificacion-a.png) no-repeat left center;
+			background:url(../images/ico-registro-notificacion-a.png) no-repeat left center;
 			background-size:35px;
 		}
 		li.active:nth-child(5){
-			background:url(/images/ico-registro-token-a.png) no-repeat left center;
+			background:url(../images/ico-registro-token-a.png) no-repeat left center;
 			background-size:35px;
 		}
 		li.active:nth-child(6){
-			background:url(/images/ico-registro-finalizado-a.png) no-repeat left center;
+			background:url(../images/ico-registro-finalizado-a.png) no-repeat left center;
 			background-size:35px;
 		}
 		li {
@@ -230,7 +230,7 @@
 	        		list-style:none;
 	        		margin:0 0 12px 0;
 	        		padding-left: 25px;
-	        		background:url(/images/ico-ok.png) no-repeat left center;
+              background:url(../images/ico-ok.png) no-repeat left center;
 	        		background-size:15px;
 	        	}
         	}
@@ -324,19 +324,19 @@
 			@include translate(0,-50%);
 		}
 		.ico-ayuda{
-			background: url(/images/ico-ayuda.png) no-repeat left center;
+			background: url(../images/ico-ayuda.png) no-repeat left center;
 			background-size:45px;
 		}
 		.ico-token{
-			background: url(/images/ico-ayuda-token.png) no-repeat left center;
+			background: url(../images/ico-ayuda-token.png) no-repeat left center;
 			background-size:45px;
 		}
 		.ico-alerta{
-			background: url(/images/ico-ayuda-alerta.png) no-repeat left center;
+			background: url(../images/ico-ayuda-alerta.png) no-repeat left center;
 			background-size:45px;
 		}
 		.ico-duda{
-			background: url(/images/ico-ayuda-duda.png) no-repeat left center;
+			background: url(../images/ico-ayuda-duda.png) no-repeat left center;
 			background-size:45px;
 		}
 		> div {

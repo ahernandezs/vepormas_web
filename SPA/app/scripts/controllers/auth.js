@@ -5,7 +5,7 @@
  * inject a login function in the scope
  */
 angular.module('spaApp')
-.controller('LoginCtrl', ['$scope', '$http', '$location', 'api', '$rootScope', 'userProvider', function ($scope,$http,$location, api, $rootScope, userProvider) {
+.controller('LoginCtrl', ['$scope', '$http', '$location', 'api', '$rootScope', '$window', 'userProvider', function ($scope,$http,$location, api, $rootScope, $window, userProvider) {
   /**
    * If user has a valid session token keep him in dashboard
    */
@@ -18,6 +18,7 @@ angular.module('spaApp')
    * else put an error message in the scope
    */
   $scope.loginData = {};
+
   $scope.incorrectData = false;
   $scope.showImageLogin = false;
 
@@ -27,9 +28,10 @@ angular.module('spaApp')
   $scope.reset=function(){
     $scope.checkingUser = false;
     $scope.incorrectData = false;
+    $scope.incorrectLoginData = false;
     $scope.showImageLogin = false;
-    $scope.username = "";
-    $scope.password = "";
+    $scope.loginData.username = "";
+    $scope.loginData.password = "";
   }
 
 
@@ -79,16 +81,46 @@ angular.module('spaApp')
   }
 
   /**
+   * Set error messages
+   **/
+  $scope.setLoginErrorMessages = function(status, code) {
+    console.log("Status, code : ", status, code);
+    $scope.errorMessage = 'Error en el servicio, intente más tarde';
+    if(status === 400){
+      if(code === 500)
+        $scope.errorMessage = 'El password o imagen son incorrectos';
+      if(code === 510)
+        $scope.errorMessage = 'Existe una sesión vigente en otra aplicación';
+      if(code === 301)
+        $scope.errorMessage = 'Por favor, introduzca su contraseña y seleccione su imagen';
+      if(code === 501)
+        $scope.errorMessage = 'Su usuario ha sido bloqueado por intentos fallidos';
+    }
+    if(status === 423){
+      $scope.errorMessage = 'Existe una sesión vigente en otra aplicación';
+    }
+    if(status === 503){
+      $scope.errorMessage = 'Error en el servicio, intente más tarde';
+    }
+    if(status === 504){
+      $scope.errorMessage = 'Tiempo de respuesta excedido, por favor intente más tarde';
+    }
+    $scope.status = status;
+    $scope.incorrectLoginData = true;
+    $scope.isLogin = false;
+  };
+
+  /**
     Function for authenticate user through middleware
   **/
   $scope.login = function(){
     $scope.isLogin = true;
-    $scope.incorrectData = false;
+    $scope.incorrectLoginData = false;
     console.log("usuario, password, selectedImage", $scope.username, $scope.password, $scope.selectedImage);
 
     if(!$scope.loginData.password.trim() || !$scope.loginData.selectedImage) {
       $scope.isLogin = false;
-      $scope.incorrectData = true;
+      $scope.incorrectLoginData = true;
 
       $scope.errorMessage = 'Por favor, seleccione su imagen e introduzca su contraseña';
 
@@ -97,7 +129,7 @@ angular.module('spaApp')
 
     if(!$scope.loginData.selectedImage) {
       $scope.isLogin = false;
-      $scope.incorrectData = true;
+      $scope.incorrectLoginData = true;
 
       $scope.errorMessage = 'Por favor, seleccione una imagen';
 
@@ -121,30 +153,7 @@ angular.module('spaApp')
     }).
       error(function(data, status) {
       //put an error message in the scope
-      console.log("Status, code : ", status, data.code);
-      $scope.errorMessage = 'Error en el servicio, intente más tarde';
-      if(status === 400){
-          if(data.code === 500)
-            $scope.errorMessage = 'El password o imagen son incorrectos';
-          if(data.code === 510)
-            $scope.errorMessage = 'Existe una sesión vigente en otra aplicación';
-          if(data.code === 301)
-            $scope.errorMessage = 'Por favor, introduzca su contraseña y seleccione su imagen';
-          if(data.code === 501)
-            $scope.errorMessage = 'Su usuario ha sido bloqueado por intentos fallidos';
-      }
-      if(status === 423){
-        $scope.errorMessage = 'Existe una sesión vigente en otra aplicación';
-      }
-      if(status === 503){
-        $scope.errorMessage = 'Error en el servicio, intente más tarde';
-      }
-      if(status === 504){
-        $scope.errorMessage = 'Tiempo de respuesta excedido, por favor intente más tarde';
-      }
-      $scope.status = status;
-      $scope.incorrectData = true;
-      $scope.isLogin = false;
+      $scope.setLoginErrorMessages(status, data.code);
     });
 
   };
@@ -159,6 +168,16 @@ angular.module('spaApp')
         $location.path( '/register');
       });
   }
+
+  if($window.username) {
+    $scope.loginData.username = $window.username;
+
+    $scope.checkUser();
+
+    // get errors from backend
+    $scope.setLoginErrorMessages(parseInt($window.status), parseInt($window.code));
+  }
+
 
 }]);
 

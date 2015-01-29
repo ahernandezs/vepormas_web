@@ -15,7 +15,7 @@
     margin: 15px 0 0 0;
     border: 1px solid $gray;
     @include border-radius(4px);
-    background: #fff url(/images/ico-abajo.png) no-repeat 95% center;
+    background: #fff url(../images/ico-abajo.png) no-repeat 95% center;
     background-size:25px;
     select {
         color:$dgray;
@@ -137,7 +137,7 @@ input[name="account"] + p{
         border: 1px solid $green;
         height: 70px;
         margin: 15px 0;
-        background:url(/images/ico-hecho.png) no-repeat 20px center;
+        background:url(../images/ico-hecho.png) no-repeat 20px center;
         background-size:40px;
         @include border-radius(2px);
         p:first-child {
@@ -154,7 +154,7 @@ input[name="account"] + p{
             height: 100%;
             background-color: azure;
             p {
-                background:url(/images/ico-impresora.png) no-repeat center 13px;
+                background:url(../images/ico-impresora.png) no-repeat center 13px;
                 background-size:25px;
                 margin:0 0 0 43px;
                 padding-top:43px;
@@ -197,17 +197,17 @@ input[name="account"] + p{
     padding: 20px 40px 20px 20px;
     position: relative;
     font-weight: bold;
-    background: url(/images/ico-adelante.png) no-repeat right center;
+    background: url(../images/ico-adelante.png) no-repeat right center;
     background-size:25px;
     &.active {
 		border: none;
 		color: #FFF;
-        background: url(/images/ico-adelante-a.png) no-repeat right center, $orange;
+        background: url(../images/ico-adelante-a.png) no-repeat right center, $orange;
         background-size:25px;
         a{color: #FFF;}
 		&:after { color: #FFF; }
         i{
-            background: url(/images/ico-beneficiario-a.png) no-repeat center center;
+            background: url(../images/ico-beneficiario-a.png) no-repeat center center;
             background-size:25px;
         }
 	}
@@ -231,7 +231,7 @@ input[name="account"] + p{
                 margin-right: 5px;
                 width: 25px;
                 height: 25px;
-                background: url(/images/ico-beneficiario.png) no-repeat center center;
+                background: url(../images/ico-beneficiario.png) no-repeat center center;
                 background-size:25px;
             }
         }

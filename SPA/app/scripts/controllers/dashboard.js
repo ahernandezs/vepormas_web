@@ -4,6 +4,11 @@
  * The accounts controller. Gets accounts passing auth parameters
  */
 angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$window', 'accountsProvider', 'userProvider', function ($rootScope, $scope, $location, $routeParams, $window, accountsProvider, userProvider) {
+
+  if(!$rootScope.session_token) {
+    $location.path('/login');
+  }
+
 	//TODO: temporal binding
 	$scope.completeName = $rootScope.client_name;
 	$scope.date = $rootScope.last_access_date;
@@ -12,6 +17,7 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
   if($window.x_session_token) {
     $scope.useLogoutForm = true;
   }
+
   /**
     Function for logout application
   **/
