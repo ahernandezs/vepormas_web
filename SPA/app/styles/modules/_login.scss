@@ -21,7 +21,7 @@
 		padding-left: 14px;
 		padding: 0 0 0 14px;
 	}
-	
+
 	.bootstrap-select {
 		background: white;
 		border-left: 1px solid $gray;
@@ -54,7 +54,7 @@
   height: 100%;
 
 	.outter {
-		background: url(/images/bg-login.jpg) 0 0 no-repeat;
+		background: url(../images/bg-login.jpg) 0 0 no-repeat;
 		background-size: cover;
 	}
 
@@ -116,7 +116,7 @@
 
 	.incorrectUser{
 		margin: 2px auto;
-	 	background:url(/images/ico-error.png) no-repeat left top;
+	  background:url(../images/ico-error.png) no-repeat left top;
 	 	background-size:15px;
 	 	color:#e00101;
 	 	font-size: 13px;
@@ -203,11 +203,11 @@
 	}
 	input[type="text"]{
 		margin-bottom: 15px;
-		background:url(/images/ico-usuario-login.png) no-repeat 95% center, white;
+		background:url(../images/ico-usuario-login.png) no-repeat 95% center, white;
 		background-size:25px;
 	}
 	input[type="password"]{
-		background:url(/images/ico-password-login.png) no-repeat 95% center, white;
+		background:url(../images/ico-password-login.png) no-repeat 95% center, white;
 		background-size:25px;
 		margin-bottom: 15px;
 	}
@@ -275,11 +275,11 @@
 		background-repeat: no-repeat;
 
 		&[href*=apple] {
-			background-image: url(/images/logo-apple-store.svg);
+			background-image: url(../images/logo-apple-store.svg);
 			width: 169px;
 		}
 		&[href*=play] {
-			background-image: url(/images/logo-google-play.svg);
+			background-image: url(../images/logo-google-play.svg);
 			width: 144px;
 		}
 	}
