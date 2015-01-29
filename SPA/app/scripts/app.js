@@ -13,7 +13,7 @@ var app = angular.module('spaApp', [
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
   $urlRouterProvider.otherwise("/login");
-  //$httpProvider.responseInterceptors.push('httpInterceptor');
+  $httpProvider.responseInterceptors.push('httpInterceptor');
   $stateProvider
 
     .state('login', {
