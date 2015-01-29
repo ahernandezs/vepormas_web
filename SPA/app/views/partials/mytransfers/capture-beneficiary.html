@@ -19,7 +19,7 @@
         <input type="text" ng-model="beneficiary.phone" name="phone" id="phone" placeholder="Celular" class="input-mail">
     </form>
     <div class="double-btn">
-        <input class="blue" type="submit" value="Cancelar" ng-click="completeStep(7)">
-        <input class="blue disabled" type="submit" value="Continuar" ng-click="completeStep(8)">
+        <input type="submit" value="Cancelar" ng-click="completeStep(7)">
+        <input type="submit" value="Continuar" ng-disabled="true" ng-click="completeStep(8)">
     </div>
 </div>

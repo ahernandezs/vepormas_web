@@ -37,11 +37,14 @@
 		}
 	}
 }
+.submenu + div > .animate-switch{
+	margin-top: 30px;
+	border:1px solid $lgray !important;
+	overflow:hidden;
+	@include border-radius(4px);
+}
 .animate-switch{
 	overflow:hidden;
-	border:1px solid $lgray;
-	margin-top: 30px;
-	@include border-radius(4px);
 }
 .agregarBeneficiario{
 	float:left;
@@ -88,7 +91,12 @@
 	border-left:1px solid $lgray;
 	float:right;
 	width: 30%;
+	li:hover, li:active{
+		background: $lgray;
+	}
 	li{
+		cursor: pointer;
+		border-radius:0;
 		color:$blue;
 		display: block;
 		border:none;
