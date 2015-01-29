@@ -30,7 +30,7 @@
             </tr>
             <tr>
                 <td>Alias</td>
-                <td align="right">{{selectedAccount.name}}</td>
+                <td align="right">{{selectedAccount.shortName}}</td>
             </tr>
             <tr>
                 <td>Tipo de cuenta</td>
@@ -46,11 +46,11 @@
     <table width="100%">
         <tr>
             <td>Correo electrónico</td>
-            <td align="right">paty@huerta.com</td>
+            <td align="right">{{selectedAccount.e_mail}}</td>
         </tr>
         <tr>
             <td>Celular</td>
-            <td align="right">(55)5612-3123</td>
+            <td align="right">{{selectedAccount.phone}}</td>
         </tr>
     </table>
     <hr>
@@ -97,4 +97,3 @@
       </div>
   </div>
 </div>
-x
