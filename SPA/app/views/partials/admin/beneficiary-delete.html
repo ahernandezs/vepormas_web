@@ -1,10 +1,10 @@
-<div class="actions" style="border: solid 1px #D3D3D3; right: 0; position: absolute;">
+<div class="actions">
   
 <div ng-switch on="stage">
   <div ng-switch-when="1">
     <table width="100%">
         <tr>
-            <td><h3>&nbsp;&nbsp;&nbsp;{{selectedAccount.name}}</h3></td>
+            <td><h3>{{selectedAccount.name}}</h3></td>
             <td align="right"><button class="orange" ng-click="siguiente()">Eliminar</button></td>
         </tr>
     </table>
@@ -14,14 +14,12 @@
     ¿Est&aacute;s seguro de querer eliminar al beneficiario?
   </div>
   <div ng-switch-when="3">
-    <input type="text" ng-model="token_number" placeholder="Introduce el numero generado en tu Token" class="token"/>
+    <input type="text" ng-model="data.otp" placeholder="Introduce el numero generado en tu Token" class="token"/>
   </div>
   <div ng-switch-when="4">
     ¡La baja se ha realizado con &Eacute;xito!
   </div>
 </div>
-
-
     <br>
     <hr>
     <h2>Datos del beneficiario</h2>
@@ -90,12 +88,13 @@
         </table>
       </div>
       <div ng-switch-when="2">
-        <button class="blue" ng-click="siguiente()">Aceptar</button>
-        <button class="blue" ng-click="">Regresar</button>
+        <button class="blue larger" ng-click="siguiente()">Aceptar</button>
+        <button class="blue larger" ng-click="">Regresar</button>
       </div>
       <div ng-switch-when="3">
-        <button class="blue" ng-click="siguiente()">Aceptar</button>
-        <button class="blue" ng-click="">Regresar</button>
+        <button class="blue larger" ng-click="delete(data.otp);siguiente();">Aceptar</button>
+        <button class="blue larger" ng-click="">Regresar</button>
       </div>
   </div>
 </div>
+x

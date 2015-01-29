@@ -3,10 +3,25 @@
     <br>
     <div>
         <ul>
-            <li class="option">Cuentas consubanco     <span>5</span></li>
-            <li class="option">Otros bancos           <span>3</span></li>
-            <li class="option" ng-click="addedThisMonth = !addedThisMonth">Agregados este mes     <span>2</span></li>
-                <table class="transactions" ng-show="addedThisMonth">
+            <li class="option" ng-click="own_accounts = !own_accounts">Cuentas consubanco<span>{{third_accounts_own.length}}</span></li>
+                <table class="transactions" ng-show="own_accounts">
+                    <thead>
+                        <tr>
+                           <th>Nombre</th>
+                            <th>Cuenta</th>
+                            <th>Tipo</th>
+                        </tr>   
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="accounts in third_accounts_own">
+                            <td>{{accounts.name}}</td>
+                            <td>{{accounts.maskedAccountNumber}}</td>
+                            <td>{{accounts.account_type}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            <li class="option" ng-click="other_accounts = !other_accounts">Otros bancos<span>{{third_accounts_others.length}}</span></li>
+                <table class="transactions" ng-show="other_accounts">
                     <thead>
                         <tr>
                            <th>Nombre</th>
@@ -15,41 +30,13 @@
                         </tr>   
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Joel Bravo Flores</td>
-                           <td>***48348</td>
-                            <td>12/12/12</td>
-                        </tr>
-                        <tr>
-                            <td>Claudia Flores</td>
-                            <td>***45688</td>
-                            <td>11/11/11</td>
+                        <tr ng-repeat="accounts in third_accounts_others">
+                            <td>{{accounts.name}}</td>
+                            <td>{{accounts.maskedAccountNumber}}</td>
+                            <td>{{accounts.account_type}}</td>
                         </tr>
                     </tbody>
                 </table>
-            <li class="option" ng-click="paysThisMonth = !paysThisMonth">Pagos este mes         <span>3</span></li>
-                <table class="transactions" ng-show="paysThisMonth">
-                    <thead>
-                        <tr>
-                           <th>Nombre</th>
-                            <th>Cuenta</th>
-                            <th>Fecha de alta</th>
-                        </tr>   
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Joel Bravo Flores</td>
-                           <td>***48348</td>
-                            <td>12/12/12</td>
-                        </tr>
-                        <tr>
-                            <td>Claudia Flores</td>
-                            <td>***45688</td>
-                            <td>11/11/11</td>
-                        </tr>
-                    </tbody>
-                </table>
-            <li class="option">Eliminados este mes    <span>3</span></li>
         </ul>
     </div>
 </div>
