@@ -16,7 +16,7 @@
             </select>
         </div>
         <div class="select-style">
-            <select ng-model="payment.destiny" ng-options="item.name group by 'Cuentas Propias' for item in theAccounts | filter: { account_type: 'TDC' }" ng-required="true">
+            <select ng-model="payment.destiny" ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | byAccountType:['TDC', 'TDC_T']" ng-required="true">
                 <option value="" >TDC para pago</option>
             </select>
         </div>

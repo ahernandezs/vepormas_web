@@ -16,13 +16,10 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 	   function(data) {
            $rootScope.accounts.forEach(
                function (value, index, ar) {
-                   //console.log( value );
                    value.group = 'Cuentas Propias';
                    $scope.theAccounts.push( value );
                }
            );
-           //$scope.theAccounts = $rootScope.accounts;
-           console.log( '1 sin broncas' );
 		}
 	);
     
@@ -30,25 +27,12 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         function(data) {
             $rootScope.thirdAccounts.forEach(
                 function (value, index, ar) {
-                    //$scope.theAccounts.push( value );
                     value.group = 'Cuentas Terceros';
                     $scope.theAccounts.push( value );
                 }
             );
-            console.log( $scope.theAccounts );
-            console.log( '2 sin broncas' );
         }
     );
-    
-    $scope.filterAccounts = function(item) {
-        //console.log( item.account_type );
-        if ( item.account_type === 'DEB' || item.account_type === 'DEB_T') {
-            console.log( 'matches!');
-            return true;
-        } else
-            console.log( item.account_type  )
-            return false;
-    };
 
     /**
      * Function to navigate between steps.
