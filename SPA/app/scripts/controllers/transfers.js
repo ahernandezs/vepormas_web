@@ -9,19 +9,46 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.beneficiary = {};
     $scope.payment = {};
     $scope.transfer = {};
-    /*$scope.transfer.account;
-    $scope.transfer.destination;
-    $scope.transfer.amount;
-    $scope.transfer.concept;*/
     $scope.transfer.date = 'today';
-    
+    $scope.theAccounts = [];
 
 	accountsProvider.getAccounts().then(
 	   function(data) {
-           $scope.ownAccounts = $rootScope.accounts;
+           $rootScope.accounts.forEach(
+               function (value, index, ar) {
+                   //console.log( value );
+                   value.group = 'Cuentas Propias';
+                   $scope.theAccounts.push( value );
+               }
+           );
+           //$scope.theAccounts = $rootScope.accounts;
+           console.log( '1 sin broncas' );
 		}
 	);
-
+    
+    thirdAccountProvider.getThirdAccounts().then(
+        function(data) {
+            $rootScope.thirdAccounts.forEach(
+                function (value, index, ar) {
+                    //$scope.theAccounts.push( value );
+                    value.group = 'Cuentas Terceros';
+                    $scope.theAccounts.push( value );
+                }
+            );
+            console.log( $scope.theAccounts );
+            console.log( '2 sin broncas' );
+        }
+    );
+    
+    $scope.filterAccounts = function(item) {
+        //console.log( item.account_type );
+        if ( item.account_type === 'DEB' || item.account_type === 'DEB_T') {
+            console.log( 'matches!');
+            return true;
+        } else
+            console.log( item.account_type  )
+            return false;
+    };
 
     /**
      * Function to navigate between steps.

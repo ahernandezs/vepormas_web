@@ -9,36 +9,36 @@
             <p>comprobación</p>
         </div>
     </div>
-    <form>
+    <form name="paymentForm">
         <div class="select-style">
-            <select ng-model="payment.account" ng-options="item.name group by 'Cuentas Propias' for item in ownAccounts | filter: { account_type: 'DEP' }">
+            <select ng-model="payment.account" ng-options="item.name group by 'Cuentas Propias' for item in theAccounts | filter: { account_type: 'DEP' }" ng-required="true">
                 <option value="" >Cuenta retiro</option>
             </select>
         </div>
         <div class="select-style">
-            <select ng-model="payment.destiny" ng-options="item.name group by 'Cuentas Propias' for item in ownAccounts | filter: { account_type: 'TDC' }">
+            <select ng-model="payment.destiny" ng-options="item.name group by 'Cuentas Propias' for item in theAccounts | filter: { account_type: 'TDC' }" ng-required="true">
                 <option value="" >TDC para pago</option>
             </select>
         </div>
         <span ng-if="payment.destiny.account_type !== 'TDC'">
-            <input type="text" ng-model="transfer.amount" name="amount" id="amount" placeholder="Importe" class="input-importe">
+            <input type="text" ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true">
         </span>
         <span ng-if="payment.destiny.account_type === 'TDC'">
             <div class="choices">
-                <input type="radio" name="type" id="minimum" value="minimum" ng-model="payment.amount">
+                <input type="radio" name="type" id="minimum" value="minimum" ng-model="payment.amount" ng-required="!payment.amount">
                 <p>Monto minimo</p>
                 <p class="money">$0.00</p></br>
-                <input type="radio" name="type" id="taxes" value="taxes" ng-model="payment.amount">
+                <input type="radio" name="type" id="taxes" value="taxes" ng-model="payment.amount" ng-required="!payment.amount">
                 <p>Para no generar intereses</p>
                 <p class="money">$0.00</p></br>
-                <input type="radio" name="type" id="other" class="last" ng-model="payment.amount" value="payment.other">
+                <input type="radio" name="type" id="other" class="last" ng-model="payment.amount" value="payment.other" ng-required="!payment.amount">
                 <p class="last">Otra cantidad</p>
-                <input type="text" ng-model="payment.other" class="input-importe">
+                <input type="text" ng-model="payment.other" class="input-importe" ng-required="payment.other">
             </div>
         </span>
     </form>
     <div class="double-btn">
-    <input type="submit" value="Cancelar" ng-click="completeStep(1)">
-    <input type="submit" value="Continuar" ng-disabled="true" ng-click="sendPayment()">
-</div>
+        <input type="submit" value="Cancelar" ng-click="completeStep(1)">
+        <input type="submit" value="Continuar" ng-disabled="true" ng-click="sendPayment()" ng-disabled="paymentForm.$invalid">
+    </div>
 </div>
