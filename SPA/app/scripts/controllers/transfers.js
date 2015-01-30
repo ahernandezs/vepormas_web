@@ -45,10 +45,6 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
      * Send transfer to an own account.
      */
     $scope.sendTransfer = function() {
-        console.log( 'account: ' + $scope.transfer.account._account_id );
-        console.log( 'destination: ' + $scope.transfer.destination._account_id );
-        console.log( 'amount: ' + $scope.transfer.amount );
-        console.log( 'concept: ' + $scope.transfer.concept );
         accountsProvider.transferOwnAccounts($scope.transfer.account._account_id, $scope.transfer.destination._account_id, 
                                              $scope.transfer.amount, $scope.transfer.concept).then(
             function(data) {
@@ -79,7 +75,6 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         if ($scope.payment.amount == 'payment.other')
             $scope.payment.amount = $scope.payment.other;
         
-        console.log( $scope.payment );
         accountsProvider.transferOwnAccounts($scope.payment.account._account_id, $scope.payment.destiny._account_id, 
                                              $scope.payment.amount).then(
             function(data) {
