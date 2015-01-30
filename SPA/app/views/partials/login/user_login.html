@@ -1,4 +1,5 @@
 <form class="user-login" name="userLoginForm">
+    <div class="loader" ng-show="checkingUser"></div>
     <label for="user"><strong>Iniciar sesión</strong></label>
     <input ng-class="incorrectData ? 'rojo' : ''" ng-model="loginData.username" type="text" name="user" id="user" placeholder="Usuario" maxlength="20" required>
     <div class="error" ng-show="incorrectData">{{errorMessage}}</div>
