@@ -11,12 +11,12 @@
     </div>
     <form>
         <div class="select-style">
-            <select ng-model="transfer.account" name="first-account" ng-options="item.name group by 'Cuentas Propias' for item in ownAccounts">
+            <select ng-model="transfer.account" name="first-account" ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | filter: { account_type: 'DEP' }">
                 <option value="" >Cuenta retiro</option>
             </select>
         </div>
         <div class="select-style">
-            <select ng-model="transfer.destination" name="second-account" ng-options="item.name group by 'Cuentas Propias' for item in ownAccounts">
+            <select ng-model="transfer.destination" name="second-account" ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | byAccountType:['DEP', 'DEB_T'] | filter : { _account_id: '!' + transfer.account._account_id }">
                 <option value="" selected>Cuenta deposito</option>
             </select>
         </div>

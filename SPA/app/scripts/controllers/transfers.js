@@ -9,19 +9,30 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.beneficiary = {};
     $scope.payment = {};
     $scope.transfer = {};
-    $scope.transfer.account;
-    $scope.transfer.destination;
-    $scope.transfer.amount;
-    $scope.transfer.concept;
     $scope.transfer.date = 'today';
-    
+    $scope.theAccounts = [];
 
 	accountsProvider.getAccounts().then(
 	   function(data) {
-           $scope.ownAccounts = $rootScope.accounts;
+           $rootScope.accounts.forEach(
+               function (value, index, ar) {
+                   value.group = 'Cuentas Propias';
+                   $scope.theAccounts.push( value );
+               }
+           );
 		}
 	);
-
+    
+    thirdAccountProvider.getThirdAccounts().then(
+        function(data) {
+            $rootScope.thirdAccounts.forEach(
+                function (value, index, ar) {
+                    value.group = 'Cuentas Terceros';
+                    $scope.theAccounts.push( value );
+                }
+            );
+        }
+    );
 
     /**
      * Function to navigate between steps.
@@ -34,7 +45,6 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
      * Send transfer to an own account.
      */
     $scope.sendTransfer = function() {
-        console.log( $scope.transfer.account );
         accountsProvider.transferOwnAccounts($scope.transfer.account._account_id, $scope.transfer.destination._account_id, 
                                              $scope.transfer.amount, $scope.transfer.concept).then(
             function(data) {
@@ -65,7 +75,6 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         if ($scope.payment.amount == 'payment.other')
             $scope.payment.amount = $scope.payment.other;
         
-        console.log( $scope.payment );
         accountsProvider.transferOwnAccounts($scope.payment.account._account_id, $scope.payment.destiny._account_id, 
                                              $scope.payment.amount).then(
             function(data) {
