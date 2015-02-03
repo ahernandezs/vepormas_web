@@ -196,9 +196,10 @@
 }
 .user-login {
 	margin: 0 0 20px;
-
+	position: relative;
 	.loader{
-		left:76%;
+		left:50%;
+		margin:-35px 0 0 -100px;
 	}
 	label {
 		padding: 10px 0;
@@ -296,9 +297,9 @@
 	overflow-x:scroll;
 	margin:0 -18px 15px -18px;
 	border-bottom: 1px solid #f4f4f4;
-	position: relative;
 	.loader{
-		left:-50%;
+		top:100px;
+		left:-20%;
 	}
 	div{
 		width: 200%;
