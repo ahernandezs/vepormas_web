@@ -122,9 +122,13 @@ angular.module('spaApp')
   $scope.preRegister = function(client,contract){
       //TODO:Veryfy with REST service if exists contract?
       userProvider.setClientId(client);
-      userProvider.preRegisterUser(contract).then(function(data) {
-        $location.path( '/register');
-      });
+      userProvider.preRegisterUser(contract).then(
+        function(data) {
+          $location.path( '/register');
+        },
+        function(data, status) {
+            setError("Ha ocurrido un error en el registro");
+        });
   }
 
   if($window.username) {

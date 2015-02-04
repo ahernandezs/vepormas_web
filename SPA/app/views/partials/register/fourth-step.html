@@ -14,18 +14,18 @@
                     <p>&iquest;Por qu&eacute; medio quieres ser notificado&quest;</p>
                     <label>
                         <span>E-mail</span>
-                        <input type="radio" ng-model="registerData.contactType" name="type-contact" id="byEmail" value="byEmail">
+                        <input type="radio" ng-model="registerData.contactType" name="type-contact" id="byEmail" value="byEmail" ng-required="!registerData.contactType">
                     </label>
                     <label>
                         <span>Celular</span>
-                        <input type="radio" ng-model="registerData.contactType" name="type-contact" id="byCellPhone" value="byCellPhone">
+                        <input type="radio" ng-model="registerData.contactType" name="type-contact" id="byCellPhone" value="byCellPhone" ng-required="!registerData.contactType">
                     </label>
                 </div>
             </form>
             <div class="error" ng-show="error">{{errorMessage}}</div>
             <div class="separate">
                 <button ng-click="gotoLogin()">Cancelar</button>
-                <button ng-click="confirmContactInformation()" ng-disabled="true">Continuar</button>
+                <button ng-click="confirmContactInformation()" ng-disabled="contactForm.$invalid">Continuar</button>
             </div>
         </div>
     </div>
