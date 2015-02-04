@@ -32,9 +32,15 @@
                     |____________________________________________________________________________
                     -->
                     <div ng-cloak class="ng-cloak">
-                        <div ng-include="'views/partials/login/user_login.html'" ng-hide="showImageLogin">
-                        </div>
-                        <div ng-include="'views/partials/login/image_login.html'" ng-show="showImageLogin">
+                        <div ng-switch on="step">
+                            <div class="animate-switch" ng-switch-when="0">
+                                <div ng-include="'views/partials/login/user_login.html'">
+                                </div>
+                            </div>
+                            <div class="animate-switch" ng-switch-when="1">
+                                <div ng-include="'views/partials/login/image_login.html'">
+                                </div>
+                            </div>
                         </div>
                         <form class="user-registration" ng-submit="preRegister(client,contract)" name="registrationForm">
                             <label for="user-register"><strong>¿Eres nuevo aqu&iacute;?</strong> <a href="registro.html">Reg&iacute;strate</a></label>

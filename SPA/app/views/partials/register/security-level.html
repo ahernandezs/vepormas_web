@@ -5,16 +5,18 @@
         <hr>
         <div class="user-data">
             <!-- images -->
-            <div class="radioGroupBelow" align="center">
-               <label for="{{image.id}}" ng-repeat="image in images">  <img ng-src="{{image.url}}" height="60" >
-                    <input type="radio" name="imagegroup" ng-model="registerData.selectedImage" value="{{image.id}}">
-                </label>
-            </div>
-            <!-- images -->
+            <ng-form name="registerImageForm" class="register-pass">
+                <div class="radioGroupBelow" align="center">
+                    <label ng-repeat="image in images">  
+                        <img ng-src="{{image.url}}" height="60" >
+                        <input type="radio" name="imagegroup" ng-model="registerData.selectedImage" ng-value="{{image.id}}"  ng-required="!registerData.selectedImage">
+                    </label>
+                </div>
+            </ng-form>
             <br>
             <div class="error" ng-show="error">{{errorMessage}}</div>
             <button ng-click="gotoLogin()">Cancelar</button>
-            <button ng-click="confirmImage()" ng-disabled="true">Continuar</button>
+            <button ng-click="confirmImage()" ng-disabled="registerImageForm.$invalid">Continuar</button>
         </div>
     </div>
    <div class="help">
