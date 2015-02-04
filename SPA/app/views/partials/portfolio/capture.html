@@ -1,0 +1,30 @@
+<div class="content">
+    <div class="header">
+        <h2>Compra de inversi&oacute;n</h2>
+        <p>Ingresa los datos para la compra de inversi&oacute;n</p>
+        <progress max="3" value="{{selection}}"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p>confirmación</p>
+            <p>comprobación</p>
+        </div>
+    </div>
+    <form name="vistaForm">
+        <div class="select-style">
+            <select ng-model="portfolio.product" ng-options="">
+                <option value="" >Producto de inversi&oacute;n</option>
+            </select>
+        </div>
+        <div class="select-style">
+            <select ng-model="portfolio.account" ng-options="">
+                <option value="" selected>Cuenta origen</option>
+            </select>
+        </div>
+        <input type="text" ng-model="portfolio.amount" placeholder="Importe de inversi&oacute;n" class="input-importe">
+        <a href="#">Catalogo de Plazos y Montos de inversi&oacute;n</a>
+    </form>
+    <div class="double-btn">
+        <input type="submit" value="Cancelar" ng-click="completeStep(1)">
+        <input type="submit" value="Continuar" ng-disabled="false" ng-click="completeStep(5)" ng-disabled="vistaFor.$invalid">
+    </div>
+</div>

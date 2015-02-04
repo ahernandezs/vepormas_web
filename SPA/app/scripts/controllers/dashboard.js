@@ -50,6 +50,7 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
 
         case 'investments':
           $scope.activeNavigationOption = 'investments';
+          $location.path('investments');
           console.log($location.path());
         break;
 

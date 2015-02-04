@@ -1,0 +1,49 @@
+<div class="actions" sytle="float:right">
+    <h2>Inversi&oacute;n VISTA</h2>
+    <div class="section">
+        <ul>
+            <li class="option" ng-class="selection ==1 || (first == 1 || selection >=5)?'active' : ''" ng-click="assignValue(1)"><a>Compra de inversi&oacute;n</a></li>
+            <li class="option" ng-class="selection ==2 && (first == 2 || selection >=5)?'active' : ''" ng-click="assignValue(2)"><a>Retiro de inversi&oacute;n</a></li>
+        </ul>
+    </div>
+    <div class="beneficiarios-widget">
+        <h2>Inversi&oacute;n CEDE</h2>
+        <div class="section">
+            <div class="beneficiary">
+                <ul>
+                    <li class="option" ng-class="selection ==3 && (first == 3 || selection >=5)?'active' : ''" ng-click="assignValue(3)">Compra de inversi&oacute;n</li>
+                </ul>
+            </div>
+        </div>
+        <h2>Inversi&oacute;n PRLV</h2>
+        <div class="section">
+            <div class="beneficiary">
+                <ul>
+                    <li class="option" ng-class="selection ==4 && (first == 4 || selection >=5)?'active' : ''" ng-click="assignValue(4)">Compra de inversi&oacute;n</li>
+                </ul>
+            </div>
+        </div>
+        <div class="help">
+            <h2>Ayuda</h2>
+            <div class="option">
+                <a>¿Necesitas ayuda para elegir el tipo de pago que vas a realizar?</a>
+                <a>¿Como hacer un pago? (Ver video)</a>
+                <a>¿Como utilizo mi dispositivo movil?</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-switch on="selection">
+    <div class="animate-switch" ng-switch-when="1">
+        <div ng-include="'views/partials/portfolio/capture.html'">
+        </div>
+    </div>
+    <div class="animate-switch" ng-switch-when="5">
+        <div ng-include="'views/partials/portfolio/confirm.html'">
+        </div>
+    </div>
+    <div class="animate-switch" ng-switch-when="6">
+        <div ng-include="'views/partials/portfolio/result.html'">
+        </div>
+    </div>
+</div>
