@@ -6,7 +6,9 @@
 angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$window', 'accountsProvider', 'userProvider', function ($rootScope, $scope, $location, $routeParams, $window, accountsProvider, userProvider) {
 
   if(!$rootScope.session_token) {
-    $location.path('/login');
+    console.log("Redirecting to login");
+    $location.path('login');
+    return;
   }
 
 	//TODO: temporal binding

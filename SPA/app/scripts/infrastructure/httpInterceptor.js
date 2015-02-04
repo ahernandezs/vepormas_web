@@ -20,7 +20,7 @@ angular.module('spaApp').factory('httpInterceptor', ['$q', '$window', '$location
         $rootScope.session_token = null;
         if($window.x_session_token) {
           $window.x_session_token = null;
-          $window.location.href = "/login";
+          $window.location.href = "login";
         } else {
           $location.url('/login');
         }
