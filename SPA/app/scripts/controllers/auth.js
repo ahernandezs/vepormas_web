@@ -29,6 +29,10 @@ angular.module('spaApp')
    */
   $scope.step = 0;
 
+  //for the loader
+  $scope.checkingUser = false;
+  $scope.isLogin = false;
+
   /**
     * cancel the authentication flow and go back to the first step
     */
@@ -51,6 +55,7 @@ angular.module('spaApp')
     }else{
       var json = JSON.stringify({'user_login':$scope.loginData.username,'client_application_id': 'PROSA-DIG'});
       console.log(json);
+      $scope.checkingUser = true;
       $http({
         url: $scope.restAPIBaseUrl+'/checkLogin',
         method: 'POST',
@@ -62,10 +67,12 @@ angular.module('spaApp')
         console.log(data);
         $scope.client_name = data.client_name;
         $scope.images = data.images;
+        $scope.checkingUser = false;
       }).
       error(function(data, status) {
         console.log("Status : ", status);
         setError('Error en el servicio, intente más tarde');
+        $scope.checkingUser = false;
       });
     
     }
@@ -83,6 +90,7 @@ angular.module('spaApp')
       if(!$scope.loginData.selectedImage) {
         setError('Por favor, seleccione una imagen');
       }else{
+        $scope.isLogin = true;
         $http({
           url: $scope.restAPIBaseUrl+'/login',
           method: 'POST',
@@ -90,6 +98,7 @@ angular.module('spaApp')
           headers: {'Content-Type': 'application/json','X-BANK-TOKEN': '4'}
         }).
           success(function(data, status, headers) {
+          $scope.isLogin = false;
           var token = headers('X-AUTH-TOKEN');
           $rootScope.session_token = token;
           $rootScope.last_access_date = data.last_access_date
@@ -100,6 +109,7 @@ angular.module('spaApp')
         }).
           error(function(data, status) {
           //put an error message in the scope
+          $scope.isLogin = false;
           console.log("HttpStatus code : ", status);
           setError('Error en el servicio, intente más tarde');
           if(status === 403){
