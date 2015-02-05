@@ -163,6 +163,14 @@ angular.module('spaApp')
     $scope.error = false;
   }
 
+  $scope.selectNavigatOption = function(selectedOption){
+    switch(selectedOption) {
+      case 'map':
+        $location.path('map');
+      break;
+    }
+  }
+
   if($window.username) {
     $scope.loginData.username = $window.username;
 
