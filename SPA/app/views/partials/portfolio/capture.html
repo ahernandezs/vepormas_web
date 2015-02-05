@@ -1,0 +1,48 @@
+<div class="content">
+    <div class="header">
+        <span ng-if="first == 2">
+            <h2>Retiro de inversi&oacute;n</h2>
+            <p>Ingresa los datos para el retiro</p>
+        </span>
+        <span ng-if="first != 2">
+            <h2>Compra de inversi&oacute;n</h2>
+            <p>Ingresa los datos para la compra de inversi&oacute;n</p>
+        </span>
+        <progress max="3" value="1"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p>confirmación</p>
+            <p>comprobación</p>
+        </div>
+    </div>
+    <form name="investmentForm">
+        <div class="select-style">
+            <select ng-model="portfolio.product" ng-options="">
+                <option value="" >Producto de inversi&oacute;n</option>
+            </select>
+        </div>
+        <div class="select-style">
+            <select ng-model="portfolio.account" ng-options="">
+                <option value="" selected>Cuenta origen</option>
+            </select>
+        </div>
+        <span ng-if="selection > 2">
+            <div class="select-style">
+                <select ng-model="portfolio.expiration" ng-options="">
+                    <option value="" selected>Instrucciones al vencimiento</option>
+                </select>
+            </div>
+        </span>
+        <span ng-if="selection == 2">
+            <input type="text" ng-model="portfolio.amount" placeholder="Importe a retirar" class="input-importe">
+        </span>
+        <span ng-if="selection != 2">
+            <input type="text" ng-model="portfolio.amount" placeholder="Importe de inversi&oacute;n" class="input-importe">
+            <a href="#">Catalogo de Plazos y Montos de inversi&oacute;n</a>
+        </span>
+    </form>
+    <div class="double-btn">
+        <input type="submit" value="Cancelar" ng-click="completeStep(1)">
+        <input type="submit" value="Continuar" ng-disabled="false" ng-click="completeStep(5)" ng-disabled="investmentFor.$invalid">
+    </div>
+</div>

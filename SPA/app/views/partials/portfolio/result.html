@@ -1,0 +1,47 @@
+<div class="content">
+    <div class="header">
+        <h2>Compra de inversi&oacute;n</h2>
+        <p></p>
+        <progress max="3" value="3"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p class="orange">confirmación</p>
+            <p class="orange">comprobación</p>
+        </div>
+    </div>
+    <div class="message">
+        <p>Tu compra se ha realizado con &eacute;xito con n&uacute;mero de autorizaci&oacute;n <span>123456</span></p>
+        <div class="print">
+            <p>Imprimir</p>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <td>Producto de inversi&oacute;n:</td>
+            <td>{{portfolio.product.name}}</td>
+        </tr>
+        <tr>
+            <td>Cuenta origen:</td>
+            <td>{{portfolio.account.name}}</td>
+        </tr>
+        <tr>
+            <td>Importe de inversi&oacute;n:</td>
+            <td class="bolder">${{portfolio.amount}}</td>
+        </tr>
+        <span ng-if="portfolio.instructions !== ''">
+            <tr>
+                <td>Instrucciones de vencimiento:</td>
+                <td>{{portfolio.instructions.name}}</td>
+            </tr>
+        </span>
+        <tr>
+            <td>Fecha de aplicaci&oacute;n:</td>
+            <td>{{today}}</td>
+        </tr>
+        <tr>
+            <td>Hora de aplicaci&oacute;n:</td>
+            <td>{{today}}</td>
+        </tr>
+    </table>
+    <input type="submit" class="orange" value="Finalizar" ng-click="completeStep(first)">
+</div>

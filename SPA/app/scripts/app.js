@@ -94,6 +94,16 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         }
       }
     })
+  
+    .state('dashboard.investments', {
+        url: 'investments',
+        views: {
+            'investmentsContent' : {
+                templateUrl: 'views/portfolio.html',
+                controller: 'PortfolioCtrl'
+            }
+        }
+    })
 
     .state('dashboard.administration', {
         url: 'administration',
