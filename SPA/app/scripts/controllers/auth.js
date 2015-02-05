@@ -111,16 +111,7 @@ angular.module('spaApp')
           //put an error message in the scope
           $scope.isLogin = false;
           console.log("HttpStatus code : ", status);
-          setError('Error en el servicio, intente más tarde');
-          if(status === 403){
-            setError('El password o imagen son incorrectos');
-          }else if(status === 409){
-            setError('Existe una sesión vigente en otra aplicación');
-          }else if(status === 423){
-            setError('Usuario bloqueado');
-          }else if(status === 504){
-            setError('Tiempo de respuesta excedido, por favor intente más tarde');
-          }
+          setErrorWithStatus(status);
         });
       }
     }
@@ -155,10 +146,31 @@ angular.module('spaApp')
     $scope.errorMessage = message;
   }
 
+  function setErrorWithStatus(status) {
+    setError('Error en el servicio, intente más tarde');
+    if(status === 403){
+      setError('El password o imagen son incorrectos');
+    }else if(status === 409){
+      setError('Existe una sesión vigente en otra aplicación');
+    }else if(status === 423){
+      setError('Usuario bloqueado');
+    }else if(status === 504){
+      setError('Tiempo de respuesta excedido, por favor intente más tarde');
+    }
+  }
+
   function resetError(){
     $scope.error = false;
   }
 
+  if($window.username) {
+    $scope.loginData.username = $window.username;
+
+    $scope.checkUser();
+
+    // get errors from backend
+    setErrorWithStatus(parseInt($window.status));
+  }
 }]);
 
 
