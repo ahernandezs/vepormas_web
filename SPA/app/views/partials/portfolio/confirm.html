@@ -1,8 +1,14 @@
 <div class="content">
     <div class="header">
-        <h2>Compra de inversi&oacute;n</h2>
-        <p>Confirma los datos para la compra de inversi&oacute;n</p>
-        <progress max="3" value="{{selection}}"></progress>
+        <span ng-if="first == 2">
+            <h2>Retiro de inversi&oacute;n</h2>
+            <p>Confirma los datos para el retiro</p>
+        </span>
+        <span ng-if="first != 2">
+            <h2>Compra de inversi&oacute;n</h2>
+            <p>Confirma los datos para la compra de inversi&oacute;n</p>
+        </span>
+        <progress max="3" value="2"></progress>
         <div class="progress">
             <p class="orange">captura</p>
             <p class="orange">confirmación</p>
