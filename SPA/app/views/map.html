@@ -1,0 +1,50 @@
+<div class="products">
+    <div class="outter">
+        <div ng-include="'views/partials/layout/login-header.html'"></div>
+        <main>
+            <div>
+				<p>
+					<h3>Sucursales y M&oacute;dulos de atenci&oacute;n</h3>
+				</p>
+
+				<div>
+					<button>Cerca de m&iacute;</button> o
+					<input type="text" placeholder="Buscar por dirección"></input>
+					<select>
+						<option value="DF">DF</option>
+						<option value="OAX">Oaxaca</option>
+					</select>
+					<br>
+					<span>Sucursales</span>
+					<span>Módulos de atención</span>
+				</div>
+
+				<div>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d15054.162114529368!2d-99.195454!3d19.38903785!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1423011210233" width="100%" height="400" frameborder="0" style="border:0"></iframe>
+
+				    <div id="map-canvas"></div>
+				</div>
+				
+				<div>
+					<div>
+						Atención al cliente: <span>01 800 800 3224</span><br>
+						&Aacute;rea Metropolitana: <span>(55) 9177 7999</span><br>
+						Tel&eacute;fono UNE: <span>01 800 830	8632</span><br>
+					</div>
+					<div>
+						¿Necesitas ayuda?
+						<a href="#">¿C&oacute;mo activar tu ubicaci&oacute;n?</a><br>
+						<a href="#">Preguntas Frecuentes</a><br>
+					</div>
+					<div>
+						Horarios de Atenci&oacute;n
+						Sucursales: <span>L-V 9:00 - 16:00</span><br>
+						M&oacute;dulos de Atenci&oacute;n: <span>L-V 9:00 - 16:00</span><br>
+					</div>
+				</div>
+
+            </div>
+        </main>
+        <footer ng-include="'views/partials/layout/main-footer.html'"></footer>
+    </div>
+</div>

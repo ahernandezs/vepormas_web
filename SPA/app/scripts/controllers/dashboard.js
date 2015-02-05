@@ -58,6 +58,10 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
           $location.path('administration');
           console.log($location.path());
         break;
+
+        case 'map':
+          $location.path('map');
+        break;
     }
   }
 }]);

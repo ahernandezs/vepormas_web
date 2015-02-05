@@ -22,6 +22,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     controller: 'LoginCtrl'
     })
 
+    .state('map',{
+      url: '/map',
+      templateUrl: 'views/map.html',
+      controller: 'MapCtrl'
+    })
+
     .state('dashboard', {
     abstract: true,
     url: '/',
