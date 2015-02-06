@@ -11,7 +11,17 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.transfer = {};
     $scope.transfer.date = 'today';
     $scope.theAccounts = [];
+    
+    /**
+     * Function to navigate between steps.
+	 */
+	 $scope.completeStep = function(nextStep) {
+		$scope.selection = nextStep;
+	 };
 
+    /**
+     * Get the own accounts.
+     */
 	accountsProvider.getAccounts().then(
 	   function(data) {
            $rootScope.accounts.forEach(
@@ -23,6 +33,9 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 		}
 	);
     
+    /**
+     * Get third party accounts.
+     */
     thirdAccountProvider.getThirdAccounts().then(
         function(data) {
             $rootScope.thirdAccounts.forEach(
@@ -33,13 +46,14 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             );
         }
     );
-
+    
     /**
-     * Function to navigate between steps.
-	 */
-	 $scope.completeStep = function(nextStep) {
-		$scope.selection = nextStep;
-	 };
+     * Get the detail of the selected account.
+     */
+    $scope.getAccountDetail = function() {
+        if ( $scope.transfer.destiny.account_type == 'TDC' )
+            console.log( 'GETTING DETAIL FOR: ' + $scope.transfer.destiny._account_id );
+    };
 
     /**
      * Send transfer to an own account.

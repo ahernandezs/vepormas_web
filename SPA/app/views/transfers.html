@@ -2,8 +2,12 @@
     <h2>Mis Operaciones</h2>
     <div class="section">
         <ul>
-            <li class="option" ng-class="selection>=1 && selection < 4?'active' : ''" ng-click="selection=1"><a>Hacer un pago</a></li>
-            <li class="option" ng-class="selection>=4 && selection < 7?'active' : ''" ng-click="selection=4"><a>Hacer una transferencia</a></li>
+            <li class="option" ng-class="selection>=1 && selection < 4?'active' : ''" ng-click="selection=1">
+                <a>Hacer un pago</a>
+            </li>
+            <li class="option" ng-class="selection>=4 && selection < 7?'active' : ''" ng-click="selection=4">
+                <a>Hacer una transferencia</a>
+            </li>
         </ul>
     </div>
     <div class="beneficiarios-widget">
@@ -27,7 +31,7 @@
 </div>
 <div ng-switch on="selection">
     <div class="animate-switch" ng-switch-when="1">
-        <div ng-include="'views/partials/mytransfers/capture-payment.html'">
+        <div ng-include="'views/partials/mytransfers/payment-capture.html'">
         </div>
     </div>
     <div class="animate-switch" ng-switch-when="2">
