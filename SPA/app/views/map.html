@@ -1,4 +1,8 @@
-<div class="products">
+<style>
+	.angular-google-map-container { height: 400px; width: 100%;}
+</style>
+
+<div>
     <div class="outter">
         <div ng-include="'views/partials/layout/login-header.html'"></div>
         <main>
@@ -20,9 +24,7 @@
 				</div>
 
 				<div>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d15054.162114529368!2d-99.195454!3d19.38903785!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1423011210233" width="100%" height="400" frameborder="0" style="border:0"></iframe>
-
-				    <div id="map-canvas"></div>
+					<ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
 				</div>
 				
 				<div>
