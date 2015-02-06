@@ -3,7 +3,7 @@
 /**
  * The transactions controller. For transactions between own accounts.
  */
-angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', 'thirdAccountProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider, thirdAccountProvider) {
+angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', 'thirdAccountProvider', 'transferProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider, thirdAccountProvider, transferProvider) {
 	
     $scope.selection = 1;
     $scope.beneficiary = {};
@@ -45,7 +45,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
      * Send transfer to an own account.
      */
     $scope.sendTransfer = function() {
-        accountsProvider.transferOwnAccounts($scope.transfer.account._account_id, $scope.transfer.destination._account_id, 
+        transferProvider.transferToOwnAccount($scope.transfer.account._account_id, $scope.transfer.destination._account_id, 
                                              $scope.transfer.amount, $scope.transfer.concept).then(
             function(data) {
                 console.log(data);
@@ -75,7 +75,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         if ($scope.payment.amount == 'payment.other')
             $scope.payment.amount = $scope.payment.other;
         
-        accountsProvider.transferOwnAccounts($scope.payment.account._account_id, $scope.payment.destiny._account_id, 
+        transferProvider.payOwnCard($scope.payment.account._account_id, $scope.payment.destiny._account_id, 
                                              $scope.payment.amount).then(
             function(data) {
                 console.log(data);
