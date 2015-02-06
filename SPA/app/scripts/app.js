@@ -7,7 +7,8 @@ var app = angular.module('spaApp', [
   'ngRoute',
   'infinite-scroll',
   'ngTable',
-  'ui.router'
+  'ui.router',
+  'uiGmapgoogle-maps'
 ]);
 
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
