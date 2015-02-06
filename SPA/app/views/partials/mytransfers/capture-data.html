@@ -9,7 +9,7 @@
             <p>comprobación</p>
         </div>
     </div>
-    <form>
+    <form name="transferDataForm">
         <div class="select-style">
             <select ng-model="transfer.account" name="first-account" ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | filter: { account_type: 'DEP' }">
                 <option value="" >Cuenta retiro</option>
@@ -25,6 +25,6 @@
     </form>
     <div class="double-btn">
         <input type="submit" value="Cancelar" ng-click="completeStep(4)">
-        <input type="submit" value="Continuar" ng-disabled="true" ng-click="completeStep(5)">
+        <input type="submit" value="Continuar" ng-disabled="transferDataForm.$invalid" ng-click="completeStep(5)">
     </div>
 </div>
