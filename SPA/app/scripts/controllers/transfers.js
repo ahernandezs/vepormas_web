@@ -3,7 +3,7 @@
 /**
  * The transactions controller. For transactions between own accounts.
  */
-angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', 'thirdAccountProvider', 'transferProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider, thirdAccountProvider, transferProvider) {
+angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', 'thirdAccountProvider', 'transferProvider', '$controller', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider, thirdAccountProvider, transferProvider, $controller) {
 	
     $scope.selection = 1;
     $scope.beneficiary = {};
@@ -45,13 +45,34 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
      * Send transfer to an own account.
      */
     $scope.sendTransfer = function() {
+        resetError();
         transferProvider.transferToOwnAccount($scope.transfer.account._account_id, $scope.transfer.destination._account_id, 
                                              $scope.transfer.amount, $scope.transfer.concept).then(
             function(data) {
                 console.log(data);
+                $scope.transferId = data._transaction_id;
+                $scope.selection = 6;
+            },
+            function(data) {
+                console.log(data);
+                var status = data.status;
+                if(status === 401 || status === 423){
+                    // session expired : returned to login
+                    setError('session expired: TODO: go to login');
+                    //var loginController = $controller('LoginCtrl');
+                    //loginController.setError('your session has expired');
+                    //$location.path('/login');
+                    
+                }else if(status === 406 || status === 417){
+                    setError('invalid input: TODO: analyse the code inside the json mesage body');
+                    // invalid data input
+                }else if(status === 500 || status === 503 || status === 504){
+                    // business or technical exception
+                    setError('unknown problem. Please retry later');
+                }
             }
         );
-        $scope.selection = 6;
+        
     };
     
     /**
@@ -82,4 +103,21 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             }
         );
     };
+
+    /**
+     * set an error on the page
+     */
+    function setError(message){
+        $scope.error = true;
+        $scope.errorMessage = message;
+    }
+
+    /**
+     * reset the error state to false
+     */
+    function resetError(){
+        $scope.error = false;
+        $scope.errorMessage = null;
+    }
+
 }]);
