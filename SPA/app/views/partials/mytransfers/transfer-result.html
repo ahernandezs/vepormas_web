@@ -1,15 +1,21 @@
 <div class="content">
     <div class="header">
-        <h2>Pago de cuentas</h2>
-        <p>Confirma los datos para el pago</p>
-        <progress max="3" value="{{selection - 3}}"></progress>
+        <h2>Transferencia de cuentas</h2>
+        <p></p>
+        <progress max="3" value="{{selection -3}}"></progress>
         <div class="progress">
             <p class="orange">captura</p>
-            <p class="orange">confirmación</p>
-            <p>comprobación</p>
+            <p class="orange">confirmaci&oacute;n</p>
+            <p class="orange">comprobaci&oacute;n</p>
         </div>
     </div>
     
+    <div class="message">
+        <p>La transferencia ha sido exitosa con numero de autorizaci&oacute;n <span>{{transferId}}</span></p>
+        <div class="print">
+            <p>Imprimir</p>
+        </div>
+    </div>
     <table>
         <tr>
             <td>Cuenta retiro:</td>
@@ -17,7 +23,7 @@
         </tr>
         <tr>
             <td>Cuenta deposito:</td>
-            <td>{{transfer.destination.name}}</td>
+            <td>{{transfer.destiny.name}}</td>
         </tr>
         <tr>
             <td>Importe:</td>
@@ -32,8 +38,9 @@
             <td>{{transfer.date}}</td>
         </tr>
     </table>
+
     <div class="double-btn">
-        <input type="submit" value="Regresar" ng-click="completeStep(4)">
-        <input type="submit" value="Continuar" ng-click="sendTransfer()">
+        <input type="submit" value="Finalizar" ng-click="completeStep(4)">
+        <input class="larger" type="submit" value="Realizar otro pago" ng-click="completeStep(4)">
     </div>
 </div>

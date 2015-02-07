@@ -1,0 +1,26 @@
+<div class="content">
+    <div class="header">
+        <h2>Alta nuevo beneficiario</h2>
+        <p>Ingresa los datos para dar de alta a un nuevo beneficiario</p>
+        <progress max="3" value="{{selection -6}}"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p>confirmaci&oacute;n</p>
+            <p>comprobaci&oacute;n</p>
+        </div>
+    </div>
+    <form name="beneficiaryForm">
+        <input type="text" ng-model="beneficiary.name" placeholder="Nombre beneficiario" class="input-usuario" ng-required="true">
+        <input type="text" ng-model="beneficiary.aka" placeholder="Alias"  ng-required="true"v>
+        <input type="text" ng-model="beneficiary.account" ng-required="true" 
+               placeholder="Cuenta &#x0002F; CLABE &#x0002F; T. Cr&eacute;dito &#x0002F; T. D&eacute;bito">
+        
+        <p>Datos para notificar al beneficiario &#x00028;opcional&#x00029;</p>
+        <input type="email" ng-model="beneficiary.email" placeholder="Correo electr&oacute;nico" class="input-mail">
+        <input type="text" ng-model="beneficiary.phone" placeholder="Celular" class="input-mail">
+    </form>
+    <div class="double-btn">
+        <input type="submit" value="Cancelar" ng-click="completeStep(7)">
+        <input type="submit" value="Continuar" ng-disabled="beneficiaryForm.$invalid" ng-click="completeStep(8)">
+    </div>
+</div>

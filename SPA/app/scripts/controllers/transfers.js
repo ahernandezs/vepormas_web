@@ -9,7 +9,6 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.beneficiary = {};
     $scope.payment = {};
     $scope.transfer = {};
-    $scope.transfer.date = 'today';
     $scope.theAccounts = [];
     
     /**
@@ -44,6 +43,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                     $scope.theAccounts.push( value );
                 }
             );
+            console.log( $scope.theAccounts );
         }
     );
     

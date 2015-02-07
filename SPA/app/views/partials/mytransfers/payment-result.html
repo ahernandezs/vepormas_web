@@ -5,8 +5,8 @@
         <progress max="3" value="{{selection}}"></progress>
         <div class="progress">
             <p class="orange">captura</p>
-            <p class="orange">confirmación</p>
-            <p class="orange">comprobación</p>
+            <p class="orange">confirmaci&oacute;n</p>
+            <p class="orange">comprobaci&oacute;n</p>
         </div>
     </div>
     <div class="message">
@@ -18,15 +18,15 @@
     <table>
         <tr>
             <td>Cuenta Retiro:</td>
-            <td>{{payment.account.name}}</td>
+            <td>{{transfer.account.name}}</td>
         </tr>
         <tr>
             <td>TDC para pago:</td>
-            <td>{{payment.destiny.name}}</td>
+            <td>{{transfer.destiny.name}}</td>
         </tr>
         <tr>
             <td>Importe:</td>
-            <td class="bolder">${{payment.amount}}</td>
+            <td class="bolder">${{transfer.amount}}</td>
         </tr>
         <tr>
             <td>Hora de la transferencia:</td>
@@ -35,6 +35,6 @@
     </table>
     <div class="double-btn">
     <input type="submit" value="Finalizar" ng-click="completeStep(1)">
-    <input class="larger" type="submit" value="Realizar otro pago" ng-click="sendPayment()">
+    <input class="larger orange" type="submit" value="Realizar otro pago" ng-click="sendPayment()">
 </div>
 </div>
