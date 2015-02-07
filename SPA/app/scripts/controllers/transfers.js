@@ -56,11 +56,11 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     };
 
     /**
-     * Send transfer to an own account.
+     * Send transfer to own account.
      */
     $scope.sendTransfer = function() {
         resetError();
-        transferProvider.transferToOwnAccount($scope.transfer.account._account_id, $scope.transfer.destination._account_id, 
+        transferProvider.transferToOwnAccount($scope.transfer.account._account_id, $scope.transfer.destiny._account_id, 
                                              $scope.transfer.amount, $scope.transfer.concept).then(
             function(data) {
                 console.log(data);
