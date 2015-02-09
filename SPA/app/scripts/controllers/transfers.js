@@ -9,9 +9,18 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.beneficiary = {};
     $scope.payment = {};
     $scope.transfer = {};
-    $scope.transfer.date = 'today';
     $scope.theAccounts = [];
+    
+    /**
+     * Function to navigate between steps.
+	 */
+	 $scope.completeStep = function(nextStep) {
+		$scope.selection = nextStep;
+	 };
 
+    /**
+     * Get the own accounts.
+     */
 	accountsProvider.getAccounts().then(
 	   function(data) {
            $rootScope.accounts.forEach(
@@ -23,6 +32,9 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 		}
 	);
     
+    /**
+     * Get third party accounts.
+     */
     thirdAccountProvider.getThirdAccounts().then(
         function(data) {
             $rootScope.thirdAccounts.forEach(
@@ -31,22 +43,24 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                     $scope.theAccounts.push( value );
                 }
             );
+            console.log( $scope.theAccounts );
         }
     );
+    
+    /**
+     * Get the detail of the selected account.
+     */
+    $scope.getAccountDetail = function() {
+        if ( $scope.transfer.destiny.account_type == 'TDC' )
+            console.log( 'GETTING DETAIL FOR: ' + $scope.transfer.destiny._account_id );
+    };
 
     /**
-     * Function to navigate between steps.
-	 */
-	 $scope.completeStep = function(nextStep) {
-		$scope.selection = nextStep;
-	 };
-
-    /**
-     * Send transfer to an own account.
+     * Send transfer to own account.
      */
     $scope.sendTransfer = function() {
         resetError();
-        transferProvider.transferToOwnAccount($scope.transfer.account._account_id, $scope.transfer.destination._account_id, 
+        transferProvider.transferToOwnAccount($scope.transfer.account._account_id, $scope.transfer.destiny._account_id, 
                                              $scope.transfer.amount, $scope.transfer.concept).then(
             function(data) {
                 console.log(data);

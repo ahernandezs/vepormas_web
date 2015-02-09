@@ -1,0 +1,46 @@
+<div class="content">
+    <div class="header">
+        <h2>Pago de cuentas</h2>
+        <p>Ingresa los datos para el pago</p>
+        <progress max="3" value="{{selection}}"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p>confirmaci&oacute;n</p>
+            <p>comprobaci&oacute;n</p>
+        </div>
+    </div>
+    <form name="paymentForm">
+        <div class="select-style">
+            <select ng-model="transfer.account" ng-required="true"
+                    ng-options="item.name group by 'Cuentas Propias' for item in theAccounts | filter: { account_type: 'DEP' }">
+                <option value="">Cuenta retiro</option>
+            </select>
+        </div>
+        <div class="select-style">
+            <select ng-model="transfer.destiny" ng-required="true"
+                    ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | byAccountType:['TDC', 'TDC_T']" ng-change="getAccountDetail()">
+                <option value="">TDC para pago</option>
+            </select>
+        </div>
+        <span ng-if="transfer.destiny.account_type !== 'TDC'">
+            <input type="text" ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true">
+        </span>
+        <span ng-if="transfer.destiny.account_type === 'TDC'">
+            <div class="choices">
+                <input type="radio" name="type" value="minimum" ng-model="transfer.amount" ng-required="true">
+                <p>Monto minimo</p>
+                <p class="money">$0.00</p></br>
+                <input type="radio" name="type" value="taxes" ng-model="transfer.amount" ng-required="true">
+                <p>Para no generar intereses</p>
+                <p class="money">$0.00</p></br>
+                <input type="radio" name="type" class="last" ng-model="transfer.amount" value="other" ng-required="true">
+                <p class="last">Otra cantidad</p>
+                <input type="text" ng-model="payment.other" class="input-importe" ng-required="transfer.amount == 'other'">
+            </div>
+        </span>
+    </form>
+    <div class="double-btn">
+        <input type="submit" value="Cancelar" ng-click="completeStep(1)">
+        <input type="submit" value="Continuar" ng-click="completeStep(2)" ng-disabled="paymentForm.$invalid">
+    </div>
+</div>
