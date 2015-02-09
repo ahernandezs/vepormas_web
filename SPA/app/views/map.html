@@ -24,7 +24,10 @@
 				</div>
 
 				<div>
-					<ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map>
+					<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+						<ui-gmap-markers models="map.markers" coords="'self'" fit='false'>
+						</ui-gmap-markers>
+					</ui-gmap-google-map>
 				</div>
 				
 				<div>
