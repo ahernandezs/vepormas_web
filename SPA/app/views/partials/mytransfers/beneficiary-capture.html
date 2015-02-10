@@ -10,14 +10,29 @@
         </div>
     </div>
     <form name="beneficiaryForm">
-        <input type="text" ng-model="beneficiary.name" placeholder="Nombre beneficiario" class="input-usuario" ng-required="true">
-        <input type="text" ng-model="beneficiary.aka" placeholder="Alias"  ng-required="true"v>
-        <input type="text" ng-model="beneficiary.account" ng-required="true" 
+        <label class="fieldContainer">
+            <span>Nombre beneficiario</span>
+            <input type="text" ng-model="beneficiary.name" placeholder="Nombre beneficiario" class="input-usuario" ng-required="true">
+        </label>
+        <label class="fieldContainer">
+            <span>Alias</span>
+            <input type="text" ng-model="beneficiary.aka" placeholder="Alias"  ng-required="true"v>
+        </label>
+        <label class="fieldContainer">
+            <span>Cuenta</span>
+            <input type="text" ng-model="beneficiary.account" ng-required="true" 
                placeholder="Cuenta &#x0002F; CLABE &#x0002F; T. Cr&eacute;dito &#x0002F; T. D&eacute;bito">
+        </label>
         
         <p>Datos para notificar al beneficiario &#x00028;opcional&#x00029;</p>
-        <input type="email" ng-model="beneficiary.email" placeholder="Correo electr&oacute;nico" class="input-mail">
-        <input type="text" ng-model="beneficiary.phone" placeholder="Celular" class="input-mail">
+        <label class="fieldContainer">
+            <span>Correo electr&oacute;nico</span>
+            <input type="email" ng-model="beneficiary.email" placeholder="Correo electr&oacute;nico" class="input-mail">
+        </label>
+        <label class="fieldContainer">
+            <span>Celular</span>
+            <input type="text" ng-model="beneficiary.phone" placeholder="Celular" class="input-mail">
+        </label>
     </form>
     <div class="double-btn">
         <input type="submit" value="Cancelar" ng-click="completeStep(7)">

@@ -11,18 +11,23 @@
     </div>
     <form name="transferForm">
         <div class="select-style">
+            <span>Cuenta retiro</span>
             <select ng-model="transfer.account" ng-required="true"
                     ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | filter: { account_type: 'DEP' }">
                 <option value="">Cuenta retiro</option>
             </select>
         </div>
         <div class="select-style">
+            <span>Cuenta deposito</span>
             <select ng-model="transfer.destiny" ng-required="true"
                     ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | byAccountType:['DEP', 'DEB_T'] | filter : { _account_id: '!' + transfer.account._account_id }">
                 <option value="">Cuenta deposito</option>
             </select>
         </div>
-        <input type="text" ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true">
+        <label class="fieldContainer">
+            <span class="big">Importe</span>
+            <input type="text" ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true">
+        </label>
         <span ng-if="transfer.destiny && transfer.destiny.account_type != 'DEP' && !transfer.destiny.same_bank">
             <p>Fecha de aplicaci&oacute;n</p>
             <input type="radio" name="date" ng-model="transfer.date" value="today" ng-required="true"/>
@@ -30,7 +35,10 @@
             <input type="radio" name="date" ng-model="transfer.date" value="tomorrow" ng-required="true"/>
             <p>D&iacute;a h&aacute;bil siguiente</p>
         </span>
-        <input ype="text" ng-model="transfer.concept" placeholder="Concepto" class="input-mail" ng-required="true">
+        <label class="fieldContainer">
+            <span>Concepto</span>
+            <input type="text" ng-model="transfer.concept" placeholder="Concepto" class="input-mail" ng-required="true">
+        </label>
     </form>
     <div class="double-btn">
         <input type="submit" value="Cancelar" ng-click="completeStep(4)">
