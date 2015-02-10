@@ -3,7 +3,8 @@
 /**
  * The accounts controller. Gets accounts passing auth parameters
  */
-angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$window', 'accountsProvider', 'userProvider', function ($rootScope, $scope, $location, $routeParams, $window, accountsProvider, userProvider) {
+angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$window', 
+    'accountsProvider', 'userProvider', 'timerService', function ($rootScope, $scope, $location, $routeParams, $window, accountsProvider, userProvider, timerService) {
 
   if(!$rootScope.session_token) {
     console.log("Redirecting to login");
@@ -26,7 +27,7 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
   $scope.logout = function() {
     userProvider.logout().then(
       function(data) {
-      console.log('logout: '+data);
+      timerService.stop();
       $rootScope.session_token = null;
       $location.path('login');
     });
@@ -64,5 +65,17 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
           $location.path('map');
         break;
     }
-  }
+  };
+
+  $scope.$on('IdleTimeout', function() {
+    $scope.showIdleAlert = true;
+  });
+
+  $scope.$on('WarningTimeout', function() {
+    $scope.logout();
+  });
+
+  $scope.$on('IdleReset', function() {
+    $scope.showIdleAlert = false;
+  });
 }]);
