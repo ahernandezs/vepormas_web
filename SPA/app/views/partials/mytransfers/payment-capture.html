@@ -11,19 +11,24 @@
     </div>
     <form name="paymentForm">
         <div class="select-style">
+            <span>Cuenta retiro</span>
             <select ng-model="transfer.account" ng-required="true"
                     ng-options="item.name group by 'Cuentas Propias' for item in theAccounts | filter: { account_type: 'DEP' }">
                 <option value="">Cuenta retiro</option>
             </select>
         </div>
         <div class="select-style">
+            <span>TDC para pago</span>
             <select ng-model="transfer.destiny" ng-required="true"
                     ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | byAccountType:['TDC', 'TDC_T']" ng-change="getAccountDetail()">
                 <option value="">TDC para pago</option>
             </select>
         </div>
         <span ng-if="transfer.destiny.account_type !== 'TDC'">
-            <input type="text" ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true">
+            <label class="fieldContainer">
+                <span class="big">Importe</span>
+                <input type="text" ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true">
+            </label>
         </span>
         <span ng-if="transfer.destiny.account_type === 'TDC'">
             <div class="choices">

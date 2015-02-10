@@ -5,11 +5,23 @@
 <hr>
         <div class="user-data">
             <form class="contact-form" name="contactForm">
-                <input type="email" name="email" class="input-mail" ng-model="registerData.email" placeholder="Correo electr&oacute;nico">
-                <input type="email" name="repeatEmail" class="input-mail" ng-model="registerData.repeatEmail" placeholder="Confirma correo electr&oacute;nico">
-                <div class="error" ng-show="contactForm.email.$error.email">Email invalido</div>
-                <input type="text" class="input-mobile" ng-model="registerData.cellphone" placeholder="Celular">
-                <input type="text" class="input-mobile" ng-model="registerData.repeatCellphone" placeholder="Confirma celular">
+                <label class="fieldContainer">
+                    <span>Correo electr&oacute;nico</span>
+                    <input type="email" name="email" class="input-mail" ng-model="registerData.email" placeholder="Correo electr&oacute;nico">
+                </label>
+                <label class="fieldContainer">
+                    <span class="double">Confirmar<br>correo electr&oacute;nico</span>
+                    <input type="email" name="repeatEmail" class="input-mail" ng-model="registerData.repeatEmail" placeholder="Confirma correo electr&oacute;nico">
+                    <div class="error" ng-show="contactForm.email.$error.email">Email invalido</div>
+                </label>
+                <label class="fieldContainer">
+                    <span>Celular</span>
+                    <input type="text" class="input-mobile" ng-model="registerData.cellphone" placeholder="Celular">
+                </label>
+                <label class="fieldContainer">
+                    <span>Confirma celular</span>
+                    <input type="text" class="input-mobile" ng-model="registerData.repeatCellphone" placeholder="Confirma celular">
+                </label>
                 <div class="separate">
                     <p>&iquest;Por qu&eacute; medio quieres ser notificado&quest;</p>
                     <label>

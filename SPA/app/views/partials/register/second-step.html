@@ -6,8 +6,14 @@
         <div class="user-data">
             <ng-form name="registerPasswordForm" class="register-pass">
                 <div>
-                    <input type="password" class="input-password" name="password" ng-model="registerData.password" placeholder="Contrase&ntilde;a" ng-pattern="/^([0-9]){0,2}([A-Za-z]{1,2}[0-9]{1,2})+([A-Za-z]){0,2}$/" ng-minlength="8" required>
-                    <input type="password" class="input-password" ng-model="registerData.repeatPass" placeholder="Confirmar contrase&ntilde;a" required>
+                    <label class="fieldContainer">
+                        <span>Contraseña</span>
+                        <input type="password" class="input-password" name="password" ng-model="registerData.password" placeholder="Contrase&ntilde;a" ng-pattern="/^([0-9]){0,2}([A-Za-z]{1,2}[0-9]{1,2})+([A-Za-z]){0,2}$/" ng-minlength="8" required>
+                    </label>
+                    <label class="fieldContainer last">
+                        <span>Confirmar contraseña</span>
+                        <input type="password" class="input-password" ng-model="registerData.repeatPass" placeholder="Confirmar contrase&ntilde;a" required>
+                    </label>
                 </div>
                 <div class="error" ng-show="error">{{errorMessage}}</div>
                 <div class="error" ng-show="registerPasswordForm.password.$error.pattern">Su contraseña no puede haber más de dos caracteres consecutivos numéricos o alfabéticos</div>
