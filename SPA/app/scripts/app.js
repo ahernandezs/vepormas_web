@@ -14,9 +14,9 @@ var app = angular.module('spaApp', [
 app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
   $urlRouterProvider.otherwise("/login");
-  $httpProvider.responseInterceptors.push('httpInterceptor');
-  $stateProvider
+  $httpProvider.interceptors.push('httpInterceptor');
 
+  $stateProvider
     .state('login', {
     url: '/login',
     templateUrl: 'views/login.html',
