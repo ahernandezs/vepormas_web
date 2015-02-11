@@ -11,7 +11,9 @@
     </div>
     <form name="transferForm">
         <span ng-if="transfer.destiny.account_type != 'DEP'">
-            <input type="password" ng-model="payment.otp" class="input-confirm-token" ng-required="true" placeholder="Introduce el c&oacute;digo que se a generado en tu Token F&iacute;sico">
+            <input type="password" ng-model="transfer.otp" class="input-confirm-token" ng-required="true" ng-pattern="/^[0-9]{1,7}$/" 
+                   placeholder="Introduce el c&oacute;digo que se a generado en tu Token F&iacute;sico" 
+                   ng-minlength="7" ng-maxlength="7">
         </span>
         <table>
             <tr>
@@ -38,6 +40,6 @@
     </form>
     <div class="double-btn">
         <input type="submit" value="Regresar" ng-click="completeStep(4)">
-        <input type="submit" value="Continuar" ng-click="completeStep(6)" ng-disabled="transferForm.$invalid">
+        <input type="submit" value="Continuar" ng-click="sendTransfer()" ng-disabled="transferForm.$invalid">
     </div>
 </div>

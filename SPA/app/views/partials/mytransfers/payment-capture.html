@@ -12,14 +12,14 @@
     <form name="paymentForm">
         <div class="select-style">
             <span>Cuenta retiro</span>
-            <select ng-model="transfer.account" ng-required="true"
+            <select ng-model="payment.account" ng-required="true" 
                     ng-options="item.name group by 'Cuentas Propias' for item in theAccounts | filter: { account_type: 'DEP' }">
                 <option value="">Cuenta retiro</option>
             </select>
         </div>
         <div class="select-style">
             <span>TDC para pago</span>
-            <select ng-model="transfer.destiny" ng-required="true"
+            <select ng-model="payment.destiny" ng-required="true" 
                     ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | byAccountType:['TDC', 'TDC_T']" ng-change="getAccountDetail()">
                 <option value="">TDC para pago</option>
             </select>
@@ -27,20 +27,22 @@
         <span ng-if="transfer.destiny.account_type !== 'TDC'">
             <label class="fieldContainer">
                 <span class="big">Importe</span>
-                <input type="text" ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true">
+                <input type="text" ng-model="payment.amount" placeholder="Importe" class="input-importe" ng-required="true">
             </label>
         </span>
-        <span ng-if="transfer.destiny.account_type === 'TDC'">
+        <span ng-if="payment.destiny.account_type === 'TDC'">
             <div class="choices">
-                <input type="radio" name="type" value="minimum" ng-model="transfer.amount" ng-required="true">
+                <input type="radio" name="type" value="{{transferAccountDetail.minimum_payment}}" ng-model="payment.amount" 
+                       ng-required="true">
                 <p>Monto minimo</p>
-                <p class="money">$0.00</p></br>
-                <input type="radio" name="type" value="taxes" ng-model="transfer.amount" ng-required="true">
+                <p class="money">${{transferAccountDetail.minimum_payment}}</p></br>
+                <input type="radio" name="type" value="{{transferAccountDetail.no_interes_payment_due}}" ng-model="payment.amount" 
+                       ng-required="true">
                 <p>Para no generar intereses</p>
-                <p class="money">$0.00</p></br>
-                <input type="radio" name="type" class="last" ng-model="transfer.amount" value="other" ng-required="true">
+                <p class="money">${{transferAccountDetail.no_interes_payment_due}}</p></br>
+                <input type="radio" name="type" class="last" ng-model="payment.amount" value="{{payment.other}}" ng-required="true">
                 <p class="last">Otra cantidad</p>
-                <input type="text" ng-model="payment.other" class="input-importe" ng-required="transfer.amount == 'other'">
+                <input type="text" ng-model="payment.other" class="input-importe" ng-required="payment.amount == 'other'">
             </div>
         </span>
     </form>
