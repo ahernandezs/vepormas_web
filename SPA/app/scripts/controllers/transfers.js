@@ -184,6 +184,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                                                  $scope.beneficiary.account, $scope.beneficiary.token).then(
             function(data) {
                 console.log(data);
+                $scope.selection = 9;
             }
         );
     };

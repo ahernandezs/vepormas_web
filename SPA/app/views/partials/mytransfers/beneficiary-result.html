@@ -11,7 +11,7 @@
     </div>
 
     <div class="message">
-        <p>El nuevo beneficiario se ha dado de alta, numero de autorizaci&oacute;n <span class="autorization">123456</span></p>
+        <p>El nuevo beneficiario se ha dado de alta, n&uacute;mero de autorizaci&oacute;n <span>{{transferId}}</span></p>
     </div>
     <table>
         <tr>
@@ -46,6 +46,6 @@
     </div>
     <div class="double-btn">
         <input type="submit" value="Finalizar" ng-click="completeStep(7)">
-        <input class="larger" type="submit" value="Agregar nuevo beneficiario" ng-click="sendBeneficiary()">
+        <input class="larger" type="submit" value="Agregar nuevo beneficiario" ng-click="completeStep(7)">
     </div>
 </div>
