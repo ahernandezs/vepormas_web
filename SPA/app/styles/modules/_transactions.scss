@@ -210,31 +210,41 @@ input[name="account"] + p{
         }
     }
     .choices {
+        margin-top: 20px;
         width: 70%;
-        input[type='radio'] {
-            width: 10%;
-            float: left;
-            margin: 13px 0 0 0;
-            &.last {
-                margin-top: 30px !important;
+        > p{font-weight: bold; margin-bottom: 10px;}
+        label{
+            display: block;
+            overflow: hidden;
+            height:40px;
+            input[type='radio']{
+                margin-top: 14px;
             }
-        }
-        p {
-            float: left;
-            width: 70%;
-            margin: 10px 0 0 0;
-            &.last {
-                width: 25%;
-                margin-top: 30px;
+            input[type='radio'],p {
+                float: left;
+                width: 10%;
+                line-height: 40px;
             }
-        }
-        .money {
-            float: right;
-            width: 20%;
-            text-align: right;
-        }
-        input[type='text'] {
-            width: 65%;
+            p {
+                width: 70%;
+                &.last {
+                    width: 25%;
+                }
+            }
+            .money {
+                float: right;
+                width: 20%;
+                text-align: right;
+            }
+            input[type='text'] {
+                float:right;
+                width: 40%;
+                border:1px solid $gray;
+                @include border-radius(3px);
+                &:focus, &:active, &:hover{
+                    border-color:$orange;
+                }
+            }
         }
     }
 }

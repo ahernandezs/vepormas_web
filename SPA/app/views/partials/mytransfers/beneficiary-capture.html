@@ -10,26 +10,26 @@
         </div>
     </div>
     <form name="beneficiaryForm">
-        <label class="fieldContainer">
+        <label class="fieldContainer" ng-class="beneficiary.name.length > 0 ? 'selected' : ''">
             <span>Nombre beneficiario</span>
             <input type="text" ng-model="beneficiary.name" placeholder="Nombre beneficiario" class="input-usuario" ng-required="true">
         </label>
-        <label class="fieldContainer">
+        <label class="fieldContainer" ng-class="beneficiary.aka.length > 0 ? 'selected' : ''">
             <span>Alias</span>
             <input type="text" ng-model="beneficiary.aka" placeholder="Alias"  ng-required="true">
         </label>
-        <label class="fieldContainer">
+        <label class="fieldContainer" ng-class="beneficiary.account.length > 0 ? 'selected' : ''">
             <span>Cuenta</span>
             <input type="text" ng-model="beneficiary.account" ng-required="true" 
                    placeholder="Cuenta &#x0002F; CLABE &#x0002F; T. Cr&eacute;dito &#x0002F; T. D&eacute;bito">
         </label>
         
         <p>Datos para notificar al beneficiario &#x00028;opcional&#x00029;</p>
-        <label class="fieldContainer">
+        <label class="fieldContainer" ng-class="beneficiary.email.length > 0 ? 'selected' : ''">
             <span>Correo electr&oacute;nico</span>
             <input type="email" ng-model="beneficiary.email" placeholder="Correo electr&oacute;nico" class="input-mail">
         </label>
-        <label class="fieldContainer">
+        <label class="fieldContainer" ng-class="beneficiary.phone.length > 0 ? 'selected' : ''">
             <span>Celular</span>
             <input type="text" ng-model="beneficiary.phone" placeholder="Celular" class="input-mobile">
         </label>
