@@ -24,7 +24,7 @@
                 <option value="">TDC para pago</option>
             </select>
         </div>
-        <span ng-if="transfer.destiny.account_type !== 'TDC'">
+        <span ng-if="payment.destiny.account_type !== 'TDC'">
             <label class="fieldContainer">
                 <span class="big">Importe</span>
                 <input type="text" ng-model="payment.amount" placeholder="Importe" class="input-importe" ng-required="true">
