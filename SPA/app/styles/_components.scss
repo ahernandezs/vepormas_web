@@ -41,3 +41,7 @@ input { &:focus { @include formFocus($orange); } }
 {
     display: none;
 }
+
+.capitalize {
+  text-transform: capitalize;
+}
