@@ -19,26 +19,19 @@ angular.module('spaApp')
     };
 
     this.start = function() {
-      options.idleTimer = $interval(idleTimeout, options.idle * 1000);
+      options.idleTimer = $interval(idleTimeout, options.idle * 1000, 1);
       options.isTimeout = false;
     };
 
     this.reset = function() {
-      if(options.idleTimer) {
-        if(options.warningTimer) $interval.cancel(options.warningTimer);
-        $interval.cancel(options.idleTimer);
-        options.idleTimer = $interval(idleTimeout, options.idle * 1000);
+      if($interval.cancel(options.idleTimer)) {
+        options.idleTimer = $interval(idleTimeout, options.idle * 1000, 1);
         $rootScope.$broadcast('IdleReset');
       }
     };
 
     this.stop = function() {
-      if(options.idleTimer) {
-        $interval.cancel(options.idleTimer);
-      }
-      if(options.warningTimer) {
-        $interval.cancel(options.warningTimer);
-      }
+      stopTimers();
     };
 
     this.isTimeout = function() {
@@ -49,15 +42,25 @@ angular.module('spaApp')
       options.isTimeout = value;
     };
 
+    function stopTimers() {
+      if(options.idleTimer) {
+        console.log("idleTimer stopped");
+        $interval.cancel(options.idleTimer);
+      }
+      if(options.warningTimer) {
+        console.log("warningTimer stopped");
+        $interval.cancel(options.warningTimer);
+      }
+
+    }
+
     function idleTimeout() {
-      $interval.cancel(options.idleTimer);
       $rootScope.$broadcast('IdleTimeout');
 
-      options.warningTimer = $interval(warningTimeout, options.warning * 1000);
+      options.warningTimer = $interval(warningTimeout, options.warning * 1000, 1);
     }
 
     function warningTimeout() {
-      $interval.cancel(options.warningTimer);
       $rootScope.$broadcast('WarningTimeout');
       options.isTimeout = true;
     }
