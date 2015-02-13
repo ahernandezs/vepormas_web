@@ -12,28 +12,34 @@
     <form name="transferForm">
         <div class="select-style">
             <span>Cuenta retiro</span>
-            <select ng-model="transfer.account" ng-required="true"
+            <select ng-model="transfer.account" ng-required="true" 
                     ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | filter: { account_type: 'DEP' }">
                 <option value="">Cuenta retiro</option>
             </select>
         </div>
         <div class="select-style">
             <span>Cuenta deposito</span>
-            <select ng-model="transfer.destiny" ng-required="true"
+            <select ng-model="transfer.destiny" ng-required="true" 
                     ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | byAccountType:['DEP', 'DEB_T'] | filter : { _account_id: '!' + transfer.account._account_id }">
                 <option value="">Cuenta deposito</option>
             </select>
         </div>
         <label class="fieldContainer">
             <span class="big">Importe</span>
-            <input type="text" ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true">
+            <input type="text" ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true" 
+                   ng-pattern="/[0-9]/">
         </label>
-        <span ng-if="transfer.destiny && transfer.destiny.account_type != 'DEP' && !transfer.destiny.same_bank">
+        <span class="optionalContainer" ng-if="transfer.destiny && transfer.destiny.account_type != 'DEP' && !transfer.destiny.same_bank">
             <p>Fecha de aplicaci&oacute;n</p>
             <input type="radio" name="date" ng-model="transfer.date" value="today" ng-required="true"/>
             <p>Hoy</p>
             <input type="radio" name="date" ng-model="transfer.date" value="tomorrow" ng-required="true"/>
             <p>D&iacute;a h&aacute;bil siguiente</p>
+            <label class="fieldContainer">
+                <span>N&uacute;mero de referencia</span>
+                <input class="input-otp" type="text" ng-model="transfer.reference" ng-required="true" 
+                       placeholder="N&uacute;mero de referencia">
+            </label>
         </span>
         <label class="fieldContainer">
             <span>Concepto</span>

@@ -40,7 +40,7 @@ angular.module('spaApp')
             'amount':amount,
             'description':description,
             'otp':otp,
-            'referenceNumber':referenceNumber,
+            'reference_number':referenceNumber,
             'completion_date':completionDate
         });
         return sendHttp(sourceAccount, jsonBody);

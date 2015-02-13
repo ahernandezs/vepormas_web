@@ -144,7 +144,7 @@ input[name="account"] + p{
             }
         }
     }
-    .fieldContainer{
+    .fieldContainer, .optionalContainer{
         margin-top: 15px;
         width: 70%;
     }
@@ -214,6 +214,7 @@ input[name="account"] + p{
         input[type='radio'] {
             width: 10%;
             float: left;
+            margin: 13px 0 0 0;
             &.last {
                 margin-top: 30px !important;
             }

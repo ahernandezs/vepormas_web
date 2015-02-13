@@ -18,7 +18,7 @@ angular.module('spaApp').factory('httpInterceptor', ['$q', '$window', '$location
       }
 
       if (response.status === 401) {
-        console.log("Status 400 or 503");
+        console.log("Status 401");
 
         timerService.setTimeout(true);
 

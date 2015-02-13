@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="message">
-        <p>Tu pago se ha realizado con exito con numero de autorizacion <span class="autorization">123456</span></p>
+        <p>Tu pago se ha realizado con exito con numero de autorizacion <span>{{transferId}}</span></p>
          <div class="print">
             <p>Imprimir</p>
         </div>
@@ -18,15 +18,15 @@
     <table>
         <tr>
             <td>Cuenta Retiro:</td>
-            <td>{{transfer.account.name}}</td>
+            <td>{{payment.account.name}}</td>
         </tr>
         <tr>
             <td>TDC para pago:</td>
-            <td>{{transfer.destiny.name}}</td>
+            <td>{{payment.destiny.name}}</td>
         </tr>
         <tr>
             <td>Importe:</td>
-            <td class="bolder">${{transfer.amount}}</td>
+            <td class="bolder">${{payment.amount}}</td>
         </tr>
         <tr>
             <td>Hora de la transferencia:</td>

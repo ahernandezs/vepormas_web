@@ -14,7 +14,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     /**
      * Function to navigate between steps.
 	 */
-	 $scope.completeStep = function(nextStep) {
+    $scope.completeStep = function(nextStep) {
 		$scope.selection = nextStep;
 	 };
 
@@ -51,8 +51,13 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
      * Get the detail of the selected account.
      */
     $scope.getAccountDetail = function() {
-        if ( $scope.transfer.destiny.account_type == 'TDC' )
-            console.log( 'GETTING DETAIL FOR: ' + $scope.transfer.destiny._account_id );
+        if ( $scope.payment.destiny.account_type == 'TDC' )
+            accountsProvider.getAccountDetail($scope.payment.destiny._account_id).then(
+                function (data) {
+                    $scope.transferAccountDetail = $rootScope.accountDetail.credit_card;
+                    delete $rootScope.accountDetail;
+                }
+            );
     };
 
     /**
@@ -60,6 +65,18 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
      */
     $scope.sendTransfer = function() {
         resetError();
+        if ( $scope.transfer.destiny.account_type == 'DEP' )
+            transferOwnAccount();
+        else if ( $scope.transfer.destiny.account_type == 'DEB_T' && $scope.transfer.destiny.same_bank )
+            transferThirdAccount();
+        else if ( !$scope.transfer.destiny.same_bank )
+            transferThirdOtherAccount();
+    };
+    
+    /**
+     * Send the transfer to an own account (from CSB to CSB).
+     */
+    var transferOwnAccount = function() {
         transferProvider.transferToOwnAccount($scope.transfer.account._account_id, $scope.transfer.destiny._account_id, 
                                              $scope.transfer.amount, $scope.transfer.concept).then(
             function(data) {
@@ -70,23 +87,91 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             function(data) {
                 console.log(data);
                 var status = data.status;
-                if(status === 401 || status === 423){
+                if (status === 401 || status === 423) {
                     // session expired : returned to login
                     setError('session expired: TODO: go to login');
                     //var loginController = $controller('LoginCtrl');
                     //loginController.setError('your session has expired');
                     //$location.path('/login');
                     
-                }else if(status === 406 || status === 417){
+                } else if (status === 406 || status === 417) {
                     setError('invalid input: TODO: analyse the code inside the json mesage body');
                     // invalid data input
-                }else if(status === 500 || status === 503 || status === 504){
+                } else if (status === 500 || status === 503 || status === 504) {
                     // business or technical exception
                     setError('unknown problem. Please retry later');
                 }
             }
         );
-        
+    };
+    
+    /**
+     * Send the transfer to a third party account of CSB.
+     */
+    var transferThirdAccount = function() {
+        transferProvider.transferThirdAccountSameBank($scope.transfer.account._account_id, 
+                                                     $scope.transfer.destiny._account_id,
+                                                     $scope.transfer.amount, $scope.transfer.concept,
+                                                     $scope.transfer.otp).then(
+            function(data) {
+                console.log(data);
+                $scope.transferId = data._transaction_id;
+                $scope.selection = 6;
+            },
+            function(data) {
+                console.log(data);
+                var status = data.status;
+                if (status === 401 || status === 423) {
+                    // session expired : returned to login
+                    setError('session expired: TODO: go to login');
+                    //var loginController = $controller('LoginCtrl');
+                    //loginController.setError('your session has expired');
+                    //$location.path('/login');
+                    
+                } else if (status === 406 || status === 417) {
+                    setError('invalid input: TODO: analyse the code inside the json mesage body');
+                    // invalid data input
+                } else if (status === 500 || status === 503 || status === 504) {
+                    // business or technical exception
+                    setError('unknown problem. Please retry later');
+                }
+            }
+        );
+    };
+    
+    /**
+     * Send the transfer to a third party account from another bank.
+     */
+    var transferThirdOtherAccount = function() {
+        transferProvider.transferThirdAccountOtherBank($scope.transfer.account._account_id,
+                                                       $scope.transfer.destiny._account_id,
+                                                       $scope.transfer.amount, $scope.transfer.concept,
+                                                       $scope.transfer.otp, $scope.transfer.reference,
+                                                       $scope.transfer.date).then(
+            function(data) {
+                console.log(data);
+                $scope.transferId = data._transaction_id;
+                $scope.selection = 6;
+            },
+            function(data) {
+                console.log(data);
+                var status = data.status;
+                if (status === 401 || status === 423) {
+                    // session expired : returned to login
+                    setError('session expired: TODO: go to login');
+                    //var loginController = $controller('LoginCtrl');
+                    //loginController.setError('your session has expired');
+                    //$location.path('/login');
+                    
+                } else if(status === 406 || status === 417) {
+                    setError('invalid input: TODO: analyse the code inside the json mesage body');
+                    // invalid data input
+                } else if(status === 500 || status === 503 || status === 504) {
+                    // business or technical exception
+                    setError('unknown problem. Please retry later');
+                }
+            }
+        );
     };
     
     /**
@@ -99,6 +184,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                                                  $scope.beneficiary.account, $scope.beneficiary.token).then(
             function(data) {
                 console.log(data);
+                $scope.selection = 9;
             }
         );
     };
@@ -110,10 +196,12 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         if ($scope.payment.amount == 'payment.other')
             $scope.payment.amount = $scope.payment.other;
         
-        transferProvider.payOwnCard($scope.payment.account._account_id, $scope.payment.destiny._account_id, 
-                                             $scope.payment.amount).then(
+        transferProvider.payOwnCard($scope.payment.account._account_id, 
+                                    $scope.payment.destiny._account_id, 
+                                    $scope.payment.amount).then(
             function(data) {
                 console.log(data);
+                $scope.selection = 3;
             }
         );
     };

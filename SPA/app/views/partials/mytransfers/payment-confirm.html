@@ -11,20 +11,21 @@
     </div>
     <form name="confirmForm">
         <span ng-if="transfer.destiny.account_type != 'TDC'">
-            <input type="password" ng-model="payment.otp" class="input-confirm-token" ng-required="true" placeholder="Introduce el c&oacute;digo que se a generado en tu Token F&iacute;sico">
+            <input type="password" ng-model="payment.otp" class="input-confirm-token" ng-required="true" 
+                   placeholder="Introduce el c&oacute;digo que se a generado en tu Token F&iacute;sico">
         </span>
         <table>
             <tr>
                 <td>Cuenta Retiro:</td>
-                <td>{{transfer.account.name}}</td>
+                <td>{{payment.account.name}}</td>
             </tr>
             <tr>
                 <td>TDC para pago:</td>
-                <td>{{transfer.destiny.name}}</td>
+                <td>{{payment.destiny.name}}</td>
             </tr>
             <tr>
                 <td>Importe:</td>
-                <td class="bolder">${{transfer.amount}}</td>
+                <td class="bolder">${{payment.amount}}</td>
             </tr>
             <tr>
                 <td>Hora de la transferencia:</td>
@@ -34,6 +35,6 @@
     </form>
     <div class="double-btn">
         <input type="submit" value="Regresar" ng-click="completeStep(1)">
-        <input type="submit" value="Continuar" ng-click="completeStep(3)" ng-disabled="confirmForm.$invalid">
+        <input type="submit" value="Continuar" ng-click="sendPayment()" ng-disabled="confirmForm.$invalid">
     </div>
 </div>
