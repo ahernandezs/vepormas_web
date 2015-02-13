@@ -355,7 +355,7 @@
 	margin-bottom: 10px;
 	border:1px solid $gray;
 	@include border-radius(3px);
-	&:focus, &:hover, &:active{ 
+	&:focus, &:hover, &:active, &.active{ 
 		border-color:$orange;
 	}
 	&.last{

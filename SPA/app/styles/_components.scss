@@ -35,6 +35,8 @@ input { &:focus { @include formFocus($orange); } }
 
 .error {
 	color : red;
+	margin: 5px;
+	font-size:0.9em;
 }
 
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak

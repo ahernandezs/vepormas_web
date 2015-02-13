@@ -5,20 +5,20 @@
 <hr>
         <div class="user-data">
             <form class="contact-form" name="contactForm">
-                <label class="fieldContainer">
+                <label class="fieldContainer" ng-class="registerData.email.length > 0 ? 'selected' : ''">
                     <span>Correo electr&oacute;nico</span>
                     <input type="email" name="email" class="input-mail" ng-model="registerData.email" placeholder="Correo electr&oacute;nico">
                 </label>
-                <label class="fieldContainer">
+                <label class="fieldContainer" ng-class="registerData.repeatEmail.length > 0 ? 'selected' : ''">
                     <span class="double">Confirmar<br>correo electr&oacute;nico</span>
-                    <input type="email" name="repeatEmail" class="input-mail" ng-model="registerData.repeatEmail" placeholder="Confirma correo electr&oacute;nico">
-                    <div class="error" ng-show="contactForm.email.$error.email">Email invalido</div>
+                    <input type="email" name="repeatEmail" class="input-mail" ng-model="registerData.repeatEmail" placeholder="Confirma correo electr&oacute;nico">    
                 </label>
-                <label class="fieldContainer">
+                <div class="error" ng-show="contactForm.email.$error.email">Email invalido</div>
+                <label class="fieldContainer" ng-class="registerData.cellphone.length > 0 ? 'selected' : ''">
                     <span>Celular</span>
                     <input type="text" class="input-mobile" ng-model="registerData.cellphone" placeholder="Celular">
                 </label>
-                <label class="fieldContainer">
+                <label class="fieldContainer" ng-class="registerData.repeatCellphone.length > 0 ? 'selected' : ''">
                     <span>Confirma celular</span>
                     <input type="text" class="input-mobile" ng-model="registerData.repeatCellphone" placeholder="Confirma celular">
                 </label>
