@@ -44,11 +44,9 @@ angular.module('spaApp')
 
     function stopTimers() {
       if(options.idleTimer) {
-        console.log("idleTimer stopped");
         $interval.cancel(options.idleTimer);
       }
       if(options.warningTimer) {
-        console.log("warningTimer stopped");
         $interval.cancel(options.warningTimer);
       }
 
