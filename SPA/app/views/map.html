@@ -1,7 +1,6 @@
 <style>
 	.angular-google-map-container { height: 400px; width: 100%;}
 </style>
-
 <div>
     <div class="outter">
         <div ng-include="'views/partials/layout/login-header.html'"></div>
@@ -12,20 +11,32 @@
 				</p>
 
 				<div>
-					<button>Cerca de m&iacute;</button> o
-					<input type="text" placeholder="Buscar por dirección"></input>
-					<select>
-						<option value="DF">DF</option>
-						<option value="OAX">Oaxaca</option>
+					<button ng-click="searchNearMe()">Cerca de m&iacute;</button> o
+					<input type="text" id="Autocomplete" ng-autocomplete="result" details="details" options="options" placeholder="Buscar por dirección"/>
+					<select ng-model="estado" ng-options="estado.name for estado in estados">
+						<option>--</option>
 					</select>
+					<span ng-click="search()"><button>Lupa</button></span>
 					<br>
 					<span>Sucursales</span>
 					<span>Módulos de atención</span>
+					<div ng-show="showBranches">
+						<div ng-repeat="branch in map.branches">
+							<div>
+								{{branch.title}}<br>
+								{{branch.description.address}}
+								<span>¿C&oacute;mo llegar?</span>
+								Tel&eacute;fono: {{branch.description.phone_number}}
+								Horario de Atenci&oacute;: 09:00 - 16:00 hrs.<br>
+								Abierto S&aacute;bados Cambio de divisas Atienden con cita
+							</div>
+						</div>
+					</div>
 				</div>
 
 				<div>
 					<ui-gmap-google-map center='map.center' zoom='map.zoom'>
-						<ui-gmap-markers models="map.markers" coords="'self'" fit='false'>
+						<ui-gmap-markers models="map.branches" coords="'self'" fit='false'>
 						</ui-gmap-markers>
 					</ui-gmap-google-map>
 				</div>
