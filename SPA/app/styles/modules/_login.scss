@@ -241,6 +241,9 @@
 	input[type="text"]:focus{
 		border-color:$orange;
 	}
+	.loader{
+		margin:-15px 0 0 70px;
+	}
 }
 .action-call-apps {
 	//@include rgbabg(#FFF, .9);
