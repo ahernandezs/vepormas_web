@@ -124,6 +124,8 @@ angular.module('spaApp')
    * Function for validate data before register
    */
   $scope.preRegister = function(client,contract){
+      resetError();
+      $scope.registering = true;
       //TODO:Veryfy with REST service if exists contract?
       userProvider.setClientId(client);
       userProvider.preRegisterUser(contract).then(
@@ -131,7 +133,8 @@ angular.module('spaApp')
           $location.path( '/register');
         },
         function(data, status) {
-            setError("Ha ocurrido un error en el registro");
+          setRegisterError("Ha ocurrido un error en el registro");
+          $scope.registering = false;
         });
   }
 
@@ -146,6 +149,11 @@ angular.module('spaApp')
 
   function setError(message){
     $scope.error = true;
+    $scope.errorMessage = message;
+  }
+
+  function setRegisterError(message){
+    $scope.registerError = true;
     $scope.errorMessage = message;
   }
 
@@ -164,6 +172,8 @@ angular.module('spaApp')
 
   function resetError(){
     $scope.error = false;
+    $scope.registerError = false;
+    $scope.errorMessage = "";
   }
 
   $scope.selectNavigatOption = function(selectedOption){
