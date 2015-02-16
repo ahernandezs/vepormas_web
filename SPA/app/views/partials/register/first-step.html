@@ -12,10 +12,10 @@
                 <dt>Sucursal de contrataci&oacute;n:</dt>
                 <dd>{{bankBranch}}</dd>
                 <dt>Fecha de contrataci&oacute;n:</dt>
-                <dd>{{date}}</dd>
+                <dd>{{date | date:'dd/MMM/yyyy' | uppercase}}</dd>
             </dl>
             <button class="blue" ng-click="gotoLogin()">Cancelar</button>
-            <button class="orange" ng-click="completeStep(2)">Continuar</button>
+            <button class="orange" ng-click="completeStep(2)">Confirmar</button>
         </div>
     </div>
     <div class="help">
@@ -24,7 +24,7 @@
             <i class="ico-ayuda"></i>
             <p class="blue">¿Necesitas ayuda?</p>
             <p>
-                Comunicate con nosotros <br>
+                Comun&iacute;cate con nosotros <br>
                 01 800 800 3245.
             </p>
         </div>
@@ -32,7 +32,7 @@
             <i class="ico-token"></i>
             <p class="blue">¿A&uacute;n no cuentas con tu token?</p>
             <p>
-                Solc&iacute;talo en la suscursal de tu peferencia o comun&iacute;cate con nosotros.
+                Solic&iacute;talo en la sucursal de tu preferencia o comun&iacute;cate con nosotros.
             </p>
         </div>
     </div>
