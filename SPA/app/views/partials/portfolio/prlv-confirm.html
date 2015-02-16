@@ -1,0 +1,50 @@
+<div class="content">
+    <div class="header">
+        <span ng-if="first == 2">
+            <h2>Retiro de inversi&oacute;n</h2>
+            <p>Confirma los datos para el retiro</p>
+        </span>
+        <span ng-if="first != 2">
+            <h2>Compra de inversi&oacute;n</h2>
+            <p>Confirma los datos para la compra de inversi&oacute;n</p>
+        </span>
+        <progress max="3" value="2"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p class="orange">confirmaci&oacute;n</p>
+            <p>comprobaci&oacute;n</p>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <td>Producto de inversi&oacute;n:</td>
+            <td>{{portfolio.product.name}}</td>
+        </tr>
+        <tr>
+            <td>Cuenta origen:</td>
+            <td>{{portfolio.account.name}}</td>
+        </tr>
+        <tr>
+            <td>Importe de inversi&oacute;n:</td>
+            <td class="bolder">${{portfolio.amount}}</td>
+        </tr>
+        <span ng-if="portfolio.instructions !== ''">
+            <tr>
+                <td>Instrucciones de vencimiento:</td>
+                <td>{{portfolio.instructions.name}}</td>
+            </tr>
+        </span>
+        <tr>
+            <td>Fecha de aplicaci&oacute;n:</td>
+            <td>{{today}}</td>
+        </tr>
+        <tr>
+            <td>Hora de aplicaci&oacute;n:</td>
+            <td>{{today}}</td>
+        </tr>
+    </table>
+    <div class="double-btn">
+        <input type="submit" value="Cancelar" ng-click="completeStep(first)">
+        <input type="submit" value="Continuar" ng-click="completeStep(6)">
+    </div>
+</div>

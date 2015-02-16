@@ -1,0 +1,57 @@
+<div class="content">
+    <div class="header">
+        <span ng-if="first == 2">
+            <h2>Retiro de inversi&oacute;n</h2>
+            <p>Ingresa los datos para el retiro</p>
+        </span>
+        <span ng-if="first != 2">
+            <h2>Compra de inversi&oacute;n</h2>
+            <p>Ingresa los datos para la compra de inversi&oacute;n</p>
+        </span>
+        <progress max="3" value="1"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p>confirmaci&oacute;n</p>
+            <p>comprobaci&oacute;n</p>
+        </div>
+    </div>
+    <form name="investmentForm">
+        <div class="select-style" ng-class="portfolio.product ? 'selected' : ''">
+            <span>Producto de inversi&oacute;n</span>
+            <select ng-model="portfolio.product" ng-options="">
+                <option value="" >Producto de inversi&oacute;n</option>
+            </select>
+        </div>
+        <div class="select-style" ng-class="portfolio.account ? 'selected' : ''">
+            <span>Cuenta origen</span>
+            <select ng-model="portfolio.account" ng-options="">
+                <option value="" selected>Cuenta origen</option>
+            </select>
+        </div>
+        <span ng-if="selection > 2">
+            <div class="select-style" ng-class="portfolio.expiration ? 'selected' : ''">
+                <span>Instrucciones al vencimiento</span>
+                <select ng-model="portfolio.expiration" ng-options="">
+                    <option value="" selected>Instrucciones al vencimiento</option>
+                </select>
+            </div>
+        </span>
+        <span ng-if="selection == 2">
+            <label class="fieldContainer" ng-class="portfolio.amount.length > 0 ? 'selected' : ''">
+                <span class="big">Importe a retirar</span>
+                <input type="text" ng-model="portfolio.amount" placeholder="Importe a retirar" class="input-importe">
+            </label>
+        </span>
+        <span ng-if="selection != 2">
+             <label class="fieldContainer" ng-class="portfolio.amount.length > 0 ? 'selected' : ''">
+                <span class="big">Importe de inversi&oacute;n</span>
+                <input type="text" ng-model="portfolio.amount" placeholder="Importe de inversi&oacute;n" class="input-importe">
+            </label>
+            <a href="#">Catalogo de Plazos y Montos de inversi&oacute;n</a>
+        </span>
+    </form>
+    <div class="double-btn">
+        <input type="submit" value="Cancelar" ng-click="completeStep(1)">
+        <input type="submit" value="Continuar" ng-disabled="false" ng-click="completeStep(5)" ng-disabled="investmentFor.$invalid">
+    </div>
+</div>

@@ -6,7 +6,6 @@
 angular.module('spaApp').controller('PortfolioCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider) {
 	
     $scope.selection = 1;
-    $scope.first = 1;
     $scope.portfolio = {};
     $scope.invType = 'VISTA';
     
@@ -20,9 +19,8 @@ angular.module('spaApp').controller('PortfolioCtrl', ['$rootScope', '$scope', '$
     /**
      * Assigns the value to the first view to return to and the investment type.
      */
-    $scope.assignValue = function(val, type) {
-        $scope.selection = val;
-        $scope.first = val;
+    $scope.change = function(type) {
+        $scope.selection = 1;
         $scope.invType = type;
     };
     
