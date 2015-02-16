@@ -19,12 +19,15 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
      */
     $scope.init = function() {
         var preRegisterData = userProvider.getPreRegistrationData();
+        if(!preRegisterData) {
+          $scope.gotoLogin();
+          return;
+        }
         $scope.contract = preRegisterData.contract;
         $scope.nameClient = $scope.contract.name;
         $scope.clientNumber = $scope.contract.client_id;
         $scope.bankBranch = $scope.contract.branch_name;
-        var temp = new Date($scope.contract.created_at);
-        $scope.date = temp.getDay() + ' / ' + temp.getMonth() + ' / ' + temp.getFullYear();
+        $scope.date = $scope.contract.created_at;
         $scope.images = {};
         for (var i = 0; i < preRegisterData.images.length; i++) {
             $scope.images[i] = { 'id' : preRegisterData.images[i].image_id, 'url' : $rootScope.restAPIBaseUrl + '/' + preRegisterData.images[i].url };

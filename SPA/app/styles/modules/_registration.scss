@@ -209,7 +209,7 @@
 		border-top: 1px solid $gray;
 		border-right: 1px solid $gray;
 		border-bottom: 1px solid $gray;
-		@include column(6.4);
+		@include column(7.4);
 		@include push(0.2);
 		@include pull(.4);
         h2 + p{
@@ -297,7 +297,7 @@
         }
 	}
 	.help {
-		@include column(5);
+		@include column(4);
 		margin-top: 20px;
 		h3{
 			font-weight: normal;
@@ -355,7 +355,7 @@
 	margin-bottom: 10px;
 	border:1px solid $gray;
 	@include border-radius(3px);
-	&:focus, &:hover, &:active, &.active{ 
+	&:focus, &:hover, &:active, &.active{
 		border-color:$orange;
 	}
 	&.last{
