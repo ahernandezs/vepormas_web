@@ -4,14 +4,18 @@ angular.module('spaApp').factory('mapProvider', ['$rootScope', 'mapService', '$q
 
 	return {
 
-	    getMarkers: function(param){
+	    getBranches: function(params){
 			var deferred = $q.defer();
-			mapService.getMarkers(param).success(function(data, status, headers) {
-				$rootScope.markers = data.markers;
+			mapService.getBranches(params).success(function(data, status, headers) {
+				var branches = [];
+				data.geolocations.forEach(function(branch){
+					branches.push({'latitude':branch.coordinates.lat,'longitude':branch.coordinates.lng,'title':branch.name,'id':branch.id})
+				})
+				$rootScope.branches = branches;
 				deferred.resolve();
 			}).error(function(data, status) {
 				console.log(data, status);
-				return deferred.reject("Error getting markers");
+				return deferred.reject("Error getting branches");
 			});
 			return deferred.promise;
 	    },

@@ -11,7 +11,14 @@ var app = angular.module('spaApp', [
   'uiGmapgoogle-maps'
 ]);
 
-app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpProvider', 'uiGmapGoogleMapApiProvider', function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider, uiGmapGoogleMapApiProvider) {
+
+  uiGmapGoogleMapApiProvider.configure({
+    //Change the key, this is for mobile.
+    key: 'AIzaSyBTLip6mJStAz2siYPyrWjGcx7bk1ju_fc',
+    v: '3.17',
+    libraries: 'places'
+  });
 
   $urlRouterProvider.otherwise("/login");
   $httpProvider.interceptors.push('httpInterceptor');
