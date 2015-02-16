@@ -126,6 +126,17 @@ angular.module('spaApp')
         });
         return sendHttp(sourceAccount, jsonBody);
     };
+    
+    /**
+     * Get the investments products.
+     */
+    this.getProducts = function() {
+        return $http({
+            url: $rootScope.restAPIBaseUrl+'/products',
+            method: 'GET',
+            headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
+        });
+    };
 
 	/**
 	 * internal function to send a http-request to the transfer REST-API service
@@ -137,6 +148,6 @@ angular.module('spaApp')
             data: jsonBody,
             headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
         });
-    }
+    };
 
 }]);

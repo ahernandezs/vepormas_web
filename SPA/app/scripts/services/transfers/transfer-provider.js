@@ -150,5 +150,21 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
     		);
       		return deferred.promise;
     	},
+        
+        getProducts: function () {
+            var deferred = $q.defer();
+            
+            if (!$rootScope.invProducts) {
+                transferService.getProducts().success(function(data, status, headers) {
+                    $rootScope.invProducts = data.products;
+                    deferred.resolve();
+                }).error(function(data, status) {
+                    return deferred.reject('Error getting investments products');
+                });
+            } else {
+                deferred.resolve();
+            }
+            return deferred.promise;
+        }
 	};
 }]);
