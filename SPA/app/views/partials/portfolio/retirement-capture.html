@@ -1,47 +1,52 @@
 <div class="content">
     <div class="header">
-        <h2>Compra de inversi&oacute;n</h2>
-        <p></p>
-        <progress max="3" value="3"></progress>
+        <h2>Retiro de inversi&oacute;n</h2>
+        <p>Ingresa los datos para el retiro</p>
+        <progress max="3" value="1"></progress>
         <div class="progress">
             <p class="orange">captura</p>
-            <p class="orange">confirmaci&oacute;n</p>
-            <p class="orange">comprobaci&oacute;n</p>
+            <p>confirmaci&oacute;n</p>
+            <p>comprobaci&oacute;n</p>
         </div>
     </div>
-    <div class="message">
-        <p>Tu compra se ha realizado con &eacute;xito con n&uacute;mero de autorizaci&oacute;n <span>123456</span></p>
-        <div class="print">
-            <p>Imprimir</p>
+    <form name="investmentForm">
+        <div class="select-style" ng-class="portfolio.product ? 'selected' : ''">
+            <span>Producto de inversi&oacute;n</span>
+            <select ng-model="portfolio.product" 
+                    ng-options="item as item.productName group by item.category for item in invProducts | filter: { category: invType }">
+                <option value="">Producto de inversi&oacute;n</option>
+            </select>
         </div>
-    </div>
-    <table>
-        <tr>
-            <td>Producto de inversi&oacute;n:</td>
-            <td>{{portfolio.product.name}}</td>
-        </tr>
-        <tr>
-            <td>Cuenta origen:</td>
-            <td>{{portfolio.account.name}}</td>
-        </tr>
-        <tr>
-            <td>Importe de inversi&oacute;n:</td>
-            <td class="bolder">${{portfolio.amount}}</td>
-        </tr>
-        <span ng-if="portfolio.instructions !== ''">
-            <tr>
-                <td>Instrucciones de vencimiento:</td>
-                <td>{{portfolio.instructions.name}}</td>
-            </tr>
+        <div class="select-style" ng-class="portfolio.account ? 'selected' : ''">
+            <span>Cuenta origen</span>
+            <select ng-model="portfolio.account" ng-options="item as item.name for item in theAccounts | filter: { account_type: 'DEP' }">
+                <option value="">Cuenta origen</option>
+            </select>
+        </div>
+        <span ng-if="selection > 2">
+            <div class="select-style" ng-class="portfolio.expiration ? 'selected' : ''">
+                <span>Instrucciones al vencimiento</span>
+                <select ng-model="portfolio.expiration" ng-options="">
+                    <option value="">Instrucciones al vencimiento</option>
+                </select>
+            </div>
         </span>
-        <tr>
-            <td>Fecha de aplicaci&oacute;n:</td>
-            <td>{{today}}</td>
-        </tr>
-        <tr>
-            <td>Hora de aplicaci&oacute;n:</td>
-            <td>{{today}}</td>
-        </tr>
-    </table>
-    <input type="submit" class="orange" value="Finalizar" ng-click="completeStep(first)">
+        <span ng-if="selection == 2">
+            <label class="fieldContainer" ng-class="portfolio.amount.length > 0 ? 'selected' : ''">
+                <span class="big">Importe a retirar</span>
+                <input type="text" ng-model="portfolio.amount" placeholder="Importe a retirar" class="input-importe">
+            </label>
+        </span>
+        <span ng-if="selection != 2">
+             <label class="fieldContainer" ng-class="portfolio.amount.length > 0 ? 'selected' : ''">
+                <span class="big">Importe de inversi&oacute;n</span>
+                <input type="text" ng-model="portfolio.amount" placeholder="Importe de inversi&oacute;n" class="input-importe">
+            </label>
+            <a href="#">Catalogo de Plazos y Montos de inversi&oacute;n</a>
+        </span>
+    </form>
+    <div class="double-btn">
+        <input type="submit" value="Cancelar" ng-click="completeStep(1)">
+        <input type="submit" value="Continuar" ng-click="completeStep(2)" ng-disabled="investmentForm.$invalid">
+    </div>
 </div>
