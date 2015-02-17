@@ -9,7 +9,7 @@
         <div class="payment-actions">
             <div>
                 <div>
-                    <p class="amount">{{investmentHeader.available}}</p>
+                    <p class="amount">{{investmentHeader.available | currency}}</p>
                     <span class="blue">Saldo disponible</span>
                 </div>
             </div>
@@ -20,14 +20,14 @@
         <ul>
             <li>Fecha de inicio:                            <span>{{accountHeader.cutDate}}</span></li>
             <li>Fecha de vencimiento:                       <span>{{accountHeader.limitDate}}</span></li>
-            <li>Intereses:                                  <span class="amount">{{accountHeader.limitPayment}}</span></li>
-            <li>Fecha de &uacute;ltima renovaci&oacute;n:   <span class="amount">{{accountHeader.cutBalance}}</span></li>
+            <li>Intereses:                                  <span class="amount">{{accountHeader.limitPayment | currency}}</span></li>
+            <li>Fecha de &uacute;ltima renovaci&oacute;n:   <span class="amount">{{accountHeader.cutBalance | currency}}</span></li>
         </ul>
         <ul>
-            <li>Tasa de inter&eacute;s:     <span class="amount">{{accountHeader.currentBalance}}</span></li>
-            <li>Porcentaje de ISR:          <span class="amount">{{accountHeader.noInterest}}</span></li>
-            <li>Monto del ISR:              <span class="amount">{{accountHeader.dueCurrent}}</span></li>
-            <li>Monto del rendimiento:      <span class="amount">{{accountHeader.limitCredit}}</span></li>
+            <li>Tasa de inter&eacute;s:     <span class="amount">{{accountHeader.currentBalance | currency}}</span></li>
+            <li>Porcentaje de ISR:          <span class="amount">{{accountHeader.noInterest | currency}}</span></li>
+            <li>Monto del ISR:              <span class="amount">{{accountHeader.dueCurrent | currency}}</span></li>
+            <li>Monto del rendimiento:      <span class="amount">{{accountHeader.limitCredit | currency}}</span></li>
         </ul>
     </div>
     <form class="buscador-fechas">
@@ -53,7 +53,7 @@
                 <td>{{accounts.transactionNumber}}</td>
                 <td>{{accounts.description}}</td>
                 <td>{{accounts.operationType}}</td>
-                <td>{{accounts.amount}}</td>
+                <td>{{accounts.amount | currency}}</td>
             </tr>
         </table>
     </div>

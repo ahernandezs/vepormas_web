@@ -8,14 +8,14 @@
                         <div class="actions">
                             <div class="section">
                                 <h2>Tarjeta de cr&eacute;dito</h2>
-                                <div class="product" ng-repeat="account in accounts| filter:{type:1}:true"  
+                                <div class="product" ng-repeat="account in accounts| filter:{type:1}:true"
                                 data-ng-class="{'active': account.accountId == activeClass}" data-ng-click="selectAccount(account.accountId, account.type)">
                                     <p class="name">
                                         <span>{{account.name}}</span>
                                         <span class="id">{{account.lastDigits}}</span>
                                     </p>
                                     <div>
-                                        <p class="amount">{{account.totalAmount | number}}</p>
+                                        <p class="amount">{{account.totalAmount | currency}}</p>
                                         <p class="info">Saldo deudor</p>
                                     </div>
                                 </div>
@@ -29,7 +29,7 @@
                                         <span class="id">{{account.lastDigits}}</span>
                                     </p>
                                     <div>
-                                        <p class="amount">{{account.totalAmount}}</p>
+                                        <p class="amount">{{account.totalAmount | currency}}</p>
                                         <p class="info">Disponible</p>
                                     </div>
                                 </div>
@@ -43,7 +43,7 @@
                                         <span class="id">{{account.lastDigits}}</span>
                                     </p>
                                     <div>
-                                        <p class="amount">{{account.totalAmount}}</p>
+                                        <p class="amount">{{account.totalAmount | currency}}</p>
                                         <p class="info">Disponible</p>
                                     </div>
                                 </div>
@@ -57,7 +57,7 @@
                                         <span class="id">{{account.lastDigits}}</span>
                                     </p>
                                     <div>
-                                        <p class="amount">{{account.totalAmount}}</p>
+                                        <p class="amount">{{account.totalAmount | currency}}</p>
                                         <p class="info">Disponible</p>
                                     </div>
                                 </div>
@@ -73,7 +73,7 @@
                                 <div class="payment-actions">
                                     <div>
                                         <div>
-                                            <p class="amount">{{accountHeader.availableMoney}}</p>
+                                            <p class="amount">{{accountHeader.availableMoney | currency}}</p>
                                             <button class="blue">Saldo disponible</button>
                                         </div>
                                     </div>
@@ -84,11 +84,11 @@
                             <div class="box" ng-show='showAccountHeader'>
                                 <ul>
                                     <li>Periodo:        <span>{{accountHeader.period}}</span></li>
-                                    <li>Saldo:          <span class="amount">{{accountHeader.funds}}</span></li>
+                                    <li>Saldo:          <span class="amount">{{accountHeader.funds | currency}}</span></li>
                                 </ul>
                                 <ul>
-                                    <li>Saldo salvo buen cobro:     <span class="amount">{{accountHeader.fundsGood}}</span></li>
-                                    <li>Saldo Total:                <span class="amount">{{accountHeader.totalFunds}}</span></li>
+                                    <li>Saldo salvo buen cobro:     <span class="amount">{{accountHeader.fundsGood | currency}}</span></li>
+                                    <li>Saldo Total:                <span class="amount">{{accountHeader.totalFunds | currency}}</span></li>
                                 </ul>
                             </div>
                             <form class="search">

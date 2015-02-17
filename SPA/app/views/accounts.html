@@ -9,7 +9,7 @@
                     <span class="id">{{account.maskedAccountNumber}}</span>
                 </p>
                 <div>
-                    <p class="amount">{{account.current_balance | number}}</p>
+                    <p class="amount">{{account.current_balance | currency}}</p>
                     <p class="info">Saldo deudor</p>
                 </div>
             </div>
@@ -23,7 +23,7 @@
             <span class="id">{{account.maskedAccountNumber}}</span>
         </p>
         <div>
-            <p class="amount">{{account.balance}}</p>
+            <p class="amount">{{account.balance | currency}}</p>
             <p class="info">Disponible</p>
         </div>
     </div>
@@ -37,7 +37,7 @@
         <span class="id">{{account.maskedAccountNumber}}</span>
     </p>
     <div>
-        <p class="amount">{{account.current_balance}}</p>
+        <p class="amount">{{account.current_balance | currency}}</p>
         <p class="info">Disponible</p>
     </div>
 </div>
@@ -51,7 +51,7 @@
         <span class="id">{{account.maskedAccountNumber}}</span>
     </p>
     <div>
-        <p class="amount">{{account.current_balance}}</p>
+        <p class="amount">{{account.current_balance | currency}}</p>
         <p class="info">Disponible</p>
     </div>
 </div>
