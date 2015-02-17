@@ -10,7 +10,7 @@
         </div>
     </div>
     <form name="investmentForm">
-    <div class="select-style" ng-class="investment.originAccount ? 'selected' : ''">
+        <div class="select-style" ng-class="investment.originAccount ? 'selected' : ''">
             <span>Cuenta origen</span>
             <select ng-model="investment.originAccount" ng-options="item as item.name for item in ownAccounts | filter: { account_type: 'DEP' }" required>
                 <option value="">Cuenta origen</option>
@@ -18,7 +18,8 @@
         </div>
         <div class="select-style" ng-class="investment.destinationProduct ? 'selected' : ''">
             <span>Producto de inversi&oacute;n</span>
-            <select ng-model="investment.destinationProduct" 
+            <select name="productId"
+                    ng-model="investment.destinationProduct" 
                     ng-options="item as item.productName for item in investmentProducts | filter: { category: investmentCategory }" required>
                 <option value="">Producto de inversi&oacute;n</option>
             </select>
@@ -31,9 +32,14 @@
         </div>
          <label class="fieldContainer" ng-class="investment.amount > 0 ? 'selected' : ''">
             <span class="big">Importe de inversi&oacute;n</span>
-            <input type="text" ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" pattern="^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$" required>
+            <input name="amount" type="text" ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" pattern="^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$" required>
         </label>
-        <a href="#">Catalogo de Plazos y Montos de inversi&oacute;n</a>
+        <!--
+        <input type="submit" value="Estimar" ng-click="calculateEstimation()" ng-disabled="!investmentForm.productId.$valid || !investmentForm.amount.$valid">
+        <div ng-show="investmentEstimation">
+            Estimacion para {{investmentEstimation.amount}}: tasa: {{investmentEstimation.rate}}, term: {{investmentEstimation.term}}
+        <div>
+        -->
     </form>
     <div class="double-btn">
         <input type="submit" value="Cancelar" ng-click="cancel()">

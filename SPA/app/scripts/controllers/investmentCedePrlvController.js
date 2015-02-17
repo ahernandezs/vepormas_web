@@ -126,4 +126,12 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
          }
      }
 
+     $scope.calculateEstimation = function(){
+        productProvider.getProductDetail($scope.investment.destinationProduct.product_id, $scope.investment.amount).then(
+            function(data) {
+                $scope.investmentEstimation = data;
+            }
+        );
+     }
+
 }]);

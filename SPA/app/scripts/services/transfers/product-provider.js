@@ -30,9 +30,11 @@ angular.module('spaApp')
       getProductDetail: function(productId, amount){
         var deferred = $q.defer();
         productService.getProductDetail(productId, amount).success(function(data, status, headers){
-            deferred.resolve();
+            data.amount = amount;
+            deferred.resolve(data);
         }).error(function(data, status){
-            return deferred.reject('Error getting investment product detail');
+            var result = {'data' : data, 'status': status};
+            return deferred.reject(result);
         })
         return deferred.promise;
       }
