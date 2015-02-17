@@ -7,8 +7,8 @@
     <div class="payment-actions">
         <div>
             <div>
-                <p class="amount">{{creditsHeader.amount_total.amount}}</p>
-                <button class="blue">Saldo deudor</button>
+                <p class="amount">{{creditsHeader.amount_total.amount | currency}}</p>
+                <span>Saldo deudor</span>
             </div>
         </div>
     </div>
@@ -18,14 +18,14 @@
 <div class="box" ng-show='showAccountHeader'><!-- expended box -->
     <ul>
         <li>Fecha de otorgamiento:      <span>{{creditsHeader.position_date | date:'dd-MM-yyyy' }}</span></li>
-        <li>Monto del cr&eacute;dito:          <span class="amount">{{creditsHeader.amount_due.amount}}</span></li>
+        <li>Monto del cr&eacute;dito:          <span class="amount">{{creditsHeader.amount_due.amount | currency}}</span></li>
         <li>N&uacute;mero de pagos pactados:   <span>{{creditsHeader.number_payments_total}}</span></li>
-        <li>Monto del descuento:        <span class="amount">{{creditsHeader.amount_discount.amount}}</span></li>
+        <li>Monto del descuento:        <span class="amount">{{creditsHeader.amount_discount.amount | currency}}</span></li>
         <li>Frecuencia de pago:         <span>{{creditsHeader.payment_frecuency}}</span></li>
     </ul>
     <ul>
-        <li>Monto vencido:              <span class="amount">{{creditsHeader.amount_due.amount}}</span></li>
-        <li>Monto del pr&oacute;ximo pago:     <span class="amount">{{creditsHeader.amount_payable.amount}}</span></li>
+        <li>Monto vencido:              <span class="amount">{{creditsHeader.amount_due.amount | currency}}</span></li>
+        <li>Monto del pr&oacute;ximo pago:     <span class="amount">{{creditsHeader.amount_payable.amount | currency}}</span></li>
         <li>Fecha del pr&oacute;ximo pago:     <span>{{creditsHeader.endDate | date:'dd-MM-yyyy' }}</span></li>
         <li>Dias de atraso:             <span>{{creditsHeader.delinquent_days}}</span></li>
         <li>Dependencia:                <span>{{creditsHeader.dependency.description}}</span></li>

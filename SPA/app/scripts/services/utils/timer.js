@@ -24,10 +24,15 @@ angular.module('spaApp')
     };
 
     this.reset = function() {
-      if($interval.cancel(options.idleTimer)) {
+      if(options.idleTimer && $interval.cancel(options.idleTimer)) {
         options.idleTimer = $interval(idleTimeout, options.idle * 1000, 1);
         $rootScope.$broadcast('IdleReset');
       }
+      if(options.warningTimer && $interval.cancel(options.warningTimer)) {
+        options.idleTimer = $interval(idleTimeout, options.idle * 1000, 1);
+        $rootScope.$broadcast('IdleReset');
+      }
+
     };
 
     this.stop = function() {

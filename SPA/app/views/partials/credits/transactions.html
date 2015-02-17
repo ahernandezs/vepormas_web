@@ -10,7 +10,7 @@
         </div>
         </div>
     </form>
-<div class="transactions">    
+<div class="transactions">
     <table class="details">
         <thead>
             <tr>
@@ -27,9 +27,9 @@
                 <tr ng-repeat="trans in creditTransactions">
                     <td>{{trans.movementDate | date:'dd-MM-yyyy' }}</td>
                     <td>{{trans.description}}</td>
-                    <td>{{trans.capital}}</td>
-                    <td>{{trans.tax}}</td>
-                    <td>{{trans.amount}}</td>
+                    <td>{{trans.capital | currency}}</td>
+                    <td>{{trans.tax | currency}}</td>
+                    <td>{{trans.amount | currency}}</td>
                     <td>{{trans.dateApplication | date:'dd-MM-yyyy' }}</td>
                 </tr>
         </tbody>
