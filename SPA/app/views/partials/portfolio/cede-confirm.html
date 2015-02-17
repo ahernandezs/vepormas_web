@@ -12,19 +12,19 @@
     <table>
         <tr>
             <td>Producto de inversi&oacute;n:</td>
-            <td>{{portfolio.product.name}}</td>
+            <td>{{investment.destinationProduct.productName}}</td>
         </tr>
         <tr>
             <td>Cuenta origen:</td>
-            <td>{{portfolio.account.name}}</td>
+            <td>{{investment.originAccount.name}}</td>
         </tr>
         <tr>
             <td>Importe de inversi&oacute;n:</td>
-            <td class="bolder">${{portfolio.amount}}</td>
+            <td class="bolder">${{investment.amount}}</td>
         </tr>
         <tr>
             <td>Instrucciones de vencimiento:</td>
-            <td>{{portfolio.instructions.name}}</td>
+            <td>{{investment.expirationInstruction.label}}</td>
         </tr>
         <tr>
             <td>Fecha de aplicaci&oacute;n:</td>
@@ -36,7 +36,7 @@
         </tr>
     </table>
     <div class="double-btn">
-        <input type="submit" value="Cancelar" ng-click="completeStep(1)">
-        <input type="submit" value="Continuar" ng-click="completeStep(3)">
+        <input type="submit" value="Cancelar" ng-click="cancel()">
+        <input type="submit" value="Continuar" ng-click="nextStep()">
     </div>
 </div>

@@ -18,19 +18,19 @@
     <table>
         <tr>
             <td>Producto de inversi&oacute;n:</td>
-            <td>{{portfolio.product.name}}</td>
+            <td>{{investment.destinationProduct.productName}}</td>
         </tr>
         <tr>
             <td>Cuenta origen:</td>
-            <td>{{portfolio.account.name}}</td>
+            <td>{{investment.originAccount.name}}</td>
         </tr>
         <tr>
             <td>Importe de inversi&oacute;n:</td>
-            <td class="bolder">${{portfolio.amount}}</td>
+            <td class="bolder">${{investment.amount}}</td>
         </tr>
         <tr>
             <td>Instrucciones de vencimiento:</td>
-            <td>{{portfolio.instructions.name}}</td>
+            <td>{{investment.expirationInstruction.label}}</td>
         </tr>
         <tr>
             <td>Fecha de aplicaci&oacute;n:</td>
@@ -41,5 +41,4 @@
             <td>{{today}}</td>
         </tr>
     </table>
-    <input type="submit" class="orange" value="Finalizar" ng-click="completeStep(1)">
 </div>

@@ -10,43 +10,32 @@
         </div>
     </div>
     <form name="investmentForm">
-        <div class="select-style" ng-class="portfolio.product ? 'selected' : ''">
-            <span>Producto de inversi&oacute;n</span>
-            <select ng-model="portfolio.product" 
-                    ng-options="item as item.productName group by item.category for item in invProducts | filter: { category: invType }">
-                <option value="">Producto de inversi&oacute;n</option>
-            </select>
-        </div>
-        <div class="select-style" ng-class="portfolio.account ? 'selected' : ''">
+    <div class="select-style" ng-class="investment.originAccount ? 'selected' : ''">
             <span>Cuenta origen</span>
-            <select ng-model="portfolio.account" ng-options="item as item.name for item in theAccounts | filter: { account_type: 'DEP' }">
+            <select ng-model="investment.originAccount" ng-options="item as item.name for item in ownAccounts | filter: { account_type: 'DEP' }" required>
                 <option value="">Cuenta origen</option>
             </select>
         </div>
-        <span ng-if="selection > 2">
-            <div class="select-style" ng-class="portfolio.expiration ? 'selected' : ''">
-                <span>Instrucciones al vencimiento</span>
-                <select ng-model="portfolio.expiration" ng-options="">
-                    <option value="">Instrucciones al vencimiento</option>
-                </select>
-            </div>
-        </span>
-        <span ng-if="selection == 2">
-            <label class="fieldContainer" ng-class="portfolio.amount.length > 0 ? 'selected' : ''">
-                <span class="big">Importe a retirar</span>
-                <input type="text" ng-model="portfolio.amount" placeholder="Importe a retirar" class="input-importe">
-            </label>
-        </span>
-        <span ng-if="selection != 2">
-             <label class="fieldContainer" ng-class="portfolio.amount.length > 0 ? 'selected' : ''">
-                <span class="big">Importe de inversi&oacute;n</span>
-                <input type="text" ng-model="portfolio.amount" placeholder="Importe de inversi&oacute;n" class="input-importe">
-            </label>
-            <a href="#">Catalogo de Plazos y Montos de inversi&oacute;n</a>
-        </span>
+        <div class="select-style" ng-class="investment.destinationProduct ? 'selected' : ''">
+            <span>Producto de inversi&oacute;n</span>
+            <select ng-model="investment.destinationProduct" 
+                    ng-options="item as item.productName for item in investmentProducts | filter: { category: investmentCategory }" required>
+                <option value="">Producto de inversi&oacute;n</option>
+            </select>
+        </div>
+        <div class="select-style" ng-class="investment.expirationInstruction ? 'selected' : ''">
+            <span>Instrucciones al vencimiento</span>
+            <select ng-model="investment.expirationInstruction" ng-options="opt as opt.label for opt in investmentInstructions" required>
+                <option value="">Instrucciones al vencimiento</option>
+            </select>
+        </div>
+         <label class="fieldContainer" ng-class="investment.amount > 0 ? 'selected' : ''">
+            <span class="big">Importe de inversi&oacute;n</span>
+            <input type="text" ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" pattern="^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$" required>
+        </label>
+        <a href="#">Catalogo de Plazos y Montos de inversi&oacute;n</a>
     </form>
     <div class="double-btn">
-        <input type="submit" value="Cancelar" ng-click="completeStep(1)">
-        <input type="submit" value="Continuar" ng-click="completeStep(2)" ng-disabled="investmentForm.$invalid">
+        <input type="submit" value="Continuar" ng-click="nextStep()" ng-disabled="investmentForm.$invalid">
     </div>
 </div>
