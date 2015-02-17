@@ -64,27 +64,29 @@
         <div ng-controller="InvestmentCedePrlvCtrl" ng-init="setInvestmentType('CEDE')">
             <div ng-switch on="step">
                 <div class="animate-switch" ng-switch-when="1">
-                    <div ng-include="'views/partials/portfolio/cede-capture.html'"></div>
+                    <div ng-include="'views/partials/portfolio/cede-prlv-capture.html'"></div>
                 </div>
                 <div class="animate-switch" ng-switch-when="2">
-                    <div ng-include="'views/partials/portfolio/cede-confirm.html'"></div>
+                    <div ng-include="'views/partials/portfolio/cede-prlv-confirm.html'"></div>
                 </div>
                 <div class="animate-switch" ng-switch-when="3">
-                    <div ng-include="'views/partials/portfolio/cede-result.html'"></div>
+                    <div ng-include="'views/partials/portfolio/cede-prlv-result.html'"></div>
                 </div>
             </div>
         </div>
     </div>
     <div class="animate-switch" ng-switch-when="PRLV">
-        <div ng-switch on="selection">
-            <div class="animate-switch" ng-switch-when="1">
-                <div ng-include="'views/partials/portfolio/prlv-capture.html'"></div>
-            </div>
-            <div class="animate-switch" ng-switch-when="2">
-                <div ng-include="'views/partials/portfolio/prlv-confirm.html'"></div>
-            </div>
-            <div class="animate-switch" ng-switch-when="3">
-                <div ng-include="'views/partials/portfolio/prlv-result.html'"></div>
+        <div ng-controller="InvestmentCedePrlvCtrl" ng-init="setInvestmentType('PRLV')">
+            <div ng-switch on="step">
+                <div class="animate-switch" ng-switch-when="1">
+                    <div ng-include="'views/partials/portfolio/cede-prlv-capture.html'"></div>
+                </div>
+                <div class="animate-switch" ng-switch-when="2">
+                    <div ng-include="'views/partials/portfolio/cede-prlv-confirm.html'"></div>
+                </div>
+                <div class="animate-switch" ng-switch-when="3">
+                    <div ng-include="'views/partials/portfolio/cede-prlv-result.html'"></div>
+                </div>
             </div>
         </div>
     </div>

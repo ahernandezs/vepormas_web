@@ -22,6 +22,52 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
         $scope.step = 1;
         $scope.investment = [];
         $scope.investmentResult = [];
+        resetError();
+    }
+
+    /**
+     * set an error message on the current view
+     */
+    function setError(message){
+        $scope.errorMessage = message;
+        $scope.error = true;
+    }
+
+    /**
+     * reset the error status to null
+     */
+    function resetError(){
+        $scope.error = false;
+    }
+
+    /**
+     * process a Rest-API invocation success
+     */
+    function processServiceSuccess(data) {
+        $scope.investmentResult = [];
+        $scope.investmentResult.account_number = data.account_number;
+        $scope.investmentResult.expiration_date = data.expiration_date;
+        if(data.interest != null){
+            $scope.investmentResult.interestInfo =[];
+            $scope.investmentResult.interestInfo.operation_date = data.interest.operation_date;
+            $scope.investmentResult.interestInfo.amount = data.interest.amount;
+        }
+        $scope.step++;
+    }
+
+    /**
+     * process a Rest-API onvocation error
+     */
+    function processServiceError(errorObject){
+        var status = errorObject.status;
+        if(status === 406){
+            setError('invalid input');
+        }else if(status === 500){
+            setError('el servicio esta disponible. Favor de intentar mas tarde');
+        }else{
+            setError('un problema occurio. Favor de contactar el servicio de atencion al cliente');
+        }
+        var data = errorObject.data;
     }
 
     /**
@@ -43,6 +89,7 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
      * Function to navigate between steps.
 	 */
 	$scope.goToConfirmation = function() {
+        resetError();
         $scope.step++;
         $scope.today = new Date().getTime();
 	 };
@@ -58,6 +105,7 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
       * launch the investment operation
       */
      $scope.launchInvestment = function(){
+        resetError();
         var currentInvestment = $scope.investment;
         var originAccountId = currentInvestment.originAccount._account_id;
         var productId = currentInvestment.destinationProduct.product_id;
@@ -65,24 +113,17 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
         var investAgain = currentInvestment.expirationInstruction.investAgain;
         if($scope.investmentCategory === 'CEDE'){
             transferProvider.investCEDE(originAccountId, productId, amount, investAgain).then(
-                function(data) {
-                    console.log(data);
-                    $scope.investmentResult = [];
-                    $scope.investmentResult.account_number = data.account_number;
-                    $scope.investmentResult.expiration_date = data.expiration_date;
-                    if(data.interest != null){
-                        $scope.investmentResult.interestInfo =[];
-                        $scope.investmentResult.interestInfo.operation_date = data.interest.operation_date;
-                        $scope.investmentResult.interestInfo.amount = data.interest.amount;
-                    }
-                    $scope.step++;
-                },
-                function(errorObject){
-                    var status = errorObject.status;
-                    var data = errorObject.data;
-                }
+                processServiceSuccess,
+                processServiceError
             );
-        }
+        }else if($scope.investmentCategory === 'PRLV'){
+            transferProvider.investPRLV(originAccountId, productId, amount, investAgain).then(
+                processServiceSuccess,
+                processServiceError
+            );
+        }else{
+            setError('tipo de inversion desconocido');
+         }
      }
 
 }]);
