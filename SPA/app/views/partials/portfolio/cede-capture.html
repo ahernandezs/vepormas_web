@@ -36,6 +36,7 @@
         <a href="#">Catalogo de Plazos y Montos de inversi&oacute;n</a>
     </form>
     <div class="double-btn">
-        <input type="submit" value="Continuar" ng-click="nextStep()" ng-disabled="investmentForm.$invalid">
+        <input type="submit" value="Cancelar" ng-click="cancel()">
+        <input type="submit" value="Continuar" ng-click="goToConfirmation()" ng-disabled="investmentForm.$invalid">
     </div>
 </div>

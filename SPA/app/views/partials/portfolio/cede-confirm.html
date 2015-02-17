@@ -28,15 +28,15 @@
         </tr>
         <tr>
             <td>Fecha de aplicaci&oacute;n:</td>
-            <td>{{today}}</td>
+            <td>{{today | date:'dd-MM-yyyy' }}</td>
         </tr>
         <tr>
             <td>Hora de aplicaci&oacute;n:</td>
-            <td>{{today}}</td>
+            <td>{{today | date:'HH:mm' }}</td>
         </tr>
     </table>
     <div class="double-btn">
         <input type="submit" value="Cancelar" ng-click="cancel()">
-        <input type="submit" value="Continuar" ng-click="nextStep()">
+        <input type="submit" value="Continuar" ng-click="launchInvestment()">
     </div>
 </div>
