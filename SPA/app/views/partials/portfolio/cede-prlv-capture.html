@@ -30,7 +30,7 @@
                 <option value="">Instrucciones al vencimiento</option>
             </select>
         </div>
-         <label class="fieldContainer" ng-class="investment.amount > 0 ? 'selected' : ''">
+         <label class="fieldContainer" ng-class="!investmentForm.amount.$error.required ? 'selected' : ''">
             <span class="big">Importe de inversi&oacute;n</span>
             <input name="amount" type="text" ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" pattern="^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$" required>
         </label>
