@@ -16,7 +16,8 @@ angular.module('spaApp')
             investmentProducts = data.products;
             deferred.resolve(investmentProducts);
           }).error(function(data, status) {
-            return deferred.reject('Error getting investment products');
+            var result = {'data' : data, 'status': status};
+            return deferred.reject(result);
           });
         } else {
           deferred.resolve(investmentProducts);
