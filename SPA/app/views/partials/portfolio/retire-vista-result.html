@@ -1,12 +1,18 @@
 <div class="content">
     <div class="header">
         <h2>Compra de inversi&oacute;n</h2>
-        <p>Confirma los datos para la compra de inversi&oacute;n</p>
-        <progress max="3" value="2"></progress>
+        <p></p>
+        <progress max="3" value="3"></progress>
         <div class="progress">
             <p class="orange">captura</p>
             <p class="orange">confirmaci&oacute;n</p>
-            <p>comprobaci&oacute;n</p>
+            <p class="orange">comprobaci&oacute;n</p>
+        </div>
+    </div>
+    <div class="message">
+        <p>Tu retiro se ha realizado con &eacute;xito</p>
+        <div class="print">
+            <p>Imprimir</p>
         </div>
     </div>
     <table>
@@ -15,11 +21,11 @@
             <td>{{investment.vistaAccount.name}}</td>
         </tr>
         <tr>
-            <td>Cuenta origen:</td>
+            <td>Cuenta destino:</td>
             <td>{{investment.depositAccount.name}}</td>
         </tr>
         <tr>
-            <td>Importe de inversi&oacute;n:</td>
+            <td>Importe de retiro:</td>
             <td class="bolder">${{investment.amount}}</td>
         </tr>
         <tr>
@@ -31,8 +37,5 @@
             <td>{{today | date:'HH:mm' }}</td>
         </tr>
     </table>
-    <div class="double-btn">
-        <input type="submit" value="Cancelar" ng-click="cancel()">
-        <input type="submit" value="Continuar" ng-click="purchaseInvestment()">
-    </div>
+    <input type="submit" class="orange" value="Otro retiro" ng-click="reset()">
 </div>

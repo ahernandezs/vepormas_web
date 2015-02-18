@@ -97,7 +97,7 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
     /**
      * Function to navigate between steps.
      */
-    $scope.cancel = function() {
+    $scope.reset = function() {
         initialize();
      };
 

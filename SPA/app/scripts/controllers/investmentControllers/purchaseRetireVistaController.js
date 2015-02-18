@@ -44,21 +44,6 @@ angular.module('spaApp').controller('purchaseRetireVistaCtrl', ['$rootScope', '$
     }
 
     /**
-     * process a Rest-API invocation success
-     */
-    function processServiceSuccess(data) {
-        $scope.investmentResult = [];
-        $scope.investmentResult.account_number = data.account_number;
-        $scope.investmentResult.expiration_date = data.expiration_date;
-        if(data.interest != null){
-            $scope.investmentResult.interestInfo =[];
-            $scope.investmentResult.interestInfo.operation_date = data.interest.operation_date;
-            $scope.investmentResult.interestInfo.amount = data.interest.amount;
-        }
-        $scope.step++;
-    }
-
-    /**
      * process a Rest-API onvocation error
      */
     function processServiceError(errorObject){
@@ -85,17 +70,40 @@ angular.module('spaApp').controller('purchaseRetireVistaCtrl', ['$rootScope', '$
     /**
      * Function to navigate between steps.
      */
-    $scope.cancel = function() {
+    $scope.reset = function() {
         initialize();
     };
 
      /**
-      * launch the investment operation
+      * launch the purchase Vista investment operation
       */
     $scope.purchaseInvestment = function(){
         resetError();
         transferProvider.investVista($scope.investment.depositAccount._account_id, $scope.investment.vistaAccount._account_id, $scope.investment.amount).then(
-            processServiceSuccess,
+            function processServiceSuccess(data) {
+                $scope.investmentResult = [];
+                $scope.investmentResult.account_number = data.account_number;
+                $scope.investmentResult.expiration_date = data.expiration_date;
+                if(data.interest != null){
+                    $scope.investmentResult.interestInfo =[];
+                    $scope.investmentResult.interestInfo.operation_date = data.interest.operation_date;
+                    $scope.investmentResult.interestInfo.amount = data.interest.amount;
+                }
+                $scope.step++;
+            },
+            processServiceError
+        );
+    }
+
+    /**
+      * launch the retire Vista investment operation
+      */
+    $scope.retireInvestment = function(){
+        resetError();
+        transferProvider.retireVista($scope.investment.vistaAccount._account_id, $scope.investment.depositAccount._account_id, $scope.investment.amount).then(
+            function(data){
+                $scope.step++;
+            },
             processServiceError
         );
     }
