@@ -63,9 +63,9 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
         if(status === 406){
             setError('invalid input');
         }else if(status === 500){
-            setError('el servicio esta disponible. Favor de intentar mas tarde');
+            setError('El servicio no está disponible, intente más tarde');
         }else{
-            setError('un problema occurio. Favor de contactar el servicio de atencion al cliente');
+            setError('Ha ocurrido un problema, favor de contactar al servicio de atención al cliente');
         }
         var data = errorObject.data;
     }
@@ -122,7 +122,7 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
                 processServiceError
             );
         }else{
-            setError('tipo de inversion desconocido');
+            setError('Tipo de inversión desconocido');
          }
      }
 

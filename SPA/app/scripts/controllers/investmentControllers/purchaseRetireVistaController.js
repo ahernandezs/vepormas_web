@@ -51,9 +51,9 @@ angular.module('spaApp').controller('purchaseRetireVistaCtrl', ['$rootScope', '$
         if(status === 406){
             setError('invalid input');
         }else if(status === 500){
-            setError('El servicio no está disponible. Favor de intentar más tarde');
+            setError('El servicio no está disponible, intente más tarde');
         }else{
-            setError('A occurrido un problema . Favor de intentar más tarde');
+            setError('Ha ocurrido un problema, favor de contactar al servicio de atención al cliente');
         }
         var data = errorObject.data;
     }
