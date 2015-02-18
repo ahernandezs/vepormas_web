@@ -10,9 +10,8 @@
         </div>
     </div>
     <form name="confirmForm">
-        <span ng-if="transfer.destiny.account_type != 'TDC'">
-            <input type="password" ng-model="payment.otp" class="input-confirm-token" ng-required="true" 
-                   placeholder="Introduce el c&oacute;digo que se a generado en tu Token F&iacute;sico">
+        <span ng-if="payment.destiny.account_type != 'TDC'">
+            <input type="password" ng-model="payment.otp" class="input-confirm-token" ng-required="true" placeholder="Introduce el c&oacute;digo que se a generado en tu Token F&iacute;sico">
         </span>
         <table>
             <tr>
@@ -25,7 +24,7 @@
             </tr>
             <tr>
                 <td>Importe:</td>
-                <td class="bolder">${{payment.amount}}</td>
+                <td class="bolder">{{ payment.amount | currency: "$"}}</td>
             </tr>
             <tr>
                 <td>Hora de la transferencia:</td>
