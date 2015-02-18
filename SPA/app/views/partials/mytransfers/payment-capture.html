@@ -10,36 +10,36 @@
         </div>
     </div>
     <form name="paymentForm">
-        <div class="select-style" ng-class="transfer.account ? 'selected' : ''">
+        <div class="select-style" ng-class="payment.account ? 'selected' : ''">
             <span>Cuenta retiro</span>
-            <select ng-model="payment.account" ng-required="true" 
+            <select ng-model="payment.account" ng-required="true"
                     ng-options="item.name group by 'Cuentas Propias' for item in theAccounts | filter: { account_type: 'DEP' }">
                 <option value="">Cuenta retiro</option>
             </select>
         </div>
-        <div class="select-style" ng-class="transfer.destiny ? 'selected' : ''">
+        <div class="select-style" ng-class="payment.destiny ? 'selected' : ''">
             <span>TDC para pago</span>
-            <select ng-model="payment.destiny" ng-required="true" 
+            <select ng-model="payment.destiny" ng-required="true"
                     ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | byAccountType:['TDC', 'TDC_T']" ng-change="getAccountDetail()">
                 <option value="">TDC para pago</option>
             </select>
         </div>
-        <span ng-if="transfer.destiny.account_type !== 'TDC'">
-            <label class="fieldContainer" ng-class="transfer.amount.length > 0 ? 'selected' : ''">
+        <span ng-if="payment.destiny.account_type !== 'TDC'">
+            <label class="fieldContainer" ng-class="payment.amount.length > 0 ? 'selected' : ''">
                 <span class="big">Importe</span>
-                <input type="text" ng-model="payment.amount" placeholder="Importe" class="input-importe" ng-required="true">
+                <input type="text" ng-model="payment.amount" placeholder="Importe" class="input-importe" ng-required="true" ng-pattern="/^[0-9]{1,7}(\.[0-9]+)?$/">
             </label>
         </span>
         <span ng-if="payment.destiny.account_type === 'TDC'">
             <div class="choices">
                 <label>
-                    <input type="radio" name="type" value="{{transferAccountDetail.minimum_payment}}" ng-model="payment.amount" 
+                    <input type="radio" name="type" value="{{transferAccountDetail.minimum_payment}}" ng-model="payment.amount"
                            ng-required="true">
                     <p>Monto minimo</p>
                     <p class="money">${{transferAccountDetail.minimum_payment}}</p>
                 </label>
                 <label>
-                    <input type="radio" name="type" value="{{transferAccountDetail.no_interes_payment_due}}" ng-model="payment.amount" 
+                    <input type="radio" name="type" value="{{transferAccountDetail.no_interes_payment_due}}" ng-model="payment.amount"
                            ng-required="true">
                     <p>Para no generar intereses</p>
                     <p class="money">${{transferAccountDetail.no_interes_payment_due}}</p>
@@ -47,7 +47,7 @@
                 <label>
                     <input type="radio" name="type" class="last" ng-model="payment.amount" value="{{payment.other}}" ng-required="true">
                     <p class="last">Otra cantidad</p>
-                    <input type="text" ng-model="payment.other" class="input-importe" ng-required="payment.amount == 'other'">
+                    <input type="text" ng-model="payment.other" class="input-importe" ng-required="payment.amount == 'other'" ng-pattern="/^[0-9]{1,7}(\.[0-9]+)?$/">
                 </label>
             </div>
         </span>

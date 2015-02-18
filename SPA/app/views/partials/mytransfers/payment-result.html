@@ -26,7 +26,7 @@
         </tr>
         <tr>
             <td>Importe:</td>
-            <td class="bolder">${{payment.amount}}</td>
+            <td class="bolder">{{ payment.amount | currency: "$"}}</td>
         </tr>
         <tr>
             <td>Hora de la transferencia:</td>
@@ -34,7 +34,7 @@
         </tr>
     </table>
     <div class="double-btn">
-    <input type="submit" value="Finalizar" ng-click="completeStep(1)">
-    <input class="larger orange" type="submit" value="Realizar otro pago" ng-click="sendPayment()">
-</div>
+        <input type="submit" value="Finalizar" ng-click="completeStep(1)">
+        <input class="larger orange" type="submit" value="Realizar otro pago" ng-click="completeStep(1)">
+    </div>
 </div>

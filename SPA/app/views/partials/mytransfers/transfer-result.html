@@ -9,7 +9,7 @@
             <p class="orange">comprobaci&oacute;n</p>
         </div>
     </div>
-    
+
     <div class="message">
         <p>La transferencia ha sido exitosa con numero de autorizaci&oacute;n <span>{{transferId}}</span></p>
         <div class="print">
@@ -27,7 +27,7 @@
         </tr>
         <tr>
             <td>Importe:</td>
-            <td class="bolder">${{transfer.amount}}</td>
+            <td class="bolder">{{ transfer.amount | currency:"$"}}</td>
         </tr>
         <tr>
             <td>Concepto:</td>
