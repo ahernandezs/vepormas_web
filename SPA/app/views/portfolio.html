@@ -35,28 +35,32 @@
 </div>
 <div ng-switch on="invType">
     <div class="animate-switch" ng-switch-when="VISTA">
-        <div ng-switch on="selection">
-            <div class="animate-switch" ng-switch-when="1">
-                <div ng-include="'views/partials/portfolio/vista-capture.html'"></div>
-            </div>
-            <div class="animate-switch" ng-switch-when="2">
-                <div ng-include="'views/partials/portfolio/vista-confirm.html'"></div>
-            </div>
-            <div class="animate-switch" ng-switch-when="3">
-                <div ng-include="'views/partials/portfolio/vista-result.html'"></div>
+        <div ng-controller="purchaseRetireVistaCtrl">
+            <div ng-switch on="step">
+                <div class="animate-switch" ng-switch-when="1">
+                    <div ng-include="'views/partials/portfolio/vista-capture.html'"></div>
+                </div>
+                <div class="animate-switch" ng-switch-when="2">
+                    <div ng-include="'views/partials/portfolio/vista-confirm.html'"></div>
+                </div>
+                <div class="animate-switch" ng-switch-when="3">
+                    <div ng-include="'views/partials/portfolio/vista-result.html'"></div>
+                </div>
             </div>
         </div>
     </div>
     <div class="animate-switch" ng-switch-when="RET">
-        <div ng-switch on="selection">
-            <div class="animate-switch" ng-switch-when="1">
-                <div ng-include="'views/partials/portfolio/retirement-capture.html'"></div>
-            </div>
-            <div class="animate-switch" ng-switch-when="2">
-                <div ng-include="'views/partials/portfolio/retirement-confirm.html'"></div>
-            </div>
-            <div class="animate-switch" ng-switch-when="3">
-                <div ng-include="'views/partials/portfolio/retirement-result.html'"></div>
+        <div ng-controller="purchaseRetireVistaCtrl">
+            <div ng-switch on="step">
+                <div class="animate-switch" ng-switch-when="1">
+                    <div ng-include="'views/partials/portfolio/retirement-capture.html'"></div>
+                </div>
+                <div class="animate-switch" ng-switch-when="2">
+                    <div ng-include="'views/partials/portfolio/retirement-confirm.html'"></div>
+                </div>
+                <div class="animate-switch" ng-switch-when="3">
+                    <div ng-include="'views/partials/portfolio/retirement-result.html'"></div>
+                </div>
             </div>
         </div>
     </div>
