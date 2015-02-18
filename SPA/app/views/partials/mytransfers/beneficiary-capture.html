@@ -30,7 +30,7 @@
         </label>
         <label class="fieldContainer" ng-class="beneficiary.phone.length > 0 ? 'selected' : ''">
             <span>Celular</span>
-            <input type="text" ng-model="beneficiary.phone" placeholder="Celular" class="input-mobile">
+            <input type="tel" ng-model="beneficiary.phone" placeholder="Celular" class="input-mobile" ng-pattern="/^[0-9]{1,10}$/" minlength="10" maxlength="10">
         </label>
     </form>
     <div class="double-btn">
