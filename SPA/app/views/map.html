@@ -7,7 +7,6 @@
 				<p>
 					<h3>Sucursales y M&oacute;dulos de atenci&oacute;n</h3>
 				</p>
-
 				<div>
 					<button ng-click="searchNearMe()">Cerca de m&iacute;</button> o
 					<input type="text" id="Autocomplete" ng-autocomplete="result" details="details" options="options" placeholder="Buscar por dirección"/>
@@ -25,7 +24,7 @@
 								{{branch.description.address}}
 								<span>¿C&oacute;mo llegar?</span>
 								Tel&eacute;fono: {{branch.description.phone_number}}
-								Horario de Atenci&oacute;: 09:00 - 16:00 hrs.<br>
+								Horario de Atenci&oacute;n: 09:00 - 16:00 hrs.<br>
 								Abierto S&aacute;bados Cambio de divisas Atienden con cita
 							</div>
 						</div>
@@ -33,7 +32,7 @@
 				</div>
 
 				<div>
-					<ui-gmap-google-map center='map.center' zoom='map.zoom'>
+					<ui-gmap-google-map center='map.center' zoom='map.zoom' bounds="map.bounds">
 						<ui-gmap-markers models="map.branches" coords="'self'" fit='false'>
 						</ui-gmap-markers>
 					</ui-gmap-google-map>

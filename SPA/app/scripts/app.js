@@ -17,7 +17,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     //Change the key, this is for mobile.
     key: 'AIzaSyBTLip6mJStAz2siYPyrWjGcx7bk1ju_fc',
     v: '3.17',
-    libraries: 'places'
+    libraries: 'places,geometry,visualization'
   });
 
   $urlRouterProvider.otherwise("/login");
