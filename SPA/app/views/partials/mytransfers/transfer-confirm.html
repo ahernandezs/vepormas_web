@@ -11,7 +11,7 @@
     </div>
     <form name="transferForm">
         <span ng-if="transfer.destiny.account_type != 'DEP'">
-            <input type="password" ng-model="transfer.otp" class="input-confirm-token" ng-required="true" ng-pattern="/^[0-9]{1,7}$/" ng-minlength="7" ng-maxlength="7" placeholder="Introduce el c&oacute;digo que se a generado en tu Token F&iacute;sico">
+            <input type="password" ng-model="transfer.otp" class="input-confirm-token" ng-required="true" ng-pattern="/^[0-9]{1,7}$/" minlength="7" maxlength="7" placeholder="Introduce el c&oacute;digo que se a generado en tu Token F&iacute;sico">
         </span>
         <table>
             <tr>
