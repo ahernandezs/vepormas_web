@@ -24,13 +24,12 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="year"><td>2014</td><td></td><td></td><td></td><td></td></tr>
             <tr ng-repeat="trans in creditCardTransactions">
                 <td>{{trans.transactionDate | date:'dd-MM-yyyy' }}</td>
                 <td>{{trans.authorizationNumber}}</td>
                 <td>{{trans.transactionDescription}}</td>
                 <td>{{trans.code}}</td>
-                <td>{{trans.amount}}</td>
+                <td>{{trans.amount | currency}}</td>
             </tr>
         </tbody>
     </table>

@@ -7,8 +7,8 @@
     <div class="payment-actions">
         <div>
             <div>
-                <p class="amount">{{accountHeader.availableMoney}}</p>
-                <button class="blue">Saldo disponible</button>
+                <p class="amount">{{accountHeader.availableMoney | currency}}</p>
+                <span>Saldo disponible</span>
             </div>
         </div>
     </div>
@@ -18,10 +18,10 @@
 <div class="box" ng-show='showAccountHeader'>
     <ul>
         <li>Periodo:        <span>{{accountHeader.period}}</span></li>
-        <li>Saldo:          <span class="amount">{{accountHeader.funds}}</span></li>
+        <li>Saldo:          <span class="amount">{{accountHeader.funds | currency}}</span></li>
     </ul>
     <ul>
-        <li>Saldo salvo buen cobro:     <span class="amount">{{accountHeader.fundsGood}}</span></li>
-        <li>Saldo Total:                <span class="amount">{{accountHeader.totalFunds}}</span></li>
+        <li>Saldo salvo buen cobro:     <span class="amount">{{accountHeader.fundsGood | currency}}</span></li>
+        <li>Saldo Total:                <span class="amount">{{accountHeader.totalFunds | currency}}</span></li>
     </ul>
 </div>

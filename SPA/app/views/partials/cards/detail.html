@@ -3,20 +3,20 @@
     <h2 class="title">
         <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'ico-menos' : 'ico-mas'"></i></a>
         {{activeAccountName}}
-        <span>Cuenta</span>
+        <span>Tarjeta de cr&eacute;dito</span>
     </h2>
     <div class="payment-actions">
         <div>
             <div>
-                <p class="amount">{{creditsHeader.minimum_payment}}</p>
+                <p class="amount">{{creditsHeader.minimum_payment | currency}}</p>
                 <button class="blue">Pago m&iacute;nimo</button>
             </div>
             <div>
-                <p class="amount">{{creditsHeader.no_interes_payment_due}}</p>
+                <p class="amount">{{creditsHeader.no_interes_payment_due | currency}}</p>
                 <button class="blue">Pago para no <span class="block">generar intereses</span></button>
             </div>
             <div>
-                <p class="amount">{{creditsHeader.minimum_payment}}</p>
+                <p class="amount">{{creditsHeader.delinquent_balance | currency}}</p>
                 <button class="blue">Pago total</button>
             </div>
         </div>
@@ -29,15 +29,15 @@
     <ul>
         <li>Fecha de corte:         <span>{{creditsHeader.cycle_date | date:'dd-MM-yyyy' }}</span></li>
         <li>Fecha l&iacute;mite de pago:   <span>{{creditsHeader.payment_due_date | date:'dd-MM-yyyy' }}</span></li>
-        <li>Pago m&iacute;nimo:         <span class="amount">{{creditsHeader.minimum_payment}}</span></li>
-        <li>Saldo al corte:         <span class="amount">{{creditsHeader.statement_balance}}</span></li>
+        <li>Pago m&iacute;nimo:         <span class="amount">{{creditsHeader.minimum_payment | currency}}</span></li>
+        <li>Saldo al corte:         <span class="amount">{{creditsHeader.statement_balance | currency}}</span></li>
     </ul>
     <ul>
-        <li>Saldo actual:                   <span class="amount">{{creditsHeader.current_balance}}</span></li>
-        <li>Pago para no generar intereses: <span class="amount">{{creditsHeader.no_interes_payment_due}}</span></li>
-        <li>Saldo vencido:                  <span class="amount">{{creditsHeader.delinquent_balance}}</span></li>
-        <li>L&iacute;mite de cr&eacute;dito:<span class="amount">{{creditsHeader.credit_limit}}</span></li>
-        <li>Cr&eacute;dito disponible:             <span class="amount">{{creditsHeader.available_credit}}</span></li>
+        <li>Saldo actual:                   <span class="amount">{{creditsHeader.current_balance | currency}}</span></li>
+        <li>Pago para no generar intereses: <span class="amount">{{creditsHeader.no_interes_payment_due | currency}}</span></li>
+        <li>Saldo vencido:                  <span class="amount">{{creditsHeader.delinquent_balance | currency}}</span></li>
+        <li>L&iacute;mite de cr&eacute;dito:<span class="amount">{{creditsHeader.credit_limit | currency}}</span></li>
+        <li>Cr&eacute;dito disponible:             <span class="amount">{{creditsHeader.available_credit | currency}}</span></li>
     </ul>
 </div> <!-- box ends -->
 </div>

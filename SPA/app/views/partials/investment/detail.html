@@ -7,7 +7,7 @@
     <div class="payment-actions">
         <div>
             <div>
-                <p class="amount">{{investmentHeader.amount}}</p>
+                <p class="amount">{{investmentHeader.amount | currency}}</p>
                 <span>Saldo</span>
             </div>
         </div>
@@ -26,8 +26,8 @@
         <ul>
             <li>Intereses generados:    <span>{{investmentHeader.projected_interest_amount}}%</span></li>
             <li>Porcentaje de ISR:      <span>{{investmentHeader.isr_taxt}}%</span></li>
-            <li>Monto del ISR:          <span class="amount">{{investmentHeader.isr_taxt_amount}}</span></li>
-            <li>Intereses por pagar:    <span class="amount">{{investmentHeader.interest_rate}}</span></li>
+            <li>Monto del ISR:          <span class="amount">{{investmentHeader.isr_taxt_amount | currency}}</span></li>
+            <li>Intereses por pagar:    <span class="amount">{{investmentHeader.interest_rate | currency}}</span></li>
         </ul>
     </div>
 </div>
@@ -38,7 +38,7 @@
         </ul>
         <ul>
             <li>Saldo Invertido:                                    <span>{{investmentHeader.amount}}%</span></li>
-            <li>Tasa de inter&eacute;s del &uacute;ltimo periodo:   <span class="amount">{{investmentHeader.interest_rate}}</span></li>
+            <li>Tasa de inter&eacute;s del &uacute;ltimo periodo:   <span class="amount">{{investmentHeader.interest_rate | currency}}</span></li>
         </ul>
     </div>
 </div>

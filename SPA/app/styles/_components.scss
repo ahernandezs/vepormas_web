@@ -14,7 +14,7 @@
 */
 .logo { @include hide-text(); }
 
-.amount { &:before { content: "$"; margin-right: 2px; } }
+.amount { &:before { margin-right: 2px; } }
 
 i { display: none; }
 

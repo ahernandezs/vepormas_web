@@ -15,7 +15,7 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
 	//TODO: temporal binding
 	$scope.completeName = $rootScope.client_name;
 	$scope.date = $rootScope.last_access_date;
-	$scope.showAccountHeader = true;
+	$scope.showAccountHeader = false;
 
   if($window.x_session_token) {
     $scope.useLogoutForm = true;
