@@ -89,10 +89,10 @@ angular.module('spaApp')
 	 */
 	this.retireVista = function(sourceVistaAccount, destinationAccount, amount){
         var jsonBody = JSON.stringify({
-            'account_id_destination':sourceVistaAccount,
+            'account_id_destination':destinationAccount,
             'amount':amount
         });
-        return sendHttp(sourceAccount, jsonBody);
+        return sendHttp(sourceVistaAccount, jsonBody);
     };
 
     /**
@@ -137,6 +137,6 @@ angular.module('spaApp')
             data: jsonBody,
             headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
         });
-    }
+    };
 
 }]);

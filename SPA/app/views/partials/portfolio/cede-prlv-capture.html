@@ -1,0 +1,48 @@
+<div class="content">
+    <div class="header">
+        <h2>Compra de inversi&oacute;n</h2>
+        <p>Ingresa los datos para la compra de inversi&oacute;n</p>
+        <progress max="3" value="1"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p>confirmaci&oacute;n</p>
+            <p>comprobaci&oacute;n</p>
+        </div>
+    </div>
+    <form name="investmentForm">
+        <div class="select-style" ng-class="investment.originAccount ? 'selected' : ''">
+            <span>Cuenta origen</span>
+            <select ng-model="investment.originAccount" ng-options="item as item.name for item in ownAccounts | filter: { account_type: 'DEP' }" required>
+                <option value="">Cuenta origen</option>
+            </select>
+        </div>
+        <div class="select-style" ng-class="investment.destinationProduct ? 'selected' : ''">
+            <span>Producto de inversi&oacute;n</span>
+            <select name="productId"
+                    ng-model="investment.destinationProduct" 
+                    ng-options="item as item.productName for item in investmentProducts | filter: { category: investmentCategory }" required>
+                <option value="">Producto de inversi&oacute;n</option>
+            </select>
+        </div>
+        <div class="select-style" ng-class="investment.expirationInstruction ? 'selected' : ''">
+            <span>Instrucciones al vencimiento</span>
+            <select ng-model="investment.expirationInstruction" ng-options="opt as opt.label for opt in investmentInstructions" required>
+                <option value="">Instrucciones al vencimiento</option>
+            </select>
+        </div>
+         <label class="fieldContainer" ng-class="!investmentForm.amount.$error.required ? 'selected' : ''">
+            <span class="big">Importe de inversi&oacute;n</span>
+            <input name="amount" type="text" ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" pattern="^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$" required>
+        </label>
+        <!--
+        <input type="submit" value="Estimar" ng-click="calculateEstimation()" ng-disabled="!investmentForm.productId.$valid || !investmentForm.amount.$valid">
+        <div ng-show="investmentEstimation">
+            Estimacion para {{investmentEstimation.amount}}: tasa: {{investmentEstimation.rate}}, term: {{investmentEstimation.term}}
+        <div>
+        -->
+    </form>
+    <div class="double-btn">
+        <input type="submit" value="Cancelar" ng-click="reset()">
+        <input type="submit" value="Continuar" ng-click="goToConfirmation()" ng-disabled="investmentForm.$invalid">
+    </div>
+</div>

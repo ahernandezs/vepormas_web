@@ -1,0 +1,37 @@
+<div class="content">
+    <div class="header">
+        <h2>Retiro de inversi&oacute;n</h2>
+        <p>Ingresa los datos para la compra de inversi&oacute;n</p>
+        <progress max="3" value="1"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p>confirmaci&oacute;n</p>
+            <p>comprobaci&oacute;n</p>
+        </div>
+    </div>
+    <form name="investmentForm">
+        <div class="select-style" ng-class="investment.vistaAccount ? 'selected' : ''">
+            <span>Producto de inversi&oacute;n</span>
+            <select ng-model="investment.vistaAccount" ng-options="item as item.name for item in vistaAccounts" required>
+                <option value="">Producto de inversi&oacute;n</option>
+            </select>
+        </div>
+         <div class="select-style" ng-class="investment.depositAccount ? 'selected' : ''">
+            <span>Cuenta deposito</span>
+            <select ng-model="investment.depositAccount" 
+                    ng-options="item as item.name for item in depositAccounts" required>
+                <option value="">Cuenta deposito</option>
+            </select>
+        </div>
+        <span>
+            <label class="fieldContainer" ng-class="!investmentForm.amount.$error.required ? 'selected' : ''">
+                <span class="big">Importe a retirar</span>
+                <input type="text" name="amount" ng-model="investment.amount" placeholder="Importe a retirar" class="input-importe" pattern="^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$" required>
+            </label>
+        </span>
+    </form>
+    <div class="double-btn">
+        <input type="submit" value="Cancelar" ng-click="reset()">
+        <input type="submit" value="Continuar" ng-click="gotToConfirmation()" ng-disabled="investmentForm.$invalid">
+    </div>
+</div>

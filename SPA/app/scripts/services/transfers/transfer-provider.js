@@ -149,6 +149,6 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
     			}
     		);
       		return deferred.promise;
-    	},
+    	}
 	};
 }]);
