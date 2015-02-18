@@ -9,6 +9,7 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 	params.numPage = 0;
 	params.size = 100;
 	$scope.showStatement = false;
+  $scope.previousPeriod = false;
 
 	$scope.getStatements = function(){
 		$scope.showStatement = true;
@@ -16,7 +17,7 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 		$scope.years = [
 			{ label: '2014', value: 2014 },
 			{ label: '2013', value: 2013 },
-			{ label: '2012', value: 2012 }			
+			{ label: '2012', value: 2012 }
 		];
 
 		$scope.months = [
@@ -34,9 +35,9 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 			{ label: 'Diciembre', value: 12 }
 		];
 
-  		$scope.year = $scope.years[0];
+    $scope.year = $scope.years[0];
 
-  		$scope.statements = {} //traer esto eventualmente del back
+    $scope.statements = {}; //traer esto eventualmente del back
 
 	};
 
@@ -44,8 +45,7 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 		$scope.showStatement = false;
 	};
 
-	console.log('Ejecutando creditCardCtrl--------------------------->');
-    accountsProvider.getAccountDetail($stateParams.accountId+'-TDC').then(
+  accountsProvider.getAccountDetail($stateParams.accountId+'-TDC').then(
       function(data) {
 		$scope.creditsHeader = $rootScope.accountDetail.credit_card;
       }
@@ -57,13 +57,18 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 		}
 	);
 
-	$scope.getTransactions = function(date_start, date_end){
-		params.date_end = date_end;
-		params.date_start = date_start;
-		accountsProvider.getTransactions($scope.selectedAcccountId+'-'+$scope.selectedAccountType, params).then(
-			function(data){
-				$scope.creditCardTransactions = $rootScope.transactions;
-		}
-	);
+  $scope.getTransactions = function(previousPeriod){
+    if($scope.previousPeriod !== previousPeriod) {
+      $scope.previousPeriod = previousPeriod;
+      if(previousPeriod) {
+        params.previousPeriod = true;
+      }
+      accountsProvider.getTransactions($scope.selectedAcccountId+'-'+$scope.selectedAccountType, params).then(
+          function(data){
+            $scope.creditCardTransactions = $rootScope.transactions;
+          }
+      );
+    }
+  };
 
-}}]);
+}]);

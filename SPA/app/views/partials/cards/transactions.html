@@ -8,8 +8,8 @@
     <div class="filter">
         <span>Ver por:</span>
         <div class="double-btn">
-            <button class="orange">Periodo actual</button>
-            <button class="blue">Periodo anterior</button>
+            <button ng-class="{selected: !previousPeriod}" ng-click="getTransactions(false)">Periodo actual</button>
+            <button ng-class="{selected: previousPeriod}" ng-click="getTransactions(true)">Periodo anterior</button>
         </div>
         <a href="#" class="help"><i class="ico-question-circle"></i><span>Ayuda</span></a>
     </div>

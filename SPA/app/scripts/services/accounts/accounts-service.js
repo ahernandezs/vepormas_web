@@ -18,18 +18,22 @@ angular.module('spaApp')
         this.getTransactions = function(accountId, params) {
 
             var options = '';
-            options = params.numPage ? options+'&page='+params.numPage : options ;
-            options = params.size ? options+'&size='+params.size : options ;
+            var optionsParams = [];
+            params.numPage ? optionsParams.push('page=' + params.numPage) : '';
+            params.size ? optionsParams.push('size=' + params.size) : '';
 
             var search = '';
-            search = params.date_start ? search+'date_start='+params.date_start : search ;
-            search = params.date_end ? search+'&date_end='+params.date_end : search ;
+            var searchParams = [];
+            params.date_start? searchParams.push('date_start=' + params.date_start) : '';
+            params.date_end? searchParams.push('date_end=' + params.date_end) : '';
+            params.previousPeriod? searchParams.push('previous_period=true') : '';
+            searchParams.length > 0 ? optionsParams.push('search=' + encodeURIComponent(searchParams.join('&'))) : '';
 
-            options = search !=='' ?options+'&search='+encodeURIComponent(search):options;
+            options = optionsParams.length > 0 ? '?' + optionsParams.join('&') : '';
 
-            console.log('Sending: '+$rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions?'+options);
+            console.log('Sending: '+$rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions' + options);
 
-			return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions?'+options);
+            return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions' + options);
         };
 
         this.postTransfer = function(sourceAccount, destinationAccount, amount, description, completionDate){
