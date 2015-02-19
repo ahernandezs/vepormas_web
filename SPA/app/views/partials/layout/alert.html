@@ -7,3 +7,8 @@
   Su sesión ha terminado por inactividad.
   <a class="close" href="" ng-click="showTimeoutAlert = false">X</a>
 </div>
+
+<div class="alert_message" ng-show="showErrorLogoutAlert">
+  Problema durante el cierre de sesion. Su sesion sera cerrada atomaticamente.
+  <a class="close" href="" ng-click="showErrorLogoutAlert = false">X</a>
+</div>

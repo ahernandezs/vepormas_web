@@ -4,7 +4,7 @@
  * The accounts controller. Gets accounts passing auth parameters
  */
 angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$window', 
-    'accountsProvider', 'userProvider', 'timerService', function ($rootScope, $scope, $location, $routeParams, $window, accountsProvider, userProvider, timerService) {
+    'accountsProvider', 'userProvider', 'timerService', 'logoutService', function ($rootScope, $scope, $location, $routeParams, $window, accountsProvider, userProvider, timerService, logoutService) {
 
   if(!$rootScope.session_token) {
     console.log("Redirecting to login");
@@ -27,10 +27,13 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
   $scope.logout = function() {
     userProvider.logout().then(
       function(data) {
-      timerService.stop();
-      $rootScope.session_token = null;
-      $location.path('login');
-    });
+        timerService.stop();
+        $rootScope.session_token = null;
+        $location.path('login');
+      },
+      function(data){
+        logoutService.setErrorMessage('Problema durante el cierre de sesion. Su sesion sera cerrada atomaticamente.');
+      });
   };
 
 

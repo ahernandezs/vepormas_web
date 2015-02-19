@@ -118,7 +118,8 @@ angular.module('spaApp')
       userService.logout().success(function(data){
         deferred.resolve();
       }).error(function(data, status){
-        return deferred.reject('Error in logout');
+        var result = {'data' : data, 'status': status};
+        return deferred.reject(result);
       })
       return  deferred.promise;
     }
