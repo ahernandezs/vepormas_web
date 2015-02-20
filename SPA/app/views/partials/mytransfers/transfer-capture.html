@@ -2,7 +2,7 @@
     <div class="header">
         <h2>Transferencia de cuentas</h2>
         <p>Ingresa los datos para la transferencia</p>
-        <progress max="3" value="{{selection - 3}}"></progress>
+        <progress max="3" value="{{selection}}"></progress>
         <div class="progress">
             <p class="orange">captura</p>
             <p>confirmaci&oacute;n</p>
@@ -49,7 +49,7 @@
         </label>
     </form>
     <div class="double-btn">
-        <input type="submit" value="Cancelar" ng-click="completeStep(4)">
-        <input type="submit" value="Continuar" ng-disabled="transferForm.$invalid" ng-click="completeStep(5)">
+        <input type="submit" value="Cancelar" ng-click="completeStep(1)">
+        <input type="submit" value="Continuar" ng-disabled="transferForm.$invalid" ng-click="completeStep(2)">
     </div>
 </div>

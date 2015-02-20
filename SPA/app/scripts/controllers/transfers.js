@@ -4,19 +4,33 @@
  * The transactions controller. For transactions between own accounts.
  */
 angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', 'thirdAccountProvider', 'transferProvider', '$controller', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider, thirdAccountProvider, transferProvider, $controller) {
-	
+
+	$scope.section = 'PAY';
     $scope.selection = 1;
     $scope.beneficiary = {};
     $scope.payment = {};
     $scope.transfer = {};
     $scope.theAccounts = [];
-    
+
     /**
      * Function to navigate between steps.
 	 */
     $scope.completeStep = function(nextStep) {
 		$scope.selection = nextStep;
+		if (nextStep === 1) {
+			$scope.beneficiary = {};
+			$scope.payment = {};
+			$scope.transfer = {};
+		}
 	 };
+
+	/**
+	 * Receive the section value from the UI and change the selection to 1.
+	 */
+	$scope.change = function(newSection) {
+		$scope.section = newSection;
+		$scope.selection = 1;
+	};
 
     /**
      * Get the own accounts.
@@ -31,7 +45,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
            );
 		}
 	);
-    
+
     /**
      * Get third party accounts.
      */
@@ -46,7 +60,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             console.log( $scope.theAccounts );
         }
     );
-    
+
     /**
      * Get the detail of the selected account.
      */
@@ -72,17 +86,17 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         else if ( !$scope.transfer.destiny.same_bank )
             transferThirdOtherAccount();
     };
-    
+
     /**
      * Send the transfer to an own account (from CSB to CSB).
      */
     var transferOwnAccount = function() {
-        transferProvider.transferToOwnAccount($scope.transfer.account._account_id, $scope.transfer.destiny._account_id, 
+        transferProvider.transferToOwnAccount($scope.transfer.account._account_id, $scope.transfer.destiny._account_id,
                                              $scope.transfer.amount, $scope.transfer.concept).then(
             function(data) {
                 console.log(data);
                 $scope.transferId = data._transaction_id;
-                $scope.selection = 6;
+                $scope.selection = 3;
             },
             function(data) {
                 console.log(data);
@@ -93,7 +107,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                     //var loginController = $controller('LoginCtrl');
                     //loginController.setError('your session has expired');
                     //$location.path('/login');
-                    
+
                 } else if (status === 406 || status === 417) {
                     setError('invalid input: TODO: analyse the code inside the json mesage body');
                     // invalid data input
@@ -104,19 +118,19 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             }
         );
     };
-    
+
     /**
      * Send the transfer to a third party account of CSB.
      */
     var transferThirdAccount = function() {
-        transferProvider.transferThirdAccountSameBank($scope.transfer.account._account_id, 
+        transferProvider.transferThirdAccountSameBank($scope.transfer.account._account_id,
                                                      $scope.transfer.destiny._account_id,
                                                      $scope.transfer.amount, $scope.transfer.concept,
                                                      $scope.transfer.otp).then(
             function(data) {
                 console.log(data);
                 $scope.transferId = data._transaction_id;
-                $scope.selection = 6;
+                $scope.selection = 3;
             },
             function(data) {
                 console.log(data);
@@ -127,7 +141,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                     //var loginController = $controller('LoginCtrl');
                     //loginController.setError('your session has expired');
                     //$location.path('/login');
-                    
+
                 } else if (status === 406 || status === 417) {
                     setError('invalid input: TODO: analyse the code inside the json mesage body');
                     // invalid data input
@@ -138,7 +152,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             }
         );
     };
-    
+
     /**
      * Send the transfer to a third party account from another bank.
      */
@@ -151,7 +165,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             function(data) {
                 console.log(data);
                 $scope.transferId = data._transaction_id;
-                $scope.selection = 6;
+                $scope.selection = 3;
             },
             function(data) {
                 console.log(data);
@@ -162,7 +176,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                     //var loginController = $controller('LoginCtrl');
                     //loginController.setError('your session has expired');
                     //$location.path('/login');
-                    
+
                 } else if(status === 406 || status === 417) {
                     setError('invalid input: TODO: analyse the code inside the json mesage body');
                     // invalid data input
@@ -173,7 +187,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             }
         );
     };
-    
+
     /**
      * Send beneficiary data to service.
      */
@@ -184,7 +198,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                                                  $scope.beneficiary.account, $scope.beneficiary.token).then(
             function(data) {
                 console.log(data);
-                $scope.selection = 9;
+                $scope.selection = 3;
             }
         );
     };
@@ -195,9 +209,9 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.sendPayment = function() {
         if ($scope.payment.amount == 'payment.other')
             $scope.payment.amount = $scope.payment.other;
-        
-        transferProvider.payOwnCard($scope.payment.account._account_id, 
-                                    $scope.payment.destiny._account_id, 
+
+        transferProvider.payOwnCard($scope.payment.account._account_id,
+                                    $scope.payment.destiny._account_id,
                                     $scope.payment.amount).then(
             function(data) {
                 console.log(data);
