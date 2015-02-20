@@ -41,18 +41,18 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 	$scope.search = function(){
 		if(Object.keys($scope.details).length==0){
 			if($scope.estado!=undefined){
+				$scope.showBranches = true;
 				mapProvider.getBranches({'lat':$scope.estado.lat,'lng':$scope.estado.lon}).then(
 					function(data) {
 						$scope.map.branches = $rootScope.branches;
-						$scope.showBranches = true;
 					}
 				);
 			}
 		}else{
+			$scope.showBranches = true;
 			mapProvider.getBranches({'lat':$scope.details.geometry.location.k,'lng':$scope.details.geometry.location.D}).then(
 				function(data) {
 					$scope.map.branches = $rootScope.branches;
-					$scope.showBranches = true;
 				}
 			);
 		}
