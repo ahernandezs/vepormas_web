@@ -5,22 +5,25 @@
         <main>
             <div>
 				<p>
-					<h3>Sucursales y M&oacute;dulos de atenci&oacute;n</h3>
+					<div class="sucursales">Sucursales y M&oacute;dulos de atenci&oacute;n</div>
 				</p>
-				<div ng-class=" showBranches ? 'half' : 'full' ">
-					<button ng-click="searchNearMe()">Cerca de m&iacute;</button> o
-					<input type="text" id="Autocomplete" ng-autocomplete="result" details="details" options="options" placeholder="Buscar por dirección"/>
-					<select ng-model="estado" ng-options="estado.name for estado in estados">
-						<option>--</option>
-					</select>
-					<span ng-click="search()"><button>Lupa</button></span>
-					<br>
-					<span>Sucursales</span>
-					<span>Módulos de atención</span>
+				<div ng-class=" showBranches ? 'half' : 'busqueda' ">
+					<div class="busqueda-detalle">
+						<button ng-click="searchNearMe()" class="naranja">Cerca de m&iacute;</button>
+						<span style="color:white">o</span>
+						<input type="text" id="Autocomplete" ng-autocomplete="result" details="details" options="options" placeholder="Buscar por dirección" size="28"/>
+						<select ng-model="estado" ng-options="estado.name for estado in estados"></select>
+						<span ng-click="search()"><button class="naranja">Lupa</button></span>
+						<br>
+					</div>
+					<div class="sucursal-modulo">
+						<div class="half">Sucursales</div>
+						<div class="half">Módulos de atención</div>
+					</div>
 					<div ng-show="showBranches">
 						<div ng-repeat="branch in map.branches">
-							<div>
-								{{branch.title}}<br>
+							<div class="resultado	">
+								<b>{{branch.title}}</b><br>
 								{{branch.description.address}}
 								<span>¿C&oacute;mo llegar?</span>
 								Tel&eacute;fono: {{branch.description.phone_number}}
@@ -29,6 +32,7 @@
 							</div>
 						</div>
 					</div>
+
 				</div>
 
 				<div ng-class=" showBranches ? 'half' : 'full' ">
@@ -38,31 +42,31 @@
 					</ui-gmap-google-map>
 				</div>
 				
-				<div style="text-align:center; width:100%" ng-hide="showBranches">
-					<div style="float: left">
+				<div class="container" ng-hide="showBranches">
+					<div class="left">
 						Atención al cliente: <span>01 800 800 3224</span><br>
 						&Aacute;rea Metropolitana: <span>(55) 9177 7999</span><br>
-						Tel&eacute;fono UNE: <span>01 800 830	8632</span><br>
+						Tel&eacute;fono UNE: <span>01 800 830	8632</span>
 					</div>
-					<div style="float: right">
+					<div class="right">
 						Horarios de Atenci&oacute;n <br>
 						Sucursales: <span>L-V 9:00 - 16:00</span><br>
-						M&oacute;dulos de Atenci&oacute;n: <span>L-V 9:00 - 16:00</span><br>
+						M&oacute;dulos de Atenci&oacute;n: <span>L-V 9:00 - 16:00</span>
 					</div>
-					<div style="display: inline">
-						¿Necesitas ayuda?
+					<div class="center">
+						¿Necesitas ayuda?<br>
 						<a href="#">¿C&oacute;mo activar tu ubicaci&oacute;n?</a><br>
-						<a href="#">Preguntas Frecuentes</a><br>
+						<a href="#">Preguntas Frecuentes</a>
 					</div>
 				</div>
-				<div style="text-align:center; width:100%" ng-show="showBranches">
-					<div style="float: left">
+				<div class="container" ng-show="showBranches">
+					<div class="left">
 						Atención al cliente
 					</div>
-					<div style="float: right">
+					<div class="right">
 						Horarios de Atenci&oacute;n
 					</div>
-					<div style="display: inline">
+					<div center="center">
 						¿Necesitas ayuda?
 					</div>
 				</div>
