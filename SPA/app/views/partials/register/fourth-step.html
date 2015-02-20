@@ -11,16 +11,16 @@
                 </label>
                 <label class="fieldContainer" ng-class="registerData.repeatEmail.length > 0 ? 'selected' : ''">
                     <span class="double">Confirmar<br>correo electr&oacute;nico</span>
-                    <input type="email" name="repeatEmail" class="input-mail" ng-model="registerData.repeatEmail" placeholder="Confirma correo electr&oacute;nico">    
+                    <input type="email" name="repeatEmail" class="input-mail" ng-model="registerData.repeatEmail" placeholder="Confirma correo electr&oacute;nico">
                 </label>
                 <div class="error" ng-show="contactForm.email.$error.email">Email invalido</div>
                 <label class="fieldContainer" ng-class="registerData.cellphone.length > 0 ? 'selected' : ''">
                     <span>Celular</span>
-                    <input type="text" class="input-mobile" ng-model="registerData.cellphone" placeholder="Celular">
+                    <input type="tel" class="input-mobile" ng-model="registerData.cellphone" ng-pattern="/^[0-9]{1,10}$/" minlength="10" maxlength="10" placeholder="Celular">
                 </label>
                 <label class="fieldContainer" ng-class="registerData.repeatCellphone.length > 0 ? 'selected' : ''">
                     <span>Confirma celular</span>
-                    <input type="text" class="input-mobile" ng-model="registerData.repeatCellphone" placeholder="Confirma celular">
+                    <input type="tel" class="input-mobile" ng-model="registerData.repeatCellphone" ng-pattern="/^[0-9]{1,10}$/" minlength="10" maxlength="10" placeholder="Confirma celular">
                 </label>
                 <div class="separate">
                     <p>&iquest;Por qu&eacute; medio quieres ser notificado&quest;</p>
@@ -49,7 +49,7 @@
             <p>
                 Es muy importante que llenes todos los campos para que tu registro se  realice con éxito.
             </p>
-        </div>  
+        </div>
         <div>
             <i class="ico-duda"></i>
             <p class="blue">&iquest;Por qu&eacute; ingresar estos datos&quest;</p>
@@ -61,7 +61,7 @@
             <i class="ico-ayuda"></i>
             <p class="blue">¿Necesitas ayuda?</p>
             <p>
-               Comunícate con nosotros al 01 800 800 3224.  
+               Comunícate con nosotros al 01 800 800 3224.
             </p>
         </div>
     </div>

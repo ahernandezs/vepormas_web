@@ -2,7 +2,7 @@
     <div class="header">
         <h2>Alta nuevo beneficiario</h2>
         <p>Ingresa los datos para dar de alta a un nuevo beneficiario</p>
-        <progress max="3" value="{{selection -6}}"></progress>
+        <progress max="3" value="{{selection}}"></progress>
         <div class="progress">
             <p class="orange">captura</p>
             <p>confirmaci&oacute;n</p>
@@ -34,7 +34,7 @@
         </label>
     </form>
     <div class="double-btn">
-        <input type="submit" value="Cancelar" ng-click="completeStep(7)">
-        <input type="submit" value="Continuar" ng-disabled="beneficiaryForm.$invalid" ng-click="completeStep(8)">
+        <input type="submit" value="Cancelar" ng-click="completeStep(1)">
+        <input type="submit" value="Continuar" ng-disabled="beneficiaryForm.$invalid" ng-click="completeStep(2)">
     </div>
 </div>
