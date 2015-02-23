@@ -32,6 +32,10 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
         $location.path('login');
       },
       function(data){
+        // Seems to be an error, but reset timers and sessions
+        timerService.stop();
+        $rootScope.session_token = null;
+        $location.path('login');
         logoutService.setErrorMessage('Problema durante el cierre de sesion. Su sesion sera cerrada atomaticamente.');
       });
   };
