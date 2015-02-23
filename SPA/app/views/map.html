@@ -22,7 +22,7 @@
 					</div>
 					<div ng-show="showBranches">
 						<div ng-repeat="branch in map.branches">
-							<div class="resultado	">
+							<div class="resultado" ng-click="selectedBranch(branch)">
 								<b>{{branch.title}}</b><br>
 								{{branch.description.address}}
 								<span>¿C&oacute;mo llegar?</span>
