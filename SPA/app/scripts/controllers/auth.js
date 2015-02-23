@@ -5,8 +5,8 @@
  * inject a login function in the scope
  */
 angular.module('spaApp')
-.controller('LoginCtrl', ['$scope', '$http', '$location', 'api', '$rootScope', '$window', 'userProvider', 'timerService',
-    function ($scope,$http,$location, api, $rootScope, $window, userProvider, timerService) {
+.controller('LoginCtrl', ['$scope', '$http', '$location', 'api', '$rootScope', '$window', 'userProvider', 'timerService', 'logoutService',
+    function ($scope,$http,$location, api, $rootScope, $window, userProvider, timerService, logoutService) {
   /**
    * If user has a valid session token keep him in dashboard
    */
@@ -42,6 +42,7 @@ angular.module('spaApp')
     $scope.loginData = {};
     $scope.step = 0;
     $scope.showTimeoutAlert = false;
+    $scope.showErrorLogoutAlert = false;
   }
 
 
@@ -188,6 +189,11 @@ angular.module('spaApp')
   // Review if last session was in timeout
   if(timerService.isTimeout()) {
     $scope.showTimeoutAlert = true;
+  }
+
+  if(logoutService.hasError()){
+    $scope.showErrorLogoutAlert = true;
+
   }
 
   if($window.username) {
