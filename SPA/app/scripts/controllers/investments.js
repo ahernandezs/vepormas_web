@@ -9,13 +9,13 @@ angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', '
     params.numPage = 0;
     params.size = 100;
 
-    accountsProvider.getAccountDetail($stateParams.accountId+'-'+$scope.selectedAccountType).then(
+    accountsProvider.getAccountDetail($stateParams.accountId).then(
       function(data) {
         $scope.investmentHeader = $rootScope.accountDetail.investment;
       }
     );
 
-    accountsProvider.getTransactions($scope.selectedAcccountId+'-'+$scope.selectedAccountType, params).then(
+    accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
         function(data){
             $scope.investmentTransactions = $rootScope.transactions;
         });
@@ -23,7 +23,7 @@ angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', '
     $scope.getTransactions = function(date_start, date_end){
         params.date_end = date_end;
         params.date_start = date_start;
-        accountsProvider.getTransactions($scope.selectedAcccountId+'-'+$scope.selectedAccountType, params).then(
+        accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
             function(data){
                 $scope.investmentTransactions = $rootScope.transactions;
         });
