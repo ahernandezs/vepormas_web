@@ -60,9 +60,7 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
   $scope.getTransactions = function(previousPeriod){
     if($scope.previousPeriod !== previousPeriod) {
       $scope.previousPeriod = previousPeriod;
-      if(previousPeriod) {
-        params.previousPeriod = true;
-      }
+      params.previousPeriod = previousPeriod;
       accountsProvider.getTransactions($scope.selectedAcccountId+'-'+$scope.selectedAccountType, params).then(
           function(data){
             $scope.creditCardTransactions = $rootScope.transactions;
