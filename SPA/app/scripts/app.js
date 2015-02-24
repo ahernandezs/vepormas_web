@@ -92,7 +92,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         }
       }
     })
-  
+
     .state('dashboard.transfers', {
         url: 'transfers',
         views: {
@@ -102,7 +102,7 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         }
       }
     })
-  
+
     .state('dashboard.investments', {
         url: 'investments',
         views: {
@@ -129,6 +129,12 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
     controller: 'RegisterCtrl'
     })
 
+    .state('password', {
+        url: '/changepassword',
+        templateUrl: 'views/change.html',
+        controller: 'ChangeCtrl'
+    })
+
   }]);
 
 app.run(['api', '$window', '$rootScope',function(api, $window, $rootScope) {
@@ -147,6 +153,3 @@ app.run(['api', '$window', '$rootScope',function(api, $window, $rootScope) {
     }
   }
 }]);
-
-
-
