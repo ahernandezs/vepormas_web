@@ -45,13 +45,13 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 		$scope.showStatement = false;
 	};
 
-  accountsProvider.getAccountDetail($stateParams.accountId+'-TDC').then(
+  accountsProvider.getAccountDetail($stateParams.accountId).then(
       function(data) {
 		$scope.creditsHeader = $rootScope.accountDetail.credit_card;
       }
     );
 
-	accountsProvider.getTransactions($scope.selectedAcccountId+'-'+$scope.selectedAccountType, params).then(
+	accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
 		function(data){
 			$scope.creditCardTransactions = $rootScope.transactions;
 		}
@@ -60,10 +60,8 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
   $scope.getTransactions = function(previousPeriod){
     if($scope.previousPeriod !== previousPeriod) {
       $scope.previousPeriod = previousPeriod;
-      if(previousPeriod) {
-        params.previousPeriod = true;
-      }
-      accountsProvider.getTransactions($scope.selectedAcccountId+'-'+$scope.selectedAccountType, params).then(
+      params.previousPeriod = previousPeriod;
+      accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
           function(data){
             $scope.creditCardTransactions = $rootScope.transactions;
           }
