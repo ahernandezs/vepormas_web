@@ -16,4 +16,15 @@ angular.module('spaApp').service('adminService', ['$http','$rootScope', function
 		});
 	};
 
+	this.updatePassword = function(current_pass, new_pass){
+		return $http({
+			url: $rootScope.restAPIBaseUrl+'/userInformation/password',
+			method: 'put',
+			data: JSON.stringify({
+				'current': current_pass,
+				'password': new_pass
+			})
+		});
+	}
+
 }]);
