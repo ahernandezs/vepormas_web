@@ -39,7 +39,7 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 			var deferred = $q.defer();
 			adminService.updatePassword(current_pass, new_pass).success(function(){
 				deffered.resolve();
-			}).error(fucntion(data, status){
+			}).error(function(data, status){
 				return deferred.reject("Error changing password");
 			})
 			return deferred.promise;
