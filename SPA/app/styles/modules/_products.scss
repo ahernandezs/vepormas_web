@@ -278,7 +278,8 @@ hr[ng-show="!showAccountHeader"]{
 	padding:0;
 	margin: -4px 0 0 10%;
 	p{
-		width: 35%;
+		width: 50%;
+		
 	}
 }
 .search .inline{
@@ -317,7 +318,7 @@ hr[ng-show="!showAccountHeader"]{
 	}
 	input{
 		padding:8px;
-		width: 55%;
+		width: 50%;
 		border:1px solid $gray;
 		@include border-radius(4px);
 	}
