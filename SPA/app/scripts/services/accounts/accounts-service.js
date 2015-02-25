@@ -24,8 +24,10 @@ angular.module('spaApp')
 
             var search = '';
             var searchParams = [];
-            params.date_start? searchParams.push('date_start=' + params.date_start) : '';
-            params.date_end? searchParams.push('date_end=' + params.date_end) : '';
+            var startDate = $.datepicker.formatDate("yy-mm-dd", params.date_start);
+            var endDate = $.datepicker.formatDate("yy-mm-dd", params.date_end);
+            params.date_start? searchParams.push('date_start=' + startDate) : '';
+            params.date_end? searchParams.push('date_end=' + endDate) : '';
             params.previousPeriod? searchParams.push('previous_period=true') : '';
             searchParams.length > 0 ? optionsParams.push('search=' + encodeURIComponent(searchParams.join('&'))) : '';
 
