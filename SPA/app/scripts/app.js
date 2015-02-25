@@ -24,16 +24,23 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
   $httpProvider.interceptors.push('httpInterceptor');
 
   $stateProvider
+
     .state('login', {
-    url: '/login',
-    templateUrl: 'views/login.html',
-    controller: 'LoginCtrl'
+      url: '/login',
+      templateUrl: 'views/login.html',
+      controller: 'LoginCtrl'
     })
 
     .state('map',{
       url: '/map',
       templateUrl: 'views/map.html',
       controller: 'MapCtrl'
+    })
+
+    .state('register', {
+      url: '/register',
+      templateUrl: 'views/register.html',
+      controller: 'RegisterCtrl'
     })
 
     .state('dashboard', {
@@ -49,6 +56,36 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
         'accountContent' : {
           templateUrl: 'views/accounts.html',
           controller: 'AccountsCtrl'
+        }
+      }
+    })
+
+    .state('dashboard.transfers', {
+        url: 'transfers',
+        views: {
+        'transferContent' : {
+          templateUrl: 'views/transfers.html',
+          controller: 'TransfersCtrl'
+        }
+      }
+    })
+
+    .state('dashboard.investments', {
+        url: 'investments',
+        views: {
+            'investmentsContent' : {
+                templateUrl: 'views/portfolio.html',
+                controller: 'PortfolioCtrl'
+            }
+        }
+    })
+
+    .state('dashboard.administration', {
+        url: 'administration',
+        views: {
+        'administrationContent' : {
+          templateUrl: 'views/administration.html',
+          controller: 'AdminCtrl'
         }
       }
     })
@@ -91,48 +128,6 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
          controller: 'creditCtrl'
         }
       }
-    })
-
-    .state('dashboard.transfers', {
-        url: 'transfers',
-        views: {
-        'transferContent' : {
-          templateUrl: 'views/transfers.html',
-          controller: 'TransfersCtrl'
-        }
-      }
-    })
-
-    .state('dashboard.investments', {
-        url: 'investments',
-        views: {
-            'investmentsContent' : {
-                templateUrl: 'views/portfolio.html',
-                controller: 'PortfolioCtrl'
-            }
-        }
-    })
-
-    .state('dashboard.administration', {
-        url: 'administration',
-        views: {
-        'administration' : {
-          templateUrl: 'views/administration.html',
-          controller: 'adminCtrl'
-        }
-      }
-    })
-
-    .state('register', {
-    url: '/register',
-    templateUrl: 'views/register.html',
-    controller: 'RegisterCtrl'
-    })
-
-    .state('password', {
-        url: '/changepassword',
-        templateUrl: 'views/change.html',
-        controller: 'ChangeCtrl'
     })
 
   }]);

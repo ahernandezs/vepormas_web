@@ -1,17 +1,14 @@
 <div class="submenu">
 	<nav>
 		<ul>
-			<li><a href="#">Preferencias y Seguridad</a></li>
+			<li><a ng-click="selectOption('preferences')">Preferencias y Seguridad</a></li>
 			<li><a href="#">Tarjetas</a></li>
 			<li><a href="#">Bit&aacute;cora de operaciones</a></li>
-			<li><a href="#">Beneficiarios</a></li>
+			<li><a ng-click="selectOption('beneficiaries')">Beneficiarios</a></li>
 			<li><a href="#">Contratos</a></li>
 		</ul>
 	</nav>
 </div>
-<div ng-switch on="selection">
-    <div class="animate-switch" ng-switch-when="1">
-        <div ng-include="'views/partials/admin/beneficiary.html'">
-        </div>
-    </div>
-</div>
+
+<div ng-include="'views/partials/admin/beneficiary.html'">
+

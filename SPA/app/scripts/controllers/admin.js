@@ -1,6 +1,19 @@
 'use strict';
 
-angular.module('spaApp').controller('adminCtrl', ['$rootScope', '$scope', 'adminProvider', function ($rootScope, $scope, adminProvider) {
+angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'adminProvider', '$location', function ($rootScope, $scope, adminProvider, $location) {
+
+    $scope.selectOption = function(opt) {
+		switch (opt) {
+			case 'beneficiaries':
+				$location.path('/beneficiaries');
+				break;
+			case 'preferences':
+				$location.path('/preferences');
+				break;
+			default:
+				break;
+		}
+	};
 
 	$scope.selection = 1;
 	$scope.action = 1;

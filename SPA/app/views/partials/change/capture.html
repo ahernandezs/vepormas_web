@@ -16,7 +16,7 @@
                 <span>Repite la nueva contraseña</span>
                 <input ng-model="change.repeatNew" type="password" class="input-password" placeholder="Repita nueva contrase&ntilde;a" ng-required="true">
             </label>
-            <div class="error" ng-show="error">{{errorMessage}}</div>
+            <div class="error" ng-show="showError">{{errorMessage}}</div>
             <button ng-disabled="changeForm.$invalid" ng-click="verifyNewPass()">Cambiar</button>
         </form>
     </div>
