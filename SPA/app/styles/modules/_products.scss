@@ -301,7 +301,7 @@ hr[ng-show="!showAccountHeader"]{
 	}
 	h4, p{
 		float:left;
-		margin: 0 5px;
+		margin: 5px 0 5px 0;
 	}
 	button{
 		float:right;
@@ -317,7 +317,7 @@ hr[ng-show="!showAccountHeader"]{
 	}
 	input{
 		padding:8px;
-		width: 40%;
+		width: 55%;
 		border:1px solid $gray;
 		@include border-radius(4px);
 	}
@@ -326,7 +326,6 @@ hr[ng-show="!showAccountHeader"]{
 		border-color:$orange;
 	}
 	p{
-		width: 25%;
 		color:$dgray;
 		font-size: 14px;
 	}
