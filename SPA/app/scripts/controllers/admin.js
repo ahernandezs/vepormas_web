@@ -2,22 +2,13 @@
 
 angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'adminProvider', '$location', function ($rootScope, $scope, adminProvider, $location) {
 
-    $scope.selectOption = function(opt) {
-		switch (opt) {
-			case 'beneficiaries':
-				$location.path('/beneficiaries');
-				break;
-			case 'preferences':
-				$location.path('/preferences');
-				break;
-			default:
-				break;
-		}
-	};
-
+	$scope.adminOpt = 4;
 	$scope.selection = 1;
 	$scope.action = 1;
 	$scope.data = {otp:''}
+    $scope.stage = 1;
+    $scope.change = {};
+
 
 	$scope.selectBeneficiary = function(account){
 		$scope.action = 2;
@@ -57,5 +48,40 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 		$scope.third_accounts_others = third_accounts_others;
 
 	});
+
+
+    /**
+     * Evaluates if the new passwords are equals.
+     */
+    $scope.verifyNewPass = function () {
+
+        console.log('verificando')
+
+        if( $scope.change.new == '' ||  $scope.change.repeatNew == '' || $scope.change.old == '' ){
+            $scope.errorMessage = "Favor de completar todos los campos";
+            $scope.showError = true;
+        }
+
+        if ( $scope.change.new !== $scope.change.repeatNew ){
+            $scope.errorMessage = "Las contraseñas no coinciden";
+            $scope.showError = true;
+        }else{
+            $scope.stage = 2;
+        }
+    };
+
+    /**
+     * Send the new password to the service.
+     */
+    $scope.modifyPassword = function() {
+        adminProvider.updatePassword($scope.change.old, $scope.change.new).then(function(data){
+            console.log('result: '+data);
+        });
+        $scope.stage = 3;
+    };
+
+
+
+
 
 }]);
