@@ -1,0 +1,41 @@
+<div class="container">
+	
+	<div class="left" style="border: 1px grey solid; width:30%; height:400px">
+		<span>Opciones de seguridad</span><br>
+		<ul>
+			<li>Informaci&oacute;n de la cuenta</li>
+			<li>Mi token</li>
+			<li>Alertas y notificaciones</li>
+		</ul>
+	</div>
+	
+	<div class="right" sytle="width:30%;">
+		<div style="border: 1px grey solid;">
+			<span>Cancelar mi servicio</span>
+			<p>Cancelar mi servicio desactiva todas las funciones de <br>Consubanco relacionadas a tu cuenta. <br>
+			Para reactivarlo es necesario acudir a tu sucursal <br>más cercana y solicitar la reactivaci&oacute;n.</p><br>
+			<button>Quiero suspender mi servicio temporalmente</button><br>
+			<button>Quiero cancelar mi servicio</button>
+		</div>
+		<div style="border: 1px grey solid">
+			<div ng-include="'views/partials/admin/capture.html'"></div>
+		</div>
+	</div>
+
+	<div class="center" style="border: 1px grey solid; width:30%;">
+		<div>
+			<span>Informaci&oacute;n de la cuenta</span><br>
+			¿A dónde te enviaremos tus estados de cuenta, notificaciones y <br> alertas sobre la actividad de tus cuentas?<br>
+			<input type="text" placeholder="Calle o avenida"><br>
+			<input type="text" placeholder="Colonia"><br>
+			<input type="text" placeholder="Delegación /Municipio"><input type="text" placeholder="Código Postal"><br>
+			<input type="text" placeholder="Estado"><br>
+			<input type="text" placeholder="Correo electrónico"><br>
+			<input type="text" placeholder="Confirmar correo electrónico"><br>
+			<input type="text" placeholder="Celular (opcional)"><br>
+			<input type="text" placeholder="Confirmar celular (opcional)"><br>
+			<button>Continuar</button>
+		</div>
+	</div>
+
+</div>

@@ -1,17 +1,15 @@
 <div class="submenu">
 	<nav>
 		<ul>
-			<li><a href="#">Preferencias y Seguridad</a></li>
-			<li><a href="#">Tarjetas</a></li>
-			<li><a href="#">Bit&aacute;cora de operaciones</a></li>
-			<li><a href="#">Beneficiarios</a></li>
-			<li><a href="#">Contratos</a></li>
+			<li><a ng-click="adminOpt = 1" ng-class="{'active':adminOpt == 1}">Preferencias y Seguridad</a></li>
+			<li><a ng-click="adminOpt = 2" ng-class="{'active':adminOpt == 2}">Tarjetas</a></li>
+			<li><a ng-click="adminOpt = 3" ng-class="{'active':adminOpt == 3}">Bit&aacute;cora de operaciones</a></li>
+			<li><a ng-click="adminOpt = 4" ng-class="{'active':adminOpt == 4}">Beneficiarios</a></li>
+			<li><a ng-click="adminOpt = 5" ng-class="{'active':adminOpt == 5}">Contratos</a></li>
 		</ul>
 	</nav>
 </div>
-<div ng-switch on="selection">
-    <div class="animate-switch" ng-switch-when="1">
-        <div ng-include="'views/partials/admin/beneficiary.html'">
-        </div>
-    </div>
-</div>
+
+<div ng-show="adminOpt == 1" ng-include="'views/partials/admin/admin.html'"></div>
+<div ng-show="adminOpt == 4" ng-include="'views/partials/admin/beneficiary.html'"></div>
+
