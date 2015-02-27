@@ -8,6 +8,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 	$scope.data = {otp:''}
     $scope.stage = 1;
     $scope.change = {};
+    $scope.stage_password = 1;
 
 
 	$scope.selectBeneficiary = function(account){
@@ -49,24 +50,16 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 
 	});
 
-
     /**
      * Evaluates if the new passwords are equals.
      */
     $scope.verifyNewPass = function () {
 
-        console.log('verificando')
-
-        if( $scope.change.new == '' ||  $scope.change.repeatNew == '' || $scope.change.old == '' ){
-            $scope.errorMessage = "Favor de completar todos los campos";
-            $scope.showError = true;
-        }
-
         if ( $scope.change.new !== $scope.change.repeatNew ){
             $scope.errorMessage = "Las contraseñas no coinciden";
             $scope.showError = true;
         }else{
-            $scope.stage = 2;
+            $scope.stage_password = 2;
         }
     };
 
@@ -74,14 +67,10 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
      * Send the new password to the service.
      */
     $scope.modifyPassword = function() {
-        adminProvider.updatePassword($scope.change.old, $scope.change.new).then(function(data){
-            console.log('result: '+data);
+        adminProvider.updatePassword($scope.change.old, $scope.change.new, $scope.change.otp).then(function(data){
+            console.log('Password modified correctly');
         });
-        $scope.stage = 3;
+        $scope.stage_password = 3;
     };
-
-
-
-
 
 }]);
