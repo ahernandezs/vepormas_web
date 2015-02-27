@@ -32,7 +32,10 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
         $location.path('login');
       },
       function(data){
-        logoutService.setErrorMessage('Problema durante el cierre de sesion. Su sesion sera cerrada atomaticamente.');
+        logoutService.displayErrorMessage();
+        timerService.stop();
+        $rootScope.session_token = null;
+        $location.path('login');
       });
   };
 
