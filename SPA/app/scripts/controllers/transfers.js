@@ -236,4 +236,11 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         $scope.errorMessage = null;
     }
 
+    /**
+     * return true if user has full accesses
+     */
+    $scope.isCompleteUser = function(){
+        return userProvider.isCompleteUser();
+    }
+
 }]);

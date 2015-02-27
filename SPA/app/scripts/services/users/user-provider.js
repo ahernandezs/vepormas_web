@@ -39,6 +39,11 @@ angular.module('spaApp')
     */
   var _preRegistrationData;
 
+  /**
+   * the currently logged user
+   */
+  var currentLoggedUser;
+
   return {
     
     /**
@@ -52,7 +57,7 @@ angular.module('spaApp')
      * setter for image_id
      */
     setImageId : function(imageId){
-      _imageId = imageId;
+      _imageId = imageId.toString();
     },
 
     /**
@@ -122,8 +127,19 @@ angular.module('spaApp')
         return deferred.reject(result);
       })
       return  deferred.promise;
-    }
+    },
 
-  }
+    setCurrentUser: function(data){
+      currentLoggedUser = data;
+    },
+
+    isCompleteUser: function(){
+      var result = false;
+      if(currentLoggedUser != null && currentLoggedUser.role_id == 1){
+        result = true;
+      }
+      return result;
+    }
+  };
 }
 ]);

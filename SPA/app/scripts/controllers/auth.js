@@ -107,6 +107,7 @@ angular.module('spaApp')
           $rootScope.last_access_date = data.last_access_date
           $rootScope.last_access_media = data.last_client_application_id;
           $rootScope.client_name = data.client_name;
+          userProvider.setCurrentUser(data);
           api.init();
           $location.path( '/accounts' );
           timerService.start();

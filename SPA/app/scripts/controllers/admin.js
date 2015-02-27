@@ -1,8 +1,14 @@
 'use strict';
 
-angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'adminProvider', '$location', function ($rootScope, $scope, adminProvider, $location) {
+angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'adminProvider', '$location', 'userProvider', function ($rootScope, $scope, adminProvider, $location, userProvider) {
 
-	$scope.adminOpt = 4;
+	//if the user has full access, the default page is the configuration one. otherwise it is the contract-information page
+	if(userProvider.isCompleteUser()){
+		$scope.adminOpt = 4;
+	}else{
+		$scope.adminOpt = 5;
+	}
+	
 	$scope.selection = 1;
 	$scope.action = 1;
 	$scope.data = {otp:''}
@@ -71,6 +77,13 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
             console.log('Password modified correctly');
         });
         $scope.stage_password = 3;
+    };
+
+    /**
+     * return true if user has full accesses
+     */
+    $scope.isCompleteUser = function(){
+        return userProvider.isCompleteUser();
     };
 
 }]);
