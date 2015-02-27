@@ -5,17 +5,17 @@
         <hr>
         <div class="user-data">
             <form class="token-form" name="tokenForm">
-                <label class="fieldContainer" ng-class="registerData.token.length > 0 ? 'selected' : ''">
+                <label class="fieldContainer" ng-class="tokenForm.token.$viewValue.length > 0 ? 'selected' : ''">
                      <span>No. de Serie del Token</span>
-                    <input type="text" ng-model="registerData.token" placeholder="No. de Serie del Token">
+                    <input type="text" name="token" ng-model="registerData.token" placeholder="No. de Serie del Token">
                 </label>
-                <label class="fieldContainer" ng-class="registerData.opt1.length > 0 ? 'selected' : ''">
+                <label class="fieldContainer" ng-class="tokenForm.otp1.$viewValue.length > 0 ? 'selected' : ''">
                      <span>OPT 1</span>
-                    <input type="text" ng-model="registerData.opt1" placeholder="OPT 1">
+                    <input type="text" name="otp1" ng-model="registerData.opt1" placeholder="OPT 1">
                 </label>
-                <label class="fieldContainer" ng-class="registerData.opt2.length > 0 ? 'selected' : ''">
+                <label class="fieldContainer" ng-class="tokenForm.otp2.$viewValue.length > 0 ? 'selected' : ''">
                      <span>OPT 2</span>
-                    <input type="text" ng-model="registerData.opt2" placeholder="OPT 2">
+                    <input type="text" name="otp2" ng-model="registerData.opt2" placeholder="OPT 2">
                 </label>
                 <label class="termns">
                     <input type="checkbox" name="legal" id="legal" value="yes" ng-model="registerData.acceptLegalMention" ng-required="!registerData.acceptLegalMention">

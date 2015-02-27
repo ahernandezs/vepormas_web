@@ -5,22 +5,22 @@
 <hr>
         <div class="user-data">
             <form class="contact-form" name="contactForm">
-                <label class="fieldContainer" ng-class="registerData.email.length > 0 ? 'selected' : ''">
+                <label class="fieldContainer" ng-class="contactForm.email.$viewValue.length > 0 ? 'selected' : ''">
                     <span>Correo electr&oacute;nico</span>
                     <input type="email" name="email" class="input-mail" ng-model="registerData.email" placeholder="Correo electr&oacute;nico">
                 </label>
-                <label class="fieldContainer" ng-class="registerData.repeatEmail.length > 0 ? 'selected' : ''">
+                <label class="fieldContainer" ng-class="contactForm.repeatEmail.$viewValue.length > 0 ? 'selected' : ''">
                     <span class="double">Confirmar<br>correo electr&oacute;nico</span>
                     <input type="email" name="repeatEmail" class="input-mail" ng-model="registerData.repeatEmail" placeholder="Confirma correo electr&oacute;nico">
                 </label>
                 <div class="error" ng-show="contactForm.email.$error.email">Email invalido</div>
-                <label class="fieldContainer" ng-class="registerData.cellphone.length > 0 ? 'selected' : ''">
+                <label class="fieldContainer" ng-class="contactForm.cellphone.$viewValue.length > 0 ? 'selected' : ''">
                     <span>Celular</span>
-                    <input type="tel" class="input-mobile" ng-model="registerData.cellphone" ng-pattern="/^[0-9]{1,10}$/" minlength="10" maxlength="10" placeholder="Celular">
+                    <input type="tel" name="cellphone" class="input-mobile" ng-model="registerData.cellphone" ng-pattern="/^[0-9]{1,10}$/" minlength="10" maxlength="10" placeholder="Celular">
                 </label>
-                <label class="fieldContainer" ng-class="registerData.repeatCellphone.length > 0 ? 'selected' : ''">
+                <label class="fieldContainer" ng-class="contactForm.repeatCellphone.$viewValue.length > 0 ? 'selected' : ''">
                     <span>Confirma celular</span>
-                    <input type="tel" class="input-mobile" ng-model="registerData.repeatCellphone" ng-pattern="/^[0-9]{1,10}$/" minlength="10" maxlength="10" placeholder="Confirma celular">
+                    <input type="tel" name="repeatCellphone" class="input-mobile" ng-model="registerData.repeatCellphone" ng-pattern="/^[0-9]{1,10}$/" minlength="10" maxlength="10" placeholder="Confirma celular">
                 </label>
                 <div class="separate">
                     <p>&iquest;Por qu&eacute; medio quieres ser notificado&quest;</p>

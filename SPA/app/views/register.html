@@ -9,15 +9,15 @@
                         <h3>Registro de Usuario {{selection}}</h3>
                         <progress max="5" value="{{selection-1}}"></progress>
                         <ul>
-                            <li ng-class="selection>=1?'active' : ''"><a href="javascript:void(0);" ng-click="selection=1">Confirmaci&oacute;n</a></li>
-                            <li ng-class="selection>=2 ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection=2">Registro</a></li>
-                            <li ng-class="selection>=3 ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection=3">Nivel de Seguridad</a></li>
-                            <li ng-class="selection>=4 ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection=4">Notificaciones</a></li>
-                            <li ng-class="selection>=5 ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection=5">Token</a></li>
-                            <li ng-class="selection>=6 ? 'active' : ''"><a href="javascript:void(0);" ng-click="selection=6">Finalizado</a></li>
+                            <li ng-class="selection>=1?'active' : ''"><a href="javascript:void(0);" ng-click="changeState(1)">Confirmaci&oacute;n</a></li>
+                            <li ng-class="selection>=2 ? 'active' : ''"><a href="javascript:void(0);" ng-click="changeState(2)">Registro</a></li>
+                            <li ng-class="selection>=3 ? 'active' : ''"><a href="javascript:void(0);" ng-click="changeState(3)">Nivel de Seguridad</a></li>
+                            <li ng-class="selection>=4 ? 'active' : ''"><a href="javascript:void(0);" ng-click="changeState(4)">Notificaciones</a></li>
+                            <li ng-class="selection>=5 ? 'active' : ''"><a href="javascript:void(0);" ng-click="changeState(5)">Token</a></li>
+                            <li ng-class="selection>=6 ? 'active' : ''"><a href="javascript:void(0);" ng-click="changeState(6)">Finalizado</a></li>
                         </ul>
                     </div>
-                    
+
                     <div ng-switch on="selection">
                         <div class="animate-switch" ng-switch-when="1">
                             <div ng-include="'views/partials/register/first-step.html'">
@@ -48,7 +48,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </main>

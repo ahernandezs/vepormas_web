@@ -14,6 +14,12 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
     // the error's message (is incorrectData is true)
     $scope.errorMessage = null;
     
+
+    resetVisitedStates();
+
+  function resetVisitedStates() {
+    $scope.visitedStates = [false, false, false, false, false, false];
+  }
     /**
      * initialize the scope with the model's data (coming from the preRegister operation)
      */
@@ -32,17 +38,22 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         for (var i = 0; i < preRegisterData.images.length; i++) {
             $scope.images[i] = { 'id' : preRegisterData.images[i].image_id, 'url' : $rootScope.restAPIBaseUrl + '/' + preRegisterData.images[i].url };
         }
-        console.log( $scope.images );
     };
     
 	/**
 	 * go to the next flow's step
 	 */
-	 $scope.completeStep = function(nextStep){
-        $scope.error = false;
-        $scope.errorMessage = null;
-		$scope.selection = nextStep;
-	 }
+    $scope.completeStep = function(nextStep){
+      if(nextStep === $scope.visitedStates.length) { // we are at the end of the process
+        resetVisitedStates();
+      } else {
+        $scope.visitedStates[$scope.selection] = true; // the current selection was already discovered
+        $scope.visitedStates[nextStep] = true; // the next also is a valid state, even when is not valid yet
+      }
+      $scope.error = false;
+      $scope.errorMessage = null;
+      $scope.selection = nextStep;
+    }
 
 	/**
 	 * go back to the login page
@@ -52,6 +63,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         $scope.registerData = {};
         $scope.error = false;
         $scope.errorMessage = null;
+    userProvider.resetRegistrationToken();
 		$location.path( '/login' );
 	 }
 
@@ -149,4 +161,15 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         $scope.error = true;
         $scope.errorMessage = errorMessage;
     };
+
+  $scope.changeState = function(state) {
+    if($scope.visitedStates[state]) {
+      $scope.selection = state;
+    }
+  };
+
+  if(!userProvider.getRegistrationToken()) {
+    $scope.gotoLogin();
+    return;
+  }
 }]);
