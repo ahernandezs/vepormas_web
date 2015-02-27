@@ -34,6 +34,9 @@ angular.module('spaApp')
   $scope.checkingUser = false;
   $scope.isLogin = false;
 
+  // When we are in login page, reset registration token
+  userProvider.resetRegistrationToken();
+
   /**
     * cancel the authentication flow and go back to the first step
     */

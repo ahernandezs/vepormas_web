@@ -89,6 +89,21 @@ angular.module('spaApp')
     },
 
     /**
+     * getter for registrationToken
+     */
+    getRegistrationToken: function(){
+      return _registrationToken;
+    },
+
+    /**
+     * reset  registrationToken
+     */
+    resetRegistrationToken: function(){
+      _registrationToken = null;
+    },
+
+
+    /**
      * pre-register the client
      */
     preRegisterUser : function(folioId){

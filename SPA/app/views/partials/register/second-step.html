@@ -6,13 +6,13 @@
         <div class="user-data">
             <ng-form name="registerPasswordForm" class="register-pass">
                 <div>
-                    <label class="fieldContainer" ng-class="registerData.password.length > 0 ? 'selected' : ''">
+                    <label class="fieldContainer" ng-class="registerPasswordForm.password.$viewValue.length > 0 ? 'selected' : ''">
                         <span>Contraseña</span>
                         <input type="password" class="input-password" name="password" ng-model="registerData.password" placeholder="Contrase&ntilde;a" ng-pattern="/^([0-9]){0,2}([A-Za-z]{1,2}[0-9]{1,2})+([A-Za-z]){0,2}$/" ng-minlength="8" required>
                     </label>
-                    <label class="fieldContainer last" ng-class="registerData.repeatPass.length > 0 ? 'selected' : ''">
+                    <label class="fieldContainer last" ng-class="registerPasswordForm.repeatPass.$viewValue.length > 0 ? 'selected' : ''">
                         <span>Confirmar contraseña</span>
-                        <input type="password" class="input-password" ng-model="registerData.repeatPass" placeholder="Confirmar contrase&ntilde;a" required>
+                        <input type="password" class="input-password" name="repeatPass" ng-model="registerData.repeatPass" placeholder="Confirmar contrase&ntilde;a" required>
                     </label>
                 </div>
                 <div class="error" ng-show="error">{{errorMessage}}</div>
