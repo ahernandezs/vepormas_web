@@ -9,9 +9,8 @@ angular.module('spaApp')
       return options.hasError;
     };
 
-    this.setErrorMessage = function(message){
+    this.displayErrorMessage = function(){
       options.hasError = true;
-      options.message = message;
     };
 
     this.resetError = function(){
