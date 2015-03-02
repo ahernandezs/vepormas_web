@@ -17,7 +17,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
 
     resetVisitedStates();
 
-  function resetVisitedStates() {
+  function resetVisitedStates(role) {
     $scope.visitedStates = [false, false, false, false, false, false];
   }
     /**
@@ -34,6 +34,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         $scope.clientNumber = $scope.contract.client_id;
         $scope.bankBranch = $scope.contract.branch_name;
         $scope.date = $scope.contract.created_at;
+        $scope.roleID = $scope.contract.role_id;
         $scope.images = {};
         for (var i = 0; i < preRegisterData.images.length; i++) {
             $scope.images[i] = { 'id' : preRegisterData.images[i].image_id, 'url' : $rootScope.restAPIBaseUrl + '/' + preRegisterData.images[i].url };
@@ -131,7 +132,11 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         if(! error){
             userProvider.setEmail($scope.registerData.email);
             userProvider.setPhoneNumber($scope.registerData.cellphone);
-            $scope.completeStep(5);
+            if($scope.roleID === 1) {
+              $scope.completeStep(5);
+            } else {
+              registerUser();
+            }
         }
 	};
 
@@ -142,17 +147,31 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         if(! $scope.registerData.acceptLegalMention){
             setError("Debe aceptar los términos de Consubanco");
         }else{
-            userProvider.registerUser().then(
-                function(data) {
-                    console.log("register succeed");
-                    $scope.completeStep(6);
-                },
-                function(data, status) {
-                    setError("Ha ocurrido un error en el registro");
-                }
-            );
+          userProvider.setCardId($scope.registerData.token);
+          userProvider.setOtp1($scope.registerData.otp1);
+          userProvider.setOtp2($scope.registerData.otp2);
+          registerUser();
         }
     };
+
+    /**
+     * Register user
+     */
+    function registerUser() {
+      $scope.isRegistering = true;
+      userProvider.registerUser().then(
+          function(data) {
+            console.log("register succeed");
+            $scope.isRegistering = false;
+            $scope.completeStep(6);
+          },
+          function(data, status) {
+            $scope.isRegistering = false;
+            setError("Ha ocurrido un error en el registro");
+          }
+          );
+
+    }
 
     /**
      * private method: set an error on the register flow

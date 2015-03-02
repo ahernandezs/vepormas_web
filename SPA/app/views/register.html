@@ -7,13 +7,14 @@
                 <div class="row">
                     <div class="steps">
                         <h3>Registro de Usuario {{selection}}</h3>
-                        <progress max="5" value="{{selection-1}}"></progress>
+                        <progress ng-show="roleID == 1" max="5" value="{{selection-1}}"></progress>
+                        <progress class="four-steps" ng-show="roleID == 0" max="4" value="{{selection-1}}"></progress>
                         <ul>
                             <li ng-class="selection>=1?'active' : ''"><a href="javascript:void(0);" ng-click="changeState(1)">Confirmaci&oacute;n</a></li>
                             <li ng-class="selection>=2 ? 'active' : ''"><a href="javascript:void(0);" ng-click="changeState(2)">Registro</a></li>
                             <li ng-class="selection>=3 ? 'active' : ''"><a href="javascript:void(0);" ng-click="changeState(3)">Nivel de Seguridad</a></li>
                             <li ng-class="selection>=4 ? 'active' : ''"><a href="javascript:void(0);" ng-click="changeState(4)">Notificaciones</a></li>
-                            <li ng-class="selection>=5 ? 'active' : ''"><a href="javascript:void(0);" ng-click="changeState(5)">Token</a></li>
+                            <li ng-show="roleID === 1" ng-class="selection>=5 ? 'active' : ''"><a href="javascript:void(0);" ng-click="changeState(5)">Token</a></li>
                             <li ng-class="selection>=6 ? 'active' : ''"><a href="javascript:void(0);" ng-click="changeState(6)">Finalizado</a></li>
                         </ul>
                     </div>

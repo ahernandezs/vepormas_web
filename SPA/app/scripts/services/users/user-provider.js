@@ -44,6 +44,21 @@ angular.module('spaApp')
    */
   var currentLoggedUser;
 
+  /**
+   * token card ID
+   */
+  var _cardId;
+
+  /**
+   * otp 1
+   */
+  var _otp1;
+
+  /**
+   * otp 2
+   */
+  var _otp2;
+
   return {
     
     /**
@@ -82,6 +97,27 @@ angular.module('spaApp')
     },
 
     /**
+     * setter for card id
+     */
+    setCardId : function(cardId){
+      _cardId = cardId;
+    },
+
+    /**
+     * setter for otp 1
+     */
+    setOtp1 : function(otp1){
+      _otp1 = otp1;
+    },
+
+    /**
+     * setter for otp 2
+     */
+    setOtp2 : function(otp2){
+      _otp2 = otp2;
+    },
+
+    /**
      * getter for preRegistrationData
      */
     getPreRegistrationData: function(){
@@ -100,6 +136,9 @@ angular.module('spaApp')
      */
     resetRegistrationToken: function(){
       _registrationToken = null;
+      _cardId = null;
+      _otp1 = null;
+      _otp2 = null;
     },
 
 
@@ -124,7 +163,23 @@ angular.module('spaApp')
 
     registerUser: function(){
       var deferred = $q.defer();
-      userService.registerUser(_registrationToken, _imageId, _password, _email, _phoneNumber)
+      var params = {
+        'image_id':_imageId,
+        'password':_password,
+        'e_mail':_email,
+        'phone': _phoneNumber
+      };
+
+      if(_cardId) {
+        var tokenParams = {
+          'secret_card_id':_cardId,
+          'otp':_otp1,
+          'otp2': _otp2
+        }
+
+        params = $.extend({}, params, tokenParams);
+      }
+      userService.registerUser(_registrationToken, params)
       .success(function(data, status, headers){
         deferred.resolve();
       }).error(function(data, status){

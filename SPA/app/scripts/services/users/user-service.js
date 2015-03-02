@@ -15,16 +15,11 @@ angular.module('spaApp')
 		});
 	}
 
-	this.registerUser = function(registrationToken, imageId, password, email, cellPhone){
+	this.registerUser = function(registrationToken, params){
 		return $http({
 				url: $rootScope.restAPIBaseUrl+'/register',
 				method: 'POST',
-				data: JSON.stringify({
-					'image_id':imageId,
-					'password':password,
-					'e_mail':email,
-					'phone': cellPhone
-				}),
+				data: JSON.stringify(params),
 				headers: {'X-REGISTER-TOKEN': registrationToken}
 		});
 	}
