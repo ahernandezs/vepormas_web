@@ -11,11 +11,11 @@
                 </label>
                 <label class="fieldContainer" ng-class="tokenForm.otp1.$viewValue.length > 0 ? 'selected' : ''">
                      <span>OPT 1</span>
-                    <input type="text" name="otp1" ng-model="registerData.opt1" placeholder="OPT 1">
+                    <input type="text" name="otp1" ng-model="registerData.otp1" placeholder="OTP 1">
                 </label>
                 <label class="fieldContainer" ng-class="tokenForm.otp2.$viewValue.length > 0 ? 'selected' : ''">
                      <span>OPT 2</span>
-                    <input type="text" name="otp2" ng-model="registerData.opt2" placeholder="OPT 2">
+                    <input type="text" name="otp2" ng-model="registerData.otp2" placeholder="OTP 2">
                 </label>
                 <label class="termns">
                     <input type="checkbox" name="legal" id="legal" value="yes" ng-model="registerData.acceptLegalMention" ng-required="!registerData.acceptLegalMention">
@@ -24,7 +24,7 @@
             </form>
             <div class="error" ng-show="error">{{errorMessage}}</div>
             <button ng-click="gotoLogin()">Cancelar</button>
-            <button ng-click="confirmToken()" ng-disabled="tokenForm.$invalid">Continuar</button>
+            <button ng-click="confirmToken()" ng-disabled="tokenForm.$invalid || isRegistering">Continuar</button>
         </div>
     </div>
     <div class="help">
