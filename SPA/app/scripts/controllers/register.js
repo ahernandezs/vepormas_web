@@ -17,7 +17,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
 
     resetVisitedStates();
 
-  function resetVisitedStates(role) {
+  function resetVisitedStates() {
     $scope.visitedStates = [false, false, false, false, false, false];
   }
     /**
