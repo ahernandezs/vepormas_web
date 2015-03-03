@@ -10,18 +10,14 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
     getAccounts: function () {
       var deferred = $q.defer();
 
-      if(!$rootScope.accounts) {
-        console.log('getting accounts');
-        accountsService.getAccounts().success(function(data, status, headers) {
-          $rootScope.accounts = data.accounts;
-          deferred.resolve();
-        }).error(function(data, status) {
-          console.log(data, status);
-          return deferred.reject("Error getting accounts");
-        });
-      } else {
+      console.log('getting accounts');
+      accountsService.getAccounts().success(function(data, status, headers) {
+        $rootScope.accounts = data.accounts;
         deferred.resolve();
-      }
+      }).error(function(data, status) {
+        console.log(data, status);
+        return deferred.reject("Error getting accounts");
+      });
 
       return deferred.promise;
     },
