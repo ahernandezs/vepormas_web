@@ -17,9 +17,9 @@
             </select>
         </div>
         <div class="select-style" ng-class="transfer.destiny ? 'selected' : ''">
-            <span>Cuenta deposito</span>
+            <span>Cuenta dep&oacute;sito</span>
             <select ng-model="transfer.destiny" ng-required="true" ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | byAccountType:['DEP', 'DEB_T'] | filter : { _account_id: '!' + transfer.account._account_id }">
-                <option value="">Cuenta deposito</option>
+                <option value="">Cuenta dep&oacute;sito</option>
             </select>
         </div>
         <label class="fieldContainer" ng-class="transfer.amount.length > 0 ? 'selected' : ''">
