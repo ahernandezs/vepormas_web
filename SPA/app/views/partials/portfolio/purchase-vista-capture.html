@@ -12,7 +12,7 @@
     <form name="investmentForm">
         <div class="select-style" ng-class="investment.depositAccount ? 'selected' : ''">
             <span>Cuenta retiro</span>
-            <select ng-model="investment.depositAccount" 
+            <select ng-model="investment.depositAccount"
                     ng-options="item as item.name for item in depositAccounts" required>
                 <option value="">Cuenta retiro</option>
             </select>
@@ -26,7 +26,7 @@
         <span>
             <label class="fieldContainer" ng-class="!investmentForm.amount.$error.required ? 'selected' : ''">
                 <span class="big">Importe de inversi&oacute;n</span>
-                <input type="text" name="amount" ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" pattern="^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$" required>
+                <input type="text" name="amount" ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" maxlength="15" pattern="^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$" required>
             </label>
         </span>
     </form>

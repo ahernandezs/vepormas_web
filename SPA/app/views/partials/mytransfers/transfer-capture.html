@@ -24,7 +24,7 @@
         </div>
         <label class="fieldContainer" ng-class="transfer.amount.length > 0 ? 'selected' : ''">
             <span class="big">Importe</span>
-            <input type="text" ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true" ng-pattern="/^[^0][0-9]{1,}(\.[0-9]+)?$/">
+            <input type="text" ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true" ng-pattern="/^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/" maxlength="15">
         </label>
         <span class="optionalContainer" ng-if="transfer.destiny && transfer.destiny.account_type != 'DEP' && !transfer.destiny.same_bank">
             <div class="choices">
@@ -45,7 +45,7 @@
         </span>
         <label class="fieldContainer" ng-class="transfer.concept.length > 0 ? 'selected' : ''">
             <span>Concepto</span>
-            <input type="text" ng-model="transfer.concept" placeholder="Concepto" class="input-mail" ng-required="true">
+            <input type="text" ng-model="transfer.concept" placeholder="Concepto" class="input-mail" ng-required="true" maxlength="40">
         </label>
     </form>
     <div class="double-btn">

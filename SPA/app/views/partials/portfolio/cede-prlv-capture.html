@@ -19,7 +19,7 @@
         <div class="select-style" ng-class="investment.destinationProduct ? 'selected' : ''">
             <span>Producto de inversi&oacute;n</span>
             <select name="productId"
-                    ng-model="investment.destinationProduct" 
+                    ng-model="investment.destinationProduct"
                     ng-options="item as item.productName for item in investmentProducts | filter: { category: investmentCategory }" required>
                 <option value="">Producto de inversi&oacute;n</option>
             </select>
@@ -32,7 +32,7 @@
         </div>
          <label class="fieldContainer" ng-class="!investmentForm.amount.$error.required ? 'selected' : ''">
             <span class="big">Importe de inversi&oacute;n</span>
-            <input name="amount" type="text" ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" pattern="^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$" required>
+            <input name="amount" type="text" ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" maxlength="15" pattern="^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$" required>
         </label>
         <!--
         <input type="submit" value="Estimar" ng-click="calculateEstimation()" ng-disabled="!investmentForm.productId.$valid || !investmentForm.amount.$valid">
