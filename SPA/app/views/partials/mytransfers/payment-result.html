@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="message">
-        <p>Tu pago se ha realizado con &eacute;xito con n&uacute;mero de autorizacion <span>{{transferId}}</span></p>
+        <p>Tu pago se ha realizado con &eacute;xito con n&uacute;mero de autorizaci&oacute;n <span>{{transferId}}</span></p>
          <div class="print">
             <p>Imprimir</p>
         </div>
@@ -30,7 +30,7 @@
         </tr>
         <tr>
             <td>Hora de la transferencia:</td>
-            <td>{{today}}</td>
+            <td>{{today.getHours()}}:{{today.getMinutes()}} hrs.</td>
         </tr>
     </table>
     <div class="double-btn">
