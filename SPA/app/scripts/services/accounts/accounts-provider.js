@@ -102,6 +102,42 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
       //fill currentAccount with rootScope data
 
       return deferred.promise;
+    },
+
+    getStates: function(accountId){
+
+      var deferred = $q.defer();
+      console.log('getting list of statements');
+
+      accountsService.getStates(accountId).success(function(data, status, headers) {
+        $rootScope.statements = data.statements;
+        console.log(JSON.stringify($rootScope.statements));
+        deferred.resolve();
+      }).error(function(data, status) {
+        console.log(data, status);
+        return deferred.reject("Error getting statements");
+      });
+
+      return deferred.promise;
+
+    },
+
+    getState: function(accountId, id, format){
+
+      var deferred = $q.defer();
+      console.log('getting a statement');
+
+      accountsService.getState(accountId, id, format).success(function(data, status, headers) {
+        $rootScope.statement = data.statement;
+        deferred.resolve();
+      }).error(function(data, status) {
+        console.log(data, status);
+        return deferred.reject("Error getting statement");
+      });
+
+      return deferred.promise;
+
     }
+
   };
 }]);
