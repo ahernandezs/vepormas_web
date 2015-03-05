@@ -27,8 +27,8 @@
                 </tr>
             </thead>
             <tbody>
-                    <tr ng-repeat="statement in months">
-                        <td>{{statement.label}}</td>
+                    <tr ng-repeat="statement in statements" data-ng-click="getStatement(statement.id, 'XML');">
+                        <td>{{statement.date}}</td>
                         <td>Descargar PDF</td>
                         <td>Imprimir</td>
                     </tr>

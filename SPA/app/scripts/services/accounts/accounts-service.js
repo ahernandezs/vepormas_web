@@ -52,4 +52,14 @@ angular.module('spaApp')
             });
         }
 
+        this.getStates = function(accountId){
+            console.log($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/states');
+            return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/states');
+        }
+
+        this.getState = function(accountId, id, format){
+            console.log($rootScope.restAPIBaseUrl+'/files/statement?format='+format+'&id='+id+'&_account_id='+accountId);
+            return $http.get($rootScope.restAPIBaseUrl+'/files/statement?format='+format+'&id='+id+'&_account_id='+accountId);
+        }
+
 }]);
