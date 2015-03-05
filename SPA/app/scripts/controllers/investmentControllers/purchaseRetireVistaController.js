@@ -44,6 +44,13 @@ angular.module('spaApp').controller('purchaseRetireVistaCtrl', ['$rootScope', '$
     }
 
     /**
+     * Goes back one step.
+     */
+    $scope.goBack = function() {
+        $scope.step--;
+    };
+
+    /**
      * process a Rest-API onvocation error
      */
     function processServiceError(errorObject){

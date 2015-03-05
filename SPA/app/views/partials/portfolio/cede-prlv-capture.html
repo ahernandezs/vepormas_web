@@ -24,16 +24,16 @@
                 <option value="">Producto de inversi&oacute;n</option>
             </select>
         </div>
+         <label class="fieldContainer" ng-class="!investmentForm.amount.$error.required ? 'selected' : ''">
+            <span class="big">Importe de inversi&oacute;n</span>
+            <input name="amount" type="text" ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" maxlength="15" pattern="^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$" required>
+        </label>
         <div class="select-style" ng-class="investment.expirationInstruction ? 'selected' : ''">
             <span>Instrucciones al vencimiento</span>
             <select ng-model="investment.expirationInstruction" ng-options="opt as opt.label for opt in investmentInstructions" required>
                 <option value="">Instrucciones al vencimiento</option>
             </select>
         </div>
-         <label class="fieldContainer" ng-class="!investmentForm.amount.$error.required ? 'selected' : ''">
-            <span class="big">Importe de inversi&oacute;n</span>
-            <input name="amount" type="text" ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" maxlength="15" pattern="^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$" required>
-        </label>
         <!--
         <input type="submit" value="Estimar" ng-click="calculateEstimation()" ng-disabled="!investmentForm.productId.$valid || !investmentForm.amount.$valid">
         <div ng-show="investmentEstimation">

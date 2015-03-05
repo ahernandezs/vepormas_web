@@ -101,6 +101,13 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
         initialize();
      };
 
+    /**
+     * Goes back one step.
+     */
+    $scope.goBack = function() {
+        $scope.step--;
+    };
+
      /**
       * launch the investment operation
       */
