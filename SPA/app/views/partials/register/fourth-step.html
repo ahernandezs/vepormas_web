@@ -36,7 +36,7 @@
             </form>
             <div class="error" ng-show="error">{{errorMessage}}</div>
             <div class="separate">
-                <button ng-click="gotoLogin()">Cancelar</button>
+                <button ng-click="completeStep(3)">Regresar</button>
                 <button ng-show="roleID == 1" ng-click="confirmContactInformation()" ng-disabled="contactForm.$invalid">Continuar</button>
                 <button ng-show="roleID == 0" ng-click="confirmContactInformation()" ng-disabled="contactForm.$invalid || isRegistering">Continuar</button>
             </div>
