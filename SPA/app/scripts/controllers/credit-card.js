@@ -72,7 +72,7 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 //window.open("data:application/pdf;base64," + Base64.encode(data));
 
 
-		});
+		//});
 	}
 
 	$scope.back = function(){
