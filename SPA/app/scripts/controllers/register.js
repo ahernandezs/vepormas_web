@@ -14,12 +14,6 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
     // the error's message (is incorrectData is true)
     $scope.errorMessage = null;
     
-
-    resetVisitedStates();
-
-  function resetVisitedStates() {
-    $scope.visitedStates = [false, false, false, false, false, false];
-  }
     /**
      * initialize the scope with the model's data (coming from the preRegister operation)
      */
@@ -45,12 +39,6 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
 	 * go to the next flow's step
 	 */
     $scope.completeStep = function(nextStep){
-      if(nextStep === $scope.visitedStates.length) { // we are at the end of the process
-        resetVisitedStates();
-      } else {
-        $scope.visitedStates[$scope.selection] = true; // the current selection was already discovered
-        $scope.visitedStates[nextStep] = true; // the next also is a valid state, even when is not valid yet
-      }
       $scope.error = false;
       $scope.errorMessage = null;
       $scope.selection = nextStep;
@@ -180,12 +168,6 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         $scope.error = true;
         $scope.errorMessage = errorMessage;
     };
-
-  $scope.changeState = function(state) {
-    if($scope.visitedStates[state]) {
-      $scope.selection = state;
-    }
-  };
 
   if(!userProvider.getRegistrationToken()) {
     $scope.gotoLogin();

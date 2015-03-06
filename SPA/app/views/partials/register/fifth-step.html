@@ -23,8 +23,8 @@
                 </label>
             </form>
             <div class="error" ng-show="error">{{errorMessage}}</div>
-            <button ng-click="gotoLogin()">Cancelar</button>
-            <button ng-click="confirmToken()" ng-disabled="tokenForm.$invalid || isRegistering">Continuar</button>
+            <button ng-click="completeStep(4)">Regresar</button>
+            <button ng-click="confirmToken()" ng-disabled="tokenForm.$invalid || isRegistering">Registrar</button>
         </div>
     </div>
     <div class="help">

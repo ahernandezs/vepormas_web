@@ -7,7 +7,7 @@
             <!-- images -->
             <ng-form name="registerImageForm" class="register-pass">
                 <div class="radioGroupBelow" align="center">
-                    <label ng-repeat="image in images">  
+                    <label ng-repeat="image in images">
                         <img ng-src="{{image.url}}" height="60" >
                         <input type="radio" name="imagegroup" ng-model="registerData.selectedImage" ng-value="{{image.id}}"  ng-required="!registerData.selectedImage">
                     </label>
@@ -15,7 +15,7 @@
             </ng-form>
             <br>
             <div class="error" ng-show="error">{{errorMessage}}</div>
-            <button ng-click="gotoLogin()">Cancelar</button>
+            <button ng-click="completeStep(2)">Regresar</button>
             <button ng-click="confirmImage()" ng-disabled="registerImageForm.$invalid">Continuar</button>
         </div>
     </div>
@@ -27,7 +27,7 @@
             <p>
                 Es muy importante que llenes todos los campos para que tu registro se realice con &eacute;xito.
             </p>
-        </div>    
+        </div>
         <div>
             <i class="ico-duda"></i>
             <p class="blue">¿Por qu&eacute; elegir una imagen?</p>
@@ -39,7 +39,7 @@
             <i class="ico-ayuda"></i>
             <p class="blue">¿Necesitas ayuda?</p>
             <p>
-               Comun&iacute;cate con nosotros al 01 800 800 3224.  
+               Comun&iacute;cate con nosotros al 01 800 800 3224.
             </p>
         </div>
     </div>
