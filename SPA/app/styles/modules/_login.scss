@@ -4,13 +4,93 @@
 |-------------------------------------------------------------------------------------
 */
 
-.sucursales{
-	color: #FC651B;
+h2.sucursales{
+	color: $orange;
 	font-size: 18px;
 	margin-left: 70px;
-	padding: 10px;
+	padding: 15px 0;
 }
-
+.angular-google-map{
+	width: 100%;
+	height:600px;
+}
+.map-footer{
+	position: fixed;
+	bottom:30px;
+	left:0;
+	overflow:hidden;
+	width: 100%;
+	border-top:1px solid $gray;
+	background:white;
+	ul{
+		width: 70%;
+		margin: auto;
+		overflow: hidden;
+		position: relative;
+		li{
+			display: block;
+			float:left;
+			width: 30%;
+			padding:15px 0;
+			position: relative;
+			background:url(../images/ico-llamar.png) no-repeat 20px 13px;
+			background-size:35px;
+			&:after{
+				content:"";
+				display: block;
+				height: 70px;
+				width: 1px;
+				position: absolute;
+				top:10px;
+				right:10px;
+				border-right:1px solid $gray;
+			}
+			&:first-child{
+				width: 40%;
+				background:url(../images/ico-telefono.png) no-repeat 30px 13px;
+				background-size:35px;
+			}
+			&:last-child{
+				background:url(../images/ico-horario.png) no-repeat 20px 13px;
+				background-size:35px;
+				&:after{
+					display: none;
+				}
+			}
+			p{
+				overflow: hidden;
+				position: relative;
+				text-align: left;
+				font-size: 0.9em;
+				margin:0 0 2px 25%;
+				color:$dgray;
+				a{
+					color:$blue;
+					text-decoration: underline;
+					font-size: 0.9em;
+				}
+				span{
+					float:left;
+					width:50%;
+					+ a{
+						font-size: 1em;
+						color:$dgray;
+						text-decoration: none;
+						float:left;
+						text-align: right;
+					}
+				}
+			}
+			&:nth-child(2), &:last-child{
+				p{
+					&:first-child{
+						margin-bottom: 8px;
+					}
+				}
+			}
+		}
+	}
+}
 .busqueda{
 	position: fixed;
 	top: 50%;
@@ -48,27 +128,6 @@
 
 .half {
 	width: 50%;
-	float: right;
-}
-
-.full{
-	width: 100%;
-}
-
-.container{
-	text-align:center;
-	width:100%
-}
-
-.left{
-	float: left;
-}
-
-.center{
-	display: inline;
-}
-
-.right{
 	float: right;
 }
 
@@ -161,10 +220,12 @@
 		}
 	}
 }
-.user-login,
-.user-registration {
+.user-login, .user-registration {
 	padding: 15px 18px;
 	width: 380px;
+	&.images{
+		width:600px;
+	}
 	label {
 		color: $blue;
 		display: block;
@@ -361,26 +422,22 @@
 }
 
 /* center radio below label */
-
 .radioGroupBelow {
-	height:120px;
 	overflow:hidden;
-	overflow-x:scroll;
-	margin:0 -18px 15px -18px;
+	margin:15px -18px;
 	border-bottom: 1px solid #f4f4f4;
 	.loader{
 		top:100px;
 		left:-20%;
 	}
-	div{
-		width: 200%;
-
-	}
 	img{
+		width: 100%;
+		height: 50px;
 		@include border-radius(4px);
 	}
 	label{
-	  	display: inline-block;
+	  	display:inline-block;
+	  	width: 50px;
 	  	text-align: center;
 	  	margin: 0 0.2em;
 	 	input[type="radio"] {

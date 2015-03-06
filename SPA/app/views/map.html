@@ -4,13 +4,10 @@
         <div ng-include="'views/partials/layout/login-header.html'"></div>
         <main>
             <div>
-				<p>
-					<div class="sucursales">Sucursales y M&oacute;dulos de atenci&oacute;n</div>
-				</p>
+				<h2 class="sucursales">Sucursales y M&oacute;dulos de atenci&oacute;n</h2>
 				<div ng-class=" showBranches ? 'half' : 'busqueda' ">
 					<div class="busqueda-detalle">
 						<button ng-click="searchNearMe()" class="naranja">Cerca de m&iacute;</button>
-						<span style="color:white">o</span>
 						<input type="text" id="Autocomplete" ng-autocomplete="result" details="details" options="options" placeholder="Buscar por dirección" size="28"/>
 						<select ng-model="estado" ng-options="estado.name for estado in estados"></select>
 						<span ng-click="search()"><button class="naranja">Lupa</button></span>
@@ -42,34 +39,36 @@
 					</ui-gmap-google-map>
 				</div>
 				
-				<div class="container" ng-hide="showBranches">
-					<div class="left">
-						Atenci&oacute;n al cliente: <span>01 800 800 3224</span><br>
-						&Aacute;rea Metropolitana: <span>(55) 9177 7999</span><br>
-						Tel&eacute;fono UNE: <span>01 800 830	8632</span>
-					</div>
-					<div class="right">
-						Horarios de Atenci&oacute;n <br>
-						Sucursales: <span>L-V 9:00 - 16:00</span><br>
-						M&oacute;dulos de Atenci&oacute;n: <span>L-V 9:00 - 16:00</span>
-					</div>
-					<div class="center">
-						¿Necesitas ayuda?<br>
-						<a href="#">¿C&oacute;mo activar tu ubicaci&oacute;n?</a><br>
-						<a href="#">Preguntas Frecuentes</a>
-					</div>
+				<div class="map-footer" ng-hide="showBranches">
+					<ul>
+					    <li>
+					    	<p><span>Atenci&oacute;n al cliente:</span> <a href="tel:018008003224">01 800 800 3224</a></p>
+							<p><span>&Aacute;rea Metropolitana:</span> <a href="tel:5591777999">(55) 9177 7999</a></p>
+							<p><span>Tel&eacute;fono UNE:</span> <a href="tel:018008308632">01 800 830 8632</a></p>
+					    </li>
+					    <li>
+					    	<p>¿Necesitas ayuda?</p>
+							<p><a href="#">¿C&oacute;mo activar tu ubicaci&oacute;n?</a></p>
+							<p><a href="#">Preguntas Frecuentes</a></p>
+					    </li>
+					    <li>
+					    	<p>Horarios de Atenci&oacute;n:</p>
+							<p>Sucursales: L-V 9:00 - 16:00</p>
+							<p>M&oacute;dulos de Atenci&oacute;n: L-V 9:00 - 16:00</p>
+					    </li>
+					</ul>
 				</div>
-				<div class="container" ng-show="showBranches">
-					<div class="left">
+				<!--<div class="map-footer" ng-show="showBranches">
+					<div>
 						Atenci&oacute;n al cliente
 					</div>
-					<div class="right">
+					<div>
 						Horarios de Atenci&oacute;n
 					</div>
-					<div center="center">
+					<div>
 						¿Necesitas ayuda?
 					</div>
-				</div>
+				</div>-->
 
             </div>
         </main>

@@ -1,4 +1,4 @@
-<form class="user-login" name="userImagePassword">
+<form class="user-login images" name="userImagePassword">
     <h2>BIENVENIDO</h2>
     <h3>{{client_name}}</h3>
     <a class="blue-min">Nivel de seguridad adicional</a>
@@ -6,11 +6,9 @@
     <!-- images -->
     <div class="radioGroupBelow" align="center">
         <div class="loader" ng-show="isLogin"></div>
-        <div>
         <label ng-repeat="image in images">  <img ng-src="{{restAPIBaseUrl}}/{{image.url}}" height="60" >
             <input type="radio" name="imagegroup" ng-model="loginData.selectedImage" ng-value="image.image_id" ng-required="!loginData.selectedImage">
         </label>
-        </div>
     </div>
     <!-- password -->
     <input ng-class="incorrectLoginData ? 'rojo' : ''" type="password" name="password" ng-model="loginData.password" id="password" placeholder="Contraseña" minlength="8" maxlength="30" required>

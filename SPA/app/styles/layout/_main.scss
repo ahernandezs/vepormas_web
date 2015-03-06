@@ -33,9 +33,19 @@ body {
 	//position: relative;
 }
 
-
-
-
-
-
-
+body.showLoader:after{
+	content:"";
+	text-align: center;
+	vertical-align: middle;
+	color:white;
+	display: block;
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	left:0;
+	top:0;
+	background:url(../images/loaderfull.gif) no-repeat center center, rgba(255,255,255,0.8);
+	background-size:80px;
+	cursor: not-allowed;
+}

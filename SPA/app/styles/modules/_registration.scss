@@ -179,10 +179,10 @@
 			-webkit-appearance: none;
 			appearance: none;
 			height: 8px;
-			left: -39.5%;
+			left: -52.5%;
 			position: absolute;
-			top: 280px;
-			width: 310px;
+			top: 310px;
+			width: 380px;
 
       &.four-steps {
         left: -33.5%!important;
@@ -210,7 +210,7 @@
 		background-color: #fff;
 		margin-left: 0 !important;
 		padding: 30px;
-		min-height: 520px;
+		min-height: 554px;
 		border-radius:0 5px 5px 0;
 		border-top: 1px solid $gray;
 		border-right: 1px solid $gray;
@@ -222,6 +222,15 @@
         	font-size: 14px;
         }
         .user-data{
+        	.radioGroupBelow{
+        		label{
+        			width: 45px;
+        			margin-bottom: 15px;
+        			img{
+        				height: 45px;
+        			}
+        		}
+        	}
         	p{
         		font-size: 14px;
 	        	margin-bottom: 20px;
@@ -277,11 +286,9 @@
         	overflow: hidden;
         	display: block;
         	width: 100%;
-        	margin-bottom: 30px;
+        	margin:15px 0 30px 0;
         	span{
         		display: block;
-        		float: right;
-        		width: 90%;
         		a{
         			color:$blue;
         			text-decoration:underline;
@@ -289,8 +296,8 @@
         		}
         	}
             input {
-                width: initial;
-                margin: 11px 10px;
+            	float:left;
+                margin:3px 20px 0 0;
             }
         }
         input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
