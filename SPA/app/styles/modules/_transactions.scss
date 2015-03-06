@@ -40,7 +40,7 @@
     select {
         float:left;
         color:$dgray;
-        width: 90%;
+        width: 100%;
         padding: 10px !important;
         margin: 0 !important;
         border: none !important;
@@ -155,7 +155,7 @@ input[name="account"] + p{
         box-shadow:none;
     }
     select {
-        background-color: white;
+        background-color: transparent;
         padding: 6px;
     }
     input[type='submit'] {
