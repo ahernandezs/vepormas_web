@@ -77,7 +77,7 @@ angular.module('spaApp')
       }).
       error(function(data, status) {
         console.log("Status : ", status);
-        setError('Error en el servicio, intente más tarde');
+        setErrorWithStatus(status);
         $scope.checkingUser = false;
       });
     
@@ -166,6 +166,8 @@ angular.module('spaApp')
     setError('Error en el servicio, intente más tarde');
     if(status === 403){
       setError('El password o imagen son incorrectos');
+    }else if(status === 404){
+      setError('Error, verifica tu conexión a internet');
     }else if(status === 409){
       setError('Existe una sesión vigente en otra aplicación');
     }else if(status === 423){
