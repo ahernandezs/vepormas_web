@@ -6,6 +6,10 @@
 .animate-switch {
     border: none !important;
 }
+form[name="transferForm"], form[name="paymentForm"]{
+        background: url(../images/ico-alert.png) no-repeat 75% 3px, url(../images/ico-alert.png) no-repeat 75% 58px;
+        background-size:30px, 30px;
+}
 .select-style:active{
     border-color:$orange;
 }
@@ -17,14 +21,13 @@
     margin: 15px 0 0 0;
     border: 1px solid $gray;
     @include border-radius(4px);
-    background: #fff url(../images/ico-abajo.png) no-repeat 98% center;
-    background-size:25px;
+    background: white;
     &.selected{
         span{
             display: block;
         }
         select{
-            width: 62%;
+            width: 67.5%;
         }
     }
     span{
@@ -45,7 +48,8 @@
         margin: 0 !important;
         border: none !important;
         box-shadow: none;
-        background:transparent;
+        background:url(../images/ico-abajo.png) no-repeat 98% center;
+        background-size:25px;
         -webkit-appearance: none;
            -moz-appearance: none;
                 appearance: none;
@@ -216,7 +220,7 @@ input[name="account"] + p{
         label{
             display: block;
             overflow: hidden;
-            height:40px;
+            min-height:40px;
             input[type='radio']{
                 margin-top: 14px;
             }
