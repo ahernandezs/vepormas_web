@@ -3,9 +3,9 @@
     <h4>B&uacute;squeda por rango de fechas</h4>
     <div class="right">
       <p>Fecha inicial:
-      <input type="date" ng-model="searchParams.date_start" ng-change="search()"><i></i></p>
+      <input type="text" ng-model="searchParams.date_start" ng-change="search()" maxlength="10" jqdatepicker><i></i></p>
       <p>Fecha final:
-      <input type="date" ng-model="searchParams.date_end" ng-change="search()"><i></i></p>
+      <input type="text" ng-model="searchParams.date_end" ng-change="search()" maxlength="10" jqdatepicker><i></i></p>
     </div>
   </div>
 </div>

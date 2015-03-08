@@ -24,10 +24,14 @@ angular.module('spaApp')
 
             var search = '';
             var searchParams = [];
-            var startDate = $.datepicker.formatDate("yy-mm-dd", params.date_start);
-            var endDate = $.datepicker.formatDate("yy-mm-dd", params.date_end);
-            params.date_start? searchParams.push('date_start=' + startDate) : '';
-            params.date_end? searchParams.push('date_end=' + endDate) : '';
+
+            var startDate = validateDate(params.date_start);
+            var endDate = validateDate(params.date_end);
+            if(startDate && endDate) {
+              startDate? searchParams.push('date_start=' + startDate) : '';
+              endDate? searchParams.push('date_end=' + endDate) : '';
+            }
+
             params.previousPeriod? searchParams.push('previous_period=true') : '';
             searchParams.length > 0 ? optionsParams.push('search=' + encodeURIComponent(searchParams.join('&'))) : '';
 
@@ -50,16 +54,30 @@ angular.module('spaApp')
                 })
                 ,headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
             });
-        }
+        };
 
         this.getStates = function(accountId){
             console.log($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/states');
             return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/states');
-        }
+        };
 
         this.getState = function(accountId, id, format){
             console.log($rootScope.restAPIBaseUrl+'/files/statement?format='+format+'&id='+id+'&_account_id='+accountId);
             return $http.get($rootScope.restAPIBaseUrl+'/files/statement?format='+format+'&id='+id+'&_account_id='+accountId);
+        };
+
+        function validateDate(date) {
+          var newDate = null;
+          try
+          {
+            var parsedDate = $.datepicker.parseDate('dd/mm/yy', date);
+            newDate = $.datepicker.formatDate( "yy-mm-dd", parsedDate);
+          }
+          catch (e)
+          {
+
+          }
+          return newDate;
         }
 
 }]);
