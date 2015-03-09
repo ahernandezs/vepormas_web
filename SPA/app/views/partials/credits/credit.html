@@ -1,5 +1,11 @@
-<!-- second column -->
-<div class="product-details">
-  <div ng-include="'views/partials/credits/detail.html'"></div>
-  <div ng-include="'views/partials/credits/transactions.html'"></div>
-</div> <!-- second column ends -->
+<div ng-hide="showStatement">
+	<div class="product-details">
+	  <div ng-include="'views/partials/credits/detail.html'"></div>
+	  <div ng-include="'views/partials/credits/transactions.html'"></div>
+	</div>
+</div>
+<div ng-show="showStatement">
+	<div class="product-details">
+		<div ng-include="'views/partials/credits/statement.html'"></div>
+	</div>
+</div>
