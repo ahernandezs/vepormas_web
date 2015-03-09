@@ -136,6 +136,8 @@ app.run(['api', '$window', '$rootScope',function(api, $window, $rootScope) {
   api.config();
   api.init();
 
+  $rootScope.requestStack = new Array();
+
   $window.onbeforeunload = function(e) {
     var message = 'Te vas a salir de Consubanco, ¿estás seguro?';
     e = e || $window.event;
