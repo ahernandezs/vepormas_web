@@ -185,9 +185,9 @@
 			width: 380px;
 
       &.four-steps {
-        left: -33.5%!important;
-        top: 255px!important;
-        width: 280px!important;
+        left: -39%!important;
+        top: 270px!important;
+        width: 310px!important;
       }
 
 			&::-webkit-progress-bar {
@@ -210,7 +210,7 @@
 		background-color: #fff;
 		margin-left: 0 !important;
 		padding: 30px;
-		min-height: 554px;
+		min-height: 520px;
 		border-radius:0 5px 5px 0;
 		border-top: 1px solid $gray;
 		border-right: 1px solid $gray;
@@ -222,13 +222,20 @@
         	font-size: 14px;
         }
         .user-data{
+        	position: relative;
         	.radioGroupBelow{
-        		label{
-        			width: 45px;
-        			margin-bottom: 15px;
-        			img{
-        				height: 45px;
-        			}
+        		overflow: hidden;
+        		width:400px;
+        		margin-bottom: 15px;
+        		border:none;
+        		&:after{
+        			position: absolute;
+        			content:"";
+        			display: block;
+        			height: 1px;
+        			border-top:1px solid $gray;
+        			width: 100%;
+        			margin:165px 0 0 -15px;
         		}
         	}
         	p{

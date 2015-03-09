@@ -1,0 +1,5 @@
+.ui-datepicker-div{
+	background:white;
+	border:1px solid $gray;
+	@include border-radius(3px);
+}
