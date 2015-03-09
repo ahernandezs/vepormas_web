@@ -43,7 +43,17 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 				return deferred.reject("Error changing password");
 			})
 			return deferred.promise;
-	    }
+	    },
+
+		updateCommunication: function(phone, e_mail, otp) {
+			var deferred = $q.defer();
+			adminService.updateCommunication(phone, e_mail, otp).success(function(){
+				deferred.resolve();
+			}).error(function(data, status){
+				return deferred.reject('Error updating communication information');
+			});
+			return deferred.promise;
+		}
 
 	};
 
