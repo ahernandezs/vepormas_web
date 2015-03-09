@@ -4,6 +4,18 @@ angular.module('spaApp')
   .factory('thirdAccountProvider', ['$q','$rootScope','thirdAccountService',function ($q, $rootScope, thirdAccountService) {
 
     return {
+
+      validateThirdAccount: function(account){
+        var deferred = $q.defer();
+          thirdAccountService.validateThirdAccount(account).success(function(data, status, headers){
+              $rootScope.thirdAccountValidation = data;
+              deferred.resolve();
+          }).error(function(data, status){
+              return deferred.reject('Error validate third account');
+          })
+        return deferred.promise;
+      },
+
       getThirdAccounts: function () {
 
         var deferred = $q.defer();

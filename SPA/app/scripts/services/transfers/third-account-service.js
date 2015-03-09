@@ -2,6 +2,15 @@
 
 angular.module('spaApp')
 .service('thirdAccountService', ['$http','$rootScope',function ($http, $rootScope) {
+
+	this.validateThirdAccount = function(account){
+		return $http({
+			url: $rootScope.restAPIBaseUrl+'/externalaccounts/validate?account_number='+account,
+			method: 'GET',
+			headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
+		});
+	}
+
 	this.getThirdAcounts = function(){
 		return $http({
 			url: $rootScope.restAPIBaseUrl+'/externalaccounts',
