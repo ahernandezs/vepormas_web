@@ -3,7 +3,7 @@
 /**
  * The accounts controller. Gets accounts passing auth parameters
  */
- angular.module('spaApp').controller('AccountDepositDetailCtrl', ['$scope', '$location','$rootScope', 'accountsProvider', function ($scope, $location, $rootScope,accountsProvider) {
+ angular.module('spaApp').controller('AccountDepositDetailCtrl', ['$scope', '$location','$rootScope', 'accountsProvider', '$stateParams', function ($scope, $location, $rootScope,accountsProvider, $stateParams) {
 
 	var params = {};
 	params.numPage = 0;
@@ -31,18 +31,26 @@
 
 	}
 
-  $scope.search = function() {
-    if($scope.searchParams.date_start && $scope.searchParams.date_end) {
-      $scope.getTransactions($scope.searchParams.date_start, $scope.searchParams.date_end);
-    } else if($scope.searchParams.date_start === null && $scope.searchParams.date_end === null) {
-      params.date_end = null;
-      params.date_start = null;
-      accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
-          function(data){
-            $scope.investmentTransactions = $rootScope.transactions;
-          });
+	$scope.search = function() {
+		if($scope.searchParams.date_start && $scope.searchParams.date_end) {
+			$scope.getTransactions($scope.searchParams.date_start, $scope.searchParams.date_end);
+		} else if($scope.searchParams.date_start === null && $scope.searchParams.date_end === null) {
+			params.date_end = null;
+			params.date_start = null;
+			accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
+			function(data){
+				$scope.investmentTransactions = $rootScope.transactions;
+			});
+		}
+	};
 
-    }
-  };
+	$scope.getStatements = function(){
+		$scope.showStatement = true;
+		accountsProvider.getStates($stateParams.accountId).then(
+			function(data) {
+				$scope.statements = $rootScope.statements;
+			}
+		);
+	};
 
 }]);
