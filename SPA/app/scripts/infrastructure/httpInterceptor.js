@@ -3,9 +3,18 @@
 angular.module('spaApp').factory('httpInterceptor', ['$q', '$window', '$location', '$rootScope', 'timerService',
     function httpInterceptor ($q, $window, $location, $rootScope, timerService) {
   return {
+    'request': function (request) {
+      if($rootScope.session_token) {
+        $rootScope.requestInProcess = true;
+        console.log("Is request in process ...");
+      }
+
+      return request;
+    },
     'response': function (response) {
       if($rootScope.session_token) {
         timerService.reset();
+        $rootScope.requestInProcess = false;
       }
       return response;
     },
@@ -13,6 +22,8 @@ angular.module('spaApp').factory('httpInterceptor', ['$q', '$window', '$location
     'responseError': function (response) {
       // TODO: Seems that in some time we don't get response.status
       console.log(response);
+
+      $rootScope.requestInProcess = false;
 
       if (!response.status) {
         console.log("Response undefined");
