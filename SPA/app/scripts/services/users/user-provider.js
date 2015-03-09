@@ -59,6 +59,11 @@ angular.module('spaApp')
    */
   var _otp2;
 
+  /**
+   * identifier
+   */
+  var _identifier;
+
   return {
     
     /**
@@ -118,6 +123,13 @@ angular.module('spaApp')
     },
 
     /**
+     * setter for identifier 
+     */
+    setIdentifier : function(identifier){
+      _identifier = identifier;
+    },
+
+    /**
      * getter for preRegistrationData
      */
     getPreRegistrationData: function(){
@@ -167,7 +179,8 @@ angular.module('spaApp')
         'image_id':_imageId,
         'password':_password,
         'e_mail':_email,
-        'phone': _phoneNumber
+        'phone': _phoneNumber,
+        'identifier': _identifier
       };
 
       if(_cardId) {
@@ -179,10 +192,14 @@ angular.module('spaApp')
 
         params = $.extend({}, params, tokenParams);
       }
+
+      $rootScope.requestStack.push(1);
       userService.registerUser(_registrationToken, params)
       .success(function(data, status, headers){
         deferred.resolve();
+        $rootScope.requestStack.pop();
       }).error(function(data, status){
+        $rootScope.requestStack.pop();
         return deferred.reject('Error to register user');
       })
       return deferred.promise;

@@ -29,6 +29,11 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         $scope.bankBranch = $scope.contract.branch_name;
         $scope.date = $scope.contract.created_at;
         $scope.roleID = $scope.contract.role_id;
+        $scope.identifiers = preRegisterData.identifiers;
+
+        // This is at this moment the default option of identifiers
+        $scope.registerData.identifier = $scope.identifiers[0];
+
         $scope.images = {};
         for (var i = 0; i < preRegisterData.images.length; i++) {
             $scope.images[i] = { 'id' : preRegisterData.images[i].image_id, 'url' : $rootScope.restAPIBaseUrl + '/' + preRegisterData.images[i].url };
@@ -67,6 +72,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         }else{
             // set the model and go to the next step
             userProvider.setPassword($scope.registerData.password);
+            userProvider.setIdentifier($scope.registerData.identifier);
             $scope.completeStep(3);
         }
 	};

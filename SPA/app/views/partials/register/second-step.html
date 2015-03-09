@@ -6,6 +6,11 @@
         <div class="user-data">
             <ng-form name="registerPasswordForm" class="register-pass">
                 <div>
+                  <div class="select-style" ng-class="registerData.identifier ? 'selected' : ''">
+                    <span>Usuario</span>
+                    <select disabled ng-options="opt as opt.value for opt in identifiers" ng-model="registerData.identifier">
+                    </select>
+                  </div>
                     <label class="fieldContainer" ng-class="registerPasswordForm.password.$viewValue.length > 0 ? 'selected' : ''">
                         <span>Contraseña</span>
                         <input type="password" class="input-password" name="password" ng-model="registerData.password" placeholder="Contrase&ntilde;a" ng-pattern="/^([0-9]){0,2}([A-Za-z]{1,2}[0-9]{1,2})+([A-Za-z]){0,2}$/" ng-minlength="8" required>
