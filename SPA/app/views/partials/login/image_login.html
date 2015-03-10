@@ -7,19 +7,16 @@
     <div class="radioGroupBelow" align="center">
         <div class="loader" ng-show="isLogin"></div>
         <div ng-repeat="image in images">
-            <span ng-click="toggle = !toggle" ng-class="{'selected' : toggle}"> 
+            <span ng-click="selectImage(image.image_id)" ng-class="{'selected' : image.image_id === loginData.selectedImage}">
                 <i></i><img ng-src="{{restAPIBaseUrl}}/{{image.url}}">
             </span>
         </div>
-        <!--<label ng-repeat="image in images">  <img ng-src="{{restAPIBaseUrl}}/{{image.url}}" height="60" >
-            <input type="radio" name="imagegroup" ng-model="loginData.selectedImage" ng-value="image.image_id" ng-required="!loginData.selectedImage">
-        </label>-->
     </div>
     <!-- password -->
     <input ng-class="incorrectLoginData ? 'rojo' : ''" type="password" name="password" ng-model="loginData.password" id="password" placeholder="Contraseña" minlength="8" maxlength="30" required>
     <div class="error" ng-show="error"> {{errorMessage}}</div>
     <div class="buttons">
-        <input type="submit" value="Continuar" ng-click="login()" ng-disabled="userImagePassword.$invalid||isLogin">
+        <input type="submit" value="Continuar" ng-click="login()" ng-disabled="userImagePassword.$invalid || !loginData.selectedImage || isLogin">
         <input type="submit" value="Cancelar" ng-click="reset()">
     </div>
     <p>¿Olvidaste tu contrase&ntilde;a? Comun&iacute;cate con nosotros al 01 800 800 32 24</p>

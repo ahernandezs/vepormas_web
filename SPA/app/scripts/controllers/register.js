@@ -132,6 +132,13 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
 	};
 
 	/**
+	 * assign image
+	 */
+  $scope.selectImage = function(imageId) {
+    $scope.registerData.selectedImage = imageId;
+  };
+
+	/**
 	 * validate the client's image
 	 */
 	$scope.confirmImage = function () {

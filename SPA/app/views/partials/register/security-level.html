@@ -8,19 +8,15 @@
             <ng-form name="registerImageForm" class="register-pass">
                 <div class="radioGroupBelow" align="center">
                     <div ng-repeat="image in images">
-                        <span ng-click="toggle = !toggle" ng-class="{'selected' : toggle}"> 
+                        <span ng-click="selectImage(image.id)" ng-class="{'selected' : image.id === registerData.selectedImage}">
                             <i></i><img ng-src="{{image.url}}">
                         </span>
                     </div>
-                    <!--<label ng-repeat="image in images">
-                        <img ng-src="{{image.url}}" height="60" >
-                        <input type="radio" name="imagegroup" ng-model="registerData.selectedImage" ng-value="{{image.id}}"  ng-required="!registerData.selectedImage">
-                    </label>-->
                 </div>
             </ng-form>
             <div class="error" ng-show="error">{{errorMessage}}</div>
             <button ng-click="completeStep(2)">Regresar</button>
-            <button ng-click="confirmImage()" ng-disabled="registerImageForm.$invalid">Continuar</button>
+            <button ng-click="confirmImage()" ng-disabled="!registerData.selectedImage">Continuar</button>
         </div>
     </div>
    <div class="help">
