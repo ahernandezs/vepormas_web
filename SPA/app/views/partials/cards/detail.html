@@ -9,15 +9,15 @@
         <div>
             <div>
                 <p class="amount">{{creditsHeader.minimum_payment | currency}}</p>
-                <button class="blue">Pago m&iacute;nimo</button>
+                <button class="blue" data-ng-click="doPaymentFlow('MIN_PAYMENT',creditsHeader.minimum_payment)">Pago m&iacute;nimo</button>
             </div>
             <div>
                 <p class="amount">{{creditsHeader.no_interes_payment_due | currency}}</p>
-                <button class="blue">Pago para no <span class="block">generar intereses</span></button>
+                <button class="blue" data-ng-click="doPaymentFlow('WIHTOUT_INTEREST_PAYMENT',creditsHeader.no_interes_payment_due)">Pago para no <span class="block">generar intereses</span></button>
             </div>
             <div>
                 <p class="amount">{{creditsHeader.delinquent_balance | currency}}</p>
-                <button class="blue">Pago total</button>
+                <button class="blue" data-ng-click="doPaymentFlow('TOTAL_PAYMENT',creditsHeader.delinquent_balance)">Pago total</button>
             </div>
         </div>
     </div>

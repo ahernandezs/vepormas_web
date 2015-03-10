@@ -3,12 +3,16 @@
 /**
  * The transactions controller. For transactions between own accounts.
  */
-angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', 'thirdAccountProvider', 'transferProvider', '$controller', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider, thirdAccountProvider, transferProvider, $controller) {
+angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', 'thirdAccountProvider', 'transferProvider', '$controller','paymentCreditCardService', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider, thirdAccountProvider, transferProvider, $controller,paymentCreditCardService) {
+
 
 	$scope.section = 'PAY';
     $scope.selection = 1;
     $scope.beneficiary = {};
     $scope.payment = {};
+    $scope.payment.select1 = false;
+    $scope.payment.select2 = false;
+    $scope.payment.select3 = false;
     $scope.transfer = {};
     $scope.theAccounts = [];
     $scope.today = new Date();
@@ -23,8 +27,23 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 			$scope.payment = {};
 			$scope.transfer = {};
 		}
+        else if(nextStep == 2 ){
+            console.log($scope.value);
+            console.log($scope.test);
+            if($scope.value && $scope.value === 'MIN_PAYMENT')
+                $scope.payment.amount = $scope.transferAccountDetail.minimum_payment;
+
+            else if($scope.value && $scope.value === 'WIHTOUT_INTEREST_PAYMENT')
+                $scope.payment.amount = $scope.transferAccountDetail.no_interes_payment_due;
+
+            else if($scope.value && $scope.value === 'TOTAL_PAYMENT')
+                $scope.payment.amount = $scope.payment.other;
+        }
 	 };
 
+    $scope.goBack = function(nextStep) {
+        $scope.selection = nextStep;
+     }
 	/**
 	 * Receive the section value from the UI and change the selection to 1.
 	 */
@@ -44,6 +63,19 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                    $scope.theAccounts.push( value );
                }
            );
+            if(paymentCreditCardService.accountId){
+                console.log('Mostrando cuentas')
+                var result = $.grep($scope.theAccounts, function(e){ return e._account_id == paymentCreditCardService.accountId });
+                console.log(result[0]);
+                $scope.payment.destiny = result[0];
+                $scope.payment.destiny.account_type = 'TDC';
+                $scope.payment.destiny._account_id = paymentCreditCardService.accountId;
+                $scope.getAccountDetail();
+                $scope.value = paymentCreditCardService.paymentType;
+                if(paymentCreditCardService.paymentType === 'TOTAL_PAYMENT')
+                    $scope.payment.other = paymentCreditCardService.amount;
+                delete paymentCreditCardService.accountId;
+            }
 		},
         function(errorObject) {
             var status = errorObject.status;
@@ -286,5 +318,4 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.isCompleteUser = function(){
         return userProvider.isCompleteUser();
     }
-
 }]);
