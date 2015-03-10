@@ -34,7 +34,7 @@
         </label>
     </form>
     <div class="double-btn">
-        <input type="submit" value="Cancelar" ng-click="completeStep(1)">
-        <input type="submit" value="Continuar" ng-disabled="beneficiaryForm.$invalid" ng-click="completeStep(3)">
+        <button ng-click="completeStep(1)">Cancelar</button>
+        <button ng-click="completeStep(3)" ng-disabled="beneficiaryForm.$invalid">Continuar</button>
     </div>
 </div>

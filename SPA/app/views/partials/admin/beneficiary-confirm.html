@@ -40,7 +40,7 @@
         </table>
     </form>
     <div class="double-btn">
-        <input type="submit" value="Regresar" ng-click="completeStep(1)">
-        <input type="submit" value="Continuar" ng-click="sendBeneficiary()" ng-disabled="beneficiaryForm.$invalid">
+        <button ng-click="completeStep(1)">Regresar</button>
+        <button ng-click="sendBeneficiary()" ng-disabled="beneficiaryForm.$invalid">Continuar</button>
     </div>
 </div>
