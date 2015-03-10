@@ -84,6 +84,13 @@ angular.module('spaApp')
     }
   }
 
+	/**
+	 * assign image
+	 */
+  $scope.selectImage = function(imageId) {
+    $scope.loginData.selectedImage = imageId;
+  };
+
   /**
     Function for authenticate user through middleware
   **/
