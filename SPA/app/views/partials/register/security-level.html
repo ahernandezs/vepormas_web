@@ -7,10 +7,15 @@
             <!-- images -->
             <ng-form name="registerImageForm" class="register-pass">
                 <div class="radioGroupBelow" align="center">
-                    <label ng-repeat="image in images">
+                    <div ng-repeat="image in images">
+                        <span ng-click="toggle = !toggle" ng-class="{'selected' : toggle}"> 
+                            <i></i><img ng-src="{{image.url}}">
+                        </span>
+                    </div>
+                    <!--<label ng-repeat="image in images">
                         <img ng-src="{{image.url}}" height="60" >
                         <input type="radio" name="imagegroup" ng-model="registerData.selectedImage" ng-value="{{image.id}}"  ng-required="!registerData.selectedImage">
-                    </label>
+                    </label>-->
                 </div>
             </ng-form>
             <div class="error" ng-show="error">{{errorMessage}}</div>

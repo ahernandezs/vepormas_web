@@ -141,6 +141,7 @@ header {
 		display: inline;
 
 		&:first-child a:before { content:""; margin: 0; }
+		&:last-child a{border:none}
 	}
 	a {
 		color: inherit;

@@ -233,6 +233,13 @@
     -o-transition: -o-transform $transition;
     transition: transform $transition;
 }
+@mixin anim_transicion_ease( $segundos: 0.3s ){
+    transition: all $segundos ease;
+    -ms-transition: all $segundos ease;
+    -webkit-transition: all $segundos ease;
+    -o-transition: all $segundos ease;
+    -moz-transition: all $segundos ease;
+}
 @mixin rgbabg( $colour, $alpha ) { // $alpha value must be decimal, ex. .8
 
     $alphaColour: hsla(hue($colour), saturation($colour), lightness($colour), $alpha);

@@ -192,7 +192,7 @@ h2.sucursales{
 	 		padding-top: 40px;
 
 	 		form {
-	 			background-color: #fff;
+	 			background-color: white;//rgba(255,255,255,0.9);
 	 			border-radius: 4px;
 	 		}
 
@@ -224,7 +224,13 @@ h2.sucursales{
 	padding: 15px 18px;
 	width: 380px;
 	&.images{
-		width:600px;
+		padding:15px 0;
+		.buttons{
+			overflow:hidden;
+			margin: 0 auto;
+			width:90%;
+		}
+		.error{ padding:10px;}
 	}
 	label {
 		color: $blue;
@@ -342,7 +348,9 @@ h2.sucursales{
 	input[type="password"]{
 		background:url(../images/ico-password-login.png) no-repeat 95% center, white;
 		background-size:25px;
-		margin-bottom: 15px;
+		margin:15px auto !important;
+		width: 90%;
+		display: block;
 	}
 	input[type="text"]:focus, input[type="password"]:focus{
 		border-color:$orange;
@@ -424,6 +432,52 @@ h2.sucursales{
 /* center radio below label */
 .radioGroupBelow {
 	overflow:hidden;
+	padding:15px;
+	border-bottom: 1px solid #f4f4f4;
+	.loader{
+		top:100px;
+		left:-20%;
+	}
+	span{
+		display:block;
+		float:left;
+		width: 64px;
+		height: 64px;
+		overflow: hidden;
+		margin: 6px;
+		position: relative;
+		cursor: pointer;
+		border:1px solid white;
+		@include border-radius(4px);
+		&:hover, &:active{
+			border-color:$orange;
+		}
+		&:first-child{
+			margin-left: 0;
+		}
+		&.selected{
+			i{
+				display: block;
+			}
+		}
+		i{
+			display: none;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			background:url(../images/ico-ok-white.png) no-repeat 90% 90%,rgba(252,101,27,0.7);
+			background-size:20px;
+			@include border-radius(4px);
+			@include anim_transicion_ease();
+		}
+		img{
+			width: 110%;
+			height: auto;
+		}
+	}
+}
+/*.radioGroupBelow {
+	overflow:hidden;
 	margin:15px -18px;
 	border-bottom: 1px solid #f4f4f4;
 	.loader{
@@ -446,4 +500,4 @@ h2.sucursales{
 		    width: auto;
 		}
 	}
-}
+}*/
