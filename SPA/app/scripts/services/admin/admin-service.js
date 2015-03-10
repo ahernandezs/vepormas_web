@@ -13,6 +13,7 @@ angular.module('spaApp').service('adminService', ['$http','$rootScope', function
 			data: JSON.stringify({
 				'otp':otp
 			}),
+			headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
 		});
 	};
 
@@ -25,6 +26,7 @@ angular.module('spaApp').service('adminService', ['$http','$rootScope', function
 				"password": new_pass,
 				"otp": otp
 			}),
+			headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
 		});
 	}
 

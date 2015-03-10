@@ -43,19 +43,15 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 		var third_accounts_own = [];
 		var third_accounts_others = [];
 
-		console.log($scope.third_accounts);
-		if($scope.third_accounts.length == 0){
-			return;
+		if (typeof $scope.third_accounts != 'undefined'){
+			$scope.third_accounts.forEach(function(acc){
+				if(acc.same_bank){
+					third_accounts_own.push(acc);
+				}else{
+					third_accounts_others.push(acc);
+				}
+			});
 		}
-
-		$scope.third_accounts.forEach(function(acc){
-			if(acc.same_bank){
-				third_accounts_own.push(acc);
-			}else{
-				third_accounts_others.push(acc);
-			}
-		});
-
 		$scope.third_accounts_own = third_accounts_own;
 		$scope.third_accounts_others = third_accounts_others;
 
@@ -128,12 +124,13 @@ Adding a beneficary actions
         // account = 18 digitos (002123456789012347) y token correcto
         thirdAccountProvider.registerThirdAccount($scope.beneficiary.aka, $scope.beneficiary.name,
                                                  $scope.beneficiary.email, $scope.beneficiary.phone,
-                                                 $scope.beneficiary.account, $scope.beneficiary.token).then(
+                                                 $scope.beneficiary._account_id, $scope.beneficiary.token).then(
             function(data) {
                 console.log(data);
                 $scope.selection = 4;
             }
         );
     };
+
 
 }]);

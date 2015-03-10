@@ -14,24 +14,6 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.today = new Date();
 
     /**
-    * Function to validate third account
-    */
-    $scope.validateThirdAccount = function(){
-        thirdAccountProvider.validateThirdAccount($scope.beneficiary.account).then(
-            function(data) {
-                console.log(JSON.stringify($rootScope.thirdAccountValidation));
-                $scope.beneficiary._account_id = $rootScope.thirdAccountValidation._account_id;
-                $scope.beneficiary.bank_name = $rootScope.thirdAccountValidation.bank_name;
-                $scope.beneficiary.same_bank = $rootScope.thirdAccountValidation.same_bank;
-                if($scope.beneficiary.same_bank){
-                    $scope.beneficiary.name = $rootScope.thirdAccountValidation.client_name;
-                }
-                $scope.selection = 2;
-            }
-        );
-    }
-
-    /**
      * Function to navigate between steps.
 	 */
     $scope.completeStep = function(nextStep) {
@@ -203,21 +185,6 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                     // business or technical exception
                     setError('unknown problem. Please retry later');
                 }
-            }
-        );
-    };
-
-    /**
-     * Send beneficiary data to service.
-     */
-    $scope.sendBeneficiary = function() {
-        // account = 18 digitos (002123456789012347) y token correcto
-        thirdAccountProvider.registerThirdAccount($scope.beneficiary.aka, $scope.beneficiary.name,
-                                                 $scope.beneficiary.email, $scope.beneficiary.phone,
-                                                 $scope.beneficiary._account_id, $scope.beneficiary.token).then(
-            function(data) {
-                console.log(data);
-                $scope.selection = 4;
             }
         );
     };
