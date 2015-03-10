@@ -4,17 +4,17 @@ angular.module('spaApp').factory('httpInterceptor', ['$q', '$window', '$location
     function httpInterceptor ($q, $window, $location, $rootScope, timerService) {
   return {
     'request': function (request) {
-      if($rootScope.session_token) {
-        $rootScope.requestStack.push(1);
-      }
+      $rootScope.requestStack.push(1);
 
       return request;
     },
     'response': function (response) {
       if($rootScope.session_token) {
         timerService.reset();
-        $rootScope.requestStack.pop();
       }
+
+      $rootScope.requestStack.pop();
+
       return response;
     },
 

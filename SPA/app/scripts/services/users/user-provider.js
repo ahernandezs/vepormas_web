@@ -193,13 +193,10 @@ angular.module('spaApp')
         params = $.extend({}, params, tokenParams);
       }
 
-      $rootScope.requestStack.push(1);
       userService.registerUser(_registrationToken, params)
       .success(function(data, status, headers){
         deferred.resolve();
-        $rootScope.requestStack.pop();
       }).error(function(data, status){
-        $rootScope.requestStack.pop();
         return deferred.reject('Error to register user');
       })
       return deferred.promise;

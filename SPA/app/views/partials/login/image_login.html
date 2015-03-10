@@ -5,7 +5,6 @@
     <a class="gray-min">Selecciona la imagen que elegiste al registrarte</a>
     <!-- images -->
     <div class="radioGroupBelow" align="center">
-        <div class="loader" ng-show="isLogin"></div>
         <div ng-repeat="image in images">
             <span ng-click="selectImage(image.image_id)" ng-class="{'selected' : image.image_id === loginData.selectedImage}">
                 <i></i><img ng-src="{{restAPIBaseUrl}}/{{image.url}}">
