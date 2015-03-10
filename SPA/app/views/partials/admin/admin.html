@@ -1,46 +1,40 @@
-<div class="container" syle="padding: 20px">
-	<div style="border: 1px grey solid; width: 30%; float:left; margin:20px; padding-top: 10px;">
-		<h3>Opciones de seguridad</h3><br>
+<div class="prefyseg">
+	<div>
+		<h3>Opciones de seguridad</h3>
 		<ul>
-			<li class="product">Informaci&oacute;n de la cuenta</li>
-			<li class="product">Mi token</li>
-			<li class="product">Alertas y notificaciones</li>
+			<li class="selected">Informaci&oacute;n de la cuenta</li>
+			<li>Mi token</li>
+			<li>Alertas y notificaciones</li>
 		</ul>
-		<div style="margin:10px;border: grey solid 1px">
-			<div style="padding:10px;">
-				Seguridad de la cuenta <br>
-				Candado
-			</div>
-			<div style="border-top: solid grey 1px;padding: 10px;">
-				<a href="#">Detalle</a>
-			</div>
+		<div class="candado">
+			Seguridad de la cuenta
+			<i></i>
+			<a href="#">Detalle</a>
 		</div>
 	</div>
-	<div style="border: 1px grey solid; width: 30%; float:left; margin:20px; padding: 10px;">
-			<h3>Informaci&oacute;n de la cuenta</h3><br>
-			¿A d&oacute;nde te enviaremos tus estados de cuenta, notificaciones y alertas sobre la actividad de tus cuentas?<br>
-			<input type="text" style="width:100%" placeholder="Calle o avenida"><br>
-			<input type="text" style="width:100%" placeholder="Colonia"><br>
-			<input type="text" style="width:50%" placeholder="Delegación /Municipio"><input type="text" style="width:50%" placeholder="Código Postal"><br>
-			<input type="text" style="width:100%" placeholder="Estado"><br>
-			<input type="text" style="width:100%" placeholder="Correo electrónico"><br>
-			<input type="text" style="width:100%" placeholder="Confirmar correo electrónico"><br>
-			<input type="text" style="width:100%" placeholder="Celular (opcional)"><br>
-			<input type="text" style="width:100%" placeholder="Confirmar celular (opcional)"><br>
-			<br>
-			<button style="width:80%">Continuar</button>
+	<div>
+			<h3>Informaci&oacute;n de la cuenta</h3>
+			<p>¿A d&oacute;nde te enviaremos tus estados de cuenta, notificaciones y alertas sobre la actividad de tus cuentas?</p>
+			<input type="text" placeholder="Calle o avenida">
+			<input type="text" placeholder="Colonia">
+			<input type="text" placeholder="Delegación /Municipio">
+			<input type="text" placeholder="Código Postal">
+			<input type="text" placeholder="Estado">
+			<input type="text" placeholder="Correo electrónico">
+			<input type="text" placeholder="Confirmar correo electrónico">
+			<input type="text" placeholder="Celular (opcional)">
+			<input type="text" placeholder="Confirmar celular (opcional)">
+			<button>Continuar</button>
 	</div>
-	<div style="width: 30%; float:left; margin:20px;">
-		<div style="border: 1px grey solid; padding: 10px;">
+	<div>
+		<div>
 			<h3>Cancelar mi servicio</h3>
-			<br>
-			<p>Cancelar mi servicio desactiva todas las funciones de Consubanco relacionadas a tu cuenta. <br>
-			Para reactivarlo es necesario acudir a tu sucursal m&aacute;s cercana y solicitar la reactivaci&oacute;n.</p><br>
-			<button style="width:100%">Quiero suspender mi servicio temporalmente</button><br><br>
-			<button style="width:100%">Quiero cancelar mi servicio</button>
+			<p>Cancelar mi servicio desactiva todas las funciones de Consubanco relacionadas a tu cuenta.</p>
+			<p>Para reactivarlo es necesario acudir a tu sucursal m&aacute;s cercana y solicitar la reactivaci&oacute;n.</p>
+			<button>Quiero suspender mi servicio temporalmente</button>
+			<button>Quiero cancelar mi servicio</button>
 		</div>
-		<br>
-		<div style="border: 1px grey solid">
+		<div>
 			<div ng-include="'views/partials/admin/change-password.html'"></div>
 		</div>
 	</div>
