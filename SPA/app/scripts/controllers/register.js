@@ -29,6 +29,12 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         $scope.bankBranch = $scope.contract.branch_name;
         $scope.date = $scope.contract.created_at;
         $scope.roleID = $scope.contract.role_id;
+        $scope.rfc = $scope.contract.rfc;
+        $scope.identifiers = preRegisterData.identifiers;
+
+        // This is at this moment the default option of identifiers
+        $scope.registerData.identifier = $scope.identifiers[0];
+
         $scope.images = {};
         for (var i = 0; i < preRegisterData.images.length; i++) {
             $scope.images[i] = { 'id' : preRegisterData.images[i].image_id, 'url' : $rootScope.restAPIBaseUrl + '/' + preRegisterData.images[i].url };
@@ -54,7 +60,60 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         $scope.errorMessage = null;
     userProvider.resetRegistrationToken();
 		$location.path( '/login' );
-	 }
+	 };
+
+  $scope.invalidPassword = true;
+
+  $scope.validatePassword = function() {
+    $scope.error = false;
+    $scope.invalidPassword = true;
+    var password = $scope.registerData.password;
+    if(password) {
+      var pattern = /[A-Za-z0-9]{8,20}/g;
+      if(!pattern.test(password)) {
+        setError("La contraseña deberá tener carácteres alfanuméricos y con un mínimo de 8 carácteres");
+        return;
+      }
+
+      var rexUser1 = new RegExp($scope.clientNumber, "g");
+      if(rexUser1.test(password)) {
+        setError("No puede usar su id de usuario como contraseña");
+        return;
+      }
+
+      var rexInstName1 = new RegExp("consubanco", "i");
+      if(rexInstName1.test(password)) {
+        setError("No puede usar el nombre de la institución como contraseña");
+        return;
+      }
+
+      var rexRfc = new RegExp($scope.rfc, "i");
+      //console.log(lcs(password.toLowerCase(), $scope.rfc.toLowerCase()));
+      if(rexRfc.test(password)) {
+        setError("No puede usar su RFC como contraseña");
+        return;
+      }
+
+      $scope.invalidPassword = false;
+
+      // TODO: Enhance these validations
+    }
+  }
+
+  function lcs(a, b) {
+    var aSub = a.substr(0, a.length-1);
+    var bSub = b.substr(0, b.length-1);
+
+    if (a.length == 0 || b.length == 0) {
+      return "";
+    } else if (a.charAt(a.length-1) == b.charAt(b.length-1)) {
+      return lcs(aSub, bSub) + a.charAt(a.length-1);
+    } else {
+      var x = lcs(a, bSub);
+      var y = lcs(aSub, b);
+      return (x.length > y.length) ? x : y;
+    }
+  }
 
 	/**
 	 * validate the client's password
@@ -67,6 +126,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         }else{
             // set the model and go to the next step
             userProvider.setPassword($scope.registerData.password);
+            userProvider.setIdentifier($scope.registerData.identifier);
             $scope.completeStep(3);
         }
 	};
@@ -89,33 +149,29 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
 	 */
 	$scope.confirmContactInformation = function () {
         var error =false;
-        if(! $scope.registerData.contactType){
+        if($scope.registerData.email){
+          if($scope.registerData.email != $scope.registerData.repeatEmail){
             error = true;
-            setError("Debe elegir una medio de notificación");
+            setError("Los correos electrónicos no coinciden");
+          }
         }else{
-            if($scope.registerData.email){
-                if($scope.registerData.email != $scope.registerData.repeatEmail){
-                    error = true;
-                    setError("Los correos electrónicos no coinciden");
-                }
-            }else{
-                if($scope.registerData.contactType == "byEmail"){
-                    error = true;
-                    setError("Debes ingresar una dirección de correo electrónico");
-                }
-            }
-            if($scope.registerData.cellphone){
-                if($scope.registerData.cellphone != $scope.registerData.repeatCellphone){
-                    error = true;
-                    setError("Los numeros de celular ingresados no coinciden");
-                }
-            }else{
-                if($scope.registerData.contactType == "byCellPhone"){
-                    error = true;
-                    setError("Debe ingresar un número de celular");
-                }
-            }
+          if($scope.registerData.contactType == "byEmail"){
+            error = true;
+            setError("Debes ingresar una dirección de correo electrónico");
+          }
         }
+        if($scope.registerData.cellphone){
+          if($scope.registerData.cellphone != $scope.registerData.repeatCellphone){
+            error = true;
+            setError("Los numeros de celular ingresados no coinciden");
+          }
+        }else{
+          if($scope.registerData.contactType == "byCellPhone"){
+            error = true;
+            setError("Debe ingresar un número de celular");
+          }
+        }
+
         //we could use the $scope.incorrectData instead of a local variable "error", but it show more clarity this way
         if(! error){
             userProvider.setEmail($scope.registerData.email);
