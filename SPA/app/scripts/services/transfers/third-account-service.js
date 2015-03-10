@@ -30,7 +30,7 @@ angular.module('spaApp')
 					'e_mail': e_mail,
 					'phone': phone
 				},
-				'account_number':accountNumber,
+				'_account_id':accountNumber,
 				'otp':otp
 			}),
 			headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
