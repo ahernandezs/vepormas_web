@@ -214,10 +214,10 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         // account = 18 digitos (002123456789012347) y token correcto
         thirdAccountProvider.registerThirdAccount($scope.beneficiary.aka, $scope.beneficiary.name,
                                                  $scope.beneficiary.email, $scope.beneficiary.phone,
-                                                 $scope.beneficiary.account, $scope.beneficiary.token).then(
+                                                 $scope.beneficiary._account_id, $scope.beneficiary.token).then(
             function(data) {
                 console.log(data);
-                $scope.selection = 3;
+                $scope.selection = 4;
             }
         );
     };
