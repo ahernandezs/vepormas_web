@@ -1,0 +1,14 @@
+<div ng-switch on="selection">
+    <div class="animate-switch" ng-switch-when="1">
+        <div ng-include="'views/partials/mytransfers/beneficiary-validate.html'"></div>
+    </div>
+    <div class="animate-switch" ng-switch-when="2">
+        <div ng-include="'views/partials/mytransfers/beneficiary-capture.html'"></div>
+    </div>
+    <div class="animate-switch" ng-switch-when="3">
+        <div ng-include="'views/partials/mytransfers/beneficiary-confirm.html'"></div>
+    </div>
+    <div class="animate-switch" ng-switch-when="4">
+        <div ng-include="'views/partials/mytransfers/beneficiary-result.html'"></div>
+    </div>
+</div>

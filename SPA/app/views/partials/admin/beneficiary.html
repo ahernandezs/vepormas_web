@@ -1,7 +1,7 @@
 <div class="agregarBeneficiario">
     <form>
-        <input type="text" ng-model="transfer.amount" name="amount" id="amount" placeholder="Buscar beneficiario">
-        <button><i></i>Buscar beneficiario</button>
+        <input type="text" ng-model="busqueda" placeholder="Buscar beneficiario">
+        <button ng-click="addBeneficary()"><i></i>Agregar beneficiario</button>
     </form>
     <table class="transactions">
         <thead>
@@ -13,7 +13,7 @@
             </tr>   
         </thead>
         <tbody>
-            <tr ng-repeat="accounts in third_accounts" ng-click="selectBeneficiary(accounts);">
+            <tr ng-repeat="accounts in third_accounts | filter:busqueda" ng-click="selectBeneficiary(accounts);">
                 <td>{{accounts.name}}</td>
                 <td>{{accounts.maskedAccountNumber}}</td>
                 <td>{{accounts.same_bank}}</td>
@@ -29,6 +29,10 @@
     </div>
     <div ng-switch-when="2">
         <div ng-include="'views/partials/admin/beneficiary-delete.html'">
+        </div>
+    </div>
+    <div ng-switch-when="3">
+        <div ng-include="'views/partials/admin/beneficiary-add.html'">
         </div>
     </div>
 </div>
