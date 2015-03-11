@@ -28,6 +28,18 @@ angular.module('spaApp').service('adminService', ['$http','$rootScope', function
 			}),
 			headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
 		});
+	};
+
+	this.updateCommunication = function(phone, e_mail, otp) {
+		return $http({
+			url: $rootScope.restAPIBaseUrl+'/userInformation/communication',
+			method: 'PUT',
+			data: JSON.stringify({
+				'phone': phone,
+				'e_mail': e_mail,
+				'otp': otp
+			})
+		});
 	}
 
 }]);

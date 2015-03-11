@@ -1,0 +1,11 @@
+<div class="record">
+    <div class="data">
+        <h3>Informaci&oacute;n de la cuenta</h3><br>
+        <p>¿A d&oacute;nde te enviaremos tus notificaciones y alertas sobre la actividad de tus cuentas?</p>
+        <form name="updateForm">
+            <input type="text" ng-model="data.phone" placeholder="N&uacute;mero celular" ng-required="true">
+            <input type="email" ng-model="data.e_mail" placeholder="Email" ng-required="true">
+            <button ng-disabled="updateForm.$invalid" ng-click="validateEmail()">Continuar</button>
+        </form>
+    </div>
+</div>

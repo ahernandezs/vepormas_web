@@ -8,7 +8,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 	}else{
 		$scope.adminOpt = 5;
 	}
-	
+
 	$scope.selection = 1;
 	$scope.action = 1;
 	$scope.data = {otp:''}
@@ -16,6 +16,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
     $scope.change = {};
     $scope.stage_password = 1;
     $scope.beneficiary = {};
+	$scope.stage_updatecommunication = 1;
 
 	$scope.selectBeneficiary = function(account){
 		$scope.action = 2;
@@ -69,6 +70,32 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
             $scope.stage_password = 2;
         }
     };
+
+	/**
+	 * Validate Email from updateCommunication and goes one step forward.
+	 */
+	$scope.validateEmail = function () {
+		$scope.stage_updatecommunication += 1;
+	};
+
+	/**
+	 * Go back one step in the updateCommunication flow.
+	 */
+	$scope.goBack = function () {
+		$scope.stage_updatecommunication -= 1;
+	};
+
+	/**
+	 * Update the communication information.
+	 */
+	$scope.sendCommunication = function () {
+		adminProvider.updateCommunication($scope.data.phone, $scope.data.e_mail, $scope.data.otp).then(
+			function (data) {
+				console.log('Communication data updated successfully');
+			}
+		);
+		$scope.stage_updatecommunication += 1;
+	};
 
     /**
      * Send the new password to the service.
