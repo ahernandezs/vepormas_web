@@ -1,0 +1,24 @@
+<div class="record">
+    <div class="data">
+        <h3>Informaci&oacute;n de la cuenta</h3><br>
+        ¿A d&oacute;nde te enviaremos tus notificaciones y alertas sobre la actividad de tus cuentas?<br>
+        <form name="updateForm">
+            <input class="input-confirm-token" type="password" ng-model="data.otp" ng-required="true" ng-pattern="/^[0-9]{1,7}$/" minlength="7" maxlength="7" placeholder="Introduce el c&oacute;digo que se ha generado en tu Token F&iacute;sico">
+
+            <table>
+                <tr>
+                    <td>N&uacute;mero celular</td>
+                    <td>{{data.phone}}</td>
+                </tr>
+                <tr>
+                    <td>Cuenta origen:</td>
+                    <td>{{data.e_mail}}</td>
+                </tr>
+            </table>
+            <div class="double-btn">
+                <input type="submit" value="Regresar" ng-click="goBack()">
+                <input type="submit" value="Continuar" ng-click="sendCommunication()" ng-disabled="updateForm.$invalid">
+            </div>
+        </form>
+    </div>
+</div>

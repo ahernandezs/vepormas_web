@@ -30,7 +30,7 @@ angular.module('spaApp').service('adminService', ['$http','$rootScope', function
 		});
 	};
 
-	this.updateCommunication = function(phone, e_mail: otp) {
+	this.updateCommunication = function(phone, e_mail, otp) {
 		return $http({
 			url: $rootScope.restAPIBaseUrl+'/userInformation/communication',
 			method: 'PUT',
