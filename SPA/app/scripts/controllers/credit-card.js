@@ -3,7 +3,7 @@
 /**
  * The credit card controller.
  */
-angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$stateParams', 'accountsProvider', '$rootScope', '$http', '$sce', function ($scope, $location, $stateParams, accountsProvider, $rootScope, $http, $sce) {
+angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$stateParams', 'accountsProvider', '$rootScope', '$http', function ($scope, $location, $stateParams, accountsProvider, $rootScope, $http) {
 
 	var params = {};
 	params.numPage = 0;
@@ -86,28 +86,11 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 	};
 
 	$scope.getStatement = function(id, format){
-		$http.get($rootScope.restAPIBaseUrl+'/files/statement?format='+format+'&id='+id+'&_account_id='+$stateParams.accountId, {responseType: 'arraybuffer'})
+		$http.get($rootScope.restAPIBaseUrl+'/files/statement?format='+format.toUpperCase()+'&id='+id+'&_account_id='+$stateParams.accountId, {responseType: 'arraybuffer'})
 			.success(function (data) {
-			var file = new Blob(['data:application/pdf;base64,'+data], {type: 'application/pdf'});
+			var file = new Blob([data], {type: 'application/'+format});
 			var fileURL = URL.createObjectURL(file);
-			$scope.content = $sce.trustAsResourceUrl(fileURL);
-
-
-  var raw = window.atob('data:application/pdf;base64,'+data);
-
-  window.open($sce.trustAsResourceUrl(fileURL));
-
-  var rawLength = raw.length;
-  var array = new Uint8Array(new ArrayBuffer(rawLength));
-
-  for(var i = 0; i < rawLength; i++) {
-    array[i] = raw.charCodeAt(i);
-  }
-
-window.open(array);
-//window.open("data:application/pdf;base64," + Base64.encode(data));
-
-
+			window.open(fileURL);
 		});
 	}
 

@@ -3,13 +3,33 @@
 /**
  * The accounts controller. Gets accounts passing auth parameters
  */
-angular.module('spaApp').controller('AccountDepositDetailCtrl', ['$scope', '$location','$rootScope', 'accountsProvider', '$stateParams', function ($scope, $location, $rootScope,accountsProvider, $stateParams) {
+ angular.module('spaApp').controller('AccountDepositDetailCtrl', ['$scope', '$location','$rootScope', 'accountsProvider', '$stateParams', '$http', function ($scope, $location, $rootScope,accountsProvider, $stateParams, $http) {
 
 	var params = {};
 	params.numPage = 0;
 	params.size = 100;
+	$scope.years = [
+		{ label: '2014', value: 2014 },
+		{ label: '2013', value: 2013 },
+		{ label: '2012', value: 2012 }
+	];
+	$scope.months = [
+		{ label: 'Enero', value: 1 },
+		{ label: 'Febrero', value: 2 },
+		{ label: 'Marzo', value: 3 },
+		{ label: 'Abril', value: 4 },
+		{ label: 'Mayo', value: 5 },
+		{ label: 'Junio', value: 6 },
+		{ label: 'Julio', value: 7 },
+		{ label: 'Agosto', value: 8 },
+		{ label: 'Septiembre', value: 9 },
+		{ label: 'Octubre', value: 10 },
+		{ label: 'Noviembre', value: 11 },
+		{ label: 'Diciembre', value: 12 }
+	];
+	$scope.year = $scope.years[0];
 
-  	$scope.searchParams = {};
+	$scope.searchParams = {};
 
   	//initialize the account-detail
 	accountsProvider.getAccountDetail($scope.selectedAcccountId).then(
@@ -121,5 +141,14 @@ angular.module('spaApp').controller('AccountDepositDetailCtrl', ['$scope', '$loc
 			}
 		);
 	};
+
+	$scope.getStatement = function(id, format){
+		$http.get($rootScope.restAPIBaseUrl+'/files/statement?format='+format.toUpperCase()+'&id='+id+'&_account_id='+$stateParams.accountId, {responseType: 'arraybuffer'})
+			.success(function (data) {
+			var file = new Blob([data], {type: 'application/'+format});
+			var fileURL = URL.createObjectURL(file);
+			window.open(fileURL);
+		});
+	}
 
 }]);
