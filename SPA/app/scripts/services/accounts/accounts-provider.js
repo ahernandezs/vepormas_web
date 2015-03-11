@@ -15,8 +15,9 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
         $rootScope.accounts = data.accounts;
         deferred.resolve();
       }).error(function(data, status) {
+        var data = {'response' : data, 'status': status};
         console.log(data, status);
-        return deferred.reject("Error getting accounts");
+        return deferred.reject(data);
       });
 
       return deferred.promise;
@@ -31,7 +32,8 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
         deferred.resolve();
       }).error(function(data, status) {
         console.log(data, status);
-        return deferred.reject("Error getting account detail");
+        var data = {'response' : data, 'status': status};
+        return deferred.reject(data);
       });
 
       return deferred.promise;
@@ -47,7 +49,8 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
         deferred.resolve();
       }).error(function(data, status) {
         console.log(data, status);
-        return deferred.reject("Error getting transactions");
+        var data = {'response' : data, 'status': status};
+        return deferred.reject(data);
       });
 
       return deferred.promise;
@@ -60,10 +63,10 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
       accountsService.postTransfer(sourceAccount, destinationAccount, amount, description, completionDate).success(function(data, status, headers){
         deferred.resolve();
       }).error(function(data, status){
-        return deferred.reject('Error Transfer  Accounts');
+        var data = {'response' : data, 'status': status};
+        return deferred.reject(data);
       });
-        
-        return deferred.promise;
+      return deferred.promise;
 
     },
 
@@ -96,7 +99,8 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
             deferred.resolve();
           }).error(function(data, status) {
             console.log(data, status);
-            return deferred.reject({"status": status, "mesage": "Error getting transactions"});
+            var data = {'response' : data, 'status': status};
+            return deferred.reject(data);
           });
       }
       //fill currentAccount with rootScope data
@@ -104,39 +108,39 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
       return deferred.promise;
     },
 
+    /**
+     * getting the list of account-statements
+     */
     getStates: function(accountId){
-
       var deferred = $q.defer();
       console.log('getting list of statements');
-
       accountsService.getStates(accountId).success(function(data, status, headers) {
         $rootScope.statements = data.statements;
         console.log(JSON.stringify($rootScope.statements));
         deferred.resolve();
       }).error(function(data, status) {
         console.log(data, status);
-        return deferred.reject("Error getting statements");
+        var data = {'response' : data, 'status': status};
+        return deferred.reject(data);
       });
-
       return deferred.promise;
-
     },
 
+    /**
+     * getting a account's statement
+     */
     getState: function(accountId, id, format){
-
       var deferred = $q.defer();
       console.log('getting a statement');
-
       accountsService.getState(accountId, id, format).success(function(data, status, headers) {
         $rootScope.statement = data.statement;
         deferred.resolve();
       }).error(function(data, status) {
         console.log(data, status);
-        return deferred.reject("Error getting statement");
+        var data = {'response' : data, 'status': status};
+        return deferred.reject(data);
       });
-
       return deferred.promise;
-
     }
 
   };

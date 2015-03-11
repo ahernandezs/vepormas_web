@@ -13,9 +13,13 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
     function initialize(){
         //Get investments products.
         productProvider.getProductsList().then(
-            function(data) {
-                $scope.investmentProducts = data;
-            }
+          function(data) {
+              $scope.investmentProducts = data;
+          },
+          function(data) {
+              var message = data.response.message;
+              $scope.setServiceError(message);
+          }
         );
         //TODO: the accounts shoud come from the provider
         $scope.ownAccounts = $rootScope.accounts;
@@ -61,11 +65,11 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
     function processServiceError(errorObject){
         var status = errorObject.status;
         if(status === 406){
-            setError('invalid input');
+            $scope.setServiceError('invalid input');
         }else if(status === 500){
-            setError('El servicio no está disponible, intente más tarde');
+            $scope.setServiceError('El servicio no está disponible, intente más tarde');
         }else{
-            setError('Ha ocurrido un problema, favor de contactar al servicio de atención al cliente');
+            $scope.setServiceError('Ha ocurrido un problema, favor de contactar al servicio de atención al cliente');
         }
         var data = errorObject.data;
     }
@@ -129,7 +133,7 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
                 processServiceError
             );
         }else{
-            setError('Tipo de inversión desconocido');
+            $scope.setServiceError('Tipo de inversión desconocido');
          }
      }
 

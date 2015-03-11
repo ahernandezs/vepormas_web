@@ -11,7 +11,8 @@ angular.module('spaApp')
               $rootScope.thirdAccountValidation = data;
               deferred.resolve();
           }).error(function(data, status){
-              return deferred.reject('Error validate third account');
+            var data = {'response' : data, 'status': status};
+            return deferred.reject(data);
           })
         return deferred.promise;
       },
@@ -25,7 +26,8 @@ angular.module('spaApp')
             $rootScope.thirdAccounts = data.third_accounts;
             deferred.resolve();
           }).error(function(data, status) {
-            return deferred.reject('Error getting third accounts');
+            var data = {'response' : data, 'status': status};
+            return deferred.reject(data);
           });
         } else {
           deferred.resolve();
@@ -38,7 +40,8 @@ angular.module('spaApp')
         thirdAccountService.registerThirdAccount(alias, beneficiaryName, e_mail, phone, accountNumber, otp).success(function(data, status, headers){
             deferred.resolve();
         }).error(function(data, status){
-            return deferred.reject('Error updating third account');
+          var data = {'response' : data, 'status': status};
+          return deferred.reject(data);
         })
         return deferred.promise;
       },
@@ -48,7 +51,8 @@ angular.module('spaApp')
         thirdAccountService.unregisterThirdAccount(thirdAccountID).success(function(data, status, headers){
             deferred.resolve();
         }).error(function(data, status){
-            return deferred.reject('Error deleting third account');
+          var data = {'response' : data, 'status': status};
+          return deferred.reject(data);
         })
         return deferred.promise;
       }

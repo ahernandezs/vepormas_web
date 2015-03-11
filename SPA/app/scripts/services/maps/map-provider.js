@@ -15,7 +15,8 @@ angular.module('spaApp').factory('mapProvider', ['$rootScope', 'mapService', '$q
 				deferred.resolve();
 			}).error(function(data, status) {
 				console.log(data, status);
-				return deferred.reject("Error getting branches");
+				 var data = {'response' : data, 'status': status};
+				return deferred.reject(data);
 			});
 			return deferred.promise;
 	    },

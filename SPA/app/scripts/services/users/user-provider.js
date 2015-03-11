@@ -168,7 +168,8 @@ angular.module('spaApp')
       }).error(
         function(data, status){
         console.log('error');
-        return deferred.reject('Error to get user');
+        var data = {'response' : data, 'status': status};
+        return deferred.reject(data);
       })
       return deferred.promise;      
     },
@@ -197,7 +198,8 @@ angular.module('spaApp')
       .success(function(data, status, headers){
         deferred.resolve();
       }).error(function(data, status){
-        return deferred.reject('Error to register user');
+        var data = {'response' : data, 'status': status};
+        return deferred.reject(data);
       })
       return deferred.promise;
     },

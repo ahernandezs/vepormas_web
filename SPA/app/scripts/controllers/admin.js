@@ -36,6 +36,10 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 	$scope.delete = function(otp){
 		adminProvider.deleteAccount($scope.selectedAccount._account_id, otp).then(function() {
 			console.log("Account deleted");
+		},
+		function(data) {
+			var message = data.response.message;
+			$scope.setServiceError(message);
 		});
 	}
 
@@ -56,7 +60,11 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 		$scope.third_accounts_own = third_accounts_own;
 		$scope.third_accounts_others = third_accounts_others;
 
-	});
+		},function(data) {
+			var message = data.response.message;
+			$scope.setServiceError(message);
+		}
+	);
 
     /**
      * Evaluates if the new passwords are equals.

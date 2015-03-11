@@ -41,6 +41,8 @@ angular.module('spaApp').factory('httpInterceptor', ['$q', '$window', '$location
         } else {
           $location.url('/login');
         }
+      }else{
+        
       }
 
       return $q.reject(response);

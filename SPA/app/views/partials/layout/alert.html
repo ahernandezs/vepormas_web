@@ -12,3 +12,9 @@
   Problema durante el cierre de sesi&oacute;n. Su sesi&oacute;n ser&aacute; cerrada autom&aacute;ticamente.
   <a class="close" href="" ng-click="showErrorLogoutAlert = false">X</a>
 </div>
+
+<div class="alert_message" ng-show="hasServiceError">
+  {{serviceErrorMessage}}
+  <a class="close" href="" ng-click="resetServiceError()">X</a>
+</div>
+
