@@ -16,7 +16,6 @@
                    <option value='' disabled>Mes</option>
                 </select>            
             </p>
-            <button class="orange" ng-click="">Buscar</button>
         </div>
     </div>
     <div class="transactions">    
@@ -27,7 +26,7 @@
                 </tr>
             </thead>
             <tbody>
-                    <tr ng-repeat="statement in statements">
+                    <tr ng-repeat="statement in statements | filter:year.value | filter:month.value">
                         <td>{{statement.date}}</td>
                         <td><a href="#" ng-click="getStatement(statement.id, 'pdf');">Descargar PDF</a></td>
                         <td><a href="#" ng-click="getStatement(statement.id, 'xml');">Descargar XML</a></td>
