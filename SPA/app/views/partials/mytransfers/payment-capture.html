@@ -25,9 +25,9 @@
             </select>
         </div>
         <span ng-if="payment.destiny.account_type !== 'TDC'">
-            <label class="fieldContainer" ng-class="payment.amount.length > 0 ? 'selected' : ''">
+            <label class="fieldContainer" ng-class="!paymentForm.amount.$error.required ? 'selected' : ''">
                 <span class="big">Importe</span>
-                <input type="text" ng-model="payment.amount" placeholder="Importe" class="input-importe" ng-required="true" ng-pattern="/^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/" maxlength="15">
+                <input name="amount" type="text" currency ng-model="payment.amount" placeholder="Importe" class="input-importe" ng-required="true" maxlength="15">
             </label>
         </span>
         <span ng-if="payment.destiny.account_type === 'TDC'">
@@ -47,7 +47,7 @@
                 <label>
                     <input type="radio" name="type" class="last" ng-model="payment.amount" value="{{payment.other}}" ng-required="true">
                     <p class="last">Otra cantidad</p>
-                    <input type="text" ng-model="payment.other" class="input-importe" ng-required="payment.amount == 'other'" ng-pattern="/^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$/" maxlength="15">
+                    <input type="text" currency ng-model="payment.other" class="input-importe" ng-required="payment.amount == 'other'" maxlength="15">
                 </label>
             </div>
         </span>
