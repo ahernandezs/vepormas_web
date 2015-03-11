@@ -75,9 +75,9 @@ angular.module('spaApp')
         $scope.images = data.images;
         $scope.checkingUser = false;
       }).
-      error(function(data, status) {
+      error(function(errorObject, status) {
         console.log("Status : ", status);
-        setErrorWithStatus(status);
+        setErrorWithStatus(status, errorObject);
         $scope.checkingUser = false;
       });
     
@@ -123,7 +123,7 @@ angular.module('spaApp')
             timerService.start();
           }
         ).error(
-          function(data, status) {
+          function(errorObject, status) {
             //put an error message in the scope
             $scope.isLogin = false;
             console.log("HttpStatus code : ", status);
@@ -224,7 +224,7 @@ angular.module('spaApp')
     $scope.checkUser();
 
     // get errors from backend
-    setErrorWithStatus(parseInt($window.status));
+    setErrorWithStatus(parseInt($window.status), null);
   }
 }]);
 
