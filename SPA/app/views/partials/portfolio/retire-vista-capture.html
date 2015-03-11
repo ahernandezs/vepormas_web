@@ -12,21 +12,21 @@
     <form name="investmentForm">
         <div class="select-style" ng-class="investment.vistaAccount ? 'selected' : ''">
             <span>Producto de inversi&oacute;n</span>
-            <select ng-model="investment.vistaAccount" ng-options="item as item.name for item in vistaAccounts" required>
+            <select ng-model="investment.vistaAccount" ng-options="item as item.name for item in vistaAccounts" ng-required="true">
                 <option value="">Producto de inversi&oacute;n</option>
             </select>
         </div>
          <div class="select-style" ng-class="investment.depositAccount ? 'selected' : ''">
             <span>Cuenta dep&oacute;sito</span>
-            <select ng-model="investment.depositAccount" 
-                    ng-options="item as item.name for item in depositAccounts" required>
+            <select ng-model="investment.depositAccount"
+                    ng-options="item as item.name for item in depositAccounts" ng-required="true">
                 <option value="">Cuenta dep&oacute;sito</option>
             </select>
         </div>
         <span>
             <label class="fieldContainer" ng-class="!investmentForm.amount.$error.required ? 'selected' : ''">
                 <span class="big">Importe a retirar</span>
-                <input type="text" name="amount" ng-model="investment.amount" placeholder="Importe a retirar" class="input-importe" maxlength="15" pattern="^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$" required>
+                <input type="text" currency name="amount" ng-model="investment.amount" placeholder="Importe a retirar" class="input-importe" maxlength="15" ng-required="true">
             </label>
         </span>
     </form>

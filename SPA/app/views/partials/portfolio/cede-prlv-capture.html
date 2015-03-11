@@ -12,7 +12,7 @@
     <form name="investmentForm">
         <div class="select-style" ng-class="investment.originAccount ? 'selected' : ''">
             <span>Cuenta origen</span>
-            <select ng-model="investment.originAccount" ng-options="item as item.name for item in ownAccounts | filter: { account_type: 'DEP' }" required>
+            <select ng-model="investment.originAccount" ng-options="item as item.name for item in ownAccounts | filter: { account_type: 'DEP' }" ng-required="true">
                 <option value="">Cuenta origen</option>
             </select>
         </div>
@@ -20,17 +20,17 @@
             <span>Producto de inversi&oacute;n</span>
             <select name="productId"
                     ng-model="investment.destinationProduct"
-                    ng-options="item as item.productName for item in investmentProducts | filter: { category: investmentCategory }" required>
+                    ng-options="item as item.productName for item in investmentProducts | filter: { category: investmentCategory }" ng-required="true">
                 <option value="">Producto de inversi&oacute;n</option>
             </select>
         </div>
          <label class="fieldContainer" ng-class="!investmentForm.amount.$error.required ? 'selected' : ''">
             <span class="big">Importe de inversi&oacute;n</span>
-            <input name="amount" type="text" ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" maxlength="15" pattern="^(\$|)([1-9]\d{0,2}(\,\d{3})*|([1-9]\d*))(\.\d{2})?$" required>
+            <input name="amount" type="text" currency ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" maxlength="15" ng-required="true">
         </label>
         <div class="select-style" ng-class="investment.expirationInstruction ? 'selected' : ''">
             <span>Instrucciones al vencimiento</span>
-            <select ng-model="investment.expirationInstruction" ng-options="opt as opt.label for opt in investmentInstructions" required>
+            <select ng-model="investment.expirationInstruction" ng-options="opt as opt.label for opt in investmentInstructions" ng-required="true">
                 <option value="">Instrucciones al vencimiento</option>
             </select>
         </div>
