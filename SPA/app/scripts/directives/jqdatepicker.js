@@ -9,6 +9,8 @@ angular.module('spaApp')
       $(function(){
         element.datepicker({
           dateFormat:'dd/mm/yy',
+          showOn: "both",
+          buttonText: "<i></i>",
           onSelect:function (date) {
             scope.$apply(function () {
               ngModelCtrl.$setViewValue(date);
