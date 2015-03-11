@@ -8,38 +8,50 @@
 				<div ng-class=" showBranches ? 'half' : 'busqueda' ">
 					<div class="busqueda-detalle">
 						<button ng-click="searchNearMe()" class="naranja">Cerca de m&iacute;</button>
-						<input type="text" id="Autocomplete" ng-autocomplete="result" details="details" options="options" placeholder="Buscar por dirección" size="28"/>
-						<select ng-model="estado" ng-options="estado.name for estado in estados"></select>
-						<span ng-click="search()"><button class="naranja">Lupa</button></span>
+						<div class="mapinputs">
+							<input type="text" id="Autocomplete" ng-autocomplete="result" details="details" options="options" placeholder="Buscar por dirección" size="28"/>
+							<div class="select-map">
+								<select ng-model="estado" ng-options="estado.name for estado in estados"></select>
+							</div>
+						</div>
+						<span ng-click="search()"></span>
 						<br>
 					</div>
 					<div class="sucursal-modulo">
-						<div class="half">Sucursales</div>
-						<div class="half">M&oacute;dulos de atenci&oacute;n</div>
+						<div class="selected">Sucursales</div>
+						<div>M&oacute;dulos de atenci&oacute;n</div>
 					</div>
 					<div ng-show="showBranches">
 						<div ng-repeat="branch in map.branches">
 							<div class="resultado" ng-click="selectedBranch(branch)">
-								<b>{{branch.title}}</b><br>
-								{{branch.description.address}}
-								<span>¿C&oacute;mo llegar?</span>
-								Tel&eacute;fono: {{branch.description.phone_number}}
-								Horario de Atenci&oacute;n: 09:00 - 16:00 hrs.<br>
-								Abierto S&aacute;bados Cambio de divisas Atienden con cita
+								<div class="sucursal">
+									<span>
+										<strong>{{branch.title}}</strong>
+										{{branch.description.address}}
+									</span>
+									<span><i></i>¿C&oacute;mo llegar?</span>
+								</div>
+								<div class="telyhorario">
+									<span><strong>Tel&eacute;fono: </strong> {{branch.description.phone_number}}</span>
+									<span><strong>Horario de Atenci&oacute;n: </strong> 09:00 - 16:00 hrs.</span>
+								</div>
+								<div class="otrosdatos">
+									<span class="abierto">Abierto S&aacute;bados</span>
+									<span class="divisas">Cambio de divisas</span>
+									<span class="cita">Atienden con cita</span>  
+								</div>
+								
 							</div>
 						</div>
 					</div>
 
 				</div>
-
-				<div ng-class=" showBranches ? 'half' : 'full' ">
-					<ui-gmap-google-map center='map.center' zoom='map.zoom' bounds="map.bounds">
-						<ui-gmap-markers models="map.branches" coords="'self'" fit='false'>
-						</ui-gmap-markers>
-					</ui-gmap-google-map>
-				</div>
-				
-				<div class="map-footer" ng-hide="showBranches">
+					<div><!-- ng-class=" showBranches ? 'half' : 'full' ">-->
+						<ui-gmap-google-map center='map.center' zoom='map.zoom' bounds="map.bounds">
+							<ui-gmap-markers models="map.branches" coords="'self'" fit='false'></ui-gmap-markers>
+						</ui-gmap-google-map>
+					</div>
+				<div class="map-footer"><!--ng-hide="showBranches">-->
 					<ul>
 					    <li>
 					    	<p><span>Atenci&oacute;n al cliente:</span> <a href="tel:018008003224">01 800 800 3224</a></p>

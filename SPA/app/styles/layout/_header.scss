@@ -25,9 +25,9 @@ header {
 		@include size(121px, 92px);
 		background: transparent url(../images/logo-consubanco.svg) center center no-repeat;
 		background-size: cover;
-		display: inline;
+		display: block;
 		float: left;
-		margin-top: $headerTop;
+		margin:10px;
 
 		a {
 			height: 100%;
@@ -100,10 +100,10 @@ header {
 		float:left;
 		width: 65%;
 		h6{
-			font-size: 14px;
+			font-size: 0.9em;
 		}
 		h4{
-			font-size: 16px;
+			font-size: 1em;
 		}
 	}
 	button{

@@ -192,7 +192,8 @@ input[name="account"] + p{
         @include border-radius(2px);
         p:first-child {
             float: left;
-            margin: 25px 0 0 80px;
+            width: 75%;
+            margin: 20px 0 0 80px;
             color: $green;
             span{
                 font-weight: bold;
@@ -203,6 +204,7 @@ input[name="account"] + p{
             width: 15%;
             height: 100%;
             background-color: azure;
+            text-align: center;
             p {
                 background:url(../images/ico-impresora.png) no-repeat center 13px;
                 background-size:25px;
