@@ -45,9 +45,17 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 				mapProvider.getBranches({'lat':$scope.estado.lat,'lng':$scope.estado.lon}).then(
 					function(data) {
 						$scope.map.branches = $rootScope.branches;
-					},function(data) {
-			            var message = data.response.message;
-			            $scope.setServiceError(message);
+					},
+					function(errorObject) {
+			            var status = errorObject.status;
+			            if(status === 406){
+			                $scope.setServiceError('datos inválidos');
+			            }else if(status === 500){
+			                var message = errorObject.response.message;
+			                $scope.setServiceError(message);
+			            }else{
+			                $scope.setServiceError('Error en el servicio, intente más tarde');
+			            }
 			        }
 				);
 			}
@@ -56,9 +64,17 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 			mapProvider.getBranches({'lat':$scope.details.geometry.location.k,'lng':$scope.details.geometry.location.D}).then(
 				function(data) {
 					$scope.map.branches = $rootScope.branches;
-				},function(data) {
-		            var message = data.response.message;
-		            $scope.setServiceError(message);
+				},
+				function(errorObject) {
+		            var status = errorObject.status;
+		            if(status === 406){
+		                $scope.setServiceError('datos inválidos');
+		            }else if(status === 500){
+		                var message = errorObject.response.message;
+		                $scope.setServiceError(message);
+		            }else{
+		                $scope.setServiceError('Error en el servicio, intente más tarde');
+		            }
 		        }
 			);
 		}
@@ -72,9 +88,17 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 					function(data) {
 						$scope.map.branches = $rootScope.branches;
 						$scope.showBranches = true;
-					},function(data) {
-			            var message = data.response.message;
-			            $scope.setServiceError(message);
+					},
+					function(errorObject) {
+			            var status = errorObject.status;
+			            if(status === 406){
+			                $scope.setServiceError('datos inválidos');
+			            }else if(status === 500){
+			                var message = errorObject.response.message;
+			                $scope.setServiceError(message);
+			            }else{
+			                $scope.setServiceError('Error en el servicio, intente más tarde');
+			            }
 			        }
 				);
 			}, function() {
@@ -118,7 +142,18 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 	mapProvider.getBranches({}).then(
 		function(data) {
 			$scope.map.branches = $rootScope.branches;
-		}
+		},
+		function(errorObject) {
+            var status = errorObject.status;
+            if(status === 406){
+                $scope.setServiceError('datos inválidos');
+            }else if(status === 500){
+                var message = errorObject.response.message;
+                $scope.setServiceError(message);
+            }else{
+                $scope.setServiceError('Error en el servicio, intente más tarde');
+            }
+        }
 	);
 
 	$scope.selectedBranch = function(branch){

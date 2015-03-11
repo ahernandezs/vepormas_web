@@ -16,9 +16,16 @@ angular.module('spaApp').controller('AccountDepositDetailCtrl', ['$scope', '$loc
 		function(data) {
 			$scope.accountDetail = $rootScope.accountDetail;
 		},
-		function(data) {
-			var message = data.response.message;
-			$scope.setServiceError(message);
+		function(errorObject) {
+			var status = errorObject.status;
+	        if(status === 406){
+	            $scope.setServiceError('datos inválidos');
+	        }else if(status === 500){
+	            var message = errorObject.response.message;
+	            $scope.setServiceError(message);
+	        }else{
+	            $scope.setServiceError('Error en el servicio, intente más tarde');
+	        }
 		}
 	);
 
@@ -27,9 +34,16 @@ angular.module('spaApp').controller('AccountDepositDetailCtrl', ['$scope', '$loc
 		function(data){
 			$scope.accountTransactions = $rootScope.transactions;
 		},
-		function(data) {
-			var message = data.response.message;
-			$scope.setServiceError(message);
+		function(errorObject) {
+			var status = errorObject.status;
+	        if(status === 406){
+	            $scope.setServiceError('datos inválidos');
+	        }else if(status === 500){
+	            var message = errorObject.response.message;
+	            $scope.setServiceError(message);
+	        }else{
+	            $scope.setServiceError('Error en el servicio, intente más tarde');
+	        }
 		}
 	);
 
@@ -43,9 +57,16 @@ angular.module('spaApp').controller('AccountDepositDetailCtrl', ['$scope', '$loc
 			function(data){
 				$scope.accountTransactions = $rootScope.transactions;
 			},
-			function(data) {
-				var message = data.response.message;
-				$scope.setServiceError(message);
+			function(errorObject) {
+				var status = errorObject.status;
+		        if(status === 406){
+		            $scope.setServiceError('datos inválidos');
+		        }else if(status === 500){
+		            var message = errorObject.response.message;
+		            $scope.setServiceError(message);
+		        }else{
+		            $scope.setServiceError('Error en el servicio, intente más tarde');
+		        }
 			}
 		);
 	}
@@ -64,9 +85,16 @@ angular.module('spaApp').controller('AccountDepositDetailCtrl', ['$scope', '$loc
 				//WTF: why is there 'investment' transactions here?!?
 				$scope.investmentTransactions = $rootScope.transactions;
 			},
-			function(data) {
-				var message = data.response.message;
-				$scope.setServiceError(message);
+			function(errorObject) {
+				var status = errorObject.status;
+		        if(status === 406){
+		            $scope.setServiceError('datos inválidos');
+		        }else if(status === 500){
+		            var message = errorObject.response.message;
+		            $scope.setServiceError(message);
+		        }else{
+		            $scope.setServiceError('Error en el servicio, intente más tarde');
+		        }
 			});
 		}
 	};
@@ -80,9 +108,16 @@ angular.module('spaApp').controller('AccountDepositDetailCtrl', ['$scope', '$loc
 			function(data) {
 				$scope.statements = $rootScope.statements;
 			},
-			function(data) {
-				var message = data.response.message;
-				$scope.setServiceError(message);
+			function(errorObject) {
+				var status = errorObject.status;
+		        if(status === 406){
+		            $scope.setServiceError('datos inválidos');
+		        }else if(status === 500){
+		            var message = errorObject.response.message;
+		            $scope.setServiceError(message);
+		        }else{
+		            $scope.setServiceError('Error en el servicio, intente más tarde');
+		        }
 			}
 		);
 	};

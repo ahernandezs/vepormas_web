@@ -44,9 +44,17 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                    $scope.theAccounts.push( value );
                }
            );
-		},function(data) {
-            var message = data.response.message;
-            $scope.setServiceError(message);
+		},
+        function(errorObject) {
+            var status = errorObject.status;
+            if(status === 406){
+                $scope.setServiceError('datos inválidos');
+            }else if(status === 500){
+                var message = errorObject.response.message;
+                $scope.setServiceError(message);
+            }else{
+                $scope.setServiceError('Error en el servicio, intente más tarde');
+            }
         }
 	);
 
@@ -62,9 +70,17 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                 }
             );
             console.log( $scope.theAccounts );
-        },function(data) {
-            var message = data.response.message;
-            $scope.setServiceError(message);
+        },
+        function(errorObject) {
+            var status = errorObject.status;
+            if(status === 406){
+                $scope.setServiceError('datos inválidos');
+            }else if(status === 500){
+                var message = errorObject.response.message;
+                $scope.setServiceError(message);
+            }else{
+                $scope.setServiceError('Error en el servicio, intente más tarde');
+            }
         }
     );
 
@@ -77,9 +93,17 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                 function (data) {
                     $scope.transferAccountDetail = $rootScope.accountDetail.credit_card;
                     delete $rootScope.accountDetail;
-                },function(data) {
-                    var message = data.response.message;
-                    $scope.setServiceError(message);
+                },
+                function(errorObject) {
+                    var status = errorObject.status;
+                    if(status === 406){
+                        $scope.setServiceError('datos inválidos');
+                    }else if(status === 500){
+                        var message = errorObject.response.message;
+                        $scope.setServiceError(message);
+                    }else{
+                        $scope.setServiceError('Error en el servicio, intente más tarde');
+                    }
                 }
             );
     };

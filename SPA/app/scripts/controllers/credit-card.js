@@ -34,18 +34,34 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 	accountsProvider.getAccountDetail($stateParams.accountId).then(
 		function(data) {
 			$scope.creditsHeader = $rootScope.accountDetail.credit_card;
-		},function(data) {
-			var message = data.response.message;
-			$scope.setServiceError(message);
+		},
+		function(errorObject) {
+			var status = errorObject.status;
+	        if(status === 406){
+	            $scope.setServiceError('datos inválidos');
+	        }else if(status === 500){
+	            var message = errorObject.response.message;
+	            $scope.setServiceError(message);
+	        }else{
+	            $scope.setServiceError('Error en el servicio, intente más tarde');
+	        }
 		}
 	);
 
 	accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
 		function(data){
 			$scope.creditCardTransactions = $rootScope.transactions;
-		},function(data) {
-			var message = data.response.message;
-			$scope.setServiceError(message);
+		},
+		function(errorObject) {
+			var status = errorObject.status;
+	        if(status === 406){
+	            $scope.setServiceError('datos inválidos');
+	        }else if(status === 500){
+	            var message = errorObject.response.message;
+	            $scope.setServiceError(message);
+	        }else{
+	            $scope.setServiceError('Error en el servicio, intente más tarde');
+	        }
 		}
 	);
 
@@ -54,9 +70,17 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 		accountsProvider.getStates($stateParams.accountId).then(
 			function(data) {
 				$scope.statements = $rootScope.statements;
-			},function(data) {
-				var message = data.response.message;
-				$scope.setServiceError(message);
+			},
+			function(errorObject) {
+				var status = errorObject.status;
+		        if(status === 406){
+		            $scope.setServiceError('datos inválidos');
+		        }else if(status === 500){
+		            var message = errorObject.response.message;
+		            $scope.setServiceError(message);
+		        }else{
+		            $scope.setServiceError('Error en el servicio, intente más tarde');
+		        }
 			}
 		);
 	};
@@ -98,9 +122,17 @@ window.open(array);
 			accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
 				function(data){
 					$scope.creditCardTransactions = $rootScope.transactions;
-				},function(data) {
-					var message = data.response.message;
-					$scope.setServiceError(message);
+				},
+				function(errorObject) {
+					var status = errorObject.status;
+			        if(status === 406){
+			            $scope.setServiceError('datos inválidos');
+			        }else if(status === 500){
+			            var message = errorObject.response.message;
+			            $scope.setServiceError(message);
+			        }else{
+			            $scope.setServiceError('Error en el servicio, intente más tarde');
+			        }
 				}
 			);
 		}

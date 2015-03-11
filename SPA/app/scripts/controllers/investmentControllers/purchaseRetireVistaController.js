@@ -56,7 +56,7 @@ angular.module('spaApp').controller('purchaseRetireVistaCtrl', ['$rootScope', '$
     function processServiceError(errorObject){
         var status = errorObject.status;
         if(status === 406){
-            $scope.setServiceError('invalid input');
+            $scope.setServiceError('datos inválidos');
         }else if(status === 500){
             var message = errorObject.response.message;
             $scope.setServiceError(message);

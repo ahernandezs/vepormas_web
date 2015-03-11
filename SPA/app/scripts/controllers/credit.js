@@ -14,18 +14,36 @@ angular.module('spaApp').controller('creditCtrl', ['$scope', '$location', '$stat
 	accountsProvider.getAccountDetail($scope.selectedAcccountId).then(
 		function(data) {
 			$scope.creditsHeader = $rootScope.accountDetail;
-		},function(data) {
-			var message = data.response.message;
-			$scope.setServiceError(message);
-		});
+		},
+		function(errorObject) {
+			var status = errorObject.status;
+	        if(status === 406){
+	            $scope.setServiceError('datos inválidos');
+	        }else if(status === 500){
+	            var message = errorObject.response.message;
+	            $scope.setServiceError(message);
+	        }else{
+	            $scope.setServiceError('Error en el servicio, intente más tarde');
+	        }
+		}
+	);
 
 	accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
 		function(data){
 			$scope.creditTransactions = $rootScope.transactions;
-		},function(data) {
-			var message = data.response.message;
-			$scope.setServiceError(message);
-		});
+		},
+		function(errorObject) {
+			var status = errorObject.status;
+	        if(status === 406){
+	            $scope.setServiceError('datos inválidos');
+	        }else if(status === 500){
+	            var message = errorObject.response.message;
+	            $scope.setServiceError(message);
+	        }else{
+	            $scope.setServiceError('Error en el servicio, intente más tarde');
+	        }
+		}
+	);
 
 	$scope.getTransactions = function(date_start, date_end){
 		params.date_end = date_end;
@@ -33,9 +51,17 @@ angular.module('spaApp').controller('creditCtrl', ['$scope', '$location', '$stat
 		accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
 			function(data){
 				$scope.creditTransactions = $rootScope.transactions;
-			},function(data) {
-				var message = data.response.message;
-				$scope.setServiceError(message);
+			},
+			function(errorObject) {
+				var status = errorObject.status;
+		        if(status === 406){
+		            $scope.setServiceError('datos inválidos');
+		        }else if(status === 500){
+		            var message = errorObject.response.message;
+		            $scope.setServiceError(message);
+		        }else{
+		            $scope.setServiceError('Error en el servicio, intente más tarde');
+		        }
 			}
 		);
 	}
@@ -49,9 +75,17 @@ angular.module('spaApp').controller('creditCtrl', ['$scope', '$location', '$stat
 		accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
 			function(data){
 			    $scope.investmentTransactions = $rootScope.transactions;
-			},function(data) {
-				var message = data.response.message;
-				$scope.setServiceError(message);
+			},
+			function(errorObject) {
+				var status = errorObject.status;
+		        if(status === 406){
+		            $scope.setServiceError('datos inválidos');
+		        }else if(status === 500){
+		            var message = errorObject.response.message;
+		            $scope.setServiceError(message);
+		        }else{
+		            $scope.setServiceError('Error en el servicio, intente más tarde');
+		        }
 			}
 		);
 	}
@@ -62,9 +96,17 @@ angular.module('spaApp').controller('creditCtrl', ['$scope', '$location', '$stat
 		accountsProvider.getStates($stateParams.accountId).then(
 			function(data) {
 				$scope.statements = $rootScope.statements;
-			},function(data) {
-				var message = data.response.message;
-				$scope.setServiceError(message);
+			},
+			function(errorObject) {
+				var status = errorObject.status;
+		        if(status === 406){
+		            $scope.setServiceError('datos inválidos');
+		        }else if(status === 500){
+		            var message = errorObject.response.message;
+		            $scope.setServiceError(message);
+		        }else{
+		            $scope.setServiceError('Error en el servicio, intente más tarde');
+		        }
 			}
 		);
 	};
