@@ -56,13 +56,13 @@ angular.module('spaApp').controller('purchaseRetireVistaCtrl', ['$rootScope', '$
     function processServiceError(errorObject){
         var status = errorObject.status;
         if(status === 406){
-            setError('invalid input');
+            $scope.setServiceError('datos inválidos');
         }else if(status === 500){
-            setError('El servicio no está disponible, intente más tarde');
+            var message = errorObject.response.message;
+            $scope.setServiceError(message);
         }else{
-            setError('Ha ocurrido un problema, favor de contactar al servicio de atención al cliente');
+            $scope.setServiceError('Ha ocurrido un problema, favor de contactar al servicio de atención al cliente');
         }
-        var data = errorObject.data;
     }
 
     /**

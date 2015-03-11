@@ -7,12 +7,23 @@
 	//TODO: temporal binding
 	console.log('Load account dashboard information');
 	  accountsProvider.getAccounts().then(
-      function(data) {
-      $scope.accounts = $rootScope.accounts;
-      $scope.selectNavigatOption('products'); 
-      $scope.selectAccount( $scope.accounts[0]);
-      console.log($scope.accounts);
-      }
+          function(data) {
+            $scope.accounts = $rootScope.accounts;
+            $scope.selectNavigatOption('products'); 
+            $scope.selectAccount( $scope.accounts[0]);
+            console.log($scope.accounts);
+          },
+          function(errorObject) {
+            var status = errorObject.status;
+            if(status === 406){
+                $scope.setServiceError('datos inválidos');
+            }else if(status === 500){
+                var message = errorObject.response.message;
+                $scope.setServiceError(message);
+            }else{
+                $scope.setServiceError('Error en el servicio, intente más tarde');
+            }
+        }
     );
 
 
@@ -53,16 +64,5 @@
             break;
     }
   };
-                       
-    $scope.loadAccountsHeader = function(accountId) {
-        console.log('here');
-        $scope.accountHeader = {
-                       'availableMoney' : '7,000.00',
-                       'period' : '12 / 09 / 2014 al 12 / 10 / 2014',
-                       'funds' : '10,000.00',
-                       'fundsGood' : '5,000.00',
-                       'totalFunds' : '15,000.00'
-        };
-    };
 
 }]);

@@ -15,8 +15,9 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
         $rootScope.accounts = data.accounts;
         deferred.resolve();
       }).error(function(data, status) {
+        var result = {'response' : data, 'status': status};
         console.log(data, status);
-        return deferred.reject("Error getting accounts");
+        return deferred.reject(result);
       });
 
       return deferred.promise;
@@ -30,8 +31,9 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
         $rootScope.accountDetail = data;
         deferred.resolve();
       }).error(function(data, status) {
+        var result = {'response' : data, 'status': status};
         console.log(data, status);
-        return deferred.reject("Error getting account detail");
+        return deferred.reject(result);
       });
 
       return deferred.promise;
@@ -46,8 +48,9 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
         $rootScope.transactions = data.transactions;
         deferred.resolve();
       }).error(function(data, status) {
+        var result = {'response' : data, 'status': status};
         console.log(data, status);
-        return deferred.reject("Error getting transactions");
+        return deferred.reject(result);
       });
 
       return deferred.promise;
@@ -55,15 +58,15 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
     },
 
     transferOwnAccounts: function(sourceAccount, destinationAccount, amount, description, completionDate){
-
       var deferred = $q.defer();
       accountsService.postTransfer(sourceAccount, destinationAccount, amount, description, completionDate).success(function(data, status, headers){
         deferred.resolve();
       }).error(function(data, status){
-        return deferred.reject('Error Transfer  Accounts');
+        var result = {'response' : data, 'status': status};
+        console.log(data, status);
+        return deferred.reject(result);
       });
-        
-        return deferred.promise;
+      return deferred.promise;
 
     },
 
@@ -95,8 +98,9 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
             }
             deferred.resolve();
           }).error(function(data, status) {
+            var response = {'data' : data, 'status': status};
             console.log(data, status);
-            return deferred.reject({"status": status, "mesage": "Error getting transactions"});
+            return deferred.reject(response);
           });
       }
       //fill currentAccount with rootScope data
@@ -104,39 +108,39 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
       return deferred.promise;
     },
 
+    /**
+     * getting the list of account-statements
+     */
     getStates: function(accountId){
-
       var deferred = $q.defer();
       console.log('getting list of statements');
-
       accountsService.getStates(accountId).success(function(data, status, headers) {
         $rootScope.statements = data.statements;
         console.log(JSON.stringify($rootScope.statements));
         deferred.resolve();
       }).error(function(data, status) {
+        var result = {'response' : data, 'status': status};
         console.log(data, status);
-        return deferred.reject("Error getting statements");
+        return deferred.reject(result);
       });
-
       return deferred.promise;
-
     },
 
+    /**
+     * getting a account's statement
+     */
     getState: function(accountId, id, format){
-
       var deferred = $q.defer();
       console.log('getting a statement');
-
       accountsService.getState(accountId, id, format).success(function(data, status, headers) {
         $rootScope.statement = data.statement;
         deferred.resolve();
       }).error(function(data, status) {
+        var result = {'response' : data, 'status': status};
         console.log(data, status);
-        return deferred.reject("Error getting statement");
+        return deferred.reject(result);
       });
-
       return deferred.promise;
-
     }
 
   };

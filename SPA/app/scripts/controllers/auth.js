@@ -109,25 +109,27 @@ angular.module('spaApp')
           method: 'POST',
           data: JSON.stringify({'user_login':$scope.loginData.username, 'password':$scope.loginData.password,'client_application_id': 'PROSA-DIG' , 'image_id': $scope.loginData.selectedImage.toString() }) ,
           headers: {'Content-Type': 'application/json','X-BANK-TOKEN': '4'}
-        }).
-          success(function(data, status, headers) {
-          $scope.isLogin = false;
-          var token = headers('X-AUTH-TOKEN');
-          $rootScope.session_token = token;
-          $rootScope.last_access_date = data.last_access_date
-          $rootScope.last_access_media = data.last_client_application_id;
-          $rootScope.client_name = data.client_name;
-          userProvider.setCurrentUser(data);
-          api.init();
-          $location.path( '/accounts' );
-          timerService.start();
-        }).
-          error(function(data, status) {
-          //put an error message in the scope
-          $scope.isLogin = false;
-          console.log("HttpStatus code : ", status);
-          setErrorWithStatus(status);
-        });
+        }).success(
+          function(data, status, headers) {
+            $scope.isLogin = false;
+            var token = headers('X-AUTH-TOKEN');
+            $rootScope.session_token = token;
+            $rootScope.last_access_date = data.last_access_date
+            $rootScope.last_access_media = data.last_client_application_id;
+            $rootScope.client_name = data.client_name;
+            userProvider.setCurrentUser(data);
+            api.init();
+            $location.path( '/accounts' );
+            timerService.start();
+          }
+        ).error(
+          function(data, status) {
+            //put an error message in the scope
+            $scope.isLogin = false;
+            console.log("HttpStatus code : ", status);
+            setErrorWithStatus(status, errorObject);
+          }
+        );
       }
     }
   };
@@ -169,7 +171,7 @@ angular.module('spaApp')
     $scope.errorMessage = message;
   }
 
-  function setErrorWithStatus(status) {
+  function setErrorWithStatus(status, errorObject) {
     setError('Error en el servicio, intente más tarde');
     if(status === 403){
       setError('El password o imagen son incorrectos');
@@ -181,6 +183,13 @@ angular.module('spaApp')
       setError('Usuario bloqueado');
     }else if(status === 504){
       setError('Tiempo de respuesta excedido, por favor intente más tarde');
+    }else if(status === 500){
+      var code = errorObject.response.code;
+      var message = 'Error en el servicio, intente más tarde';
+      if(code === 506){
+        message = errorObject.response.message;
+      }
+      setError(message);
     }
   }
 
