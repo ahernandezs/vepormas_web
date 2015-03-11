@@ -1,9 +1,9 @@
-<div class="content">
-    <div class="header">
+<div class="beneficiariowidget">
+    <div class="benheader">
         <h2>Alta nuevo beneficiario</h2>
         <p>Ingresa los datos para dar de alta a un nuevo beneficiario</p>
         <progress max="3" value="{{selection}}"></progress>
-        <div class="progress">
+        <div>
             <p class="orange">captura</p>
             <p>confirmaci&oacute;n</p>
             <p>comprobaci&oacute;n</p>
@@ -23,7 +23,7 @@
             <input type="text" ng-model="beneficiary.account" ng-required="true" ng-pattern="/^[0-9]{1,18}$/" minlength="18" maxlength="18" placeholder="Cuenta &#x0002F; CLABE &#x0002F; T. Cr&eacute;dito &#x0002F; T. D&eacute;bito" ng-readonly="beneficiary.same_bank" ng-disabled="beneficiary.same_bank">
         </label>
 
-        <p>Datos para notificar al beneficiario &#x00028;opcional&#x00029;</p>
+        <p class="instrucciones">Datos para notificar al beneficiario &#x00028;opcional&#x00029;</p>
         <label class="fieldContainer" ng-class="beneficiary.email.length > 0 ? 'selected' : ''">
             <span>Correo electr&oacute;nico</span>
             <input type="email" ng-model="beneficiary.email" placeholder="Correo electr&oacute;nico" class="input-mail">

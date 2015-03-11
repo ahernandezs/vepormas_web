@@ -1,10 +1,12 @@
 <div class="record">
     <div class="data">
-        <h3>Informaci&oacute;n de la cuenta</h3><br>
-        ¿A d&oacute;nde te enviaremos tus notificaciones y alertas sobre la actividad de tus cuentas?<br>
+        <h3>Informaci&oacute;n de la cuenta</h3>
+        <p>¿A d&oacute;nde te enviaremos tus notificaciones y alertas sobre la actividad de tus cuentas?</p>
         <form name="updateForm">
-            <input class="input-confirm-token" type="password" ng-model="data.otp" ng-required="true" ng-pattern="/^[0-9]{1,7}$/" minlength="7" maxlength="7" placeholder="Introduce el c&oacute;digo que se ha generado en tu Token F&iacute;sico">
-
+            <div class="fieldContainer" ng-class="data.otp.length > 0 ? 'selected' : ''">
+                <span>Token</span>
+                <input class="input-token" type="password" ng-model="data.otp" ng-required="true" ng-pattern="/^[0-9]{1,7}$/" minlength="7" maxlength="7" placeholder="Introduce el c&oacute;digo de tu Token F&iacute;sico">
+            </div>
             <table>
                 <tr>
                     <td>N&uacute;mero celular</td>

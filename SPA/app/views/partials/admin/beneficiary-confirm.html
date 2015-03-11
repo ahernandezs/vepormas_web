@@ -1,16 +1,20 @@
-<div class="content">
-    <div class="header">
+<div class="beneficiariowidget">
+   <div class="benheader">
         <h2>Alta nuevo beneficiario</h2>
         <p>Confirma los datos para dar de alta a un nuevo beneficiario</p>
         <progress max="3" value="{{selection}}"></progress>
-        <div class="progress">
+        <div>
             <p class="orange">captura</p>
             <p>confirmaci&oacute;n</p>
             <p>comprobaci&oacute;n</p>
         </div>
     </div>
     <form name="beneficiaryForm">
-        <input class="input-confirm-token" type="password" ng-model="beneficiary.token" ng-required="true" ng-pattern="/^[0-9]{1,7}$/" minlength="7" maxlength="7" placeholder="Introduce el c&oacute;digo que se ha generado en tu Token F&iacute;sico">
+        <label class="fieldContainer">
+            <span>Token</span>
+            <input class="input-token" type="password" ng-model="beneficiary.token" ng-required="true" ng-pattern="/^[0-9]{1,7}$/" minlength="7" maxlength="7" placeholder="Introduce el c&oacute;digo de tu Token F&iacute;sico">
+        </label>
+        
 
         <table>
             <tr>

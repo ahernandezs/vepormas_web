@@ -8,6 +8,7 @@
 	margin-top: 20px;
 	overflow:hidden;
 	> div{
+		min-height: 610px;
 		float:left;
 		border:1px solid $gray;
 		background:white;
@@ -29,6 +30,62 @@
 				margin:0 auto 10px auto;
 			}
 		}
+		table{
+			width: 90%;
+			margin: 20px auto;
+			tr{border-bottom:1px solid $gray;&:last-child{border:none;}}
+			td{
+				padding:5px;
+				&:first-child{
+					font-weight: bold;
+				}
+				&:last-child{
+					text-align: right;
+				}
+			}
+		}
+		.double-btn{
+			width: 80%;
+			margin: auto;
+			input{
+				width: 49% !important;
+			}
+		}
+		.message{
+			width: 90%;
+			margin: auto;
+			color:$green;
+			overflow: hidden;
+			p{
+				margin-top: 15px;
+			}
+			i{
+				display: block;
+				float:left;
+				width: 50px;
+				height: 50px;
+				margin: 0 20px;
+				background:url(../images/ico-hecho.png) no-repeat center center;
+				background-size:50px;
+			}
+		}
+		.fieldContainer{
+					width: 90%;
+					margin:0 auto 10px auto;
+					input{
+						border:none;
+						padding:10px;
+						width: 100%;
+						&:focus{
+							box-shadow:none;
+						}
+					}
+					&.selected{
+						input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+							width:67%;
+						}
+					}
+				}
 		button{
 			width: 80%;
 			margin-left:10%;
@@ -87,10 +144,11 @@
 			background:none;
 			padding:0;
 			> div{
+				min-height:300px;
 				border:1px solid $gray;
 				background:white;
 				padding: 15px 0;
-				margin-bottom: 20px;
+				margin-bottom: 10px;
 				@include border-radius(4px);
 				&:first-child{
 					button, button:hover, button:active{
@@ -110,21 +168,9 @@
 					padding-bottom: 20px;
 					border-bottom:1px solid $gray;
 				}
-				.fieldContainer{
-					width: 90%;
-					margin:0 auto 10px auto;
-					input{
-						border:none;
-						padding:10px;
-						width: 100%;
-						&:focus{
-							box-shadow:none;
-						}
-					}
-					&.selected{
-						input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
-							width:67%;
-						}
+				.message{
+					p{
+						margin-top: 5px;
 					}
 				}
 			}
@@ -214,6 +260,110 @@
 		}
 	}
 }
+.beneficiariowidget{
+	padding: 15px;
+	.benheader{
+		border-bottom:1px solid $lgray;
+		margin-bottom: 20px;
+		padding-bottom: 20px;
+		&:first-child{
+			h2{
+				font-size:1.4em;
+				color:$blue;
+				margin-bottom: 5px;
+			}
+			p{
+				font-size: 0.9em;
+				margin-bottom: 20px;
+			}
+		}
+		progress{
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            height:10px;
+            overflow: hidden;
+            @include border-radius(10px);
+
+            &::-webkit-progress-bar{
+                background-color: #d2d2d2;
+                box-shadow: 0 1px 0px rgba(0,0,0,.14) inset;
+            }
+            &::-webkit-progress-value{
+                background-color: $orange;
+            }
+		}
+		div{
+			overflow: hidden;
+			p{
+				float:left;
+				width: 33%;
+				text-align: center;
+				margin: 0 !important;
+				font-size:0.7em !important;
+				&.orange{
+					color:$orange;
+				}
+			}
+		}
+	}
+	input{
+		border:none;
+		padding: 10px;
+		width: 100%;
+		&:focus{box-shadow:none;}
+	}
+	.message{
+			margin-bottom: 20px;
+			color:$green;
+			overflow: hidden;
+			p{
+				margin-top: 5px;
+			}
+			i{
+				display: block;
+				float:left;
+				width: 50px;
+				height: 50px;
+				margin: 0 20px;
+				background:url(../images/ico-hecho.png) no-repeat center center;
+				background-size:50px;
+			}
+		}
+	.instrucciones{font-size:0.8em;color:$dgray;margin:0;}
+	table{
+		width: 100%;
+		margin-bottom: 20px;
+		td{
+			padding: 5px;
+			&:first-child{
+				font-weight: bold;
+			}
+			&:last-child{
+				text-align: right;
+			}
+		}
+	}
+	.double-btn{
+		button{
+			padding:10px 0;
+			float:left;
+			width: 48%;
+			margin: 0;
+			@include border-radius(3px);
+			&:first-child{
+				margin-right: 2%;
+			}
+			&.fat{
+				padding:19px 0;
+			}
+		}
+	}
+	.note{
+		font-size: 0.8em;
+		margin-bottom: 20px;
+	}
+}
 .actions.agregarBeneficiario{
 	margin:0;
 	border:none;
@@ -237,9 +387,6 @@
 			color:$dgray;
 		}
 	}
-	li:last-child{
-		border:none;
-	}
 	thead{
 		th{
 			padding-top:5px;
@@ -258,6 +405,7 @@
 		td{
 			padding-top:5px;
 			padding-bottom:5px;
+			word-break: break-all;
 		}
 		td:first-child{
 			text-align: left;
