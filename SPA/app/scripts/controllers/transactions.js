@@ -191,7 +191,18 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
     thirdAccountProvider.getThirdAccounts().then(
       function(data){
         $scope.beneficiaries = $rootScope.thirdAccounts.beneficiaries;
-      }
+      },
+      function(errorObject) {
+            var status = errorObject.status;
+            if(status === 406){
+                $scope.setServiceError('datos inválidos');
+            }else if(status === 500){
+                var message = errorObject.response.message;
+                $scope.setServiceError(message);
+            }else{
+                $scope.setServiceError('Error en el servicio, intente más tarde');
+            }
+        }
     );
 
   }

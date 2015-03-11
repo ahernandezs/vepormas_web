@@ -36,27 +36,48 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 	$scope.delete = function(otp){
 		adminProvider.deleteAccount($scope.selectedAccount._account_id, otp).then(function() {
 			console.log("Account deleted");
+		},
+		function(errorObject) {
+			var status = errorObject.status;
+	        if(status === 406){
+	            $scope.setServiceError('datos inválidos');
+	        }else if(status === 500){
+	            var message = errorObject.response.message;
+	            $scope.setServiceError(message);
+	        }else{
+	            $scope.setServiceError('Error en el servicio, intente más tarde');
+	        }
 		});
 	}
 
-	adminProvider.getThirdAccounts().then(function(data) {
-		$scope.third_accounts = $rootScope.third_accounts;
-		var third_accounts_own = [];
-		var third_accounts_others = [];
-
-		if (typeof $scope.third_accounts != 'undefined'){
-			$scope.third_accounts.forEach(function(acc){
-				if(acc.same_bank){
-					third_accounts_own.push(acc);
-				}else{
-					third_accounts_others.push(acc);
-				}
-			});
+	adminProvider.getThirdAccounts().then(
+		function(data) {
+			$scope.third_accounts = $rootScope.third_accounts;
+			var third_accounts_own = [];
+			var third_accounts_others = [];
+			if (typeof $scope.third_accounts != 'undefined'){
+				$scope.third_accounts.forEach(function(acc){
+					if(acc.same_bank){
+						third_accounts_own.push(acc);
+					}else{
+						third_accounts_others.push(acc);
+					}
+				});
+			}
+			$scope.third_accounts_own = third_accounts_own;
+			$scope.third_accounts_others = third_accounts_others;
+		},function(errorObject) {
+			var status = errorObject.status;
+	        if(status === 406){
+	            $scope.setServiceError('datos inválidos');
+	        }else if(status === 500){
+	            var message = errorObject.response.message;
+	            $scope.setServiceError(message);
+	        }else{
+	            $scope.setServiceError('Error en el servicio, intente más tarde');
+	        }
 		}
-		$scope.third_accounts_own = third_accounts_own;
-		$scope.third_accounts_others = third_accounts_others;
-
-	});
+	);
 
     /**
      * Evaluates if the new passwords are equals.
@@ -101,9 +122,22 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
      * Send the new password to the service.
      */
     $scope.modifyPassword = function() {
-        adminProvider.updatePassword($scope.change.old, $scope.change.new, $scope.change.otp).then(function(data){
-            console.log('Password modified correctly');
-        });
+        adminProvider.updatePassword($scope.change.old, $scope.change.new, $scope.change.otp).then(
+        	function(data){
+	            console.log('Password modified correctly');
+	        },
+	        function(errorObject) {
+				var status = errorObject.status;
+		        if(status === 406){
+		            $scope.setServiceError('datos inválidos');
+		        }else if(status === 500){
+		            var message = errorObject.response.message;
+		            $scope.setServiceError(message);
+		        }else{
+		            $scope.setServiceError('Error en el servicio, intente más tarde');
+		        }
+			}
+		);
         $scope.stage_password = 3;
     };
 

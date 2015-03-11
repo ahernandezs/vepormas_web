@@ -12,15 +12,38 @@ angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', '
     $scope.searchParams = {};
 
     accountsProvider.getAccountDetail($stateParams.accountId).then(
-      function(data) {
-        $scope.investmentHeader = $rootScope.accountDetail.investment;
-      }
+        function(data) {
+            $scope.investmentHeader = $rootScope.accountDetail.investment;
+        },
+        function(errorObject) {
+            var status = errorObject.status;
+            if(status === 406){
+                $scope.setServiceError('datos inválidos');
+            }else if(status === 500){
+                var message = errorObject.response.message;
+                $scope.setServiceError(message);
+            }else{
+                $scope.setServiceError('Error en el servicio, intente más tarde');
+            }
+        }
     );
 
     accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
         function(data){
             $scope.investmentTransactions = $rootScope.transactions;
-        });
+        },
+        function(errorObject) {
+            var status = errorObject.status;
+            if(status === 406){
+                $scope.setServiceError('datos inválidos');
+            }else if(status === 500){
+                var message = errorObject.response.message;
+                $scope.setServiceError(message);
+            }else{
+                $scope.setServiceError('Error en el servicio, intente más tarde');
+            }
+        }
+    );
 
     $scope.getTransactions = function(date_start, date_end){
         params.date_end = date_end;
@@ -28,7 +51,19 @@ angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', '
         accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
             function(data){
                 $scope.investmentTransactions = $rootScope.transactions;
-        });
+            },
+            function(errorObject) {
+                var status = errorObject.status;
+                if(status === 406){
+                    $scope.setServiceError('datos inválidos');
+                }else if(status === 500){
+                    var message = errorObject.response.message;
+                    $scope.setServiceError(message);
+                }else{
+                    $scope.setServiceError('Error en el servicio, intente más tarde');
+                }
+            }
+        );
     }
 
     $scope.search = function() {
@@ -40,8 +75,19 @@ angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', '
         accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
             function(data){
               $scope.investmentTransactions = $rootScope.transactions;
-            });
-
+            },
+            function(errorObject) {
+                var status = errorObject.status;
+                if(status === 406){
+                    $scope.setServiceError('datos inválidos');
+                }else if(status === 500){
+                    var message = errorObject.response.message;
+                    $scope.setServiceError(message);
+                }else{
+                    $scope.setServiceError('Error en el servicio, intente más tarde');
+                }
+            }
+        );
       }
     };
 

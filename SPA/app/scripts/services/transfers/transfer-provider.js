@@ -16,7 +16,7 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
     		}).error(
     			function(data, status) {
       				console.log("Error transferring to own-account", data, status);
-      				var result = {'data' : data, 'status': status};
+      				var result = {'response' : data, 'status': status};
       				return deferred.reject(result);
     			}
     		);
@@ -32,7 +32,7 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
     		}).error(
     			function(data, status) {
       				console.log("Error transferring to third-account same bank", data, status);
-      				var result = {'data' : data, 'status': status};
+      				var result = {'response' : data, 'status': status};
       				return deferred.reject(result);
     			}
     		);
@@ -48,7 +48,7 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
     		}).error(
     			function(data, status) {
       				console.log("Error transferring to third-account other-bank", data, status);
-      				var result = {'data' : data, 'status': status};
+      				var result = {'response' : data, 'status': status};
       				return deferred.reject(result);
     			}
     		);
@@ -64,7 +64,7 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
     		}).error(
     			function(data, status) {
       				console.log("Error transferring to own credit-card account", data, status);
-      				var result = {'data' : data, 'status': status};
+      				var result = {'response' : data, 'status': status};
       				return deferred.reject(result);
     			}
     		);
@@ -80,7 +80,7 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
     		}).error(
     			function(data, status) {
       				console.log("Error transferring to third credit-card account", data, status);
-      				var result = {'data' : data, 'status': status};
+      				var result = {'response' : data, 'status': status};
       				return deferred.reject(result);
     			}
     		);
@@ -96,7 +96,7 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
     		}).error(
     			function(data, status) {
       				console.log("Error transferring to VISTA own-investment-account", data, status);
-      				var result = {'data' : data, 'status': status};
+      				var result = {'response' : data, 'status': status};
       				return deferred.reject(result);
     			}
     		);
@@ -112,7 +112,7 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
     		}).error(
     			function(data, status) {
       				console.log("Error transferring from VISTA own-investment-account", data, status);
-      				var result = {'data' : data, 'status': status};
+      				var result = {'response' : data, 'status': status};
       				return deferred.reject(result);
     			}
     		);
@@ -128,7 +128,7 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
     		}).error(
     			function(data, status) {
       				console.log("Error investing into a CEDE product", data, status);
-      				var result = {'data' : data, 'status': status};
+      				var result = {'response' : data, 'status': status};
       				return deferred.reject(result);
     			}
     		);
@@ -144,7 +144,7 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
     		}).error(
     			function(data, status) {
       				console.log("Error investing into a PRLV product", data, status);
-      				var result = {'data' : data, 'status': status};
+      				var result = {'response' : data, 'status': status};
       				return deferred.reject(result);
     			}
     		);

@@ -218,9 +218,9 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
           },
           function(data, status) {
             $scope.isRegistering = false;
-            setError("Ha ocurrido un error en el registro");
+            $scope.setServiceError("Ha ocurrido un error en el registro");
           }
-          );
+        );
 
     }
 
