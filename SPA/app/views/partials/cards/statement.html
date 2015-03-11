@@ -29,8 +29,8 @@
             <tbody>
                     <tr ng-repeat="statement in statements">
                         <td>{{statement.date}}</td>
-                        <td><a href="#" ng-click="getStatement(statement.id, 'XML');">Descargar PDF</a></td>
-                        <td>Imprimir</td>
+                        <td><a href="#" ng-click="getStatement(statement.id, 'pdf');">Descargar PDF</a></td>
+                        <td><a href="#" ng-click="getStatement(statement.id, 'xml');">Descargar XML</a></td>
                     </tr>
             </tbody>
         </table>

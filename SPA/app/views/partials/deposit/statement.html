@@ -27,10 +27,10 @@
                 </tr>
             </thead>
             <tbody>
-                    <tr ng-repeat="statement in statements" data-ng-click="getStatement(statement.id, 'XML');">
+                    <tr ng-repeat="statement in statements">
                         <td>{{statement.date}}</td>
-                        <td>Descargar PDF</td>
-                        <td>Imprimir</td>
+                        <td><a href="#" ng-click="getStatement(statement.id, 'pdf');">Descargar PDF</a></td>
+                        <td><a href="#" ng-click="getStatement(statement.id, 'xml');">Descargar XML</a></td>
                     </tr>
             </tbody>
         </table>
