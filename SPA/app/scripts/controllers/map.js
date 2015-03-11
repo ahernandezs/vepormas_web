@@ -45,7 +45,10 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 				mapProvider.getBranches({'lat':$scope.estado.lat,'lng':$scope.estado.lon}).then(
 					function(data) {
 						$scope.map.branches = $rootScope.branches;
-					}
+					},function(data) {
+			            var message = data.response.message;
+			            $scope.setServiceError(message);
+			        }
 				);
 			}
 		}else{
@@ -53,7 +56,10 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 			mapProvider.getBranches({'lat':$scope.details.geometry.location.k,'lng':$scope.details.geometry.location.D}).then(
 				function(data) {
 					$scope.map.branches = $rootScope.branches;
-				}
+				},function(data) {
+		            var message = data.response.message;
+		            $scope.setServiceError(message);
+		        }
 			);
 		}
 	}
@@ -66,7 +72,10 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 					function(data) {
 						$scope.map.branches = $rootScope.branches;
 						$scope.showBranches = true;
-					}
+					},function(data) {
+			            var message = data.response.message;
+			            $scope.setServiceError(message);
+			        }
 				);
 			}, function() {
 				handleNoGeolocation(true);

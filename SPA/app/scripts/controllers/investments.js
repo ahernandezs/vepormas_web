@@ -14,12 +14,18 @@ angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', '
     accountsProvider.getAccountDetail($stateParams.accountId).then(
       function(data) {
         $scope.investmentHeader = $rootScope.accountDetail.investment;
-      }
+      },function(data) {
+            var message = data.response.message;
+            $scope.setServiceError(message);
+        }
     );
 
     accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
         function(data){
             $scope.investmentTransactions = $rootScope.transactions;
+        },function(data) {
+            var message = data.response.message;
+            $scope.setServiceError(message);
         });
 
     $scope.getTransactions = function(date_start, date_end){
@@ -28,7 +34,11 @@ angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', '
         accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
             function(data){
                 $scope.investmentTransactions = $rootScope.transactions;
-        });
+            },function(data) {
+                var message = data.response.message;
+                $scope.setServiceError(message);
+            }
+        );
     }
 
     $scope.search = function() {
@@ -40,8 +50,11 @@ angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', '
         accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
             function(data){
               $scope.investmentTransactions = $rootScope.transactions;
-            });
-
+            },function(data) {
+                var message = data.response.message;
+                $scope.setServiceError(message);
+            }
+        );
       }
     };
 

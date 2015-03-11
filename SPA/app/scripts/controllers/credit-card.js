@@ -34,12 +34,18 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 	accountsProvider.getAccountDetail($stateParams.accountId).then(
 		function(data) {
 			$scope.creditsHeader = $rootScope.accountDetail.credit_card;
+		},function(data) {
+			var message = data.response.message;
+			$scope.setServiceError(message);
 		}
 	);
 
 	accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
 		function(data){
 			$scope.creditCardTransactions = $rootScope.transactions;
+		},function(data) {
+			var message = data.response.message;
+			$scope.setServiceError(message);
 		}
 	);
 
@@ -48,6 +54,9 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 		accountsProvider.getStates($stateParams.accountId).then(
 			function(data) {
 				$scope.statements = $rootScope.statements;
+			},function(data) {
+				var message = data.response.message;
+				$scope.setServiceError(message);
 			}
 		);
 	};
@@ -89,6 +98,9 @@ window.open(array);
 			accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
 				function(data){
 					$scope.creditCardTransactions = $rootScope.transactions;
+				},function(data) {
+					var message = data.response.message;
+					$scope.setServiceError(message);
 				}
 			);
 		}

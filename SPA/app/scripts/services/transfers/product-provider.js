@@ -16,7 +16,8 @@ angular.module('spaApp')
             investmentProducts = data.products;
             deferred.resolve(investmentProducts);
           }).error(function(data, status) {
-            var result = {'data' : data, 'status': status};
+            var result = {'response' : data, 'status': status};
+            console.log(data, status);
             return deferred.reject(result);
           });
         } else {
@@ -34,7 +35,8 @@ angular.module('spaApp')
             data.amount = amount;
             deferred.resolve(data);
         }).error(function(data, status){
-            var result = {'data' : data, 'status': status};
+            var result = {'response' : data, 'status': status};
+            console.log(data, status);
             return deferred.reject(result);
         })
         return deferred.promise;

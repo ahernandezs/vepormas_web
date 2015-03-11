@@ -67,11 +67,11 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
         if(status === 406){
             $scope.setServiceError('invalid input');
         }else if(status === 500){
-            $scope.setServiceError('El servicio no está disponible, intente más tarde');
+            var message = errorObject.response.message;
+            $scope.setServiceError(message);
         }else{
             $scope.setServiceError('Ha ocurrido un problema, favor de contactar al servicio de atención al cliente');
         }
-        var data = errorObject.data;
     }
 
     /**

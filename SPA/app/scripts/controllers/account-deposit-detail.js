@@ -63,6 +63,10 @@ angular.module('spaApp').controller('AccountDepositDetailCtrl', ['$scope', '$loc
 			function(data){
 				//WTF: why is there 'investment' transactions here?!?
 				$scope.investmentTransactions = $rootScope.transactions;
+			},
+			function(data) {
+				var message = data.response.message;
+				$scope.setServiceError(message);
 			});
 		}
 	};

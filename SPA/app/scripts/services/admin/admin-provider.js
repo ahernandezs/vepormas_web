@@ -14,9 +14,9 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 	          $rootScope.third_accounts = data.third_accounts;
 	          deferred.resolve();
 	        }).error(function(data, status) {
-	          console.log(data, status);
-	           var data = {'response' : data, 'status': status};
-	          return deferred.reject(data);
+	        	var result = {'response' : data, 'status': status};
+		        console.log(data, status);
+		        return deferred.reject(result);
 	        });
 	      } else {
 	        deferred.resolve();
@@ -30,9 +30,9 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 			adminService.deleteAccount(id, otp).success(function(data, status, headers) {
 				deferred.resolve();
 			}).error(function(data, status) {
-				console.log(data, status);
-				 var data = {'response' : data, 'status': status};
-				return deferred.reject(data);
+				var result = {'response' : data, 'status': status};
+		        console.log(data, status);
+		        return deferred.reject(result);
 			});
 			return deferred.promise;
 	    },
@@ -42,8 +42,9 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 			adminService.updatePassword(current_pass, new_pass, otp).success(function(){
 				deferred.resolve();
 			}).error(function(data, status){
-				var data = {'response' : data, 'status': status};
-				return deferred.reject(data);
+				var result = {'response' : data, 'status': status};
+		        console.log(data, status);
+		        return deferred.reject(result);
 			})
 			return deferred.promise;
 	    },

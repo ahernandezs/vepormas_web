@@ -11,8 +11,9 @@ angular.module('spaApp')
               $rootScope.thirdAccountValidation = data;
               deferred.resolve();
           }).error(function(data, status){
-            var data = {'response' : data, 'status': status};
-            return deferred.reject(data);
+            var result = {'response' : data, 'status': status};
+            console.log(data, status);
+            return deferred.reject(result);
           })
         return deferred.promise;
       },
@@ -26,8 +27,9 @@ angular.module('spaApp')
             $rootScope.thirdAccounts = data.third_accounts;
             deferred.resolve();
           }).error(function(data, status) {
-            var data = {'response' : data, 'status': status};
-            return deferred.reject(data);
+            var result = {'response' : data, 'status': status};
+            console.log(data, status);
+            return deferred.reject(result);
           });
         } else {
           deferred.resolve();
@@ -40,8 +42,9 @@ angular.module('spaApp')
         thirdAccountService.registerThirdAccount(alias, beneficiaryName, e_mail, phone, accountNumber, otp).success(function(data, status, headers){
             deferred.resolve();
         }).error(function(data, status){
-          var data = {'response' : data, 'status': status};
-          return deferred.reject(data);
+          var result = {'response' : data, 'status': status};
+          console.log(data, status);
+          return deferred.reject(result);
         })
         return deferred.promise;
       },
@@ -51,8 +54,9 @@ angular.module('spaApp')
         thirdAccountService.unregisterThirdAccount(thirdAccountID).success(function(data, status, headers){
             deferred.resolve();
         }).error(function(data, status){
-          var data = {'response' : data, 'status': status};
-          return deferred.reject(data);
+          var result = {'response' : data, 'status': status};
+          console.log(data, status);
+          return deferred.reject(result);
         })
         return deferred.promise;
       }

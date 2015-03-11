@@ -44,7 +44,10 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                    $scope.theAccounts.push( value );
                }
            );
-		}
+		},function(data) {
+            var message = data.response.message;
+            $scope.setServiceError(message);
+        }
 	);
 
     /**
@@ -59,6 +62,9 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                 }
             );
             console.log( $scope.theAccounts );
+        },function(data) {
+            var message = data.response.message;
+            $scope.setServiceError(message);
         }
     );
 
@@ -71,6 +77,9 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                 function (data) {
                     $scope.transferAccountDetail = $rootScope.accountDetail.credit_card;
                     delete $rootScope.accountDetail;
+                },function(data) {
+                    var message = data.response.message;
+                    $scope.setServiceError(message);
                 }
             );
     };
@@ -104,17 +113,20 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                 var status = data.status;
                 if (status === 401 || status === 423) {
                     // session expired : returned to login
-                    setError('session expired: TODO: go to login');
+                    $scope.setServiceError('session expired: TODO: go to login');
                     //var loginController = $controller('LoginCtrl');
                     //loginController.setError('your session has expired');
                     //$location.path('/login');
 
                 } else if (status === 406 || status === 417) {
-                    setError('invalid input: TODO: analyse the code inside the json mesage body');
+                    $scope.setServiceError('invalid input: TODO: analyse the code inside the json mesage body');
                     // invalid data input
-                } else if (status === 500 || status === 503 || status === 504) {
+                } else if (status === 500){
+                    var message = data.response.message;
+                    $scope.setServiceError(message);
+                } else if (status === 503 || status === 504) {
                     // business or technical exception
-                    setError('unknown problem. Please retry later');
+                    $scope.setServiceError('unknown problem. Please retry later');
                 }
             }
         );
@@ -138,17 +150,20 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                 var status = data.status;
                 if (status === 401 || status === 423) {
                     // session expired : returned to login
-                    setError('session expired: TODO: go to login');
+                    $scope.setServiceError('session expired: TODO: go to login');
                     //var loginController = $controller('LoginCtrl');
                     //loginController.setError('your session has expired');
                     //$location.path('/login');
 
                 } else if (status === 406 || status === 417) {
-                    setError('invalid input: TODO: analyse the code inside the json mesage body');
+                    $scope.setServiceError('invalid input: TODO: analyse the code inside the json mesage body');
                     // invalid data input
-                } else if (status === 500 || status === 503 || status === 504) {
+                } else if (status === 500){
+                    var message = data.response.message;
+                    $scope.setServiceError(message);
+                } else if (status === 503 || status === 504) {
                     // business or technical exception
-                    setError('unknown problem. Please retry later');
+                    $scope.setServiceError('unknown problem. Please retry later');
                 }
             }
         );
@@ -173,17 +188,20 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                 var status = data.status;
                 if (status === 401 || status === 423) {
                     // session expired : returned to login
-                    setError('session expired: TODO: go to login');
+                    $scope.setServiceError('session expired: TODO: go to login');
                     //var loginController = $controller('LoginCtrl');
                     //loginController.setError('your session has expired');
                     //$location.path('/login');
 
                 } else if(status === 406 || status === 417) {
-                    setError('invalid input: TODO: analyse the code inside the json mesage body');
+                    $scope.setServiceError('invalid input: TODO: analyse the code inside the json mesage body');
                     // invalid data input
-                } else if(status === 500 || status === 503 || status === 504) {
+                } else if (status === 500){
+                    var message = data.response.message;
+                    $scope.setServiceError(message);
+                } else if (status === 503 || status === 504) {
                     // business or technical exception
-                    setError('unknown problem. Please retry later');
+                    $scope.setServiceError('unknown problem. Please retry later');
                 }
             }
         );
@@ -202,6 +220,9 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             function(data) {
                 console.log(data);
                 $scope.selection = 3;
+            },function(data) {
+                var message = data.response.message;
+                $scope.setServiceError(message);
             }
         );
     };

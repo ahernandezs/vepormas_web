@@ -14,9 +14,9 @@ angular.module('spaApp').factory('mapProvider', ['$rootScope', 'mapService', '$q
 				$rootScope.branches = branches;
 				deferred.resolve();
 			}).error(function(data, status) {
-				console.log(data, status);
-				 var data = {'response' : data, 'status': status};
-				return deferred.reject(data);
+				var result = {'response' : data, 'status': status};
+		        console.log(data, status);
+		        return deferred.reject(result);
 			});
 			return deferred.promise;
 	    },

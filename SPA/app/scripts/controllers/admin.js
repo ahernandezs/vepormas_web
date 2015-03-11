@@ -111,7 +111,10 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
     $scope.modifyPassword = function() {
         adminProvider.updatePassword($scope.change.old, $scope.change.new, $scope.change.otp).then(function(data){
             console.log('Password modified correctly');
-        });
+        },function(data) {
+			var message = data.response.message;
+			$scope.setServiceError(message);
+		});
         $scope.stage_password = 3;
     };
 

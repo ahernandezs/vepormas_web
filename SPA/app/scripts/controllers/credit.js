@@ -14,11 +14,17 @@ angular.module('spaApp').controller('creditCtrl', ['$scope', '$location', '$stat
 	accountsProvider.getAccountDetail($scope.selectedAcccountId).then(
 		function(data) {
 			$scope.creditsHeader = $rootScope.accountDetail;
+		},function(data) {
+			var message = data.response.message;
+			$scope.setServiceError(message);
 		});
 
 	accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
 		function(data){
 			$scope.creditTransactions = $rootScope.transactions;
+		},function(data) {
+			var message = data.response.message;
+			$scope.setServiceError(message);
 		});
 
 	$scope.getTransactions = function(date_start, date_end){
@@ -27,22 +33,28 @@ angular.module('spaApp').controller('creditCtrl', ['$scope', '$location', '$stat
 		accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
 			function(data){
 				$scope.creditTransactions = $rootScope.transactions;
-		});
-
+			},function(data) {
+				var message = data.response.message;
+				$scope.setServiceError(message);
+			}
+		);
 	}
 
   $scope.search = function() {
     if($scope.searchParams.date_start && $scope.searchParams.date_end) {
-      $scope.getTransactions($scope.searchParams.date_start, $scope.searchParams.date_end);
+    	$scope.getTransactions($scope.searchParams.date_start, $scope.searchParams.date_end);
     } else if($scope.searchParams.date_start === null && $scope.searchParams.date_end === null) {
-      params.date_end = null;
-      params.date_start = null;
-      accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
-          function(data){
-            $scope.investmentTransactions = $rootScope.transactions;
-          });
-
-    }
+		params.date_end = null;
+		params.date_start = null;
+		accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
+			function(data){
+			    $scope.investmentTransactions = $rootScope.transactions;
+			},function(data) {
+				var message = data.response.message;
+				$scope.setServiceError(message);
+			}
+		);
+	}
   };
 
 	$scope.getStatements = function(){
@@ -50,6 +62,9 @@ angular.module('spaApp').controller('creditCtrl', ['$scope', '$location', '$stat
 		accountsProvider.getStates($stateParams.accountId).then(
 			function(data) {
 				$scope.statements = $rootScope.statements;
+			},function(data) {
+				var message = data.response.message;
+				$scope.setServiceError(message);
 			}
 		);
 	};

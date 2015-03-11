@@ -15,9 +15,9 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
         $rootScope.accounts = data.accounts;
         deferred.resolve();
       }).error(function(data, status) {
-        var data = {'response' : data, 'status': status};
+        var result = {'response' : data, 'status': status};
         console.log(data, status);
-        return deferred.reject(data);
+        return deferred.reject(result);
       });
 
       return deferred.promise;
@@ -31,9 +31,9 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
         $rootScope.accountDetail = data;
         deferred.resolve();
       }).error(function(data, status) {
+        var result = {'response' : data, 'status': status};
         console.log(data, status);
-        var data = {'response' : data, 'status': status};
-        return deferred.reject(data);
+        return deferred.reject(result);
       });
 
       return deferred.promise;
@@ -48,9 +48,9 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
         $rootScope.transactions = data.transactions;
         deferred.resolve();
       }).error(function(data, status) {
+        var result = {'response' : data, 'status': status};
         console.log(data, status);
-        var data = {'response' : data, 'status': status};
-        return deferred.reject(data);
+        return deferred.reject(result);
       });
 
       return deferred.promise;
@@ -58,13 +58,13 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
     },
 
     transferOwnAccounts: function(sourceAccount, destinationAccount, amount, description, completionDate){
-
       var deferred = $q.defer();
       accountsService.postTransfer(sourceAccount, destinationAccount, amount, description, completionDate).success(function(data, status, headers){
         deferred.resolve();
       }).error(function(data, status){
-        var data = {'response' : data, 'status': status};
-        return deferred.reject(data);
+        var result = {'response' : data, 'status': status};
+        console.log(data, status);
+        return deferred.reject(result);
       });
       return deferred.promise;
 
@@ -98,9 +98,9 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
             }
             deferred.resolve();
           }).error(function(data, status) {
+            var response = {'data' : data, 'status': status};
             console.log(data, status);
-            var data = {'response' : data, 'status': status};
-            return deferred.reject(data);
+            return deferred.reject(response);
           });
       }
       //fill currentAccount with rootScope data
@@ -119,9 +119,9 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
         console.log(JSON.stringify($rootScope.statements));
         deferred.resolve();
       }).error(function(data, status) {
+        var result = {'response' : data, 'status': status};
         console.log(data, status);
-        var data = {'response' : data, 'status': status};
-        return deferred.reject(data);
+        return deferred.reject(result);
       });
       return deferred.promise;
     },
@@ -136,9 +136,9 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
         $rootScope.statement = data.statement;
         deferred.resolve();
       }).error(function(data, status) {
+        var result = {'response' : data, 'status': status};
         console.log(data, status);
-        var data = {'response' : data, 'status': status};
-        return deferred.reject(data);
+        return deferred.reject(result);
       });
       return deferred.promise;
     }

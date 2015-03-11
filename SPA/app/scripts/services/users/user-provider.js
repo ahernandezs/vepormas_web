@@ -168,8 +168,8 @@ angular.module('spaApp')
       }).error(
         function(data, status){
         console.log('error');
-        var data = {'response' : data, 'status': status};
-        return deferred.reject(data);
+        var result = {'response' : data, 'status': status};
+        return deferred.reject(result);
       })
       return deferred.promise;      
     },
@@ -209,7 +209,7 @@ angular.module('spaApp')
       userService.logout().success(function(data){
         deferred.resolve();
       }).error(function(data, status){
-        var result = {'data' : data, 'status': status};
+        var result = {'result' : data, 'status': status};
         return deferred.reject(result);
       })
       return  deferred.promise;
