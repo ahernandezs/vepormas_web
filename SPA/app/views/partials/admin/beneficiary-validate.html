@@ -1,9 +1,9 @@
-<div class="content">
-    <div class="header">
+<div class="beneficiariowidget">
+    <div class="benheader">
         <h2>Alta nuevo beneficiario</h2>
         <p>Ingresa el n&uacute;mero de cuenta para dar de alta a un nuevo beneficiario</p>
         <progress max="3" value="{{selection}}"></progress>
-        <div class="progress">
+        <div>
             <p class="orange">captura</p>
             <p>confirmaci&oacute;n</p>
             <p>comprobaci&oacute;n</p>
@@ -19,5 +19,4 @@
         <button ng-click="completeStep(1)">Cancelar</button>
         <button ng-click="validateThirdAccount()" ng-disabled="beneficiaryForm.$invalid">Continuar</button>
     </div>
-    &nbsp;
 </div>

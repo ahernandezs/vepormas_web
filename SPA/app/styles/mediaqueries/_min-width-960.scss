@@ -175,4 +175,31 @@
 	.submenu nav ul li a{
 		padding: 20px 0;
 	}
+	.prefyseg{
+		> div{
+			width: 40%;
+			.message p{margin-top:10px;}
+			&:last-child > div .message p{margin-top: 10px;}
+		}
+	}
+	.agregarBeneficiario{
+		width: 62%;
+		&.actions{
+			float:left;
+			width: 32%;
+		}
+		>form{
+			input{width: 70%;}
+			button, button:hover, button:active{
+				padding:7px 10px;
+				line-height: 2em;
+			}
+		}
+	}
+	.beneficiariowidget{
+		width: 90%;
+		.message p{
+			margin-top: 12px;
+		}
+	}
 }

@@ -1,9 +1,9 @@
-<div class="content">
-    <div class="header">
+<div class="beneficiariowidget">
+    <div class="benheader">
         <h2>Alta nuevo beneficiario</h2>
         <p></p>
         <progress max="3" value="{{selection}}"></progress>
-        <div class="progress">
+        <div>
             <p class="orange">captura</p>
             <p>confirmaci&oacute;n</p>
             <p>comprobaci&oacute;n</p>
@@ -11,7 +11,7 @@
     </div>
 
     <div class="message">
-        <p>El nuevo beneficiario se ha dado de alta, n&uacute;mero de autorizaci&oacute;n <span>{{transferId}}</span></p>
+        <i></i><p>El nuevo beneficiario se ha dado de alta, n&uacute;mero de autorizaci&oacute;n <span>{{transferId}}</span></p>
     </div>
     <table>
         <tr>
@@ -40,12 +40,11 @@
         </tr>
     </table>
     <div class="note">
-        <p>Por disposici&oacute;n de seguridad de la Comision Nacional Bancaria y de valores (CNBV) </br>
-            <span class="boulder">la cuenta podr&aacute; ser utilizada en 30 minutos.</span>
+        <p>Por disposici&oacute;n de seguridad de la Comision Nacional Bancaria y de valores (CNBV) <strong>la cuenta podr&aacute; ser utilizada en 30 minutos.</strong>
         </p>
     </div>
     <div class="double-btn">
-        <input type="submit" value="Finalizar" ng-click="completeStep(1)">
-        <input class="larger" type="submit" value="Agregar nuevo beneficiario" ng-click="completeStep(1)">
+        <button class="fat" ng-click="completeStep(1)">Finalizar</button>
+        <button ng-click="completeStep(1)">Agregar nuevo beneficiario</button>
     </div>
 </div>

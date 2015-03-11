@@ -1,11 +1,17 @@
 <div class="record">
     <div class="data">
-        <h3>Informaci&oacute;n de la cuenta</h3><br>
+        <h3>Informaci&oacute;n de la cuenta</h3>
         <p>¿A d&oacute;nde te enviaremos tus notificaciones y alertas sobre la actividad de tus cuentas?</p>
         <form name="updateForm">
-            <input type="text" ng-model="data.phone" placeholder="N&uacute;mero celular" ng-required="true">
-            <input type="email" ng-model="data.e_mail" placeholder="Email" ng-required="true">
-            <button ng-disabled="updateForm.$invalid" ng-click="validateEmail()">Continuar</button>
+            <div class="fieldContainer" ng-class="data.phone.length > 0 ? 'selected' : ''">
+            	<span>N&uacute;mero celular</span>
+            	<input type="text" class="input-mobile" ng-model="data.phone" placeholder="N&uacute;mero celular" ng-required="true">
+            </div>
+            <div class="fieldContainer" ng-class="data.e_mail.length > 0 ? 'selected' : ''">
+            	<span>Correo electr&oacute;nico</span>
+            	<input type="email" class="input-mail" ng-model="data.e_mail" placeholder="Correo electr&oacute;nico" ng-required="true">
+            </div>
+           <button ng-disabled="updateForm.$invalid" ng-click="validateEmail()">Continuar</button>
         </form>
     </div>
 </div>
