@@ -87,6 +87,9 @@ input[type="submit"]:hover, input[type="submit"]:active, button:hover, button:ac
 
 button.ui-datepicker-trigger {
   background: none;
+  float:left !important;
   padding: 0px;
+  margin-left: 5px;
+  i{margin: 0;}
 }
 

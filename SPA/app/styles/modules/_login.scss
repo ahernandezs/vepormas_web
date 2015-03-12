@@ -540,7 +540,7 @@ h2.sucursales{
 	background-color : rgba(255, 255, 255, 0.901961);
 	padding: 10px;
 	padding: 14px;
-	margin-top: 100px;
+	margin-top: 50px;
 	overflow:hidden;
 	@include border-radius(4px);
 
@@ -566,17 +566,17 @@ h2.sucursales{
 	}
 	a {
 		@include hide-text;
-		height: 50px;
+		height: 38px;
 		background-size: contain;
 		background-repeat: no-repeat;
 
 		&[href*=apple] {
 			background-image: url(../images/logo-apple-store.svg);
-			width: 169px;
+			width: 100px;
 		}
 		&[href*=play] {
 			background-image: url(../images/logo-google-play.svg);
-			width: 144px;
+			width: 100px;
 		}
 	}
 }
