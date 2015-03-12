@@ -177,7 +177,18 @@ Adding a beneficary actions
                     $scope.beneficiary.name = $rootScope.thirdAccountValidation.client_name;
                 }
                 $scope.selection = 2;
-            }
+            },
+	        function(errorObject) {
+				var status = errorObject.status;
+		        if(status === 406){
+		            $scope.setServiceError('datos inválidos');
+		        }else if(status === 500){
+		            var message = errorObject.response.message;
+		            $scope.setServiceError(message);
+		        }else{
+		            $scope.setServiceError('Error en el servicio, intente más tarde');
+		        }
+			}
         );
     }
 
