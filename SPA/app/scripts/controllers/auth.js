@@ -184,10 +184,10 @@ angular.module('spaApp')
     }else if(status === 504){
       setError('Tiempo de respuesta excedido, por favor intente más tarde');
     }else if(status === 500){
-      var code = errorObject.response.code;
+      var code = errorObject.code;
       var message = 'Error en el servicio, intente más tarde';
       if(code === 401){
-        message = errorObject.response.message;
+        message = errorObject.message;
       }
       setError(message);
     }
