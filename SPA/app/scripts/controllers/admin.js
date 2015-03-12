@@ -33,8 +33,8 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 		$scope.stage = 1;
 	}
 
-	$scope.delete = function(otp){
-		adminProvider.deleteAccount($scope.selectedAccount._account_id, otp).then(function() {
+	$scope.delete = function(){
+		adminProvider.deleteAccount($scope.selectedAccount._account_id, $scope.delete.otp).then(function() {
 			console.log("Account deleted");
 		},
 		function(errorObject) {
