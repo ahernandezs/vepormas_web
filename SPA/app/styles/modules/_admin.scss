@@ -247,9 +247,10 @@
 			color:$blue;
 			font-weight: normal;
 			font-size: 0.9em;
-			padding:10px;
+			padding:10px !important;
 			text-align: center;
 			i{
+				padding: 0;
 				display: block;
 				float:left;
 				width:30px;
@@ -261,11 +262,30 @@
 	}
 }
 .beneficiariowidget{
+	&.actions{
+		margin:0;
+		border:none;
+		float:right;
+		width: 30%;
+	}
 	padding: 15px;
 	.benheader{
 		border-bottom:1px solid $lgray;
 		margin-bottom: 20px;
 		padding-bottom: 20px;
+		&.eliminar{
+			position: relative;
+			overflow: hidden;
+			button{
+				float:right;
+				width: 30%;
+			}
+			h2{
+				margin-top: 6px;
+				float:left;
+				width: 65%;
+			}
+		}
 		&:first-child{
 			h2{
 				font-size:1.4em;

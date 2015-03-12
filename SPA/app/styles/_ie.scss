@@ -22,21 +22,4 @@
 			width:35%;
 		}
 	}
-	.filter .inline{
-	margin:0 !important;
-	padding:0;
-	position:relative;
-	.right{
-		position:relative;
-		margin:0;
-	}
-		p{
-			width:30%;
-			margin-left:20px;
-		}
-		input {
-			width:100px;
-		}
-	}
-	* button:active, button:focus{box-shadow:none;outline:none;}
 }
