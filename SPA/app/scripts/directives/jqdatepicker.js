@@ -16,7 +16,9 @@ angular.module('spaApp')
               ngModelCtrl.$setViewValue(date);
             });
           }
-        });
+        },
+        $.datepicker.regional['es']
+        );
       });
     }
   };
