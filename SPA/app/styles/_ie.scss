@@ -1,0 +1,42 @@
+/*
+|-------------------------------------------------------------------------------------
+| IE
+|-------------------------------------------------------------------------------------
+|-------------------------------------------------------------------------------------
+*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+	.angular-google-map-container{
+		bottom:111px;
+	}
+	select::-ms-expand {
+	    display: none;
+	}
+	input[type="text"]::-ms-clear, input[type="email"]::-ms-clear, input[type="tel"]::-ms-clear, input[type="number"]::-ms-clear{
+	    display: none;
+	}
+	input[type="password"]::-ms-reveal{
+		display:none;
+	}
+	.search{
+		input[type*=search] {
+			width:35%;
+		}
+	}
+	.filter .inline{
+	margin:0 !important;
+	padding:0;
+	position:relative;
+	.right{
+		position:relative;
+		margin:0;
+	}
+		p{
+			width:30%;
+			margin-left:20px;
+		}
+		input {
+			width:100px;
+		}
+	}
+	* button:active, button:focus{box-shadow:none;outline:none;}
+}
