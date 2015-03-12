@@ -3,9 +3,28 @@
 |	Above 768px
 |-------------------------------------------------------------------------------------
 */
-%min-width-screen-tablet {
-
+@media only screen and (max-width:800px){
+	body, main{
+		.wrapper{
+			font-size:0.7em;
+		}
+	}
+	.welcome{
+		h2{font-size:1.6em !important;} 
+		p{font-size: 1.4em;}
+	}
+	.user-login, .user-registration{
+		width: 325px;
+	}
+	.radioGroupBelow{
+		span{
+			width: 52px;
+			height: 52px;
+		}
+	}
 }
-@media (min-width: $screen-tablet) {
-	@extend %min-width-screen-tablet;
+@media only screen and (max-height:600px){
+	.actions{
+		min-height:100px;
+	}
 }

@@ -49,3 +49,12 @@ body.showLoader:after{
 	background-size:80px;
 	cursor: not-allowed;
 }
+.scroll{
+	position: absolute;
+	padding-top: 30px;
+	z-index: 999;
+	top:0;
+	bottom:0;
+	overflow:auto;
+	width:100%;
+}

@@ -6,6 +6,8 @@
 
 .actions{
 	padding-top:30px;
+	position: relative !important;
+	min-height:700px;
 	@include column(3.25);
 
 	h2 {
@@ -251,8 +253,15 @@ hr[ng-show="!showAccountHeader"]{
 }
 .search {
 	input {
-		&[type*=text],
-		&[type*=search] {
+		&[type*=search]{
+			border: none;
+			color:$dgray;
+			padding: 8px 16px;
+			width: 30% !important;
+
+			&:focus { box-shadow:none; }
+		}
+		&[type*=text] {
 			border: none;
 			color:$dgray;
 			padding: 8px 16px;
@@ -307,32 +316,40 @@ hr[ng-show="!showAccountHeader"]{
 		float:left;
 		margin: 5px 0 5px 0;
 	}
-	button{
-		float:right;
-	}
-	i{
-		display: inline-block;
-		width: 30px;
-		height: 33px;
-		background:url(../images/ico-calendario.png) no-repeat center top;
-		background-size:28px;
-		vertical-align: bottom;
-		margin-left: 5px;
-	}
-	input{
-		padding:8px;
-		width: 50%;
-		border:1px solid $gray;
-		@include border-radius(4px);
-	}
+
 	input:focus{
 		box-shadow:none;
 		border-color:$orange;
 	}
+	input{
+			padding:8px;
+			float:left;
+			width: 50%;
+			border:1px solid $gray;
+			@include border-radius(4px);
+		}
+		i{
+			display:block;
+			width: 30px;
+			height: 32px;
+			background:url(../images/ico-calendario.png) no-repeat center center;
+			background-size:28px;
+			vertical-align: bottom;
+		}
 	p{
 		color:$dgray;
-		font-size: 14px;
+		margin: 0;
+		font-size: 0.9em;
+		line-height: 0.5em;
+		span{
+			float:left;
+			margin: 13px 5px 0 0;
+		}
+
 	}
+	button{
+			float:right;
+		}
 
 }
 .transactions {

@@ -1,5 +1,6 @@
 <div>
     <div class="actions">
+        <div class="scroll">
         <div class="section">
             <h2>Tarjeta de cr&eacute;dito</h2>
             <div class="product" ng-repeat="account in accounts| filter:{account_type:'TDC'}:true"
@@ -58,6 +59,7 @@
                     <p class="info">Disponible</p>
                 </div>
             </div>
+        </div>
         </div>
     </div>
     <div ui-view='detailCreditCard'></div>

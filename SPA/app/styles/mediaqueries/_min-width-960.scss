@@ -203,3 +203,9 @@
 		}
 	}
 }
+
+@media only screen and (max-height:768px){
+	.actions{
+		min-height:540px;
+	}
+}
