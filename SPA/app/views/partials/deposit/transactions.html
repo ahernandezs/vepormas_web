@@ -1,9 +1,7 @@
-<!-- =============================================================== -->
 <form class="search">
-    <input type="search" name="movements" id="movements" placeholder="Buscar movimientos">
+    <input type="search" ng-model="busqueda" placeholder="Buscar movimientos">
     <button type="submit"><i class="ico-search"></i><span>Buscar</span></button>
 </form>
-<!-- =============================================================== -->
 <div class="transactions">
     <div class="filter">
         <div class="inline"><!--CUENTA-->
@@ -30,7 +28,7 @@
         </thead>
         <tbody>
             <tr class="year"><td>2014</td><td></td><td></td><td></td><td></td></tr>
-                <tr ng-repeat="trans in accountTransactions">
+                <tr ng-repeat="trans in accountTransactions | filter:busqueda">
                     <td>{{trans.movementDate | date:'dd-MM-yyyy' }}</td>
                     <td>{{trans._transaction_id}}</td>
                     <td>{{trans.description}}</td>
