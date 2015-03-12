@@ -186,7 +186,7 @@ angular.module('spaApp')
     }else if(status === 500){
       var code = errorObject.response.code;
       var message = 'Error en el servicio, intente más tarde';
-      if(code === 506){
+      if(code === 401){
         message = errorObject.response.message;
       }
       setError(message);
