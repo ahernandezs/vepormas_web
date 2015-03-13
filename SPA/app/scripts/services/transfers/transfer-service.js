@@ -30,11 +30,7 @@ angular.module('spaApp')
     /**
 	 * transfer to a third-account another than Consubanco
 	 */
-	this.transferThirdAccountOtherBank = function(sourceAccount, destinationAccount, amount, description, otp, referenceNumber, postTomorrow){
-        var completionDate = 'today';
-        if(postTomorrow){
-        	completionDate = 'tomorrow';
-        }
+	this.transferThirdAccountOtherBank = function(sourceAccount, destinationAccount, amount, description, otp, referenceNumber, completionDate){
         var jsonBody = JSON.stringify({
             'account_id_destination':destinationAccount,
             'amount':amount,
