@@ -39,10 +39,10 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
       		return deferred.promise;
     	},
 
-    	transferThirdAccountOtherBank: function (sourceAccount, destinationAccount, amount, description, otp, referenceNumber, postTomorrow) {
+    	transferThirdAccountOtherBank: function (sourceAccount, destinationAccount, amount, description, otp, referenceNumber, completionDate) {
       		var deferred = $q.defer();
       		console.log('transfer to third-account');
-        	transferService.transferThirdAccountOtherBank(sourceAccount, destinationAccount, amount, description, otp, referenceNumber, postTomorrow).success(
+        	transferService.transferThirdAccountOtherBank(sourceAccount, destinationAccount, amount, description, otp, referenceNumber, completionDate).success(
     			function(data, status, headers) {
       				deferred.resolve(data);
     		}).error(
