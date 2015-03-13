@@ -179,6 +179,8 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                     //loginController.setError('your session has expired');
                     //$location.path('/login');
 
+                } else if(status === 403){
+                    $scope.setServiceError('otp inválido');
                 } else if (status === 406 || status === 417) {
                     $scope.setServiceError('invalid input: TODO: analyse the code inside the json mesage body');
                     // invalid data input
@@ -217,6 +219,8 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                     //loginController.setError('your session has expired');
                     //$location.path('/login');
 
+                } else if(status === 403){
+                    $scope.setServiceError('otp inválido');
                 } else if(status === 406 || status === 417) {
                     $scope.setServiceError('invalid input: TODO: analyse the code inside the json mesage body');
                     // invalid data input
@@ -237,17 +241,26 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.sendPayment = function() {
         if ($scope.payment.amount == 'payment.other')
             $scope.payment.amount = $scope.payment.other;
-
-        transferProvider.payOwnCard($scope.payment.account._account_id,
+            transferProvider.payOwnCard($scope.payment.account._account_id,
                                     $scope.payment.destiny._account_id,
                                     $scope.payment.amount).then(
-            function(data) {
-                console.log(data);
-                $scope.selection = 3;
-            },function(data) {
-                var message = data.response.message;
-                $scope.setServiceError(message);
-            }
+                function(data) {
+                    console.log(data);
+                    $scope.selection = 3;
+                },
+                function(errorObject) {
+                    var status = errorObject.status;
+                    if(status === 406){
+                        $scope.setServiceError('datos inválidos');
+                    }else if(status === 500){
+                        var message = errorObject.response.message;
+                        $scope.setServiceError(message);
+                    }else if(status === 403){
+                        $scope.setServiceError('otp inválido');
+                    }else{
+                        $scope.setServiceError('Error en el servicio, intente más tarde');
+                    }
+                }
         );
     };
 
