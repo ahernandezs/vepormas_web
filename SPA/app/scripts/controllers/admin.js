@@ -17,6 +17,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
     $scope.stage_password = 1;
     $scope.beneficiary = {};
 	$scope.stage_updatecommunication = 1;
+	$scope.today = new Date();
 
 	$scope.selectBeneficiary = function(account){
 		$scope.action = 2;
