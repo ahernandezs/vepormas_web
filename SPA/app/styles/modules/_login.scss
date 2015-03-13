@@ -544,21 +544,22 @@ h2.sucursales{
 	overflow:hidden;
 	@include border-radius(4px);
 
-	&:before {
-		color: $orange;
-		content: "Descarga nuestra aplicación:";
-		display: block;
-		font-size: 16px;
-		padding-bottom: 10px;
-		text-align: center;
-	}
 	ul {
 		@include clearfix;
 	}
 	li {
 		float: left;
 
-		&:first-child {
+		&:first-child{
+			float:none;
+			display:block;
+			clear:both;
+			color:$orange;
+			text-align:center;
+			margin-bottom:15px;
+		}
+
+		&:nth-child(2) {
 			border-right: 1px solid $gray;
 			margin-right: 5%;
 			padding-right: 5%;
