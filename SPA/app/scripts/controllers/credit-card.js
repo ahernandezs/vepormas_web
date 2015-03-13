@@ -3,7 +3,7 @@
 /**
  * The credit card controller.
  */
-angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$stateParams', 'accountsProvider', '$rootScope', '$http', function ($scope, $location, $stateParams, accountsProvider, $rootScope, $http) {
+angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$stateParams', 'accountsProvider', '$rootScope', '$http','paymentCreditCardService', function ($scope, $location, $stateParams, accountsProvider, $rootScope, $http, paymentCreditCardService) {
 
 	var params = {};
 	params.numPage = 0;
@@ -121,4 +121,29 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 		}
 	};
 
+	/**
+	Function for invoke payment flow  and set navigation bar .
+	**/
+	$scope.doPaymentFlow = function(type,minPayment){
+		$scope.selectNavigatOption('transfers');
+        paymentCreditCardService.prepForShared({ accountId:$stateParams.accountId , amount:minPayment, paymentType: type  });
+	};
 }]);
+
+	/**
+	* Service for share information between controllers .
+	**/
+	angular.module('spaApp').factory('paymentCreditCardService', function() {
+	    var account = {};
+	    account.accountId;
+	    account.amount;
+	    account.paymentType;
+
+	    account.prepForShared = function(msg) {
+	        this.accountId = msg.accountId;
+	        this.amount = msg.amount;
+	        this.paymentType = msg.paymentType;
+	    };
+
+	    return account;
+	});
