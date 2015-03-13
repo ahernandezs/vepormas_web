@@ -206,7 +206,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                                                        $scope.transfer.date).then(
             function(data) {
                 console.log(data);
-                $scope.transferId = data._transaction_id;
+                $scope.transferId = data.tracking_key;
                 $scope.selection = 3;
             },
             function(data) {
