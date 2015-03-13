@@ -198,6 +198,9 @@
 	}
 	.beneficiariowidget{
 		width: 90%;
+		&.actions{
+			float:left;
+		}
 		.message p{
 			margin-top: 12px;
 		}
