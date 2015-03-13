@@ -33,6 +33,9 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 		$scope.stage = 1;
 	}
 
+	/**
+	 * delete a third-account
+	 */
 	$scope.delete = function(){
 		adminProvider.deleteAccount($scope.selectedAccount._account_id, $scope.delete.otp).then(function() {
 			console.log("Account deleted");
@@ -44,12 +47,17 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 	        }else if(status === 500){
 	            var message = errorObject.response.message;
 	            $scope.setServiceError(message);
-	        }else{
-	            $scope.setServiceError('Error en el servicio, intente más tarde');
+	        }else if(status === 403){
+				$scope.setServiceError('otp inválido');
+		    }else{
+		    	$scope.setServiceError('Error en el servicio, intente más tarde');
 	        }
 		});
 	}
 
+	/**
+	 * get the third-account when initializing the controller.
+	 */
 	adminProvider.getThirdAccounts().then(
 		function(data) {
 			$scope.third_accounts = $rootScope.third_accounts;
@@ -133,6 +141,8 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 		        }else if(status === 500){
 		            var message = errorObject.response.message;
 		            $scope.setServiceError(message);
+		        }else if(status === 403){
+		            $scope.setServiceError('otp inválido');
 		        }else{
 		            $scope.setServiceError('Error en el servicio, intente más tarde');
 		        }
@@ -208,6 +218,8 @@ Adding a beneficary actions
 		        }else if(status === 500){
 		            var message = errorObject.response.message;
 		            $scope.setServiceError(message);
+		        }else if(status === 403){
+		            $scope.setServiceError('otp inválido');
 		        }else{
 		            $scope.setServiceError('Error en el servicio, intente más tarde');
 		        }
