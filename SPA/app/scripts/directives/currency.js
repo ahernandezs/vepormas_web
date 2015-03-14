@@ -15,54 +15,56 @@ angular.module('spaApp')
 					if(value){
 						return value;
 					}
-					return "";
+					return undefined;
 				});
 
 				element.bind("change", function() {
-					if( ctrl.$invalid ) return;
+					if ( ctrl.$invalid ) return;
 					var formattedModel = format(ctrl.$modelValue);
-					if( formattedModel !== ctrl.$viewValue ) {
+
+					if ( formattedModel !== ctrl.$viewValue ) {
 						element.val(formattedModel);
-			            if(formattedModel !== '') {
-			              element.parent().addClass('selected');
+
+			            if (formattedModel !== '') {
+							element.parent().addClass('selected');
 			            } else {
-			              element.parent().removeClass('selected');
+							element.parent().removeClass('selected');
 			            }
 					}
 				});
 
 				element.bind("focus", function() {
+					var value = ctrl.$modelValue;
 
-					var value = ctrl.$modelValue
-
-					if(value && value !== '') element.val(value);
+					if(value && value !== '') {
+						element.val(value);
+					}
 				});
 
 				element.bind("blur", function() {
 					var formattedModel = format(ctrl.$modelValue);
 					element.val(formattedModel);
-			          if(formattedModel !== '') {
-			            element.parent().addClass('selected');
-			          } else {
+
+					if(formattedModel !== '' && formattedModel !== undefined) {
+						element.parent().addClass('selected');
+			        } else {
 			            element.parent().removeClass('selected');
-			          }
+			        }
 				});
 
 				function format(modelValue) {
-
 					var value = modelValue ? modelValue.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ',') : undefined;
 
-					if(value){
-						if( value.indexOf(".") != -1 ){
+					if (value) {
+						if ( value.indexOf(".") != -1 ) {
 							return value;
-						}else{
+						} else {
 							return value + '.00';
 						}
-					}else{
-						return "";
+					} else {
+						return undefined;
 					}
-
-				}
+				};
 			}
 		};
 });
