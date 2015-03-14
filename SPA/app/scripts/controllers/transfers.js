@@ -63,7 +63,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
      */
     thirdAccountProvider.getThirdAccounts().then(
         function(data) {
-            $rootScope.thirdAccounts.forEach(
+            data.forEach(
                 function (value, index, ar) {
                     value.group = 'Cuentas Terceros';
                     $scope.theAccounts.push( value );

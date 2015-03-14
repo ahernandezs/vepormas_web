@@ -19,6 +19,8 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 	$scope.stage_updatecommunication = 1;
 	$scope.today = new Date();
 
+	loadBeneficiary();
+
 	$scope.selectBeneficiary = function(account){
 		$scope.action = 2;
 		$scope.stage = 1;
@@ -38,61 +40,71 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 	 * delete a third-account
 	 */
 	$scope.delete = function(){
-		adminProvider.deleteAccount($scope.selectedAccount._account_id, $scope.delete.otp).then(function() {
-			console.log("Account deleted");
-		},
-		function(errorObject) {
-			var status = errorObject.status;
-	        if(status === 406){
-	            $scope.setServiceError('datos inválidos');
-	        }else if(status === 500){
-	            var message = errorObject.response.message;
-	            $scope.setServiceError(message);
-	        }else if(status === 403){
-				$scope.setServiceError('otp inválido');
-		    }else{
-		    	$scope.setServiceError('Error en el servicio, intente más tarde');
-	        }
-		});
+		thirdAccountProvider.deleteAccount($scope.selectedAccount._account_id, $scope.delete.otp).then(
+			function(data){
+				dispatchThirdAccountByType(data);
+			},
+			function(errorObject) {
+				var status = errorObject.status;
+		        if(status === 406){
+		            $scope.setServiceError('datos inválidos');
+		        }else if(status === 500){
+		            var message = errorObject.response.message;
+		            $scope.setServiceError(message);
+		        }else if(status === 403){
+					$scope.setServiceError('otp inválido');
+			    }else{
+			    	$scope.setServiceError('Error en el servicio, intente más tarde');
+		        }
+			}
+		);
+	}
+
+	/**
+	 * dispatch the third-account by their type (if they are from Consubanco or not)
+	 */
+	function dispatchThirdAccountByType(data){
+		$scope.third_accounts = data;
+		var third_accounts_own = [];
+		var third_accounts_others = [];
+		if (typeof $scope.third_accounts != 'undefined'){
+			$scope.third_accounts.forEach(function(acc){
+				if(acc.same_bank){
+					third_accounts_own.push(acc);
+				}else{
+					third_accounts_others.push(acc);
+				}
+			});
+		}
+		$scope.third_accounts_own = third_accounts_own;
+		$scope.third_accounts_others = third_accounts_others;
 	}
 
 	/**
 	 * get the third-account when initializing the controller.
 	 */
-	adminProvider.getThirdAccounts().then(
-		function(data) {
-			$scope.third_accounts = $rootScope.third_accounts;
-			var third_accounts_own = [];
-			var third_accounts_others = [];
-			if (typeof $scope.third_accounts != 'undefined'){
-				$scope.third_accounts.forEach(function(acc){
-					if(acc.same_bank){
-						third_accounts_own.push(acc);
-					}else{
-						third_accounts_others.push(acc);
-					}
-				});
+	function loadBeneficiary(){
+		thirdAccountProvider.getThirdAccounts().then(
+			function(data) {
+				dispatchThirdAccountByType(data);
+			},function(errorObject) {
+				var status = errorObject.status;
+		        if(status === 406){
+		            $scope.setServiceError('datos inválidos');
+		        }else if(status === 500){
+		            var message = errorObject.response.message;
+		            $scope.setServiceError(message);
+		        }else{
+		            $scope.setServiceError('Error en el servicio, intente más tarde');
+		        }
 			}
-			$scope.third_accounts_own = third_accounts_own;
-			$scope.third_accounts_others = third_accounts_others;
-		},function(errorObject) {
-			var status = errorObject.status;
-	        if(status === 406){
-	            $scope.setServiceError('datos inválidos');
-	        }else if(status === 500){
-	            var message = errorObject.response.message;
-	            $scope.setServiceError(message);
-	        }else{
-	            $scope.setServiceError('Error en el servicio, intente más tarde');
-	        }
-		}
-	);
+		)
+	};
 
     /**
      * Evaluates if the new passwords are equals.
      */
     $scope.verifyNewPass = function () {
-
         if ( $scope.change.new !== $scope.change.repeatNew ){
             $scope.errorMessage = "Las contraseñas no coinciden";
             $scope.showError = true;
@@ -180,12 +192,12 @@ Adding a beneficary actions
     $scope.validateThirdAccount = function(){
         thirdAccountProvider.validateThirdAccount($scope.beneficiary.account).then(
             function(data) {
-                console.log(JSON.stringify($rootScope.thirdAccountValidation));
-                $scope.beneficiary._account_id = $rootScope.thirdAccountValidation._account_id;
-                $scope.beneficiary.bank_name = $rootScope.thirdAccountValidation.bank_name;
-                $scope.beneficiary.same_bank = $rootScope.thirdAccountValidation.same_bank;
+                console.log(JSON.stringify(data));
+                $scope.beneficiary._account_id = data._account_id;
+                $scope.beneficiary.bank_name = data.bank_name;
+                $scope.beneficiary.same_bank = data.same_bank;
                 if($scope.beneficiary.same_bank){
-                    $scope.beneficiary.name = $rootScope.thirdAccountValidation.client_name;
+                    $scope.beneficiary.name = data.client_name;
                 }
                 $scope.selection = 2;
             },
@@ -209,7 +221,7 @@ Adding a beneficary actions
                                                  $scope.beneficiary.email, $scope.beneficiary.phone,
                                                  $scope.beneficiary._account_id, $scope.beneficiary.token).then(
             function(data) {
-                console.log(data);
+                dispatchThirdAccountByType(data);
                 $scope.selection = 4;
             },
 	        function(errorObject) {
