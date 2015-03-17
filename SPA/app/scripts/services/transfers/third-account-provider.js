@@ -69,6 +69,7 @@ angular.module('spaApp').factory('thirdAccountProvider', ['$q','thirdAccountServ
       ).then(
         function(response){
           console.log('third-account refreshed successfully');
+          thirdAccounts = response.data.third_accounts;
           deferred.resolve(thirdAccounts);
         }
       ).catch(
@@ -96,6 +97,7 @@ angular.module('spaApp').factory('thirdAccountProvider', ['$q','thirdAccountServ
       ).then(
         function(response){
           console.log('third-account refreshed successfully');
+          thirdAccounts = response.data.third_accounts;
           deferred.resolve(thirdAccounts);
         }
       ).catch(function(response){
