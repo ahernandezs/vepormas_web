@@ -27,7 +27,7 @@
         <span ng-if="payment.destiny.account_type !== 'TDC'">
             <label class="fieldContainer" ng-class="!paymentForm.amount.$error.required ? 'selected' : ''">
                 <span class="big">Importe</span>
-                <input name="amount" type="text" currency ng-model="payment.amount" placeholder="Importe" class="input-importe" ng-required="true" maxlength="15">
+                <input name="amount" type="text" currency numbers-only ng-model="payment.amount" placeholder="Importe" class="input-importe" ng-required="true" maxlength="15">
             </label>
         </span>
         <div>
@@ -53,7 +53,7 @@
                 <label>
                     <input type="radio" name="type" class="last" ng-model="value" value="TOTAL_PAYMENT"  ng-required="true">
                     <p class="last">Otra cantidad</p>
-                    <input type="text" currency ng-model="payment.other" class="input-importe" ng-required="payment.amount == 'other'" maxlength="15">
+                    <input type="text" currency numbers-only ng-model="payment.other" class="input-importe" ng-required="payment.amount == 'other'" maxlength="15">
                 </label>
             </div>
         </span>

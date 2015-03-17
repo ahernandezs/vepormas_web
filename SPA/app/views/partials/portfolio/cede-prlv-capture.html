@@ -26,7 +26,7 @@
         </div>
          <label class="fieldContainer" ng-class="!investmentForm.amount.$error.required ? 'selected' : ''">
             <span class="big">Importe de inversi&oacute;n</span>
-            <input name="amount" type="text" currency ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" maxlength="15" ng-required="true">
+            <input name="amount" type="text" currency numbers-only ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" maxlength="15" ng-required="true">
         </label>
         <div class="select-style" ng-class="investment.expirationInstruction ? 'selected' : ''">
             <span>Instrucciones al vencimiento</span>

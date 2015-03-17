@@ -24,7 +24,7 @@
         </div>
         <label class="fieldContainer" ng-class="!transferForm.amount.$error.required ? 'selected' : ''">
             <span class="big">Importe</span>
-            <input name="amount" type="text" currency ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true" maxlength="15">
+            <input name="amount" type="text" currency numbers-only ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true" maxlength="15">
         </label>
         <span class="optionalContainer" ng-if="transfer.destiny && transfer.destiny.account_type != 'DEP' && !transfer.destiny.same_bank">
             <div class="choices">
