@@ -20,7 +20,7 @@
         </label>
         <label class="fieldContainer" ng-class="beneficiary.account.length > 0 ? 'selected' : ''">
             <span>Cuenta</span>
-            <input type="text" ng-model="beneficiary.account" ng-required="true" ng-pattern="/^[0-9]{1,18}$/" minlength="18" maxlength="18" placeholder="Cuenta &#x0002F; CLABE &#x0002F; T. Cr&eacute;dito &#x0002F; T. D&eacute;bito" ng-readonly="beneficiary.same_bank" ng-disabled="beneficiary.same_bank">
+            <input type="text" ng-model="beneficiary.account" ng-required="true" ng-pattern="/^[0-9]{1,18}$/" minlength="6" maxlength="18" placeholder="Cuenta &#x0002F; CLABE &#x0002F; T. Cr&eacute;dito &#x0002F; T. D&eacute;bito" ng-readonly="beneficiary.same_bank" ng-disabled="beneficiary.same_bank">
         </label>
 
         <p class="instrucciones">Datos para notificar al beneficiario &#x00028;opcional&#x00029;</p>

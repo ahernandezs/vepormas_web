@@ -2,26 +2,10 @@
 
 angular.module('spaApp').factory('thirdAccountProvider', ['$q','thirdAccountService',function ($q, thirdAccountService){
   
-  var thirdAccounts;
-
   /**
-   * reload third-account cache from the middleware. Must never be invoked from outside
+   * the third-accounts-cache
    */
-  function loadThirdAccounts() {
-    var deferred = $q.defer();
-    console.log('loading third-account from middleware');
-    thirdAccountService.getThirdAcounts().success(
-      function(data, status, headers) {
-        console.log('third-account loaded successfully', data);
-        thirdAccounts = data.third_accounts;
-        deferred.resolve(thirdAccounts);
-      }).error(function(data, status) {
-        console.log('third-account failed to load', data, status);
-        var result = {'response' : data, 'status': status};
-        deferred.reject(result);
-      });
-    return deferred.promise;
-  }
+  var thirdAccounts;
 
   return {
 
@@ -30,13 +14,17 @@ angular.module('spaApp').factory('thirdAccountProvider', ['$q','thirdAccountServ
      */
     validateThirdAccount: function(account){
       var deferred = $q.defer();
-        thirdAccountService.validateThirdAccount(account).success(function(data, status, headers){
-            deferred.resolve(data);
-        }).error(function(data, status){
-          console.log(data, status);
-          var result = {'response' : data, 'status': status};
+      thirdAccountService.validateThirdAccount(account).then(
+        function(response){
+          deferred.resolve(response.data);
+        }
+      ).catch(
+        function(response){
+          console.log(response);
+          var result = {'response' : response.data, 'status': response.status};
           deferred.reject(result);
-        })
+        }
+      );
       return deferred.promise;
     },
 
@@ -47,7 +35,19 @@ angular.module('spaApp').factory('thirdAccountProvider', ['$q','thirdAccountServ
       var deferred = $q.defer();
       console.log('getting third-accounts');
       if(!thirdAccounts) {
-        return loadThirdAccounts();
+        thirdAccountService.getThirdAcounts().then(
+          function(response) {
+            console.log('third-account loaded successfully', response);
+            thirdAccounts = response.data.third_accounts;
+            deferred.resolve(thirdAccounts);
+          }
+        ).catch(
+          function(response) {
+            console.log('third-account failed to load', response);
+            var result = {'response' : response.data, 'status': response.status};
+            deferred.reject(result);
+          }
+        );
       } else {
         console.log('getting third-accounts from cache');
         deferred.resolve(thirdAccounts);
@@ -62,19 +62,20 @@ angular.module('spaApp').factory('thirdAccountProvider', ['$q','thirdAccountServ
       var deferred = $q.defer();
       console.log('registering third-account');
       thirdAccountService.registerThirdAccount(alias, beneficiaryName, e_mail, phone, accountNumber, otp).then(
-        function(data, status, headers){
+        function(response){
           console.log('third-account registered successfully');
-          return loadThirdAccounts();
+          return thirdAccountService.getThirdAcounts();
         }
       ).then(
-        function(data, status, headers){
+        function(response){
+          console.log('third-account refreshed successfully');
           deferred.resolve(thirdAccounts);
         }
       ).catch(
-        function(data, status){
+        function(response){
           console.log('failed ro register third-account');
-          var result = {'response' : data, 'status': status};
-          console.log(data, status);
+          var result = {'response' : response.data, 'status': response.status};
+          console.log(response);
           deferred.reject(result);
         }
       )
@@ -88,18 +89,18 @@ angular.module('spaApp').factory('thirdAccountProvider', ['$q','thirdAccountServ
       var deferred = $q.defer();
       console.log('unregistering third-account');
       thirdAccountService.unregisterThirdAccount(thirdAccountID).then(
-        function(data, status, headers){
+        function(response){
           console.log('third-account unregistered successfully');
-          return loadThirdAccounts();
+          return thirdAccountService.getThirdAcounts();
         }
       ).then(
-        function(data, status, headers){
+        function(response){
+          console.log('third-account refreshed successfully');
           deferred.resolve(thirdAccounts);
         }
-      ).error(function(data, status){
-        console.log('failed to unregister third-account');
-        var result = {'response' : data, 'status': status};
-        console.log(data, status);
+      ).catch(function(response){
+        console.log('failed to unregister third-account',response);
+        var result = {'response' : response.data, 'status': response.status};
         return deferred.reject(result);
       })
       return deferred.promise;
