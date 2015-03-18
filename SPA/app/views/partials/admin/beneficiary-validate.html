@@ -12,7 +12,7 @@
     <form name="beneficiaryForm">
         <label class="fieldContainer" ng-class="beneficiaryForm.account.$viewValue.length  > 0 ? 'selected' : ''">
             <span>Cuenta</span>
-            <input type="text" ng-model="beneficiary.account" ng-required="true" ng-pattern="/^[0-9]{11,18}$/" placeholder="Cuenta &#x0002F; CLABE &#x0002F; T. Cr&eacute;dito &#x0002F; T. D&eacute;bito" name="account">
+            <input type="text" ng-model="beneficiary.account" ng-required="true" ng-pattern="/^[0-9]{11,18}$/" numbers-only placeholder="Cuenta &#x0002F; CLABE &#x0002F; T. Cr&eacute;dito &#x0002F; T. D&eacute;bito" name="account">
         </label>
     </form>
     <div class="double-btn">
