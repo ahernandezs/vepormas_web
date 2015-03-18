@@ -186,7 +186,7 @@ angular.module('spaApp')
 
       if(_cardId) {
         var tokenParams = {
-          'secret_card_id':_cardId,
+          'card_id':_cardId,
           'otp':_otp1,
           'otp2': _otp2
         }
