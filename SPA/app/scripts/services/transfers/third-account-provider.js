@@ -89,7 +89,7 @@ angular.module('spaApp').factory('thirdAccountProvider', ['$q','thirdAccountServ
     unregisterThirdAccount:function(thirdAccountID,otp){
       var deferred = $q.defer();
       console.log('unregistering third-account');
-      thirdAccountService.unregisterThirdAccount(thirdAccountID).then(
+      thirdAccountService.unregisterThirdAccount(thirdAccountID,otp).then(
         function(response){
           console.log('third-account unregistered successfully');
           return thirdAccountService.getThirdAcounts();
