@@ -335,7 +335,7 @@ h2.sucursales{
   height: 100%;
 
 	.outter {
-		background: url(../images/bg-login.jpg) 0 0 no-repeat;
+		background: url(../images/bg-login.jpg) center center no-repeat;
 		background-size: cover;
 	}
 
@@ -537,47 +537,38 @@ h2.sucursales{
 }
 .action-call-apps {
 	width:80%;
-	background-color : rgba(255, 255, 255, 0.901961);
-	padding: 10px;
-	padding: 14px;
+	background:white;
+	padding: 15px;
 	margin-top: 50px;
 	overflow:hidden;
 	@include border-radius(4px);
-
-	ul {
-		@include clearfix;
+	h3{
+		color:$orange;
+		text-align:center;
+		margin-bottom:15px;
+		font-size: 1em;
+		font-weight: normal;
 	}
-	li {
-		float: left;
-
-		&:first-child{
-			float:none;
-			display:block;
-			clear:both;
-			color:$orange;
-			text-align:center;
-			margin-bottom:15px;
-		}
-
-		&:nth-child(2) {
-			border-right: 1px solid $gray;
-			margin-right: 5%;
-			padding-right: 5%;
-		}
-	}
-	a {
-		@include hide-text;
-		height: 38px;
-		background-size: contain;
-		background-repeat: no-repeat;
-
-		&[href*=apple] {
-			background-image: url(../images/logo-apple-store.svg);
-			width: 100px;
-		}
-		&[href*=play] {
-			background-image: url(../images/logo-google-play.svg);
-			width: 100px;
+	span{
+		display: block;
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+		a{
+			display: block;
+			float:left;
+			width: 48%;
+			height: 50px;
+			@include hide-text;
+			&:first-child{
+				margin-right: 4%;
+				background: url(../images/logo-apple-store.svg) no-repeat left center;
+				background-size: auto 50px;
+			}
+			&:nth-child(2){
+				background: url(../images/logo-google-play.svg) no-repeat right center;
+				background-size: auto 50px;
+			}
 		}
 	}
 }

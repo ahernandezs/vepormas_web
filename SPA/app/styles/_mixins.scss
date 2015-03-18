@@ -249,7 +249,7 @@
 
     // IE hacks
     //background-color: transparent\9;
-    zoom: 1; // hasLayout
+    zoom:1; // hasLayout
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($alphaColour)}', endColorstr='#{ie-hex-str($alphaColour)}'); // IE8
     background-color: unquote("transparent\0/"); // IE8 hack
 }
