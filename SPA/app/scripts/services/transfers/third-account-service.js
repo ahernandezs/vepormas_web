@@ -42,7 +42,7 @@ angular.module('spaApp')
 			url: $rootScope.restAPIBaseUrl+'/externalaccounts/'+thirdAccountID,
 			method: 'DELETE',
 			data: JSON.stringify({
-				'otp':opt
+				'otp':otp
 			}),
 			headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
 		});
