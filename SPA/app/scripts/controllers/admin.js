@@ -40,9 +40,10 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 	 * delete a third-account
 	 */
 	$scope.delete = function(){
-		thirdAccountProvider.deleteAccount($scope.selectedAccount._account_id, $scope.delete.otp).then(
+		thirdAccountProvider.unregisterThirdAccount($scope.selectedAccount._account_id, $scope.delete.otp).then(
 			function(data){
 				dispatchThirdAccountByType(data);
+				$scope.stage += 1;
 			},
 			function(errorObject) {
 				var status = errorObject.status;

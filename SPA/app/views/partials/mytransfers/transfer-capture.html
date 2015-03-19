@@ -24,7 +24,7 @@
         </div>
         <label class="fieldContainer" ng-class="!transferForm.amount.$error.required ? 'selected' : ''">
             <span class="big">Importe</span>
-            <input name="amount" type="text" currency ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true" maxlength="15">
+            <input name="amount" type="text" currency numbers-only ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true" maxlength="15">
         </label>
         <span class="optionalContainer" ng-if="transfer.destiny && transfer.destiny.account_type != 'DEP' && !transfer.destiny.same_bank">
             <div class="choices">
@@ -40,12 +40,12 @@
             </div>
                 <label class="fieldContainer" ng-class="transfer.reference.length > 0 ? 'selected' : ''">
                     <span>N&uacute;mero de referencia</span>
-                    <input class="input-otp" type="text" ng-model="transfer.reference" ng-pattern="/^[0-9]{1,7}$/" minlength="7" maxlength="7" placeholder="N&uacute;mero de referencia">
+                    <input class="input-otp" type="text" ng-model="transfer.reference" numbers-only minlength="7" maxlength="7" placeholder="N&uacute;mero de referencia">
                 </label>
         </span>
         <label class="fieldContainer" ng-class="transfer.concept.length > 0 ? 'selected' : ''">
             <span>Concepto</span>
-            <input type="text" ng-model="transfer.concept" placeholder="Concepto" class="input-mail" ng-required="true" maxlength="40">
+            <input type="text" alphanumeric ng-model="transfer.concept" placeholder="Concepto" class="input-mail" ng-required="true" maxlength="40">
         </label>
     </form>
     <div class="double-btn">

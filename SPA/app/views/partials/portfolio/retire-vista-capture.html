@@ -26,7 +26,7 @@
         <span>
             <label class="fieldContainer" ng-class="!investmentForm.amount.$error.required ? 'selected' : ''">
                 <span class="big">Importe a retirar</span>
-                <input type="text" currency name="amount" ng-model="investment.amount" placeholder="Importe a retirar" class="input-importe" maxlength="15" ng-required="true">
+                <input type="text" currency numbers-only name="amount" ng-model="investment.amount" placeholder="Importe a retirar" class="input-importe" maxlength="15" ng-required="true">
             </label>
         </span>
     </form>

@@ -69,6 +69,7 @@ angular.module('spaApp').factory('thirdAccountProvider', ['$q','thirdAccountServ
       ).then(
         function(response){
           console.log('third-account refreshed successfully');
+          thirdAccounts = response.data.third_accounts;
           deferred.resolve(thirdAccounts);
         }
       ).catch(
@@ -88,7 +89,7 @@ angular.module('spaApp').factory('thirdAccountProvider', ['$q','thirdAccountServ
     unregisterThirdAccount:function(thirdAccountID,otp){
       var deferred = $q.defer();
       console.log('unregistering third-account');
-      thirdAccountService.unregisterThirdAccount(thirdAccountID).then(
+      thirdAccountService.unregisterThirdAccount(thirdAccountID,otp).then(
         function(response){
           console.log('third-account unregistered successfully');
           return thirdAccountService.getThirdAcounts();
@@ -96,6 +97,7 @@ angular.module('spaApp').factory('thirdAccountProvider', ['$q','thirdAccountServ
       ).then(
         function(response){
           console.log('third-account refreshed successfully');
+          thirdAccounts = response.data.third_accounts;
           deferred.resolve(thirdAccounts);
         }
       ).catch(function(response){
