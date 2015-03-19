@@ -112,7 +112,8 @@ angular.module('spaApp').controller('creditCtrl', ['$scope', '$location', '$stat
   };
 
 	$scope.getStatements = function(){
-		$scope.showStatement = true;
+		$scope.statementStatus.showStatement = true
+
 		accountsProvider.getStates($stateParams.accountId).then(
 			function(data) {
 				$scope.statements = $rootScope.statements;

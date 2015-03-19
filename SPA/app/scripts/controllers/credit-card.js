@@ -8,7 +8,7 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 	var params = {};
 	params.numPage = 0;
 	params.size = 100;
-	$scope.showStatement = false;
+	$scope.statementStatus.showStatement = false;
 	$scope.previousPeriod = false;
 	$scope.years = [
 		{ label: '2014', value: 2014 },
@@ -66,7 +66,7 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 	);
 
 	$scope.getStatements = function(){
-		$scope.showStatement = true;
+		$scope.statementStatus.showStatement = true
 		accountsProvider.getStates($stateParams.accountId).then(
 			function(data) {
 				$scope.statements = $rootScope.statements;
@@ -95,7 +95,7 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 	}
 
 	$scope.back = function(){
-		$scope.showStatement = false;
+		$scope.statementStatus.showStatement = true;
 	};
 
 	$scope.getTransactions = function(previousPeriod){
