@@ -69,9 +69,10 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
     $scope.invalidPassword = true;
     var password = $scope.registerData.password;
     if(password) {
-      var pattern = /[A-Za-z0-9]{8,20}/g;
+      var pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/g;
       if(!pattern.test(password)) {
-        setError("La contraseña deberá tener carácteres alfanuméricos y con un mínimo de 8 carácteres");
+        setError("La contraseña deberá tener carácteres alfanuméricos, \
+            al menos una mayúscula y una minúscula, y con un caracter numérico");
         return;
       }
 
@@ -88,31 +89,50 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
       }
 
       var rexRfc = new RegExp($scope.rfc, "i");
-      //console.log(lcs(password.toLowerCase(), $scope.rfc.toLowerCase()));
       if(rexRfc.test(password)) {
         setError("No puede usar su RFC como contraseña");
         return;
       }
 
+      var repeatedChars = /(.)\1{2,}/;
+      if(repeatedChars.test(password)) {
+        setError("No puede repetir más de tres carácteres iguales como 111 o aaa");
+        return;
+      }
+
+      if(consecutivePassword(password)) {
+        setError("No puede tener secuencia de carácteres como 123 o abc");
+        return;
+      }
+
       $scope.invalidPassword = false;
 
-      // TODO: Enhance these validations
     }
   }
 
-  function lcs(a, b) {
-    var aSub = a.substr(0, a.length-1);
-    var bSub = b.substr(0, b.length-1);
+  function consecutivePassword(password) {
+    var charArray = password.split('');
 
-    if (a.length == 0 || b.length == 0) {
-      return "";
-    } else if (a.charAt(a.length-1) == b.charAt(b.length-1)) {
-      return lcs(aSub, bSub) + a.charAt(a.length-1);
-    } else {
-      var x = lcs(a, bSub);
-      var y = lcs(aSub, b);
-      return (x.length > y.length) ? x : y;
+    var isConSeq = false;
+    var asciiCode = 0;
+    var previousAsciiCode = 0;
+    var numSeqcount = 0;
+
+    for(var i = 0; i < password.length; i++) {
+      asciiCode = password.charCodeAt(i);
+      if((previousAsciiCode + 1) === asciiCode) {
+        numSeqcount++;
+        if(numSeqcount >= 2) {
+          isConSeq = true;
+          break;
+        }
+      } else {
+        numSeqcount = 0;
+      }
+      previousAsciiCode = asciiCode;
     }
+
+    return isConSeq;
   }
 
 	/**
