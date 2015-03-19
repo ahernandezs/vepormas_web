@@ -273,28 +273,73 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.sendPayment = function() {
         if ($scope.payment.amount == 'payment.other')
             $scope.payment.amount = $scope.payment.other;
-            transferProvider.payOwnCard($scope.payment.account._account_id,
+        if ( $scope.payment.destiny.account_type == 'TDC' ){
+            payOwnCard();
+        }else if ( $scope.payment.destiny.account_type == 'TDC_T'){
+            payThirdCard();
+        }else{
+            $scope.setServiceError('Error de tipo de tarjeta');
+        }
+            
+    };
+
+    /**
+     * pay an own card
+     */
+    function payOwnCard(){
+        transferProvider.payOwnCard($scope.payment.account._account_id,
                                     $scope.payment.destiny._account_id,
                                     $scope.payment.amount).then(
-                function(data) {
-                    console.log(data);
-                    $scope.selection = 3;
-                },
-                function(errorObject) {
-                    var status = errorObject.status;
-                    if(status === 406){
-                        $scope.setServiceError('datos inválidos');
-                    }else if(status === 500){
-                        var message = errorObject.response.message;
-                        $scope.setServiceError(message);
-                    }else if(status === 403){
-                        $scope.setServiceError('otp inválido');
-                    }else{
-                        $scope.setServiceError('Error en el servicio, intente más tarde');
-                    }
+            function(data) {
+                console.log(data);
+                $scope.selection = 3;
+            },
+            function(errorObject) {
+                var status = errorObject.status;
+                if(status === 406){
+                    $scope.setServiceError('datos inválidos');
+                }else if(status === 500){
+                    var message = errorObject.response.message;
+                    $scope.setServiceError(message);
+                }else if(status === 403){
+                    $scope.setServiceError('otp inválido');
+                }else{
+                    $scope.setServiceError('Error en el servicio, intente más tarde');
                 }
+            }
         );
-    };
+    }
+
+    /**
+     * pay a third-card
+     */
+    function payThirdCard(){
+        transferProvider.payThirdCard($scope.payment.account._account_id,
+                                    $scope.payment.destiny._account_id,
+                                    $scope.payment.amount,
+                                    null,
+                                    null,
+                                    $scope.payment.otp).then(
+            function(data) {
+                console.log(data);
+                $scope.selection = 3;
+            },
+            function(errorObject) {
+                var status = errorObject.status;
+                if(status === 406){
+                    $scope.setServiceError('datos inválidos');
+                }else if(status === 500){
+                    var message = errorObject.response.message;
+                    $scope.setServiceError(message);
+                }else if(status === 403){
+                    $scope.setServiceError('otp inválido');
+                }else{
+                    $scope.setServiceError('Error en el servicio, intente más tarde');
+                }
+            }
+        );
+    }
+
 
     /**
      * set an error on the page
