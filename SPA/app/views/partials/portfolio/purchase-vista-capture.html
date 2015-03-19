@@ -10,19 +10,19 @@
         </div>
     </div>
     <form name="investmentForm">
+     <div class="select-style" ng-class="investment.vistaAccount ? 'selected' : ''">
+            <span>Producto de inversi&oacute;n</span>
+            <select ng-model="investment.vistaAccount" ng-options="item as item.name for item in vistaAccounts" ng-required="true">
+                <option value="">Producto de inversi&oacute;n</option>
+            </select>
+        </div>
         <div class="select-style" ng-class="investment.depositAccount ? 'selected' : ''">
             <span>Cuenta retiro</span>
             <select ng-model="investment.depositAccount"
                     ng-options="item as item.name for item in depositAccounts" ng-required="true">
                 <option value="">Cuenta retiro</option>
             </select>
-        </div>
-        <div class="select-style" ng-class="investment.vistaAccount ? 'selected' : ''">
-            <span>Producto de inversi&oacute;n</span>
-            <select ng-model="investment.vistaAccount" ng-options="item as item.name for item in vistaAccounts" ng-required="true">
-                <option value="">Producto de inversi&oacute;n</option>
-            </select>
-        </div>
+        </div>       
         <span>
             <label class="fieldContainer" ng-class="!investmentForm.amount.$error.required ? 'selected' : ''">
                 <span class="big">Importe de inversi&oacute;n</span>

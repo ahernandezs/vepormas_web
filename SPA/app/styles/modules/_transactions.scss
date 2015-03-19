@@ -10,6 +10,10 @@ form[name="transferForm"], form[name="paymentForm"]{
         background: url(../images/ico-alert.png) no-repeat 75% 3px, url(../images/ico-alert.png) no-repeat 75% 58px;
         background-size:30px, 30px;
 }
+form[name="investmentForm"], form[name="paymentForm"]{
+        background: url(../images/ico-alert.png) no-repeat 75% 3px, url(../images/ico-alert.png) no-repeat 75% 58px;
+        background-size:30px, 30px;
+}
 .select-style:active{
     border-color:$orange;
 }
