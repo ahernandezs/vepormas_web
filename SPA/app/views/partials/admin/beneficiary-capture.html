@@ -12,11 +12,11 @@
     <form name="beneficiaryForm">
         <label class="fieldContainer" ng-class="beneficiary.name.length > 0 ? 'selected' : ''">
             <span>Nombre beneficiario</span>
-            <input type="text" alphanumeric ng-model="beneficiary.name" placeholder="Nombre beneficiario" class="input-usuario" ng-required="true" ng-readonly="beneficiary.same_bank" ng-disabled="beneficiary.same_bank">
+            <input type="text" alphanumeric ng-model="beneficiary.name" placeholder="Nombre beneficiario" class="input-usuario" ng-required="true" ng-readonly="beneficiary.same_bank" ng-disabled="beneficiary.same_bank" maxlength="60">
         </label>
         <label class="fieldContainer" ng-class="beneficiary.aka.length > 0 ? 'selected' : ''">
             <span>Alias</span>
-            <input type="text" ng-model="beneficiary.aka" placeholder="Alias" alphanumeric ng-required="true">
+            <input type="text" ng-model="beneficiary.aka" placeholder="Alias" alphanumeric maxlength="20" ng-required="true">
         </label>
         <label class="fieldContainer" ng-class="beneficiary.account.length > 0 ? 'selected' : ''">
             <span>Cuenta</span>
