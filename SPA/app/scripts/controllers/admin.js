@@ -18,8 +18,14 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
     $scope.beneficiary = {};
 	$scope.stage_updatecommunication = 1;
 	$scope.today = new Date();
-
+	$scope.actionUpdateState = 1;
+	$scope.updateDigitalBankServiceState = [];
 	loadBeneficiary();
+
+    $scope.updateService = function(action, state){
+		$scope.actionUpdateState = action;
+		$scope.updateDigitalBankServiceState.state = state;
+    }
 
 	$scope.selectBeneficiary = function(account){
 		$scope.action = 2;
@@ -239,7 +245,31 @@ Adding a beneficary actions
 		        }
 			}
         );
-    };
+    }
 
+    $scope.updateDigitalBankServiceState = function(){
+		adminProvider.updateDigitalBankServiceState($scope.updateDigitalBankServiceState.state, $scope.updateDigitalBankServiceState.otp).then(
+			function(data){
+				$scope.exception = false;
+				$scope.actionUpdateState = 3;
+				$scope.updateDigitalBankServiceState.otp = '';
+				$scope.message = "La información se actualizó correctamente.";
+			},
+			function(errorObject){
+				$scope.exception = true;
+				$scope.actionUpdateState = 3;
+				$scope.updateDigitalBankServiceState.otp = '';
+		        if(status === 406){
+		            $scope.message = 'Datos inválidos';
+		        }else if(status === 500){
+		            $scope.message = errorObject.response.message;
+		        }else if(status === 403){
+		            $scope.message = 'Otp inválido';
+		        }else{
+		            $scope.message = 'Error en el servicio, intente más tarde';
+		        }
+			}
+		);
+    }
 
 }]);
