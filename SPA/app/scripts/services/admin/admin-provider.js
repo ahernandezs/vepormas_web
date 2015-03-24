@@ -24,6 +24,16 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 				return deferred.reject('Error updating communication information');
 			});
 			return deferred.promise;
+		},
+
+		updateDigitalBankServiceState: function(state, otp){
+			var deferred = $q.defer();
+			adminService.updateDigitalBankServiceState(state, otp).success(function(){
+				deferred.resolve();
+			}).error(function(data, status){
+				return deferred.reject('Error updating Digital Bank Service State information');
+			});
+			return deferred.promise;
 		}
 
 	};

@@ -40,6 +40,17 @@ angular.module('spaApp').service('adminService', ['$http','$rootScope', function
 				'otp': otp
 			})
 		});
-	}
+	};
+
+	this.updateDigitalBankServiceState = function(state, otp){
+		return $http({
+			url: $rootScope.restAPIBaseUrl+'/userInformation/digitalBankServices',
+			method: 'PUT',
+			data: JSON.stringify({
+				'state': state,
+				'otp': otp
+			})
+		});
+	};
 
 }]);

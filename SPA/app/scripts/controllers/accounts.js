@@ -5,6 +5,8 @@
  */
  angular.module('spaApp').controller('AccountsCtrl', ['$rootScope', '$scope', '$location', 'accountsProvider', function ( $rootScope, $scope, $location, accountsProvider) {
 	//TODO: temporal binding
+
+    $scope.statementStatus = [];
 	console.log('Load account dashboard information');
 	  accountsProvider.getAccounts().then(
           function(data) {
@@ -37,7 +39,6 @@
     $scope.selectedAccountType = type;
     $scope.activeAccountName = accountSelected.name + ' ' + accountSelected.maskedAccountNumber;
     $scope.investmetCategory = accountSelected.category;
-    $scope.statementStatus = [];
     $scope.statementStatus.showStatement = false;
     
     switch (type) {
