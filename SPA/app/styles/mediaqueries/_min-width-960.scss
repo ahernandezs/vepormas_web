@@ -27,11 +27,84 @@
 			}
 		}
 	}
+	//MAIN
 	header{
-		.logo a{display:block; margin-left: 2em;}
+		height: 80px !important;
+		.logo{
+			@include size(80px, 61px);
+			a{margin-left: 2em;}
+		}
+		.nav {
+			left: 120px;
+		}
 	}
 	footer{
 		p{margin-left: 2em;}
 		a{margin-right: 2em;}
 	}
+	main {
+		top:80px;
+	}
+
+	//MAP
+	.map-footer{
+		ul{
+			width:100%;
+			li, li:first-child, li:last-child{
+				font-size: 0.75em;
+				width: 32% !important;
+				&:after{
+					height: 50px;
+				}
+			}
+			li:first-child{
+				background:url(../images/ico-telefono.png) no-repeat 10px 13px;
+				background-size:35px;
+				&:after{right:-5px;}
+			}
+		}
+	}
+	.angular-google-map-container{
+		bottom:79px !important;
+	}
+	.half{
+		width: 65%;
+	}
+
+	//LOGIN
+	.login main .wrapper > div{
+		width: 45%;
+		padding-top: 20px;
+		&:first-child{
+			h2 {
+				font-size: 1.6em;
+			}
+		}
+	}
+	.welcome {
+		p {
+			font-size: 1.4em;
+		}
+	}
+	.user-login, .user-registration{
+		width: 100%;
+		h3{padding:0 15px 15px 15px;}
+	}
+	.action-call-apps span a{
+		&:first-child{
+			background: url(../images/logo-apple-store.svg) no-repeat left center;
+			background-size: auto 32px;
+		}
+		&:nth-child(2){
+			background: url(../images/logo-google-play.svg) no-repeat right center;
+			background-size: auto 32px;
+		}
+	}
+	.radioGroupBelow span{
+		width: 58px;
+		height: 58px;
+	}
+
+	//PRODUCT
+	
 }

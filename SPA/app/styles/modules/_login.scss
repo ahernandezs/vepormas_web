@@ -3,337 +3,9 @@
 |	Login
 |-------------------------------------------------------------------------------------
 */
-.half{
-	width: 50%;
-	right: 0;
-	z-index:100;
-	position: absolute;
-	top:49px;
-	bottom:94px;
-}
-h2.sucursales{
-	color: $orange;
-	font-size: 18px;
-	margin-left: 70px;
-	padding: 15px 0;
-}
-.angular-google-map-container{
-	position: absolute;
-	width: 100%;
-	top:49px;
-	bottom:94px;
-	z-index: 90;
-}
-.busqueda{
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	width: 50%;
-	margin-left: -25%;
-	z-index:100;
-}
-.busqueda-detalle{
-	background:$blue;
-	overflow:hidden;
-	padding: 15px;
-	@include border-radius(4px 4px 0 0);
-	> button{
-		width: 19%;
-		float:left;
-		margin-right: 1%;
-		padding:10px 0;
-	}
-	.mapinputs{
-		width: 69%;
-		background:white;
-		overflow: hidden;
-		position: relative;
-		display: block;
-		float:left;
-		margin-right: 1%;
-		@include border-radius(4px);
-		input{
-			border:none;
-			float:left;
-			width: 56%;
-			padding: 10px 2%;
-			&:focus{
-				box-shadow:none;
-			}
-		}
-		.select-map:active{
-		    border-color:$orange;
-		}
-		.select-map{
-		    overflow: hidden;
-		    position: relative;
-		   	float:right;
-		    width: 36%;
-		    padding: 0 2%;
-		    border-left:1px solid $gray;
-		    select {
-		        float:left;
-		        color:$dgray;
-		        width: 100%;
-		        padding: 10px !important;
-		        margin: 0 !important;
-		        border: none !important;
-		        box-shadow: none;
-		        background:url(../images/ico-abajo.png) no-repeat 98% center;
-		        background-size:25px;
-		        -webkit-appearance: none;
-		           -moz-appearance: none;
-		                appearance: none;
-		    }
-		    select:focus {
-		        outline: none;
-		    }
-		}
-		+ span{
-			display:block;
-			float:left;
-			width: 10%;
-			height: 38px;
-			cursor: pointer;
-			background:url(../images/ico-lupa-w.png) no-repeat center center, $orange;
-			background-size:25px;
-			@include border-radius(3px);
 
-		}
-	}
-}
-.map-footer{
-	position: fixed;
-	bottom:30px;
-	left:0;
-	overflow:hidden;
-	width: 100%;
-	border-top:1px solid $gray;
-	background:white;
-	ul{
-		width: 70%;
-		margin: auto;
-		overflow: hidden;
-		position: relative;
-		li{
-			display: block;
-			float:left;
-			width: 30%;
-			padding:15px 0;
-			position: relative;
-			background:url(../images/ico-llamar.png) no-repeat 20px 13px;
-			background-size:35px;
-			&:after{
-				content:"";
-				display: block;
-				height: 70px;
-				width: 1px;
-				position: absolute;
-				top:10px;
-				right:10px;
-				border-right:1px solid $gray;
-			}
-			&:first-child{
-				width: 40%;
-				background:url(../images/ico-telefono.png) no-repeat 30px 13px;
-				background-size:35px;
-			}
-			&:last-child{
-				background:url(../images/ico-horario.png) no-repeat 20px 13px;
-				background-size:35px;
-				&:after{
-					display: none;
-				}
-			}
-			p{
-				overflow: hidden;
-				position: relative;
-				text-align: left;
-				font-size: 0.9em;
-				margin:0 0 2px 25%;
-				color:$dgray;
-				a{
-					color:$blue;
-					text-decoration: underline;
-					font-size: 0.9em;
-				}
-				span{
-					float:left;
-					width:50%;
-					+ a{
-						font-size: 1em;
-						color:$dgray;
-						text-decoration: none;
-						float:left;
-						text-align: right;
-					}
-				}
-			}
-			&:nth-child(2), &:last-child{
-				p{
-					&:first-child{
-						margin-bottom: 8px;
-					}
-				}
-			}
-		}
-	}
-}
-
-.sucursal-modulo{
-	background-color: rgba(255, 255, 255, 0.7);
-	overflow:hidden;
-	@include border-radius(0 0 4px 4px);
-	div{
-		cursor: pointer;
-		color: $blue;
-		text-align: center;
-		float:left;
-		width: 50%;
-		padding:15px;
-		@include anim_transicion_ease(0.3s);
-		&:first-child{
-			border-right:1px solid $gray;
-			background:url(../images/ico-sucursales.png) no-repeat 20% center;
-			background-size:30px;
-			&:hover, &.selected{
-				color:white;
-				background:url(../images/ico-sucursales-b.png) no-repeat 20% center, $orange;
-				background-size:30px;
-			}
-		}
-		&:last-child{
-			background:url(../images/ico-modulos.png) no-repeat 10% center;
-			background-size:30px;
-			&:hover, &.selected{
-				color:white;
-				background:url(../images/ico-modulos-b.png) no-repeat 10% center, $orange;
-				background-size:30px;
-			}
-		}
-	}
-}
-
-.naranja {
-	background-color: #FC651B;
-}
-
-.resultado{
-	color:$dgray;
-	background:white;
-	padding:10px;
-	border-bottom: solid 1px #ccc;
-	> div{
-		overflow: hidden;
-		padding:10px 2%;
-		border-bottom:1px solid $lgray;
-		&:last-child{border:none;}
-	}
-	.sucursal{
-		span{
-			float:left;
-			&:first-child{width: 85%}
-			&:last-child{
-				width:11%;
-				color:$blue;
-				text-decoration: underline;
-				font-size: 0.8em;
-				text-align: center;
-				i{
-					display: block;
-					width: 25px;
-					height: 25px;
-					margin: auto !important;
-					background:url(../images/ico-comollegar.png) no-repeat center center;
-					background-size:20px;
-				}
-			}
-		}
-	}
-	.telyhorario{
-		span{
-			float: left;
-			width: 50%;
-			font-size: 0.8em;
-			strong{
-				color:$gray;
-				font-weight: normal;
-			}
-		}
-	}
-	.otrosdatos{
-		span{
-			color:$gray;
-			font-size: 0.8em;
-			float: left;
-			width: 28%;
-			padding-left: 5%;
-			&.abierto{
-				background:url(../images/ico-abierto.png) no-repeat left center;
-				background-size:18px;
-			}
-			&.divisas{
-				background:url(../images/ico-divisas.png) no-repeat left center;
-				background-size:18px;
-			}
-			&.cita{
-				background:url(../images/ico-cita.png) no-repeat left center;
-				background-size:18px;
-			}
-		}
-	}
-
-}
-
-.branches-locator {
-	// background-color: #fff;
-	border-radius: 4px 0 0 4px;
-	float: right;
-	margin-right: 30px;
-	padding-left: 10px;
-	position: relative;
-
-	> input[type*=text] {
-		border: none;
-		border-radius: 4px 0 0 4px;
-		float: left;
-		line-height: 36px;
-		min-width: 300px;
-		padding-left: 14px;
-		padding: 0 0 0 14px;
-	}
-
-	.bootstrap-select {
-		background: white;
-		border-left: 1px solid $gray;
-		color: $dgray;
-		float: left !important;
-		height: 36px;
-		width: 100px;
-
-		.btn {
-			background: transparent;
-			color: $dgray;
-			height: 100%;
-			padding-left: 14px;
-		}
-	}
-	.search {
-		border-radius: 0 4px 4px 0;
-		font-size: 16px;
-		float: left;
-		margin: 0;
-		padding: 8px 12px;
-		position: relative;
-	}
-}
-.align {
-	margin-top: 30px;
-}
 .login {
-
   height: 100%;
-
 	.outter {
 		background: url(../images/bg-login.jpg) center center no-repeat;
 		background-size: cover;
@@ -358,7 +30,7 @@ h2.sucursales{
 					@include text-shadow(#000);
 					text-transform: uppercase;
 					margin-bottom: 16px;
-					font-size: 32px;
+					font-size: 2em;
 				}
 	 		}
 	 	}
@@ -367,13 +39,13 @@ h2.sucursales{
 .welcome {
 	p {
 		@include text-shadow(#000);
-		font-size: 28px;
+		font-size: 1.9em;
 		strong:first-child {
 			display: block;
 		}
 	}
 }
-.user-login, .user-registration {
+.user-login, .user-registration{
 	padding: 15px 18px;
 	width: 380px;
 	&.images{
@@ -536,7 +208,7 @@ h2.sucursales{
 	}
 }
 .action-call-apps {
-	width:80%;
+	width:70%;
 	background:white;
 	padding: 15px;
 	margin-top: 50px;
@@ -574,7 +246,7 @@ h2.sucursales{
 }
 
 /* center radio below label */
-.radioGroupBelow {
+.radioGroupBelow{
 	overflow:hidden;
 	padding:15px;
 	border-bottom: 1px solid #f4f4f4;
@@ -620,28 +292,3 @@ h2.sucursales{
 		}
 	}
 }
-/*.radioGroupBelow {
-	overflow:hidden;
-	margin:15px -18px;
-	border-bottom: 1px solid #f4f4f4;
-	.loader{
-		top:100px;
-		left:-20%;
-	}
-	img{
-		width: 100%;
-		height: 50px;
-		@include border-radius(4px);
-	}
-	label{
-	  	display:inline-block;
-	  	width: 50px;
-	  	text-align: center;
-	  	margin: 0 0.2em;
-	 	input[type="radio"] {
-		    display: block;
-		    margin: 0.3em auto;
-		    width: auto;
-		}
-	}
-}*/
