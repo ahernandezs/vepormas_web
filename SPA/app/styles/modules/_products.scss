@@ -222,7 +222,7 @@ hr[ng-show="!showAccountHeader"]{
 	@include clearfix;
 	background-color: $lgray;
 	border-bottom: 1px solid $gray;
-	font-size: 14px;
+	font-size: 0.95em;
 	padding: 20px 0;
 	margin-top: 10px;
 
@@ -273,6 +273,7 @@ hr[ng-show="!showAccountHeader"]{
 	button {
 		background-color: transparent;
 		border: none;
+		padding:2px 0 0 0;
 		color: $orange;
 		float: left;
 
