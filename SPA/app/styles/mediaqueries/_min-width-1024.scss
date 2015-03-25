@@ -55,7 +55,7 @@
 			ul,li{font-size:1em;}
 			progress{
 				&.four-steps {
-			        left: -36%!important;
+			        left: -37%!important;
 			        top: 230px!important;
 			        width: 250px!important;
 			    }
@@ -128,7 +128,18 @@
 			}
 		}
 	}
-	
+	div[ui-view="detailDeposit"], div[ui-view="detailCredit"], div[ui-view="detailInvestment"]{
+		.title{@include column(5); border-right:1px solid $blue}
+		.payment-actions{
+			@include column(3);
+			border:none;
+			div{
+				width: 100%;
+				p, span{font-size:1.3em}
+			}
+		}
+		.header > a, > a:hover{@include column(4);border-left:1px solid $blue;margin-top: 0 !important;}
+	}
 
 	//TRANSF
 	.actions{

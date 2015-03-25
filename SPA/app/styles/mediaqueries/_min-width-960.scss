@@ -38,12 +38,36 @@
 			left: 120px;
 		}
 	}
+	.sub-menu{font-size:0.85em;}
 	footer{
 		p{margin-left: 2em;}
 		a{margin-right: 2em;}
 	}
 	main {
 		top:80px;
+	}
+	.user-session{
+		height:auto;
+		width: 100px;
+		margin:0 0 0 64% !important;
+		display: block;
+		float:none;
+		position: absolute;
+		top:42px;
+		div{
+			display:none
+		}
+		button{
+			width: 100px;
+			margin:0;
+		}
+	}
+	.fix-top{
+		left: 120px;
+		.date{
+			font-size:0.9em;
+			line-height: 0.8em;
+		}
 	}
 
 	//MAP
@@ -77,6 +101,7 @@
 		padding-top: 20px;
 		&:first-child{
 			h2 {
+				margin-top: 80px;
 				font-size: 1.6em;
 			}
 		}
@@ -106,5 +131,105 @@
 	}
 
 	//PRODUCT
-	
+	.help .option a, .option a, .content .header h2 + p{font-size:1.1em;}
+	.content .header .progress p{font-size:0.9em;}
+	.payment-actions{border:none;}
+	div[ui-view="detailDeposit"], div[ui-view="detailCredit"], div[ui-view="detailInvestment"]{
+		.title{@include column(5); border-right:1px solid $blue}
+		.payment-actions{
+			@include column(3);
+			border:none;
+			div{
+				width: 100%;
+				p, span{font-size:1.3em}
+			}
+		}
+		.header > a, > a:hover{@include column(4);border-left:1px solid $blue;margin-top: 0 !important;}
+	}
+	div[ui-view="detailCreditCard"]{
+		.header{
+			height: 100px;
+			&.statement{height:auto;}
+			.title { @include column(5);border-right: 1px solid $blue;}
+			.payment-actions{
+				border: none;
+				@include column(7);
+				> div{
+					position: absolute;
+					width: 70%;
+					top:80px;
+					margin-left:-230px;
+					> div{
+						p{font-size:1.3em;}
+						button{
+							height:35px;
+							font-size:1em !important;
+							padding-left: 0;
+							padding-right: 0;
+						}
+					}
+				}
+			}
+			> a, > a:hover{
+				@include column(5);
+			}
+		}
+	}
+	.search + .transactions .filter .inline .right{margin-top: 5px;}
+	.inline{
+		.right{overflow:hidden;}
+		h4{
+			width: 15%;
+			padding-top:3px;
+		}
+		input{
+			width: 45%;
+		}
+	} 
+
+	//ADMIN
+	.submenu nav ul li a{font-size:1.2em; padding: 22px 0;}
+	.agregarBeneficiario{
+		>form{
+			input{width: 65%;}
+		}
+	}
+
+	//REGISTRY
+	.registration{
+		.steps{
+			h3{font-size: 1.5em;}
+			ul,li{font-size:1em;}
+			progress{
+				&.four-steps{
+					left: -45%!important;
+			        top: 240px!important;
+			        width: 230px!important;
+				}
+			}
+		}
+		.help{
+			i{
+				position: relative;
+				left:0;
+				width: 100%;
+				text-align: center;
+				border-right:none;
+				border-bottom:1px  solid $blue;
+				top: 0;
+				margin-bottom: 5px;
+				@include translate(0,0);
+				&.ico-ayuda, &.ico-token, &.ico-alerta, &.ico-duda{
+					background-position:center center;
+				}
+			}
+			> div{
+				padding:5px;
+				p{padding: 0;}
+				+ div {
+					margin-top: 10px;
+				}
+			}
+		}
+	}
 }
