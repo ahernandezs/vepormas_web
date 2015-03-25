@@ -34,7 +34,28 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 				return deferred.reject('Error updating Digital Bank Service State information');
 			});
 			return deferred.promise;
-		}
+		},
+
+		getLimits: function(){
+			var deferred = $q.defer();
+			adminService.getLimits().success(function(data, status, headers){
+				$rootScope.limits = data.limits;
+				deferred.resolve();
+			}).error(function(data, status){
+				return deferred.reject('Error getting limits');
+			});
+			return deferred.promise;
+		},
+
+		setLimits: function(amount, type, otp){
+			var deferred = $q.defer();
+			adminService.setLimits(amount, type, otp).success(function(){
+				deferred.resolve();
+			}).error(function(data, status){
+				return deferred.reject('Error setting limits');
+			});
+			return deferred.promise;
+		},
 
 	};
 

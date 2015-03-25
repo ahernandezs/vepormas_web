@@ -53,4 +53,22 @@ angular.module('spaApp').service('adminService', ['$http','$rootScope', function
 		});
 	};
 
+	this.getLimits = function(){
+		return $http.get($rootScope.restAPIBaseUrl+'/accounts/limits');
+	};
+
+	this.setLimits = function(amount, type, otp){
+		return $http({
+			url: $rootScope.restAPIBaseUrl+'/accounts/limits',
+			method: 'POST',
+			data: JSON.stringify({
+				"limit":{
+					"amount": amount,
+					"type": type,
+					"otp": otp
+				}
+			})
+		});
+	}
+
 }]);

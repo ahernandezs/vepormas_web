@@ -24,7 +24,7 @@
             <div class="user-log">
                 <h6>Bienvenido</h6>
                 <h4 class="user">{{completeName}}</h4>
-                <p class="date">&Uacute;ltimo acceso: <span>{{date | date:'dd/MM/yyyy'}}</span> a las <span>{{date | date:'HH:mm:ss'}}</span>
+                <p class="date">&Uacute;ltimo acceso: <span>{{last_access_date | date:'dd/MM/yyyy'}}</span> a las <span>{{last_access_date | date:'HH:mm:ss'}}</span>
                 </p>
     </div>
             <form ng-show="useLogoutForm" action="logout" method="post">
@@ -35,7 +35,7 @@
         </div>
         <div class="fix-top">
             <div class="date">
-                <time-access date='{{last_access_date}}' media='{{last_access_media}}'/>
+                <time-access date='{{date}}' media='{{date}}'/>
             </div>
             <ul class="sub-menu">
                 <ul>
