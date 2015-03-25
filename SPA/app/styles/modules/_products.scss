@@ -200,7 +200,7 @@ hr[ng-show="!showAccountHeader"]{
 			float:left;
 			width: 33%;
 			button{
-				font-size:12px;
+				font-size:0.8em;
 				height:45px;
 				width: 90%;
 				margin: auto;
@@ -208,7 +208,7 @@ hr[ng-show="!showAccountHeader"]{
 		}
 	}
 	.amount {
-		font-size: 16px;
+		font-size: 1em;
 		margin-bottom: 2px;
 	}
 }
@@ -311,7 +311,7 @@ hr[ng-show="!showAccountHeader"]{
 		color:$dgray;
 		width: 33%;
 		padding-top:10px;
-		font-size: 0.9em;
+		font-size: 1em;
 	}
 	h4, p{
 		float:left;
@@ -333,7 +333,7 @@ hr[ng-show="!showAccountHeader"]{
 			display:block;
 			width: 30px;
 			height: 32px;
-			background:url(../images/ico-calendario.png) no-repeat center center;
+			background:url(../images/ico-calendario.png) no-repeat center top;
 			background-size:28px;
 			vertical-align: bottom;
 		}
