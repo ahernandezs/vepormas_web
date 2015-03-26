@@ -12,15 +12,13 @@
     <form name="paymentForm">
         <div class="select-style" ng-class="payment.account ? 'selected' : ''">
             <span>Cuenta retiro</span>
-            <select ng-model="payment.account" ng-required="true"
-                    ng-options="item.name group by 'Cuentas Propias' for item in theAccounts | filter: { account_type: 'DEP' }">
+            <select ng-model="payment.account" ng-required="true" ng-options="item.name group by 'Cuentas Propias' for item in theAccounts | filter: { account_type: 'DEP' }">
                 <option value="">Cuenta retiro</option>
             </select>
         </div>
         <div class="select-style" ng-class="payment.destiny ? 'selected' : ''">
             <span>TDC para pago</span>
-            <select ng-model="payment.destiny" ng-required="true"
-                    ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | byAccountType:['TDC', 'TDC_T']" ng-change="getAccountDetail()" >
+            <select ng-model="payment.destiny" ng-required="true" ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | byAccountType:['TDC', 'TDC_T']" ng-change="getAccountDetail()" >
                 <option value="">TDC para pago</option>
             </select>
         </div>
@@ -39,27 +37,25 @@
         <span ng-if="payment.destiny.account_type === 'TDC'">
             <div class="choices">
                 <label>
-                    <input type="radio" name="type" ng-model="value" value="MIN_PAYMENT"
-                           ng-required="true">
+                    <input type="radio" name="type" ng-model="payment.type" value="MIN_PAYMENT" ng-required="true">
                     <p>Monto m&iacute;nimo</p>
                     <p class="money">${{transferAccountDetail.minimum_payment}}</p>
                 </label>
                 <label>
-                    <input type="radio" name="type" ng-model="value" value="WIHTOUT_INTEREST_PAYMENT"
-                           ng-required="true">
+                    <input type="radio" name="type" ng-model="payment.type" value="WIHTOUT_INTEREST_PAYMENT" ng-required="true">
                     <p>Para no generar intereses</p>
                     <p class="money">${{transferAccountDetail.no_interes_payment_due}}</p>
                 </label>
                 <label>
-                    <input type="radio" name="type" class="last" ng-model="value" value="TOTAL_PAYMENT"  ng-required="true">
+                    <input type="radio" name="type" class="last" ng-model="payment.type" value="TOTAL_PAYMENT" ng-required="true">
                     <p class="last">Otra cantidad</p>
-                    <input type="text" currency numbers-only ng-model="payment.other" class="input-importe" ng-required="payment.amount == 'other'" maxlength="15">
+                    <input type="text" currency numbers-only ng-model="payment.other" class="input-importe" ng-required="payment.type == 'TOTAL_PAYMENT'" maxlength="15">
                 </label>
             </div>
         </span>
     </form>
     <div class="double-btn">
-        <input type="submit" value="Cancelar" ng-click="completeStep(1)">
-        <input type="submit" value="Continuar" ng-click="completeStep(2)" ng-disabled="paymentForm.$invalid">
+        <input type="submit" value="Cancelar" ng-click="goToStep(1)">
+        <input type="submit" value="Continuar" ng-click="assignValue()" ng-disabled="paymentForm.$invalid">
     </div>
 </div>

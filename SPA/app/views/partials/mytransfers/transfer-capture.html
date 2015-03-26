@@ -49,7 +49,7 @@
         </label>
     </form>
     <div class="double-btn">
-        <input type="submit" value="Cancelar" ng-click="completeStep(1)">
-        <input type="submit" value="Continuar" ng-disabled="transferForm.$invalid" ng-click="completeStep(2)">
+        <input type="submit" value="Cancelar" ng-click="goToStep(1, true)">
+        <input type="submit" value="Continuar" ng-disabled="transferForm.$invalid" ng-click="goToStep(2)">
     </div>
 </div>
