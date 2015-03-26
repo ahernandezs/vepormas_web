@@ -22,7 +22,7 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
     		);
       		return deferred.promise;
     	},
-		
+
 		transferThirdAccountSameBank: function (sourceAccount, destinationAccount, amount, description, otp) {
       		var deferred = $q.defer();
       		console.log('transfer to third-account');

@@ -2,24 +2,14 @@
     <h2>Mis Operaciones</h2>
     <div class="section">
         <ul>
-            <li class="option" ng-class="section == 'PAY'?'active' : ''" ng-click="change('PAY')">
+            <li class="option" ng-class="section == 'PAY'?'active' : ''" ng-click="changeSection('PAY')">
                 <a>Hacer un pago</a>
             </li>
-            <li class="option" ng-class="section == 'TRA'?'active' : ''" ng-click="change('TRA')">
+            <li class="option" ng-class="section == 'TRA'?'active' : ''" ng-click="changeSection('TRA')">
                 <a>Hacer una transferencia</a>
             </li>
         </ul>
     </div>
-    <!--div class="beneficiarios-widget" ng-show="isCompleteUser()">
-        <h2>Mis Beneficiarios</h2>
-        <div class="section">
-            <div class="beneficiary">
-                <ul>
-                    <li class="option" ng-class="section == 'BEN'?'active' : ''" ng-click="change('BEN')">Agregar un nuevo beneficiario</li>
-                </ul>
-            </div>
-        </div>
-    </div-->
     <div>
         <div class="help">
             <h2>Ayuda</h2>
@@ -55,22 +45,6 @@
             </div>
             <div class="animate-switch" ng-switch-when="3">
                 <div ng-include="'views/partials/mytransfers/transfer-result.html'"></div>
-            </div>
-        </div>
-    </div>
-    <div class="animate-switch" ng-switch-when="BEN">
-        <div ng-switch on="selection">
-            <div class="animate-switch" ng-switch-when="1">
-                <div ng-include="'views/partials/mytransfers/beneficiary-validate.html'"></div>
-            </div>
-            <div class="animate-switch" ng-switch-when="2">
-                <div ng-include="'views/partials/mytransfers/beneficiary-capture.html'"></div>
-            </div>
-            <div class="animate-switch" ng-switch-when="3">
-                <div ng-include="'views/partials/mytransfers/beneficiary-confirm.html'"></div>
-            </div>
-            <div class="animate-switch" ng-switch-when="4">
-                <div ng-include="'views/partials/mytransfers/beneficiary-result.html'"></div>
             </div>
         </div>
     </div>

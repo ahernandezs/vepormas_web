@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="message">
-        <p>Tu pago se ha realizado con &eacute;xito con n&uacute;mero de autorizaci&oacute;n <span>{{transferId}}</span></p>
+        <p>Tu pago se ha realizado con &eacute;xito</p>
          <div class="print">
             <p>Imprimir</p>
         </div>
@@ -34,7 +34,7 @@
         </tr>
     </table>
     <div class="double-btn">
-        <input type="submit" value="Finalizar" ng-click="completeStep(1)">
-        <input class="larger orange" type="submit" value="Realizar otro pago" ng-click="completeStep(1)">
+        <input type="submit" value="Finalizar" ng-click="goToStep(1, true)">
+        <input class="larger orange" type="submit" value="Realizar otro pago" ng-click="goToStep(1, true)">
     </div>
 </div>
