@@ -272,4 +272,10 @@ Adding a beneficary actions
 		);
     }
 
+	adminProvider.getLimits().then(
+		function(){
+			$scope.limits = $rootScope.limits;
+		}
+	);
+
 }]);

@@ -18,10 +18,9 @@ angular.module('spaApp')
           var date = new Date();
 
           scope.last_access_media = scope.media;
-          scope.last_access_date = dateFilter(new Date(parseInt(scope.date)), 'dd/MM/yyyy H:mm:ss');
-          scope.week_day = dateFilter(date.getDay(),'EEEE');
+          scope.week_day = dateFilter(date,'EEEE');
           scope.day = date.getDate();
-          scope.month = dateFilter(date.getMonth(),'MMMM');
+          scope.month = dateFilter(date,'MMMM');
           scope.year = date.getFullYear();
           scope.hour = dateFilter(date, 'H:mm:ss');
         }
