@@ -9,6 +9,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 		$scope.adminOpt = 5;
 	}
 
+	$scope.asktoken = false;
 	$scope.selection = 1;
 	$scope.action = 1;
 	$scope.data = {otp:''}
@@ -277,5 +278,26 @@ Adding a beneficary actions
 			$scope.limits = $rootScope.limits;
 		}
 	);
+
+	$scope.setLimits = function(amount, type, otp){
+		adminProvider.setLimits(amount, type, otp).then(
+			function(data){
+				adminProvider.getLimits().then(
+					function(){
+						$scope.limits = $rootScope.limits;
+					}
+				);
+
+			},
+			function(errorObject){
+	            $scope.setServiceError(errorObject);
+				adminProvider.getLimits().then(
+					function(){
+						$scope.limits = $rootScope.limits;
+					}
+				);
+			}
+		);
+	}
 
 }]);
