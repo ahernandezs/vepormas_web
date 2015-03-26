@@ -46,6 +46,7 @@
 	main {
 		top:80px;
 	}
+	.scroll{bottom:30px;}
 	.user-session{
 		height:auto;
 		width: 100px;
@@ -124,7 +125,7 @@
 		padding-top: 20px;
 		&:first-child{
 			h2 {
-				margin-top: 80px;
+				margin-top: 50px;
 				font-size: 1.6em;
 			}
 		}
@@ -138,19 +139,25 @@
 		width: 100%;
 		h3{padding:0 15px 15px 15px;}
 	}
-	.action-call-apps span a{
-		&:first-child{
-			background: url(../images/logo-apple-store.svg) no-repeat left center;
-			background-size: auto 32px;
+	.app-link-box{
+		.phone-img{
+			background:url(../images/stores-phone-img.png)no-repeat center center;
+			background-size:cover;
+			width:100px;
+			height:119px;
 		}
-		&:nth-child(2){
-			background: url(../images/logo-google-play.svg) no-repeat right center;
-			background-size: auto 32px;
+		.stores-text-box{
+			width:200px;
+			margin-top:0;
+			margin-left:15px;
 		}
 	}
-	.radioGroupBelow span{
-		width: 58px;
-		height: 58px;
+	.radioGroupBelow{
+		margin:auto;
+		span{
+			width: 55px;
+			height: 55px;
+		}
 	}
 
 	//PRODUCT
@@ -225,7 +232,7 @@
 			ul,li{font-size:1em;}
 			progress{
 				&.four-steps{
-					left: -45%!important;
+					left: -45.5%!important;
 			        top: 240px!important;
 			        width: 230px!important;
 				}

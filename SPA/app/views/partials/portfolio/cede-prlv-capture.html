@@ -10,6 +10,7 @@
         </div>
     </div>
     <form name="investmentForm">
+        <i class="inv-first-select"><span>Cuenta PRLV de la cual se har&aacute; el retiro</span></i>
         <div class="select-style" ng-class="investment.destinationProduct ? 'selected' : ''">
             <span>Producto de inversi&oacute;n</span>
             <select name="productId"
@@ -18,6 +19,7 @@
                 <option value="">Producto de inversi&oacute;n</option>
             </select>
         </div>
+        <i class="inv-sec-select"><span>Cuenta eje de la cual se har&aacute; el retiro para invertir a la cuenta PRLV</span></i>
         <div class="select-style" ng-class="investment.originAccount ? 'selected' : ''">
             <span>Cuenta origen</span>
             <select ng-model="investment.originAccount" ng-options="item as item.name for item in ownAccounts | filter: { account_type: 'DEP' }" ng-required="true">
@@ -25,7 +27,7 @@
             </select>
         </div>        
          <label class="fieldContainer" ng-class="!investmentForm.amount.$error.required ? 'selected' : ''">
-            <span class="big">Importe de inversi&oacute;n</span>
+            <span class="big">Importe</span>
             <input name="amount" type="text" currency numbers-only ng-model="investment.amount" placeholder="Importe de inversi&oacute;n" class="input-importe" maxlength="15" ng-required="true">
         </label>
         <div class="select-style" ng-class="investment.expirationInstruction ? 'selected' : ''">
@@ -41,6 +43,7 @@
         <div>
         -->
     </form>
+    <a href="">Catálogo de Plazos y Montos de Inversión</a>
     <div class="double-btn">
         <input type="submit" value="Cancelar" ng-click="reset()">
         <input type="submit" value="Continuar" ng-click="goToConfirmation()" ng-disabled="investmentForm.$invalid">

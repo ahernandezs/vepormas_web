@@ -36,17 +36,6 @@
 		p{margin-left: 2em;}
 		a{margin-right: 2em;}
 	}
-	//LOGIN
-	.action-call-apps span a{
-		&:first-child{
-			background: url(../images/logo-apple-store.svg) no-repeat left center;
-			background-size: auto 42px;
-		}
-		&:nth-child(2){
-			background: url(../images/logo-google-play.svg) no-repeat right center;
-			background-size: auto 42px;
-		}
-	}
 
 	//REGISTRATION
 	.registration{
@@ -55,7 +44,7 @@
 			ul,li{font-size:1em;}
 			progress{
 				&.four-steps {
-			        left: -37%!important;
+			        left: -37.5%!important;
 			        top: 230px!important;
 			        width: 250px!important;
 			    }

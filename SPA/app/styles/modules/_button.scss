@@ -17,6 +17,7 @@ button:not([type*=submit]),
 	button {
 		float: left;
 		padding: 6px 10px;
+		font-weight: bold;
 
 		&:first-child {
 			border-radius: $radius 0 0 $radius;
