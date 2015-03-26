@@ -307,7 +307,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                                     $scope.payment.destiny._account_id,
                                     $scope.payment.amount,
                                     null,
-                                    null,
+                                    $scope.today,
                                     $scope.payment.otp).then(
             function(data) {
                 $scope.selection = 3;
