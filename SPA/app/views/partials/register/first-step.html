@@ -1,6 +1,6 @@
 <div class="record" data-ng-init="init()">
     <div class="data">
-        <h2>Informaci&oacute;n de Cuenta</h2>
+        <h2>Informaci&oacute;n de cuenta</h2>
         <p>Verifica que los datos de tu cuenta sean correctos.</p>
         <hr>
         <div class="user-data">
@@ -12,7 +12,7 @@
                 <dt>Sucursal de contrataci&oacute;n:</dt>
                 <dd>{{bankBranch}}</dd>
                 <dt>Fecha de contrataci&oacute;n:</dt>
-                <dd>{{date | date:'dd/MMM/yyyy' | uppercase}}</dd>
+                <dd>{{date | date:"dd' / 'MMM'/ 'yyyy '" | uppercase}}</dd>
             </dl>
             <button class="blue" ng-click="gotoLogin()">Regresar</button>
             <button class="orange" ng-click="completeStep(2)">Confirmar</button>
@@ -22,7 +22,7 @@
          <h3>Ayuda</h3>
         <div>
             <i class="ico-ayuda"></i>
-            <p class="blue">¿Necesitas ayuda?</p>
+            <p class="blue">¿No corresponden los datos a tu cuenta?</p>
             <p>
                 Comun&iacute;cate con nosotros <br>
                 01 800 800 3245.
