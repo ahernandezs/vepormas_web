@@ -6,6 +6,7 @@
 .animate-switch {
     border: none !important;
 }
+form span + table{border-top:1px solid $gray;tr:first-child td{padding-top:30px;}}
 form[name="investmentForm"], form[name="transferForm"], form[name="paymentForm"]{
     position: relative;
     .inv-first-select, .inv-sec-select{
@@ -103,7 +104,7 @@ form[name="investmentForm"], form[name="transferForm"], form[name="paymentForm"]
         width:32%;
         background:#4da3d4;
         color:white;
-        padding:12px 0;
+        padding:13px 0;
         font-size:0.8em;
         float:left;
     }
