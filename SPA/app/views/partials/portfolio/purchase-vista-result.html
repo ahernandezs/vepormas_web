@@ -28,16 +28,16 @@
         </tr>
         <tr>
             <td>Importe de inversi&oacute;n:</td>
-            <td class="bolder">${{investment.amount}}</td>
+            <td class="bolder">${{investment.amount | currency: ""}}</td>
         </tr>
         <tr>
             <td>Fecha de aplicaci&oacute;n:</td>
-            <td>{{today | date:'dd-MM-yyyy' }}</td>
+            <td>{{today | date:'dd MMMM yyyy' }}</td>
         </tr>
         <tr>
             <td>Hora de aplicaci&oacute;n:</td>
-            <td>{{today | date:'HH:mm' }}</td>
+            <td>{{today | date:'HH:mm' }} hrs</td>
         </tr>
     </table>
-    <input type="submit" class="orange" value="Finalizar" ng-click="reset()">
+   <button ng-click="reset()">Finalizar</button>
 </div>

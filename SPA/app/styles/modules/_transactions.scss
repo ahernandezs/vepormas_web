@@ -6,13 +6,76 @@
 .animate-switch {
     border: none !important;
 }
-form[name="transferForm"], form[name="paymentForm"]{
-        background: url(../images/ico-alert.png) no-repeat 75% 3px, url(../images/ico-alert.png) no-repeat 75% 58px;
-        background-size:30px, 30px;
-}
-form[name="investmentForm"], form[name="paymentForm"]{
-        background: url(../images/ico-alert.png) no-repeat 75% 3px, url(../images/ico-alert.png) no-repeat 75% 58px;
-        background-size:30px, 30px;
+form span + table{border-top:1px solid $gray;tr:first-child td{padding-top:30px;}}
+form[name="investmentForm"], form[name="transferForm"], form[name="paymentForm"]{
+    position: relative;
+    .inv-first-select, .inv-sec-select{
+        display: block;
+        font-style: normal;
+        background: url(../images/ico-alert.png) no-repeat center center;
+        background-size:30px;
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        z-index: 999999;
+        margin-left: 72%;
+        margin-top: 2px;
+        span{display: none;}
+        &:hover{
+            span{
+                position: absolute;
+                display: block;
+                width: 130px;
+                margin:-5px 0 0 35px;
+                border:1px solid $blue;
+                padding: 5px;
+                color:$blue;
+                text-align: center;
+                @include border-radius(4px);
+                &:before{
+                    content:"";
+                    position: absolute;
+                    display: block;
+                    background:white;
+                    border:1px solid $blue;
+                    border-top: none;
+                    border-right: none;
+                    margin: 10px 0 0 -11px;
+                    width: 10px;
+                    height: 10px;
+                    -ms-transform: rotate(45deg);
+                    -webkit-transform: rotate(45deg); 
+                    transform: rotate(45deg);   
+                }
+            }
+        }
+    }
+    .inv-sec-select{
+        margin-top: 17px;
+        span{
+            background:$blue;
+            color:white !important;
+            &:before{
+                content:"";
+                position: absolute;
+                display: block;
+                background:$blue !important;
+                margin: 10px 0 0 -10px;
+                width: 10px;
+                height: 10px;
+                -ms-transform: rotate(45deg);
+                -webkit-transform: rotate(45deg); 
+                transform: rotate(45deg);    
+            }
+        }
+    }
+    .select-style:last-child:after{display: none;}
+    + a, a:hover, a:active{
+        color:$blue;
+        text-decoration: underline;
+        display: block;
+        margin-top: 10px;
+    }
 }
 .select-style:active{
     border-color:$orange;
@@ -29,6 +92,7 @@ form[name="investmentForm"], form[name="paymentForm"]{
     &.selected{
         span{
             display: block;
+            overflow: hidden;
         }
         select{
             width: 67.5%;
@@ -40,7 +104,7 @@ form[name="investmentForm"], form[name="paymentForm"]{
         width:32%;
         background:#4da3d4;
         color:white;
-        padding:12px 0;
+        padding:13px 0;
         font-size:0.8em;
         float:left;
     }
@@ -70,6 +134,7 @@ input[name="account"] + p{
     font-size: 12px;
     margin-top: 3px;
 }
+table input[type="submit"]{font-weight: bold;}
 .content {
     margin: 0 1.0416666667%;
     margin-top:40px;

@@ -43,6 +43,7 @@ input[type="submit"]:hover, input[type="submit"]:active, button:hover, button:ac
 	button {
 		float: left;
 		padding: 6px 10px;
+		font-weight: bold;
 
 		&:first-child {
 			border-radius: $radius 0 0 $radius;
