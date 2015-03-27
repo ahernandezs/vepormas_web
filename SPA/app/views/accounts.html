@@ -24,7 +24,29 @@
 
         <div class="section">
             <h2>Inversiones</h2>
-            <div class="product" ng-repeat="account in accounts | filter:{account_type:'INV'}:true"
+            <div class="product" ng-repeat="account in accounts | filter:{account_type:'INV'}:true | filter:{category:'VISTA'}:true"
+            data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
+                <p class="name" ng-click="active = $id" ng-class="{active: $id === active}">
+                    <span>{{account.name}}</span>
+                    <span class="id">{{account.maskedAccountNumber}}</span>
+                </p>
+                <div>
+                    <p class="amount">{{account.balance | currency}}</p>
+                    <p class="info">Disponible</p>
+                </div>
+            </div>
+            <div class="product" ng-repeat="account in accounts | filter:{account_type:'INV'}:true | filter:{category:'CEDE'}:true"
+            data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
+                <p class="name" ng-click="active = $id" ng-class="{active: $id === active}">
+                    <span>{{account.name}}</span>
+                    <span class="id">{{account.maskedAccountNumber}}</span>
+                </p>
+                <div>
+                    <p class="amount">{{account.balance | currency}}</p>
+                    <p class="info">Disponible</p>
+                </div>
+            </div>
+            <div class="product" ng-repeat="account in accounts | filter:{account_type:'INV'}:true | filter:{category:'PRLV'}:true"
             data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
                 <p class="name" ng-click="active = $id" ng-class="{active: $id === active}">
                     <span>{{account.name}}</span>
