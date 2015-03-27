@@ -457,3 +457,93 @@
 		}
 	}
 }
+//TARJETAS
+.transactions.adminTarjetas{
+	margin-top: 30px;
+	width: 100% !important;
+	th{text-align: center;}
+	td{
+		width: 50%;
+		padding: 10px 15px;
+		&:first-child{
+			text-align: left;
+		}
+		&:last-child{
+			text-align: right;
+		}
+		div{
+			span{margin-right: 20px;}
+			button{font-size:0.9em;min-width:100px;}
+			span,button{
+				display: inline-block;
+			}
+		}
+		form{
+			display: block;
+			> input{
+				border:1px solid $gray;
+				padding:10px;
+				width: 100%;
+				margin-bottom: 10px;
+				font-weight: normal;
+				@include border-radius(3px);
+				&:focus{
+					box-shadow:none;
+				}
+			}
+			.fieldContainer{
+				background:white;
+				width: 100%;
+				margin:0 0 10px 0;
+				span{display: none;}
+				input{
+					border:none;
+					padding:10px;
+					width: 100%;
+					&:focus{
+						box-shadow:none;
+					}
+				}
+				&.selected{
+					input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+						width:67%;
+					}
+					span{display: block;margin:0}
+				}
+			}
+		}
+	}
+}
+//BITACORA
+.user-activity{
+	width:100%;
+	margin-top: 30px;
+	border:1px solid $gray;
+	background:white;
+	@include border-radius(4px);
+	.filter{
+		margin: 15px;
+		overflow: hidden;
+		h4{
+			font-weight: normal;
+			float:left;
+			margin: 0 20px 0 0;
+			font-size: 0.9em;
+			height: 50px;
+		}
+		label{
+			display: inline-block;
+			margin: 0 10px;
+			input[type="checkbox"]{
+				display: inline-block;
+			}
+			span{font-size:0.9em;}
+		}
+	}
+	th{text-align: center;}
+	td{width: 33%;&:last-child{text-align: center;}}
+	/*.transactions{
+		max-height:600px;
+		overflow:auto;
+	}*/
+}
