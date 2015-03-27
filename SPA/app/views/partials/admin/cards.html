@@ -1,4 +1,4 @@
-<table class="transactions">
+<table class="transactions adminTarjetas">
     <thead>
         <tr>
             <th>Tipo de operación</th>
@@ -10,22 +10,18 @@
             <td>{{limit.type}}</td>
             <td>
                 <div ng-hide="asktoken">
-                  <span>
-                    {{ limit.amount }}
-                  </span>
-                  <button class="btn btn-default" ng-click="asktoken=true">
-                    Editar
-                  </button>
+                  <span>{{ limit.amount | currency: '$'}}</span>
+                  <button ng-click="asktoken=true">Editar</button>
                 </div>
                 <div ng-show="asktoken">
                     <form name="limitform">
-                        <input type="text" ng-model="limit.newamount" required>
-                        <label class="fieldContainer">
+                        <input type="text" currency ng-model="limit.newamount" placeholder="Nuevo l&iacute;mite" required>
+                        <label class="fieldContainer" ng-class="limit.otp.length > 0 ? 'selected' : ''">
                             <span>Token</span>
                             <input class="input-token" type="password" ng-model="limit.otp" ng-required="true" numbers-only minlength="6" maxlength="6" placeholder="Introduce el c&oacute;digo de tu Token F&iacute;sico">
                         </label>
-                        <button class="btn btn-default" ng-click="setLimits(limit.newamount,limit.type,limit.otp);asktoken=false" ng-disabled="limitform.$invalid">Ok</button>
-                        <button class="btn btn-default" ng-click="asktoken=false;limit.otp=''">Cancelar</button>
+                        <button ng-click="asktoken=false;limit.otp=''">Cancelar</button>
+                        <button ng-click="setLimits(limit.newamount,limit.type,limit.otp);asktoken=false" ng-disabled="limitform.$invalid">Ok</button>
                     </form>
                 </div>
             </td>

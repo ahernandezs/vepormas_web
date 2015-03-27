@@ -289,6 +289,11 @@ hr[ng-show="!showAccountHeader"]{
 		background-size:25px;
 	}
 }
+.inline .select-style{
+	display: inline-block;
+	width: 30%;
+	margin: 0;
+}
 .search + .transactions .filter .inline{
 	padding:0;
 	margin: -4px 0 0 10%;
