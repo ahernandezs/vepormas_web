@@ -23,7 +23,7 @@
         <div class="user-session">
             <div class="user-log">
                 <h6>Bienvenido</h6>
-                <h4 class="user">{{completeName}}</h4>
+                <h4 class="user text-capitalize">{{completeName | lowercase}}</h4>
                 <p class="date">&Uacute;ltimo acceso: <span>{{last_access_date | date:'dd/MM/yyyy'}}</span> a las <span>{{last_access_date | date:'HH:mm:ss'}}</span>
                 </p>
     </div>

@@ -8,15 +8,15 @@
     <div class="payment-actions">
         <div>
             <div>
-                <p class="amount">{{creditsHeader.minimum_payment | currency}}</p>
+                <p class="amount"><strong>{{creditsHeader.minimum_payment | currency}}</strong></p>
                 <button class="blue" data-ng-click="doPaymentFlow('MIN_PAYMENT',creditsHeader.minimum_payment)">Pago m&iacute;nimo</button>
             </div>
             <div>
-                <p class="amount">{{creditsHeader.no_interes_payment_due | currency}}</p>
+                <p class="amount"><strong>{{creditsHeader.no_interes_payment_due | currency}}</strong></p>
                 <button class="blue" data-ng-click="doPaymentFlow('WIHTOUT_INTEREST_PAYMENT',creditsHeader.no_interes_payment_due)">Pago para no <span class="block">generar intereses</span></button>
             </div>
             <div>
-                <p class="amount">{{creditsHeader.delinquent_balance | currency}}</p>
+                <p class="amount"><strong>{{creditsHeader.delinquent_balance | currency}}</strong></p>
                 <button class="blue" data-ng-click="doPaymentFlow('TOTAL_PAYMENT',creditsHeader.delinquent_balance)">Pago total</button>
             </div>
         </div>
@@ -27,8 +27,8 @@
 <hr ng-show='!showAccountHeader'>
 <div class="box" ng-show='showAccountHeader'> <!-- expended box -->
     <ul>
-        <li>Fecha de corte:         <span>{{creditsHeader.cycle_date | date:'dd-MM-yyyy' }}</span></li>
-        <li>Fecha l&iacute;mite de pago:   <span>{{creditsHeader.payment_due_date | date:'dd-MM-yyyy' }}</span></li>
+        <li>Fecha de corte:         <span>{{creditsHeader.cycle_date | date:"dd' / 'MMM' / 'yyyy" | uppercase}}</span></li>
+        <li>Fecha l&iacute;mite de pago:   <span>{{creditsHeader.payment_due_date | date:"dd' / 'MMM' / 'yyyy" | uppercase}}</span></li>
         <li>Pago m&iacute;nimo:         <span class="amount">{{creditsHeader.minimum_payment | currency}}</span></li>
         <li>Saldo al corte:         <span class="amount">{{creditsHeader.statement_balance | currency}}</span></li>
     </ul>

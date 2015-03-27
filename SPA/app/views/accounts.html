@@ -1,8 +1,8 @@
 <div class="user-log responsive800w" ng-hide="userData">
-    <h6>Bienvenido</h6>
-    <h4 class="user">{{completeName}}</h4>
-    <p class="date">&Uacute;ltimo acceso: <span>{{date | date:'dd/MM/yyyy'}}</span> a las <span>{{date | date:'HH:mm:ss'}}</span></p>
-    <button ng-click="userData = !userData">Aceptar</button>
+   <h6>Bienvenido</h6>
+   <h4 class="user">{{completeName}}</h4>
+   <p class="date">&Uacute;ltimo acceso: <span>{{date | date:'dd/MM/yyyy'}}</span> a las <span>{{date | date:'HH:mm:ss'}}</span></p>
+   <button ng-click="userData = !userData">Aceptar</button>
 </div>
 <div>
     <div class="actions">
@@ -12,7 +12,7 @@
             <div class="product" ng-repeat="account in accounts| filter:{account_type:'TDC'}:true"
             data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
                 <p class="name">
-                    <span>{{account.name}}</span>
+                    <span class="text-capitalize">{{account.name | lowercase}}</span>
                     <span class="id">{{account.maskedAccountNumber}}</span>
                 </p>
                 <div>
@@ -27,7 +27,7 @@
             <div class="product" ng-repeat="account in accounts | filter:{account_type:'INV'}:true"
             data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
                 <p class="name" ng-click="active = $id" ng-class="{active: $id === active}">
-                    <span>{{account.name}}</span>
+                    <span class="text-capitalize">{{account.name | lowercase}}</span>
                     <span class="id">{{account.maskedAccountNumber}}</span>
                 </p>
                 <div>
@@ -42,7 +42,7 @@
             <div class="product" ng-repeat="account in accounts | filter:{account_type:'DEP'}:true"
             data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)" >
                 <p class="name" ng-click="active = $id" ng-class="{active: $id === active}" >
-                    <span>{{account.name}}</span>
+                    <span class="text-capitalize">{{account.name | lowercase}}</span>
                     <span class="id">{{account.maskedAccountNumber}}</span>
                 </p>
                 <div>
@@ -57,7 +57,7 @@
                 <div class="product" ng-repeat="account in accounts | filter:{account_type:'CXN'}:true"
                 data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
                 <p class="name">
-                    <span>{{account.name}}</span>
+                    <span class="text-capitalize">{{account.name | lowercase}}</span>
                     <span class="id">{{account.maskedAccountNumber}}</span>
                 </p>
                 <div>
