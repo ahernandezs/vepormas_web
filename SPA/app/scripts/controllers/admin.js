@@ -33,6 +33,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 		$scope.action = 2;
 		$scope.stage = 1;
 		$scope.selectedAccount = account;
+		$scope.delete.otp='';
 	}
 
 	$scope.siguiente = function(){
@@ -42,6 +43,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 	$scope.regresar = function(){
 		$scope.action = 1;
 		$scope.stage = 1;
+		$scope.delete.otp='';
 	}
 
 	/**
@@ -52,9 +54,11 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 			function(data){
 				dispatchThirdAccountByType(data);
 				$scope.stage += 1;
+				$scope.delete.otp = '';
 			},
 			function(errorObject) {
 				var status = errorObject.status;
+				$scope.delete.otp = '';
 		        if(status === 406){
 		            $scope.setServiceError('datos inválidos');
 		        }else if(status === 500){
