@@ -155,6 +155,7 @@ hr[ng-show="!showAccountHeader"]{
 		height: 40px;
 		background:url(../images/ico-mas.png) no-repeat center center;
 		background-size:40px;
+		cursor:pointer;
 	}
 	.ico-menos{
 		display: inline-block;
@@ -162,6 +163,7 @@ hr[ng-show="!showAccountHeader"]{
 		height: 40px;
 		background:url(../images/ico-menos.png) no-repeat center center;
 		background-size:40px;
+		cursor:pointer;
 	}
 }
 .title {
@@ -415,4 +417,8 @@ hr[ng-show="!showAccountHeader"]{
 		margin-left: 10px;
 		span { @include hide-text; }
 	}
+}
+
+.transactions td:last-child{
+	font-size:16px;
 }
