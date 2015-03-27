@@ -21,7 +21,9 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 			adminService.updateCommunication(phone, e_mail, otp).success(function(){
 				deferred.resolve();
 			}).error(function(data, status){
-				return deferred.reject('Error updating communication information');
+				var result = {'response' : data, 'status': status};
+		        console.log(data, status);
+		        return deferred.reject(result);
 			});
 			return deferred.promise;
 		},
@@ -31,7 +33,9 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 			adminService.updateDigitalBankServiceState(state, otp).success(function(){
 				deferred.resolve();
 			}).error(function(data, status){
-				return deferred.reject('Error updating Digital Bank Service State information');
+				var result = {'response' : data, 'status': status};
+		        console.log(data, status);
+		        return deferred.reject(result);
 			});
 			return deferred.promise;
 		},
@@ -42,7 +46,9 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 				$rootScope.limits = data.limits;
 				deferred.resolve();
 			}).error(function(data, status){
-				return deferred.reject('Error getting limits');
+				var result = {'response' : data, 'status': status};
+		        console.log(data, status);
+		        return deferred.reject(result);
 			});
 			return deferred.promise;
 		},
@@ -52,7 +58,9 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 			adminService.setLimits(amount, type, otp).success(function(){
 				deferred.resolve();
 			}).error(function(data, status){
-				return deferred.reject('Error setting limits');
+				var result = {'response' : data, 'status': status};
+		        console.log(data, status);
+		        return deferred.reject(result);
 			});
 			return deferred.promise;
 		},

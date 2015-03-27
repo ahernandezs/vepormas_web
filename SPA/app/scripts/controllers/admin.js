@@ -61,7 +61,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 		            var message = errorObject.response.message;
 		            $scope.setServiceError(message);
 		        }else if(status === 403){
-					$scope.setServiceError('otp inválido');
+					$scope.manageOtpErrorMessage(errorObject.response);
 			    }else{
 			    	$scope.setServiceError('Error en el servicio, intente más tarde');
 		        }
@@ -143,9 +143,22 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 		adminProvider.updateCommunication($scope.data.phone, $scope.data.e_mail, $scope.data.otp).then(
 			function (data) {
 				console.log('Communication data updated successfully');
+				$scope.stage_updatecommunication += 1;
+			},
+			function(errorObject) {
+				var status = errorObject.status;
+		        if(status === 406){
+		            $scope.setServiceError('datos inválidos');
+		        }else if(status === 500){
+		            var message = errorObject.response.message;
+		            $scope.setServiceError(message);
+		        }else if(status === 403){
+		            $scope.manageOtpErrorMessage(errorObject.response);
+		        }else{
+		            $scope.setServiceError('Error en el servicio, intente más tarde');
+		        }
 			}
 		);
-		$scope.stage_updatecommunication += 1;
 	};
 
     /**
@@ -164,7 +177,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 		            var message = errorObject.response.message;
 		            $scope.setServiceError(message);
 		        }else if(status === 403){
-		            $scope.setServiceError('otp inválido');
+		            $scope.manageOtpErrorMessage(errorObject.response);
 		        }else{
 		            $scope.setServiceError('Error en el servicio, intente más tarde');
 		        }
@@ -241,7 +254,7 @@ Adding a beneficary actions
 		            var message = errorObject.response.message;
 		            $scope.setServiceError(message);
 		        }else if(status === 403){
-		            $scope.setServiceError('otp inválido');
+		            $scope.manageOtpErrorMessage(errorObject.response);
 		        }else{
 		            $scope.setServiceError('Error en el servicio, intente más tarde');
 		        }
@@ -266,7 +279,7 @@ Adding a beneficary actions
 		        }else if(status === 500){
 		            $scope.message = errorObject.response.message;
 		        }else if(status === 403){
-		            $scope.message = 'Otp inválido';
+		            $scope.manageOtpErrorMessage(errorObject.response);
 		        }else{
 		            $scope.message = 'Error en el servicio, intente más tarde';
 		        }

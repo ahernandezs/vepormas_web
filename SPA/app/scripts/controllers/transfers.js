@@ -205,7 +205,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                     //$location.path('/login');
 
                 } else if(status === 403){
-                    $scope.setServiceError('otp inválido');
+                    $scope.manageOtpErrorMessage(data.response);
                 } else if (status === 406 || status === 417) {
                     $scope.setServiceError('invalid input: TODO: analyse the code inside the json mesage body');
                     // invalid data input
@@ -245,7 +245,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                     //$location.path('/login');
 
                 } else if(status === 403){
-                    $scope.setServiceError('otp inválido');
+                    $scope.manageOtpErrorMessage(data.response);
                 } else if(status === 406 || status === 417) {
                     $scope.setServiceError('invalid input: TODO: analyse the code inside the json mesage body');
                     // invalid data input
@@ -290,8 +290,6 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                 }else if(status === 500){
                     var message = errorObject.response.message;
                     $scope.setServiceError(message);
-                }else if(status === 403){
-                    $scope.setServiceError('otp inválido');
                 }else{
                     $scope.setServiceError('Error en el servicio, intente más tarde');
                 }
@@ -320,7 +318,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                     var message = errorObject.response.message;
                     $scope.setServiceError(message);
                 }else if(status === 403){
-                    $scope.setServiceError('otp inválido');
+                    $scope.manageOtpErrorMessage(errorObject.response);
                 }else{
                     $scope.setServiceError('Error en el servicio, intente más tarde');
                 }
