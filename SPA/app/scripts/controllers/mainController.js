@@ -41,7 +41,7 @@
                     message = "Su token está bloqueado, por favor llame al centro de atención a clientes";
                     break;
                 case 3 : 
-                    message = "Your token is disabled";
+                    message = "Su token está deshabilitado";
                     break;
                 case 99 : 
                     message = "Error técnico, no pudimos obtener el estado de tu token";

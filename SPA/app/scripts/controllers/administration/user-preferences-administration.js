@@ -116,7 +116,7 @@ angular.module('spaApp').controller('UserPreferencesAdministrationController', [
 				resetTokenActivationData();
 			},
 			function(data){
-				$scope.setServiceError('Su se pudo activar su token');
+				$scope.setServiceError('No se pudo activar su token');
 				resetTokenActivationData();
 			}
 		);
@@ -141,7 +141,7 @@ angular.module('spaApp').controller('UserPreferencesAdministrationController', [
 				resetTokenSynchronizationData();
 			},
 			function(data){
-				$scope.setServiceError('Su se pudo sincronizar su token');
+				$scope.setServiceError('No se pudo sincronizar su token');
 				resetTokenSynchronizationData();
 			}
 		);
