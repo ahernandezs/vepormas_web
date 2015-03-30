@@ -7,13 +7,23 @@
 .prefyseg{
 	margin-top: 20px;
 	overflow:hidden;
-	> div:not( [style*='display: none'] ){
+	.menu{
+		width: 20%;
+	}
+	.content{
+		width: 74%;
+		float:left;
+		.prefysegrow{
+			width:37%;
+			float : left;
+		}
+	}
+	> div{
 		min-height: 610px;
 		float:left;
 		border:1px solid $gray;
 		background:white;
 		padding: 15px 0;
-		width:45%;
 		margin-right: 2%;
 		@include border-radius(4px);
 		h3{
@@ -92,7 +102,6 @@
 		}
 		&:first-child{
 			background: #f7f7f7;
-			width: 20%;
 			h3{
 				font-weight: normal;
 				border:none;
@@ -137,7 +146,7 @@
 				}
 			}
 		}
-		&:last-child{
+		/** &:last-child{
 			width: 31%;
 			margin-right: 0;
 			border:none;
@@ -174,7 +183,7 @@
 					}
 				}
 			}
-		}
+		}*/
 	}
 }
 
