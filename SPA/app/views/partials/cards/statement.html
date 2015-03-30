@@ -1,8 +1,8 @@
 <div>
     <div class="header statement" ng-click="back()">
-        <a><i class="fa fa-file-pdf-o"></i>Estados de cuenta<span>{{activeAccountName}}</span></a>
+        <a><div class="back-arrow pull-left cursor-pointer"></div><i class="ico-estados"></i>Estados de cuenta<span>{{activeAccountName}}</span></a>
     </div> 
-    <hr>
+    <hr class="statement-hr">
     <div class="filter">
         <div class="inline">
             <h4>Filtra tu b&uacute;squeda por a&ntilde;o o por mes</h4>
@@ -24,12 +24,12 @@
         <table class="details">
             <thead>
                 <tr>
-                    <th scope="col" colspan="3">{{year.label}}</th>
+                    <th scope="col" colspan="3" class="text-left">{{year.label}}</th>
                 </tr>
             </thead>
             <tbody>
                     <tr ng-repeat="statement in statements | filter:year.value | filter:month.value">
-                        <td>{{statement.date}}</td>
+                        <td><i class="ico-estados"></i>{{statement.date}}</td>
                         <td><a href="#" ng-click="getStatement(statement.id, 'pdf');">Descargar PDF</a></td>
                         <td><a href="#" ng-click="getStatement(statement.id, 'xml');">Descargar XML</a></td>
                     </tr>
