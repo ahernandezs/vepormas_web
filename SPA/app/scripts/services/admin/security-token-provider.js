@@ -1,12 +1,24 @@
 'use strict';
 
-angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService', '$q', function ($rootScope, adminService, $q) {
+angular.module('spaApp').factory('securityTokenProvider', ['securityTokenService', '$q', function (securityTokenService, $q) {
 
 	return {
 
-	    updatePassword: function(current_pass, new_pass, otp){
+		getUserSecurityTokenState: function(otp1, otp2){
 			var deferred = $q.defer();
-			adminService.updatePassword(current_pass, new_pass, otp).success(function(){
+			securityTokenService.getUserSecurityTokenState().success(function(data){
+				deferred.resolve(data);
+			}).error(function(data, status){
+				var result = {'response' : data, 'status': status};
+		        console.log(data, status);
+		        return deferred.reject(result);
+			})
+			return deferred.promise;
+	    },
+
+		synchronizeSecurityToken: function(otp1, otp2){
+			var deferred = $q.defer();
+			securityTokenService.synchronizeSecurityToken(otp1, otp2).success(function(){
 				deferred.resolve();
 			}).error(function(data, status){
 				var result = {'response' : data, 'status': status};
@@ -16,64 +28,43 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 			return deferred.promise;
 	    },
 
-		updateCommunication: function(phone, e_mail, otp) {
+
+	    activateSecurityToken: function(tokenId, otp1, otp2){
 			var deferred = $q.defer();
-			adminService.updateCommunication(phone, e_mail, otp).success(function(){
+			securityTokenService.activateSecurityToken(tokenId, otp1, otp2).success(function(){
 				deferred.resolve();
 			}).error(function(data, status){
 				var result = {'response' : data, 'status': status};
 		        console.log(data, status);
 		        return deferred.reject(result);
-			});
+			})
 			return deferred.promise;
-		},
+	    },
 
-		updateDigitalBankServiceState: function(state, otp){
+	    disableSecurityToken: function(code){
 			var deferred = $q.defer();
-			adminService.updateDigitalBankServiceState(state, otp).success(function(){
+			securityTokenService.disableSecurityToken(code).success(function(){
 				deferred.resolve();
 			}).error(function(data, status){
 				var result = {'response' : data, 'status': status};
 		        console.log(data, status);
 		        return deferred.reject(result);
-			});
+			})
 			return deferred.promise;
-		},
+	    },
 
-		getLimits: function(){
+
+	    enableSecurityToken: function(tokenId, otp1, otp2){
 			var deferred = $q.defer();
-			adminService.getLimits().success(function(data, status, headers){
-				$rootScope.limits = data.limits;
+			securityTokenService.enableSecurityToken().success(function(){
 				deferred.resolve();
 			}).error(function(data, status){
 				var result = {'response' : data, 'status': status};
 		        console.log(data, status);
 		        return deferred.reject(result);
-			});
+			})
 			return deferred.promise;
-		},
-
-		setLimits: function(amount, type, otp){
-			var deferred = $q.defer();
-			adminService.setLimits(amount, type, otp).success(function(){
-				deferred.resolve();
-			}).error(function(data, status){
-				var result = {'response' : data, 'status': status};
-		        console.log(data, status);
-		        return deferred.reject(result);
-			});
-			return deferred.promise;
-		},
-
-    getUserActivity: function() {
-      var deferred = $q.defer();
-      adminService.getUserActivity().success(function(data, status, headers) {
-        deferred.resolve(data);
-      }).error(function(data, status) {
-        return deferred.reject('Error getting user activity');
-      });
-      return deferred.promise;
-    }
+	    }
 	};
 
 }]);

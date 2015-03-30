@@ -119,6 +119,7 @@ angular.module('spaApp')
             $rootScope.client_name = data.client_name;
             userProvider.setCurrentUser(data);
             api.init();
+            displayTokenStateIfRequired(data);
             $location.path( '/accounts' );
             timerService.start();
           }
@@ -204,6 +205,30 @@ angular.module('spaApp')
       case 'map':
         $location.path('map');
       break;
+    }
+  }
+
+  /**
+   * display the token-stae in an alert message if it is disable, locked or new
+   */
+  function displayTokenStateIfRequired(data){
+    // if user has complete rights
+    if(data.role_id == 1){
+      var tokenState = data.security_token_state;
+      switch(tokenState){
+        case 0 :
+          $scope.setServiceError('Su token no ha sido activado, debe activarlo en el panel de administración');
+          break;
+        case 2 : 
+          $scope.setServiceError('Su token está bloqueado, por favor llame al centro de atención a clientes');
+          break;
+        case 3 : 
+          $scope.setServiceError('Su token está desactivado');
+          break;
+        case 99 : 
+          $scope.setServiceError('Error técnico, no pudimos obtener el estado de tu token');
+          break;
+      }
     }
   }
 
