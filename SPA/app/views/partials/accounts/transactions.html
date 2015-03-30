@@ -1,18 +1,19 @@
 <form class="search">
+    <button type="submit"><i class="ico-search"></i></button>
     <input type="search" name="movements" id="movements" placeholder="Buscar movimientos">
-    <button type="submit"><i class="ico-search"></i><span>Buscar</span></button>
+    <div class="filter">
+        <div>
+            <span>Fecha inicial:</span>
+            <input type="date" ng-model="date_start"><i></i>
+        </div>
+        <div>
+            <span>Fecha final:</span>
+            <input type="date" ng-model="date_end"><i></i>
+        </div>
+            <button class="orange" ng-click="getTransactions(date_start, date_end)">Buscar</button>
+    </div>
 </form>
 <div class="transactions">
-    <div class="filter">
-        <div class="inline">
-        <!--<h4>Búsqueda por rango de fechas</h4>-->
-        <p><span>Fecha inicial:</span>
-        <input type="date" ng-model="date_start"><i></i></p>
-        <p><span>Fecha final:</span>
-        <input type="date" ng-model="date_end"><i></i></p>
-        <button class="orange" ng-click="getTransactions(date_start, date_end)">Buscar</button>
-    </div>
-    </div>
     <table class="details">
         <thead>
             <tr>

@@ -161,6 +161,25 @@
 	}
 
 	//PRODUCT
+	.product-details h4{
+		font-size:1em;
+		float:none;
+		line-height: 1.1em;
+	}
+	.search{
+		input{
+			&[type*=search]{
+				width: 80%;
+			}
+		}
+		.filter{padding-top:10px;}
+	}
+	.filter{
+		border-top:1px solid $lgray;
+		float:none;
+		width: 100%;
+		div input{width: 150px;}
+	}
 	.help .option a, .option a, .content .header h2 + p{font-size:1.1em;}
 	.content .header .progress p{font-size:0.9em;}
 	.payment-actions{border:none;}
@@ -205,17 +224,6 @@
 			}
 		}
 	}
-	.search + .transactions .filter .inline .right{margin-top: 5px;}
-	.inline{
-		.right{overflow:hidden;}
-		h4{
-			width: 15%;
-			padding-top:3px;
-		}
-		input{
-			width: 45%;
-		}
-	} 
 
 	//ADMIN
 	.transactions.adminTarjetas, .user-activity{

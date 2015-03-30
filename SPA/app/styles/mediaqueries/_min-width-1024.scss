@@ -87,36 +87,6 @@
 		.payment-actions button{font-size:0.75em;}
 		> a, > a:hover, > a:active{width:110px;}
 	}
-	.search{
-		input {
-			&[type*=text],
-			&[type*=search]{
-				padding: 8px 10px;
-				width: 45%;
-			}
-		}
-	}
-	.filter{
-		.inline{
-			h4{
-				float: left;
-				width: 28%;
-				+ .right{
-					width:70%;
-					position: relative;
-					overflow: hidden;
-					float:right;
-					p{
-						font-size: 1em;
-						width: 50%;
-						i{
-							width: 28px;
-						}
-					}
-				}
-			}
-		}
-	}
 	div[ui-view="detailDeposit"], div[ui-view="detailCredit"], div[ui-view="detailInvestment"]{
 		.title{@include column(5); border-right:1px solid $blue}
 		.payment-actions{
@@ -154,7 +124,7 @@
 			.progress, progress{
 				width: 45%;
 			}
-			.progress{right:12px;}
+			.progress{right:12px;p{font-size:0.8em;}}
 		}
 		.message{
 			p:first-child {
