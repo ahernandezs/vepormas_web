@@ -39,6 +39,31 @@ angular.module('spaApp').factory('securityTokenProvider', ['securityTokenService
 		        return deferred.reject(result);
 			})
 			return deferred.promise;
+	    },
+
+	    disableSecurityToken: function(code){
+			var deferred = $q.defer();
+			securityTokenService.disableSecurityToken(code).success(function(){
+				deferred.resolve();
+			}).error(function(data, status){
+				var result = {'response' : data, 'status': status};
+		        console.log(data, status);
+		        return deferred.reject(result);
+			})
+			return deferred.promise;
+	    },
+
+
+	    enableSecurityToken: function(tokenId, otp1, otp2){
+			var deferred = $q.defer();
+			securityTokenService.enableSecurityToken().success(function(){
+				deferred.resolve();
+			}).error(function(data, status){
+				var result = {'response' : data, 'status': status};
+		        console.log(data, status);
+		        return deferred.reject(result);
+			})
+			return deferred.promise;
 	    }
 	};
 

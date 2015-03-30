@@ -1,5 +1,5 @@
 <div class="data" ng-show="isSecurityTokenNew()">
-    <h3>Informaci&oacute;n del dispositivo de seguridad</h3>
+    <h3>Activaci&oacute;n del dispositivo de seguridad</h3>
     <form name="activateSecurityTokenForm">
         <div class="fieldContainer" ng-class="tokenActivationData.tokenId.length > 0 ? 'selected' : ''">
             <span>Identificador de token</span>
@@ -18,7 +18,7 @@
 </div>
 
 <div class="data" ng-show="isSecurityTokenEnabled()">
-    <h3>Informaci&oacute;n del dispositivo de seguridad</h3>
+    <h3>Sincronizaci&oacute;n del dispositivo de seguridad</h3>
     <form name="synchronizeSecurityTokenForm">
         <div class="fieldContainer" ng-class="tokenSynchronizationData.otp1.length > 0 ? 'selected' : ''">
             <span>OTP 1</span>
@@ -30,4 +30,30 @@
         </div>
        <button ng-disabled="synchronizeSecurityTokenForm.$invalid" ng-click="synchronizeSecurityToken()">Synchronizar</button>
     </form>
+
+    <h3>Desactivaci&oacute;n temporal del dispositivo de seguridad</h3>
+    <form name="disableSecurityTokenForm">
+        <div class="select-style" ng-class="tokenDisableData.reason ? 'selected' : ''">
+            <span>raz&oacute;n</span>
+            <select ng-model="tokenDisableData.reason" ng-options="item as item.label for item in tokenDisableReasons" ng-required="true">
+                <option value="">raz&oacute;n</option>
+            </select>
+        </div>       
+       <button ng-disabled="disableSecurityTokenForm.$invalid" ng-click="disableSecurityToken()">Disable</button>
+    </form>
+</div>
+
+<div class="data" ng-show="isSecurityTokenLocked()">
+    <h3>Su token est&aecute; bloqueado, por favor llame al centro de atenci&oacute;n a clientes</h3>
+</div>
+
+<div class="data" ng-show="isSecurityTokenDisabled()">
+    <h3>Su token est&aecute; desactivado</h3>
+    <form name="enableSecurityTokenForm">  
+       <button ng-click="enableSecurityToken()">Enable</button>
+    </form>
+</div>
+
+<div class="data" ng-show="isSecurityTokenError()">
+    <h3>Error técnico, no pudimos obtener el estado de tu token</h3>
 </div>

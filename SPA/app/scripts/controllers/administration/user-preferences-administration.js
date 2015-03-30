@@ -10,8 +10,26 @@ angular.module('spaApp').controller('UserPreferencesAdministrationController', [
 	 */
 	var tokenState;
 
-	//by default, we go on the change password, cancel digital-bank, change phone-number/email page
-	$scope.userAdministrationStep = 1;
+	initialize();
+
+	/**
+	 * intiialize the security-token webflow
+	 */
+	function initialize(){
+		//by default, we go on the change password, cancel digital-bank, change phone-number/email page
+		$scope.userAdministrationStep = 1;
+		// initialize the diabling-token reasons
+		$scope.tokenDisableReasons = [
+			{ 'value' : 0 , 'label' : 'CANCELED'},
+			{ 'value' : 1 , 'label' : 'EXPIRED'},
+			{ 'value' : 2 , 'label' : 'LOST'},
+			{ 'value' : 3 , 'label' : 'RETURNED'},
+			{ 'value' : 4 , 'label' : 'STOLEN'},
+			{ 'value' : 5 , 'label' : 'TEMPORARILY_UNAVAILABLE'},
+			{ 'value' : 6 , 'label' : 'UNSPECIFIED'}
+		];
+	}
+
  	/**
  	 * goto to the user-preference configuration page
  	 */
@@ -32,6 +50,7 @@ angular.module('spaApp').controller('UserPreferencesAdministrationController', [
 	$scope.gotoTokenAdministrationPage = function(){
 		resetTokenActivationData();
 		resetTokenSynchronizationData();
+		resetTokenDisableData();
 		securityTokenProvider.getUserSecurityTokenState().then(
 			function(data){
 				tokenState = data.security_token_state;
@@ -55,6 +74,27 @@ angular.module('spaApp').controller('UserPreferencesAdministrationController', [
 	 */
 	$scope.isSecurityTokenEnabled= function(){
 		return tokenState == 1;
+	};
+
+	/**
+	 * return true if the user's security-toke state is LOCKED
+	 */
+	$scope.isSecurityTokenLocked= function(){
+		return tokenState == 2;
+	};
+
+	/**
+	 * return true if the user's security-toke state is DISABLED
+	 */
+	$scope.isSecurityTokenDisabled= function(){
+		return tokenState == 3;
+	};
+
+	/**
+	 * return true if the user's security-toke state could not be retrived (ERROR)
+	 */
+	$scope.isSecurityTokenError= function(){
+		return tokenState == 99;
 	};
 
 	/**
@@ -109,10 +149,49 @@ angular.module('spaApp').controller('UserPreferencesAdministrationController', [
 	};
 
 	/**
+ 	 * synchronize the user's security-token
+ 	 */
+	$scope.disableSecurityToken = function(){
+		securityTokenProvider.disableSecurityToken($scope.tokenDisableData.reason.value).then(
+			function(data){
+				$scope.setServiceError('Su token ha sido desactivado temporalmente');
+				resetTokenSynchronizationData();
+			},
+			function(data){
+				$scope.setServiceError('Su se pudo deactivar su token');
+			}
+		);
+		
+	};
+
+	/**
+ 	 * synchronize the user's security-token
+ 	 */
+	$scope.enableSecurityToken = function(){
+		securityTokenProvider.enableSecurityToken().then(
+			function(data){
+				$scope.setServiceError('Su token ha sido reactivado');
+				resetTokenSynchronizationData();
+			},
+			function(data){
+				$scope.setServiceError('Su se pudo reactivar su token');
+			}
+		);
+		
+	};
+
+	/**
 	 * reset the values input by the user for the token synchronization
 	 */
 	function resetTokenSynchronizationData(){
 		$scope.tokenSynchronizationData = {};
+	}
+
+	/**
+	 * reset the values input by the user for the token synchronization
+	 */
+	function resetTokenDisableData(){
+		$scope.tokenDisableData = {};
 	}
 	
 }]);

@@ -7,7 +7,7 @@
 .prefyseg{
 	margin-top: 20px;
 	overflow:hidden;
-	> div{
+	> div:not( [style*='display: none'] ){
 		min-height: 610px;
 		float:left;
 		border:1px solid $gray;

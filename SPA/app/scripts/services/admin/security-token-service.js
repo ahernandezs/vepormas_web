@@ -31,4 +31,26 @@ angular.module('spaApp').service('securityTokenService', ['$http', '$rootScope',
 		});
 	};
 
+	this.disableSecurityToken = function(reasonCode){
+		return $http({
+			url: $rootScope.restAPIBaseUrl+'/tokens/disable',
+			method: 'POST',
+			data: JSON.stringify({
+				'code':reasonCode
+			}),
+			headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
+		});
+	};
+
+	this.enableSecurityToken = function(){
+		return $http({
+			url: $rootScope.restAPIBaseUrl+'/tokens/enable',
+			method: 'POST',
+			data: JSON.stringify({
+				'code': 0
+			}),
+			headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
+		});
+	};
+
 }]);
