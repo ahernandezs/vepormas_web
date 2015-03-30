@@ -13,14 +13,14 @@
 			<a>Detalle</a>
 		</div>
 	</div>
-	<div ng-show="isUserPreferencesAdministrationPageActivated()" class="content">
-		<div ng-include="'views/partials/admin/update-communication.html'" class="prefysegrow"></div>
-		<div class="prefysegrow">
+	<div ng-show="isUserPreferencesAdministrationPageActivated()">
+		<div ng-include="'views/partials/admin/update-communication.html'"></div>
+		<div>
 			<div ng-include="'views/partials/admin/update-services.html'"></div>
 			<div ng-include="'views/partials/admin/change-password.html'"></div>
 		</div>
 	</div>
-	<div ng-show="isUserTokenAdministrationPageActivated()" class="content">
+	<div ng-show="isUserTokenAdministrationPageActivated()">
 		<div ng-include="'views/partials/admin/securityToken-administration.html'"></div>
 	</div>
 </div>

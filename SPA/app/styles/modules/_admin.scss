@@ -7,24 +7,13 @@
 .prefyseg{
 	margin-top: 20px;
 	overflow:hidden;
-	.menu{
-		width: 20%;
-	}
-	.content{
-		width: 74%;
-		float:left;
-		.prefysegrow{
-			width:37%;
-			float : left;
-		}
-	}
 	> div{
 		min-height: 610px;
 		float:left;
-		border:1px solid $gray;
 		background:white;
 		padding: 15px 0;
 		margin-right: 2%;
+		overflow: hidden;
 		@include border-radius(4px);
 		h3{
 			color:$blue;
@@ -101,6 +90,8 @@
 			margin-left:10%;
 		}
 		&:first-child{
+			width: 20%;
+			border:1px solid $gray;
 			background: #f7f7f7;
 			h3{
 				font-weight: normal;
@@ -144,6 +135,71 @@
 					text-align: center;
 					padding: 10px 0;
 				}
+			}
+		}
+		&:nth-child(2){
+			padding: 0;
+			overflow: hidden;
+			width: 76%;
+			> div{
+				width: 48%;
+				border:1px solid $gray;
+				min-height: 610px;
+				float:left;
+				background:white;
+				padding: 15px 0;
+				margin-right: 2%;
+				@include border-radius(4px);
+				&:last-child{
+					padding: 0;
+					border:none;
+					margin:0;
+					> div{
+						min-height:300px;
+						border:1px solid $gray;
+						background:white;
+						padding: 15px 0;
+						margin-bottom: 10px;
+						@include border-radius(4px);
+						&:first-child{
+							button, button:hover, button:active{
+								background:white;
+								color:$blue;
+								border:1px solid $blue !important;
+								margin-bottom: 10px;
+								&:last-child{margin-bottom: 0;}
+							}
+						}
+						h3{
+							color:$blue;
+							width: 90%;
+							margin:0 auto 15px auto;
+							font-size: 1.2em;
+							text-align: center;
+							padding-bottom: 20px;
+							border-bottom:1px solid $gray;
+						}
+						.message{
+							p{
+								margin-top: 5px;
+							}
+						}
+					}
+				}
+			}
+		}
+		&:nth-child(3){
+			padding: 0;
+			overflow: hidden;
+			width: 76%;
+			> div{
+				width: 48%;
+				margin-right: 2%;
+				min-height:610px;
+				border:1px solid $gray;
+				background:white;
+				padding: 15px 0;
+				@include border-radius(4px);
 			}
 		}
 		/** &:last-child{
@@ -549,6 +605,7 @@
 			span{font-size:0.9em;}
 		}
 	}
+	table{width:100%;}
 	th{text-align: center;}
 	td{width: 33%;&:last-child{text-align: center;}}
 	/*.transactions{
