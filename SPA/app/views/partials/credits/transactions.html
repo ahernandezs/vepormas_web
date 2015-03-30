@@ -1,13 +1,13 @@
+<h4>B&uacute;squeda por rango de fechas</h4>
 <div class="filter">
-  <div class="inline"><!--CREDITOS-->
-    <h4>B&uacute;squeda por rango de fechas</h4>
-    <div class="right">
-      <p><span>Fecha inicial:</span>
-      <input type="text" ng-model="searchParams.date_start" ng-change="search()" maxlength="10" jqdatepicker></p>
-      <p><span>Fecha final:</span>
-      <input type="text" ng-model="searchParams.date_end" ng-change="search()" maxlength="10" jqdatepicker></p>
+    <div>
+        <span>Fecha inicial:</span>
+        <input type="text" ng-model="searchParams.date_start" ng-change="search()" maxlength="10" jqdatepicker>
     </div>
-  </div>
+    <div>
+        <span>Fecha final:</span>
+        <input type="text" ng-model="searchParams.date_end" ng-change="search()" maxlength="10" jqdatepicker>
+    </div>
 </div>
 <div class="transactions">
     <table class="details">

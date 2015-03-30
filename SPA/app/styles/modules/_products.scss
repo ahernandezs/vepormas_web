@@ -254,32 +254,32 @@ hr[ng-show="!showAccountHeader"]{
 	}
 }
 .search {
-	input {
+	overflow:hidden;
+	font-weight: normal;
+	.filter{
+		padding:0;
+	}
+	input{
 		&[type*=search]{
 			border: none;
 			color:$dgray;
-			padding: 8px 16px;
-			width: 30% !important;
-
+			padding: 8px 0 8px 16px;
+			float:left;
 			&:focus { box-shadow:none; }
 		}
 		&[type*=text] {
 			border: none;
 			color:$dgray;
 			padding: 8px 16px;
-			width: 48%;
-
 			&:focus { box-shadow:none; }
 		}
 	}
-	button {
+	button{
 		background-color: transparent;
 		border: none;
 		padding:2px 0 0 0;
 		color: $orange;
-		float: left;
-
-		span { @include hide-text; }
+		float:left;
 	}
 	.ico-search{
 		display: inline-block;
@@ -289,92 +289,101 @@ hr[ng-show="!showAccountHeader"]{
 		background-size:25px;
 	}
 }
+.product-details h4{
+	font-weight: normal;
+	color:$dgray;
+	font-size:0.9em;
+	float:left;
+	line-height: 2.5em;
+}
+.filter{
+	float:right;
+	padding:10px 0;
+	color:$dgray;
+	overflow: hidden;
+	span{
+		float:left;
+		margin:5px 10px 0 0;
+	}
+	div{
+		float:left;
+		&:first-child{margin-right: 15px;}
+		input{
+			width: 95px;
+			border:1px solid $gray !important;
+			padding: 8px 16px;
+			&:focus { box-shadow:none; }
+			@include border-radius(4px);
+			+ button{
+				float:right !important;
+				display: block;
+				width: 30px;
+				height: 30px;
+				background:url(../images/ico-calendario.png) no-repeat center center;
+				background-size:30px;
+				i{display: none;}
+			}
+		}
+	}
+	.ico-question-circle{
+		display: block;
+		width: 20px;
+		height: 20px;
+		float:right;
+		margin:5px 0 0 10px;
+		background:url(../images/ico-question-circle.png) no-repeat center center, $blue;
+		background-size:20px;
+		@include border-radius(50%);
+		span, span:hover{
+			display: none;
+			color:$blue;
+			text-align: center;
+			padding:10px;
+			width: 300px;
+			margin: 35px 0 0 -260px;
+			position: absolute;
+			z-index: 999999;
+			background:white;
+			border:1px solid $blue;
+			@include border-radius(4px);
+			&:before{
+				content:"";
+				display: block;
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				margin:-21px 0 0 83%;
+				border-top:1px solid $blue;
+				border-right:1px solid $blue;
+				background:white;
+				-ms-transform: rotate(-45deg);
+			    -webkit-transform: rotate(-45deg);
+			    transform: rotate(-45deg);
+			}
+		}
+		&:hover{
+			span{display: block;}
+		}
+	}
+	.double-btn{
+		button{
+			color:white;
+			font-weight: normal;
+			background:$blue;
+			padding:5px;
+			&.selected{background:$orange;}
+		}
+	}
+}
 .inline .select-style{
 	display: inline-block;
 	width: 30%;
 	margin: 0;
 }
-.search + .transactions .filter .inline{
-	padding:0;
-	margin: -4px 0 0 10%;
-	p{
-		width: 50%;
-		
-	}
-}
-.search .inline{
-	padding:0;
-	p{
-		width: 26%;
-	}
-	button{
-		color:white;
-	}
-}
-.inline{
-	overflow: hidden;
-	padding:10px;
-	h4{
-		color:$dgray;
-		width: 33%;
-		padding-top:10px;
-		font-size: 1em;
-	}
-	h4, p{
-		float:left;
-		margin: 5px 0 5px 0;
-	}
-
-	input:focus{
-		box-shadow:none;
-		border-color:$orange;
-	}
-	input{
-			padding:8px;
-			float:left;
-			width: 50%;
-			border:1px solid $gray;
-			@include border-radius(4px);
-		}
-		i{
-			display:block;
-			width: 30px;
-			height: 32px;
-			background:url(../images/ico-calendario.png) no-repeat center top;
-			background-size:28px;
-			vertical-align: bottom;
-		}
-	p{
-		color:$dgray;
-		margin: 0;
-		font-size: 0.9em;
-		line-height: 0.5em;
-		span{
-			float:left;
-			margin: 13px 5px 0 0;
-		}
-
-	}
-	button{
-			float:right;
-		}
-
-}
 .transactions {
 	@extend .tabular-data;
 
 	.filter {
-		@include calc(bottom, "100% + 20px");
-		position: absolute;
-
-		right: 0;
-		top:-39px;
-
-		> * { display: inline-block; vertical-align: middle;}
-
-		span {
-			margin-right: 4px;
-		}
 		.ico-question-circle{
 			display: inline-block;
 			width: 25px;
@@ -416,11 +425,10 @@ hr[ng-show="!showAccountHeader"]{
 			display: block;
 		}
 	}
-	.help {
+	.help{
 		color: $dgray;
 		font-size: 22px;
 		margin-left: 10px;
-		span { @include hide-text; }
 	}
 }
 
