@@ -158,7 +158,7 @@ angular.module('spaApp').controller('UserPreferencesAdministrationController', [
 				resetTokenSynchronizationData();
 			},
 			function(data){
-				$scope.setServiceError('Su se pudo deactivar su token');
+				$scope.setServiceError('No se pudo desactivar su token');
 			}
 		);
 		
@@ -174,7 +174,7 @@ angular.module('spaApp').controller('UserPreferencesAdministrationController', [
 				resetTokenSynchronizationData();
 			},
 			function(data){
-				$scope.setServiceError('Su se pudo reactivar su token');
+				$scope.setServiceError('No se pudo reactivar su token');
 			}
 		);
 		
