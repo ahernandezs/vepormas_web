@@ -10,6 +10,9 @@ angular.module('spaApp').controller('purchaseRetireVistaCtrl', ['$rootScope', '$
 
     initialize();
 
+    $scope.investment.vistaAccount = '';
+    $scope.investment.depositAccount = '';
+
     function initialize(){
         //TODO: the accounts shoud come from the provider
         $scope.depositAccounts = [];

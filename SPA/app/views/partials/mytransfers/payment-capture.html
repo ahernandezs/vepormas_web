@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content pagosytransf">
     <div class="header">
         <h2>Pago de cuentas</h2>
         <p>Ingresa los datos para el pago</p>
@@ -11,19 +11,45 @@
     </div>
     <form name="paymentForm">
         <i class="inv-first-select"><span>Cuenta de la cual se har&aacute; el retiro</span></i>
-        <div class="select-style" ng-class="payment.account ? 'selected' : ''">
+        <div class="dropdown">
+          <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="payment.account != '' ? 'selected' : ''">
+            <span>Cuenta retiro</span>
+            <p>{{payment.account == '' ? 'Cuenta retiro' : payment.account}}</p>
+          </div>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">Cuentas propias</li>
+            <li ng-repeat="item in theAccounts | filter: { account_type: 'DEP' }" ng-click="payment.account = item.name">{{item.name}}</li>
+          </ul>
+        </div>
+
+        <!--<div class="select-style" ng-class="payment.account ? 'selected' : ''">
             <span>Cuenta retiro</span>
             <select ng-model="payment.account" ng-required="true" ng-options="item.name group by 'Cuentas Propias' for item in theAccounts | filter: { account_type: 'DEP' }">
                 <option value="">Cuenta retiro</option>
             </select>
-        </div>
+        </div>-->
+
         <i class="inv-sec-select"><span>Cuenta a la cual se har&aacute; el pago</span></i>
-        <div class="select-style" ng-class="payment.destiny ? 'selected' : ''">
+        <div class="dropdown">
+          <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="payment.destiny != '' ? 'selected' : ''">
+            <span>TDC para pago</span>
+            <p>{{payment.destiny == '' ? 'TDC para pago' : payment.destiny}}</p>
+          </div>
+          <ul class="dropdown-menu" role="menu">
+            <li class="dropdown-header">Cuentas propias</li>
+            <li ng-repeat="item in theAccounts | filter: { account_type: 'TDC' }" ng-click="payment.destiny = item.name">{{item.name}}</li>
+            <li class="dropdown-header">TCuentas terceros</li>
+            <li ng-repeat="item in theAccounts | filter: { account_type: 'TDC_T' }" ng-click="payment.destiny = item.name">{{item.name}}</li>
+            <li><span>Agregar nuevo beneficiario</span></li>
+          </ul>
+        </div>
+
+        <!--<div class="select-style" ng-class="payment.destiny ? 'selected' : ''">
             <span>TDC para pago</span>
             <select ng-model="payment.destiny" ng-required="true" ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | byAccountType:['TDC', 'TDC_T']" ng-change="getAccountDetail()" >
                 <option value="">TDC para pago</option>
             </select>
-        </div>
+        </div>-->
         <span ng-if="payment.destiny.account_type !== 'TDC'">
             <label class="fieldContainer" ng-class="!paymentForm.amount.$error.required ? 'selected' : ''">
                 <span class="big">Importe</span>

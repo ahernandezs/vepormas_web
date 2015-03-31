@@ -3,6 +3,11 @@
 |	Left menu
 |-------------------------------------------------------------------------------------
 */
+.pagosytransf{
+    float:right;
+    margin-right: 5% !important;
+    width:65% !important;
+}
 .animate-switch {
     border: none !important;
 }
@@ -79,6 +84,57 @@ form[name="investmentForm"], form[name="transferForm"], form[name="paymentForm"]
 }
 .select-style:active{
     border-color:$orange;
+}
+.dropdown{
+    .select-style{
+        background:url(../images/ico-abajo.png) no-repeat 98% center, white;
+        background-size:25px;
+        p{
+            padding:10px;
+            color:$dgray;
+        }
+        &.selected{
+            span{
+                display: block;
+                overflow: hidden;
+            }
+            p{
+                font-size: 1em;
+                float:left;
+                width: 67.5%;
+            }
+        }
+    }
+    ul.dropdown-menu{
+        width: 70%;
+        padding:0;
+        overflow: hidden;
+        li{
+            font-size:0.8em;
+            color:$dgray;
+            padding:7px 10px;
+            border-bottom:1px solid $lgray;
+            &:hover{
+                color:white;
+                background:$orange;
+            }
+            &.dropdown-header{
+                background:$lgray;
+                font-weight: bold;
+                color:$dgray;
+            }
+            &:last-child:hover{
+                cursor: pointer;
+                span{
+                    color:white
+                }
+            }
+            span{
+                color:$blue;
+                text-decoration: underline;
+            }
+        }
+    }
 }
 .select-style{
     overflow: hidden;
