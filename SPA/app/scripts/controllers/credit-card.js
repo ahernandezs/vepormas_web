@@ -48,7 +48,7 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 		}
 	);
 
-	accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
+	accountsProvider.getTransactions($scope.selectedAcccountId == null ? $stateParams.accountId : $scope.selectedAcccountId, params).then(
 		function(data){
 			$scope.creditCardTransactions = $rootScope.transactions;
 		},
