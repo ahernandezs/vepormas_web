@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('spaApp')
-.factory('userProvider', ['$q','$rootScope','userService', function ($q, $rootScope, userService) {
+.factory('userProvider', ['$q','$rootScope','userService','accountsProvider','productProvider','thirdAccountProvider', function ($q, $rootScope, userService, accountsProvider,productProvider,thirdAccountProvider) {
   
   /**
     * the http token-registration header value use to retreive the client's information
@@ -63,6 +63,14 @@ angular.module('spaApp')
    * identifier
    */
   var _identifier;
+
+  function cleanServices(){
+    //clean the accounts
+    accountsProvider.clean();
+    productProvider.clean();
+    thirdAccountProvider.clean();
+  }
+
 
   return {
     
@@ -196,7 +204,7 @@ angular.module('spaApp')
 
       userService.registerUser(_registrationToken, params)
       .success(function(data, status, headers){
-        deferred.resolve();
+        deferred.resolve(data);
       }).error(function(data, status){
         var data = {'response' : data, 'status': status};
         return deferred.reject(data);
@@ -206,6 +214,7 @@ angular.module('spaApp')
 
     logout: function(){
       var deferred = $q.defer();
+      cleanServices();
       userService.logout().success(function(data){
         deferred.resolve();
       }).error(function(data, status){

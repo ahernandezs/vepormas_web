@@ -9,7 +9,6 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
   return {
     getAccounts: function () {
       var deferred = $q.defer();
-
       console.log('getting accounts');
       accountsService.getAccounts().success(function(data, status, headers) {
         $rootScope.accounts = data.accounts;
@@ -141,6 +140,14 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
         return deferred.reject(result);
       });
       return deferred.promise;
+    },
+
+    clean: function(){
+      $rootScope.accounts = null;
+      $rootScope.statements = null;
+      $rootScope.statement = null;
+      $rootScope.accountDetail = null;
+      $rootScope.transactions = null;
     }
 
   };

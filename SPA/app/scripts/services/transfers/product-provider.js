@@ -40,6 +40,13 @@ angular.module('spaApp')
             return deferred.reject(result);
         })
         return deferred.promise;
+      },
+
+      /**
+       * clean the singleton
+       */
+      clean:function(){
+        investmentProducts = null;
       }
 
     }

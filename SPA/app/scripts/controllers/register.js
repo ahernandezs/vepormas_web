@@ -234,6 +234,15 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
           function(data) {
             console.log("register succeed");
             $scope.isRegistering = false;
+            //check if the security token has been activated
+            $scope.tokenRegistrationFailed = false;
+            if($scope.roleID === 1){
+              if(data.token_registration_result != null && data.token_registration_result.result == false){
+                $scope.tokenRegistrationFailed = true;
+              }else{
+                $scope.tokenRegistrationFailed = false;
+              }
+            }
             $scope.completeStep(6);
           },
           function(data, status) {
