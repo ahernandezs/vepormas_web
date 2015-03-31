@@ -106,6 +106,13 @@ angular.module('spaApp').factory('thirdAccountProvider', ['$q','thirdAccountServ
         return deferred.reject(result);
       })
       return deferred.promise;
-    }
+    },
+
+    /**
+     * clean the singleton
+     */
+     clean:function(){
+      thirdAccounts = null;
+     }
   }
 }]);
