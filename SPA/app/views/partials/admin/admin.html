@@ -1,6 +1,6 @@
 <div  class="prefyseg" ng-controller="UserPreferencesAdministrationController">
 	<!-- left menu -->
-	<div>
+	<div class = "menu">
 		<h3>Opciones de seguridad</h3>
 		<ul>
 			<li ng-class="isUserPreferencesAdministrationPageActivated() ? 'selected' : ''" ng-click="gotoUserPreferencesPage()">Informaci&oacute;n de la cuenta</li>
@@ -15,16 +15,12 @@
 	</div>
 	<div ng-show="isUserPreferencesAdministrationPageActivated()">
 		<div ng-include="'views/partials/admin/update-communication.html'"></div>
-	</div>
-	<div ng-show="isUserPreferencesAdministrationPageActivated()">
-		<div ng-include="'views/partials/admin/update-services.html'"></div>
 		<div>
+			<div ng-include="'views/partials/admin/update-services.html'"></div>
 			<div ng-include="'views/partials/admin/change-password.html'"></div>
 		</div>
 	</div>
 	<div ng-show="isUserTokenAdministrationPageActivated()">
-		<div>
-			<div ng-include="'views/partials/admin/securityToken-administration.html'"></div>
-		</div>
+		<div ng-include="'views/partials/admin/securityToken-administration.html'"></div>
 	</div>
 </div>
