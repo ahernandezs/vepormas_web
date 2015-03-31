@@ -204,7 +204,7 @@ angular.module('spaApp')
 
       userService.registerUser(_registrationToken, params)
       .success(function(data, status, headers){
-        deferred.resolve();
+        deferred.resolve(data);
       }).error(function(data, status){
         var data = {'response' : data, 'status': status};
         return deferred.reject(data);
