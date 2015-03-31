@@ -135,6 +135,34 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 		$scope.selection++;
 	};
 
+	/**
+	 *
+	 */
+	$scope.handleType = function () {
+		//console.log('________________________________________________________');
+		console.log( 'input value: ' + $scope.paymentForm.other.$viewValue );
+		if ( $scope.paymentForm.other.$viewValue === undefined || $scope.paymentForm.other.$viewValue === '0' ) {
+			$scope.paymentForm.other.$viewValue = undefined;
+			$scope.paymentForm.other.$setValidity("currency", false);
+		}
+		else {
+			console.log('I have a value: ' + $scope.paymentForm.other.$viewValue );
+			$scope.paymentForm.other.currency = true;
+		}
+		console.log( $scope.paymentForm.other );
+	};
+
+	$scope.handleClick = function () {
+		console.log( $scope.payment.other );
+		/*if ( $scope.paymentForm.other.$viewValue === undefined || $scope.paymentForm.other.$viewValue === '0' ) {
+			console.log( 'should invalid the form' );
+			$scope.paymentForm.other.$viewValue = undefined;
+			//$scope.paymentForm.other.$pristine = false;
+		} else {
+			console.log('It has a value: ' + $scope.paymentForm.other.$viewValue );
+		}*/
+	};
+
     /**
      * Send transfer to own account.
      */
