@@ -9,7 +9,7 @@
         <nav class="nav ">
             <ul>
                 <li ng-click="selectNavigatOption('products')"
-                    data-ng-class="{'active': activeNavigationOption == 'products'}" > <a href="#">Mis Productos</a></li>
+                    data-ng-class="{'active': activeNavigationOption == 'products'}" > <a ui-sref="dashboard.accounts">Mis Productos</a></li>
                 <li ng-click="selectNavigatOption('transfers')"
                     data-ng-class="{'active': activeNavigationOption == 'transfers'}"><a ui-sref="dashboard.transfers">Pagos y Transferencias</a></li>
                 <li ng-click="selectNavigatOption('investments')"
