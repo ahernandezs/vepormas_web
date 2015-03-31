@@ -10,44 +10,55 @@ angular.module('spaApp')
 				ctrl.$formatters.push(format);
 
 				ctrl.$parsers.push(function(viewValue) {
-					var value = parseFloat(viewValue.replace(/,|\$/g, ''));
+					if ( !ctrl.$isEmpty(viewValue) ) {
+						// it is valid
+						var value = parseFloat(viewValue.replace(/,|\$/g, ''));
 
-					if(value){
+						if ( ctrl.$isEmpty(value) || value === 0 ) {
+							ctrl.$setValidity('currency', false);
+							return undefined;
+						}
+
+						ctrl.$setValidity('currency', true);
 						return value;
+					} else {
+						// it is invalid, return undefined (no model update)
+						ctrl.$setValidity('currency', false);
+						return undefined;
 					}
-					return undefined;
 				});
 
 				element.bind("change", function() {
-					if ( ctrl.$invalid ) return;
+					if ( ctrl.$error.currency ) return undefined;
+
 					var formattedModel = format(ctrl.$modelValue);
 
-					if ( formattedModel !== ctrl.$viewValue ) {
+					if ( !ctrl.$isEmpty(ctrl.$modelValue) && (formattedModel !== ctrl.$viewValue) ) {
 						element.val(formattedModel);
-
-			            if (formattedModel !== '') {
-							element.parent().addClass('selected');
-			            } else {
-							element.parent().removeClass('selected');
-			            }
+						element.parent().addClass('selected');
+					} else {
+						element.val(undefined);
+						element.parent().removeClass('selected');
 					}
 				});
 
 				element.bind("focus", function() {
 					var value = ctrl.$modelValue;
 
-					if(value && value !== '') {
+					if ( value && ctrl.$isEmpty(value) ) {
 						element.val(value);
 					}
 				});
 
 				element.bind("blur", function() {
 					var formattedModel = format(ctrl.$modelValue);
-					element.val(formattedModel);
 
-					if(formattedModel !== '' && formattedModel !== undefined) {
+					if ( !ctrl.$isEmpty(formattedModel) ) {
+						element.val(formattedModel);
 						element.parent().addClass('selected');
 			        } else {
+						element.val(undefined);
+						ctrl.$setValidity('currency', false);
 			            element.parent().removeClass('selected');
 			        }
 				});
@@ -55,12 +66,13 @@ angular.module('spaApp')
 				function format(modelValue) {
 					var value = modelValue ? modelValue.toString().replace(/\B(?=(?:\d{3})+(?!\d))/g, ',') : undefined;
 
-					if (value) {
+					if ( !ctrl.$isEmpty(value) ) {
 						if ( value.indexOf(".") != -1 ) {
 							return '$' + value;
 						} else {
 							return '$' + value + '.00';
 						}
+						ctrl.$setValidity('currency', true);
 					} else {
 						return undefined;
 					}

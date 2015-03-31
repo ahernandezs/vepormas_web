@@ -281,6 +281,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                                     $scope.payment.destiny._account_id,
                                     $scope.payment.amount).then(
             function(data) {
+				$scope.paymentId = data._transaction_id;
                 $scope.selection = 3;
             },
             function(errorObject) {
@@ -308,6 +309,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                                     $scope.today,
                                     $scope.payment.otp).then(
             function(data) {
+				$scope.paymentId = data._transaction_id;
                 $scope.selection = 3;
             },
             function(errorObject) {

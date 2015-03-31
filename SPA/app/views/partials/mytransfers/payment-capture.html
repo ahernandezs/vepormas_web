@@ -51,7 +51,7 @@
                 <label>
                     <input type="radio" name="type" class="last" ng-model="payment.type" value="TOTAL_PAYMENT" ng-required="true">
                     <p class="last">Otra cantidad</p>
-                    <input type="text" currency numbers-only ng-model="payment.other" class="input-importe" ng-required="payment.type == 'TOTAL_PAYMENT'" maxlength="15">
+                    <input type="text" name="other" currency numbers-only ng-model="payment.other" class="input-importe" ng-required="payment.type == 'TOTAL_PAYMENT'" maxlength="15">
                 </label>
             </div>
         </span>
