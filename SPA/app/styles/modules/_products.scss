@@ -449,3 +449,12 @@ hr[ng-show="!showAccountHeader"]{
 .statement-hr{
 	margin-bottom:0px;
 }
+
+.details .ico-estados{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	background:url(../images/ico-estados.png) no-repeat center center;
+	background-size:30px;
+	vertical-align:middle;
+}
