@@ -15,11 +15,6 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.transfer = {};
     $scope.theAccounts = [];
     $scope.today = new Date();
-    $scope.payment.account = '';
-    $scope.payment.destiny = '';
-    $scope.transfer.account = '';
-    $scope.transfer.destiny = '';
-	$scope.theType = '';
 
 	/**
      * Get the own accounts.
