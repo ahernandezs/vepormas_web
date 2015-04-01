@@ -176,7 +176,8 @@ angular.module('spaApp')
     setError('Error en el servicio, intente más tarde');
     if(status === 403){
       setError('El password o imagen son incorrectos');
-    }else if(status === 404){
+    }else if(status === 404 || status === 0){
+      // when the internet connection is failed 
       setError('Error, verifica tu conexión a internet');
     }else if(status === 409){
       setError('Existe una sesión vigente en otra aplicación');
