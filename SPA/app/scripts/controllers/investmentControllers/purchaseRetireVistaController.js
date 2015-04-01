@@ -27,6 +27,8 @@ angular.module('spaApp').controller('purchaseRetireVistaCtrl', ['$rootScope', '$
         }
         $scope.step = 1;
         $scope.investment = [];
+        $scope.investment.vistaAccount = '';
+        $scope.investment.depositAccount = '';
         $scope.investmentResult = [];
         resetError();
     }
