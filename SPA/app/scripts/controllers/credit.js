@@ -133,7 +133,7 @@ angular.module('spaApp').controller('creditCtrl', ['$scope', '$location', '$stat
 	};
 
 	$scope.getStatement = function(id, format){
-		$http.get($rootScope.restAPIBaseUrl+'/files/statement?format='+format.toUpperCase()+'&id='+id+'&_account_id='+$stateParams.accountId, {responseType: 'arraybuffer'})
+		$http.get($rootScope.restAPIBaseUrl+'/files/statement?format='+format.toUpperCase()+'&id='+id, {responseType: 'arraybuffer'})
 			.success(function (data) {
 			var file = new Blob([data], {type: 'application/'+format});
 			var fileURL = URL.createObjectURL(file);

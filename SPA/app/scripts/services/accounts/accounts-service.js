@@ -62,8 +62,8 @@ angular.module('spaApp')
         };
 
         this.getState = function(accountId, id, format){
-            console.log($rootScope.restAPIBaseUrl+'/files/statement?format='+format+'&id='+id+'&_account_id='+accountId);
-            return $http.get($rootScope.restAPIBaseUrl+'/files/statement?format='+format+'&id='+id+'&_account_id='+accountId);
+            console.log($rootScope.restAPIBaseUrl+'/files/statement?format='+format+'&id='+id);
+            return $http.get($rootScope.restAPIBaseUrl+'/files/statement?format='+format+'&id='+id);
         };
 
         function validateDate(date) {
