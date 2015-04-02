@@ -28,8 +28,8 @@
             <tbody>
                     <tr ng-repeat="statement in statements | filter:year.value | filter:month.value">
                         <td>{{statement.date}}</td>
-                        <td><a href="#" ng-click="getStatement(statement.id, 'pdf');">Descargar PDF</a></td>
-                        <td><a href="#" ng-click="getStatement(statement.id, 'xml');">Descargar XML</a></td>
+                        <td><a target="_blank" href="#" ng-href="{{getStatementUrl(statement.id, 'PDF');}}">Descargar PDF</a></td>
+                        <td><a target="_blank" href="#" ng-href="{{getStatementUrl(statement.id, 'XML');}}">Descargar XML</a></td>
                     </tr>
             </tbody>
         </table>

@@ -61,11 +61,6 @@ angular.module('spaApp')
             return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/states');
         };
 
-        this.getState = function(accountId, id, format){
-            console.log($rootScope.restAPIBaseUrl+'/files/statement?format='+format+'&id='+id);
-            return $http.get($rootScope.restAPIBaseUrl+'/files/statement?format='+format+'&id='+id);
-        };
-
         function validateDate(date) {
           var newDate = null;
           try
