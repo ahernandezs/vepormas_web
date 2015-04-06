@@ -125,23 +125,6 @@ angular.module('spaApp').factory('accountsProvider', ['$rootScope', 'accountsSer
       return deferred.promise;
     },
 
-    /**
-     * getting a account's statement
-     */
-    getState: function(accountId, id, format){
-      var deferred = $q.defer();
-      console.log('getting a statement');
-      accountsService.getState(accountId, id, format).success(function(data, status, headers) {
-        $rootScope.statement = data.statement;
-        deferred.resolve();
-      }).error(function(data, status) {
-        var result = {'response' : data, 'status': status};
-        console.log(data, status);
-        return deferred.reject(result);
-      });
-      return deferred.promise;
-    },
-
     clean: function(){
       $rootScope.accounts = null;
       $rootScope.statements = null;

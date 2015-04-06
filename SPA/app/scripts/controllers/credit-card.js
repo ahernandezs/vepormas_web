@@ -85,13 +85,11 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 		);
 	};
 
-	$scope.getStatement = function(id, format){
-		$http.get($rootScope.restAPIBaseUrl+'/files/statement?format='+format.toUpperCase()+'&id='+id, {responseType: 'arraybuffer'})
-			.success(function (data) {
-			var file = new Blob([data], {type: 'application/'+format});
-			var fileURL = URL.createObjectURL(file);
-			window.open(fileURL);
-		});
+	/**
+	 * build the url for account-state-file download
+	 */
+	$scope.getStatementUrl = function(id, format){
+		return $scope.restAPIBaseUrl+'/files/statement?format='+format+'&id='+id+'&session_id='+$rootScope.session_token;
 	}
 
 	$scope.back = function(){
