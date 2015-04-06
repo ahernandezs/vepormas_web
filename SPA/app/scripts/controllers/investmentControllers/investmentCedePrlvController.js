@@ -10,6 +10,10 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
 
     initialize();
 
+    $scope.investment.destinationProduct = '';
+    $scope.investment.originAccount = '';
+    $scope.investment.expirationInstruction = '';
+
     function initialize(){
         //Get investments products.
         productProvider.getProductsList().then(
@@ -25,6 +29,9 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
         $scope.ownAccounts = $rootScope.accounts;
         $scope.step = 1;
         $scope.investment = [];
+        $scope.investment.destinationProduct = '';
+        $scope.investment.originAccount = '';
+        $scope.investment.expirationInstruction = '';
         $scope.investmentResult = [];
         resetError();
     }

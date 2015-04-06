@@ -15,7 +15,6 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.transfer = {};
     $scope.theAccounts = [];
     $scope.today = new Date();
-	$scope.theType = '';
 
 	/**
      * Get the own accounts.
@@ -24,8 +23,10 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 	   function(data) {
            $rootScope.accounts.forEach(
                function (value, index, ar) {
-                   value.group = 'Cuentas Propias';
-                   $scope.theAccounts.push( value );
+					if ( value.account_type == 'DEP' || value.account_type == 'TDC' ) {
+						value.group = 'Cuentas Propias';
+						$scope.theAccounts.push( value );
+					}
                }
            );
             if(paymentCreditCardService.accountId){
@@ -60,8 +61,10 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         function(data) {
             data.forEach(
                 function (value, index, ar) {
-                    value.group = 'Cuentas Terceros';
-                    $scope.theAccounts.push( value );
+					if ( value.account_type == 'TDC_T' || value.account_type == 'DEB_T' ) {
+	                    value.group = 'Cuentas Terceros';
+	                    $scope.theAccounts.push( value );
+					}
                 }
             );
         },

@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content pagosytransf">
     <div class="header">
         <h2>Transferencia de cuentas</h2>
         <p>Ingresa los datos para la transferencia</p>
@@ -11,19 +11,32 @@
     </div>
     <form name="transferForm">
         <i class="inv-first-select"><span>Cuenta de la cual se har&aacute; el retiro</span></i>
-        <div class="select-style" ng-class="transfer.account ? 'selected' : ''">
-            <span>Cuenta retiro</span>
-            <select ng-model="transfer.account" ng-required="true" ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | filter: { account_type: 'DEP' }">
-                <option value="">Cuenta retiro</option>
-            </select>
+        <div class="dropdown">
+            <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="transfer.account !== undefined ? 'selected' : ''">
+                <span>Cuenta retiro</span>
+                <p>{{transfer.account === undefined ? 'Cuenta retiro' : transfer.account.name}}</p>
+            </div>
+            <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">Cuentas propias</li>
+                <li ng-repeat="item in theAccounts | filter: { account_type: 'DEP' }" ng-click="transfer.account = item">{{item.name}}</li>
+            </ul>
         </div>
+
         <i class="inv-sec-select"><span>Cuenta a la cual se har&aacute; la transferencia</span></i>
-        <div class="select-style" ng-class="transfer.destiny ? 'selected' : ''">
-            <span>Cuenta dep&oacute;sito</span>
-            <select ng-model="transfer.destiny" ng-required="true" ng-options="item as item.name group by item.group for item in theAccounts | orderBy:['group','name'] | byAccountType:['DEP', 'DEB_T'] | filter : { _account_id: '!' + transfer.account._account_id }">
-                <option value="">Cuenta dep&oacute;sito</option>
-            </select>
+        <div class="dropdown">
+            <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="transfer.destiny !== undefined ? 'selected' : ''">
+                <span>Cuenta dep&oacute;sito</span>
+                <p>{{transfer.destiny === undefined ? 'Cuenta dep&oacute;sito' : transfer.destiny.name}}</p>
+            </div>
+            <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">Cuentas propias</li>
+                <li ng-repeat="item in theAccounts | filter: { account_type: 'DEP', group: 'Cuentas Propias' }" ng-click="transfer.destiny = item">{{item.name}}</li>
+                <li class="dropdown-header">Cuentas terceros</li>
+                <li ng-repeat="item in theAccounts | filter: { account_type: 'DEB_T', group: 'Cuentas Terceros' }" ng-click="transfer.destiny = item">{{item.name}}</li>
+                <li><span>Agregar nuevo beneficiario</span></li>
+            </ul>
         </div>
+
         <label class="fieldContainer" ng-class="!transferForm.amount.$error.required ? 'selected' : ''">
             <span class="big">Importe</span>
             <input name="amount" type="text" currency numbers-only ng-model="transfer.amount" placeholder="Importe" class="input-importe" ng-required="true" maxlength="15">
