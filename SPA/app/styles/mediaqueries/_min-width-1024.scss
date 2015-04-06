@@ -159,11 +159,20 @@
 	}
 
 	//ADMIN
+	.contrato{
+		width:95%;
+		h1{
+			font-size: 1.5em;
+		}
+	}
 	.transactions.adminTarjetas, .user-activity{
 		width: 95% !important;
 	}
-	.submenu nav ul li a{
-		padding: 20px 0;
+	.submenu nav ul li{
+		margin-right:40px;
+		a{
+			padding: 20px 0;
+		}
 	}
 	.prefyseg{
 		> div{
