@@ -130,11 +130,14 @@
 			.progress{right:12px;p{font-size:0.8em;}}
 		}
 		.message{
-			p:first-child {
-	            width: 70% !important;
-	            margin: 15px 0 0 80px;
-	        }
-	        .print p{margin: 0;}
+			p{
+				font-size: 1em;
+				width: 72%;
+				margin-left: 13%;
+			}
+			.print{
+				font-size: 1em;
+			}
 		}
 	}
 	.fieldContainer{
@@ -156,11 +159,20 @@
 	}
 
 	//ADMIN
+	.contrato{
+		width:95%;
+		h1{
+			font-size: 1.5em;
+		}
+	}
 	.transactions.adminTarjetas, .user-activity{
 		width: 95% !important;
 	}
-	.submenu nav ul li a{
-		padding: 20px 0;
+	.submenu nav ul li{
+		margin-right:40px;
+		a{
+			padding: 20px 0;
+		}
 	}
 	.prefyseg{
 		> div{
