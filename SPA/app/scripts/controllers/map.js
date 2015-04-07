@@ -157,8 +157,8 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 	);
 
 	$scope.selectedBranch = function(branch){
-		$scope.map.center.latitude = branch.latitude;
-		$scope.map.center.longitude = branch.longitude;
+		$scope.map.center.latitude = branch.coordinates.lat;
+		$scope.map.center.longitude = branch.coordinates.lng;
 	}
 
 }]);
