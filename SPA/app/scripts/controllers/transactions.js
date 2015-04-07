@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$timeout', 'accountsProvider','thirdAccountProvider',
-                                    function($rootScope, $scope, $location, $routeParams, $timeout, accountsProvider, thirdAccountProvider) {
+angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$timeout', 'accountsProvider','thirdAccountProvider', 'codeStatusErrors',
+                                    function($rootScope, $scope, $location, $routeParams, $timeout, accountsProvider, thirdAccountProvider, codeStatusErrors) {
 
   try{
     var index = accountsProvider.getAccountIndex($routeParams.accountId);
@@ -194,13 +194,11 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
       },
       function(errorObject) {
             var status = errorObject.status;
-            if(status === 406){
-                $scope.setServiceError('datos inválidos');
-            }else if(status === 500){
-                var message = errorObject.response.message;
-                $scope.setServiceError(message);
-            }else{
-                $scope.setServiceError('Error en el servicio, intente más tarde');
+            var msg = codeStatusErrors.errorMessage(status);
+            if (status === 500){
+                $scope.setServiceError(msg + errorObject.response.message);
+            } else {
+                $scope.setServiceError(msg);
             }
         }
     );

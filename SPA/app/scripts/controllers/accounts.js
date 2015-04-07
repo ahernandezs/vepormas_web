@@ -3,7 +3,7 @@
 /**
  * The accounts controller. Gets accounts passing auth parameters
  */
- angular.module('spaApp').controller('AccountsCtrl', ['$rootScope', '$scope', '$location', 'accountsProvider', function ( $rootScope, $scope, $location, accountsProvider) {
+ angular.module('spaApp').controller('AccountsCtrl', ['$rootScope', '$scope', '$location', 'accountsProvider', 'codeStatusErrors', function ( $rootScope, $scope, $location, accountsProvider, codeStatusErrors) {
 	//TODO: temporal binding
 
     $scope.statementStatus = [];
@@ -17,13 +17,11 @@
           },
           function(errorObject) {
             var status = errorObject.status;
-            if(status === 406){
-                $scope.setServiceError('datos inválidos');
-            }else if(status === 500){
-                var message = errorObject.response.message;
-                $scope.setServiceError(message);
-            }else{
-                $scope.setServiceError('Error en el servicio, intente más tarde');
+            var msg = codeStatusErrors.errorMessage(status);
+            if (status === 500){
+                $scope.setServiceError(msg + errorObject.response.message);
+            } else {
+                $scope.setServiceError(msg);
             }
         }
     );

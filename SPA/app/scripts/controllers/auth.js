@@ -174,23 +174,24 @@ angular.module('spaApp')
 
   function setErrorWithStatus(status, errorObject) {
     setError('Error en el servicio, intente más tarde');
-    if(status === 403){
-      setError('El password o imagen son incorrectos');
-    }else if(status === 404 || status === 0){
-      // when the internet connection is failed 
+    if (status === 0 || status === 12029) {
       setError('Error, verifica tu conexión a internet');
-    }else if(status === 409){
+    } else if(status === 403) {
+      setError('El password o imagen son incorrectos');
+    } else if(status === 404){
+      setError('Error, recurso no encontrado');
+    } else if(status === 409) {
       setError('Existe una sesión vigente en otra aplicación');
-    }else if(status === 423){
+    } else if(status === 423) {
       setError('Usuario bloqueado');
-    }else if(status === 504){
+    } else if(status === 504) {
       setError('Tiempo de respuesta excedido, por favor intente más tarde');
-    }else if(status === 500){
+    } else if(status === 500) {
       var code = errorObject.code;
       var message = 'Error en el servicio, intente más tarde';
-      if(code === 401){
+      if (code === 401) {
         message = errorObject.message;
-      }
+      } 
       setError(message);
     }
   }

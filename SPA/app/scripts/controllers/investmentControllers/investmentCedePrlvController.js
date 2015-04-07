@@ -3,7 +3,7 @@
 /**
  * The transactions controller. For transactions between own accounts.
  */
-angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'transferProvider', 'productProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider, transferProvider, productProvider) {
+angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'transferProvider', 'productProvider', 'codeStatusErrors', function ($rootScope, $scope, $location, $routeParams, accountsProvider, transferProvider, productProvider, codeStatusErrors) {
 
 
     $scope.investmentCategory = null;
@@ -61,13 +61,12 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
      */
     function processServiceError(errorObject){
         var status = errorObject.status;
-        if(status === 406){
-            $scope.setServiceError('datos inválidos');
-        }else if(status === 500){
-            var message = errorObject.response.message;
-            $scope.setServiceError(message);
-        }else{
-            $scope.setServiceError('Ha ocurrido un problema, favor de contactar al servicio de atención al cliente');
+        var msg = codeStatusErrors.errorMessage(status);
+        if (status === 500){
+            $scope.setServiceError(msg + errorObject.response.message);
+        } else {
+            // $scope.setServiceError('Ha ocurrido un problema, favor de contactar al servicio de atención al cliente');
+            $scope.setServiceError(msg);
         }
     }
 
