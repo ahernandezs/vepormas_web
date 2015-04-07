@@ -26,14 +26,17 @@
 							<div class="resultado" ng-click="selectedBranch(branch)">
 								<div class="sucursal">
 									<span>
-										<strong>{{branch.title}}</strong>
-										{{branch.description.address}}
+										<strong>{{branch.name}}</strong><br>
+										{{branch.description.address.street}}
+										{{branch.description.address.street2}}
+										{{branch.description.address.zipCode}}
+										{{branch.description.address.city}}
 									</span>
 									<span><i></i>¿C&oacute;mo llegar?</span>
 								</div>
 								<div class="telyhorario">
 									<span><strong>Tel&eacute;fono: </strong> {{branch.description.phone_number}}</span>
-									<span><strong>Horario de Atenci&oacute;n: </strong> 09:00 - 16:00 hrs.</span>
+									<span><strong>Horario de Atenci&oacute;n: </strong>LUN-VIE: {{branch.description.openingHours.SEM}} <br>SAB: {{branch.description.openingHours.SAB}} </span>
 								</div>
 								<div class="otrosdatos">
 									<span class="abierto">Abierto S&aacute;bados</span>
