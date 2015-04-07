@@ -13,8 +13,8 @@ angular.module('spaApp')
         var deferred = $q.defer();
         if(! investmentProducts) {
           productService.getProductsList().success(function(data, status, headers) {
-            investmentProducts = data.products;
-            deferred.resolve(investmentProducts);
+            investmentProducts = data;
+            deferred.resolve(data);
           }).error(function(data, status) {
             var result = {'response' : data, 'status': status};
             console.log(data, status);
