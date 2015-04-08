@@ -296,6 +296,24 @@ hr[ng-show="!showAccountHeader"]{
 	float:left;
 	line-height: 2.5em;
 }
+
+.date-filter{
+	width:100%;
+	span{
+		margin:0 !important;
+	}
+	.select-style:last-of-type{
+		margin-right:30px;
+	}
+	.ico-calendario{
+		display: block;
+		width: 30px;
+		height: 30px;
+		background:url(../images/ico-calendario.png) no-repeat center center;
+		background-size:30px;
+	}
+}
+
 .filter{
 	float:right;
 	padding:10px 0;
@@ -374,6 +392,9 @@ hr[ng-show="!showAccountHeader"]{
 			&.selected{background:$orange;}
 		}
 	}
+}
+.inline{
+	width:100%;
 }
 .inline .select-style{
 	display: inline-block;

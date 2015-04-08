@@ -4,7 +4,7 @@
 |-------------------------------------------------------------------------------------
 */
 
-@media only screen and (max-width:1024px){
+@media only screen and (min-width:961px){
 	//@extend %min-width-screen-desktop;
 	body, main{
 		min-width:100%;
@@ -196,7 +196,8 @@
 		}
 	}
 	.beneficiariowidget{
-		width: 90%;
+		width: 30%;
+		float:left;
 		&.actions{
 			float:left;
 		}

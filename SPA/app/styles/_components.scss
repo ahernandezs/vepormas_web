@@ -47,3 +47,7 @@ input { &:focus { @include formFocus($orange); } }
 .capitalize {
   text-transform: capitalize;
 }
+
+.full-width{
+	width:100%
+}
