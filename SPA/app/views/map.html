@@ -76,7 +76,8 @@
 				</div>
 					<div>
 						<ui-gmap-google-map center='map.center' zoom='map.zoom' bounds="map.bounds">
-							<ui-gmap-markers models="map.branches.coordinates" coords="'self'" fit='false'></ui-gmap-markers>
+							<!--ui-gmap-markers models="{latitude:19.387569387017383,longitude:-99.19109420950929,id: 583187,title: 'title'}" coords="'self'" fit='false' icon="'icon'" idKey="'id'"></ui-gmap-markers-->
+							<ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id"></ui-gmap-marker>
 						</ui-gmap-google-map>
 					</div>
 				<div class="map-footer">
