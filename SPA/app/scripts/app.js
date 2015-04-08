@@ -43,6 +43,11 @@ app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', '$httpP
       controller: 'RegisterCtrl'
     })
 
+    .state('contacto',{
+      url: '/contacto',
+      templateUrl: 'views/contact.html'
+    })
+
     .state('dashboard', {
     abstract: true,
     url: '/',
