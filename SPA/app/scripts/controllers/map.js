@@ -111,6 +111,14 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 
 	//Center defined by default
 	$scope.map = { center: { latitude: 19.432602, longitude: -99.13320499999998 }, zoom: 15, bounds: {}};
+    $scope.marker = {
+      id: 0,
+      coords: {
+        latitude: 19.432602,
+        longitude: -99.13320499999998
+      },
+      options: { draggable: false }
+    };
 	$scope.map.branches = {};
 	var geocoder = new google.maps.Geocoder();
 
@@ -121,6 +129,15 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 									latitude: position.coords.latitude,
 									longitude: position.coords.longitude
 								};
+		    $scope.marker = {
+		      id: 1,
+		      coords: {
+		        latitude: position.coords.latitude,
+		        longitude: position.coords.longitude
+		      },
+		      options: { draggable: false }
+		    };
+
 		}, function() {
 			handleNoGeolocation(true);
 		});
@@ -159,6 +176,15 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 	$scope.selectedBranch = function(branch){
 		$scope.map.center.latitude = branch.coordinates.lat;
 		$scope.map.center.longitude = branch.coordinates.lng;
+	    $scope.marker = {
+	      id: branch.id,
+	      coords: {
+	        latitude: branch.coordinates.lat,
+	        longitude: branch.coordinates.lng
+	      },
+	      options: { draggable: false }
+	    };
+
 	}
 
 }]);
