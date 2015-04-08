@@ -306,42 +306,34 @@
 	//overflow:hidden;
 }
 .agregarBeneficiario{
-	float:left;
 	width:70%;
 	border-right:1px solid $lgray;
 	>form{
 		margin: 15px;
-		input:focus{
-			border-color:$orange;
-			box-shadow:none;
-		}
+		position: relative;
+		overflow: hidden;
 		input{
-			padding:10px;
-			width: 75%;
-			margin-right: 2%;
+			padding:10px 1%;
+			width: 73%;
 			border:1px solid $gray;
-			@include border-radius(4px);
 			background: url(../images/ico-lupa.png) no-repeat 98% center, white;
 			background-size:30px;
+			@include border-radius(4px);
+			&:focus{
+				border-color:$orange;
+				box-shadow:none;
+			}
 		}
 		button, button:hover, button:active{
-			background:white !important;
 			border:1px solid $blue !important;
-			overflow: hidden;
 			color:$blue;
+			width:25%;
 			font-weight: normal;
-			font-size: 0.9em;
-			padding:10px !important;
+			font-size: 0.95em;
+			padding:10px 0 !important;
 			text-align: center;
-			i{
-				padding: 0;
-				display: block;
-				float:left;
-				width:30px;
-				height: 20px;
-				background:url(../images/ico-usuario-azul.png) no-repeat center center;
-				background-size:23px;
-			}
+			background:url(../images/ico-usuario-azul.png) no-repeat 2% center, white !important;
+			background-size:10% !important;
 		}
 	}
 }
