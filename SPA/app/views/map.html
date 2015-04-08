@@ -18,40 +18,68 @@
 						<br>
 					</div>
 					<div class="sucursal-modulo">
-						<div class="selected">Sucursales</div>
-						<div>M&oacute;dulos de atenci&oacute;n</div>
+						<div ng-click="attention = true" ng-class="attention ? 'selected' : ''">Sucursales</div>
+						<div ng-click="attention = false"ng-class="attention ? '' : 'selected'">M&oacute;dulos de atenci&oacute;n</div>
 					</div>
 					<div ng-show="showBranches">
-						<div ng-repeat="branch in map.branches">
-							<div class="resultado" ng-click="selectedBranch(branch)">
-								<div class="sucursal">
-									<span>
-										<strong>{{branch.title}}</strong>
-										{{branch.description.address}}
-									</span>
-									<span><i></i>¿C&oacute;mo llegar?</span>
+						<div ng-show="attention">
+							<div ng-repeat="branch in map.branches | filter:{description: {category:1}}">
+								<div class="resultado">
+									<div class="sucursal">
+										<span ng-click="selectedBranch(branch)">
+											<strong>{{branch.name}}</strong><br>
+											{{branch.description.address.street}}
+											{{branch.description.address.street2}}
+											{{branch.description.address.zipCode}}
+											{{branch.description.address.city}}
+										</span>
+										<span><i></i>¿C&oacute;mo llegar?</span>
+									</div>
+									<div class="telyhorario">
+										<span><strong>Tel&eacute;fono: </strong> {{branch.description.phone_number}}</span>
+										<span><strong>Horario de Atenci&oacute;n: </strong>LUN-VIE: {{branch.description.openingHours.SEM}} <br>SAB: {{branch.description.openingHours.SAB}} </span>
+									</div>
+									<div class="otrosdatos">
+										<span class="abierto">Abierto S&aacute;bados</span>
+										<span class="divisas">Cambio de divisas</span>
+										<span class="cita">Atienden con cita</span>
+									</div>
 								</div>
-								<div class="telyhorario">
-									<span><strong>Tel&eacute;fono: </strong> {{branch.description.phone_number}}</span>
-									<span><strong>Horario de Atenci&oacute;n: </strong> 09:00 - 16:00 hrs.</span>
+							</div>
+						</div>
+						<div ng-hide="attention">
+							<div ng-repeat="branch in map.branches | filter:{description: {category:2}}">
+								<div class="resultado">
+									<div class="sucursal">
+										<span ng-click="selectedBranch(branch)">
+											<strong>{{branch.name}}</strong><br>
+											{{branch.description.address.street}}
+											{{branch.description.address.street2}}
+											{{branch.description.address.zipCode}}
+											{{branch.description.address.city}}
+										</span>
+										<span><i></i>¿C&oacute;mo llegar?</span>
+									</div>
+									<div class="telyhorario">
+										<span><strong>Tel&eacute;fono: </strong> {{branch.description.phone_number}}</span>
+										<span><strong>Horario de Atenci&oacute;n: </strong>LUN-VIE: {{branch.description.openingHours.SEM}} <br>SAB: {{branch.description.openingHours.SAB}} </span>
+									</div>
+									<div class="otrosdatos">
+										<span class="abierto">Abierto S&aacute;bados</span>
+										<span class="divisas">Cambio de divisas</span>
+										<span class="cita">Atienden con cita</span>
+									</div>
 								</div>
-								<div class="otrosdatos">
-									<span class="abierto">Abierto S&aacute;bados</span>
-									<span class="divisas">Cambio de divisas</span>
-									<span class="cita">Atienden con cita</span>  
-								</div>
-								
 							</div>
 						</div>
 					</div>
-
 				</div>
-					<div><!-- ng-class=" showBranches ? 'half' : 'full' ">-->
+					<div>
 						<ui-gmap-google-map center='map.center' zoom='map.zoom' bounds="map.bounds">
-							<ui-gmap-markers models="map.branches" coords="'self'" fit='false'></ui-gmap-markers>
+							<ui-gmap-markers models="map.branches.coordinates" coords="'self'" fit='false'></ui-gmap-markers>
 						</ui-gmap-google-map>
 					</div>
-				<div class="map-footer"><!--ng-hide="showBranches">-->
+				<div class="map-footer">
 					<ul>
 					    <li>
 					    	<p><span>Atenci&oacute;n al cliente:</span> <a href="tel:018008003224">01 800 800 3224</a></p>
@@ -70,18 +98,6 @@
 					    </li>
 					</ul>
 				</div>
-				<!--<div class="map-footer" ng-show="showBranches">
-					<div>
-						Atenci&oacute;n al cliente
-					</div>
-					<div>
-						Horarios de Atenci&oacute;n
-					</div>
-					<div>
-						¿Necesitas ayuda?
-					</div>
-				</div>-->
-
             </div>
         </main>
         <footer ng-include="'views/partials/layout/main-footer.html'"></footer>
