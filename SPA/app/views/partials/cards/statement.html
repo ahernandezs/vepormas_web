@@ -6,6 +6,11 @@
     <div class="filter pull-left date-filter">
         <div class="inline full-width">
             <h4>Filtra tu b&uacute;squeda por a&ntilde;o o por mes</h4>
+            <div class="dropdown pull-right" ng-class="month ? 'selected' : ''">
+                <ul class="dropdown-menu" role="menu" ng-model="month">
+                    <li ng-repeat="month in months">{{month.label}}</li>
+                </ul>
+            </div>
             <div class="select-style pull-right" ng-class="month ? 'selected' : ''">
                 <span>Mes</span>
                 <select ng-model="month" ng-options="opt as opt.label for opt in months">
