@@ -3,24 +3,24 @@
         <a><div class="back-arrow pull-left cursor-pointer"></div><i class="ico-estados"></i>Estados de cuenta<span>{{activeAccountName}}</span></a>
     </div> 
     <hr class="statement-hr">
-    <div class="filter">
-        <div class="inline">
+    <div class="filter pull-left date-filter">
+        <div class="inline full-width">
             <h4>Filtra tu b&uacute;squeda por a&ntilde;o o por mes</h4>
-           <div class="select-style" ng-class="year ? 'selected' : ''">
-                <span>A&ntilde;o</span>
-                <select ng-model="year" ng-options="opt as opt.label for opt in years">
-                   <option value='' disabled>Año</option>
-                </select>            
-            </div>
-            <div class="select-style" ng-class="month ? 'selected' : ''">
+            <div class="select-style pull-right" ng-class="month ? 'selected' : ''">
                 <span>Mes</span>
                 <select ng-model="month" ng-options="opt as opt.label for opt in months">
                    <option value='' disabled>Mes</option>
-                </select>            
+                </select> 
+            </div>
+            <div class="select-style pull-right" ng-class="year ? 'selected' : ''">
+                <span>A&ntilde;o</span>
+                <select ng-model="year" ng-options="opt as opt.label for opt in years">
+                   <option value='' disabled>Año</option>
+                </select> 
             </div>
         </div>
     </div>
-    <div class="transactions">    
+    <div class="transactions pull-left">    
         <table class="details">
             <thead>
                 <tr>
