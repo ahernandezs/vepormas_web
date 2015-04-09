@@ -224,6 +224,13 @@ angular.module('spaApp')
       return  deferred.promise;
     },
 
+    /**
+     * clean the user's data in session, that is, all the services singleton
+     */
+    cleanSession: function(){
+      cleanServices();
+    },
+
     setCurrentUser: function(data){
       currentLoggedUser = data;
     },
