@@ -3,8 +3,7 @@
 /**
  * The transactions controller. For transactions between own accounts.
  */
-angular.module('spaApp').controller('purchaseRetireVistaCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'transferProvider', 'codeStatusErrors', function ($rootScope, $scope, $location, $routeParams, accountsProvider, transferProvider, codeStatusErrors) {
-
+angular.module('spaApp').controller('purchaseRetireVistaCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'transferProvider', '$filter', 'codeStatusErrors' function ($rootScope, $scope, $location, $routeParams, accountsProvider, transferProvider, $filter, codeStatusErrors) {
 
     $scope.investmentCategory = null;
 
@@ -14,17 +13,6 @@ angular.module('spaApp').controller('purchaseRetireVistaCtrl', ['$rootScope', '$
     $scope.investment.depositAccount = '';
 
     function initialize(){
-        //TODO: the accounts shoud come from the provider
-        $scope.depositAccounts = [];
-        $scope.vistaAccounts = [];
-        for (var index = 0; index < $rootScope.accounts.length; ++index) {
-            var account = $rootScope.accounts[index];
-            if(account.account_type === 'DEP'){
-                $scope.depositAccounts.push(account);
-            }else if( account.account_type === 'INV' && account.category === 'VISTA'){
-                $scope.vistaAccounts.push(account);
-            }
-        }
         $scope.step = 1;
         $scope.investment = [];
         $scope.investment.vistaAccount = '';

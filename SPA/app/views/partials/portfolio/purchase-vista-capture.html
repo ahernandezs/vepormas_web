@@ -28,7 +28,7 @@
             <p>{{investment.depositAccount == '' ? 'Cuenta origen' : investment.depositAccount.name}}</p>
           </div>
           <ul class="dropdown-menu" role="menu">
-            <li ng-repeat="item in depositAccounts" ng-click="investment.depositAccount = item">{{item.name}}</li>
+            <li ng-repeat="item in depositAccounts" ng-click="investment.depositAccount = item">{{item.displayName}}</li>
           </ul>
         </div>
 

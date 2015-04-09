@@ -15,8 +15,6 @@ angular.module('spaApp').controller('InvestmentCedePrlvCtrl', ['$rootScope', '$s
     $scope.investment.expirationInstruction = '';
 
     function initialize(){
-        //TODO: the accounts shoud come from the provider
-        $scope.ownAccounts = $rootScope.accounts;
         $scope.step = 1;
         $scope.investment = [];
         $scope.investment.destinationProduct = '';
