@@ -13,6 +13,9 @@ angular.module('spaApp')
 
   if($rootScope.session_token && $location.$$path === '/login') {
     $location.path('/accounts');
+  }else{
+    //just in case, we clean the previous user's session
+    userProvider.cleanSession();
   }
   /**
    * the login function connect the Rest-API: if the response status is OK, redirect to route "accounts",
