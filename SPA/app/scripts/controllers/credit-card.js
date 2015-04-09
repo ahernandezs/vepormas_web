@@ -3,7 +3,7 @@
 /**
  * The credit card controller.
  */
-angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$stateParams', 'accountsProvider', '$rootScope', '$http','paymentCreditCardService', function ($scope, $location, $stateParams, accountsProvider, $rootScope, $http, paymentCreditCardService) {
+angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$stateParams', 'accountsProvider', '$rootScope', '$http','paymentCreditCardService', 'codeStatusErrors', function ($scope, $location, $stateParams, accountsProvider, $rootScope, $http, paymentCreditCardService, codeStatusErrors) {
 
 	var params = {};
 	params.numPage = 0;
@@ -37,14 +37,12 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 		},
 		function(errorObject) {
 			var status = errorObject.status;
-	        if(status === 406){
-	            $scope.setServiceError('datos inválidos');
-	        }else if(status === 500){
-	            var message = errorObject.response.message;
-	            $scope.setServiceError(message);
-	        }else{
-	            $scope.setServiceError('Error en el servicio, intente más tarde');
-	        }
+	        var msg = codeStatusErrors.errorMessage(status);
+			if (status === 500){
+            	$scope.setServiceError(msg + errorObject.response.message);
+        	} else {
+        		$scope.setServiceError(msg);
+        	}
 		}
 	);
 
@@ -54,14 +52,12 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 		},
 		function(errorObject) {
 			var status = errorObject.status;
-	        if(status === 406){
-	            $scope.setServiceError('datos inválidos');
-	        }else if(status === 500){
-	            var message = errorObject.response.message;
-	            $scope.setServiceError(message);
-	        }else{
-	            $scope.setServiceError('Error en el servicio, intente más tarde');
-	        }
+	        var msg = codeStatusErrors.errorMessage(status);
+			if (status === 500){
+            	$scope.setServiceError(msg + errorObject.response.message);
+        	} else {
+        		$scope.setServiceError(msg);
+        	}
 		}
 	);
 
@@ -73,14 +69,12 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 			},
 			function(errorObject) {
 				var status = errorObject.status;
-		        if(status === 406){
-		            $scope.setServiceError('datos inválidos');
-		        }else if(status === 500){
-		            var message = errorObject.response.message;
-		            $scope.setServiceError(message);
-		        }else{
-		            $scope.setServiceError('Error en el servicio, intente más tarde');
-		        }
+		        var msg = codeStatusErrors.errorMessage(status);
+				if (status === 500){
+	            	$scope.setServiceError(msg + errorObject.response.message);
+	        	} else {
+	        		$scope.setServiceError(msg);
+	        	}
 			}
 		);
 	};
@@ -106,14 +100,12 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 				},
 				function(errorObject) {
 					var status = errorObject.status;
-			        if(status === 406){
-			            $scope.setServiceError('datos inválidos');
-			        }else if(status === 500){
-			            var message = errorObject.response.message;
-			            $scope.setServiceError(message);
-			        }else{
-			            $scope.setServiceError('Error en el servicio, intente más tarde');
-			        }
+			        var msg = codeStatusErrors.errorMessage(status);
+					if (status === 500){
+		            	$scope.setServiceError(msg + errorObject.response.message);
+		        	} else {
+		        		$scope.setServiceError(msg);
+		        	}
 				}
 			);
 		}

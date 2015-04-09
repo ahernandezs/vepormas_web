@@ -16,13 +16,18 @@
 			min-width:100%;
 			width:100%;
 			overflow: hidden;
-			.wrapper .row{
-				margin: 0;
+			margin:0;
+			.wrapper{
+				width: 90%;
+				margin: auto;
+				.row{
+					margin: 0;
+				}
 			}
 			> div{
-				margin-right: 2em;
+				margin-right: 0;
 				&:first-child{
-					margin-left: 2em;
+					margin-left: 0;
 				}
 			}
 		}
@@ -49,8 +54,9 @@
 	.scroll{bottom:30px;}
 	.user-session{
 		height:auto;
+		min-height: 50px;
 		width: 100px;
-		margin:0 0 0 64% !important;
+		margin:0 0 0 84% !important;
 		display: block;
 		float:none;
 		position: absolute;
@@ -95,6 +101,10 @@
 	}
 
 	//MAP
+	.busqueda{
+		width: 80%;
+		margin-left: -40%;
+	}
 	.map-footer{
 		ul{
 			width:100%;
@@ -161,10 +171,12 @@
 	}
 
 	//PRODUCT
-	.product-details h4{
-		font-size:1em;
-		float:none;
-		line-height: 1.1em;
+	.product-details{
+		h4{
+			font-size:1em;
+			float:none;
+			line-height: 1.1em;
+		}
 	}
 	.search{
 		input{
@@ -180,11 +192,28 @@
 		width: 100%;
 		div input{width: 150px;}
 	}
+	.content{
+		.header{
+			overflow: visible;
+			h2, p { float: none; width: 100%;}
+			progress{
+				margin-top: 20px;
+			}
+			.progress{
+            top:5px;
+            right:0;
+			}
+			progress, .progress{
+				position: relative;
+				float: none;
+				width: 70%;
+			}
+		}
+	}
 	.help .option a, .option a, .content .header h2 + p{font-size:1.1em;}
-	.content .header .progress p{font-size:0.9em;}
 	.payment-actions{border:none;}
 	div[ui-view="detailDeposit"], div[ui-view="detailCredit"], div[ui-view="detailInvestment"]{
-		.title{@include column(5); border-right:1px solid $blue}
+		.title{@include column(5); border-right:1px solid $blue;min-height: 35px;}
 		.payment-actions{
 			@include column(3);
 			border:none;
@@ -197,17 +226,24 @@
 	}
 	div[ui-view="detailCreditCard"]{
 		.header{
+			position: relative !important;
 			height: 100px;
+			&.small{
+				> a, > a:hover{
+					@include column(3);
+				}
+			}
 			&.statement{height:auto;}
-			.title { @include column(5);border-right: 1px solid $blue;}
+			.title { @include column(5);border-right: 1px solid $blue;min-height: 35px;}
 			.payment-actions{
+				position: absolute;
 				border: none;
+				left:0;
+				top:50px;
+				width: 100% !important;
 				@include column(7);
 				> div{
-					position: absolute;
-					width: 70%;
-					top:80px;
-					margin-left:-230px;
+					margin: 0;
 					> div{
 						p{font-size:1.3em;}
 						button{
@@ -224,10 +260,17 @@
 			}
 		}
 	}
+	.header{
+		&.small{
+			> a, > a:hover{
+				width:100px !important;
+			}
+		}
+	}
 
 	//ADMIN
 	.transactions.adminTarjetas, .user-activity{
-		width: 95% !important;
+		//width: 95% !important;
 	}
 	.submenu nav ul li{
 		margin-right:30px;
@@ -247,7 +290,20 @@
 				}
 			}
 		}
+		.user-data{
+			position: relative;
+			.radioGroupBelow{
+				width: 100% !important;
+				span{
+					width: 45px;
+					height: 45px;
+				}
+			}
+		}
 		.help{
+			h3{
+				margin-bottom: 20px;
+			}
 			i{
 				position: relative;
 				left:0;

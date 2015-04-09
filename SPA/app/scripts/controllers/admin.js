@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'adminProvider', '$location', 'userProvider', 'thirdAccountProvider', function ($rootScope, $scope, adminProvider, $location, userProvider, thirdAccountProvider) {
+angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'adminProvider', '$location', 'userProvider', 'thirdAccountProvider', 'codeStatusErrors', function ($rootScope, $scope, adminProvider, $location, userProvider, thirdAccountProvider,codeStatusErrors) {
 
 	//if the user has full access, the default page is the configuration one. otherwise it is the contract-information page
 	if(userProvider.isCompleteUser()){
@@ -58,18 +58,18 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 				$scope.delete.otp = '';
 			},
 			function(errorObject) {
-				var status = errorObject.status;
 				$scope.delete.otp = '';
-		        if(status === 406){
-		            $scope.setServiceError('datos inválidos');
-		        }else if(status === 500){
-		            var message = errorObject.response.message;
-		            $scope.setServiceError(message);
-		        }else if(status === 403){
+				var status = errorObject.status;
+		        if(status === 403){
 					$scope.manageOtpErrorMessage(errorObject.response);
-			    }else{
-			    	$scope.setServiceError('Error en el servicio, intente más tarde');
-		        }
+			    } else {
+			    	var msg = codeStatusErrors.errorMessage(status);
+					if (status === 500){
+		            	$scope.setServiceError(msg + errorObject.response.message);
+		        	} else {
+		        		$scope.setServiceError(msg);
+		        	}
+			    }
 			}
 		);
 	}
@@ -103,14 +103,16 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 				dispatchThirdAccountByType(data);
 			},function(errorObject) {
 				var status = errorObject.status;
-		        if(status === 406){
-		            $scope.setServiceError('datos inválidos');
-		        }else if(status === 500){
-		            var message = errorObject.response.message;
-		            $scope.setServiceError(message);
-		        }else{
-		            $scope.setServiceError('Error en el servicio, intente más tarde');
-		        }
+		        if(status === 403){
+					$scope.manageOtpErrorMessage(errorObject.response);
+			    } else {
+			    	var msg = codeStatusErrors.errorMessage(status);
+					if (status === 500){
+		            	$scope.setServiceError(msg + errorObject.response.message);
+		        	} else {
+		        		$scope.setServiceError(msg);
+		        	}
+			    }
 			}
 		)
 	};
@@ -152,16 +154,16 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 			},
 			function(errorObject) {
 				var status = errorObject.status;
-		        if(status === 406){
-		            $scope.setServiceError('datos inválidos');
-		        }else if(status === 500){
-		            var message = errorObject.response.message;
-		            $scope.setServiceError(message);
-		        }else if(status === 403){
-		            $scope.manageOtpErrorMessage(errorObject.response);
-		        }else{
-		            $scope.setServiceError('Error en el servicio, intente más tarde');
-		        }
+		        if(status === 403){
+					$scope.manageOtpErrorMessage(errorObject.response);
+			    } else {
+			    	var msg = codeStatusErrors.errorMessage(status);
+					if (status === 500){
+		            	$scope.setServiceError(msg + errorObject.response.message);
+		        	} else {
+		        		$scope.setServiceError(msg);
+		        	}
+			    }
 			}
 		);
 	};
@@ -178,16 +180,16 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 	        function(errorObject) {
 				$scope.resultChangePass = false;
 				var status = errorObject.status;
-		        if(status === 406){
-		            $scope.setServiceError('datos inválidos');
-		        }else if(status === 500){
-		            var message = errorObject.response.message;
-		            $scope.setServiceError(message);
-		        }else if(status === 403){
-		            $scope.manageOtpErrorMessage(errorObject.response);
-		        }else{
-		            $scope.setServiceError('Error en el servicio, intente más tarde');
-		        }
+		        if(status === 403){
+					$scope.manageOtpErrorMessage(errorObject.response);
+			    } else {
+			    	var msg = codeStatusErrors.errorMessage(status);
+					if (status === 500){
+		            	$scope.setServiceError(msg + errorObject.response.message);
+		        	} else {
+		        		$scope.setServiceError(msg);
+		        	}
+			    }
 			}
 		);
         $scope.stage_password = 3;
@@ -232,13 +234,11 @@ Adding a beneficary actions
             },
 	        function(errorObject) {
 				var status = errorObject.status;
-		        if(status === 406){
-		            $scope.setServiceError('datos inválidos');
-		        }else if(status === 500){
-		            var message = errorObject.response.message;
-		            $scope.setServiceError(message);
-		        }else{
-		            $scope.setServiceError('Error en el servicio, intente más tarde');
+		        var msg = codeStatusErrors.errorMessage(status);
+				if (status === 500){
+		            $scope.setServiceError(msg + errorObject.response.message);
+		        } else {
+		        	$scope.setServiceError(msg);
 		        }
 			}
         );
@@ -255,16 +255,16 @@ Adding a beneficary actions
             },
 	        function(errorObject) {
 				var status = errorObject.status;
-		        if(status === 406){
-		            $scope.setServiceError('datos inválidos');
-		        }else if(status === 500){
-		            var message = errorObject.response.message;
-		            $scope.setServiceError(message);
-		        }else if(status === 403){
-		            $scope.manageOtpErrorMessage(errorObject.response);
-		        }else{
-		            $scope.setServiceError('Error en el servicio, intente más tarde');
-		        }
+		        if(status === 403){
+					$scope.manageOtpErrorMessage(errorObject.response);
+			    } else {
+			    	var msg = codeStatusErrors.errorMessage(status);
+					if (status === 500){
+		            	$scope.setServiceError(msg + errorObject.response.message);
+		        	} else {
+		        		$scope.setServiceError(msg);
+		        	}
+			    }
 			}
         );
     }
@@ -281,15 +281,17 @@ Adding a beneficary actions
 				$scope.exception = true;
 				$scope.actionUpdateState = 3;
 				$scope.updateDigitalBankServiceState.otp = '';
-		        if(status === 406){
-		            $scope.message = 'Datos inválidos';
-		        }else if(status === 500){
-		            $scope.message = errorObject.response.message;
-		        }else if(status === 403){
-		            $scope.manageOtpErrorMessage(errorObject.response);
-		        }else{
-		            $scope.message = 'Error en el servicio, intente más tarde';
-		        }
+		        var status = errorObject.status;
+		        if(status === 403){
+					$scope.manageOtpErrorMessage(errorObject.response);
+			    } else {
+			    	var msg = codeStatusErrors.errorMessage(status);
+					if (status === 500){
+		            	$scope.setServiceError(msg + errorObject.response.message);
+		        	} else {
+		        		$scope.setServiceError(msg);
+		        	}
+			    }			    
 			}
 		);
     }

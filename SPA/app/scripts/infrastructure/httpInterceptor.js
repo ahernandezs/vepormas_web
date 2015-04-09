@@ -19,32 +19,24 @@ angular.module('spaApp').factory('httpInterceptor', ['$q', '$window', '$location
     },
 
     'responseError': function (response) {
-      // TODO: Seems that in some time we don't get response.status
+      // TODO: Seems that in some time we don't get response.status: in this case, the browser sets it to false (or 0)
       console.log(response);
-
       $rootScope.requestStack.pop();
-
-      if (!response.status) {
-        console.log("Response undefined");
-        $location.url('/login');
-      }
-
-      if (response.status === 401) {
-        console.log("Status 401");
-
-        timerService.setTimeout(true);
-
+      if (!response.status || response.status === 401) {
+        console.log("Response status: "+response.status);
+        if(response.status === 401){
+          timerService.setTimeout(true);
+        }
         $rootScope.session_token = null;
         if($window.x_session_token) {
           $window.x_session_token = null;
-          $window.location.href = "login";
-        } else {
-          $location.url('/login');
+          $window.location.href = "#/login";
         }
-      }else{
-        
       }
-
+      // we got a problem here: at this moment, we should clean al the services to remove the user's data
+      //the problem is that it is not the correct place to do it (if we import the userProvider here, we have a circular dependency
+      // with the $http object). Should we process theses errors in every controller instead of have a unique method in this interceptor ?
+      $location.url('/login');
       return $q.reject(response);
     }
 

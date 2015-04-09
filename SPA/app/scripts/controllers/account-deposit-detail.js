@@ -3,7 +3,7 @@
 /**
  * The accounts controller. Gets accounts passing auth parameters
  */
- angular.module('spaApp').controller('AccountDepositDetailCtrl', ['$scope', '$location','$rootScope', 'accountsProvider', '$stateParams', '$http', function ($scope, $location, $rootScope,accountsProvider, $stateParams, $http) {
+ angular.module('spaApp').controller('AccountDepositDetailCtrl', ['$scope', '$location','$rootScope', 'accountsProvider', '$stateParams', '$http', 'codeStatusErrors', function ($scope, $location, $rootScope,accountsProvider, $stateParams, $http, codeStatusErrors) {
 
 	var params = {};
 	params.numPage = 0;
@@ -38,14 +38,12 @@
 		},
 		function(errorObject) {
 			var status = errorObject.status;
-	        if(status === 406){
-	            $scope.setServiceError('datos inválidos');
-	        }else if(status === 500){
-	            var message = errorObject.response.message;
-	            $scope.setServiceError(message);
-	        }else{
-	            $scope.setServiceError('Error en el servicio, intente más tarde');
-	        }
+	        var msg = codeStatusErrors.errorMessage(status);
+			if (status === 500){
+            	$scope.setServiceError(msg + errorObject.response.message);
+        	} else {
+        		$scope.setServiceError(msg);
+        	}
 		}
 	);
 
@@ -56,14 +54,12 @@
 		},
 		function(errorObject) {
 			var status = errorObject.status;
-	        if(status === 406){
-	            $scope.setServiceError('datos inválidos');
-	        }else if(status === 500){
-	            var message = errorObject.response.message;
-	            $scope.setServiceError(message);
-	        }else{
-	            $scope.setServiceError('Error en el servicio, intente más tarde');
-	        }
+	        var msg = codeStatusErrors.errorMessage(status);
+			if (status === 500){
+            	$scope.setServiceError(msg + errorObject.response.message);
+        	} else {
+        		$scope.setServiceError(msg);
+        	}
 		}
 	);
 
@@ -79,14 +75,12 @@
 			},
 			function(errorObject) {
 				var status = errorObject.status;
-		        if(status === 406){
-		            $scope.setServiceError('datos inválidos');
-		        }else if(status === 500){
-		            var message = errorObject.response.message;
-		            $scope.setServiceError(message);
-		        }else{
-		            $scope.setServiceError('Error en el servicio, intente más tarde');
-		        }
+		        var msg = codeStatusErrors.errorMessage(status);
+				if (status === 500){
+	            	$scope.setServiceError(msg + errorObject.response.message);
+	        	} else {
+	        		$scope.setServiceError(msg);
+	        	}
 			}
 		);
 	}
@@ -107,14 +101,12 @@
 			},
 			function(errorObject) {
 				var status = errorObject.status;
-		        if(status === 406){
-		            $scope.setServiceError('datos inválidos');
-		        }else if(status === 500){
-		            var message = errorObject.response.message;
-		            $scope.setServiceError(message);
-		        }else{
-		            $scope.setServiceError('Error en el servicio, intente más tarde');
-		        }
+		        var msg = codeStatusErrors.errorMessage(status);
+				if (status === 500){
+	            	$scope.setServiceError(msg + errorObject.response.message);
+	        	} else {
+	        		$scope.setServiceError(msg);
+	        	}
 			});
 		}
 	};
@@ -130,14 +122,12 @@
 			},
 			function(errorObject) {
 				var status = errorObject.status;
-		        if(status === 406){
-		            $scope.setServiceError('datos inválidos');
-		        }else if(status === 500){
-		            var message = errorObject.response.message;
-		            $scope.setServiceError(message);
-		        }else{
-		            $scope.setServiceError('Error en el servicio, intente más tarde');
-		        }
+		        var msg = codeStatusErrors.errorMessage(status);
+				if (status === 500){
+	            	$scope.setServiceError(msg + errorObject.response.message);
+	        	} else {
+	        		$scope.setServiceError(msg);
+	        	}
 			}
 		);
 	};

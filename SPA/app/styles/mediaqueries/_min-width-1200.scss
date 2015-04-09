@@ -3,9 +3,32 @@
 |	Above 1200px
 |-------------------------------------------------------------------------------------
 */
-%min-width-screen-lg-desktop {
 
-}
-@media (min-width: $screen-lg-desktop) {
-	@extend %min-width-screen-lg-desktop;
+@media only screen and (min-width:1201px){
+	//@extend %min-width-screen-desktop;
+	body, main{
+		min-width:100%;
+		width:100%;
+		.row{
+			min-width:100%;
+			width:100%;
+		}
+		.wrapper{
+			font-size:0.9em;
+			min-width:95%;
+			width:95%;
+			overflow: hidden;
+			.wrapper{
+				.row{
+					margin: 0;
+				}
+			}
+			> div{
+				margin-right: 2em;
+				&:first-child{
+					margin-left: 2em;
+				}
+			}
+		}
+	}
 }

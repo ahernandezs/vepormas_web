@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProvider', 'uiGmapGoogleMapApi', function ($scope,  $rootScope, mapProvider, uiGmapGoogleMapApi) {
+angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProvider', 'uiGmapGoogleMapApi', 'codeStatusErrors', function ($scope,  $rootScope, mapProvider, uiGmapGoogleMapApi, codeStatusErrors) {
 
 	$scope.details = {};
 	$scope.estados = [	{'id':'df','name':'Distrito Federal','lat':19.3200988,'lon':-99.1521845,'zoom':10},
@@ -48,13 +48,11 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 					},
 					function(errorObject) {
 			            var status = errorObject.status;
-			            if(status === 406){
-			                $scope.setServiceError('datos inválidos');
-			            }else if(status === 500){
-			                var message = errorObject.response.message;
-			                $scope.setServiceError(message);
-			            }else{
-			                $scope.setServiceError('Error en el servicio, intente más tarde');
+			            var msg = codeStatusErrors.errorMessage(status);
+			            if (status === 500){
+			                $scope.setServiceError(msg + errorObject.response.message);
+			            } else {
+			                $scope.setServiceError(msg);
 			            }
 			        }
 				);
@@ -67,13 +65,11 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 				},
 				function(errorObject) {
 		            var status = errorObject.status;
-		            if(status === 406){
-		                $scope.setServiceError('datos inválidos');
-		            }else if(status === 500){
-		                var message = errorObject.response.message;
-		                $scope.setServiceError(message);
-		            }else{
-		                $scope.setServiceError('Error en el servicio, intente más tarde');
+		            var msg = codeStatusErrors.errorMessage(status);
+		            if (status === 500){
+		                $scope.setServiceError(msg + errorObject.response.message);
+		            } else {
+		                $scope.setServiceError(msg);
 		            }
 		        }
 			);
@@ -91,13 +87,11 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 					},
 					function(errorObject) {
 			            var status = errorObject.status;
-			            if(status === 406){
-			                $scope.setServiceError('datos inválidos');
-			            }else if(status === 500){
-			                var message = errorObject.response.message;
-			                $scope.setServiceError(message);
-			            }else{
-			                $scope.setServiceError('Error en el servicio, intente más tarde');
+			            var msg = codeStatusErrors.errorMessage(status);
+			            if (status === 500){
+			                $scope.setServiceError(msg + errorObject.response.message);
+			            } else {
+			                $scope.setServiceError(msg);
 			            }
 			        }
 				);
@@ -162,13 +156,11 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 		},
 		function(errorObject) {
             var status = errorObject.status;
-            if(status === 406){
-                $scope.setServiceError('datos inválidos');
-            }else if(status === 500){
-                var message = errorObject.response.message;
-                $scope.setServiceError(message);
-            }else{
-                $scope.setServiceError('Error en el servicio, intente más tarde');
+            var msg = codeStatusErrors.errorMessage(status);
+            if (status === 500){
+                $scope.setServiceError(msg + errorObject.response.message);
+            } else {
+                $scope.setServiceError(msg);
             }
         }
 	);

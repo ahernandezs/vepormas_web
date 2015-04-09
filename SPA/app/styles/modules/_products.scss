@@ -105,7 +105,13 @@
 hr[ng-show="!showAccountHeader"]{
 	margin: 10px 0 0 0;
 }
-.header {
+.header{
+	&.small{
+		.title, .payment-actions{
+			width: auto !important;
+		}
+		.title{padding-right: 2%;}
+	}
 	@include row;
 	&.statement a, &.statement a:hover, &.statement a:active{
 		width: 100%;
@@ -114,25 +120,19 @@ hr[ng-show="!showAccountHeader"]{
 
 	.title { @include column(4.4); margin-top: 8px;}
 
-	.payment-actions { @include column(6); }
+	.payment-actions {@include column(6);}
 
 	> a, > a:hover {
 		@include column(1.6);
-		margin: 14px 0 0 0;
-		font-size: 18px;
+		font-size: 1.2em;
 		font-weight: bold;
-		line-height: 1;
-		padding-left: 40px;
-		padding-top: 4px;
 		position: relative;
 		color:black;
-
-		i {
-			color: $orange;
-			font-size: 36px;
-			left: 0;
-			position: absolute;
-			top: 0;
+		display: block;
+		overflow: hidden;
+		i{
+			float:left;
+			margin-left: 1%;
 		}
 		span {
 			font-weight: normal;
@@ -146,14 +146,14 @@ hr[ng-show="!showAccountHeader"]{
 		display: inline-block;
 		width: 35px;
 		height: 35px;
-		background:url(../images/ico-estados.png) no-repeat center center;
+		background:url(../images/ico-estados.png) no-repeat center top;
 		background-size:30px;
 	}
 	.ico-mas{
 		display: inline-block;
 		width: 40px;
 		height: 40px;
-		background:url(../images/ico-mas.png) no-repeat center center;
+		background:url(../images/ico-mas.png) no-repeat center top;
 		background-size:40px;
 		cursor:pointer;
 	}
@@ -161,7 +161,7 @@ hr[ng-show="!showAccountHeader"]{
 		display: inline-block;
 		width: 40px;
 		height: 40px;
-		background:url(../images/ico-menos.png) no-repeat center center;
+		background:url(../images/ico-menos.png) no-repeat center top;
 		background-size:40px;
 		cursor:pointer;
 	}

@@ -208,7 +208,6 @@ table input[type="submit"]{font-weight: bold;}
         position: relative;
         border-bottom: 1px solid $gray;
         padding: 0 10px 15px 10px;
-        min-height:60px;
         overflow: hidden;
         h2, p { float: left; width: 67%; }
         p { color: grey; }
@@ -219,7 +218,7 @@ table input[type="submit"]{font-weight: bold;}
             width: 33%;
             p{
                 text-transform: uppercase;
-                font-size: 0.6em;
+                font-size: 0.7em;
                 color:$dgray;
                 text-align: center;
                 float: left;
