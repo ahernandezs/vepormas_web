@@ -89,16 +89,20 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 		$scope.selection = 1;
 	};
 
-	/**
+    /**
      * Function to navigate between steps. If received a second parameter (true) the objects will be created again.
-	 */
+     */
     $scope.goToStep = function(step, reset) {
-		$scope.selection = step;
-		if (reset && step === 1) {
-			$scope.payment = {};
-			$scope.transfer = {};
-		}
-	};
+        $scope.selection = step;
+        if (step === 1) {
+           $scope.transfer.otp = '';
+     
+        if(reset){
+            $scope.payment = {};
+            $scope.transfer = {};
+            }
+        }
+    };
 
     /**
      * Get the detail of the selected account (If own account).
