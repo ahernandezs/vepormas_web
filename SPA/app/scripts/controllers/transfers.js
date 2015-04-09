@@ -36,7 +36,8 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                 $scope.payment.destiny.account_type = 'TDC';
                 $scope.payment.destiny._account_id = paymentCreditCardService.accountId;
                 $scope.getAccountDetail();
-                $scope.value = paymentCreditCardService.paymentType;
+                //$scope.value = paymentCreditCardService.paymentType;
+                $scope.payment.type = paymentCreditCardService.paymentType;
                 if(paymentCreditCardService.paymentType === 'TOTAL_PAYMENT')
                     $scope.payment.other = paymentCreditCardService.amount;
                 delete paymentCreditCardService.accountId;
