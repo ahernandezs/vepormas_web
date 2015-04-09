@@ -74,11 +74,6 @@
 			h6:after{content:": ";}
 			h6,h4{display: inline-block;}
 		}
-		button{
-			position: absolute;
-			width: 15%;
-			right:1em;
-		}
 	}
 	.header{
 		&.statement{width:95%;margin-left: 1%;}

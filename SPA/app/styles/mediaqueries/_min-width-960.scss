@@ -43,7 +43,7 @@
 			left: 120px;
 		}
 	}
-	.sub-menu{font-size:0.85em;}
+	.sub-menu{font-size:0.85em;margin-right: 1em;}
 	footer{
 		p{margin-left: 2em;}
 		a{margin-right: 2em;}
@@ -64,9 +64,9 @@
 		div{
 			display:none
 		}
-		button{
+		+ button{
+			top:35px;
 			width: 100px;
-			margin:0;
 		}
 	}
 	.user-log.responsive800w{
