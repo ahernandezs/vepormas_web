@@ -18,8 +18,10 @@
 			min-width:100%;
 			width:100%;
 			overflow: hidden;
-			.wrapper .row{
-				margin: 0;
+			.wrapper{
+				.row{
+					margin: 0;
+				}
 			}
 			> div{
 				margin-right: 2em;
@@ -83,6 +85,7 @@
 		.title{
 			font-size: 1.2em;
 			@include column(3.8);
+			min-height: 35px;
 		}
 		.payment-actions button{font-size:0.75em;}
 		> a, > a:hover, > a:active{width:110px;}
