@@ -3,7 +3,7 @@
 /**
  * The transactions controller. For transactions between own accounts.
  */
-angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', 'thirdAccountProvider', 'transferProvider', '$controller','paymentCreditCardService', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider, thirdAccountProvider, transferProvider, $controller,paymentCreditCardService) {
+angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', 'thirdAccountProvider', 'transferProvider', '$controller','paymentCreditCardService', 'codeStatusErrors', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider, thirdAccountProvider, transferProvider, $controller,paymentCreditCardService, codeStatusErrors) {
 
 
 	$scope.section = 'PAY';
@@ -45,13 +45,11 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 		},
         function(errorObject) {
             var status = errorObject.status;
-            if(status === 406){
-                $scope.setServiceError('datos inválidos');
-            }else if(status === 500){
-                var message = errorObject.response.message;
-                $scope.setServiceError(message);
-            }else{
-                $scope.setServiceError('Error en el servicio, intente más tarde');
+            var msg = codeStatusErrors.errorMessage(status);
+            if (status === 500){
+                $scope.setServiceError(msg + errorObject.response.message);
+            } else {
+                $scope.setServiceError(msg);
             }
         }
 	);
@@ -73,13 +71,11 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         },
         function(errorObject) {
             var status = errorObject.status;
-            if(status === 406){
-                $scope.setServiceError('datos inválidos');
-            }else if(status === 500){
-                var message = errorObject.response.message;
-                $scope.setServiceError(message);
-            }else{
-                $scope.setServiceError('Error en el servicio, intente más tarde');
+            var msg = codeStatusErrors.errorMessage(status);
+            if (status === 500){
+                $scope.setServiceError(msg + errorObject.response.message);
+            } else {
+                $scope.setServiceError(msg);
             }
         }
     );
@@ -127,13 +123,11 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                 },
                 function(errorObject) {
                     var status = errorObject.status;
-                    if(status === 406){
-                        $scope.setServiceError('datos inválidos');
-                    }else if(status === 500){
-                        var message = errorObject.response.message;
-                        $scope.setServiceError(message);
-                    }else{
-                        $scope.setServiceError('Error en el servicio, intente más tarde');
+                    var msg = codeStatusErrors.errorMessage(status);
+                    if (status === 500){
+                        $scope.setServiceError(msg + errorObject.response.message);
+                    } else {
+                        $scope.setServiceError(msg);
                     }
                 }
             );
@@ -178,22 +172,11 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             },
             function(data) {
                 var status = data.status;
-                if (status === 401 || status === 423) {
-                    // session expired : returned to login
-                    $scope.setServiceError('session expired: TODO: go to login');
-                    //var loginController = $controller('LoginCtrl');
-                    //loginController.setError('your session has expired');
-                    //$location.path('/login');
-
-                } else if (status === 406 || status === 417) {
-                    $scope.setServiceError('invalid input: TODO: analyse the code inside the json mesage body');
-                    // invalid data input
-                } else if (status === 500){
-                    var message = data.response.message;
-                    $scope.setServiceError(message);
-                } else if (status === 503 || status === 504) {
-                    // business or technical exception
-                    $scope.setServiceError('unknown problem. Please retry later');
+                var msg = codeStatusErrors.errorMessage(status);
+                if (status === 500){
+                    $scope.setServiceError(msg + data.response.message);
+                } else {
+                    $scope.setServiceError(msg);
                 }
             }
         );
@@ -215,24 +198,15 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             function(data) {
                 console.log(data);
                 var status = data.status;
-                if (status === 401 || status === 423) {
-                    // session expired : returned to login
-                    $scope.setServiceError('session expired: TODO: go to login');
-                    //var loginController = $controller('LoginCtrl');
-                    //loginController.setError('your session has expired');
-                    //$location.path('/login');
-
-                } else if(status === 403){
+                if(status === 403){
                     $scope.manageOtpErrorMessage(data.response);
-                } else if (status === 406 || status === 417) {
-                    $scope.setServiceError('invalid input: TODO: analyse the code inside the json mesage body');
-                    // invalid data input
-                } else if (status === 500){
-                    var message = data.response.message;
-                    $scope.setServiceError(message);
-                } else if (status === 503 || status === 504) {
-                    // business or technical exception
-                    $scope.setServiceError('unknown problem. Please retry later');
+                } else {
+                    var msg = codeStatusErrors.errorMessage(status);
+                    if (status === 500){
+                        $scope.setServiceError(msg + data.response.message);
+                    } else {
+                        $scope.setServiceError(msg);
+                    }
                 }
             }
         );
@@ -255,24 +229,15 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             function(data) {
                 console.log(data);
                 var status = data.status;
-                if (status === 401 || status === 423) {
-                    // session expired : returned to login
-                    $scope.setServiceError('session expired: TODO: go to login');
-                    //var loginController = $controller('LoginCtrl');
-                    //loginController.setError('your session has expired');
-                    //$location.path('/login');
-
-                } else if(status === 403){
+                if(status === 403){
                     $scope.manageOtpErrorMessage(data.response);
-                } else if(status === 406 || status === 417) {
-                    $scope.setServiceError('invalid input: TODO: analyse the code inside the json mesage body');
-                    // invalid data input
-                } else if (status === 500){
-                    var message = data.response.message;
-                    $scope.setServiceError(message);
-                } else if (status === 503 || status === 504) {
-                    // business or technical exception
-                    $scope.setServiceError('unknown problem. Please retry later');
+                } else {
+                    var msg = codeStatusErrors.errorMessage(status);
+                    if (status === 500){
+                        $scope.setServiceError(msg + data.response.message);
+                    } else {
+                        $scope.setServiceError(msg);
+                    }
                 }
             }
         );
@@ -304,13 +269,11 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             },
             function(errorObject) {
                 var status = errorObject.status;
-                if(status === 406){
-                    $scope.setServiceError('datos inválidos');
-                }else if(status === 500){
-                    var message = errorObject.response.message;
-                    $scope.setServiceError(message);
-                }else{
-                    $scope.setServiceError('Error en el servicio, intente más tarde');
+                var msg = codeStatusErrors.errorMessage(status);
+                if (status === 500){
+                    $scope.setServiceError(msg + errorObject.response.message);
+                } else {
+                    $scope.setServiceError(msg);
                 }
             }
         );
@@ -332,15 +295,15 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             },
             function(errorObject) {
                 var status = errorObject.status;
-                if(status === 406){
-                    $scope.setServiceError('datos inválidos');
-                }else if(status === 500){
-                    var message = errorObject.response.message;
-                    $scope.setServiceError(message);
-                }else if(status === 403){
+                if(status === 403){
                     $scope.manageOtpErrorMessage(errorObject.response);
-                }else{
-                    $scope.setServiceError('Error en el servicio, intente más tarde');
+                } else {
+                    var msg = codeStatusErrors.errorMessage(status);
+                    if (status === 500){
+                        $scope.setServiceError(msg + errorObject.response.message);
+                    } else {
+                        $scope.setServiceError(msg);
+                    }
                 }
             }
         );
