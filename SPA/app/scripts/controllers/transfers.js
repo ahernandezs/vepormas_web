@@ -3,8 +3,7 @@
 /**
  * The transactions controller. For transactions between own accounts.
  */
-angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', 'thirdAccountProvider', 'transferProvider', '$controller','paymentCreditCardService', 'codeStatusErrors', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider, thirdAccountProvider, transferProvider, $controller,paymentCreditCardService, codeStatusErrors) {
-
+angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'userProvider', 'thirdAccountProvider', 'transferProvider', '$controller','paymentCreditCardService', '$filter', 'codeStatusErrors', function ($rootScope, $scope, $location, $routeParams, accountsProvider, userProvider, thirdAccountProvider, transferProvider, $controller,paymentCreditCardService, $filter, codeStatusErrors) {
 
 	$scope.section = 'PAY';
     $scope.selection = 1;
@@ -25,8 +24,8 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                function (value, index, ar) {
 					if ( value.account_type == 'DEP' || value.account_type == 'TDC' ) {
 						value.group = 'Cuentas Propias';
-						value.displayName = (value.account_type == 'DEP') ? value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': $' + value.amount :
-											'Consubanco - ' + value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': $' + value.current_balance;
+						value.displayName = (value.account_type == 'DEP') ? value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + $filter('currency')(value.amount) :
+											'Consubanco - ' + value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
 						$scope.theAccounts.push( value );
 					}
                }
