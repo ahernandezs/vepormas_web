@@ -25,6 +25,8 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                function (value, index, ar) {
 					if ( value.account_type == 'DEP' || value.account_type == 'TDC' ) {
 						value.group = 'Cuentas Propias';
+						value.displayName = (value.account_type == 'DEP') ? value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': $' + value.amount :
+											'Consubanco - ' + value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': $' + value.current_balance;
 						$scope.theAccounts.push( value );
 					}
                }
@@ -63,6 +65,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                 function (value, index, ar) {
 					if ( value.account_type == 'TDC_T' || value.account_type == 'DEB_T' ) {
 	                    value.group = 'Cuentas Terceros';
+						value.displayName = value.bank_name + ' - ' + value.name + ' ' + value.maskedAccountNumber + ' - ' + value.shortName;
 	                    $scope.theAccounts.push( value );
 					}
                 }
@@ -89,14 +92,22 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 		$scope.selection = 1;
 	};
 
-    /**
+	/**
+	 * Evaluate if the destiny should be deleted according to the first account selected by the user.
+	 */
+	$scope.evaluateDestiny = function () {
+		if ( $scope.transfer.account._account_id === $scope.transfer.destiny._account_id )
+			delete $scope.transfer.destiny;
+	};
+
+	/**
      * Function to navigate between steps. If received a second parameter (true) the objects will be created again.
      */
     $scope.goToStep = function(step, reset) {
         $scope.selection = step;
         if (step === 1) {
            $scope.transfer.otp = '';
-     
+
         if(reset){
             $scope.payment = {};
             $scope.transfer = {};
