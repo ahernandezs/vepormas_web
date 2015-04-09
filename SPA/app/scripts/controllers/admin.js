@@ -22,6 +22,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 	$scope.today = new Date();
 	$scope.actionUpdateState = 1;
 	$scope.updateDigitalBankServiceState = [];
+	$scope.resultChangePass = false;
 	loadBeneficiary();
 
     $scope.updateService = function(action, state){
@@ -172,8 +173,10 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
         adminProvider.updatePassword($scope.change.old, $scope.change.new, $scope.change.otp).then(
         	function(data){
 	            console.log('Password modified correctly');
+	            $scope.resultChangePass = true;
 	        },
 	        function(errorObject) {
+				$scope.resultChangePass = false;
 				var status = errorObject.status;
 		        if(status === 406){
 		            $scope.setServiceError('datos inválidos');
