@@ -109,10 +109,12 @@ header {
 			font-size: 1em;
 		}
 	}
-	button{
-		width: 35%;
-		float:right;
-		margin-top: 20px;
+	+ button{
+		width: 150px;
+		position: absolute;
+		top:67px;
+		right:1em;
+		margin: 0;
 		background-color:$orange !important;
 	}
 	.date {

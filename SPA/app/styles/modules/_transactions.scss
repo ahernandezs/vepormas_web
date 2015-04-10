@@ -191,6 +191,11 @@ input[name="account"] + p{
     margin-top: 3px;
 }
 table input[type="submit"]{font-weight: bold;}
+.message + table + .double-btn button{
+    margin-top: 20px; 
+    min-width:120px;
+    @include border-radius(4px);
+}
 .content {
     margin: 0 1.0416666667%;
     margin-top:40px;

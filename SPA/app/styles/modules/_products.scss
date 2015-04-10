@@ -472,11 +472,30 @@ hr[ng-show="!showAccountHeader"]{
 	margin-bottom:0px;
 }
 
-.details .ico-estados{
-	display: inline-block;
-	width: 35px;
-	height: 35px;
-	background:url(../images/ico-estados.png) no-repeat center center;
-	background-size:30px;
-	vertical-align:middle;
+.details{
+	.ico-estados{
+		display: inline-block;
+		width: 35px;
+		height: 35px;
+		background:url(../images/ico-estados.png) no-repeat center center;
+		background-size:30px;
+		vertical-align:middle;
+	}
+	td{
+		a{
+			font-size: 11px !important;
+			font-weight: normal !important;
+			color:$dgray;
+			text-align: center;
+			i{
+				display: block;
+				margin: auto;
+				width: 30px;
+				height: 30px;
+				margin-bottom: 3px;
+				background: url(../images/ico-pdf.png) no-repeat center center;
+				background-size:28px;
+			}
+		}
+	}
 }

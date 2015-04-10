@@ -6,7 +6,7 @@
         <h1 class="logo"><a href="/">Consubanco</a></h1>
 
         <!-- =============================================================== -->
-        <nav class="nav ">
+        <nav class="nav">
             <ul>
                 <li ng-click="selectNavigatOption('products')"
                     data-ng-class="{'active': activeNavigationOption == 'products'}" > <a ui-sref="dashboard.accounts">Mis Productos</a></li>
@@ -26,13 +26,9 @@
                 <h4 class="user text-capitalize">{{completeName | lowercase}}</h4>
                 <p class="date">&Uacute;ltimo acceso: <span>{{last_access_date | date:'dd/MM/yyyy'}}</span> a las <span>{{last_access_date | date:'HH:mm:ss'}}</span>
                 </p>
+            </div>
         </div>
-            <!--<form ng-show="useLogoutForm" action="logout" method="post">
-              <button>Cerrar Sesi&oacute;n</button>
-            </form>-->
-            <button ng-hide="useLogoutForm" ng-click="logout()">Cerrar Sesi&oacute;n</button>
-
-        </div>
+        <button ng-hide="useLogoutForm" ng-click="logout()">Cerrar Sesi&oacute;n</button>
         <div class="fix-top">
             <div class="date">
                 <time-access date='{{date}}' media='{{date}}'/>
