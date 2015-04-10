@@ -32,11 +32,11 @@ angular.module('spaApp').factory('httpInterceptor', ['$q', '$window', '$location
           $window.x_session_token = null;
           $window.location.href = "#/login";
         }
+        // we got a problem here: at this moment, we should clean al the services to remove the user's data
+        //the problem is that it is not the correct place to do it (if we import the userProvider here, we have a circular dependency
+        // with the $http object). Should we process theses errors in every controller instead of have a unique method in this interceptor ?
+         $location.url('/login');
       }
-      // we got a problem here: at this moment, we should clean al the services to remove the user's data
-      //the problem is that it is not the correct place to do it (if we import the userProvider here, we have a circular dependency
-      // with the $http object). Should we process theses errors in every controller instead of have a unique method in this interceptor ?
-      $location.url('/login');
       return $q.reject(response);
     }
 
