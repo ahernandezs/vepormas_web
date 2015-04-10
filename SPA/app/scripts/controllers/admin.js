@@ -234,7 +234,19 @@ Adding a beneficary actions
 		        var msg = codeStatusErrors.errorMessage(status);
 				if (status === 500){
 		            $scope.setServiceError(msg + errorObject.response.message);
-		        } else {
+		        } else if(status === 406){
+		        	if(errorObject.response.code){
+		        		var validationErrorCode = errorObject.response.code;
+		        		switch(validationErrorCode){
+		        			case 100 : msg="El Formato es invalido"; break;
+		        			case 101 : msg="La CLABE es invalida"; break;
+		        			case 102 : msg="El número de tarjeta de credito es invalido"; break;
+		        			case 103 : msg="El número de cuenta es invalido"; break;
+		        			case 200 : msg="El número de cuenta no está registrado en el sistema"; break;
+		        		}
+		        	}
+		        	$scope.setServiceError(msg);
+		    	}else {
 		        	$scope.setServiceError(msg);
 		        }
 			}
