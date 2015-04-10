@@ -64,9 +64,9 @@ angular.module('spaApp').service('adminService', ['$http','$rootScope', function
 			data: JSON.stringify({
 				"limit":{
 					"amount": amount,
-					"type": type,
-					"otp": otp
-				}
+					"type": type
+					
+				},"otp": otp
 			})
 		});
 	};
