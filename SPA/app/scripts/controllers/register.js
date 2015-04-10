@@ -13,6 +13,8 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
 
     // the error's message (is incorrectData is true)
     $scope.errorMessage = null;
+
+
     
     /**
      * initialize the scope with the model's data (coming from the preRegister operation)
@@ -48,6 +50,9 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
       $scope.error = false;
       $scope.errorMessage = null;
       $scope.selection = nextStep;
+      var progressHeight = document.getElementById("progressBar").offsetHeight;
+      var stepHeight = (((progressHeight / 5)*(nextStep-1)) - progressHeight)
+      $scope.currentProgress = {top: stepHeight}
     }
 
 	/**
