@@ -4,16 +4,21 @@
  * The accounts controller. Gets accounts passing auth parameters
  */
  angular.module('spaApp').controller('AccountsCtrl', ['$rootScope', '$scope', '$location', 'accountsProvider', 'codeStatusErrors', function ( $rootScope, $scope, $location, accountsProvider, codeStatusErrors) {
-	//TODO: temporal binding
 
     $scope.statementStatus = [];
+    $scope.showTDCAccount = false;
+    $scope.showInvestmentAccount = false;
+    $scope.showSavingAccount = false;
+    $scope.showCreditAccount = false;
 	console.log('Load account dashboard information');
 	  accountsProvider.getAccounts().then(
           function(data) {
             $scope.accounts = $rootScope.accounts;
             $scope.selectNavigatOption('products'); 
             $scope.selectAccount( $scope.accounts[0]);
+            console.log('Getting accounts ......');
             console.log($scope.accounts);
+            verifyExistAccount();
           },
           function(errorObject) {
             var status = errorObject.status;
@@ -26,6 +31,21 @@
         }
     );
 
+    function verifyExistAccount(){
+        var length=$scope.accounts.length;
+        for(var i=0 ;i < length ; i++){
+            switch($scope.accounts[i].account_type){
+                case 'TDC' : $scope.showTDCAccount = true;
+                break;
+                case 'INV' : $scope.showInvestmentAccount = true;
+                break;
+                case 'DEP' : $scope.showSavingAccount = true;
+                break;
+                case 'CXN' : $scope.showCreditAccount = true;
+                break;
+            }
+        }
+    }
 
     $scope.selectAccount = function(accountSelected) {
 

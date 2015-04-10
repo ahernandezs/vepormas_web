@@ -7,7 +7,7 @@
 <div class="noEm">
     <div class="actions">
         <div class="scroll">
-        <div class="section">
+        <div class="section" ng-show="showTDCAccount">
             <h2>Tarjeta de cr&eacute;dito</h2>
             <div class="product" ng-repeat="account in accounts| filter:{account_type:'TDC'}:true"
             data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
@@ -22,7 +22,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" ng-show='showInvestmentAccount'>
             <h2>Inversiones</h2>
             <div class="product" ng-repeat="account in accounts | filter:{account_type:'INV'}:true | filter:{category:'VISTA'}:true"
             data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
@@ -59,7 +59,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" ng-show="showSavingAccount">
             <h2>Cuenta</h2>
             <div class="product" ng-repeat="account in accounts | filter:{account_type:'DEP'}:true"
             data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)" >
@@ -74,7 +74,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="section" ng-show="showCreditAccount">
             <h2>Cr&eacute;ditos</h2>
                 <div class="product" ng-repeat="account in accounts | filter:{account_type:'CXN'}:true"
                 data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
