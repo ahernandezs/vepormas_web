@@ -12,11 +12,14 @@
             </thead>
             <tbody>
                     <tr ng-repeat="statement in statements | filter:year.value | filter:month.value">
-                        <td>{{statement.date}}</td>
+                        <td><i class="ico-estados"></i>{{statement.date}}</td>
                         <td><a target="_blank" href="#" ng-href="{{getStatementUrl(statement.id, 'PDF');}}"><i class="ico-pdf"></i>Descargar PDF</a></td>
                         <td><a target="_blank" href="#" ng-href="{{getStatementUrl(statement.id, 'XML');}}"><i class="ico-pdf"></i>Descargar XML</a></td>
                     </tr>
             </tbody>
         </table>
+        <div ng-show="statements.length == 0" class="error">
+            Sin movimientos.
+        </div>
     </div>
 </div>
