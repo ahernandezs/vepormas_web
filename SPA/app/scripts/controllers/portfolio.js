@@ -3,7 +3,11 @@
 /**
  * The transactions controller. For transactions between own accounts.
  */
-angular.module('spaApp').controller('PortfolioCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'transferProvider', 'productProvider', function ($rootScope, $scope, $location, $routeParams, accountsProvider, transferProvider, productProvider) {
+angular.module('spaApp').controller('PortfolioCtrl', ['$rootScope', '$scope', '$location', '$routeParams', 'accountsProvider', 'transferProvider', 'productProvider', '$filter', function ($rootScope, $scope, $location, $routeParams, accountsProvider, transferProvider, productProvider, $filter) {
+
+    $scope.ownAccounts = [];
+    $scope.depositAccounts = [];
+    $scope.vistaAccounts = [];
 
      //Get investments products.
     productProvider.getProductsList().then(
@@ -39,6 +43,39 @@ angular.module('spaApp').controller('PortfolioCtrl', ['$rootScope', '$scope', '$
           var message = data.response.message;
           $scope.setServiceError(message);
       }
+    );
+
+    /**
+     * Get own accounts.
+     */
+    accountsProvider.getAccounts().then(
+        function(data) {
+            $rootScope.accounts.forEach(
+                function (value, index, ar) {
+                    if ( value.account_type == 'DEP' ) {
+                        var formattedAmount = $filter('currency')(value.amount, '$');
+                        value.displayName = value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + formattedAmount;
+                        $scope.ownAccounts.push( value );
+                        $scope.depositAccounts.push(value );
+                     } else if ( value.account_type === 'INV' && value.category === 'VISTA' ) {
+                        var formattedAmount = $filter('currency')(value.balance, '$');
+                        value.displayName = value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + formattedAmount;
+                        $scope.vistaAccounts.push(value);
+                     }
+                }
+            );
+         },
+         function(errorObject) {
+             var status = errorObject.status;
+             if (status === 406) {
+                 $scope.setServiceError('datos inválidos');
+             } else if(status === 500) {
+                 var message = errorObject.response.message;
+                 $scope.setServiceError(message);
+             } else {
+                 $scope.setServiceError('Error en el servicio, intente más tarde');
+             }
+         }
     );
 
     /**
