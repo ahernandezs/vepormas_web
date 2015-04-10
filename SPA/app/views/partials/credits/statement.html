@@ -3,21 +3,6 @@
         <a><i class="fa fa-file-pdf-o"></i>Estados de cuenta<span>{{activeAccountName}}</span></a>
     </div> 
     <hr>
-    <div class="filter">
-        <div class="inline">
-            <h4>Filtra tu b&uacute;squeda por a&ntilde;o o por mes</h4>
-            <p>
-                <select ng-model="year" ng-options="opt as opt.label for opt in years">
-                   <option value='' disabled>Año</option>
-                </select>            
-            </p>
-            <p>
-                <select ng-model="month" ng-options="opt as opt.label for opt in months">
-                   <option value='' disabled>Mes</option>
-                </select>            
-            </p>
-        </div>
-    </div>
     <div class="transactions">    
         <table class="details">
             <thead>

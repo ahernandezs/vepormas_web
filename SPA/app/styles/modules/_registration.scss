@@ -1,5 +1,6 @@
 .input-importe {
-	font-size:1.7em;
+	font-size: 1.2em;
+	height: 35px;
 }
 .input-cuenta {
     background:url(../images/ico-cuenta.png) no-repeat 95% center;
@@ -179,7 +180,7 @@
 			-webkit-appearance: none;
 			appearance: none;
 			height: 8px;
-			left: -52.5%;
+			left: calc(14% - 173px);
 			position: absolute;
 			top: 310px;
 			width: 380px;
@@ -409,4 +410,23 @@
 			font-size: 1.4em;
 		}
 	}
+}
+.progress-div{
+	width:8px;
+	height:335px;
+	position:absolute;
+	top:101px;
+	left:calc(14% + 12px);
+	background-color: #d2d2d2;
+	box-shadow: 0 1px 0px rgba(0,0,0,.14) inset;
+	overflow:hidden;
+}
+
+.progress-fill{
+	background-color:$green;
+	width:8px;
+	height:335px;
+	position:absolute;
+	top:-335px;
+	left:0;
 }

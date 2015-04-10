@@ -7,8 +7,11 @@
                 <div class="row">
                     <div class="steps">
                         <h3>Registro de Usuario {{selection}}</h3>
-                        <progress ng-show="roleID === 1" max="5" value="{{selection-1}}"></progress>
-                        <progress class="four-steps" ng-show="roleID === 0" max="4" value="{{selection-1}}"></progress>
+                        <div class="progress-div" id="progressBar">
+                            <div class="progress-fill" ng-style="currentProgress"></div>
+                        </div>
+                        <!--<progress ng-show="roleID === 1" max="5" value="{{selection-1}}"></progress>
+                        <progress class="four-steps" ng-show="roleID === 0" max="4" value="{{selection-1}}"></progress>-->
                         <ul>
                             <li ng-class="selection>=1?'active' : ''">Confirmaci&oacute;n</li>
                             <li ng-class="selection>=2 ? 'active' : ''">Registro</li>
