@@ -13,20 +13,29 @@
             </tr>   
         </thead>
         <tbody>
-            <tr ng-repeat="accounts in third_accounts | filter:busqueda" ng-click="selectBeneficiary(accounts);">
+            <tr>
+                <td colspan="4">Cuentas Propias</td>
+            </tr>
+            <tr ng-repeat="accounts in third_accounts_own | filter:busqueda" ng-click="selectBeneficiary(accounts);">
                 <td>{{accounts.name}}</td>
                 <td>{{accounts.maskedAccountNumber}}</td>
                 <td>{{accounts.same_bank}}</td>
                 <td>{{accounts.account_type}}</td>
             </tr>
+            <tr>
+                <td colspan="4">Cuentas de Terceros</td>
+            </tr>
+            <tr ng-repeat="accounts in third_accounts_others | filter:busqueda" ng-click="selectBeneficiary(accounts);">
+                <td>{{accounts.name}}</td>
+                <td>{{accounts.maskedAccountNumber}}</td>
+                <td>{{accounts.same_bank}}</td>
+                <td>{{accounts.account_type}}</td>
+            </tr>
+
         </tbody>
     </table>
 </div>
 <div ng-switch on="action">
-    <div ng-switch-when="1">
-        <div ng-include="'views/partials/admin/beneficiary-list.html'">
-        </div>
-    </div>
     <div ng-switch-when="2">
         <div ng-include="'views/partials/admin/beneficiary-delete.html'">
         </div>
