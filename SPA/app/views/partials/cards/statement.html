@@ -1,10 +1,12 @@
 <div>
     <div class="header statement" ng-click="back()">
-        <a><div class="back-arrow pull-left cursor-pointer"></div><i class="ico-estados"></i>Estados de cuenta<span>{{activeAccountName}}</span></a>
+        <a>
+            <div class="back-arrow pull-left cursor-pointer"></div>
+            <i class="ico-estados"></i>Estados de cuenta<span>{{activeAccountName}}</span></a>
     </div> 
     <hr class="statement-hr">
     <div class="transactions pull-left">    
-        <table class="details">
+        <table class="details statement-table">
             <thead>
                 <tr>
                     <th scope="col" colspan="3" class="text-left">{{year.label}}</th>
