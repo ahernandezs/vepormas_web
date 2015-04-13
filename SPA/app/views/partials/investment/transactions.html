@@ -10,6 +10,10 @@
     </div>
 </div>
 <div class="transactions pull-left">
+    <div class="searchMessage" ng-hide="searchMessage">
+        <span ng-click="searchMessage = !searchMessage">X</span>
+        Resultados de la b&uacute;squeda
+    </div>
     <table ng-table="tableParams" class="details">
      <thead>
         <tr>
