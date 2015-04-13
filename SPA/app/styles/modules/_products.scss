@@ -116,6 +116,7 @@ hr[ng-show="!showAccountHeader"]{
 	@include row;
 	&.statement a, &.statement a:hover, &.statement a:active{
 		width: 100%;
+		border:none !important;
 	}
 	//margin-bottom: 20px;
 
@@ -464,12 +465,23 @@ hr[ng-show="!showAccountHeader"]{
 	width:20px;
 	background-size:100%;
 	position: absolute;
-	left: -12px;
+	left: -6px;
 	bottom: 7px;
 }
 
 .statement-hr{
 	margin-bottom:0px;
+}
+
+.statement-table{
+	tr td:first-of-type{
+		text-align:left !important;
+		width: 80%;
+	}
+}
+
+.statement-link{
+	margin-top:15px !important;
 }
 
 .details{
@@ -499,3 +511,5 @@ hr[ng-show="!showAccountHeader"]{
 		}
 	}
 }
+
+
