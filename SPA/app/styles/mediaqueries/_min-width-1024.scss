@@ -95,7 +95,16 @@
 				p, span{font-size:1.3em}
 			}
 		}
-		.header > a, > a:hover{@include column(4);border-left:1px solid $blue;margin-top: 0 !important;}
+		.header{
+			&.statement{
+				> a, > a:hover{border:none;}
+			}
+			> a, > a:hover{
+				@include column(4);
+				border-left:1px solid $blue;
+				margin-top: 0 !important;
+			}
+		}
 	}
 
 	//TRANSF
