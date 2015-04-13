@@ -1,7 +1,8 @@
 
 <div>
     <div class="outter">
-        <div ng-include="'views/partials/layout/login-header.html'"></div>
+        <div ng-show="conSesion" ng-include="'views/partials/layout/main-header.html'"></div>
+        <div ng-hide="conSesion" ng-include="'views/partials/layout/login-header.html'"></div>
         <main>
             <div>
 				<h2 class="sucursales">Sucursales y M&oacute;dulos de atenci&oacute;n</h2>

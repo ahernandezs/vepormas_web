@@ -1,7 +1,8 @@
 'use strict';
 
-angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProvider', 'uiGmapGoogleMapApi', 'codeStatusErrors', function ($scope,  $rootScope, mapProvider, uiGmapGoogleMapApi, codeStatusErrors) {
+angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProvider', 'uiGmapGoogleMapApi', 'codeStatusErrors', 'userProvider', 'timerService', '$location', function ($scope,  $rootScope, mapProvider, uiGmapGoogleMapApi, codeStatusErrors, userProvider, timerService, $location) {
 
+	$scope.conSesion = $rootScope.session_token == null || $rootScope.session_token == undefined || $rootScope.session_token == '' ? false : true;
 	$scope.details = {};
 	$scope.estados = [	{'id':'df','name':'Distrito Federal','lat':19.3200988,'lon':-99.1521845,'zoom':10},
 						{'id':'ags','name':'Aguascalientes','lat':21.8890872,'lon':-102.2919885,'zoom':12},
@@ -177,6 +178,25 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 	      options: { draggable: false }
 	    };
 
-	}
+	};
+
+  /**
+    Function for logout application
+  **/
+  $scope.logout = function() {
+    userProvider.logout().then(
+      function(data) {
+        timerService.stop();
+        $rootScope.session_token = null;
+        $location.path('login');
+      },
+      function(data){
+        logoutService.displayErrorMessage();
+        timerService.stop();
+        $rootScope.session_token = null;
+        $location.path('login');
+      });
+  };
+
 
 }]);
