@@ -25,7 +25,8 @@
         <div class="dropdown">
             <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="investment.originAccount != '' ? 'selected' : ''">
                 <span>Cuenta origen</span>
-                <p>{{investment.originAccount == '' ? 'Cuenta origen' : investment.originAccount.name}}</p>
+                <p>{{investment.originAccount == '' ? 'Cuenta origen' : investment.originAccount.maskedAccountNumber}}<br>
+                    <span>{{investment.originAccount.detail}}</span></p>
             </div>
             <ul class="dropdown-menu" role="menu">
                 <li ng-repeat="item in ownAccounts | filter: { account_type: 'DEP' }" ng-click="investment.originAccount = item">{{item.displayName}}</li>

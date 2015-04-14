@@ -21,15 +21,25 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 	accountsProvider.getAccounts().then(
 	   function(data) {
            $rootScope.accounts.forEach(
-               function (value, index, ar) {
-					if ( value.account_type == 'DEP' || value.account_type == 'TDC' ) {
-						value.group = 'Cuentas Propias';
-						value.displayName = (value.account_type == 'DEP') ? value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + $filter('currency')(value.amount) :
-											'Consubanco - ' + value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
-						$scope.theAccounts.push( value );
+				function (value, index, ar) {
+
+					value.group = 'Cuentas Propias';
+					switch ( value.account_type ) {
+						case 'DEP':
+							value.displayName = value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + $filter('currency')(value.amount, '$');
+							value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.amount, '$');
+							$scope.theAccounts.push( value );
+							break;
+						case 'TDC':
+							value.displayName = 'Consubanco - ' + value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
+							value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
+							$scope.theAccounts.push( value );
+							break;
+						default:
+							break;
 					}
-               }
-           );
+				}
+			);
             if(paymentCreditCardService.accountId){
                 var result = $.grep($scope.theAccounts, function(e){ return e._account_id == paymentCreditCardService.accountId });
                 $scope.payment.destiny = result[0];
@@ -64,6 +74,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 					if ( value.account_type == 'TDC_T' || value.account_type == 'DEB_T' ) {
 	                    value.group = 'Cuentas Terceros';
 						value.displayName = value.bank_name + ' - ' + value.name + ' ' + value.maskedAccountNumber + ' - ' + value.shortName;
+						value.detail = value.bank_name + ' | ' + value.name;
 	                    $scope.theAccounts.push( value );
 					}
                 }
@@ -92,7 +103,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 	 * Evaluate if the destiny should be deleted according to the first account selected by the user.
 	 */
 	$scope.evaluateDestiny = function () {
-		if ( $scope.transfer.account._account_id === $scope.transfer.destiny._account_id )
+		if ( $scope.transfer.destiny !== undefined && ($scope.transfer.account._account_id === $scope.transfer.destiny._account_id) )
 			delete $scope.transfer.destiny;
 	};
 
