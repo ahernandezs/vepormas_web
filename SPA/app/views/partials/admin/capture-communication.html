@@ -5,11 +5,11 @@
         <form name="updateForm">
             <div class="fieldContainer" ng-class="data.phone.length > 0 ? 'selected' : ''">
             	<span>N&uacute;mero celular</span>
-            	<input type="text" numbers-only minlength="10" maxlength="10" class="input-mobile" ng-model="data.phone" placeholder="N&uacute;mero celular" ng-required="true">
+            	<input type="text" numbers-only ng-minlength="10" ng-maxlength="10"  minlength="10" maxlength="10" class="input-mobile" ng-model="$parent.updatedata.phone" placeholder="N&uacute;mero celular" ng-required="true">
             </div>
             <div class="fieldContainer" ng-class="data.e_mail.length > 0 ? 'selected' : ''">
             	<span>Correo electr&oacute;nico</span>
-            	<input type="email" alphanumeric class="input-mail" ng-model="data.e_mail" placeholder="Correo electr&oacute;nico" ng-required="true">
+            	<input type="email" alphanumeric class="input-mail" ng-model="$parent.updatedata.e_mail" placeholder="Correo electr&oacute;nico" ng-required="true">
             </div>
            <button ng-disabled="updateForm.$invalid" ng-click="validateEmail()">Continuar</button>
         </form>

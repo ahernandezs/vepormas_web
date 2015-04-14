@@ -10,6 +10,13 @@ angular.module('spaApp').controller('UserPreferencesAdministrationController', [
 	 */
 	var tokenState;
 
+	/**
+	 * used for updatedata
+	 */
+	$scope.updatedata = {};
+	
+	$scope.userAdministrationStep = 1;
+
 	initialize();
 
 	/**
@@ -34,6 +41,7 @@ angular.module('spaApp').controller('UserPreferencesAdministrationController', [
  	 * goto to the user-preference configuration page
  	 */
 	$scope.gotoUserPreferencesPage = function(){
+		if($scope.userAdministrationStep!=1) $scope.updatedata.otp = '';
 		$scope.userAdministrationStep = 1;
 	};
 
