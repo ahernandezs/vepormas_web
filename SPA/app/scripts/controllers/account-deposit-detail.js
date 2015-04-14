@@ -90,7 +90,12 @@
 	 */
 	$scope.search = function() {
 		if($scope.searchParams.date_start && $scope.searchParams.date_end) {
-			$scope.getTransactions($scope.searchParams.date_start, $scope.searchParams.date_end);
+			if ($scope.searchParams.date_start > $scope.searchParams.date_end) {
+            	$scope.setServiceError('La fecha inicial debe ser anterior a la fecha final');
+        	}
+        	else {
+            	$scope.getTransactions($scope.searchParams.date_start, $scope.searchParams.date_end);
+        	}
 		} else if($scope.searchParams.date_start === null && $scope.searchParams.date_end === null) {
 			params.date_end = null;
 			params.date_start = null;
