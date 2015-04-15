@@ -9,6 +9,8 @@ angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', '
     params.numPage = 0;
     params.size = 100;
 
+    $scope.searchMessage = 'false';
+
     $scope.searchParams = {};
 
     accountsProvider.getAccountDetail($stateParams.accountId).then(
@@ -47,6 +49,7 @@ angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', '
         accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
             function(data){
                 $scope.investmentTransactions = $rootScope.transactions;
+                $scope.searchMessage = 'true';
             },
             function(errorObject) {
                 var status = errorObject.status;
@@ -58,7 +61,14 @@ angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', '
                 }
             }
         );
-    }
+    };
+
+    /**
+     * Hide the search message.
+     */
+    $scope.clearMessage = function() {
+        $scope.searchMessage = 'false';
+    };
 
     $scope.search = function() {
       if($scope.searchParams.date_start && $scope.searchParams.date_end) {

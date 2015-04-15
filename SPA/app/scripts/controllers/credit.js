@@ -30,6 +30,7 @@ angular.module('spaApp').controller('creditCtrl', ['$scope', '$location', '$stat
 	$scope.year = $scope.years[0];
 
 	$scope.searchParams = {};
+	$scope.searchMessage = 'false';
 
 	accountsProvider.getAccountDetail($scope.selectedAcccountId).then(
 		function(data) {
@@ -67,6 +68,7 @@ angular.module('spaApp').controller('creditCtrl', ['$scope', '$location', '$stat
 		accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
 			function(data){
 				$scope.creditTransactions = $rootScope.transactions;
+				$scope.searchMessage = 'true';
 			},
 			function(errorObject) {
 				var status = errorObject.status;
@@ -78,7 +80,14 @@ angular.module('spaApp').controller('creditCtrl', ['$scope', '$location', '$stat
 	        	}
 			}
 		);
-	}
+	};
+
+	/**
+     * Hide the search message.
+     */
+    $scope.clearMessage = function() {
+        $scope.searchMessage = 'false';
+    };
 
   $scope.search = function() {
     if($scope.searchParams.date_start && $scope.searchParams.date_end) {
