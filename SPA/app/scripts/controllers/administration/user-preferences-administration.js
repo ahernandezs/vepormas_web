@@ -20,13 +20,13 @@ angular.module('spaApp').controller('UserPreferencesAdministrationController', [
 		$scope.userAdministrationStep = 1;
 		// initialize the diabling-token reasons
 		$scope.tokenDisableReasons = [
-			{ 'value' : 0 , 'label' : 'CANCELED'},
-			{ 'value' : 1 , 'label' : 'EXPIRED'},
-			{ 'value' : 2 , 'label' : 'LOST'},
-			{ 'value' : 3 , 'label' : 'RETURNED'},
-			{ 'value' : 4 , 'label' : 'STOLEN'},
-			{ 'value' : 5 , 'label' : 'TEMPORARILY_UNAVAILABLE'},
-			{ 'value' : 6 , 'label' : 'UNSPECIFIED'}
+			{ 'value' : 0 , 'label' : 'CANCELADO'},
+			{ 'value' : 1 , 'label' : 'VENCIDO'},
+			{ 'value' : 2 , 'label' : 'PERDIDO'},
+			{ 'value' : 3 , 'label' : 'REPOSICIÓN'},
+			{ 'value' : 4 , 'label' : 'ROBADO'},
+			{ 'value' : 5 , 'label' : 'TEMPORALMENTE_SUSPENDIDO'},
+			{ 'value' : 6 , 'label' : 'NO_ESPECIFICADO'}
 		];
 	}
 
