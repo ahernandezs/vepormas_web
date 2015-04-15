@@ -25,7 +25,8 @@
         <div class="dropdown">
           <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="investment.depositAccount != '' ? 'selected' : ''">
             <span>Cuenta origen</span>
-            <p>{{investment.depositAccount == '' ? 'Cuenta origen' : investment.depositAccount.name}}</p>
+            <p>{{investment.depositAccount == '' ? 'Cuenta origen' : investment.depositAccount.maskedAccountNumber}}<br>
+                <span>{{investment.depositAccount.detail}}</span></p>
           </div>
           <ul class="dropdown-menu" role="menu">
             <li ng-repeat="item in depositAccounts" ng-click="investment.depositAccount = item">{{item.displayName}}</li>

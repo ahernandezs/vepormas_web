@@ -52,16 +52,24 @@ angular.module('spaApp').controller('PortfolioCtrl', ['$rootScope', '$scope', '$
         function(data) {
             $rootScope.accounts.forEach(
                 function (value, index, ar) {
-                    if ( value.account_type == 'DEP' ) {
-                        var formattedAmount = $filter('currency')(value.amount, '$');
-                        value.displayName = value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + formattedAmount;
-                        $scope.ownAccounts.push( value );
-                        $scope.depositAccounts.push(value );
-                     } else if ( value.account_type === 'INV' && value.category === 'VISTA' ) {
-                        var formattedAmount = $filter('currency')(value.balance, '$');
-                        value.displayName = value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + formattedAmount;
-                        $scope.vistaAccounts.push(value);
-                     }
+
+                    switch ( value.account_type ) {
+                        case 'DEP':
+                            value.displayName = value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + $filter('currency')(value.amount, '$');
+                            value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.amount, '$');
+                            $scope.ownAccounts.push( value );
+                            $scope.depositAccounts.push(value );
+                            break;
+                        case 'INV':
+                            if ( value.category === 'VISTA' ) {
+                                value.displayName = value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + $filter('currency')(value.balance, '$');
+                                value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.balance, '$');
+                                $scope.vistaAccounts.push(value);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
                 }
             );
          },
