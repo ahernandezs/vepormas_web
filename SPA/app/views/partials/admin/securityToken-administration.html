@@ -28,7 +28,7 @@
             <span>OTP 2</span>
             <input type="text" numbers-only minlength="6" maxlength="6" class="input-mobile" ng-model="tokenSynchronizationData.otp2" placeholder="OTP 2" ng-required="true">
         </div>
-       <button ng-disabled="synchronizeSecurityTokenForm.$invalid" ng-click="synchronizeSecurityToken()">Synchronizar</button>
+       <button ng-disabled="synchronizeSecurityTokenForm.$invalid" ng-click="synchronizeSecurityToken()">Sincronizar</button>
     </form>
 </div>
 <div class="data" ng-show="isSecurityTokenEnabled()">
@@ -40,7 +40,7 @@
                 <option value="">raz&oacute;n</option>
             </select>
         </div>       
-       <button ng-disabled="disableSecurityTokenForm.$invalid" ng-click="disableSecurityToken()">Disable</button>
+       <button ng-disabled="disableSecurityTokenForm.$invalid" ng-click="disableSecurityToken()">Deshabilitar</button>
     </form>
 </div>
 
