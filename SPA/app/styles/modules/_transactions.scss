@@ -94,13 +94,13 @@ form[name="investmentForm"], form[name="transferForm"], form[name="paymentForm"]
             color:$dgray;
         }
         &.selected{
-            span{
+            > span{
                 display: block;
                 overflow: hidden;
             }
             p{
                 font-size: 1em;
-                float:left;
+                float:right;
                 width: 67.5%;
             }
         }
@@ -145,8 +145,9 @@ form[name="investmentForm"], form[name="transferForm"], form[name="paymentForm"]
     border: 1px solid $gray;
     @include border-radius(4px);
     background: white;
+    position: relative;
     &.selected{
-        span{
+        > span{
             display: block;
             overflow: hidden;
         }
@@ -154,14 +155,15 @@ form[name="investmentForm"], form[name="transferForm"], form[name="paymentForm"]
             width: 67.5%;
         }
     }
-    span{
+    > span{
         display: none;
         text-align: center;
         width:32%;
+        position: absolute;
         background:#4da3d4;
         color:white;
-        padding:13px 0;
-        font-size:0.8em;
+        height: 100%;
+        font-size:1em;
         float:left;
     }
     select {
