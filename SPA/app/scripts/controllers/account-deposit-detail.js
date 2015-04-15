@@ -30,6 +30,7 @@
 	$scope.year = $scope.years[0];
 
 	$scope.searchParams = {};
+    $scope.searchMessage = 'false';
 
   	//initialize the account-detail
 	accountsProvider.getAccountDetail($scope.selectedAcccountId).then(
@@ -72,6 +73,7 @@
 		accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
 			function(data){
 				$scope.accountTransactions = $rootScope.transactions;
+                $scope.searchMessage = 'true';
 			},
 			function(errorObject) {
 				var status = errorObject.status;
@@ -83,7 +85,14 @@
 	        	}
 			}
 		);
-	}
+	};
+
+    /**
+     * Hide the search message.
+     */
+    $scope.clearMessage = function() {
+        $scope.searchMessage = 'false';
+    };
 
 	/**
 	 * search transactions by date

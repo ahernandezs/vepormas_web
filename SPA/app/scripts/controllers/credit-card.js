@@ -30,6 +30,7 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 		{ label: 'Diciembre', value: 12 }
 	];
 	$scope.year = $scope.years[0];
+	$scope.searchMessage = 'false';
 
 	accountsProvider.getAccountDetail($stateParams.accountId).then(
 		function(data) {
@@ -78,6 +79,20 @@ angular.module('spaApp').controller('creditCardCtrl', ['$scope', '$location', '$
 			}
 		);
 	};
+
+	/**
+     * Display the search message.
+     */
+    $scope.displayMessage = function() {
+        $scope.searchMessage = 'true';
+    };
+
+	/**
+     * Hide the search message.
+     */
+    $scope.clearMessage = function() {
+        $scope.searchMessage = 'false';
+    };
 
 	/**
 	 * build the url for account-state-file download
