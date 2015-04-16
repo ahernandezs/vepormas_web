@@ -21,31 +21,37 @@ h2.sucursales{
 }
 .busqueda{
 	position: fixed;
-	top: 50%;
-	left: 50%;
-	width: 50%;
-	margin-left: -25%;
+	width: 100%;
 	z-index:100;
 }
 .busqueda-detalle{
-	background:$blue;
+	background:#fff;
 	overflow:hidden;
 	padding: 15px;
 	@include border-radius(4px 4px 0 0);
 	> button{
-		width: 19%;
+		width: 10%;
 		float:left;
 		margin-right: 1%;
 		padding:10px 0;
+		font-weight:normal;
+	}
+
+	p{
+		float:left;
+		width:15%;
+		text-align:center;
+		color:#FC651B,
 	}
 	.mapinputs{
-		width: 69%;
+		width: 45%;
 		background:white;
 		overflow: hidden;
 		position: relative;
 		display: block;
 		float:left;
 		margin-right: 1%;
+		border: 1px solid lightgray;
 		@include border-radius(4px);
 		input{
 			border:none;
@@ -85,15 +91,18 @@ h2.sucursales{
 		    }
 		}
 		+ span{
-			display:block;
-			float:left;
+			display: block;
+			float: left;
 			width: 10%;
 			height: 38px;
 			cursor: pointer;
-			background:url(../images/ico-lupa-w.png) no-repeat center center, $orange;
-			background-size:25px;
-			@include border-radius(3px);
-
+			background: url(../images/ico-lupa-w.png) no-repeat, #FC651B;
+			background-position: 5px;
+			background-size: 25px;
+			border-radius: 3px;
+			color: white;
+			text-align: center;
+			padding-top: 10px;
 		}
 	}
 }
@@ -180,29 +189,30 @@ h2.sucursales{
 	overflow:hidden;
 	@include border-radius(0 0 4px 4px);
 	div{
+		border-radius:3px;
 		cursor: pointer;
 		color: $blue;
 		text-align: center;
 		float:left;
-		width: 50%;
-		padding:15px;
+		width: 40px;
+		padding:19px;
+		margin: 0 5px;
 		@include anim_transicion_ease(0.3s);
 		&:first-child{
-			border-right:1px solid $gray;
-			background:url(../images/ico-sucursales.png) no-repeat 20% center;
+			background:url(../images/ico-sucursales.png) no-repeat center center;
 			background-size:30px;
 			&:hover, &.selected{
 				color:white;
-				background:url(../images/ico-sucursales-b.png) no-repeat 20% center, $orange;
+				background:url(../images/ico-sucursales-b.png) no-repeat center center, $orange;
 				background-size:30px;
 			}
 		}
 		&:last-child{
-			background:url(../images/ico-modulos.png) no-repeat 10% center;
+			background:url(../images/ico-modulos.png) no-repeat center center;
 			background-size:30px;
 			&:hover, &.selected{
 				color:white;
-				background:url(../images/ico-modulos-b.png) no-repeat 10% center, $orange;
+				background:url(../images/ico-modulos-b.png) no-repeat center center, $orange;
 				background-size:30px;
 			}
 		}
