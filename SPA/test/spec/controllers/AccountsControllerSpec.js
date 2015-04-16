@@ -28,18 +28,12 @@ describe('AccountsCtrl', function() {
     });
   }));
 
-  fdescribe('when connecting to dashboard', function() {      
+  describe('when connecting to dashboard', function() {      
     it("should get the user's accounts", function() {
       http.flush();
       expect(scope.accounts.length).toBe(7);
     });
   });
-
-  /*beforeEach(inject(function($rootScope) {
-    module('spaApp','mockedAccounts');
-    scope = $rootScope.$new();
-    $rootScope.session_token="notEmpty";
-  }));*/
 
   //to prevent the confirmation message when closing the windows
   afterEach(inject(function($rootScope) {
