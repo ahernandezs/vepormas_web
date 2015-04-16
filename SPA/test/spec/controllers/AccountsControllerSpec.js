@@ -1,28 +1,30 @@
 'use strict';
 
 describe('AccountsCtrl', function() {
-  var accountsCtrl, scope, http, accounts;
+  
+  var accountsCtrl, dashboardCtrl, scope, http, accounts;
 
   beforeEach(module('spaApp','mockedAccounts'));
 
   beforeEach(inject(function($controller, $rootScope, $httpBackend, accountsJSON) {
     scope = $rootScope.$new();
     http = $httpBackend;
-    console.log("accounts from mockups: "+accountsJSON);
+    $rootScope.session_token="notEmpty";
     //the getAccounts http response mockup
-   http.when('GET', scope.restAPIBaseUrl + '/accounts').respond(
+    http.when('GET', scope.restAPIBaseUrl + '/accounts').respond(
       200,
       accountsJSON,
       {
-        "X-AUTH-TOKEN" : "1234567890ABCDEF"
+        "X-AUTH-TOKEN" : $rootScope.session_token
       }
     );
-    //define the parent's scope functions
-    scope.selectNavigatOption = function(selectedOption){};
+    //initialize the parent's controller
+    dashboardCtrl = $controller('DashBoardCtrl', {
+      $scope: scope
+    });
     //initialize the controller
     accountsCtrl = $controller('AccountsCtrl', {
-      $scope: scope,
-      $rootScope : scope
+      $scope: scope
     });
   }));
 
@@ -32,4 +34,16 @@ describe('AccountsCtrl', function() {
       expect(scope.accounts.length).toBe(7);
     });
   });
+
+  /*beforeEach(inject(function($rootScope) {
+    module('spaApp','mockedAccounts');
+    scope = $rootScope.$new();
+    $rootScope.session_token="notEmpty";
+  }));*/
+
+  //to prevent the confirmation message when closing the windows
+  afterEach(inject(function($rootScope) {
+    $rootScope.session_token=null;
+  }));
+   
 });
