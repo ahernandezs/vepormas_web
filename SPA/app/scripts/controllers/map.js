@@ -180,6 +180,10 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 
 	};
 
+	$scope.comoLlegar = function(branch){
+		window.open('https://www.google.com.mx/maps/dir//'+branch.description.address.street.replace('#','No.')+'%20'+branch.description.address.street2+'%20'+branch.description.address.city);
+	}
+
   /**
     Function for logout application
   **/
