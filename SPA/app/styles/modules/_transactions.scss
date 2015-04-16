@@ -255,6 +255,25 @@ table input[type="submit"]{font-weight: bold;}
                 background-color: $orange;
             }
         }
+
+        .progress-div{
+            float:right;
+            width:45%;
+            margin: -15px 0 0 0;
+            height:10px;
+            overflow: hidden;
+            @include border-radius(10px);
+            background-color: #d2d2d2;
+            box-shadow: 0 1px 0px rgba(0,0,0,.14) inset;
+            position:relative;
+        }
+        .progress-fill{
+            background-color:#FC651B;
+            width:33%;
+            height:10px;
+            @include border-radius(10px);
+            position:absolute;
+        }
     }
     .input-confirm-token{
         color:#ffa103;

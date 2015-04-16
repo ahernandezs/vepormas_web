@@ -47,6 +47,7 @@
         }
     }
 
+
     $scope.selectAccount = function(accountSelected) {
 
     var accountId = accountSelected._account_id;
@@ -58,6 +59,11 @@
     $scope.activeAccountName = accountSelected.name + ' ' + accountSelected.maskedAccountNumber;
     $scope.investmetCategory = accountSelected.category;
     $scope.statementStatus.showStatement = false;
+
+    $scope.returnData.prevAccount = accountSelected;
+    $scope.returnData.prevId = accountSelected._account_id;
+    $scope.returnData.prevType = accountSelected.account_type
+
     
     switch (type) {
         case 'TDC':
@@ -84,5 +90,43 @@
             break;
     }
   };
+
+    $scope.returnData = {};
+
+    $scope.closeStatement = function() {
+        console.log($scope.returnData)
+
+        $scope.activeClass = $scope.returnData.prevId;
+        $scope.selectedAcccountId = $scope.returnData.prevId;
+        $scope.selectedAccountType = $scope.returnData.prevtType;
+        $scope.activeAccountName = $scope.returnData.prevAccount.name + ' ' + $scope.returnData.prevAccount.maskedAccountNumber;
+        $scope.investmetCategory = $scope.returnData.prevAccount.category;
+        $scope.statementStatus.showStatement = false;
+
+        switch ($scope.returnData.prevType) {
+            case 'TDC':
+                console.log('Tarjeta de Credito');
+                $location.path('accounts/' + $scope.returnData.prevId + '/tdc'); //+accountId);
+                console.log($location.path());
+                break;
+            case 'INV':
+                console.log('Inversiones');
+                $location.path('/accounts/' + $scope.returnData.prevId + '/investment');
+                console.log($location.path());
+                break;
+            case 'DEP':
+                console.log('Cuentas');
+                $location.path('/accounts/' + $scope.returnData.prevId + '/deposit');
+                console.log($location.path());
+                break;
+            case 'CXN':
+                console.log('Creditos');
+                $location.path('/accounts/' + $scope.returnData.prevId + '/credit');
+                console.log($location.path());
+                break;
+            default:
+                break;
+        }
+    }
 
 }]);

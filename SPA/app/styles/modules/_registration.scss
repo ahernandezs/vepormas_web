@@ -200,6 +200,25 @@
 				background-color: $green;
 			}
 		}
+		.progress-div{
+			width:8px;
+			height:275px;
+			position:absolute;
+			top:95px;
+			left:calc(14% + 12px);
+			background-color: #d2d2d2;
+			box-shadow: 0 1px 0px rgba(0,0,0,.14) inset;
+			overflow:hidden;
+		}
+
+		.progress-fill{
+			background-color:$green;
+			width:8px;
+			height:275px;
+			position:absolute;
+			top:-275px;
+			left:0;
+		}
 	}
 	.record {
 		@include column(9.2);
@@ -412,22 +431,4 @@
 		}
 	}
 }
-.progress-div{
-	width:8px;
-	height:275px;
-	position:absolute;
-	top:95px;
-	left:calc(14% + 12px);
-	background-color: #d2d2d2;
-	box-shadow: 0 1px 0px rgba(0,0,0,.14) inset;
-	overflow:hidden;
-}
 
-.progress-fill{
-	background-color:$green;
-	width:8px;
-	height:275px;
-	position:absolute;
-	top:-275px;
-	left:0;
-}

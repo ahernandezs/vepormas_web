@@ -120,6 +120,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             $scope.transfer = {};
             }
         }
+        $scope.updateProgress(step);
     };
 
     /**
@@ -144,6 +145,16 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             );
     };
 
+    /*To fill progress bar*/
+
+    $scope.updateProgress = function(nextStep){
+        $scope.currentStep = nextStep;
+        var wrapperWidth = document.getElementById("progressWrapper").offsetWidth
+        var progressWidth = ((wrapperWidth/3)*nextStep*100)/wrapperWidth
+        $scope.stepStyle = {width:progressWidth+"%"}
+        console.log($scope.stepStyle)
+    }
+
 	/**
 	 * Assign the type of payment selected by the user.
 	 */
@@ -154,8 +165,8 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 			$scope.payment.amount = $scope.transferAccountDetail.no_interes_payment_due;
 		else if ( $scope.payment.type && $scope.payment.type === 'TOTAL_PAYMENT' )
 			$scope.payment.amount = $scope.payment.other;
-
 		$scope.selection++;
+        $scope.updateProgress(2);
 	};
 
     /**
@@ -180,6 +191,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             function(data) {
                 $scope.transferId = data._transaction_id;
                 $scope.selection = 3;
+                $scope.updateProgress(3);
             },
             function(data) {
                 var status = data.status;
@@ -205,6 +217,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                 console.log(data);
                 $scope.transferId = data._transaction_id;
                 $scope.selection = 3;
+                $scope.updateProgress(3);
             },
             function(data) {
                 console.log(data);
@@ -236,6 +249,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                 console.log(data);
                 $scope.transferId = data.tracking_key;
                 $scope.selection = 3;
+                $scope.updateProgress(3);
             },
             function(data) {
                 console.log(data);
@@ -265,6 +279,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         } else {
             $scope.setServiceError('Error de tipo de tarjeta');
         }
+
     };
 
     /**
@@ -277,6 +292,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             function(data) {
 				$scope.paymentId = data._transaction_id;
                 $scope.selection = 3;
+                $scope.updateProgress(3);
             },
             function(errorObject) {
                 var status = errorObject.status;
@@ -303,6 +319,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             function(data) {
 				$scope.paymentId = data._transaction_id;
                 $scope.selection = 3;
+                $scope.updateProgress(3);
             },
             function(errorObject) {
                 var status = errorObject.status;

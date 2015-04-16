@@ -296,6 +296,14 @@
 			        width: 230px!important;
 				}
 			}
+			.progress-div{
+				height:277px;
+				top:92px
+			}
+			.progress-fill{
+				height:277px;
+				top:-277px;
+			}
 		}
 		.user-data{
 			position: relative;
@@ -334,12 +342,15 @@
 			}
 		}
 	}
-	.progress-div{
-		height:277px;
-		top:92px
-	}
-	.progress-fill{
-		height:277px;
-		top:-277px;
+	
+	//TRANSFER
+	.content{
+		.header{
+			.progress-div{
+				width:70%;
+				float:left;
+				margin-top:10px;
+			}
+		}
 	}
 }
