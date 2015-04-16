@@ -104,14 +104,14 @@
 	.busqueda{
 		width: 100%
 	}
-	.busqueda-detalle p, .busqueda-detalle button, .busqueda-detalle span{
+	.busqueda-detalle p, .busqueda-detalle button{
 		font-size:0.85em;
 	}
 	.busqueda-detalle span{
-		padding-top:11px;
-		background-size:19px;
+		font-size:0.85em;
+		padding-top:11px !important;
+		background-size:19px !important;
 	}
-
 	.map-footer{
 		ul{
 			width:100%;
