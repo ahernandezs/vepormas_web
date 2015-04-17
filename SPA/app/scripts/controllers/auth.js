@@ -99,7 +99,6 @@ angular.module('spaApp')
   **/
   $scope.login = function(){
     resetError();
-    console.log("usuario, password, selectedImage", $scope.username, $scope.password, $scope.selectedImage);
     if(!$scope.loginData.password.trim() || !$scope.loginData.selectedImage) {
       setError('Por favor, seleccione su imagen e introduzca su contraseña');
     }else{
