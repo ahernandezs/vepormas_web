@@ -2,7 +2,7 @@
 
 describe('AccountsCtrl', function() {
   
-  var accountsCtrl, dashboardCtrl, scope, http, accounts;
+  var accountsCtrl, dashboardCtrl, mainCtrl, scope, http, accounts;
 
   beforeEach(module('spaApp','mockedAccounts'));
 
@@ -10,15 +10,11 @@ describe('AccountsCtrl', function() {
     scope = $rootScope.$new();
     http = $httpBackend;
     $rootScope.session_token="notEmpty";
-    //the getAccounts http response mockup
-    http.when('GET', scope.restAPIBaseUrl + '/accounts').respond(
-      200,
-      accountsJSON,
-      {
-        "X-AUTH-TOKEN" : $rootScope.session_token
-      }
-    );
-    //initialize the parent's controller
+    accounts = accountsJSON;
+    //initialize the parent's controllers
+    mainCtrl = $controller('MainCtrl', {
+      $scope: scope
+    });
     dashboardCtrl = $controller('DashBoardCtrl', {
       $scope: scope
     });
@@ -28,10 +24,39 @@ describe('AccountsCtrl', function() {
     });
   }));
 
-  describe('when connecting to dashboard', function() {      
+  describe('when successfully loading accounts', function() {
+
     it("should get the user's accounts", function() {
+      http.when('GET', scope.restAPIBaseUrl + '/accounts')
+      .respond(
+        200,
+        accounts,
+        {
+          "X-AUTH-TOKEN" : scope.session_token
+        }
+      );
       http.flush();
       expect(scope.accounts.length).toBe(7);
+      expect(scope.showTDCAccount).toBe(true);
+      expect(scope.showInvestmentAccount).toBe(true);
+      expect(scope.showSavingAccount).toBe(true);
+      expect(scope.showCreditAccount).toBe(true);
+    });
+  });
+
+  describe('when fails to load accounts', function() {
+    it("should display a error-message", function() {
+      //override the mock message
+      http.when('GET', scope.restAPIBaseUrl + '/accounts').respond(
+        503,
+        {"code":null, "message" : "technical error"},
+        {
+          "X-AUTH-TOKEN" : scope.session_token
+        }
+      );
+      http.flush();
+      expect(scope.hasServiceError).toBe(true);
+      
     });
   });
 
