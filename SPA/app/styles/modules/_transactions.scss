@@ -123,16 +123,19 @@ form[name="investmentForm"], form[name="transferForm"], form[name="paymentForm"]
                 font-weight: bold;
                 color:$dgray;
             }
-            &:last-child:hover{
-                cursor: pointer;
-                span{
-                    color:white
+            a{
+                color:$blue !important;
+                text-decoration: underline;
+                background: none;
+                padding:0;
+                &:hover{
+                    color:white !important;
+                    background: none;
+                    padding:0;
+                    margin: 0;
                 }
             }
-            span{
-                color:$blue;
-                text-decoration: underline;
-            }
+
         }
     }
 }
