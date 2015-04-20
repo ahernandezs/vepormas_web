@@ -75,7 +75,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
     var password = $scope.registerData.password;
     if(password) {
       var pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/g;
-      if(!pattern.test(password)) {
+      if(pattern.test(password)) {
         setError("La contraseña deberá tener carácteres alfanuméricos, \
             al menos una mayúscula y una minúscula, y con un caracter numérico");
         return;
