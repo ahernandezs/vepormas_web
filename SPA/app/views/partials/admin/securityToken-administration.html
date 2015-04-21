@@ -3,7 +3,7 @@
     <form name="activateSecurityTokenForm">
         <div class="fieldContainer" ng-class="tokenActivationData.tokenId.length > 0 ? 'selected' : ''">
             <span>Identificador de token</span>
-            <input type="text" maxlength="12" class="input-mobile" ng-model="tokenActivationData.tokenId" placeholder="Identificador de token" ng-required="true">
+            <input type="text" maxlength="12" minlength="10" class="input-mobile" ng-model="tokenActivationData.tokenId" placeholder="Identificador de token" ng-required="true">
         </div>
         <div class="fieldContainer" ng-class="tokenActivationData.otp1.length > 0 ? 'selected' : ''">
         	<span>OTP 1</span>
