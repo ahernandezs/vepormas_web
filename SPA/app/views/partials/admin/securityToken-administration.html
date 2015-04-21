@@ -3,7 +3,7 @@
     <form name="activateSecurityTokenForm">
         <div class="fieldContainer" ng-class="tokenActivationData.tokenId.length > 0 ? 'selected' : ''">
             <span>Identificador de token</span>
-            <input type="text" maxlength="10" class="input-mobile" ng-model="tokenActivationData.tokenId" placeholder="Identificador de token" ng-required="true">
+            <input type="text" maxlength="12" class="input-mobile" ng-model="tokenActivationData.tokenId" placeholder="Identificador de token" ng-required="true">
         </div>
         <div class="fieldContainer" ng-class="tokenActivationData.otp1.length > 0 ? 'selected' : ''">
         	<span>OTP 1</span>
@@ -39,7 +39,7 @@
             <select ng-model="tokenDisableData.reason" ng-options="item as item.label for item in tokenDisableReasons" ng-required="true">
                 <option value="">raz&oacute;n</option>
             </select>
-        </div>       
+        </div>
        <button ng-disabled="disableSecurityTokenForm.$invalid" ng-click="disableSecurityToken()">Deshabilitar</button>
     </form>
 </div>
@@ -50,7 +50,7 @@
 
 <div class="data" ng-show="isSecurityTokenDisabled()">
     <h3>Su token est&aecute; desactivado</h3>
-    <form name="enableSecurityTokenForm">  
+    <form name="enableSecurityTokenForm">
        <button ng-click="enableSecurityToken()">Enable</button>
     </form>
 </div>
