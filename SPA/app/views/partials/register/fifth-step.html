@@ -7,7 +7,7 @@
             <form class="token-form" name="tokenForm">
                 <label class="fieldContainer" ng-class="tokenForm.token.$viewValue.length > 0 ? 'selected' : ''">
                      <span>No. de Serie del Token</span>
-                    <input type="text" name="token" ng-model="registerData.token" placeholder="No. de Serie del Token" required>
+                    <input type="text" name="token" maxlength="12" minlength="10" ng-model="registerData.token" placeholder="No. de Serie del Token" required>
                 </label>
                 <label class="fieldContainer" ng-class="tokenForm.otp1.$viewValue.length > 0 ? 'selected' : ''">
                      <span>OPT 1</span>
