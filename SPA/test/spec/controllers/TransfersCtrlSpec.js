@@ -17,7 +17,7 @@ describe('Unit: TransfersCtrl', function() {
         });
     }));
 
-    fdescribe("Handling accounts for transfers and payments - ", function() {
+    describe('Testing the payment methods - ', function() {
         var http;
 
         beforeEach( inject( function($httpBackend, accountsJSON, thirdAccountsJSON, accountDetailJSON) {
@@ -80,21 +80,28 @@ describe('Unit: TransfersCtrl', function() {
             expect( scope.transferAccountDetail.credit_card ).not.toBe(null);
         });
 
-        it('Setting the scope.payment.type', function() {
+        it('Testing the scope.payment.type for its possible values', function() {
+            // Default value: WIHTOUT_INTEREST_PAYMENT
+            expect( scope.assignValue ).toThrowError(TypeError, "Cannot read property 'offsetWidth' of null");
+            // Now MIN_PAYMENT
+            scope.payment.type = 'MIN_PAYMENT';
+            expect( scope.assignValue ).toThrowError(TypeError, "Cannot read property 'offsetWidth' of null");
+            // Finally TOTAL_PAYMENT
+            scope.payment.type = 'TOTAL_PAYMENT';
             expect( scope.assignValue ).toThrowError(TypeError, "Cannot read property 'offsetWidth' of null");
         });
 
-        it('Send the actual transfer', function() {
+        it('Send the actual payment for TDC', function() {
             expect( scope.sendPayment ).not.toThrow();
 
             var jsonBody = JSON.stringify({
-                'account_id_destination':scope.payment.account._account_id,
+                'account_id_destination':scope.payment.destiny._account_id,
                 'amount':scope.payment.amount,
                 'description':'unit test',
                 'completion_date':null
             });
             // service that actually sends the payment
-            http.when('POST', scope.restAPIBaseUrl + '/accounts/' + scope.payment.account_account_id + '/transactions')
+            http.when('POST', scope.restAPIBaseUrl + '/accounts/' + scope.payment.account._account_id + '/transactions')
                 .respond(
                     code = 200,
                     {
@@ -102,6 +109,46 @@ describe('Unit: TransfersCtrl', function() {
                     }
                 );
             expect( code ).toEqual( 200 );
+        });
+
+        it('Send the actual payment but this time for TDC_T', function() {
+            scope.payment.destiny = thirdAccounts.third_accounts[0];
+            expect( scope.sendPayment ).not.toThrow();
+
+            var jsonBody = JSON.stringify({
+                'account_id_destination':scope.payment.destiny._account_id,
+                'amount':100,
+                'description':'unit test',
+                'completion_date':'2015-04-22T23:47:28.074Z',
+                'otp':'123456'
+            });
+            // service that actually sends the payment
+            http.when('POST', scope.restAPIBaseUrl + '/accounts/' + scope.payment.account._account_id + '/transactions')
+                .respond(
+                    code = 200,
+                    {
+                        "X-AUTH-TOKEN" : scope.session_token
+                    }
+                );
+            expect( code ).toEqual( 200 );
+        });
+    });
+
+    fdescribe('Testing the transfers methods - ', function() {
+        var http;
+
+        beforeEach( inject( function($httpBackend, accountsJSON, thirdAccountsJSON) {
+            http = $httpBackend;
+
+            accounts = accountsJSON;
+            thirdAccounts = thirdAccountsJSON;
+            // Actual objects for transfers
+            scope.payment.account = accounts.accounts[4];
+            scope.payment.destiny = accounts.accounts[5];
+        }));
+
+        it('', function() {
+
         });
     });
 

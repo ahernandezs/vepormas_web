@@ -145,8 +145,9 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
             );
     };
 
-    /*To fill progress bar*/
-
+    /**
+	 * To fill progress bar
+	 */
     $scope.updateProgress = function(nextStep){
         $scope.currentStep = nextStep;
         var wrapperWidth = document.getElementById("progressWrapper").offsetWidth
@@ -159,6 +160,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 	 * Assign the type of payment selected by the user.
 	 */
 	$scope.assignValue = function () {
+		console.log( 'Setting payment type to: ' + $scope.payment.type );
 		if ( $scope.payment.type && $scope.payment.type === 'MIN_PAYMENT' )
 			$scope.payment.amount = $scope.transferAccountDetail.minimum_payment;
 		else if ( $scope.payment.type && $scope.payment.type === 'WIHTOUT_INTEREST_PAYMENT' )
