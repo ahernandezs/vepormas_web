@@ -34,7 +34,7 @@ angular.module('mockedThirdAccounts', [])
                 'name':'JUAN PEREZ PEREZ',
                 'e_mail':'pruebas.cascaron@tmp.com.mx',
                 'shortName':'JUAN PEREZ',
-                'same_bank':false,
+                'same_bank':true,
                 'account_type':'DEB_T'
             },
             {

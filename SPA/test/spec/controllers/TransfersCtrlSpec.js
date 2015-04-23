@@ -5,7 +5,7 @@ describe('Unit: TransfersCtrl', function() {
     beforeEach(module('spaApp', 'mockedAccounts', 'mockedThirdAccounts', 'mockedAccountDetail'));
 
     // We're going to inject the $controller and the $rootScope
-    var ctrl, scope, accounts, thirdAccounts, code;
+    var ctrl, scope, accounts, thirdAccounts, code, _transaction_id;
 
     beforeEach( inject( function($controller, $rootScope) {
         // We create the scope
@@ -134,7 +134,7 @@ describe('Unit: TransfersCtrl', function() {
         });
     });
 
-    fdescribe('Testing the transfers methods - ', function() {
+    describe('Testing the transfers methods - ', function() {
         var http;
 
         beforeEach( inject( function($httpBackend, accountsJSON, thirdAccountsJSON) {
@@ -143,12 +143,74 @@ describe('Unit: TransfersCtrl', function() {
             accounts = accountsJSON;
             thirdAccounts = thirdAccountsJSON;
             // Actual objects for transfers
-            scope.payment.account = accounts.accounts[4];
-            scope.payment.destiny = accounts.accounts[5];
+            scope.transfer.account = accounts.accounts[4];
+            scope.transfer.destiny = accounts.accounts[5];
         }));
 
-        it('', function() {
+        it('Send the actual transfer to DEP', function() {
+            scope.sendTransfer();
+            var jsonBody = JSON.stringify({
+                'account_id_destination':scope.transfer.destiny._account_id,
+                'amount':100,
+                'description':'unit test'
+            });
 
+            http.when('POST', scope.restAPIBaseUrl + '/accounts/' + scope.transfer.account._account_id + '/transactions')
+                .respond(
+                    200,
+                    _transaction_id = 000293871802062015113416,
+                    {
+                        "X-AUTH-TOKEN" : scope.session_token
+                    }
+                );
+            console.log('_transaction_id: ' + _transaction_id);
+            expect( _transaction_id ).not.toBe(null);
+        });
+
+        it('Send the actual transfer to DEB_T and same_bank : true', function() {
+            scope.transfer.destiny = thirdAccounts.third_accounts[2];
+            scope.sendTransfer();
+
+            var jsonBody = JSON.stringify({
+                'account_id_destination':scope.transfer.destiny,
+                'amount':100,
+                'description':'unit test',
+                'otp':1223456
+            });
+            http.when('POST', scope.restAPIBaseUrl + '/accounts/' + scope.transfer.account._account_id + '/transactions')
+                .respond(
+                    200,
+                    _transaction_id = 000293871802062015113416,
+                    {
+                        "X-AUTH-TOKEN" : scope.session_token
+                    }
+                );
+            console.log('_transaction_id: ' + _transaction_id);
+            expect( _transaction_id ).not.toBe(null);
+        });
+
+        it('Send the actual transfer to DEB_T and same_bank : false', function() {
+            scope.transfer.destiny = thirdAccounts.third_accounts[3];
+            scope.sendTransfer();
+
+            var jsonBody = JSON.stringify({
+                'account_id_destination':scope.transfer.destiny._account_id,
+                'amount':100,
+                'description':'unit test',
+                'otp':123456,
+                'reference_number':null,
+                'completion_date':'tomorrow'
+            });
+            http.when('POST', scope.restAPIBaseUrl + '/accounts/' + scope.transfer.account._account_id + '/transactions')
+                .respond(
+                    200,
+                    _transaction_id = 000293871802062015113416,
+                    {
+                        "X-AUTH-TOKEN" : scope.session_token
+                    }
+                );
+            console.log('_transaction_id: ' + _transaction_id);
+            expect( _transaction_id ).not.toBe(null);
         });
     });
 

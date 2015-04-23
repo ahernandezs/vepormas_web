@@ -25,7 +25,7 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
 
 		transferThirdAccountSameBank: function (sourceAccount, destinationAccount, amount, description, otp) {
       		var deferred = $q.defer();
-      		console.log('transfer to third-account');
+      		console.log('transfer to third-account same bank');
         	transferService.transferThirdAccountSameBank(sourceAccount, destinationAccount, amount, description, otp).success(
     			function(data, status, headers) {
       				deferred.resolve(data);
@@ -41,7 +41,7 @@ angular.module('spaApp').factory('transferProvider', ['$rootScope', 'transferSer
 
     	transferThirdAccountOtherBank: function (sourceAccount, destinationAccount, amount, description, otp, referenceNumber, completionDate) {
       		var deferred = $q.defer();
-      		console.log('transfer to third-account');
+      		console.log('transfer to third-account other bank');
         	transferService.transferThirdAccountOtherBank(sourceAccount, destinationAccount, amount, description, otp, referenceNumber, completionDate).success(
     			function(data, status, headers) {
       				deferred.resolve(data);
