@@ -34,7 +34,7 @@ describe('Unit: TransfersCtrl', function() {
             scope.payment.amount = scope.payment.destiny.no_interes_payment_due;
         }));
 
-        it('It should get own and third accounts ', function() {
+        it('Should get own and third accounts ', function() {
             http.when('GET', scope.restAPIBaseUrl + '/accounts')
                 .respond(
                     200,
@@ -60,13 +60,13 @@ describe('Unit: TransfersCtrl', function() {
             expect( scope.theAccounts.length ).toBeGreaterThan(0);
         });
 
-        it('It should set a TDC to make a payment', function() {
+        it('Should set a TDC to make a payment', function() {
             console.log('Destiny');
             console.log( scope.payment.destiny );
             expect( scope.payment.destiny.account_type ).toMatch('TDC');
         });
 
-        it('It should get the detail for the previously selected TDC', function() {
+        it('Should get the detail for the previously selected TDC', function() {
             http.when('GET', scope.restAPIBaseUrl + '/accounts' + scope.payment.destiny._account_id)
                 .respond(
                     200,
@@ -80,7 +80,7 @@ describe('Unit: TransfersCtrl', function() {
             expect( scope.transferAccountDetail.credit_card ).not.toBe(null);
         });
 
-        it('It should test the scope.payment.type for its possible values', function() {
+        it('Should test the scope.payment.type for its possible values', function() {
             // Default value: WIHTOUT_INTEREST_PAYMENT
             expect( scope.assignValue ).toThrowError(TypeError, "Cannot read property 'offsetWidth' of null");
             // Now MIN_PAYMENT
@@ -91,7 +91,7 @@ describe('Unit: TransfersCtrl', function() {
             expect( scope.assignValue ).toThrowError(TypeError, "Cannot read property 'offsetWidth' of null");
         });
 
-        it('It should send a payment for TDC', function() {
+        it('Should send a payment for TDC', function() {
             expect( scope.sendPayment ).not.toThrow();
 
             var jsonBody = JSON.stringify({
@@ -111,7 +111,7 @@ describe('Unit: TransfersCtrl', function() {
             expect( code ).toEqual( 200 );
         });
 
-        it('It should send a payment but this time for TDC_T', function() {
+        it('Should send a payment but this time for TDC_T', function() {
             scope.payment.destiny = thirdAccounts.third_accounts[0];
             expect( scope.sendPayment ).not.toThrow();
 
@@ -147,7 +147,7 @@ describe('Unit: TransfersCtrl', function() {
             scope.transfer.destiny = accounts.accounts[5];
         }));
 
-        it('It should send a transfer to a DEP account', function() {
+        it('Should send a transfer to a DEP account', function() {
             scope.sendTransfer();
             var jsonBody = JSON.stringify({
                 'account_id_destination':scope.transfer.destiny._account_id,
@@ -167,7 +167,7 @@ describe('Unit: TransfersCtrl', function() {
             expect( _transaction_id ).not.toBe(null);
         });
 
-        it('It should send a transfer to a DEB_T account with same_bank : true', function() {
+        it('Should send a transfer to a DEB_T account with same_bank : true', function() {
             scope.transfer.destiny = thirdAccounts.third_accounts[2];
             scope.sendTransfer();
 
@@ -189,7 +189,7 @@ describe('Unit: TransfersCtrl', function() {
             expect( _transaction_id ).not.toBe(null);
         });
 
-        it('It should send a transfer to a DEB_T account with same_bank : false', function() {
+        it('Should send a transfer to a DEB_T account with same_bank : false', function() {
             scope.transfer.destiny = thirdAccounts.third_accounts[3];
             scope.sendTransfer();
 
