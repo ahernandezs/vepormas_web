@@ -98,14 +98,29 @@
 	 * search transactions by date
 	 */
 	$scope.search = function() {
-		if($scope.searchParams.date_start && $scope.searchParams.date_end) {
-			if ($scope.searchParams.date_start > $scope.searchParams.date_end) {
-            	$scope.setServiceError('La fecha inicial debe ser anterior a la fecha final');
-        	}
-        	else {
-            	$scope.getTransactions($scope.searchParams.date_start, $scope.searchParams.date_end);
-        	}
-		} else if($scope.searchParams.date_start === null && $scope.searchParams.date_end === null) {
+		var todaysDate = new Date();
+        var dd = todaysDate.getDate();      // day
+        var mm = todaysDate.getMonth()+1;   // month (January is 0!)
+        var yy = todaysDate.getFullYear();  // year
+        dd = dd < 10 ? '0' + dd : dd; 
+        mm = mm < 10 ? '0' + mm : mm;
+        todaysDate = yy+mm+dd;
+        // startDate pass from String to Int
+        var startDate = parseInt($scope.searchParams.date_start.split("/").reverse().join("")); 
+        // endDate pass from String to Int
+        var endDate = parseInt($scope.searchParams.date_end.split("/").reverse().join("")); 
+        if($scope.searchParams.date_start && $scope.searchParams.date_end) {
+            if (startDate > todaysDate || endDate > todaysDate){
+                $scope.setServiceError('Busqueda no realizada: Fecha Inicial y/o la Fecha Final NO pueden ser posteriores a la Fecha de Hoy');
+            }
+            else if (startDate > endDate) {
+                $scope.setServiceError('Busqueda no realizada: Fecha Inicial debe ser anterior a la Fecha Final');
+            }
+            else {
+                $scope.getTransactions($scope.searchParams.date_start, $scope.searchParams.date_end);
+            }
+        }
+		else if($scope.searchParams.date_start === null && $scope.searchParams.date_end === null) {
 			params.date_end = null;
 			params.date_start = null;
 			accountsProvider.getTransactions($scope.selectedAcccountId, params).then(
