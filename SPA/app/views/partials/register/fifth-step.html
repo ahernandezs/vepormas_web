@@ -7,15 +7,15 @@
             <form class="token-form" name="tokenForm">
                 <label class="fieldContainer" ng-class="tokenForm.token.$viewValue.length > 0 ? 'selected' : ''">
                      <span>No. de Serie del Token</span>
-                    <input type="text" name="token" maxlength="12" minlength="10" ng-model="registerData.token" placeholder="No. de Serie del Token" required>
+                    <input type="text" numbers-only name="token" maxlength="12" minlength="10" ng-model="registerData.token" placeholder="No. de Serie del Token" required>
                 </label>
                 <label class="fieldContainer" ng-class="tokenForm.otp1.$viewValue.length > 0 ? 'selected' : ''">
                      <span>OPT 1</span>
-                    <input type="text" name="otp1" ng-model="registerData.otp1" placeholder="OTP 1" required>
+                    <input type="password" numbers-only minlength="6" maxlength="6" name="otp1" ng-model="registerData.otp1" placeholder="OTP 1" required>
                 </label>
                 <label class="fieldContainer" ng-class="tokenForm.otp2.$viewValue.length > 0 ? 'selected' : ''">
                      <span>OPT 2</span>
-                    <input type="text" name="otp2" ng-model="registerData.otp2" placeholder="OTP 2" required>
+                    <input type="password" numbers-only minlength="6" maxlength="6" name="otp2" ng-model="registerData.otp2" placeholder="OTP 2" required>
                 </label>
                 <label class="termns">
                     <input type="checkbox" name="legal" id="legal" value="yes" ng-model="registerData.acceptLegalMention" ng-required="!registerData.acceptLegalMention">
