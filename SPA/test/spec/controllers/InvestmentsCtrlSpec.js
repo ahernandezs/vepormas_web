@@ -1,11 +1,11 @@
 'use strict';
 
-describe('Unit: PortfolioCtrl, InvestmentCedePrlvCtrl and purchaseRetireVistaCtrl', function() {
+describe('Unit: PortfolioCtrl, InvestmentCedePrlvCtrl', function() {
 
-    beforeEach(module('spaApp', 'mockedAccounts'));
+    beforeEach(module('spaApp', 'mockedAccounts', 'mockedProductsInvest'));
 
     // We're going to inject the $controller and the $rootScope
-    var portfolioCtrl, cedePRLVCtrl, vistaCtrl, scope, ownAccounts, depositAccounts, vistaAccounts, investmentProducts;
+    var portfolioCtrl, cedePRLVCtrl, vistaCtr, scope, accounts, ownAccounts, depositAccounts, products, vistaAccounts, investmentProducts;
 
     beforeEach( inject( function($controller, $rootScope) {
         // We create the scope
@@ -19,25 +19,23 @@ describe('Unit: PortfolioCtrl, InvestmentCedePrlvCtrl and purchaseRetireVistaCtr
         cedePRLVCtrl = $controller('InvestmentCedePrlvCtrl', {
             $scope: scope
         });
-        vistaCtrl = $controller('purchaseRetireVistaCtrl', {
-            $scope: scope
-        });
     }));
 
-    describe('Investments Functionality', function() {
+    fdescribe('Investments Functionality', function() {
         var http;
 
-        beforeEach( inject( function($httpBackend, accountsJSON) {
+        beforeEach( inject( function($httpBackend, accountsJSON, investmentsJSON) {
             // This will work as our backend
             http = $httpBackend;
             // These will work as our response data
-            ownAccounts = accountsJSON;
+            accounts = accountsJSON;
             depositAccounts = accountsJSON;
+            products = investmentsJSON;
             // Actual objects for payment
-            scope.payment.account = accounts.accounts[4];
+            //scope.payment.account = accounts.accounts[4];
         }));
 
-        it('Should get own and third accounts ', function() {
+        it('Should get own accounts and products', function() {
             http.when('GET', scope.restAPIBaseUrl + '/accounts')
                 .respond(
                     200,
@@ -49,7 +47,7 @@ describe('Unit: PortfolioCtrl, InvestmentCedePrlvCtrl and purchaseRetireVistaCtr
             http.when('GET', scope.restAPIBaseUrl + '/products')
                 .respond(
                     200,
-                    investmentProducts,
+                    products,
                     {
                         "X-AUTH-TOKEN" : scope.session_token
                     }
@@ -58,9 +56,9 @@ describe('Unit: PortfolioCtrl, InvestmentCedePrlvCtrl and purchaseRetireVistaCtr
             http.flush();
 
             scope.ownAccounts.push( accounts.accounts );
-            scope.theAccounts.push( thirdAccounts.third_accounts );
-            expect( scope.theAccounts ).not.toBeUndefined();
-            expect( scope.theAccounts.length ).toBeGreaterThan(0);
+            scope.investmentProducts.push( products.products );
+            expect( scope.ownAccounts ).not.toBeUndefined();
+            expect( scope.investmentProducts.length ).not.toBeUndefined();
         });
 
     });
