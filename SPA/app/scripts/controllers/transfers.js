@@ -26,7 +26,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 					value.group = 'Cuentas Propias';
 					switch ( value.account_type ) {
 						case 'DEP':
-							value.displayName = value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + $filter('currency')(value.amount, '$');
+							value.displayName = value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
 							value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.amount, '$');
 							$scope.theAccounts.push( value );
 							break;
