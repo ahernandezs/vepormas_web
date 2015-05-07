@@ -27,7 +27,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 					switch ( value.account_type ) {
 						case 'DEP':
 							value.displayName = value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
-							value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.amount, '$');
+							value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
 							$scope.theAccounts.push( value );
 							break;
 						case 'TDC':
