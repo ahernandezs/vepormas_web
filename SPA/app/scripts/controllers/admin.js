@@ -106,7 +106,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 			},function(errorObject) {
 				var status = errorObject.status;
 		        if(status === 403){
-					$scope.manageOtpErrorMessage(errorObject.response);
+		        $scope.manageOtpErrorMessage(errorObject.response.message);
 			    } else {
 			    	var msg = codeStatusErrors.errorMessage(status);
 					if (status === 500){
