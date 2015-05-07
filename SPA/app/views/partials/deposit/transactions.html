@@ -28,7 +28,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr class="year"><td>2014</td><td></td><td></td><td></td><td></td></tr>
+            <!--tr class="year"><td>2014</td></tr-->
                 <tr ng-repeat="trans in accountTransactions | filter:busqueda">
                     <td>{{trans.movementDate | date:'dd-MM-yyyy' }}</td>
                     <td>{{trans._transaction_id}}</td>
