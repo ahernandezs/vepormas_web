@@ -2,17 +2,73 @@
 
 angular.module('mockedBeneficiary',[])
     .value('beneficiaryJSON', {
-        'credit_card' : {
-            'cycle_date':1391580000000,
-            'payment_due_date':1399611600000,
-            'credit_limit':55000,
-            'statement_balance':834.55,
-            'no_interes_payment_due':345.77,
-            'current_balance':123.55,
-            'cycle_day':11,
-            'minimum_payment':456.0,
-            'delinquent_balance':28345.99,
-            'available_credit':45000.0
+                "third_accounts": [
+                {
+                    "_account_id": "8912345678927890-A-40058",
+                    "bank_name": "BANREGIO",
+                    "phone": "5566778899",
+                    "maskedAccountNumber": "*****13450",
+                    "name": "JUAN PEREZ PEREZ",
+                    "e_mail": "pruebas.cascaron@tmp.com.mx",
+                    "shortName": "JUAN PEREZ",
+                    "same_bank": true,
+                    "account_type": "TDC_T"
+                },
+                {
+                    "_account_id": "8912345678927891-A-40058",
+                    "bank_name": "BANREGIO",
+                    "phone": "5566778899",
+                    "maskedAccountNumber": "*****13451",
+                    "name": "JUAN PEREZ PEREZ",
+                    "e_mail": "pruebas.cascaron@tmp.com.mx",
+                    "shortName": "JUAN PEREZ",
+                    "same_bank": true,
+                    "account_type": "TDC_T"
+                },
+                {
+                    "_account_id": "8912345678927892-C-40058",
+                    "bank_name": "BANREGIO",
+                    "phone": "5566778899",
+                    "maskedAccountNumber": "*****13452",
+                    "name": "JUAN PEREZ PEREZ",
+                    "e_mail": "pruebas.cascaron@tmp.com.mx",
+                    "shortName": "JUAN PEREZ",
+                    "same_bank": false,
+                    "account_type": "DEB_T"
+                },
+                {
+                    "_account_id": "0050568032C41ED4A9D17427B57CF2B1-C-40002",
+                    "bank_name": "BANAMEX",
+                    "phone": "5519254358",
+                    "maskedAccountNumber": "*****CF2B1",
+                    "name": "Beneficairy Dummy",
+                    "e_mail": "dummy-mail@anzen.com.mx",
+                    "shortName": "Short name",
+                    "same_bank": false,
+                    "account_type": "DEB_T"
+                },
+                {
+                    "_account_id": "0050568032C41ED4ABB43238349D52B1-C-40002",
+                    "bank_name": "BANAMEX",
+                    "phone": "5519254358",
+                    "maskedAccountNumber": "*****D52B1",
+                    "name": "Beneficairy Dummy",
+                    "e_mail": "dummy-mail@anzen.com.mx",
+                    "shortName": "Short name",
+                    "same_bank": false,
+                    "account_type": "DEB_T"
+                },
+                {
+                    "_account_id": "0050568032C41ED4ABC484AC9C8172B1-C-40002",
+                    "bank_name": "BANAMEX",
+                    "phone": "5519254358",
+                    "maskedAccountNumber": "*****172B1",
+                    "name": "Beneficairy Dummy",
+                    "e_mail": "dummy-mail@anzen.com.mx",
+                    "shortName": "Short name",
+                    "same_bank": false,
+                    "account_type": "DEB_T"
+                }
+            ]
         }
-    }
-);
+    );
