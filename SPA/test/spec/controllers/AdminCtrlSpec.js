@@ -4,7 +4,15 @@
   console.log("AdminCtrl Test");  
   var adminCtrl, dashboardCtrl, scope, http, limit, location, thirdAccount, useractivity;
  
- beforeEach(module('spaApp','mockedLimits','mockedThirdAccounts','mockedUserActivity'));
+  beforeEach(module('spaApp','mockedLimits','mockedThirdAccounts','mockedUserActivity', 'mockedBeneficiary'));
+
+  describe("When getting beneficiaries",function(){
+    beforeEach(inject(function($controller, $rootScope, $httpBackend, beneficiaryJSON){
+      scope = $rootScope.$new();
+      http = $httpBackend;
+      beneficiaries = beneficiaryJSON;
+    }));
+  });
  	
  	describe("When get a limit",function(){
  		beforeEach(inject(function($controller, $rootScope, $httpBackend, $location,limitsJSON, thirdAccountsJSON, userActivityJSON) {	
@@ -20,6 +28,20 @@
  	 	});		
  	 }));
  
+  describe('When getting beneficiaries', function(){
+    it('get beneficiaries', function(){
+
+        http.when('GET', scope.restAPIBaseUrl   + '/accounts/limits')
+            .respond(
+            200,
+            limit,
+            {
+              "X-AUTH-TOKEN" : scope.session_token
+            }
+          );
+    });
+  });
+
  	describe('When is a set limit', function(){
     console.log("Testing admin.js");
  		it("setLimits",function(){
