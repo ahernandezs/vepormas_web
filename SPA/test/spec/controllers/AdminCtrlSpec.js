@@ -31,7 +31,7 @@
   describe('When getting beneficiaries', function(){
     it('get beneficiaries', function(){
 
-        http.when('GET', scope.restAPIBaseUrl   + '/accounts/limits')
+        http.when('GET', scope.restAPIBaseUrl   + '/externalaccounts')
             .respond(
             200,
             limit,

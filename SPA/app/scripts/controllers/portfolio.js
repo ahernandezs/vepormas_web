@@ -35,7 +35,7 @@ angular.module('spaApp').controller('PortfolioCtrl', ['$rootScope', '$scope', '$
           }else{
             $scope.cedeInvestmentAllowed = false;
             if($scope.invType == null){
-              $scope.setServiceError('ninguno producto disponible');
+              $scope.setServiceError('Ningún producto disponible');
             }
           }
       },
