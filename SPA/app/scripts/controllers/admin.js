@@ -4,7 +4,8 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 
 	//if the user has full access, the default page is the configuration one. otherwise it is the contract-information page
 	if(userProvider.isCompleteUser()){
-		$scope.adminOpt = 4;
+		$scope.adminOpt = 1;
+		$scope.option = 1;
 	}else{
 		$scope.adminOpt = 5;
 	}

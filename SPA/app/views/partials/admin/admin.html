@@ -1,26 +1,37 @@
 <div  class="prefyseg" ng-controller="UserPreferencesAdministrationController">
 	<!-- left menu -->
 	<div class = "menu">
-		<h3>Opciones de seguridad</h3>
+		<h4>Preferencias</h4>
 		<ul>
-			<li ng-class="isUserPreferencesAdministrationPageActivated() ? 'selected' : ''" ng-click="gotoUserPreferencesPage()">Informaci&oacute;n de la cuenta</li>
-			<li ng-class="isUserTokenAdministrationPageActivated() ? 'selected' : ''" ng-click="gotoTokenAdministrationPage()">Mi token</li>
-			<li>Alertas y notificaciones</li>
+			<li ng-class="option==1 ? 'selected' : ''" ng-click="gotoUserPreferencesPage();option=1">Alertas y notificiaciones</li>
 		</ul>
-		<!--<div class="candado">
-			Seguridad de la cuenta
-			<i></i>
-			<a>Detalle</a>
-		</div>-->
+		<br>
+		<h4>Seguridad</h4>
+		<ul>
+			<li ng-class="option==2 ? 'selected' : ''" ng-click="gotoUserPreferencesPage(); option=2">Cancelar servicio de banca</li>
+			<li ng-class="option==3 ? 'selected' : ''" ng-click="gotoUserPreferencesPage(); option=3">Cambio de contrase&ntilde;a</li>
+		</ul>
+		<br>
+		<h4>Mi Token</h4>
+		<ul>
+			<li ng-class="option==4 ? 'selected' : ''" ng-click="gotoTokenAdministrationPage(); option=4">Sincronizaci&oacute;n de dispositivo</li>
+			<li ng-class="option==5 ? 'selected' : ''" ng-click="gotoTokenAdministrationPage(); option=5">Desactivaci&oacute;n de dispositivo</li>
+		</ul>
 	</div>
-	<div ng-show="isUserPreferencesAdministrationPageActivated()">
+
+	<div ng-show="isUserPreferencesAdministrationPageActivated() && option==1">
 		<div ng-include="'views/partials/admin/update-communication.html'"></div>
-		<div>
-			<div ng-include="'views/partials/admin/update-services.html'"></div>
-			<div ng-include="'views/partials/admin/change-password.html'"></div>
-		</div>
 	</div>
-	<div ng-show="isUserTokenAdministrationPageActivated()">
-		<div ng-include="'views/partials/admin/securityToken-administration.html'"></div>
+	<div ng-show="isUserPreferencesAdministrationPageActivated() && option==2">
+		<div ng-include="'views/partials/admin/update-services.html'"></div>
+	</div>
+	<div ng-show="isUserPreferencesAdministrationPageActivated() && option==3">
+		<div ng-include="'views/partials/admin/change-password.html'"></div>
+	</div>
+	<div ng-show="isUserTokenAdministrationPageActivated() && option==4">
+		<div ng-include="'views/partials/admin/activate-token.html'"></div>
+	</div>
+	<div ng-show="isUserTokenAdministrationPageActivated() && option==5">
+		<div ng-include="'views/partials/admin/deactivate-token.html'"></div>
 	</div>
 </div>
