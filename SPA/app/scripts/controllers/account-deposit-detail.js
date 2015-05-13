@@ -111,7 +111,7 @@
         var endDate = parseInt($scope.searchParams.date_end.split("/").reverse().join("")); 
         if($scope.searchParams.date_start && $scope.searchParams.date_end) {
             if (startDate > todaysDate || endDate > todaysDate){
-                $scope.setServiceError('Busqueda no realizada: Fecha Inicial y/o la Fecha Final NO pueden ser posteriores a la Fecha de Hoy');
+                $scope.setServiceError('Busqueda no realizada: Fecha Inicial y/o Fecha Final NO pueden ser posteriores a la Fecha de Hoy');
             }
             else if (startDate > endDate) {
                 $scope.setServiceError('Busqueda no realizada: Fecha Inicial debe ser anterior a la Fecha Final');
