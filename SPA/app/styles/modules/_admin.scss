@@ -22,17 +22,36 @@
 		strong{color:$blue;}
 	}
 }
+
 //PREFERNCIAS Y SEGURIDAD
 .prefyseg{
 	margin-top: 20px;
 	overflow:hidden;
-	> div{
-		min-height: 610px;
+	.menu-admin{
 		float:left;
+		width: 25%;
+		margin-right: 20px;
+		h2 {
+			font-size: 1.8em;
+			font-weight: normal;
+			margin-bottom: 4px;
+		}
+		.section {
+			overflow: hidden;
+			margin-bottom: 30px;
+			@include border-radius(3px);
+		}
+	}
+	.content-admin{
+		float:left;
+		width: 30%;
+		min-width:450px;
+		min-height: 500px;
 		background:white;
 		padding: 15px 0;
 		margin-right: 2%;
 		overflow: hidden;
+		border:1px solid $gray;
 		@include border-radius(4px);
 		h3{
 			color:$blue;
@@ -87,142 +106,37 @@
 				background-size:50px;
 			}
 		}
+		.dropdown{
+			> div, ul{
+				width: 90%;
+				margin:0 auto 15px auto;
+			}
+			ul{
+				left:50% !important;
+				margin-left:-45%;
+			}
+		}
 		.fieldContainer{
-					width: 90%;
-					margin:0 auto 10px auto;
-					input{
-						border:none;
-						padding:10px;
-						width: 100%;
-						&:focus{
-							box-shadow:none;
-						}
-					}
-					&.selected{
-						input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
-							width:67%;
-						}
-					}
+			width: 90%;
+			margin:0 auto 15px auto;
+			input{
+				border:none;
+				padding:10px;
+				width: 100%;
+				&:focus{
+					box-shadow:none;
 				}
+			}
+			&.selected{
+				input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+					width:67%;
+				}
+			}
+		}
 		button{
 			width: 80%;
 			margin-left:10%;
-		}
-		&:first-child{
-			width: 20%;
-			border:1px solid $gray;
-			background: #f7f7f7;
-			h3{
-				font-weight: normal;
-				border:none;
-			}
-			li{
-				border:none;
-				font-weight: bold;
-				color:$dgray;
-				padding: 8px 15px;
-				background:transparent;
-				@include anim_transicion_ease(0.3s);
-				@include border-radius(0);
-				&.selected, &:hover{
-					background:$orange;
-					color:white;
-				}
-			}
-			.candado{
-				margin: 30px 15px;
-				border:1px solid $gray;
-				background:white;
-				color:$dgray;
-				text-align: center;
-				padding-top:15px;
-				@include border-radius(4px);
-				i{
-					display: block;
-					width: 110px;
-					height: 110px;
-					margin: 10px auto;
-					background:url(../images/ico-candado.png) no-repeat center center;
-					background-size:cover;
-				}
-				a{
-					display: block;
-					background:$lgray;
-					border-top:1px solid $gray;
-					color:$blue;
-					font-weight: bold;
-					text-align: center;
-					padding: 10px 0;
-				}
-			}
-		}
-		&:nth-child(2){
-			padding: 0;
-			overflow: hidden;
-			width: 76%;
-			> div{
-				width: 48%;
-				border:1px solid $gray;
-				min-height: 610px;
-				float:left;
-				background:white;
-				padding: 15px 0;
-				margin-right: 2%;
-				@include border-radius(4px);
-				&:last-child{
-					padding: 0;
-					border:none;
-					margin:0;
-					> div{
-						min-height:300px;
-						border:1px solid $gray;
-						background:white;
-						padding: 15px 0;
-						margin-bottom: 10px;
-						@include border-radius(4px);
-						&:first-child{
-							button, button:hover, button:active{
-								background:white;
-								color:$blue;
-								border:1px solid $blue !important;
-								margin-bottom: 10px;
-								&:last-child{margin-bottom: 0;}
-							}
-						}
-						h3{
-							color:$blue;
-							width: 90%;
-							margin:0 auto 15px auto;
-							font-size: 1.2em;
-							text-align: center;
-							padding-bottom: 20px;
-							border-bottom:1px solid $gray;
-						}
-						.message{
-							p{
-								margin-top: 5px;
-							}
-						}
-						.error{
-							text-align: center;
-						}
-					}
-				}
-			}
-		}
-		&:nth-child(3){
-			padding: 0;
-			overflow: hidden;
-			width: 76%;
-			> div{
-				width: 48%;
-				margin-right: 2%;
-				min-height:610px;
-				border:1px solid $gray;
-				background:white;
-				padding: 15px 0;
-				@include border-radius(4px);
-			}
+			margin-bottom: 15px;
 		}
 	}
 }
@@ -296,7 +210,7 @@
 			padding:10px 0 !important;
 			text-align: center;
 			background:url(../images/ico-usuario-azul.png) no-repeat 2% center, white !important;
-			background-size:10% !important;
+			background-size:auto 60% !important;
 		}
 	}
 }
