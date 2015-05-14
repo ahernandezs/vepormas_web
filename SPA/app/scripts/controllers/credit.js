@@ -97,11 +97,12 @@ angular.module('spaApp').controller('creditCtrl', ['$scope', '$location', '$stat
     dd = dd < 10 ? '0' + dd : dd; 
     mm = mm < 10 ? '0' + mm : mm;
     todaysDate = yy+mm+dd;
-    // startDate pass from String to Int
-    var startDate = parseInt($scope.searchParams.date_start.split("/").reverse().join("")); 
-    // endDate pass from String to Int
-    var endDate = parseInt($scope.searchParams.date_end.split("/").reverse().join("")); 
-
+    if ($scope.searchParams.date_start !== undefined)
+      	// startDate pass from String to Int
+        var startDate = parseInt($scope.searchParams.date_start.split("/").reverse().join(""));
+    if ($scope.searchParams.date_end !== undefined)
+        // endDate pass from String to Int
+        var endDate = parseInt($scope.searchParams.date_end.split("/").reverse().join(""));
     if($scope.searchParams.date_start && $scope.searchParams.date_end) {
         if (startDate > todaysDate || endDate > todaysDate){
         	console.log('\t\t\tBúsqueda no realizada');

@@ -1,28 +1,22 @@
 'use strict';
 
-describe('creditCtrl', function() {
-  var creditCtrl, scope, rootScope, http, transactions, mainCtrl, mainScope;
+describe('AccountDepositDetailCtrl', function() {
+  var acountDepositCtrl, scope, rootScope, http;
 
-  beforeEach(module('spaApp','mockedCreditTransactions'));
+  beforeEach(module('spaApp'));
 
-  beforeEach(inject(function($controller, $rootScope, $httpBackend, creditTransJSON) {
+  beforeEach(inject(function($controller, $rootScope, $httpBackend) {
     scope = $rootScope.$new();
-    // mainScope = $rootScope.$new();
     rootScope = $rootScope;
     http = $httpBackend;
-    transactions = creditTransJSON;
-    // mainCtrl = $controller('MainCtrl', {
-    //   $scope: mainScope
-    // });
-    creditCtrl = $controller('creditCtrl', {
+    acountDepositCtrl = $controller('AccountDepositDetailCtrl', {
       $scope: scope
     });
-    scope.selectedAcccountId = "0050568032C41EE4A1E123CC55261379-CXN";
+    scope.selectedAcccountId = "0050568032C41EE4A1E1C2E88AC65379-DEP";
     scope.searchParams = {
                           'date_start': "08/05/2015",
                           'date_end': "28/05/2018"                  
                          };
-    // mainScope.setServiceError('Búsqueda no realizada: Fecha Inicial y/o Fecha Final NO pueden ser posteriores a la Fecha de Hoy');
   }));
 
   describe('when search to get transactions between two dates', function() {
