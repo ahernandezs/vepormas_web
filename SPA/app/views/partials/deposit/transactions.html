@@ -23,17 +23,16 @@
                 <th scope="col">Fecha</th>
                 <th scope="col">N. de autorizaci&oacute;n</th>
                 <th scope="col">Descripci&oacute;n</th>
-                <th scope="col">Tipo de operaci&oacute;n</th>
-                <th scope="col">Monto</th>
+                <th scope="col">Cargo</th>
+                <th scope="col">Abono</th>
             </tr>
         </thead>
         <tbody>
-            <!--tr class="year"><td>2014</td></tr-->
-                <tr ng-repeat="trans in accountTransactions | filter:busqueda">
-                    <td>{{trans.movementDate | date:'dd-MM-yyyy' }}</td>
-                    <td>{{trans._transaction_id}}</td>
-                    <td>{{trans.description}}</td>
-                    <td>{{trans.operationType}}</td>
-                    <td>{{trans.amount | currency}}</td>
-                </tr>
+            <tr ng-repeat="trans in accountTransactions | filter:busqueda">
+                <td>{{trans.movementDate | date:'dd-MM-yyyy' }}</td>
+                <td>{{trans._transaction_id}}</td>
+                <td>{{trans.description}}</td>
+                <td>{{ (trans.operationType !== 'D') ? null :  trans.amount | currency }}</td>
+                <td>{{ (trans.operationType !== 'C') ? null : trans.amount | currency }}</td>
+            </tr>
         </tbody>
