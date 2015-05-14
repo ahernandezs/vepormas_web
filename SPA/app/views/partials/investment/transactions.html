@@ -20,16 +20,16 @@
             <th scope="col">Fecha</th>
             <th scope="col">N. de Transacci&oacute;n</th>
             <th scope="col">Descripci&oacute;n</th>
-            <th scope="col">Tipo de operaci&oacute;n</th>
-            <th scope="col">Monto</th>
+            <th scope="col">Cargo</th>
+            <th scope="col">Abono</th>
         </tr>
     </thead>
     <tr ng-repeat="trans in investmentTransactions">
         <td>{{trans.movementDate | date:'dd-MM-yyyy' }}</td>
         <td>{{trans._transaction_id}}</td>
         <td>{{trans.description}}</td>
-        <td>{{trans.operationType}}</td>
-        <td>{{trans.amount | currency}}</td>
+        <td>{{ (trans.operationType !== 'D') ? null :  trans.amount | currency }}</td>
+        <td>{{ (trans.operationType !== 'C') ? null : trans.amount | currency }}</td>
     </tr>
     </table>
 </div>
