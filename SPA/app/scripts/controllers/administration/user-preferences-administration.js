@@ -43,6 +43,7 @@ angular.module('spaApp').controller('UserPreferencesAdministrationController', [
 	$scope.gotoUserPreferencesPage = function(){
 		if($scope.userAdministrationStep!=1) $scope.updatedata.otp = '';
 		$scope.userAdministrationStep = 1;
+		$scope.stage_updatecommunication = 'stage1';
 	};
 
 	/**
