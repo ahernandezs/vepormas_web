@@ -78,18 +78,23 @@ angular.module('spaApp').controller('InvestmentsCtrl', ['$scope', '$location', '
         dd = dd < 10 ? '0' + dd : dd; 
         mm = mm < 10 ? '0' + mm : mm;
         todaysDate = yy+mm+dd;
-        // startDate pass from String to Int
-        var startDate = parseInt($scope.searchParams.date_start.split("/").reverse().join("")); 
-        // endDate pass from String to Int
-        var endDate = parseInt($scope.searchParams.date_end.split("/").reverse().join("")); 
+        if ($scope.searchParams.date_start !== undefined)
+            // startDate pass from String to Int
+            var startDate = parseInt($scope.searchParams.date_start.split("/").reverse().join("")); 
+        if ($scope.searchParams.date_end !== undefined)
+            // endDate pass from String to Int
+            var endDate = parseInt($scope.searchParams.date_end.split("/").reverse().join("")); 
         if($scope.searchParams.date_start && $scope.searchParams.date_end) {
             if (startDate > todaysDate || endDate > todaysDate){
-                $scope.setServiceError('Busqueda no realizada: Fecha Inicial y/o Fecha Final NO pueden ser posteriores a la Fecha de Hoy');
+                console.log('\t\t\tBúsqueda no realizada');
+                $scope.setServiceError('Búsqueda no realizada: Fecha Inicial y/o Fecha Final NO pueden ser posteriores a la Fecha de Hoy');
             }
             else if (startDate > endDate) {
-                $scope.setServiceError('Busqueda no realizada: Fecha Inicial debe ser anterior a la Fecha Final');
+                console.log('\t\t\tBúsqueda no realizada');
+                $scope.setServiceError('Búsqueda no realizada: Fecha Inicial debe ser anterior a la Fecha Final');
             }
             else {
+                console.log('\t\t\tBúsqueda a realizarse');
                 $scope.getTransactions($scope.searchParams.date_start, $scope.searchParams.date_end);
             }
         } 
