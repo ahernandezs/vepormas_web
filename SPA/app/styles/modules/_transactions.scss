@@ -306,6 +306,7 @@ table input[type="submit"]{font-weight: bold;}
     .fieldContainer, .optionalContainer{
         margin-top: 15px;
         width: 70%;
+        span{padding:12px 0;}
     }
     input {
         border:none;
@@ -423,6 +424,7 @@ table input[type="submit"]{font-weight: bold;}
     padding: 20px 40px 20px 20px;
     position: relative;
     font-weight: bold;
+    cursor:pointer;
     background: url(../images/ico-adelante.png) no-repeat right center;
     background-size:25px;
     &.active {
@@ -430,7 +432,10 @@ table input[type="submit"]{font-weight: bold;}
 		color: #FFF;
         background: url(../images/ico-adelante-a.png) no-repeat right center, $orange;
         background-size:25px;
-        a{color: #FFF;}
+        a{
+            color: #FFF;
+            cursor:pointer;
+        }
 		&:after { color: #FFF; }
         i{
             background: url(../images/ico-beneficiario-a.png) no-repeat center center;
