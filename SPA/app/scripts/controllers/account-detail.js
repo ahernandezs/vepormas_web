@@ -5,5 +5,5 @@
  */
  angular.module('spaApp').controller('AccountDetailCtrl', ['$scope', '$location', function ($scope, $location) {
 	//TODO: temporal binding
-	console.log('Load account detail information' + $scope.selectedAcccountId);
+	//console.log('Load account detail information' + $scope.selectedAcccountId);
 }]);
