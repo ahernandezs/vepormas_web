@@ -237,7 +237,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
       $scope.isRegistering = true;
       userProvider.registerUser().then(
           function(data) {
-            console.log("register succeed");
+            //console.log("register succeed");
             $scope.isRegistering = false;
             //check if the security token has been activated
             $scope.tokenRegistrationFailed = false;

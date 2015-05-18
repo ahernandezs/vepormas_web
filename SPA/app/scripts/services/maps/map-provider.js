@@ -16,7 +16,7 @@ angular.module('spaApp').factory('mapProvider', ['$rootScope', 'mapService', '$q
 				deferred.resolve();
 			}).error(function(data, status) {
 				var result = {'response' : data, 'status': status};
-		        console.log(data, status);
+		        //console.log(data, status);
 		        return deferred.reject(result);
 			});
 			return deferred.promise;

@@ -17,7 +17,7 @@ angular.module('spaApp')
             deferred.resolve(data);
           }).error(function(data, status) {
             var result = {'response' : data, 'status': status};
-            console.log(data, status);
+            //console.log(data, status);
             return deferred.reject(result);
           });
         } else {
@@ -36,7 +36,7 @@ angular.module('spaApp')
             deferred.resolve(data);
         }).error(function(data, status){
             var result = {'response' : data, 'status': status};
-            console.log(data, status);
+            //console.log(data, status);
             return deferred.reject(result);
         })
         return deferred.promise;

@@ -10,14 +10,14 @@
     $scope.showInvestmentAccount = false;
     $scope.showSavingAccount = false;
     $scope.showCreditAccount = false;
-	console.log('Load account dashboard information');
+	//console.log('Load account dashboard information');
 	  accountsProvider.getAccounts().then(
           function(data) {
             $scope.accounts = $rootScope.accounts;
             $scope.selectNavigatOption('products'); 
             $scope.selectAccount( $scope.accounts[0]);
-            console.log('Getting accounts ......');
-            console.log($scope.accounts);
+            //console.log('Getting accounts ......');
+            //console.log($scope.accounts);
             verifyExistAccount();
           },
           function(errorObject) {
@@ -67,24 +67,24 @@
     
     switch (type) {
         case 'TDC':
-            console.log('Tarjeta de Credito');
+            //console.log('Tarjeta de Credito');
             $location.path('accounts/'+accountId+'/tdc');//+accountId);
-            console.log($location.path());
+            //console.log($location.path());
             break;
         case 'INV':
-            console.log('Inversiones');
+            //console.log('Inversiones');
             $location.path('/accounts/'+accountId+'/investment');
-            console.log($location.path());
+            //console.log($location.path());
             break;
         case 'DEP':
-            console.log('Cuentas');
+            //console.log('Cuentas');
             $location.path('/accounts/'+accountId+'/deposit');
-            console.log($location.path());
+            //console.log($location.path());
             break;
         case 'CXN':
-            console.log('Creditos');
+            //console.log('Creditos');
             $location.path('/accounts/'+accountId+'/credit');
-            console.log($location.path());
+            //console.log($location.path());
             break;
         default:
             break;
@@ -94,7 +94,7 @@
     $scope.returnData = {};
 
     $scope.closeStatement = function() {
-        console.log($scope.returnData)
+        //console.log($scope.returnData)
 
         $scope.activeClass = $scope.returnData.prevId;
         $scope.selectedAcccountId = $scope.returnData.prevId;
@@ -105,24 +105,24 @@
 
         switch ($scope.returnData.prevType) {
             case 'TDC':
-                console.log('Tarjeta de Credito');
+                //console.log('Tarjeta de Credito');
                 $location.path('accounts/' + $scope.returnData.prevId + '/tdc'); //+accountId);
-                console.log($location.path());
+                //console.log($location.path());
                 break;
             case 'INV':
-                console.log('Inversiones');
+                //console.log('Inversiones');
                 $location.path('/accounts/' + $scope.returnData.prevId + '/investment');
-                console.log($location.path());
+                //console.log($location.path());
                 break;
             case 'DEP':
-                console.log('Cuentas');
+                //console.log('Cuentas');
                 $location.path('/accounts/' + $scope.returnData.prevId + '/deposit');
-                console.log($location.path());
+                //console.log($location.path());
                 break;
             case 'CXN':
-                console.log('Creditos');
+                //console.log('Creditos');
                 $location.path('/accounts/' + $scope.returnData.prevId + '/credit');
-                console.log($location.path());
+                //console.log($location.path());
                 break;
             default:
                 break;

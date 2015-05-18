@@ -180,7 +180,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 	$scope.sendCommunication = function () {
 		adminProvider.updateCommunication($scope.$parent.updatedata.phone, $scope.$parent.updatedata.e_mail, $scope.$parent.updatedata.otp).then(
 			function (data) {
-				console.log('Communication data updated successfully');
+				//console.log('Communication data updated successfully');
 				$scope.stage_updatecommunication = 'stage3';
 			},
 			function(errorObject) {
@@ -205,7 +205,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
     $scope.modifyPassword = function() {
         adminProvider.updatePassword($scope.change.old, $scope.change.new, $scope.change.otp).then(
         	function(data){
-	            console.log('Password modified correctly');
+	            //console.log('Password modified correctly');
 	            $scope.resultChangePass = true;
 	        },
 	        function(errorObject) {
@@ -254,7 +254,7 @@ Adding a beneficary actions
     $scope.validateThirdAccount = function(){
         thirdAccountProvider.validateThirdAccount($scope.beneficiary.account).then(
             function(data) {
-                console.log(JSON.stringify(data));
+                //console.log(JSON.stringify(data));
                 $scope.beneficiary._account_id = data._account_id;
                 $scope.beneficiary.bank_name = data.bank_name;
                 $scope.beneficiary.same_bank = data.same_bank;
@@ -379,7 +379,7 @@ Adding a beneficary actions
 
   adminProvider.getUserActivity().then(
     function(data) {
-      console.log(data);
+      //console.log(data);
       $scope.userActivity = data.user_activity;
     }
   );

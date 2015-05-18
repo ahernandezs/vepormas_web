@@ -37,7 +37,7 @@ angular.module('spaApp')
 
             options = optionsParams.length > 0 ? '?' + optionsParams.join('&') : '';
 
-            console.log('Sending: '+$rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions' + options);
+            //console.log('Sending: '+$rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions' + options);
 
             return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/transactions' + options);
         };
@@ -57,7 +57,7 @@ angular.module('spaApp')
         };
 
         this.getStates = function(accountId){
-            console.log($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/states');
+            //console.log($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/states');
             return $http.get($rootScope.restAPIBaseUrl+'/accounts/'+accountId+'/states');
         };
 

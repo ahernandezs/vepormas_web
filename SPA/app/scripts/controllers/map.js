@@ -142,10 +142,10 @@ angular.module('spaApp').controller('MapCtrl', ['$scope', '$rootScope', 'mapProv
 
 	function handleNoGeolocation(errorFlag) {
 		if (errorFlag) {
-			console.log('Error: The Geolocation service failed.');
+			//console.log('Error: The Geolocation service failed.');
 			var content = 'Error: The Geolocation service failed.';
 		} else {
-			console.log('Error: Your browser does not support geolocation.');
+			//console.log('Error: Your browser does not support geolocation.');
 			var content = 'Error: Your browser does not support geolocation.';
 		}
 	}

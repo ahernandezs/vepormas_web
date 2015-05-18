@@ -87,7 +87,7 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
         else{
           error=true;
         }
-        console.log(data);
+        //console.log(data);
       }
     );
   };
@@ -214,7 +214,7 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
   }    
 
   $scope.authorize = function(nombre, clabe1, importe, correo, telefono){
-     console.log($scope.names);
+     //console.log($scope.names);
      $scope.names=nombre;
      $scope.clabe=clabe1;
      $scope.amount=importe;
@@ -224,7 +224,7 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
   }
 
   $scope.test = function(){
-    console.log ("begin invoke function");
+    //console.log ("begin invoke function");
   }
   
   $scope.showTransferPaymentToken = function() {

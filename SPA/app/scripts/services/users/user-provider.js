@@ -169,13 +169,13 @@ angular.module('spaApp')
       var deferred = $q.defer();
       userService.preRegisterUser(_clientId, folioId).success(
         function(data, status, headers){
-          console.log(JSON.stringify(data));
+          //console.log(JSON.stringify(data));
           _registrationToken = headers('X-REGISTER-TOKEN');
           _preRegistrationData = data;
           deferred.resolve(data);
       }).error(
         function(data, status){
-        console.log('error');
+        //console.log('error');
         var result = {'response' : data, 'status': status};
         return deferred.reject(result);
       })

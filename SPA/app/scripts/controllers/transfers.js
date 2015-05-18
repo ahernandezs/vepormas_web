@@ -153,14 +153,14 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         var wrapperWidth = document.getElementById("progressWrapper").offsetWidth
         var progressWidth = ((wrapperWidth/3)*nextStep*100)/wrapperWidth
         $scope.stepStyle = {width:progressWidth+"%"}
-        console.log($scope.stepStyle)
+        //console.log($scope.stepStyle)
     }
 
 	/**
 	 * Assign the type of payment selected by the user.
 	 */
 	$scope.assignValue = function () {
-		console.log( 'Setting payment type to: ' + $scope.payment.type );
+		//console.log( 'Setting payment type to: ' + $scope.payment.type );
 		if ( $scope.payment.type && $scope.payment.type === 'MIN_PAYMENT' )
 			$scope.payment.amount = $scope.transferAccountDetail.minimum_payment;
 		else if ( $scope.payment.type && $scope.payment.type === 'WIHTOUT_INTEREST_PAYMENT' )
@@ -216,13 +216,13 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                                                      $scope.transfer.amount, $scope.transfer.concept,
                                                      $scope.transfer.otp).then(
             function(data) {
-                console.log(data);
+                //console.log(data);
                 $scope.transferId = data._transaction_id;
                 $scope.selection = 3;
                 $scope.updateProgress(3);
             },
             function(data) {
-                console.log(data);
+                //console.log(data);
                 var status = data.status;
                 if(status === 403){
                     $scope.manageOtpErrorMessage(data.response);
@@ -248,13 +248,13 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                                                        $scope.transfer.otp, $scope.transfer.reference,
                                                        $scope.transfer.date).then(
             function(data) {
-                console.log(data);
+                //console.log(data);
                 $scope.transferId = data.tracking_key;
                 $scope.selection = 3;
                 $scope.updateProgress(3);
             },
             function(data) {
-                console.log(data);
+                //console.log(data);
                 var status = data.status;
                 if(status === 403){
                     $scope.manageOtpErrorMessage(data.response);

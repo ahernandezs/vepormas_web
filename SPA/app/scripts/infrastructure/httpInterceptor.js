@@ -20,10 +20,10 @@ angular.module('spaApp').factory('httpInterceptor', ['$q', '$window', '$location
 
     'responseError': function (response) {
       // TODO: Seems that in some time we don't get response.status: in this case, the browser sets it to false (or 0)
-      console.log(response);
+      //console.log(response);
       $rootScope.requestStack.pop();
       if (!response.status || response.status === 401) {
-        console.log("Response status: "+response.status);
+        //console.log("Response status: "+response.status);
         if(response.status === 401){
           timerService.setTimeout(true);
         }
