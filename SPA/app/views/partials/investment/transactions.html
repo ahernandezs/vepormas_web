@@ -24,12 +24,14 @@
             <th scope="col">Abono</th>
         </tr>
     </thead>
-    <tr ng-repeat="trans in investmentTransactions">
-        <td>{{trans.movementDate | date:'dd-MM-yyyy' }}</td>
-        <td>{{trans._transaction_id}}</td>
-        <td>{{trans.description}}</td>
-        <td>{{ (trans.operationType !== 'D') ? null :  trans.amount | currency }}</td>
-        <td>{{ (trans.operationType !== 'C') ? null : trans.amount | currency }}</td>
-    </tr>
+    <tbody>
+        <tr ng-repeat="trans in investmentTransactions">
+            <td>{{trans.movementDate | date:'dd-MM-yyyy' }}</td>
+            <td>{{trans._transaction_id}}</td>
+            <td>{{trans.description}}</td>
+            <td>{{ (trans.operationType !== 'D') ? null :  trans.amount | currency }}</td>
+            <td>{{ (trans.operationType !== 'C') ? null : trans.amount | currency }}</td>
+        </tr>
+    </tbody>
     </table>
 </div>
