@@ -23,8 +23,8 @@
                 <th scope="col">Fecha</th>
                 <th scope="col">N. de autorizaci&oacute;n</th>
                 <th scope="col">Descripci&oacute;n</th>
-                <th scope="col">Cargo</th>
-                <th scope="col">Abono</th>
+                <th scope="col">Tipo de operaci&oacute;n</th>
+-               <th scope="col">Monto</th>
             </tr>
         </thead>
         <tbody>
@@ -32,8 +32,8 @@
                 <td>{{trans.transactionDate | date:'dd-MM-yyyy' }}</td>
                 <td>{{trans.authorizationNumber}}</td>
                 <td>{{trans.transactionDescription}}</td>
-                <td>{{ (trans.operationType !== 'D') ? null :  trans.amount | currency }}</td>
-                <td>{{ (trans.operationType !== 'C') ? null : trans.amount | currency }}</td>
+                <td>{{trans.code}}</td>
+-               <td>{{trans.amount | currency}}</td>
             </tr>
         </tbody>
     </table>
