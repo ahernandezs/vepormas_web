@@ -21,17 +21,10 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
     $scope.stage_password = 1;
     $scope.beneficiary = {};
 	$scope.today = new Date();
-	$scope.actionUpdateState = 1;
-	$scope.updateDigitalBankServiceState = [];
 	$scope.resultChangePass = false;
 	loadBeneficiary();
 
 	 $scope.errorMessage = null;
-
-    $scope.updateService = function(action, state){
-		$scope.actionUpdateState = action;
-		$scope.updateDigitalBankServiceState.state = state;
-    }
 
 	$scope.selectBeneficiary = function(account){
 		$scope.action = 2;
@@ -261,33 +254,6 @@ Adding a beneficary actions
 			    }
 			}
         );
-    }
-
-    $scope.updateDigitalBankServiceState = function(){
-		adminProvider.updateDigitalBankServiceState($scope.updateDigitalBankServiceState.state, $scope.updateDigitalBankServiceState.otp).then(
-			function(data){
-				$scope.exception = false;
-				$scope.actionUpdateState = 3;
-				$scope.updateDigitalBankServiceState.otp = '';
-				$scope.message = "La información se actualizó correctamente.";
-			},
-			function(errorObject){
-				$scope.exception = true;
-				$scope.actionUpdateState = 3;
-				$scope.updateDigitalBankServiceState.otp = '';
-		        var status = errorObject.status;
-		        if(status === 403){
-					$scope.manageOtpErrorMessage(errorObject.response);
-			    } else {
-			    	var msg = codeStatusErrors.errorMessage(status);
-					if (status === 500){
-		            	$scope.setServiceError(msg + errorObject.response.message);
-		        	} else {
-		        		$scope.setServiceError(msg);
-		        	}
-			    }			    
-			}
-		);
     }
 
 	adminProvider.getLimits().then(
