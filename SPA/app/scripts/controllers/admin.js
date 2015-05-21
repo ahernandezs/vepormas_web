@@ -20,7 +20,6 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
     $scope.change = {};
     $scope.stage_password = 1;
     $scope.beneficiary = {};
-	$scope.stage_updatecommunication = 'stage1';
 	$scope.today = new Date();
 	$scope.actionUpdateState = 1;
 	$scope.updateDigitalBankServiceState = [];
@@ -150,54 +149,6 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
             $scope.stage_password = 2;
         }
     };
-
-    /**
-	 * Validate Email from updateCommunication and goes one step forward.
-	 */
-	$scope.validateEmail = function () {
-		$scope.stage_updatecommunication = 'stage2';
-	};
-
-	/**
-	 * Reset data
-	 */
-	$scope.resetUpdateData = function () {
-		$scope.$parent.updatedata = {};
-		$scope.goBack();
-	};
-
-
-	/**
-	 * Go back one step in the updateCommunication flow.
-	 */
-	$scope.goBack = function () {
-		$scope.stage_updatecommunication = 'stage1';
-	};
-
-	/**
-	 * Update the communication information.
-	 */
-	$scope.sendCommunication = function () {
-		adminProvider.updateCommunication($scope.$parent.updatedata.phone, $scope.$parent.updatedata.e_mail, $scope.$parent.updatedata.otp).then(
-			function (data) {
-				//console.log('Communication data updated successfully');
-				$scope.stage_updatecommunication = 'stage3';
-			},
-			function(errorObject) {
-				var status = errorObject.status;
-		        if(status === 403){
-					$scope.manageOtpErrorMessage(errorObject.response);
-			    } else {
-			    	var msg = codeStatusErrors.errorMessage(status);
-					if (status === 500){
-		            	$scope.setServiceError(msg + errorObject.response.message);
-		        	} else {
-		        		$scope.setServiceError(msg);
-		        	}
-			    }
-			}
-		);
-	};
 
     /**
      * Send the new password to the service.
