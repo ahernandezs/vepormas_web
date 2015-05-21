@@ -17,11 +17,8 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 	$scope.action = 1;
 
     $scope.stage = 1;
-    $scope.change = {};
-    $scope.stage_password = 1;
     $scope.beneficiary = {};
 	$scope.today = new Date();
-	$scope.resultChangePass = false;
 	loadBeneficiary();
 
 	 $scope.errorMessage = null;
@@ -130,45 +127,6 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 			}
 		)
 	};
-
-    /**
-     * Evaluates if the new passwords are equals.
-     */
-    $scope.verifyNewPass = function () {
-        if ( $scope.change.new !== $scope.change.repeatNew ){
-            $scope.errorMessage = "Las contraseñas no coinciden";
-            $scope.showError = true;
-        }else{
-            $scope.stage_password = 2;
-        }
-    };
-
-    /**
-     * Send the new password to the service.
-     */
-    $scope.modifyPassword = function() {
-        adminProvider.updatePassword($scope.change.old, $scope.change.new, $scope.change.otp).then(
-        	function(data){
-	            //console.log('Password modified correctly');
-	            $scope.resultChangePass = true;
-	        },
-	        function(errorObject) {
-				$scope.resultChangePass = false;
-				var status = errorObject.status;
-		        if(status === 403){
-					$scope.manageOtpErrorMessage(errorObject.response);
-			    } else {
-			    	var msg = codeStatusErrors.errorMessage(status);
-					if (status === 500){
-		            	$scope.setServiceError(msg + errorObject.response.message);
-		        	} else {
-		        		$scope.setServiceError(msg);
-		        	}
-			    }
-			}
-		);
-        $scope.stage_password = 3;
-    };
 
     /**
      * return true if user has full accesses
