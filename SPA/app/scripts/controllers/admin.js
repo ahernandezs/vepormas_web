@@ -143,18 +143,10 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
      * Evaluates if the new passwords are equals.
      */
     $scope.verifyNewPass = function () {
-		if ($scope.change.old === undefined ) {
-			$scope.errorMessage = "Ingresa la contraseña actual";
-			$scope.error = true;
-		} else if ( $scope.change.new === undefined && $scope.change.repeatNew === undefined ) {
-			$scope.errorMessage = "La contraseña deberá tener caracteres alfanuméricos, \
-            al menos una mayúscula y una minúscula, y con un carácter numérico";
-            $scope.error = true;
-		} else if ( $scope.change.new !== $scope.change.repeatNew ){
-			$scope.errorMessage = "Las contraseñas no coinciden";
-            $scope.error = true;
+        if ( $scope.change.new !== $scope.change.repeatNew ){
+            $scope.errorMessage = "Las contraseñas no coinciden";
+            $scope.showError = true;
         }else{
-			$scope.error = false;
             $scope.stage_password = 2;
         }
     };
@@ -369,23 +361,13 @@ Adding a beneficary actions
 			function(data){
 				adminProvider.getLimits().then(
 					function(){
-						var limits= $rootScope.limits;
-						for(var i=0; i <  limits.length; i++){							
-							var type_name = limits[i].type;														
-							if(type_name == "PAYCARD_CONSUBANCO"){					
-								 limits[i].type_name="Pago a TDC Terceros Consubanco";
-							}else if (type_name == "TRANSFER_CONSUBANCO") {							
-								 limits[i].type_name="Transferencia Terceros Consubanco";
-							}else if (type_name == "TRANSFER_SPEI"){ 							
-								 limits[i].type_name="Transferencia Terceros Otro Banco";
-							}
-						}						
 						$scope.limits = $rootScope.limits;
 					}
 				);
+
 			},
 			function(errorObject){
-	            $scope.setServiceError(errorObject.response.message);
+	            $scope.setServiceError(errorObject);
 				adminProvider.getLimits().then(
 					function(){
 						$scope.limits = $rootScope.limits;
@@ -444,12 +426,13 @@ Adding a beneficary actions
    $scope.validatePassword = function() {
     $scope.error = false;
     $scope.invalidPassword = true;
-    var password = $scope.change.new;   
-    if(password) {    	
-      var pattern = new RegExp(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/g);
+    var password = $scope.change.new;
+    
+    if(password) {
+      var pattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$/g;
       if(!pattern.test(password)) {
-        setError("La contraseña deberá tener caracteres alfanuméricos, \
-            al menos una mayúscula y una minúscula, y con un carácter numérico");
+        setError("La contraseña deberá tener carácteres alfanuméricos, \
+            al menos una mayúscula y una minúscula, y con un caracter numérico");
         return;
       }
 
@@ -460,7 +443,7 @@ Adding a beneficary actions
       }
 
       if(consecutivePassword(password)) {
-        setError("No puede tener secuencia de caracteres como 123 o abc");
+        setError("No puede tener secuencia de carácteres como 123 o abc");
         return;
       }
       $scope.invalidPassword = false;
