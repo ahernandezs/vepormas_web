@@ -160,8 +160,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 	 * Assign the type of payment selected by the user.
 	 */
 	$scope.assignValue = function () {
-               //console.log( 'Setting payment type to: ' + $scope.payment.type );
-             $scope.payment.otp="";
+		//console.log( 'Setting payment type to: ' + $scope.payment.type );
 		if ( $scope.payment.type && $scope.payment.type === 'MIN_PAYMENT' )
 			$scope.payment.amount = $scope.transferAccountDetail.minimum_payment;
 		else if ( $scope.payment.type && $scope.payment.type === 'WIHTOUT_INTEREST_PAYMENT' )
