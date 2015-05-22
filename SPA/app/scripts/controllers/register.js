@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'userProvider', '$rootScope' , function ($scope, $location, userProvider, $rootScope) {
+angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'userProvider', '$rootScope', 'timerService' , function ($scope, $location, userProvider, $rootScope, timerService) {
 
     // the register-flow's current-step
 	$scope.selection = 1;
@@ -41,6 +41,11 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
         for (var i = 0; i < preRegisterData.images.length; i++) {
             $scope.images[i] = { 'id' : preRegisterData.images[i].image_id, 'url' : $rootScope.restAPIBaseUrl + '/' + preRegisterData.images[i].url };
         }
+        //session-timeout: 9 minutes before the warning message
+        timerService.idleDuration(540);
+        //session-timeout: 1 minute between the warning message and the redirection to the login page
+        timerService.warningDuration(60);
+        timerService.start();
     };
     
 	/**
@@ -250,12 +255,13 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
             }
             $scope.completeStep(6);
           },
-          function(data, status) {
+          function(data) {
             $scope.isRegistering = false;
-            $scope.setServiceError("Ha ocurrido un error en el registro");
+            if(data.status != 401){
+              $scope.setServiceError("Ha ocurrido un error en el registro");
+            }
           }
         );
-
     }
 
     /**
@@ -270,4 +276,12 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
     $scope.gotoLogin();
     return;
   }
+
+  $scope.$on('WarningTimeout', function() {
+    $scope.gotoLogin();
+   });
+
+  $scope.$on('IdleTimeout', function() {
+    $scope.showIdleAlert = true;
+   });
 }]);
