@@ -236,13 +236,23 @@ Adding a beneficary actions
 			function(data){
 				adminProvider.getLimits().then(
 					function(){
+						var limits= $rootScope.limits;
+						for(var i=0; i <  limits.length; i++){							
+							var type_name = limits[i].type;														
+							if(type_name == "PAYCARD_CONSUBANCO"){					
+								 limits[i].type_name="Pago a TDC Terceros Consubanco";
+							}else if (type_name == "TRANSFER_CONSUBANCO") {							
+								 limits[i].type_name="Transferencia Terceros Consubanco";
+							}else if (type_name == "TRANSFER_SPEI"){ 							
+								 limits[i].type_name="Transferencia Terceros Otro Banco";
+							}
+						}						
 						$scope.limits = $rootScope.limits;
 					}
 				);
-
 			},
 			function(errorObject){
-	            $scope.setServiceError(errorObject);
+	            $scope.setServiceError(errorObject.response.message);
 				adminProvider.getLimits().then(
 					function(){
 						$scope.limits = $rootScope.limits;
@@ -298,7 +308,7 @@ Adding a beneficary actions
     return statuses[activityStatus];
   };
 
-	function setError(errorMessage){
+  function setError(errorMessage){
         $scope.error = true;
         $scope.errorMessage = errorMessage;
     };
