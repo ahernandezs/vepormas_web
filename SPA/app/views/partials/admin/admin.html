@@ -26,13 +26,13 @@
 	</div>
 
 	<div class="content-admin" ng-show="isUserPreferencesAdministrationPageActivated() && option==1">
-		<div ng-include="'views/partials/admin/update-communication.html'"></div>
+		<div ng-include="'views/partials/admin/update_communication/update-communication.html'"></div>
 	</div>
 	<div class="content-admin" ng-show="isUserPreferencesAdministrationPageActivated() && option==2">
 		<div ng-include="'views/partials/admin/update-services.html'"></div>
 	</div>
 	<div class="content-admin" ng-show="isUserPreferencesAdministrationPageActivated() && option==3">
-		<div ng-include="'views/partials/admin/change-password.html'"></div>
+		<div ng-include="'views/partials/admin/update_password/change-password.html'"></div>
 	</div>
 	<div class="content-admin" ng-show="isUserTokenAdministrationPageActivated() && option==4">
 		<div ng-include="'views/partials/admin/activate-token.html'"></div>
