@@ -8,14 +8,14 @@
         <!-- =============================================================== -->
         <nav class="nav">
             <ul>
-                <li ng-click="selectNavigatOption('products')"
-                    data-ng-class="{'active': activeNavigationOption == 'products'}" > <a ui-sref="dashboard.accounts">Mis Productos</a></li>
+                <li ng-click="selectNavigatOption('accounts')"
+                    data-ng-class="{'active': activeNavigationOption == 'accounts'}"> <a id="accounts" >Mis Productos</a></li>
                 <li ng-click="selectNavigatOption('transfers')"
-                    data-ng-class="{'active': activeNavigationOption == 'transfers'}"><a ui-sref="dashboard.transfers">Pagos y Transferencias</a></li>
+                    data-ng-class="{'active': activeNavigationOption == 'transfers'}"><a id="transfers" >Pagos y Transferencias</a></li>
                 <li ng-click="selectNavigatOption('investments')"
-                    data-ng-class="{'active': activeNavigationOption == 'investments'}"><a ui-sref="dashboard.investments">Inversiones</a></li>
+                    data-ng-class="{'active': activeNavigationOption == 'investments'}"><a id="investments" >Inversiones</a></li>
                 <li ng-click="selectNavigatOption('administration')"
-                    data-ng-class="{'active': activeNavigationOption == 'administration'}"><a ui-sref="dashboard.administration">Administraci&oacute;n</a></li>
+                    data-ng-class="{'active': activeNavigationOption == 'administration'}"><a id="administration" >Administraci&oacute;n</a></li>
             </ul>
         </nav>
         <!-- =============================================================== -->

@@ -3,7 +3,7 @@
 /**
  * The accounts controller. Gets accounts passing auth parameters
  */
-angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$window', 
+angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$window',
     'accountsProvider', 'userProvider', 'timerService', 'logoutService', function ($rootScope, $scope, $location, $routeParams, $window, accountsProvider, userProvider, timerService, logoutService) {
 
   if(!$rootScope.session_token) {
@@ -40,37 +40,19 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
   };
 
 
-  $scope.selectNavigatOption = function(selectedOption){
-    //console.log('Selected Option --->' + selectedOption);
-    switch(selectedOption) {
-        case 'products':
-          $scope.activeNavigationOption = 'products';
-          $location.path('accounts');
-          //console.log($location.path());
-        break;
-
-        case 'transfers':
-          $scope.activeNavigationOption = 'transfers';
-          $location.path('transfers');
-          //console.log($location.path());
-        break;
-
-        case 'investments':
-          $scope.activeNavigationOption = 'investments';
-          $location.path('investments');
-          //console.log($location.path());
-        break;
-
-        case 'administration':
-          $scope.activeNavigationOption = 'administration';
-          $location.path('administration');
-          //console.log($location.path());
-        break;
-
-        case 'map':
-          $location.path('map');
-        break;
-    }
+  $scope.selectNavigatOption = function(selectedOption) {
+    if ( $scope.activeNavigationOption === selectedOption )
+      return;
+    else if ( selectedOption === 'map' )
+      $location.path('map');
+    else
+      $('.wrapper .nav li a').each( function(index) {
+        if ( $(this).attr('id') === selectedOption ) {
+          $scope.activeNavigationOption = selectedOption;
+          $location.path(selectedOption);
+        }
+        $(this).css('cursor', 'pointer');
+      });
   };
 
   $scope.$on('IdleTimeout', function() {
