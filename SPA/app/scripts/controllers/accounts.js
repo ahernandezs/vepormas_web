@@ -14,7 +14,7 @@
 	  accountsProvider.getAccounts().then(
           function(data) {
             $scope.accounts = $rootScope.accounts;
-            $scope.selectNavigatOption('products'); 
+            $scope.selectNavigatOption('accounts'); 
             $scope.selectAccount( $scope.accounts[0]);
             //console.log('Getting accounts ......');
             //console.log($scope.accounts);
@@ -64,7 +64,7 @@
     $scope.returnData.prevId = accountSelected._account_id;
     $scope.returnData.prevType = accountSelected.account_type
 
-    
+
     switch (type) {
         case 'TDC':
             //console.log('Tarjeta de Credito');
