@@ -3,7 +3,7 @@
 angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'userProvider', '$rootScope', 'timerService' , function ($scope, $location, userProvider, $rootScope, timerService) {
 
     // the register-flow's current-step
-	$scope.selection = 1;
+	$scope.selection = 0;
     
     // stores the register's data inputed by the user
     $scope.registerData = {};
@@ -64,7 +64,7 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
 	 * go back to the login page
 	 */
 	$scope.gotoLogin =function(){
-        $scope.selection = 1;
+        $scope.selection = 0;
         $scope.registerData = {};
         $scope.error = false;
         $scope.errorMessage = null;
@@ -225,14 +225,10 @@ angular.module('spaApp').controller('RegisterCtrl', ['$scope','$location', 'user
      * confirm token 
      */
     $scope.confirmToken = function () {
-        if(! $scope.registerData.acceptLegalMention){
-            setError("Debe aceptar los términos de Consubanco");
-        }else{
-          userProvider.setCardId($scope.registerData.token);
-          userProvider.setOtp1($scope.registerData.otp1);
-          userProvider.setOtp2($scope.registerData.otp2);
-          registerUser();
-        }
+      userProvider.setCardId($scope.registerData.token);
+      userProvider.setOtp1($scope.registerData.otp1);
+      userProvider.setOtp2($scope.registerData.otp2);
+      registerUser();
     };
 
     /**

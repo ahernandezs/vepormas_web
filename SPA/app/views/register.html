@@ -13,7 +13,7 @@
                         <!--<progress ng-show="roleID === 1" max="5" value="{{selection-1}}"></progress>
                         <progress class="four-steps" ng-show="roleID === 0" max="4" value="{{selection-1}}"></progress>-->
                         <ul>
-                            <li ng-class="selection>=1?'active' : ''">Confirmaci&oacute;n</li>
+                            <li ng-class="selection>=1 ? 'active' : ''">Confirmaci&oacute;n</li>
                             <li ng-class="selection>=2 ? 'active' : ''">Registro</li>
                             <li ng-class="selection>=3 ? 'active' : ''">Nivel de Seguridad</li>
                             <li ng-class="selection>=4 ? 'active' : ''">Notificaciones</li>
@@ -23,6 +23,10 @@
                     </div>
 
                     <div ng-switch on="selection">
+                        <div class="animate-switch" ng-switch-when="0">
+                            <div ng-include="'views/partials/register/terms.html'">
+                            </div>
+                        </div>
                         <div class="animate-switch" ng-switch-when="1">
                             <div ng-include="'views/partials/register/first-step.html'">
                             </div>
