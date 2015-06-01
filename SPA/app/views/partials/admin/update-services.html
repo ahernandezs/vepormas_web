@@ -8,24 +8,25 @@
 				<button ng-click="updateService(2,'S')">Quiero suspender mi servicio temporalmente</button>
 				<button ng-click="updateService(2,'C')">Quiero cancelar mi servicio</button>
 			</div>
+		</div>
+	    <ng-form name="serviceForm">
+		    <div ng-switch-when="2">
+	            <div class="fieldContainer" ng-class="data.otp.length > 0 ? 'selected' : ''">
+	                <span>Tokense</span>
+	                <input class="input-token" type="password" ng-model="updateDigitalBankServiceState.otp" ng-required="true" numbers-only minlength="6" maxlength="6" placeholder="Introduce el c&oacute;digo de tu Token F&iacute;sico">
+	            </div>
+	            <div class="double-btn">
+	                <input type="submit" value="Regresar" ng-click="updateService(1,'');">
+	                <input type="submit" value="Continuar" ng-click="updateDigitalBankServiceState()" ng-disabled="serviceForm.$invalid">
+	            </div>
 			</div>
-	    <div ng-switch-when="2">
-            <div class="fieldContainer" ng-class="data.otp.length > 0 ? 'selected' : ''">
-                <span>Token</span>
-                <input class="input-token" type="password" ng-model="updateDigitalBankServiceState.otp" ng-required="true" numbers-only minlength="6" maxlength="6" placeholder="Introduce el c&oacute;digo de tu Token F&iacute;sico">
-            </div>
-            <div class="double-btn">
-                <input type="submit" value="Regresar" ng-click="updateService(1,'');">
-                <input type="submit" value="Continuar" ng-click="updateDigitalBankServiceState()">
-            </div>
-			</div>
+		</ng-form>
 	    <div ng-switch-when="3">
 		    <div class="data">
 		        <h3>Informaci&oacute;n de la cuenta</h3>
 		        <div ng-class="exception ? 'error' : 'message'"><i></i><p>{{message}}</p></div>
 		    </div>
             <button ng-click="updateService(1,'');">Regresar</button>
-         </div>
+        </div>
 	</div>
-
 </div>
