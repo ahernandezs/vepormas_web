@@ -261,6 +261,10 @@
         h2 + p{
         	font-size: 14px;
         }
+        .terms{
+         height: 300px;
+         overflow-y: scroll;
+        }
         .user-data{
         	position: relative;
         	.radioGroupBelow{
