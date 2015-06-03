@@ -10,7 +10,7 @@
         </div>
         -->
 
-        <div class="dropdown">
+        <div name="seleccion" class="dropdown">
             <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="tokenDisableData.reason ? 'selected' : ''">
                 <span>Raz&oacute;n</span>
                 <p>{{tokenDisableData.reason === undefined ? 'Raz&oacute;n' : tokenDisableData.reason.maskedAccountNumber}}
@@ -20,8 +20,7 @@
                 <li ng-repeat="item in tokenDisableReasons" ng-model="tokenDisableData.reason" ng-click="tokenDisableData.reason = item">{{item.label}}</li>
             </ul>
         </div>
-
-       <button ng-disabled="disableSecurityTokenForm.$invalid" ng-click="disableSecurityToken()">Deshabilitar</button>
+       <button ng-disabled="disableSecurityTokenForm.seleccion===tokenDisableData.reason" ng-click="disableSecurityToken()">Deshabilitar</button>
     </form>
 </div>
 <div class="data" ng-show="isSecurityTokenLocked()">
