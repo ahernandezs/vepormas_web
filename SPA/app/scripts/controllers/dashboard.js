@@ -1,16 +1,20 @@
 'use strict';
 
+app.value('userData', false);
+
 /**
  * The accounts controller. Gets accounts passing auth parameters
  */
 angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$window',
-    'accountsProvider', 'userProvider', 'timerService', 'logoutService', function ($rootScope, $scope, $location, $routeParams, $window, accountsProvider, userProvider, timerService, logoutService) {
+    'accountsProvider', 'userProvider', 'timerService', 'logoutService', 'userData', function ($rootScope, $scope, $location, $routeParams, $window, accountsProvider, userProvider, timerService, logoutService, userData) {
 
   if(!$rootScope.session_token) {
     //console.log("Redirecting to login");
     $location.path('login');
     return;
   }
+
+  $scope.userData = userData;
 
 	//TODO: temporal binding
 	$scope.completeName = $rootScope.client_name;
@@ -19,6 +23,11 @@ angular.module('spaApp').controller('DashBoardCtrl', ['$rootScope', '$scope', '$
 
   if($window.x_session_token) {
     $scope.useLogoutForm = true;
+  }
+
+  $scope.hideWelcome = function(){
+    app.value('userData', true);
+    $scope.userData = true;
   }
 
   /**
