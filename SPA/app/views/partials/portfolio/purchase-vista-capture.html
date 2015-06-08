@@ -17,7 +17,7 @@
             <p>{{investment.vistaAccount == '' ? 'Producto de inversi&oacute;n' : investment.vistaAccount.name}}</p>
           </div>
           <ul class="dropdown-menu" role="menu">
-            <li ng-repeat="item in vistaAccounts" ng-click="investment.vistaAccount = item">{{item.name}}</li>
+            <li ng-repeat="item in vistaAccounts" ng-model="investment.vistaAccount" ng-click="investment.vistaAccount = item"  ng-required="true">{{item.name}}</li>       
           </ul>
         </div>
 
@@ -29,7 +29,7 @@
                 <span>{{investment.depositAccount.detail}}</span></p>
           </div>
           <ul class="dropdown-menu" role="menu">
-            <li ng-repeat="item in depositAccounts" ng-click="investment.depositAccount = item">{{item.displayName}}</li>
+            <li ng-repeat="item in depositAccounts" ng-model="investment.depositAccount" ng-click="investment.depositAccount = item"  ng-required="true">{{item.displayName}}</li>
           </ul>
         </div>
 
@@ -45,4 +45,5 @@
         <input type="submit" value="Cancelar" ng-click="reset()">
         <input type="submit" value="Continuar" ng-click="gotToConfirmation()" ng-disabled="investmentForm.$invalid">
     </div>
+    
 </div>

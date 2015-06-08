@@ -22,7 +22,7 @@
             </div>
             <ul class="dropdown-menu" role="menu" ng-model="payment.account">
                 <li class="dropdown-header">Cuentas propias</li>
-                <li ng-repeat="item in theAccounts | filter: { account_type: 'DEP' }" ng-model="payment.account" ng-click="payment.account = item">{{item.displayName}}</li>
+                <li ng-repeat="item in theAccounts | filter: { account_type: 'DEP' }" ng-model="payment.account" ng-click="payment.account = item" ng-required="true">{{item.displayName}}</li>
             </ul>
         </div>
 
@@ -37,7 +37,7 @@
                 <li class="dropdown-header">Cuentas propias</li>
                 <li ng-repeat="item in theAccounts | filter: { account_type: 'TDC', group: 'Cuentas Propias' }" ng-model="payment.destiny" ng-click="payment.destiny = item; getAccountDetail()">{{item.displayName}}</li>
                 <li class="dropdown-header">Cuentas terceros</li>
-                <li ng-repeat="item in theAccounts | filter: { account_type: 'TDC_T', group: 'Cuentas Terceros' }" ng-model="payment.destiny" ng-click="payment.destiny = item">{{item.displayName}}</li>
+                <li ng-repeat="item in theAccounts | filter: { account_type: 'TDC_T', group: 'Cuentas Terceros' }" ng-model="payment.destiny" ng-click="payment.destiny = item" ng-required="true">{{item.displayName}}</li>
                 <li ng-show="isCompleteUser()"><a href="#/administration" ng-click="selectNavigatOption('administration')">Agregar nuevo beneficiario</a></li>
             </ul>
         </div>
