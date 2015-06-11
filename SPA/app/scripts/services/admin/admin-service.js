@@ -9,7 +9,7 @@ angular.module('spaApp').service('adminService', ['$http','$rootScope', function
 	this.deleteAccount = function(id, otp){
 		return $http({
 			url: $rootScope.restAPIBaseUrl+'/externalaccounts/'+id,
-			method: 'delete',
+			method: 'POST',
 			data: JSON.stringify({
 				'otp':otp
 			}),
@@ -20,7 +20,7 @@ angular.module('spaApp').service('adminService', ['$http','$rootScope', function
 	this.updatePassword = function(current_pass, new_pass, otp){
 		return $http({
 			url: $rootScope.restAPIBaseUrl+'/userInformation/password',
-			method: 'PUT',
+			method: 'POST',
 			data: JSON.stringify({
 				"current": current_pass,
 				"password": new_pass,
@@ -33,7 +33,7 @@ angular.module('spaApp').service('adminService', ['$http','$rootScope', function
 	this.updateCommunication = function(phone, e_mail, otp) {
 		return $http({
 			url: $rootScope.restAPIBaseUrl+'/userInformation/communication',
-			method: 'PUT',
+			method: 'POST',
 			data: JSON.stringify({
 				'phone': phone,
 				'e_mail': e_mail,
@@ -45,7 +45,7 @@ angular.module('spaApp').service('adminService', ['$http','$rootScope', function
 	this.updateDigitalBankServiceState = function(state, otp){
 		return $http({
 			url: $rootScope.restAPIBaseUrl+'/userInformation/digitalBankServices',
-			method: 'PUT',
+			method: 'POST',
 			data: JSON.stringify({
 				'state': state,
 				'otp': otp
