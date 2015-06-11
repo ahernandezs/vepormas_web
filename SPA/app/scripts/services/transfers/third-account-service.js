@@ -39,8 +39,11 @@ angular.module('spaApp')
 
 	this.unregisterThirdAccount = function(thirdAccountID,otp){
 		return $http({
-			url: $rootScope.restAPIBaseUrl+'/externalaccounts/'+thirdAccountID+'?otp='+otp,
+			url: $rootScope.restAPIBaseUrl+'/externalaccounts/'+thirdAccountID+'/destroy',
 			method: 'POST',
+			data: JSON.stringify({
+				'otp':otp
+			}),
 			headers: {'Content-Type': 'application/json','X-AUTH-TOKEN': $http.defaults.headers.common['X-AUTH-TOKEN'] }
 		});
 	}
