@@ -6,7 +6,8 @@ angular.module('spaApp').controller('changePasswordController', ['$scope', 'admi
 	$scope.change = {};
 	$scope.errorMessage = '';
 	$scope.showError = false;
-	$scope.resultChangePass = false;	
+	$scope.resultChangePass = false;
+	$scope.resultErrorPass = false;
 
 	$scope.verifyNewPass = function () {
 		if ($scope.change.old === undefined ) {
@@ -31,7 +32,7 @@ angular.module('spaApp').controller('changePasswordController', ['$scope', 'admi
 				$scope.resultChangePass = true;
 			},
 			function(errorObject) {
-				$scope.resultChangePass = false;
+				$scope.resultErrorPass = true;
 				var status = errorObject.status;
 				if(status === 403){
 					$scope.manageOtpErrorMessage(errorObject.response);
@@ -81,6 +82,7 @@ angular.module('spaApp').controller('changePasswordController', ['$scope', 'admi
 		$scope.errorMessage = '';
 		$scope.showError = false;
 		$scope.resultChangePass = false;
+		$scope.resultErrorPass = false;
 	}
 
 	function setError(errorMessage){
