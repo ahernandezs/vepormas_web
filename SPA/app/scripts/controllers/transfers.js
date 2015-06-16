@@ -97,6 +97,8 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 	$scope.changeSection = function(newSection) {
 		$scope.section = newSection;
 		$scope.selection = 1;
+		$scope.payment = {};
+		$scope.transfer = {};
 	};
 
 	/**
@@ -115,10 +117,10 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         if (step === 1) {
            $scope.transfer.otp = '';
 
-        if(reset){
+        	if(reset){
             $scope.payment = {};
             $scope.transfer = {};
-            }
+          }
         }
         $scope.updateProgress(step);
     };
