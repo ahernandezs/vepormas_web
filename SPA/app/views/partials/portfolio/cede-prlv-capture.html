@@ -14,10 +14,10 @@
         <div class="dropdown">
             <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="investment.destinationProduct != '' ? 'selected' : ''">
                 <span>Producto de inversi&oacute;n</span>
-                <p>{{investment.destinationProduct == '' ? 'Producto de inversi&oacute;n' : investment.destinationProduct.productName}}</p>
+                <p>{{investment.destinationProduct == '' ? 'Producto de inversi&oacute;n' : investment.destinationProduct.product_name}}</p>
             </div>
             <ul class="dropdown-menu" role="menu">
-                <li ng-repeat="item in investmentProducts | filter: { category: investmentCategory }" ng-model="investment.destinationProduct" ng-click="investment.destinationProduct = item" ng-required="true">{{item.productName}}</li>
+                <li ng-repeat="item in investmentProducts | filter: { category: investmentCategory }" ng-model="investment.destinationProduct" ng-click="investment.destinationProduct = item" ng-required="true">{{item.product_name}}</li>
             </ul>
         </div>
 
