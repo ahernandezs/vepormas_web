@@ -1,0 +1,40 @@
+<h4>B&uacute;squeda por rango de fechas</h4>
+<div class="filter">
+    <div>
+        <span>Fecha inicial:</span>
+        <input type="text" ng-model="searchParams.date_start" ng-change="search()" maxlength="10" jqdatepicker>
+    </div>
+    <div>
+        <span>Fecha final:</span>
+        <input type="text" ng-model="searchParams.date_end" ng-change="search()" maxlength="10" jqdatepicker>
+    </div>
+</div>
+<div class="transactions pull-left">
+    <div class="searchMessage" ng-show="searchMessage">
+        <span ng-click="clearMessage()">X</span>
+        Resultados de la b&uacute;squeda
+    </div>
+    <table class="details">
+        <thead>
+            <tr>
+                <th scope="col">Fecha de descuento</th>
+                <th scope="col">Descripci&oacute;n</th>
+                <th scope="col">Capital</th>
+                <th scope="col">Inter&eacute;s e IVA</th>
+                <th scope="col">Total</th>
+                <th scope="col">Fecha de aplicaci&oacute;n</th>
+
+            </tr>
+        </thead>
+        <tbody>
+                <tr ng-repeat="trans in creditTransactions">
+                    <td>{{trans.movementDate | date:'dd-MM-yyyy' }}</td>
+                    <td>{{trans.description}}</td>
+                    <td>{{trans.capital | currency}}</td>
+                    <td>{{trans.tax | currency}}</td>
+                    <td>{{trans.amount | currency}}</td>
+                    <td>{{trans.dateApplication | date:'dd-MM-yyyy' }}</td>
+                </tr>
+        </tbody>
+    </table>
+</div>

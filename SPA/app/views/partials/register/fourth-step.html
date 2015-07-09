@@ -1,0 +1,58 @@
+<div class="record">
+    <div class="data">
+        <h2>Alertas y Notificaciones</h2>
+        <p>Recibe alertas al instante en tu tel&eacute;fono celular y&sol;o correo electr&oacute;nico, cada vez que se realice un movimiento en tus cuentas.</p>
+<hr>
+        <div class="user-data">
+            <form class="contact-form" name="contactForm">
+                <label class="fieldContainer" ng-class="contactForm.email.$viewValue.length > 0 ? 'selected' : ''">
+                    <span>Correo electr&oacute;nico</span>
+                    <input type="email" alphanumeric name="email" maxlength="254" class="input-mail" ng-model="registerData.email" placeholder="Correo electr&oacute;nico" required>
+                </label>
+                <label class="fieldContainer" ng-class="contactForm.repeatEmail.$viewValue.length > 0 ? 'selected' : ''">
+                    <span class="double">Confirmar<br>correo electr&oacute;nico</span>
+                    <input type="email" alphanumeric maxlength="254" name="repeatEmail" class="input-mail" ng-model="registerData.repeatEmail" placeholder="Confirma correo electr&oacute;nico" required>
+                </label>
+                <div class="error" ng-show="contactForm.email.$error.email">Email invalido</div>
+                <label class="fieldContainer" ng-class="contactForm.cellphone.$viewValue.length > 0 ? 'selected' : ''">
+                    <span>Celular</span>
+                    <input type="tel" name="cellphone" class="input-mobile" ng-model="registerData.cellphone" numbers-only minlength="10" maxlength="10" placeholder="Celular" required>
+                </label>
+                <label class="fieldContainer" ng-class="contactForm.repeatCellphone.$viewValue.length > 0 ? 'selected' : ''">
+                    <span>Confirma celular</span>
+                    <input type="tel" name="repeatCellphone" class="input-mobile" ng-model="registerData.repeatCellphone" numbers-only minlength="10" maxlength="10" placeholder="Confirma celular" required>
+                </label>
+            </form>
+            <div class="error" ng-show="error">{{errorMessage}}</div>
+            <div class="separate">
+                <button ng-click="completeStep(3)">Regresar</button>
+                <button ng-show="roleID == 1" ng-click="confirmContactInformation()" ng-disabled="contactForm.$invalid">Continuar</button>
+                <button ng-show="roleID == 0" ng-click="confirmContactInformation()" ng-disabled="contactForm.$invalid || isRegistering">Continuar</button>
+            </div>
+        </div>
+    </div>
+    <div class="help">
+        <h3>Ayuda</h3>
+        <div>
+            <i class="ico-alerta"></i>
+            <p class="blue">Llena todos los campos</p>
+            <p>
+                Es muy importante que llenes todos los campos para que tu registro se realice con &eacute;xito.
+            </p>
+        </div>
+        <div>
+            <i class="ico-duda"></i>
+            <p class="blue">&iquest;Por qu&eacute; ingresar estos datos&quest;</p>
+            <p>
+                Al ingresar tu correo electrónico y celular se te har&aacute;n llegar las notificaciones de tus  operaciones realizadas en tus cuentas.
+            </p>
+        </div>
+        <div>
+            <i class="ico-ayuda"></i>
+            <p class="blue">¿Necesitas ayuda?</p>
+            <p>
+               Comun&iacute;cate con nosotros al 01 800 800 3224.
+            </p>
+        </div>
+    </div>
+</div>

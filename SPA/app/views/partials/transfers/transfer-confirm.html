@@ -1,0 +1,45 @@
+<div class="content pagosytransf">
+    <div class="header">
+        <h2>Transferencia de cuentas</h2>
+        <p>Confirma los datos para el pago</p>
+        <div class="progress-div" id="progressWrapper">
+            <div class="progress-fill"  ng-style="stepStyle"></div>
+        </div>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p class="orange">confirmaci&oacute;n</p>
+            <p>comprobaci&oacute;n</p>
+        </div>
+    </div>
+    <form name="transferForm">
+        <span ng-if="transfer.destiny.account_type != 'DEP'">
+            <input type="password" ng-model="transfer.otp" class="input-confirm-token" ng-required="true" numbers-only minlength="6" maxlength="6" placeholder="Introduce el c&oacute;digo que se ha generado en tu Token F&iacute;sico">
+        </span>
+        <table>
+            <tr>
+                <td>Cuenta retiro:</td>
+                <td>{{transfer.account.displayName}}</td>
+            </tr>
+            <tr>
+                <td>Cuenta dep&oacute;sito:</td>
+                <td>{{transfer.destiny.displayName}}</td>
+            </tr>
+            <tr>
+                <td>Importe:</td>
+                <td class="bolder">{{ transfer.amount | currency:"$"}}</td>
+            </tr>
+            <tr>
+                <td>Concepto:</td>
+                <td>{{transfer.concept}}</td>
+            </tr>
+            <tr>
+                <td>Hora de la transferencia:</td>
+                <td>{{today | date:'HH:mm'}} hrs.</td>
+            </tr>
+        </table>
+    </form>
+    <div class="double-btn">
+        <input type="submit" value="Regresar" ng-click="goToStep(1, false)">
+        <input type="submit" value="Continuar" ng-click="sendTransfer()" ng-disabled="transferForm.$invalid">
+    </div>
+</div>

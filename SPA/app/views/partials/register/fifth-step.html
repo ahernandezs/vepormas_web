@@ -1,0 +1,50 @@
+<div class="record">
+    <div class="data">
+        <h2>Token</h2>
+        <p>Ingresa los siguientes datos para el registro de tu Token.</p>
+        <hr>
+        <div class="user-data">
+            <form class="token-form" name="tokenForm">
+                <label class="fieldContainer" ng-class="tokenForm.token.$viewValue.length > 0 ? 'selected' : ''">
+                     <span>No. de Serie del Token</span>
+                    <input type="text" alphanumeric name="token" maxlength="12" minlength="10" ng-model="registerData.token" placeholder="No. de Serie del Token" required>
+                </label>
+                <label class="fieldContainer" ng-class="tokenForm.otp1.$viewValue.length > 0 ? 'selected' : ''">
+                     <span>OPT 1</span>
+                    <input type="password" numbers-only minlength="6" maxlength="6" name="otp1" ng-model="registerData.otp1" placeholder="Captura el c&#x000F3;digo de tu token" required>
+                </label>
+                <label class="fieldContainer" ng-class="tokenForm.otp2.$viewValue.length > 0 ? 'selected' : ''">
+                     <span>OPT 2</span>
+                    <input type="password" numbers-only minlength="6" maxlength="6" name="otp2" ng-model="registerData.otp2" placeholder="Captura un nuevo c&#x000F3;digo de tu token" required>
+                </label>
+            </form>
+            <div class="error" ng-show="error">{{errorMessage}}</div>
+            <button ng-click="completeStep(4)">Regresar</button>
+            <button ng-click="confirmToken()" ng-disabled="tokenForm.$invalid || isRegistering">Registrar</button>
+        </div>
+    </div>
+    <div class="help">
+        <h3>Ayuda</h3>
+        <div>
+            <i class="ico-duda"></i>
+            <p class="blue">&iquest;Cu&aacute;l es el No. de serie de mi Token&quest;</p>
+            <p>
+                Es el valor num&eacute;rico que se encuentra ubicado en la parte posterior de tu Token y que consta de 8 d&iacute;gitos.
+            </p>
+        </div>
+        <div>
+            <i class="ico-duda"></i>
+            <p class="blue">&iquest;Que es el OTP&quest;</p>
+            <p>
+                Es el valor num&eacute;rico de 6 posiciones que se encuentra ubicado en la parte frontal de tu Token.
+            </p>
+        </div>
+        <div>
+            <i class="ico-token"></i>
+            <p class="blue">Activacion Token</p>
+            <p>
+                Una vez registrado tu Token, no olvides activarlo. Ingresa a Consubanco digital y en la parte de Administraci&oacute;n podr&aacute;s encontrar la opci&oacute;n para la activaci&oacute;n de tu Token.
+            </p>
+        </div>
+    </div>
+</div>

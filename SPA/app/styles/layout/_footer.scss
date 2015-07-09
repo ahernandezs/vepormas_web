@@ -1,0 +1,17 @@
+footer {
+	position: fixed;
+	width: 100%;
+	bottom:0;
+	left:0;
+	background-color: #FFF;
+	border-top: 1px solid $gray;
+	color: $inactiveText;
+	font-size: 12px;
+	height: 30px;
+	line-height: 30px;
+
+	p, a { display: inline; }
+	a:hover,a:active{text-decoration: underline; color:$inactiveText}
+	p { float: left; }
+	a { float: right; }
+}

@@ -1,0 +1,47 @@
+<div class="agregarBeneficiario pull-left">
+    <form>
+        <input type="text" ng-model="busqueda" class="pull-left" placeholder="Buscar beneficiario">
+        <button ng-click="addBeneficary()" class="pull-right">Agregar beneficiario</button>
+    </form>
+    <table class="transactions">
+        <thead>
+            <tr>
+               <th>Nombre del beneficiario</th>
+                <th>Cuenta / Referencia</th>
+                <th>Alias</th>
+                <th>Tipo de cuenta</th>
+            </tr>   
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan="4">Terceros Consubanco</td>
+            </tr>
+            <tr ng-repeat="accounts in third_accounts_own | filter:busqueda" ng-click="selectBeneficiary(accounts);">
+                <td>{{accounts.name}}</td>
+                <td>{{accounts.maskedAccountNumber}}</td>
+                <td>{{accounts.shortName}}</td>
+                <td>{{accounts.account_type_name}}</td>
+            </tr>
+            <tr>
+                <td colspan="4">Terceros Otros Bancos</td>
+            </tr>
+            <tr ng-repeat="accounts in third_accounts_others | filter:busqueda" ng-click="selectBeneficiary(accounts);">
+                <td>{{accounts.name}}</td>
+                <td>{{accounts.maskedAccountNumber}}</td>
+                <td>{{accounts.shortName}}</td>
+                <td>{{accounts.account_type_name}}</td>
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+<div ng-switch on="action">
+    <div ng-switch-when="2">
+        <div ng-include="'views/partials/admin/beneficiary-delete.html'">
+        </div>
+    </div>
+    <div ng-switch-when="3">
+        <div ng-include="'views/partials/admin/beneficiary-add.html'">
+        </div>
+    </div>
+</div>

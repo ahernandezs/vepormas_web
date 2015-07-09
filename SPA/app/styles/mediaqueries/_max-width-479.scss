@@ -1,0 +1,11 @@
+/*
+|-------------------------------------------------------------------------------------
+|	Less than 479px
+|-------------------------------------------------------------------------------------
+*/
+%max-width-screen-phone-portrait {
+
+}
+@media ( max-width: $screen-phone-portrait ) {
+	@extend %max-width-screen-phone-portrait;
+}

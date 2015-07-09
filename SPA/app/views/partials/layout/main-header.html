@@ -1,58 +1,45 @@
-<header class="header">
-  <div class="status-navbar">
-      <div class="container">
-        <div class="pull-left">
-          <time-access date='{{last_access_date}}' media='{{last_access_media}}'/>
-        </div>
-        <nav class="pull-right">
-          <a href="#">Cont&aacute;ctanos</a>
-          <a href="#">Sucursales</a>
-          <a href="#">www.abanking.com</a>
-        </nav>
-      </div>
-  </div>
-  <div class="navbar main-menu" role="navigation">
-    <div class="container">
-      <!--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"></button>-->
-      <a class="bank-logo" href="#"></a>
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Cuentas</a></li>
-        <li><a href="#">Inversiones</a></li>
-        <li><a href="#">Afore</a></li>
-        <li><a href="#">Impuestos</a></li>
-      </ul>        
+<div ng-include="'views/partials/layout/alert.html'"></div>
+<header>
+    <div class="wrapper">
+        <!-- =============================================================== -->
 
-  <!-- Collect the nav links, forms, and other content for toggling -->
-      <form class="pull-right">
-        <button type="button" class="btn btn-alertas">
-          <span class="glyphicon glyphicon-phone"></span>
-          alertas
-        </button>
-          <a type="submit" ng-controller="LoginCtrl" class="btn btn-logout"  ng-click="logout()">Cerrar sesi&oacute;n</a>
-      </form>
-      <ul class="nav navbar-nav pull-right user">
-          <li class="dropdown">
-            <a href="" class="dropdown-toggle" role="button" data-toggle="dropdown"> John Doe <strong class="caret"></strong></a>
-            <ul class="dropdown-menu" role="menu">
-              <li>
-                <a href="/#/administration/accounts-clabe">Cuentas CLABE</a>
-              </li>
-              <li>
-                <a href="/#/administration/contract">Contratos</a>
-              </li>
-              <li>
-                <a href="/#/administration/configuration">Configuraci&oacute;n</a>
-              </li>
-              <li>
-                <a href="/#/administration/admin-card">Administraci&oacute;n de Tarjetas</a>
-              </li>
-              <li>
-                <a href="/#/administration/checks">Administraci&oacute;n de Chequeras</a>
-              </li>
+        <h1 class="logo"><a href="/">Consubanco</a></h1>
+
+        <!-- =============================================================== -->
+        <nav class="nav">
+            <ul>
+                <li ng-click="selectNavigatOption('accounts')"
+                    data-ng-class="{'active': activeNavigationOption == 'accounts'}"> <a id="accounts" >Mis Productos</a></li>
+                <li ng-click="selectNavigatOption('transfers')"
+                    data-ng-class="{'active': activeNavigationOption == 'transfers'}"><a id="transfers" >Pagos y Transferencias</a></li>
+                <li ng-click="selectNavigatOption('investments')"
+                    data-ng-class="{'active': activeNavigationOption == 'investments'}"><a id="investments" >Inversiones</a></li>
+                <li ng-click="selectNavigatOption('administration')"
+                    data-ng-class="{'active': activeNavigationOption == 'administration'}"><a id="administration" >Administraci&oacute;n</a></li>
             </ul>
-          </li>
-        </ul><!-- end nav pull-right-->
-   </div><!--End container-->
-    {{errorMessage}}
-  </div>
+        </nav>
+        <!-- =============================================================== -->
+        <!-- module -->
+        <div class="user-session">
+            <div class="user-log">
+                <h6>Bienvenido</h6>
+                <h4 class="user text-capitalize">{{completeName | lowercase}}</h4>
+                <p ng-show="last_access_date > 0" class="date">&Uacute;ltimo acceso: <span>{{last_access_date | date:'dd/MM/yyyy'}}</span> a las <span>{{last_access_date | date:'HH:mm:ss'}}</span>
+                </p>
+            </div>
+        </div>
+        <button ng-hide="useLogoutForm" ng-click="logout()">Cerrar Sesi&oacute;n</button>
+        <div class="fix-top">
+            <div class="date">
+                <time-access date='{{date}}' media='{{date}}'/>
+            </div>
+            <ul class="sub-menu">
+                <ul>
+                    <li ng-click="selectNavigatOption('map')"><a>Sucursales y M&oacute;dulos de Atenci&oacute;n</a></li>
+                    <li><a href="#">Cont&aacute;ctanos</a></li>
+                    <li><a href="#">Ayuda</a></li>
+                </ul>
+            </ul>
+        </div>
+    </div>
 </header>

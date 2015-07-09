@@ -1,0 +1,355 @@
+/*
+|-------------------------------------------------------------------------------------
+|    Project Mixins
+|-------------------------------------------------------------------------------------
+*/
+%font {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+.tabular-data {
+    position: relative;
+
+    table {
+        width: 100%;
+    }
+    thead tr { background-color: $gray; border-bottom: 1px solid #FFF; }
+    th {
+        padding: 14px 0 14px 14px;
+        text-align: left;
+
+        &:nth-child(1) {
+            /*text-align: center;*/
+            padding-right: 10px;
+            width: 10%;
+            // background-color: salmon;
+        }
+        &:nth-child(2) {
+            width: 20%;
+            padding-left: 18px;
+            // background-color: blue;
+        }
+        &:nth-child(3) {
+            width: 26%;
+            // background-color: red;
+        }
+        &:nth-child(4) {
+            width: 20%;
+            // background-color: gold;
+        }
+        &:nth-child(5) {
+            width: 14%;
+            // background-color: green;
+        }
+    }
+    tr {
+        &.year {
+            background-color: $gray;
+            width: 100%;
+
+            td { color: $gris80; font-weight: bold; &:before { content:""; } }
+        }
+    }
+    tbody tr:nth-child(2n+2) { background-color: $lgray; }
+
+    td {
+        color: $gris60;
+        font-size: 14px;
+        padding: 14px 0 14px 14px;
+
+        &:first-child { padding: 0; text-align: center; }
+
+        &:last-child { font-weight: bold; color: $gris70; @extend .amount;}
+
+        &:nth-child(2) { padding-left: 18px; }
+
+        span {
+            display: block;
+            text-transform: uppercase;
+
+            &:first-child { font-size: smaller; }
+
+            &:last-child { font-size: larger; font-weight: bold; }
+        }
+    }
+}
+/*
+|-------------------------------------------------------------------------------------
+|    Default Mixins
+|-------------------------------------------------------------------------------------
+|-------------------------------------------------------------------------------------
+|    utilities
+|-------------------------------------------------------------------------------------
+*/
+@mixin arrow-up($size, $color) {
+    height: 0;  width: 0;
+    border-right: $size solid transparent;
+    border-right: $size solid rgba(255, 255, 255, 0);
+    border-left: $size solid transparent;
+    border-left: $size solid rgba(255, 255, 255, 0);
+    border-bottom: $size solid $color;
+}
+@mixin arrow-down($size, $color) {
+    height: 0;  width: 0;
+    border-right: $size solid transparent;
+    border-right: $size solid rgba(255, 255, 255, 0);
+    border-left: $size solid transparent;
+    border-left: $size solid rgba(255, 255, 255, 0);
+    border-top: $size solid $color;
+}
+@mixin arrow-left($size, $color) {
+    height: 0;  width: 0;
+    border-top: $size solid transparent;
+    border-top: $size solid rgba(255, 255, 255, 0);
+    border-bottom: $size solid transparent;
+    border-bottom: $size solid transparent;
+    border-right: $size solid $color;
+}
+@mixin arrow-right($size, $color) {
+    height: 0;  width: 0;
+    border-top: $size solid transparent;
+    border-top: $size solid rgba(255, 255, 255, 0);
+    border-bottom: $size solid transparent;
+    border-bottom: $size solid rgba(255, 255, 255, 0);
+    border-left: $size solid $color;
+}
+// Adjust margins to be equal to th semantic grid
+@mixin gutter($top: 0, $bottom: 0, $gutter: $gutter) {
+    margin: $top $gutter $bottom;
+}
+// Flat Button Style
+@mixin btn( $color: $blue ) {
+    @include form-control-focus($color);
+    @include text-shadow(fade(#000,30%));
+    background-color: $color;
+    border-color: darken($color, 12%);
+    border-style: solid;
+    border-width: 0 0 2px;
+    color: #FFF;
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: .3px;
+    line-height: 1;
+    padding: 1.4rem 2rem;
+    text-transform: uppercase;
+    width: 200px;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: #FFF;
+        background-color: darken($color, 10%);
+        border-color: darken($color, 22%);
+    }
+}
+// CSS3 PIE Behavior for IE8
+@mixin user-select() {
+    -webkit-user-select: none;  /* Chrome all / Safari all */
+      -moz-user-select: none;     /* Firefox all */
+      -ms-user-select: none;      /* IE 10+ */
+      /* No support for these yet, use at own risk */
+      -o-user-select: none;
+      user-select: none;
+}
+@mixin calc($property, $operation) {
+    #{$property}: -webkit-calc(#{$operation}); /** Safari 6, Chrome 19-25 **/
+    #{$property}: -moz-calc(#{$operation}); /** FF 4-15  **/
+    #{$property}: calc(#{$operation}); /** FF 16+, IE 9+, Opera 15, Chrome 26+, Safari 7 and future other browsers **/
+}
+%pie {
+    position: relative;
+    behavior: url(PIE.htc);
+}
+// Placeholder Styling
+@mixin placeholder($color) {
+    ::-webkit-input-placeholder {
+       color: $color;
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+       color: $color;
+    }
+
+    ::-moz-placeholder {  /* Firefox 19+ */
+       color: $color;
+    }
+
+    :-ms-input-placeholder {
+       color: $color;
+    }
+}
+@mixin textGradient($lightColor, $strongColor) {
+    color: mix($strongColor, $lightColor, 40%);
+
+    background: -webkit-linear-gradient($lightColor, $strongColor);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+/*
+|-------------------------------------------------------------------------------------
+|    Visibility
+|-------------------------------------------------------------------------------------
+*/
+// Hide from both screenreaders and browsers: h5bp.com/u
+.hide {
+    display: none;
+    visibility: hidden;
+}
+.show {
+    display: block;
+    visibility: visible;
+}
+// Hide only visually, but have it available for screenreaders: h5bp.com/v
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+/*
+|-------------------------------------------------------------------------------------
+|    CSS3 & CSS in General
+|-------------------------------------------------------------------------------------
+*/
+@mixin border-radius($size) {
+    -webkit-border-radius: $size;
+    -moz-border-radius: $size;
+    border-radius: $size;
+}
+@mixin background-size($size: cover) {
+    -webkit-background-size: $size;
+    background-size: $size;
+}
+@mixin transition-transform($transition...) {
+    -webkit-transition: -webkit-transform $transition;
+    -moz-transition: -moz-transform $transition;
+    -ms-transition: -ms-transform $transition;
+    -o-transition: -o-transform $transition;
+    transition: transform $transition;
+}
+@mixin anim_transicion_ease( $segundos: 0.3s ){
+    transition: all $segundos ease;
+    -ms-transition: all $segundos ease;
+    -webkit-transition: all $segundos ease;
+    -o-transition: all $segundos ease;
+    -moz-transition: all $segundos ease;
+}
+@mixin rgbabg( $colour, $alpha ) { // $alpha value must be decimal, ex. .8
+
+    $alphaColour: hsla(hue($colour), saturation($colour), lightness($colour), $alpha);
+
+    background-color: $colour; // Fallback for older browsers
+    background-color: $alphaColour;
+
+    // IE hacks
+    //background-color: transparent\9;
+    zoom:1; // hasLayout
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($alphaColour)}', endColorstr='#{ie-hex-str($alphaColour)}'); // IE8
+    background-color: unquote("transparent\0/"); // IE8 hack
+}
+@mixin formFocus($color: $input-border-focus) {
+    $color-rgba: rgba(red($color), green($color), blue($color), .6);
+
+    border-color: $color;
+    outline: 0;
+    @include box-shadow(inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px $color-rgba);
+}
+// Subtle text shadows made easy
+@mixin text-shadow($color: #FFF) {
+    text-shadow: 0 1px 2px $color;
+}
+// Normalize ul list style
+@mixin list {
+    list-style: initial;
+    margin-bottom: 11px;
+    padding-left: 40px;
+}
+@mixin aColor($color, $hover: darken($color, 10%)) {
+    color: $color;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $hover;
+    }
+}
+@mixin aBgColor($color, $hover: darken($color, 10%)) {
+    background-color: $color;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background-color: $hover;
+    }
+}
+/*
+|-------------------------------------------------------------------------------------
+|    Layout
+|-------------------------------------------------------------------------------------
+*/
+%float {
+    display: inline;
+    float: left;
+}
+%p {
+    margin: 0 0 10px;
+}
+%fullSize {
+    height: 100%;
+    width: 100%;
+}
+%posAbsolute {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+}
+%posFixed {
+    position: fixed;
+    top: 0; bottom: 0;
+    left: 0; right: 0;
+}
+/*
+|-------------------------------------------------------------------------------------
+|    Color
+|-------------------------------------------------------------------------------------
+*/
+// The method runs as a local variable $gris
+// ex. h1 { .gris(10) background-color: $gris; border-color: $gris; }
+@mixin gris( $color ) { $gris: darken(#FFF, $color); }
+
+// Text Selection Hightlight
+@mixin hightlight( $fondo: $brand-warning, $color: #FFF ) {
+    ::-moz-selection {
+        background: $fondo;
+        color: $color;
+        text-shadow: none;
+    }
+    ::selection {
+        background: $fondo;
+        color: $color;
+        text-shadow: none;
+    }
+}
+/*
+|-------------------------------------------------------------------------------------
+|    Bootstrap Mixins
+|-------------------------------------------------------------------------------------
+*/
+// @inlude button-variant($color; $background; $border);
+// @inlude center-block();
+// @inlude clearfix();
+// @inlude form-control-focus($color);
+// @inlude label-variant($color);
+// @inlude opacity($opacity);
+// @inlude size($width; $height);
+// @inlude square($size);
+// @inlude tab-focus();
+// @inlude text-hide();
+// @inlude text-overflow();
+// mixins/vendor-prefixes.less

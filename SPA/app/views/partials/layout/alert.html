@@ -1,0 +1,20 @@
+<div class="alert_message" ng-show="showIdleAlert">
+  Su sesi&oacute;n est&aacute; a punto de terminar.
+  <a class="close" href="" ng-click="showIdleAlert = false">X</a>
+</div>
+
+<div class="alert_message" ng-show="showTimeoutAlert">
+  Su sesi&oacute;n ha terminado por inactividad.
+  <a class="close" href="" ng-click="showTimeoutAlert = false">X</a>
+</div>
+
+<div class="alert_message" ng-show="showErrorLogoutAlert">
+  Problema durante el cierre de sesi&oacute;n. Su sesi&oacute;n ser&aacute; cerrada autom&aacute;ticamente.
+  <a class="close" href="" ng-click="showErrorLogoutAlert = false">X</a>
+</div>
+
+<div class="alert_message" ng-show="hasServiceError">
+  {{serviceErrorMessage}}
+  <a class="close" href="" ng-click="resetServiceError()">X</a>
+</div>
+

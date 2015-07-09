@@ -1,0 +1,107 @@
+<div>
+	<div class="outter">
+		<div ng-show="conSesion" ng-include="'views/partials/layout/main-header.html'"></div>
+		<div ng-hide="conSesion" ng-include="'views/partials/layout/login-header.html'"></div>
+		<main>
+		<div>
+			<!--<h2 class="sucursales">Sucursales y M&oacute;dulos de atenci&oacute;n</h2>-->
+			<div ng-class=" showBranches ? 'half' : 'busqueda' ">
+				<div class="busqueda-detalle">
+					<p>Sucursales y <br> M&oacute;dulos de atenci&oacute;n</p>
+					<button ng-click="searchNearMe()" class="naranja">Cerca de m&iacute;</button>
+					<div class="mapinputs">
+						<input type="text" id="Autocomplete" ng-autocomplete="result" details="details" options="options" placeholder="Buscar por dirección" size="28"/>
+						<div class="select-map">
+						<select ng-model="estado" ng-options="estado.name for estado in estados"></select>
+					</div>
+				</div>
+				<span ng-click="search()">Buscar</span>
+				<div class="sucursal-modulo">
+					<div ng-click="attention = true" ng-class="attention ? 'selected' : ''"></div>
+					<div ng-click="attention = false"ng-class="attention ? '' : 'selected'"></div>
+				</div>
+				<div ng-show="showBranches">
+					<div ng-show="attention">
+						<div ng-repeat="branch in map.branches | filter:{description: {category:1}}">
+							<div class="resultado">
+								<div class="sucursal">
+									<span ng-click="selectedBranch(branch)">
+										<strong>{{branch.name}}</strong><br>
+										{{branch.description.address.street}}
+										{{branch.description.address.street2}}
+										{{branch.description.address.zipCode}}
+										{{branch.description.address.city}}
+									</span>
+									<span><a ng-click="comoLlegar(branch)"><i></i>¿C&oacute;mo llegar?</a></span>
+								</div>
+								<div class="telyhorario">
+									<span><strong>Tel&eacute;fono: </strong> {{branch.description.phone_number}}</span>
+									<span><strong>Horario de Atenci&oacute;n: </strong>LUN-VIE: {{branch.description.openingHours.SEM}} <br>SAB: {{branch.description.openingHours.SAB}} </span>
+								</div>
+								<div class="otrosdatos">
+									<span class="abierto">Abierto S&aacute;bados</span>
+									<span class="divisas">Cambio de divisas</span>
+									<span class="cita">Atienden con cita</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div ng-hide="attention">
+						<div ng-repeat="branch in map.branches | filter:{description: {category:2}}">
+							<div class="resultado">
+								<div class="sucursal">
+									<span ng-click="selectedBranch(branch)">
+										<strong>{{branch.name}}</strong><br>
+										{{branch.description.address.street}}
+										{{branch.description.address.street2}}
+										{{branch.description.address.zipCode}}
+										{{branch.description.address.city}}
+									</span>
+									<span><a ng-click="comoLlegar(branch)"><i></i>¿C&oacute;mo llegar?</a></span>
+								</div>
+								<div class="telyhorario">
+									<span><strong>Tel&eacute;fono: </strong> {{branch.description.phone_number}}</span>
+									<span><strong>Horario de Atenci&oacute;n: </strong>LUN-VIE: {{branch.description.openingHours.SEM}} <br>SAB: {{branch.description.openingHours.SAB}} </span>
+								</div>
+								<div class="otrosdatos">
+									<span class="abierto">Abierto S&aacute;bados</span>
+									<span class="divisas">Cambio de divisas</span>
+									<span class="cita">Atienden con cita</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		<div>
+			<ui-gmap-google-map center='map.center' zoom='map.zoom' bounds="map.bounds">
+			<!--ui-gmap-markers models="{latitude:19.387569387017383,longitude:-99.19109420950929,id: 583187,title: 'title'}" coords="'self'" fit='false' icon="'icon'" idKey="'id'"></ui-gmap-markers-->
+			<ui-gmap-marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id"></ui-gmap-marker>
+			</ui-gmap-google-map>
+		</div>
+		<div class="map-footer">
+			<ul>
+				<li>
+					<p><span>Atenci&oacute;n al cliente:</span> <a href="tel:018008003224">01 800 800 3224</a></p>
+					<p><span>&Aacute;rea Metropolitana:</span> <a href="tel:5591777999">(55) 9177 7999</a></p>
+					<p><span>Tel&eacute;fono UNE:</span> <a href="tel:018008308632">01 800 830 8632</a></p>
+				</li>
+				<li>
+					<p>¿Necesitas ayuda?</p>
+					<p><a href="#">¿C&oacute;mo activar tu ubicaci&oacute;n?</a></p>
+					<p><a href="#">Preguntas Frecuentes</a></p>
+				</li>
+				<li>
+					<p>Horarios de Atenci&oacute;n:</p>
+					<p>Sucursales: L-V 9:00 - 16:00</p>
+					<p>M&oacute;dulos de Atenci&oacute;n: L-V 9:00 - 16:00</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+	</main>
+<footer ng-include="'views/partials/layout/main-footer.html'"></footer>
+</div>
+</div>

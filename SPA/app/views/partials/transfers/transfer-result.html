@@ -1,0 +1,46 @@
+<div class="content pagosytransf">
+    <div class="header">
+        <h2>Transferencia de cuentas</h2>
+        <p>&nbsp;</p>
+        <div class="progress-div" id="progressWrapper">
+            <div class="progress-fill"  ng-style="stepStyle"></div>
+        </div>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p class="orange">confirmaci&oacute;n</p>
+            <p class="orange">comprobaci&oacute;n</p>
+        </div>
+    </div>
+
+    <div class="message">
+        <p>La transferencia ha sido exitosa con n&uacute;mero de autorizaci&oacute;n <span>{{transferId}}</span></p>
+        <div class="print"><i></i>Imprimir</div>
+    </div>
+    <table>
+        <tr>
+            <td>Cuenta retiro:</td>
+            <td>{{transfer.account.displayName}}</td>
+        </tr>
+        <tr>
+            <td>Cuenta dep&oacute;sito:</td>
+            <td>{{transfer.destiny.displayName}}</td>
+        </tr>
+        <tr>
+            <td>Importe:</td>
+            <td class="bolder">{{ transfer.amount | currency:"$"}}</td>
+        </tr>
+        <tr>
+            <td>Concepto:</td>
+            <td>{{transfer.concept}}</td>
+        </tr>
+        <tr>
+            <td>Hora de la transferencia:</td>
+            <td>{{today | date:'HH:mm'}} hrs.</td>
+        </tr>
+    </table>
+
+    <div class="double-btn">
+        <input type="submit" value="Finalizar" ng-click="goToStep(1, true)">
+        <input class="larger" type="submit" value="Realizar otro pago" ng-click="goToStep(1, true)">
+    </div>
+</div>

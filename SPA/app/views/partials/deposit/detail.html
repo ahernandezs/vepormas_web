@@ -1,0 +1,27 @@
+<div class="header small">
+    <h2 class="title">
+        <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'ico-menos' : 'ico-mas'"></i></a>
+        {{activeAccountName}}
+        <span>Cuenta</span>
+    </h2>
+    <div class="payment-actions">
+        <div>
+            <div>
+                <p class="amount">{{accountDetail.available_Balance | currency}}</p>
+                <span>Saldo disponible</span>
+            </div>
+        </div>
+    </div>
+    <a ng-click='getStatements()' class="cursor-pointer"><i class="ico-estados"></i>Estados <span>de cuenta</span></a>
+</div>
+<hr ng-show='!showAccountHeader'>
+<div class="box" ng-show='showAccountHeader'>
+    <ul>
+        <li>Periodo:        <span>Del {{accountDetail.startDate | date:'dd-MM-yyyy' }} al {{accountDetail.endDate | date:'dd-MM-yyyy' }}</span></li>
+        <li>Dep&oacute;sitos en tr&aacute;nsito:          <span class="amount">{{accountDetail.confirmation_balance | currency}}</span></li>
+    </ul>
+    <ul>
+        <li>Monto &uacute;ltimo dep&oacute;sito:     <span class="amount">{{accountDetail.last_amount_deposit | currency}}</span></li>
+        <li>Monto &uacute;ltimo retiro:                <span class="amount">{{accountDetail.last_amount_withdrawal | currency}}</span></li>
+    </ul>
+</div>

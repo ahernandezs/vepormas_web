@@ -1,0 +1,18 @@
+<div class="products">
+    <div class="outter">
+        <div ng-include="'views/partials/layout/main-header.html'"></div>
+        <main>
+            <div class="wrapper">
+                <div class="wrapper">
+                    <div class="row">
+                        <div ui-view='accountContent'></div>
+                        <div ui-view='transferContent'></div>
+                        <div ui-view='administrationContent'></div>
+                        <div ui-view='investmentsContent'></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer ng-include="'views/partials/layout/main-footer.html'"></footer>
+    </div>
+</div>

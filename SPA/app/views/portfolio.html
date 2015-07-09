@@ -1,0 +1,103 @@
+<div class="actions" sytle="float:right">
+    <div ng-show="vistaInvestmentAllowed">
+        <h2>Inversi&oacute;n VISTA</h2>
+        <div class="section">
+            <ul>
+                <li class="option" ng-class="invType == 'VISTA'?'active' : ''" ng-click="change('VISTA')">Compra de inversi&oacute;n</li>
+                <li class="option" ng-class="invType == 'RET'?'active' : ''" ng-click="change('RET')">Retiro de inversi&oacute;n</li>
+            </ul>
+        </div>
+    </div>
+    <div class="beneficiarios-widget">
+        <div ng-show="cedeInvestmentAllowed">
+            <h2>Inversi&oacute;n CEDE</h2>
+            <div class="section">
+                <div class="beneficiary">
+                    <ul>
+                        <li class="option" ng-class="invType == 'CEDE'?'active' : ''" ng-click="change('CEDE')">Compra de inversi&oacute;n</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div ng-show="prlvInvestmentAllowed">
+            <h2>Inversi&oacute;n PRLV</h2>
+            <div class="section">
+                <div class="beneficiary">
+                    <ul>
+                        <li class="option" ng-class="invType == 'PRLV'?'active' : ''" ng-click="change('PRLV')">Compra de inversi&oacute;n</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="help">
+            <h2>Ayuda</h2>
+            <div class="option">
+                <a>¿Necesitas ayuda para elegir el tipo de pago que vas a realizar?</a>
+                <a>¿C&oacute;mo hacer un pago? (Ver video)</a>
+                <a>¿C&oacute;mo utilizo mi dispositivo m&oacute;vil?</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-switch on="invType">
+    <div class="animate-switch" ng-switch-when="VISTA">
+        <div ng-controller="purchaseRetireVistaCtrl">
+            <div ng-switch on="step">
+                <div class="animate-switch" ng-switch-when="1">
+                    <div ng-include="'views/partials/portfolio/purchase-vista-capture.html'"></div>
+                </div>
+                <div class="animate-switch" ng-switch-when="2">
+                    <div ng-include="'views/partials/portfolio/purchase-vista-confirm.html'"></div>
+                </div>
+                <div class="animate-switch" ng-switch-when="3">
+                    <div ng-include="'views/partials/portfolio/purchase-vista-result.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="animate-switch" ng-switch-when="RET">
+        <div ng-controller="purchaseRetireVistaCtrl">
+            <div ng-switch on="step">
+                <div class="animate-switch" ng-switch-when="1">
+                    <div ng-include="'views/partials/portfolio/retire-vista-capture.html'"></div>
+                </div>
+                <div class="animate-switch" ng-switch-when="2">
+                    <div ng-include="'views/partials/portfolio/retire-vista-confirm.html'"></div>
+                </div>
+                <div class="animate-switch" ng-switch-when="3">
+                    <div ng-include="'views/partials/portfolio/retire-vista-result.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="animate-switch" ng-switch-when="CEDE">
+        <div ng-controller="InvestmentCedePrlvCtrl" ng-init="setInvestmentType('CEDE')">
+            <div ng-switch on="step">
+                <div class="animate-switch" ng-switch-when="1">
+                    <div ng-include="'views/partials/portfolio/cede-prlv-capture.html'"></div>
+                </div>
+                <div class="animate-switch" ng-switch-when="2">
+                    <div ng-include="'views/partials/portfolio/cede-prlv-confirm.html'"></div>
+                </div>
+                <div class="animate-switch" ng-switch-when="3">
+                    <div ng-include="'views/partials/portfolio/cede-prlv-result.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="animate-switch" ng-switch-when="PRLV">
+        <div ng-controller="InvestmentCedePrlvCtrl" ng-init="setInvestmentType('PRLV')">
+            <div ng-switch on="step">
+                <div class="animate-switch" ng-switch-when="1">
+                    <div ng-include="'views/partials/portfolio/cede-prlv-capture.html'"></div>
+                </div>
+                <div class="animate-switch" ng-switch-when="2">
+                    <div ng-include="'views/partials/portfolio/cede-prlv-confirm.html'"></div>
+                </div>
+                <div class="animate-switch" ng-switch-when="3">
+                    <div ng-include="'views/partials/portfolio/cede-prlv-result.html'"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

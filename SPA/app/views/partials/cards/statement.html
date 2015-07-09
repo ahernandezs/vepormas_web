@@ -1,0 +1,25 @@
+<div>
+    <div class="header statement" data-ng-click="closeStatement();">
+        <a><div class="back-arrow pull-left cursor-pointer"></div><i class="ico-estados"></i>Estados de cuenta<span>{{activeAccountName}}</span></a>
+    </div> 
+    <hr class="statement-hr">
+    <div class="transactions pull-left">    
+        <table class="details statement-table">
+            <thead>
+                <tr>
+                    <th scope="col" colspan="3" class="text-left">{{year.label}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                    <tr ng-repeat="statement in statements">
+                        <td><i class="ico-estados"></i>{{statement.date}}</td>
+                        <td><a target="_blank" href="#" ng-href="{{getStatementUrl(statement.id, 'PDF');}}"><i class="ico-pdf"></i>Descargar PDF</a></td>
+                        <td><a target="_blank" href="#" ng-href="{{getStatementUrl(statement.id, 'XML');}}"><i class="ico-pdf"></i>Descargar XML</a></td>
+                    </tr>
+            </tbody>
+        </table>
+        <div ng-show="statements.length == 0" class="error">
+            Sin estado de cuenta.
+        </div>
+    </div>
+</div>

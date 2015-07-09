@@ -1,0 +1,54 @@
+<div class="record">
+    <div class="data">
+        <h2>Registro de datos</h2>
+        <p>Datos con los que podrás acceder a tu cuenta en Consubanco digital</p>
+        <hr>
+        <div class="user-data">
+            <ng-form name="registerPasswordForm" class="register-pass">
+                <div>
+                  <div class="select-style" ng-class="registerData.identifier ? 'selected' : ''">
+                    <span>Usuario</span>
+                    <select class="pull-right" disabled ng-options="opt as opt.value for opt in identifiers" ng-model="registerData.identifier">
+                    </select>
+                  </div>
+                    <label class="fieldContainer" ng-class="registerPasswordForm.password.$viewValue.length > 0 ? 'selected' : ''">
+                        <span>Contraseña</span>
+                        <input type="password" class="input-password" name="password" alphanumeric ng-model="registerData.password" placeholder="Contrase&ntilde;a" ng-change="validatePassword()" minlength="8" maxlength="20" required>
+                    </label>
+                    <label class="fieldContainer last" ng-class="registerPasswordForm.repeatPass.$viewValue.length > 0 ? 'selected' : ''">
+                        <span>Confirmar contraseña</span>
+                        <input type="password" class="input-password" name="repeatPass" alphanumeric ng-model="registerData.repeatPass" placeholder="Confirmar contrase&ntilde;a" minlength="8" maxlength="20" required>
+                    </label>
+                </div>
+                <div class="error" ng-show="error">{{errorMessage}}</div>
+                <div class="error" ng-show="registerPasswordForm.password.$error.minlength">Su contraseña debe tener al menos 8 caracteres</div>
+                <button ng-click="completeStep(1)">Regresar</button>
+                <button ng-click="confirmPassword()" ng-disabled="invalidPassword">Continuar</button>
+            </ng-form>
+        </div>
+    </div>
+   <div class="help">
+        <h3>Ayuda</h3>
+        <div>
+            <i class="ico-alerta"></i>
+            <p class="blue">Llena todos los campos</p>
+            <p>
+                Es muy importante que llenes todos los campos para que tu registro se realice con &eacute;xito.
+            </p>
+        </div>
+        <div>
+            <i class="ico-duda"></i>
+            <p class="blue">¿No. de cuenta, No. de cliente o No. de Tarjeta? </p>
+            <p>
+                Elige entre estas dos opciones la cual te permitir&aacute; el acceso a tu banca digital.
+            </p>
+        </div>
+        <div>
+            <i class="ico-duda"></i>
+            <p class="blue">Contrase&ntilde;a</p>
+            <p>
+                Debe tener de 8 a 10 caracteres, esta contraseña te permitir&aacute; el acceso a tu banca digital.
+            </p>
+        </div>
+    </div>
+</div>

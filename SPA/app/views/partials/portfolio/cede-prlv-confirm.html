@@ -1,0 +1,43 @@
+<div class="content pagosytransf">
+    <div class="header">
+        <h2>Compra de inversi&oacute;n</h2>
+        <p>Confirma los datos para la compra de inversi&oacute;n</p>
+        <progress max="3" value="2"></progress>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p class="orange">confirmaci&oacute;n</p>
+            <p>comprobaci&oacute;n</p>
+        </div>
+    </div>
+    <div class="error" ng-show="error">{{errorMessage}}</div>
+    <table>
+        <tr>
+            <td>Producto de inversi&oacute;n:</td>
+            <td>{{investment.destinationProduct.productName}}</td>
+        </tr>
+        <tr>
+            <td>Cuenta origen:</td>
+            <td>{{investment.originAccount.displayName}}</td>
+        </tr>
+        <tr>
+            <td>Importe de inversi&oacute;n:</td>
+            <td class="bolder">${{investment.amount | currency: ""}}</td>
+        </tr>
+        <tr>
+            <td>Instrucciones de vencimiento:</td>
+            <td>{{investment.expirationInstruction}}</td>
+        </tr>
+        <tr>
+            <td>Fecha de aplicaci&oacute;n:</td>
+            <td>{{today | date:'dd MMMM yyyy' }}</td>
+        </tr>
+        <tr>
+            <td>Hora de aplicaci&oacute;n:</td>
+            <td>{{today | date:'HH:mm' }} hrs</td>
+        </tr>
+    </table>
+    <div class="double-btn">
+        <input type="submit" value="Regresar" ng-click="goBack()">
+        <input type="submit" value="Continuar" ng-click="launchInvestment()">
+    </div>
+</div>

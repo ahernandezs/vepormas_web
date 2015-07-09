@@ -1,0 +1,22 @@
+<div class="beneficiariowidget">
+    <div class="benheader">
+        <h2>Alta nuevo beneficiario</h2>
+        <p>Ingresa el n&uacute;mero de cuenta para dar de alta a un nuevo beneficiario</p>
+        <progress max="3" value="{{selection}}"></progress>
+        <div>
+            <p class="orange">CAPTURA</p>
+            <p>CONFIRMACI&Oacute;N</p>
+            <p>COMPROBACI&Oacute;N</p>
+        </div>
+    </div>
+    <form name="beneficiaryForm">
+        <label class="fieldContainer" ng-class="beneficiaryForm.account.$viewValue.length  > 0 ? 'selected' : ''">
+            <span>Cuenta</span>
+            <input type="text" ng-model="beneficiary.account" ng-required="true" minlength="11" maxlength="18" numbers-only placeholder="Cuenta &#x0002F; CLABE &#x0002F; T. Cr&eacute;dito &#x0002F; T. D&eacute;bito" name="account">
+        </label>
+    </form>
+    <div class="double-btn">
+        <button ng-click="completeStep(1)">Cancelar</button>
+        <button ng-click="validateThirdAccount()" ng-disabled="beneficiaryForm.$invalid">Continuar</button>
+    </div>
+</div>

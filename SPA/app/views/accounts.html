@@ -1,191 +1,97 @@
-<div ng-include="'views/partials/layout/main-header.html'"></div>
-
-<div class="content">
-  <div class="container">  
-    <!-- Accounts -->
-
-  <section class="scroll">
-    <div class="row scroll">
-      <div class="pull-left" ng-repeat="account in accounts | filter: { account_type : '!' + 'INVESTMENT'}">
-
-        <div class="account">
-          <a ng-href="#/accounts/{{account._account_id}}/transactions" ng-class="account.account_type | lowercase"></a>
-          <h2>{{account.name}} {{account.last_digits}}</h2>
-
-          <div ng-if="account.account_type == 'CREDIT_CARD'">
-            <div class="row date-section">
-              Fecha de corte:
-              <span class="pull-right">
-                {{account.balance.cut_date | date:'mediumDate'}}
-              </span>
-            </div>
-
-            <div class="amounts-section">
-              <div class="radio">
-                <label>
-                  <input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio1" value="current" checked>
-                  Pago total
-                  <span class="pull-right amount">{{account.balance.current | currency}}</span>
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio2" value="minimal">
-                  Pago m&iacute;nimo
-                  <span class="pull-right amount">{{account.balance.min_payment | currency}}</span>
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio3" value="total">
-                  Pago sin intereses
-                  <span class="pull-right amount">{{account.balance.total_payment | currency}}</span>
-                </label>
-              </div>
-              <div class="radio">
-                <label>
-                  <div class="row">
-                    <div class="col-xs-7">
-                      <input type="radio" name="radio_payment_card_{{account._account_id}}" id="{{account._account_id}}_optionRadio4" value="other">
-                      Otra cantidad
-                    </div>
-                    <div class="col-xs-4">
-                      <input type="text" class="form-control input-sm" numbers-only="numbers-only" ng-model="other_amount" maxlength="15">
-                    </div>
-                  </div>
-                </label>
-              </div>
-            </div>
-
-            <div class="buttons">
-              <a class="pull-left" href="#">movimientos</a>
-              <button class="btn btn-info btn-sm pull-right">Pagar tarjeta</button>
-            </div>
-          </div>
-
-          <div ng-if="account.account_type == 'SAVINGS' || account.account_type == 'CHECKS' || account.account_type == 'DEBIT_CARD'">
-            <div class="row date-section">
-              Desde {{account.balance.created_at | date:'longDate'}}
-            </div>
-
-            <div class="amounts-section">
-              <div class="row">
-                <span class="available pull-left">Disponible:</span>
-                <span class="available-amount pull-right">{{account.balance.current | currency}}</span>
-              </div>
-              <div class="row">
-                <div class="pull-left">
-                  Dep&oacute;sitos:
-                </div>
-                <div class="pull-right amount">
-                  {{account.balance.deposits | currency}}
-                </div>
-              </div>
-              <div class="row">
-                <div class="pull-left">
-                  Pagos:
-                </div>
-                <div class="pull-right amount">
-                  {{account.balance.payments | currency}}
-                </div>
-              </div>
-              <div class="row">
-                <div class="pull-left">
-                  Retiros:
-                </div>
-                <div class="pull-right amount">
-                  {{account.balance.withdrawals | currency}}
-                </div>
-              </div>
-            </div>
-
-            <div class="buttons">
-              <a href="#">Ver m&aacute;s</a>
-            </div>
-          </div>
-
-          <div ng-if="account.account_type == 'TRANSFER'">
-            <div class="row date-section text-center">
-              N&uacute;mero: {{account.number}}
-            </div>
-
-            <div class="amounts-section-transfer">
-              <img src="/images/accounts/cuenta_transfer_balance.png">
-            </div>
-
-            <div class="buttons">
-              <a href="#">Ver más</a>
-            </div>
-          </div>
-        </div> <!-- Account -->
-
-      </div>
-    </div>  
-  </section>
-    <!-- Banners -->
-
-    <div class="row">
-      <div class="col-md-4 col-sm-6">
-        <div class="banner">
-          <img src="/images/viaja_banner.png">
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="banner">
-          <img src="/images/ishop_banner.png">
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6">
-        <div class="banner">
-          <img src="/images/roger_banner.png">
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="tools">
-          <div class="row">
-            <div class="col-md-4">
-              <span class="download-text">Descarga nuestra App:</span>
-            </div>
-            <div class="col-md-3">
-              <select class="form-control">
-                <option>Tipo de tel&eacute;fono</option>
-                <option>Android</option>
-                <option>iPhone</option>
-                <option>Blackberry</option>
-              </select>
-            </div>
-            <div class="col-md-3">
-              <input type="tel" class="form-control" placeholder="Número celular" numbers-only="numbers-only" ng-model="cell_phone_number" maxlength="14">
-            </div>
-            <div class="col-md-2">
-              <button class="btn btn-info btn-block">Descargar</button>
-            </div>
-          </div>
-
-          <div class="row tip-text">
-            <div class="col-md-4">
-              <span class="iphone-tip pull-left"></span>
-              Recibe alertas y notificaciones de tus movimientos
-            </div>
-            <div class="col-md-3">
-              <span class="lock-tip pull-left"></span>
-              Incrementa la seguridad de autenticaci&oacute;n
-            </div>
-            <div class="col-md-3">
-              <span class="ticket-tip pull-left"></span>
-              Escanea y paga tus recibos
-            </div>
-            <div class="col-md-2">
-              <button class="btn btn-default btn-block">Más informaci&oacute;n</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="user-log responsive800w" ng-hide="userData">
+   <h6>Bienvenido</h6>
+   <h4 class="user">{{completeName}}</h4>
+   <p class="date">&Uacute;ltimo acceso: <span>{{date | date:'dd/MM/yyyy'}}</span> a las <span>{{date | date:'HH:mm:ss'}}</span></p>
+   <button ng-click="hideWelcome();">Aceptar</button>
 </div>
+<div class="noEm">
+    <div class="actions">
+        <div class="scroll">
+        <div class="section" ng-show="showTDCAccount">
+            <h2>Tarjeta de cr&eacute;dito</h2>
+            <div class="product" ng-repeat="account in accounts| filter:{account_type:'TDC'}:true"
+            data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
+                <p class="name">
+                    <span class="text-capitalize">{{account.name | lowercase}}</span>
+                    <span class="id">{{account.maskedAccountNumber}}</span>
+                </p>
+                <div>
+                    <p class="amount">{{account.current_balance | currency}}</p>
+                    <p class="info">Saldo deudor</p>
+                </div>
+            </div>
+        </div>
 
-<div ng-include="'views/partials/layout/main-footer.html'"></div>
+        <div class="section" ng-show='showInvestmentAccount'>
+            <h2>Inversiones</h2>
+            <div class="product" ng-repeat="account in accounts | filter:{account_type:'INV'}:true | filter:{category:'VISTA'}:true"
+            data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
+                <p class="name" ng-click="active = $id" ng-class="{active: $id === active}">
+                    <span>{{account.name}}</span>
+                    <span class="id">{{account.maskedAccountNumber}}</span>
+                </p>
+                <div>
+                    <p class="amount">{{account.balance | currency}}</p>
+                    <p class="info">Disponible</p>
+                </div>
+            </div>
+            <div class="product" ng-repeat="account in accounts | filter:{account_type:'INV'}:true | filter:{category:'CEDE'}:true"
+            data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
+                <p class="name" ng-click="active = $id" ng-class="{active: $id === active}">
+                    <span>{{account.name}}</span>
+                    <span class="id">{{account.maskedAccountNumber}}</span>
+                </p>
+                <div>
+                    <p class="amount">{{account.balance | currency}}</p>
+                    <p class="info">Disponible</p>
+                </div>
+            </div>
+            <div class="product" ng-repeat="account in accounts | filter:{account_type:'INV'}:true | filter:{category:'PRLV'}:true"
+            data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
+                <p class="name" ng-click="active = $id" ng-class="{active: $id === active}">
+                    <span class="text-capitalize">{{account.name | lowercase}}</span>
+                    <span class="id">{{account.maskedAccountNumber}}</span>
+                </p>
+                <div>
+                    <p class="amount">{{account.balance | currency}}</p>
+                    <p class="info">Disponible</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" ng-show="showSavingAccount">
+            <h2>Cuenta</h2>
+            <div class="product" ng-repeat="account in accounts | filter:{account_type:'DEP'}:true"
+            data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)" >
+                <p class="name" ng-click="active = $id" ng-class="{active: $id === active}" >
+                    <span class="text-capitalize">{{account.name | lowercase}}</span>
+                    <span class="id">{{account.maskedAccountNumber}}</span>
+                </p>
+                <div>
+                    <p class="amount">{{account.current_balance | currency}}</p>
+                    <p class="info">Saldo</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" ng-show="showCreditAccount">
+            <h2>Cr&eacute;ditos</h2>
+                <div class="product" ng-repeat="account in accounts | filter:{account_type:'CXN'}:true"
+                data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
+                <p class="name">
+                    <span class="text-capitalize">{{account.name | lowercase}}</span>
+                    <span class="id">{{account.maskedAccountNumber}}</span>
+                </p>
+                <div>
+                    <p class="amount">{{account.current_balance | currency}}</p>
+                    <p class="info">Disponible</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div ui-view='detailCreditCard'></div>
+    <div ui-view='detailInvestment'></div>
+    <div ui-view='detailDeposit'></div>
+    <div ui-view='detailCredit'></div>
+</div>

@@ -1,0 +1,508 @@
+/*
+|-------------------------------------------------------------------------------------
+|	Administration
+|-------------------------------------------------------------------------------------
+*/
+
+//CONTRATO
+.contrato{
+	margin: 30px 0;
+	padding:20px;
+	border:1px solid $gray;
+	@include border-radius(5px);
+	h1{
+		font-size: 2em;
+		font-weight: normal;
+		color:$blue;
+		margin-bottom: 25px;
+	}
+	p{
+		margin-bottom: 15px;
+		text-align: justify;
+		strong{color:$blue;}
+	}
+}
+
+//PREFERNCIAS Y SEGURIDAD
+.dropdown-menu li{cursor:pointer;}
+
+.prefyseg{
+	margin-top: 20px;
+	overflow:hidden;
+	.menu-admin{
+		float:left;
+		width: 25%;
+		margin-right: 20px;
+		h2 {
+			font-size: 1.8em;
+			font-weight: normal;
+			margin-bottom: 4px;
+		}
+		.section {
+			overflow: hidden;
+			margin-bottom: 30px;
+			@include border-radius(3px);
+		}
+	}
+	.content-admin{
+		float:left;
+		width: 30%;
+		min-width:450px;
+		min-height: 500px;
+		background:white;
+		padding: 15px 0;
+		margin-right: 2%;
+		overflow: hidden;
+		border:1px solid $gray;
+		@include border-radius(4px);
+		h3{
+			color:$blue;
+			width: 90%;
+			margin:0 auto 20px auto;
+			font-size: 1.2em;
+			text-align: center;
+			padding-bottom: 20px;
+			border-bottom:1px solid $gray;
+			+ p, + p + p{
+				width: 90%;
+				text-align: center;
+				margin:0 auto 10px auto;
+			}
+		}
+		table{
+			width: 90%;
+			margin: 20px auto;
+			tr{border-bottom:1px solid $gray;&:last-child{border:none;}}
+			td{
+				padding:5px;
+				&:first-child{
+					font-weight: bold;
+				}
+				&:last-child{
+					text-align: right;
+				}
+			}
+		}
+		.double-btn{
+			width: 80%;
+			margin: auto;
+			input{
+				width: 49% !important;
+			}
+		}
+		.message{
+			width: 90%;
+			margin: auto;
+			color:$green;
+			overflow: hidden;
+			p{
+				margin-top: 15px;
+			}
+			i{
+				display: block;
+				float:left;
+				width: 50px;
+				height: 50px;
+				margin: 0 20px;
+				background:url(../images/ico-hecho.png) no-repeat center center;
+				background-size:50px;
+			}
+		}
+		.dropdown{
+			> div, ul{
+				width: 90%;
+				margin:0 auto 15px auto;
+			}
+			ul{
+				left:50% !important;
+				margin-left:-45%;
+			}
+		}
+		.fieldContainer{
+			width: 90%;
+			margin:0 auto 15px auto;
+			input{
+				border:none;
+				padding:10px;
+				width: 100%;
+				&:focus{
+					box-shadow:none;
+				}
+			}
+			&.selected{
+				input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+					width:67%;
+				}
+			}
+		}
+		button{
+			width: 80%;
+			margin-left:10%;
+			margin-bottom: 15px;
+		}
+	}
+}
+
+.submenu:before{
+	content:"";
+	display: block;
+	height:1px;
+	width: 100%;
+	top:0;
+	left:0;
+	right:0;
+	margin-top:58px;
+	border-bottom: 1px solid $lgray;
+	position: absolute;
+}
+.submenu{
+	nav{
+		ul{
+			overflow: hidden;
+			li{
+				float:left;
+				margin-right:60px;
+				a{
+					color:$blue;
+					font-weight: bold;
+					display: block;
+					padding: 20px 0 17px 0;
+					border-bottom:3px solid white;
+				}
+				a:hover, a:active, a.active{
+					color:$orange;
+					border-color:$orange;
+				}
+			}
+		}
+	}
+}
+.submenu + div > .animate-switch{
+	margin-top: 30px;
+	border:1px solid $lgray !important;
+	overflow:hidden;
+	@include border-radius(4px);
+}
+
+.agregarBeneficiario{
+	width:70%;
+	border-right:1px solid $lgray;
+	>form{
+		margin: 15px;
+		position: relative;
+		overflow: hidden;
+		input{
+			padding:10px 1%;
+			width: 73%;
+			border:1px solid $gray;
+			background: url(../images/ico-lupa.png) no-repeat 98% center, white;
+			background-size:30px;
+			@include border-radius(4px);
+			&:focus{
+				border-color:$orange;
+				box-shadow:none;
+			}
+		}
+		button, button:hover, button:active{
+			border:1px solid $blue !important;
+			color:$blue;
+			width:25%;
+			font-weight: normal;
+			font-size: 0.95em;
+			padding:10px 0 !important;
+			text-align: center;
+			background:url(../images/ico-usuario-azul.png) no-repeat 2% center, white !important;
+			background-size:auto 60% !important;
+		}
+	}
+}
+.beneficiariowidget{
+	&.actions{
+		margin:0;
+		border:none;
+		float:right;
+		width: 30%;
+	}
+	padding: 15px;
+	.fieldContainer span{
+		padding:12px 0;
+	}
+	.benheader{
+		border-bottom:1px solid $lgray;
+		margin-bottom: 20px;
+		padding-bottom: 20px;
+		&.eliminar{
+			position: relative;
+			overflow: hidden;
+			button{
+				float:right;
+				width: 30%;
+			}
+			h2{
+				margin-top: 6px;
+				float:left;
+				width: 65%;
+			}
+		}
+		&:first-child{
+			h2{
+				font-size:1.4em;
+				color:$blue;
+				margin-bottom: 5px;
+			}
+			p{
+				font-size: 0.9em;
+				margin-bottom: 20px;
+				&.confirmar{
+					margin-top: 10px;
+					margin-bottom: 0;
+					border:1px solid #ffa103;
+					padding:15px;
+					color:#ffa103;
+					@include border-radius(4px);
+				}
+			}
+		}
+		progress{
+            width: 100%;
+            -webkit-appearance: none;
+            appearance: none;
+            height:10px;
+            overflow: hidden;
+            @include border-radius(10px);
+
+            &::-webkit-progress-bar{
+                background-color: #d2d2d2;
+                box-shadow: 0 1px 0px rgba(0,0,0,.14) inset;
+            }
+            &::-webkit-progress-value{
+                background-color: $orange;
+            }
+		}
+		div{
+			overflow: hidden;
+			p{
+				float:left;
+				width: 33%;
+				text-align: center;
+				margin: 0 !important;
+				font-size:0.7em !important;
+				&.orange{
+					color:$orange;
+				}
+			}
+		}
+	}
+	input{
+		border:none;
+		padding: 10px;
+		width: 100%;
+		&:focus{box-shadow:none;}
+	}
+	.message{
+			margin-bottom: 20px;
+			color:$green;
+			overflow: hidden;
+			p{
+				margin-top: 5px;
+			}
+			i{
+				display: block;
+				float:left;
+				width: 50px;
+				height: 50px;
+				margin: 0 20px;
+				background:url(../images/ico-hecho.png) no-repeat center center;
+				background-size:50px;
+			}
+		}
+	.instrucciones{font-size:0.8em;color:$dgray;margin:0;}
+	h3{
+		font-size: 1.2em;
+		color:$blue;
+		font-weight: normal;
+		padding-bottom:10px;
+		+ table{
+			border-bottom:1px solid $lgray;
+			td{
+				font-size: 0.9em;
+			}
+		}
+	}
+	table{
+		width: 100%;
+		margin-bottom: 20px;
+		td{
+			padding: 5px;
+			&:first-child{
+				font-weight: bold;
+			}
+			&:last-child{
+				text-align: right;
+			}
+		}
+	}
+	.double-btn{
+		button{
+			padding:10px 0;
+			float:left;
+			width: 48%;
+			margin: 0;
+			@include border-radius(3px);
+			&:first-child{
+				margin-right: 2%;
+			}
+			&.fat{
+				padding:19px 0;
+			}
+		}
+	}
+	.note{
+		font-size: 0.8em;
+		margin-bottom: 20px;
+	}
+}
+.actions.agregarBeneficiario{
+	margin:0;
+	border:none;
+	border-left:1px solid $lgray;
+	float:right;
+	width: 30%;
+	li:hover, li:active{
+		background: $lgray;
+	}
+	li{
+		cursor: pointer;
+		border-radius:0;
+		color:$blue;
+		display: block;
+		border:none;
+		border-bottom:1px solid $lgray;
+		overflow: hidden;
+		background: white;
+		span{
+			float: right;
+			color:$dgray;
+		}
+	}
+	thead{
+		th{
+			padding-top:5px;
+			padding-bottom:5px;
+		}
+		th:first-child{
+			text-align: left;
+			padding-left: 10px;
+		}
+		th:last-child{
+			text-align: right;
+			padding-right: 10px;
+		}
+	}
+	tbody{
+		td{
+			padding-top:5px;
+			padding-bottom:5px;
+			word-break: break-all;
+		}
+		td:first-child{
+			text-align: left;
+			padding-left: 10px;
+		}
+		td:last-child{
+			text-align: right;
+			padding-right: 10px;
+		}
+	}
+}
+//TARJETAS
+.transactions.adminTarjetas{
+	margin-top: 30px;
+	width: 100% !important;
+	th{text-align: center;}
+	td{
+		width: 50%;
+		padding: 10px 15px;
+		&:first-child{
+			text-align: left;
+		}
+		&:last-child{
+			text-align: right;
+		}
+		div{
+			span{margin-right: 20px;}
+			button{font-size:0.9em;min-width:100px;}
+			span,button{
+				display: inline-block;
+			}
+		}
+		form{
+			display: block;
+			> input{
+				border:1px solid $gray;
+				padding:10px;
+				width: 100%;
+				margin-bottom: 10px;
+				font-weight: normal;
+				@include border-radius(3px);
+				&:focus{
+					box-shadow:none;
+				}
+			}
+			.fieldContainer{
+				background:white;
+				width: 100%;
+				margin:0 0 10px 0;
+				span{display: none;}
+				input{
+					border:none;
+					padding:10px;
+					width: 100%;
+					&:focus{
+						box-shadow:none;
+					}
+				}
+				&.selected{
+					input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+						width:67%;
+					}
+					span{display: block;margin:0}
+				}
+			}
+		}
+	}
+}
+//BITACORA
+.user-activity{
+	width:100%;
+	margin-top: 30px;
+	border:1px solid $gray;
+	background:white;
+	@include border-radius(4px);
+	.filter{
+		margin: 15px;
+		overflow: hidden;
+		h4{
+			font-weight: normal;
+			float:left;
+			margin: 0 20px 0 0;
+			font-size: 0.9em;
+			height: 50px;
+		}
+		label{
+			display: inline-block;
+			margin: 0 10px;
+			input[type="checkbox"]{
+				display: inline-block;
+			}
+			span{font-size:0.9em;}
+		}
+	}
+	table{width:100%;}
+	th{text-align: center;}
+	td{width: 33%;&:last-child{text-align: center;}}
+	/*.transactions{
+		max-height:600px;
+		overflow:auto;
+	}*/
+}

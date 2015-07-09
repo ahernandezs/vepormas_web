@@ -1,0 +1,207 @@
+/*
+|-------------------------------------------------------------------------------------
+|	Above 1024px
+|-------------------------------------------------------------------------------------
+*/
+
+@media only screen and (min-width:961px){
+	//@extend %min-width-screen-desktop;
+	body, main{
+		min-width:100%;
+		width:100%;
+		.row{
+			min-width:100%;
+			width:100%;
+		}
+		.wrapper{
+			font-size:0.9em;
+			min-width:100%;
+			width:100%;
+			overflow: hidden;
+			.wrapper{
+				.row{
+					margin: 0;
+				}
+			}
+			> div{
+				margin-right: 2em;
+				&:first-child{
+					margin-left: 2em;
+				}
+			}
+		}
+	}
+	header{
+		.logo a{display:block; margin-left: 2em;}
+	}
+	footer{
+		p{margin-left: 2em;}
+		a{margin-right: 2em;}
+	}
+
+	//REGISTRATION
+	.registration{
+		.steps{
+			h3{font-size: 1.5em;}
+			ul,li{font-size:1em;}
+			progress{
+				&.four-steps {
+			        left: -37.5%!important;
+			        top: 230px!important;
+			        width: 250px!important;
+			    }
+			}
+		}
+		.data{
+			margin-right: 10px;
+		}
+		.help{
+			margin: 5px 0 0 5px;
+			h3{margin-bottom: 20px;}
+		}
+	}
+
+	//PRODUCTS
+	.user-session {
+		position: absolute;
+		overflow: visible;
+		left:183px;
+		width: 80%;
+		top:-10px;
+		height: 40px;
+		> div{
+			width: 60%;
+			h6:after{content:": ";}
+			h6,h4{display: inline-block;}
+		}
+	}
+	.header{
+		&.statement{width:95%;margin-left: 1%;}
+		.title{
+			font-size: 1.2em;
+			@include column(3.8);
+			min-height: 35px;
+		}
+		.payment-actions button{font-size:0.75em;}
+		> a, > a:hover, > a:active{width:110px;}
+	}
+	div[ui-view="detailDeposit"], div[ui-view="detailCredit"], div[ui-view="detailInvestment"]{
+		.title{@include column(5); border-right:1px solid $blue}
+		.payment-actions{
+			@include column(3);
+			border:none;
+			div{
+				width: 100%;
+				p, span{font-size:1.3em}
+			}
+		}
+		.header{
+			&.statement{
+				> a, > a:hover{border:none;}
+			}
+			> a, > a:hover{
+				@include column(4);
+				border-left:1px solid $blue;
+				margin-top: 0 !important;
+			}
+		}
+	}
+
+	//TRANSF
+	.pagosytransf{
+	    width:67% !important;
+	}
+	.actions{
+		margin:0;
+		width:25%;
+		h2{font-size:1.6em;}
+	}
+	.product-details{
+		margin-left:0;
+		margin-right:0;
+		width: 70%;
+		margin-left:1%;
+	}
+	.content{
+		margin: 40px 0 0 2%;
+		width: 91%;
+		.header{
+			width: 100%;
+			padding: 0 2% 15px 2%;
+			h2, p {width: 50%;}
+			h2{font-size:2em;}
+			> p{clear:both;}
+			.progress, progress{
+				width: 45%;
+			}
+			.progress{right:12px;p{font-size:0.8em;}}
+		}
+		.message{
+			p{
+				font-size: 1em;
+				width: 72%;
+				margin-left: 13%;
+			}
+			.print{
+				font-size: 1em;
+			}
+		}
+	}
+	.fieldContainer{
+		span{
+			padding:7px 0;
+		}
+	}
+
+	//MAP
+	.angular-google-map-container{bottom:111px;}
+	.map-footer{
+		ul{
+			width: 95%;
+		}
+	}
+	.busqueda{
+		width: 100%;
+	}
+
+	//ADMIN
+	.contrato{
+		width:95%;
+		h1{
+			font-size: 1.5em;
+		}
+	}
+	.transactions.adminTarjetas, .user-activity{
+		width: 95% !important;
+	}
+	.submenu nav ul li{
+		margin-right:40px;
+		cursor: pointer;
+		a{
+			padding: 20px 0;
+		}
+	}
+	.prefyseg{
+		> div{
+			width: 40%;
+			.message p{margin-top:10px;}
+			&:last-child > div .message p{margin-top: 10px;}
+		}
+	}
+	.beneficiariowidget{
+		width: 30%;
+		float:left;
+		&.actions{
+			float:left;
+		}
+		.message p{
+			margin-top: 12px;
+		}
+	}
+}
+
+@media only screen and (max-height:768px){
+	.actions{
+		min-height:540px;
+	}
+}

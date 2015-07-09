@@ -1,0 +1,81 @@
+<div class="content pagosytransf">
+    <div class="header">
+        <h2>Pago de cuentas</h2>
+        <p>Ingresa los datos para el pago</p>
+        <div class="progress-div" id="progressWrapper">
+            <div class="progress-fill"  ng-style="stepStyle"></div>
+        </div>
+        <!--<progress max="3" value="{{selection}}"></progress>-->
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p>confirmaci&oacute;n</p>
+            <p>comprobaci&oacute;n</p>
+        </div>
+    </div>
+    <form name="paymentForm">
+        <i class="inv-first-select"><span>Cuenta de la cual se har&aacute; el retiro</span></i>
+        <div class="dropdown">
+            <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="payment.account !== undefined ? 'selected' : ''">
+                <span>Cuenta retiro</span>
+                <p>{{payment.account === undefined ? 'Cuenta retiro' : payment.account.maskedAccountNumber}}
+                    <span>{{payment.account.detail}}</span></p>
+            </div>
+            <ul class="dropdown-menu" role="menu" ng-model="payment.account">
+                <li class="dropdown-header">Cuentas propias</li>
+                <li ng-repeat="item in theAccounts | filter: { account_type: 'DEP' }" ng-model="payment.account" ng-click="payment.account = item" ng-required="true">{{item.displayName}}</li>
+            </ul>
+        </div>
+
+        <i class="inv-sec-select"><span>Cuenta a la cual se har&aacute; el pago</span></i>
+        <div class="dropdown">
+            <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="payment.destiny !== undefined ? 'selected' : ''">
+                <span>TDC para pago</span>
+                <p>{{payment.destiny === undefined ? 'TDC para pago' : payment.destiny.maskedAccountNumber}}
+                    <span>{{payment.destiny.detail}}</span></p>
+            </div>
+            <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">Cuentas propias</li>
+                <li ng-repeat="item in theAccounts | filter: { account_type: 'TDC', group: 'Cuentas Propias' }" ng-model="payment.destiny" ng-click="payment.destiny = item; getAccountDetail()">{{item.displayName}}</li>
+                <li class="dropdown-header">Cuentas terceros</li>
+                <li ng-repeat="item in theAccounts | filter: { account_type: 'TDC_T', group: 'Cuentas Terceros' }" ng-model="payment.destiny" ng-click="payment.destiny = item" ng-required="true">{{item.displayName}}</li>
+                <li ng-show="isCompleteUser()"><a href="#/administration" ng-click="selectNavigatOption('administration')">Agregar nuevo beneficiario</a></li>
+            </ul>
+        </div>
+
+        <span ng-if="payment.destiny.account_type !== 'TDC'">
+            <label class="fieldContainer" ng-class="!paymentForm.amount.$error.required ? 'selected' : ''">
+                <span class="big">Importe</span>
+                <input name="amount" type="text" currency numbers-only ng-model="payment.amount" placeholder="Importe" class="input-importe" ng-required="true" maxlength="15">
+            </label>
+        </span>
+        <div>
+            <label data-ng-repeat="choice in question.choices">
+              <input type="radio" name="response" data-ng-model="choice.isUserAnswer" data-ng-value="true" />
+              {{choice.text}}
+            </label>
+        </div>
+        <span ng-if="payment.destiny.account_type === 'TDC'">
+            <div class="choices">
+                <label>
+                    <input type="radio" name="type" ng-model="payment.type" value="MIN_PAYMENT" ng-required="true">
+                    <p>Monto m&iacute;nimo</p>
+                    <p class="money">${{transferAccountDetail.minimum_payment}}</p>
+                </label>
+                <label>
+                    <input type="radio" name="type" ng-model="payment.type" value="WIHTOUT_INTEREST_PAYMENT" ng-required="true">
+                    <p>Para no generar intereses</p>
+                    <p class="money">${{transferAccountDetail.no_interes_payment_due}}</p>
+                </label>
+                <label>
+                    <input type="radio" name="type" class="last" ng-model="payment.type" value="TOTAL_PAYMENT" ng-required="true">
+                    <p class="last">Otra cantidad</p>
+                    <input type="text" name="other" currency numbers-only ng-model="payment.other" class="input-importe" ng-required="payment.type == 'TOTAL_PAYMENT'" maxlength="15">
+                </label>
+            </div>
+        </span>
+    </form>
+    <div class="double-btn">
+        <input type="submit" value="Cancelar" ng-click="goToStep(1, true)">
+        <input type="submit" value="Continuar" ng-click="assignValue()" ng-disabled="paymentForm.$invalid">
+    </div>
+</div>

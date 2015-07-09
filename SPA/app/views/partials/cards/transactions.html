@@ -1,0 +1,40 @@
+<!-- =============================================================== -->
+<form class="search">
+    <button type="submit"><i class="ico-search"></i></button>
+    <input type="text" name="movements" id="movements" ng-model="busqueda" placeholder="Buscar movimientos" ng-change="displayMessage()">
+    <div class="filter">
+        <span>Ver por:</span>
+        <div class="double-btn">
+            <button ng-class="{selected: !previousPeriod}" ng-click="getTransactions(false)">Periodo actual</button>
+            <button ng-class="{selected: previousPeriod}" ng-click="getTransactions(true)">Periodo anterior</button>
+        </div>
+        <a href="#" class="ico-question-circle"><span>Si deseas consultar periodos anteriores, puedes generar los estados de cuenta correspondientes a todos los periodos en la secci&oacute;n de Estados de Cuenta.</span></a>
+    </div>
+</form>
+<!-- =============================================================== -->
+<div class="transactions">
+    <div class="searchMessage" ng-show="searchMessage">
+        <span ng-click="clearMessage()">X</span>
+        Resultados de la b&uacute;squeda
+    </div>
+    <table class="details">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">N. de autorizaci&oacute;n</th>
+                <th scope="col">Descripci&oacute;n</th>
+                <th scope="col">Tipo de operaci&oacute;n</th>
+                <th scope="col">Monto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="trans in creditCardTransactions | filter:busqueda">
+                <td>{{trans.transactionDate | date:'dd-MM-yyyy' }}</td>
+                <td>{{trans.authorizationNumber}}</td>
+                <td>{{trans.transactionDescription}}</td>
+                <td>{{trans.code}}</td>
+                <td>{{trans.amount | currency}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

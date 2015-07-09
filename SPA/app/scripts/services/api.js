@@ -4,23 +4,35 @@
  * api initializer factory
  */
 
-angular.module('spaApp').factory('api', ['$http', '$rootScope', function ($http, $rootScope) {
+angular.module('spaApp').factory('api', ['$http', '$rootScope', '$window', function ($http, $rootScope, $window) {
   var hasBeenConfigured = false;
   return {
     init: function (token) {
+
+      if($window.x_session_token) {
+        console.log("Session token from web app", $window.x_session_token);
+        $rootScope.session_token = $window.x_session_token;
+
+        $rootScope.last_access_date = $window.last_access_date
+        $rootScope.last_access_media = $window.last_client_application_id;
+        $rootScope.client_name = $window.client_name;
+      }
+
       // this is the token of the bank
-      $http.defaults.headers.common['X-BANK-TOKEN'] = 2;
+      $http.defaults.headers.common['X-BANK-TOKEN'] = 4;
       $http.defaults.headers.common['X-AUTH-TOKEN'] = token || $rootScope.session_token;
 
-      console.log("Executes init & token = " + $rootScope.session_token);
+      //console.log("Executes init & token = " + $rootScope.session_token);
     },
     config: function(){
-      //$rootScope.restAPIBaseUrl = " http://192.168.0.10:8080/Abanking-Core/rest";
-      //$rootScope.restAPIBaseUrl = "https://www.demobank.mx/api";
-      $rootScope.restAPIBaseUrl = "https://prototype.mx/api";
-      //$rootScope.restAPIBaseUrl = "http://projects.anzen.com.mx:8081/Abanking-Core/rest";
-      $rootScope.subscribeKey = "sub-c-74d472c2-894a-11e3-a56b-02ee2ddab7fe";
-      $rootScope.publishKey = "pub-c-d49c709c-8d0c-40ed-aaa6-66cbc20683d0";
+      // Use this link for deployment
+      $rootScope.restAPIBaseUrl = $("#linkApiRoot").attr("href");
+      // Use these or similar link for development
+      //$rootScope.restAPIBaseUrl = "http://192.168.210.136/Abanking-Core";
+      //$rootScope.restAPIBaseUrl = "http://localhost:18080/SBD";
+      //$rootScope.restAPIBaseUrl = 'http://192.168.0.10:80/Abanking-Core';
+      //$rootScope.restAPIBaseUrl = 'http://192.168.0.10:80/SBD';
+      $rootScope.useMocks = false;
     }
   };
 }]);

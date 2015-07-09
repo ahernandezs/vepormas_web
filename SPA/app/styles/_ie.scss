@@ -1,0 +1,25 @@
+/*
+|-------------------------------------------------------------------------------------
+| IE
+|-------------------------------------------------------------------------------------
+|-------------------------------------------------------------------------------------
+*/
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){
+	.angular-google-map-container{
+		bottom:111px;
+	}
+	select::-ms-expand {
+	    display: none;
+	}
+	input[type="text"]::-ms-clear, input[type="email"]::-ms-clear, input[type="tel"]::-ms-clear, input[type="number"]::-ms-clear{
+	    display: none;
+	}
+	input[type="password"]::-ms-reveal{
+		display:none;
+	}
+	.search{
+		input[type*=search] {
+			width:35%;
+		}
+	}
+}

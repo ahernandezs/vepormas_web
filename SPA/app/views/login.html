@@ -1,47 +1,67 @@
-<div class="login_back">
-  <header class="home_header container">
-    <p class="pull-left">Bienvenido a ABanking</p>
-    <ul class="nav pull-right">
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Idioma: Espa&ntilde;ol <b class="caret"></b></a>
-        <ul class="dropdown-menu">
-          <li><a href="#">Espa&ntilde;ol</a></li>
-          <li class="divider"></li>
-          <li><a href="#">English</a></li>
-        </ul>
-      </li>
-    </ul>
-  </header>
-
-  <section class="container login-form shadow rounded" ng-controller="LoginCtrl">
-    <div class="logo"></div>
-    <form class="form-signin" ng-submit="login()">
-      <!--<p>Inicia sesión</p>-->
-      <div class="alert alert-danger" ng-if="errorMessage">
-        {{errorMessage}}
-      </div>
-      <label class="border">
-        <input type="text" ng-model="username" class="form-control" placeholder="Usuario" value="1234502" required autofocus>
-      </label>
-      <label class="border">
-        <input type="password" ng-model="password"  class="form-control" placeholder="Contraseña" value="A1234567" required>
-      </label>
-      <button ng-disabled="loginButtonStatus.disabled" class="btn" type="submit">{{loginButtonStatus.text}}</button>
-      <label class="checkbox">
-        <input type="checkbox"> Recordarme
-      </label>
-    </form>
-    <div class="registration text-center">
-      ¿Eres nuevo? Reg&iacute;strate
-    </div>
-  </section>
-
-  <footer class="home_footer container text-center">
-        <a href="javascript:void(0);">&iquest;Olvidaste tu contrase&ntilde;a?</a>
-        <a href="javascript:void(0);">Sobre nosotros</a>
-        <a href="javascript:void(0);">Busca por internet</a>
-        <a href="javascript:void(0);">Banca m&oacute;vil</a>
-        <a href="javascript:void(0);">Privacidad</a>
-        &copy; 2014 Anzen Soluciones S.A. de C.V.
-  </footer>
+<div class="login">
+    <div class="outter"> <!-- sticky footer wrapper -->
+      <header ng-include="'views/partials/layout/login-header.html'">
+      </header>
+            <!-- =============================================================== -->
+            <main>
+                <div class="wrapper">
+                    <!--
+                    |____________________________________________________________________________
+                    |
+                    |   Fisrt Column
+                    |____________________________________________________________________________
+                    -->
+                    <div>
+                        <div class="welcome">
+                            <h2>¡Bienvenido a Consubanco!</h2>
+                            <p>
+                                <strong>Un gran beneficio, un gran Banco.</strong>
+                                <strong>¡Desc&uacute;brelo!</strong>
+                            </p>
+                        </div>
+                        <div class="pull-left app-link-box">
+                            <div class="pull-left phone-img"></div>
+                            <div class="pull-left stores-text-box">
+                                <p><strong>¡Porque queremos estar siempre contigo!</strong>
+                                </p>
+                                <p>
+                                Descarga nuestra nueva aplicación, ahora estaremos cada vez m&aacute;s conectados</p>
+                                <a href="#play"><img src="images/logo-google-play.svg" alt="" class="pull-left"></a>
+                                <a href="#apple">
+                                    <img src="images/logo-apple-store.svg" alt="" class="pull-left">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                    |____________________________________________________________________________
+                    |
+                    |   Second Column
+                    |____________________________________________________________________________
+                    -->
+                    <div ng-cloak class="ng-cloak">
+                        <div ng-switch on="step">
+                            <div class="animate-switch" ng-switch-when="0">
+                                <div ng-include="'views/partials/login/user_login.html'">
+                                </div>
+                            </div>
+                            <div class="animate-switch" ng-switch-when="1">
+                                <div ng-include="'views/partials/login/image_login.html'">
+                                </div>
+                            </div>
+                        </div>
+                        <form class="user-registration" ng-submit="preRegister(client,contract)" ng-show="step == 0" name="registrationForm">
+                            <label for="user-register"><strong>¿Eres nuevo aqu&iacute;?</strong></label>
+                            <input type="text" ng-model="client" name="user-register" id="user-register" minlength="5" maxlength="10" pattern="^[0-9]{1,10}$" placeholder="No. Cliente" required>
+                            <input type="text" ng-model="contract" name="contract-number" name="contract-number" id="contract-number" placeholder="Folio de Contrato de Banca Digital" required>
+                            <div class="error" ng-show="registerError">{{errorMessage}}</div>
+                            <input type="submit" value="Regístrate" ng-disabled="registrationForm.$invalid||registering">
+                        </form>
+                    </div>
+                    <!-- =============================================================== -->
+                </div> <!-- wrapper ends here -->
+            </main>
+        </div> <!-- sticky footer wrapper ends here -->
+    <footer ng-include="'views/partials/layout/main-footer.html'">
+    </footer>
 </div>

@@ -1,0 +1,467 @@
+.input-importe {
+	font-size: 1.2em;
+	height: 35px;
+}
+.input-cuenta {
+    background:url(../images/ico-cuenta.png) no-repeat 95% center;
+    background-size: 25px;
+}
+.input-usuario {
+    background:url(../images/ico-usuario-login.png) no-repeat 95% center;
+    background-size: 25px;
+}
+.input-password {
+    background:url(../images/ico-password-login.png) no-repeat 95% center;
+    background-size: 25px;
+}
+.input-mail {
+    background:url(../images/ico-mail.png) no-repeat 95% center;
+    background-size: 25px;
+}
+.input-mobile {
+    background:url(../images/ico-mobile.png) no-repeat 95% center;
+    background-size: 25px;
+}
+.input-token {
+    background:url(../images/ico-token.png) no-repeat 95% center;
+    background-size: 25px;
+}
+.input-otp {
+    background:url(../images/ico-otp.png) no-repeat 95% center;
+    background-size: 25px;
+}
+.registration {
+	// components
+	padding-top:50px;
+	h2, h3 {
+		color: $blue;
+	}
+	button {
+		width: 120px;
+	}
+	dl {
+		@include clearfix;
+		margin-bottom: 30px;
+	}
+	dt, dd {
+		float: left;
+		display: block;
+		line-height: 2.3;
+		width: 50%;
+	}
+	.outter {
+		background-color: $gris03;
+	}
+	.main {
+		color: $gris60;
+		font-size: 16px;
+		padding-top: 40px;
+
+		> .wrapper {
+			background-color: #f7f7f7;
+			/*border-radius: $radius;
+			border: 1px solid $gray;
+			box-shadow: 0px 1px 3px rgba(0,0,0,0.14);*/
+		}
+	}
+	.row > div {
+		min-height: 520px;
+	}
+	// modules
+	.steps {
+		position: relative;
+		margin-right: 0 !important;
+		@include column(2.8);
+		height: 100%;
+		border-radius:5px 0 0 5px;
+		border-top: 1px solid $gray;
+		border-left: 1px solid $gray;
+		border-bottom: 1px solid $gray;
+
+		h3 {
+			font-weight: 400;
+			margin-top: 40px;
+			text-align: center;
+		}
+		ul {
+			float: right;
+			font-size: 18px;
+			margin-top: 30px;
+			width: 100%;
+		}
+		li.active{
+			a{
+				color:$green;
+			}
+		}
+		li:first-child{
+			background:url(../images/ico-registro-confirmacion.png) no-repeat left center;
+			background-size:35px;
+		}
+		li:nth-child(2){
+			background:url(../images/ico-registro-usuario.png) no-repeat 2px center;
+			background-size:30px;
+		}
+		li:nth-child(3){
+			background:url(../images/ico-registro-seguridad.png) no-repeat 2px center;
+			background-size:30px;
+		}
+		li:nth-child(4){
+			background:url(../images/ico-registro-notificacion.png) no-repeat 2px center;
+			background-size:30px;
+		}
+		li:nth-child(5){
+			background:url(../images/ico-registro-token.png) no-repeat 2px center;
+			background-size:30px;
+		}
+		li:nth-child(6){
+			background:url(../images/ico-registro-finalizado.png) no-repeat 2px center;
+			background-size:30px;
+		}
+		li.active:nth-child(2){
+			background:url(../images/ico-registro-usuario-a.png) no-repeat left center;
+			background-size:35px;
+		}
+		li.active:nth-child(3){
+			background:url(../images/ico-registro-seguridad-a.png) no-repeat left center;
+			background-size:35px;
+		}
+		li.active:nth-child(4){
+			background:url(../images/ico-registro-notificacion-a.png) no-repeat left center;
+			background-size:35px;
+		}
+		li.active:nth-child(5){
+			background:url(../images/ico-registro-token-a.png) no-repeat left center;
+			background-size:35px;
+		}
+		li.active:nth-child(6){
+			background:url(../images/ico-registro-finalizado-a.png) no-repeat left center;
+			background-size:35px;
+		}
+		li {
+			margin-left: 14%;
+			padding-left: 21%;
+			position: relative;
+			margin-bottom: 15px;
+			height:35px;
+			padding-top:12px;
+
+			a{
+				font-weight: bold;
+				font-size: 15px;
+			}
+			a:hover{
+				color:$green
+			}
+
+			/*&:before {
+				background: $gray;
+				border-radius: 50%;
+				box-shadow: 0 3px 2px rgba(0,0,0,.14) inset;
+				content: "";
+				height: 40px;
+				left: 0;
+				position: absolute;
+				top: 17%;
+				width: 40px;
+			}
+			&.active:after {
+				background: $green;
+				border-radius: 50%;
+				content: "";
+				height: 36px;
+				left: 2px;
+				position: absolute;
+				top: 20%;
+				width: 36px;
+			}*/
+		}
+		progress {
+			@include rotate(90deg);
+			-webkit-appearance: none;
+			appearance: none;
+			height: 8px;
+			left: calc(14% - 173px);
+			position: absolute;
+			top: 310px;
+			width: 380px;
+
+		      &.four-steps {
+		        left: -41%!important;
+		        top: 270px!important;
+		        width: 320px!important;
+		      }
+
+			&::-webkit-progress-bar {
+				background-color: #d2d2d2;
+				box-shadow: 0 1px 0px rgba(0,0,0,.14) inset;
+			}
+			&::-webkit-progress-value{
+				background-color: $green;
+			}
+		}
+		.progress-div{
+			width:8px;
+			height:275px;
+			position:absolute;
+			top:95px;
+			left:calc(14% + 12px);
+			background-color: #d2d2d2;
+			box-shadow: 0 1px 0px rgba(0,0,0,.14) inset;
+			overflow:hidden;
+		}
+
+		.progress-fill{
+			background-color:$green;
+			width:8px;
+			height:275px;
+			position:absolute;
+			top:-275px;
+			left:0;
+		}
+		.progress-div-short{
+			width:8px;
+			height:220px;
+			position:absolute;
+			top:95px;
+			left:calc(14% + 12px);
+			background-color: #d2d2d2;
+			box-shadow: 0 1px 0px rgba(0,0,0,.14) inset;
+			overflow:hidden;
+		}
+
+		.progress-fill-short{
+			background-color:$green;
+			width:8px;
+			height:220px;
+			position:absolute;
+			top:-275px;
+			left:0;
+		}
+	}
+	.record {
+		@include column(9.2);
+		//background-color: #fff;
+		margin-left: 0 !important;
+		//padding: 30px 20px;
+		width: 75%;
+	}
+	.data {
+		background-color: #fff;
+		margin-left: 0 !important;
+		padding: 30px;
+		min-height: 520px;
+		border-radius:0 5px 5px 0;
+		border-top: 1px solid $gray;
+		border-right: 1px solid $gray;
+		border-bottom: 1px solid $gray;
+		@include column(7.4);
+		@include push(0.2);
+		@include pull(.4);
+        h2 + p{
+        	font-size: 14px;
+        }
+        .terms{
+         height: 300px;
+         overflow-y: scroll;
+        }
+        .user-data{
+        	position: relative;
+        	.radioGroupBelow{
+        		overflow: hidden;
+        		width:400px;
+        		margin-bottom: 15px;
+        		border:none;
+        		&:after{
+        			position: absolute;
+        			content:"";
+        			display: block;
+        			height: 1px;
+        			border-top:1px solid $gray;
+        			width: 100%;
+        			margin:165px 0 0 -15px;
+        		}
+        	}
+        	p{
+        		font-size: 14px;
+	        	margin-bottom: 20px;
+        	}
+        	ol{
+        		margin: 0 0 20px 0;
+        		li{
+	        		font-size: 14px;
+	        		list-style:none;
+	        		margin:0 0 12px 0;
+	        		padding-left: 25px;
+              background:url(../images/ico-ok.png) no-repeat left center;
+	        		background-size:15px;
+	        	}
+        	}
+        }
+        .separate {
+            width: 100%;
+            height: 50px;
+            margin: 15px 0;
+            overflow: hidden;
+            p{
+                width: 48%;
+                float: left;
+                font-size:14px;
+            }
+            label{
+            	display: block;
+            	float: right;
+            	font-size: 14px;
+            	overflow: hidden;
+            	margin-right: 10px;
+            	span{
+            		float:left;
+            		padding-top:10px;
+            	}
+            }
+            input {
+                width: initial;
+                margin: 13px 10px;
+                float: left;
+            }
+            input:last-child {
+                margin: 13px 10px 13px 20px;
+            }
+            p {
+                float: left;
+                margin: 8px 0;
+            }
+        }
+        .termns {
+        	font-size: 14px;
+        	overflow: hidden;
+        	display: block;
+        	width: 100%;
+        	margin:15px 0 30px 0;
+        	span{
+        		display: block;
+        		a{
+        			color:$blue;
+        			text-decoration:underline;
+        			display: inline;
+        		}
+        	}
+            input {
+            	float:left;
+                margin:3px 20px 0 0;
+            }
+        }
+        input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+        	display: block;
+        	float:left;
+        	width: 100%;
+        	box-shadow:none;
+        	border:none;
+        	padding:10px;
+        }
+        .select-style{
+          width: 100%;
+          margin-bottom:10px;
+        }
+	}
+	.help {
+		@include column(4);
+		margin-top: 20px;
+		h3{
+			font-weight: normal;
+			margin: 0 0 55px 10px
+		}
+		i {
+			left:12px;
+			border-right:1px  solid $blue;
+			position: absolute;
+			display: block;
+			top: 50%;
+			width: 55px;
+			height: 50px;
+			@include translate(0,-50%);
+		}
+		.ico-ayuda{
+			background: url(../images/ico-ayuda.png) no-repeat left center;
+			background-size:45px;
+		}
+		.ico-token{
+			background: url(../images/ico-ayuda-token.png) no-repeat left center;
+			background-size:45px;
+		}
+		.ico-alerta{
+			background: url(../images/ico-ayuda-alerta.png) no-repeat left center;
+			background-size:45px;
+		}
+		.ico-duda{
+			background: url(../images/ico-ayuda-duda.png) no-repeat left center;
+			background-size:45px;
+		}
+		> div {
+			padding-left: 80px;
+			position: relative;
+			padding:20px;
+			border:1px solid $blue;
+			@include border-radius(5px);
+			p{
+				padding-left: 60px;
+			}
+			p + p{
+				font-size: 0.9em;
+			}
+			+ div {
+				margin-top: 30px;
+			}
+		}
+	}
+}
+.fieldContainer{
+	display: block;
+	position: relative;
+	overflow:hidden;
+	clear:both;
+	margin-bottom: 10px;
+	border:1px solid $gray;
+	@include border-radius(3px);
+	&:focus, &:hover, &:active, &.active{
+		border-color:$orange;
+	}
+	&.last{
+		margin-bottom: 30px;
+	}
+	&.selected{
+		span{
+			display: block;
+		}
+		input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+			width:67%;
+		}
+	}
+	span{
+		display: none;
+		text-align: center;
+		width:32%;
+		background:#4da3d4;
+		color:white;
+		padding:16px 0;
+		font-size:0.8em;
+		float:left;
+		&.double{
+			padding:4px 0;
+		}
+		&.big{
+			font-size: 1.4em;
+		}
+	}
+}
+
+.register-pass, .contact-form, .token-form{
+	.fieldContainer span{
+		padding: 12px 0 !important;
+	}
+	.select-style span{
+		line-height: 1.2 !important;
+		padding:12px 0 !important;
+	}
+}
+

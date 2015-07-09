@@ -1,0 +1,50 @@
+<div class="beneficiariowidget">
+    <div class="benheader">
+        <h2>Alta nuevo beneficiario</h2>
+        <p></p>
+        <progress max="3" value="{{selection}}"></progress>
+        <div>
+            <p class="orange">CAPTURA</p>
+            <p>CONFIRMACI&Oacute;N</p>
+            <p>COMPROBACI&Oacute;N</p>
+        </div>
+    </div>
+
+    <div class="message">
+        <i></i><p>El nuevo beneficiario se ha dado de alta, n&uacute;mero de autorizaci&oacute;n <span>{{transferId}}</span></p>
+    </div>
+    <table>
+        <tr>
+            <td>Nombre:</td>
+            <td>{{beneficiary.name}}</td>
+        </tr>
+        <tr>
+            <td>Alias:</td>
+            <td>{{beneficiary.aka}}</td>
+        </tr>
+        <tr>
+            <td>T. D&eacute;bito:</td>
+            <td>{{beneficiary.account}}</td>
+        </tr>
+        <tr>
+            <td>Correo electr&oacute;nico:</td>
+            <td>{{beneficiary.email}}</td>
+        </tr>
+        <tr>
+            <td>Celular:</td>
+            <td>{{beneficiary.phone}}</td>
+        </tr>
+        <tr>
+            <td>Fecha de aplicaci&oacute;n:</td>
+            <td>{{today | date:'dd-MM-yyyy' }}</td>
+        </tr>
+    </table>
+    <div class="note">
+        <p>Por disposici&oacute;n de seguridad de la Comision Nacional Bancaria y de valores (CNBV) <strong>la cuenta podr&aacute; ser utilizada en 30 minutos.</strong>
+        </p>
+    </div>
+    <div class="double-btn">
+        <button ng-click="completeStep(1)">Finalizar</button>
+        <button ng-click="completeStep(1)">Agregar nuevo beneficiario</button>
+    </div>
+</div>

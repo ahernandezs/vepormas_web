@@ -1,0 +1,59 @@
+
+<div class="product-details">
+    <div class="header">
+        <h2 class="title">
+            <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'ico-menos' : 'ico-mas'"></i></a>
+            Consuinversi&oacute;n CEDE
+            <span>Inversi&oacute;n</span>
+        </h2>
+        <div class="payment-actions">
+            <div>
+                <div>
+                    <p class="amount">{{investmentHeader.available | currency}}</p>
+                    <span class="blue">Saldo disponible</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr ng-show='!showAccountHeader'>
+    <div class="box" ng-show='showAccountHeader'>
+        <ul>
+            <li>Fecha de inicio:                            <span>{{accountHeader.cutDate}}</span></li>
+            <li>Fecha de vencimiento:                       <span>{{accountHeader.limitDate}}</span></li>
+            <li>Intereses:                                  <span class="amount">{{accountHeader.limitPayment | currency}}</span></li>
+            <li>Fecha de &uacute;ltima renovaci&oacute;n:   <span class="amount">{{accountHeader.cutBalance | currency}}</span></li>
+        </ul>
+        <ul>
+            <li>Tasa de inter&eacute;s:     <span class="amount">{{accountHeader.currentBalance | currency}}</span></li>
+            <li>Porcentaje de ISR:          <span class="amount">{{accountHeader.noInterest | currency}}</span></li>
+            <li>Monto del ISR:              <span class="amount">{{accountHeader.dueCurrent | currency}}</span></li>
+            <li>Monto del rendimiento:      <span class="amount">{{accountHeader.limitCredit | currency}}</span></li>
+        </ul>
+    </div>
+    <form class="buscador-fechas">
+        <p>Fecha inicial:</p>
+        <input type="search">
+        <p>Fecha final:</p>
+        <input type="search">
+        <button class="blue">Buscar</button>
+    </form>
+    <div class="transactions">
+        <table ng-table="tableParams" class="details">
+           <thead>
+                <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">N. de Transacci&oacute;n</th>
+                    <th scope="col">Descripci&oacute;n</th>
+                    <th scope="col">Tipo de operaci&oacute;n</th>
+                    <th scope="col">Monto</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="accounts in $data">
+                <td>{{accounts.date}}</td>
+                <td>{{accounts.transactionNumber}}</td>
+                <td>{{accounts.description}}</td>
+                <td>{{accounts.operationType}}</td>
+                <td>{{accounts.amount | currency}}</td>
+            </tr>
+        </table>
+    </div>

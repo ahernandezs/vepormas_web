@@ -1,0 +1,53 @@
+/*
+|-------------------------------------------------------------------------------------
+|	Components
+|-------------------------------------------------------------------------------------
+*/
+@import "components/button";
+@import "components/bootstrap-select";
+@import "components/social-links";
+
+/*
+|-------------------------------------------------------------------------------------
+|	All purpose
+|-------------------------------------------------------------------------------------
+*/
+.logo { @include hide-text(); }
+
+.amount { &:before { margin-right: 2px; } }
+
+i { display: none; }
+
+p {
+	&.blue {
+		color: $blue;
+	}
+}
+span.block {
+	display: block;
+}
+.row {
+	@include row;
+}
+
+button { &:focus { @include formFocus($orange); } }
+input { &:focus { @include formFocus($orange); } }
+
+.error {
+	color : red;
+	margin: 5px;
+	font-size:0.9em;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak
+{
+    display: none;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
+
+.full-width{
+	width:100% !important;
+}

@@ -1,0 +1,12 @@
+/*
+|-------------------------------------------------------------------------------------
+|	Feature Fallbacks
+|-------------------------------------------------------------------------------------
+*/
+.lt-ie9 {
+	@extend %min-width-screen-phone; 	// 480px
+	@extend %min-width-screen-tablet; 	// 768px
+	@extend %min-width-screen-desktop;	// 960px
+}
+
+.no-js {}

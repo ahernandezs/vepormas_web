@@ -1,0 +1,169 @@
+<div class="products">
+   <div class="outter">
+    <div ng-include="'views/partials/layout/main-header.html'"></div>
+    <main>
+      <div class="wrapper">
+                <div class="wrapper">
+                    <div class="row">
+                        <div class="actions">
+                            <div class="section">
+                                <h2>Tarjeta de cr&eacute;dito</h2>
+                                <div class="product" ng-repeat="account in accounts| filter:{type:1}:true"
+                                data-ng-class="{'active': account.accountId == activeClass}" data-ng-click="selectAccount(account.accountId, account.type)">
+                                    <p class="name">
+                                        <span>{{account.name}}</span>
+                                        <span class="id">{{account.lastDigits}}</span>
+                                    </p>
+                                    <div>
+                                        <p class="amount">{{account.totalAmount | currency}}</p>
+                                        <p class="info">Saldo deudor</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <h2>Inversiones</h2>
+                                <div class="product" ng-repeat="account in accounts | filter:{type:2}:true"
+                                 data-ng-class="{'active': account.accountId == activeClass}" data-ng-click="selectAccount(account.accountId, account.type)">
+                                     <p class="name" ng-click="active = $id" ng-class="{active: $id === active}">
+                                        <span>{{account.name}}</span>
+                                        <span class="id">{{account.lastDigits}}</span>
+                                    </p>
+                                    <div>
+                                        <p class="amount">{{account.totalAmount | currency}}</p>
+                                        <p class="info">Disponible</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <h2>Cuenta</h2>
+                                <div class="product" ng-repeat="account in accounts | filter:{type:3}:true"
+                                 data-ng-class="{'active': account.accountId == activeClass}" data-ng-click="selectAccount(account.accountId, account.type)" >
+                                    <p class="name" ng-click="active = $id" ng-class="{active: $id === active}" >
+                                        <span>{{account.name}}</span>
+                                        <span class="id">{{account.lastDigits}}</span>
+                                    </p>
+                                    <div>
+                                        <p class="amount">{{account.totalAmount | currency}}</p>
+                                        <p class="info">Disponible</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="section">
+                                <h2>Cr&eacute;ditos</h2>
+                                <div class="product" ng-repeat="account in accounts | filter:{type:4}:true"
+                                 data-ng-class="{'active': account.accountId == activeClass}" data-ng-click="selectAccount(account.accountId, account.type)">
+                                    <p class="name">
+                                        <span>{{account.name}}</span>
+                                        <span class="id">{{account.lastDigits}}</span>
+                                    </p>
+                                    <div>
+                                        <p class="amount">{{account.totalAmount | currency}}</p>
+                                        <p class="info">Disponible</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <div class="header">
+                                <h2 class="title">
+                                    <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'ico-menos' : 'ico-mas'"></i></a>
+                                    Consucuenta 1 ***12345
+                                    <span>Cuenta</span>
+                                </h2>
+                                <div class="payment-actions">
+                                    <div>
+                                        <div>
+                                            <p class="amount">{{accountHeader.availableMoney | currency}}</p>
+                                            <button class="blue">Saldo disponible</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#"><i class="ico-estados"></i>Estados <span>de cuenta</span></a>
+                            </div>
+                            <hr ng-show='!showAccountHeader'>
+                            <div class="box" ng-show='showAccountHeader'>
+                                <ul>
+                                    <li>Periodo:        <span>{{accountHeader.period}}</span></li>
+                                    <li>Saldo:          <span class="amount">{{accountHeader.funds | currency}}</span></li>
+                                </ul>
+                                <ul>
+                                    <li>Saldo salvo buen cobro:     <span class="amount">{{accountHeader.fundsGood | currency}}</span></li>
+                                    <li>Saldo Total:                <span class="amount">{{accountHeader.totalFunds | currency}}</span></li>
+                                </ul>
+                            </div>
+                            <form class="search">
+                                <button type="submit"><i class="ico-search"></i></button>
+                                <input type="search" name="movements" id="movements" placeholder="Buscar movimientos">
+                                <h4>B&uacute;squeda por rango de fechas</h4>
+                                <div class="filter">
+                                    <div>
+                                        <span>Fecha inicial:</span>
+                                        <input type="text">
+                                    </div>
+                                    <div>
+                                        <span>Fecha final:</span>
+                                        <input type="text">
+                                    </div>
+                                    <div class="single-btn">
+                                        <button class="orange">Buscar</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="transactions">
+                                <table class="details">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">2014</th>
+                                            <th scope="col">Descripci&oacute;n</th>
+                                            <th scope="col">Tipo de operaci&oacute;n</th>
+                                            <th scope="col">N. de transacci&oacute;n</th>
+                                            <th scope="col">Monto</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span>sep</span><span>18</span></td>
+                                            <td>Palacio de Hierro</td>
+                                            <td>Pago</td>
+                                            <td>001</td>
+                                            <td>25,000.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>sep</span><span>18</span></td>
+                                            <td>American Express</td>
+                                            <td>Retiro</td>
+                                            <td>002</td>
+                                            <td>54,000.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>sep</span><span>18</span></td>
+                                            <td>Tiempo aire Josefina</td>
+                                            <td>Pago</td>
+                                            <td>003</td>
+                                            <td>300.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>sep</span><span>18</span></td>
+                                            <td>Martí</td>
+                                            <td>Pago</td>
+                                            <td>004</td>
+                                            <td>5,000.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>sep</span><span>18</span></td>
+                                            <td>Starbucks</td>
+                                            <td>Pago</td>
+                                            <td>005</td>
+                                            <td>250.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+      </div>
+    </main>
+    <footer ng-include="'views/partials/layout/main-footer.html'"></footer>
+  </div>
+</div>

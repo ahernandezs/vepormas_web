@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$timeout', 'accountsProvider','thirdAccountProvider',
-                                    function($rootScope, $scope, $location, $routeParams, $timeout, accountsProvider, thirdAccountProvider) {
+angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope', '$location', '$routeParams', '$timeout', 'accountsProvider','thirdAccountProvider', 'codeStatusErrors',
+                                    function($rootScope, $scope, $location, $routeParams, $timeout, accountsProvider, thirdAccountProvider, codeStatusErrors) {
 
   try{
     var index = accountsProvider.getAccountIndex($routeParams.accountId);
@@ -87,7 +87,7 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
         else{
           error=true;
         }
-        console.log(data);
+        //console.log(data);
       }
     );
   };
@@ -191,7 +191,16 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
     thirdAccountProvider.getThirdAccounts().then(
       function(data){
         $scope.beneficiaries = $rootScope.thirdAccounts.beneficiaries;
-      }
+      },
+      function(errorObject) {
+            var status = errorObject.status;
+            var msg = codeStatusErrors.errorMessage(status);
+            if (status === 500){
+                $scope.setServiceError(msg + errorObject.response.message);
+            } else {
+                $scope.setServiceError(msg);
+            }
+        }
     );
 
   }
@@ -205,7 +214,7 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
   }    
 
   $scope.authorize = function(nombre, clabe1, importe, correo, telefono){
-     console.log($scope.names);
+     //console.log($scope.names);
      $scope.names=nombre;
      $scope.clabe=clabe1;
      $scope.amount=importe;
@@ -215,7 +224,7 @@ angular.module('spaApp').controller('TransactionsCtrl', ['$rootScope', '$scope',
   }
 
   $scope.test = function(){
-    console.log ("begin invoke function");
+    //console.log ("begin invoke function");
   }
   
   $scope.showTransferPaymentToken = function() {

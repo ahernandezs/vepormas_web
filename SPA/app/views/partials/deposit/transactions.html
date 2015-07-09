@@ -1,0 +1,38 @@
+<form class="search">
+    <button type="submit"><i class="ico-search"></i></button>
+    <input type="search" ng-model="busqueda" placeholder="Buscar movimientos">
+    <div class="filter">
+        <div>
+            <span>Fecha inicial:</span>
+            <input type="text" ng-model="searchParams.date_start" ng-change="search()" maxlength="10" jqdatepicker>
+        </div>
+        <div>
+            <span>Fecha final:</span>
+            <input type="text" ng-model="searchParams.date_end" ng-change="search()" maxlength="10" jqdatepicker>
+        </div>
+    </div>
+</form>
+<div class="transactions">
+    <div class="searchMessage" ng-show="searchMessage">
+        <span ng-click="clearMessage()">X</span>
+        Resultados de la b&uacute;squeda
+    </div>
+    <table class="details">
+        <thead>
+            <tr>
+                <th scope="col">Fecha</th>
+                <th scope="col">N. de autorizaci&oacute;n</th>
+                <th scope="col">Descripci&oacute;n</th>
+                <th scope="col">Cargo</th>
+                <th scope="col">Abono</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="trans in accountTransactions | filter:busqueda">
+                <td>{{trans.movementDate | date:'dd-MM-yyyy' }}</td>
+                <td>{{trans._transaction_id}}</td>
+                <td>{{trans.description}}</td>
+                <td>{{ (trans.operationType !== 'D') ? null :  trans.amount | currency }}</td>
+                <td>{{ (trans.operationType !== 'C') ? null : trans.amount | currency }}</td>
+            </tr>
+        </tbody>
