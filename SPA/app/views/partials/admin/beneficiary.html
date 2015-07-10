@@ -18,8 +18,8 @@
             </tr>
             <tr ng-repeat="accounts in third_accounts_own | filter:busqueda" ng-click="selectBeneficiary(accounts);">
                 <td>{{accounts.name}}</td>
-                <td>{{accounts.maskedAccountNumber}}</td>
-                <td>{{accounts.shortName}}</td>
+                <td>{{accounts.masked_account_number}}</td>
+                <td>{{accounts.short_name}}</td>
                 <td>{{accounts.account_type_name}}</td>
             </tr>
             <tr>
@@ -27,8 +27,8 @@
             </tr>
             <tr ng-repeat="accounts in third_accounts_others | filter:busqueda" ng-click="selectBeneficiary(accounts);">
                 <td>{{accounts.name}}</td>
-                <td>{{accounts.maskedAccountNumber}}</td>
-                <td>{{accounts.shortName}}</td>
+                <td>{{accounts.masked_account_number}}</td>
+                <td>{{accounts.short_name}}</td>
                 <td>{{accounts.account_type_name}}</td>
             </tr>
 
