@@ -26,12 +26,12 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 					value.group = 'Cuentas Propias';
 					switch ( value.account_type ) {
 						case 'DEP':
-							value.displayName = value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
+							value.displayName = value.name + ' ' + value.masked_account_number + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
 							value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
 							$scope.theAccounts.push( value );
 							break;
 						case 'TDC':
-							value.displayName = 'Consubanco - ' + value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
+							value.displayName = 'Consubanco - ' + value.name + ' ' + value.masked_account_number + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
 							value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
 							$scope.theAccounts.push( value );
 							break;
@@ -73,7 +73,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
                 function (value, index, ar) {
 					if ( value.account_type == 'TDC_T' || value.account_type == 'DEB_T' ) {
 	                    value.group = 'Cuentas Terceros';
-						value.displayName = value.bank_name + ' - ' + value.name + ' ' + value.maskedAccountNumber + ' - ' + value.shortName;
+						value.displayName = value.bank_name + ' - ' + value.name + ' ' + value.masked_account_number + ' - ' + value.short_name;
 						value.detail = value.bank_name + ' | ' + value.name;
 	                    $scope.theAccounts.push( value );
 					}

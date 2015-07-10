@@ -26,11 +26,11 @@
     </thead>
     <tbody>
         <tr ng-repeat="trans in investmentTransactions">
-            <td>{{trans.movementDate | date:'dd-MM-yyyy' }}</td>
+            <td>{{trans.date | date:'dd-MM-yyyy' }}</td>
             <td>{{trans._transaction_id}}</td>
             <td>{{trans.description}}</td>
-            <td>{{ (trans.operationType !== 'D') ? null :  trans.amount | currency }}</td>
-            <td>{{ (trans.operationType !== 'C') ? null : trans.amount | currency }}</td>
+            <td>{{ (trans.operation_type !== 'D') ? null :  trans.amount | currency }}</td>
+            <td>{{ (trans.operation_type !== 'C') ? null : trans.amount | currency }}</td>
         </tr>
     </tbody>
     </table>

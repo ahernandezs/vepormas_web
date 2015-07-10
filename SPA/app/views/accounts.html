@@ -13,7 +13,7 @@
             data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
                 <p class="name">
                     <span class="text-capitalize">{{account.name | lowercase}}</span>
-                    <span class="id">{{account.maskedAccountNumber}}</span>
+                    <span class="id">{{account.masked_account_number}}</span>
                 </p>
                 <div>
                     <p class="amount">{{account.current_balance | currency}}</p>
@@ -28,7 +28,7 @@
             data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
                 <p class="name" ng-click="active = $id" ng-class="{active: $id === active}">
                     <span>{{account.name}}</span>
-                    <span class="id">{{account.maskedAccountNumber}}</span>
+                    <span class="id">{{account.masked_account_number}}</span>
                 </p>
                 <div>
                     <p class="amount">{{account.balance | currency}}</p>
@@ -39,7 +39,7 @@
             data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
                 <p class="name" ng-click="active = $id" ng-class="{active: $id === active}">
                     <span>{{account.name}}</span>
-                    <span class="id">{{account.maskedAccountNumber}}</span>
+                    <span class="id">{{account.masked_account_number}}</span>
                 </p>
                 <div>
                     <p class="amount">{{account.balance | currency}}</p>
@@ -50,7 +50,7 @@
             data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
                 <p class="name" ng-click="active = $id" ng-class="{active: $id === active}">
                     <span class="text-capitalize">{{account.name | lowercase}}</span>
-                    <span class="id">{{account.maskedAccountNumber}}</span>
+                    <span class="id">{{account.masked_account_number}}</span>
                 </p>
                 <div>
                     <p class="amount">{{account.balance | currency}}</p>
@@ -65,7 +65,7 @@
             data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)" >
                 <p class="name" ng-click="active = $id" ng-class="{active: $id === active}" >
                     <span class="text-capitalize">{{account.name | lowercase}}</span>
-                    <span class="id">{{account.maskedAccountNumber}}</span>
+                    <span class="id">{{account.masked_account_number}}</span>
                 </p>
                 <div>
                     <p class="amount">{{account.current_balance | currency}}</p>
@@ -80,7 +80,7 @@
                 data-ng-class="{'active': account._account_id == activeClass}" data-ng-click="selectAccount(account)">
                 <p class="name">
                     <span class="text-capitalize">{{account.name | lowercase}}</span>
-                    <span class="id">{{account.maskedAccountNumber}}</span>
+                    <span class="id">{{account.masked_account_number}}</span>
                 </p>
                 <div>
                     <p class="amount">{{account.current_balance | currency}}</p>
