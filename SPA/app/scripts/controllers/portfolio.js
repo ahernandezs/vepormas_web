@@ -55,7 +55,7 @@ angular.module('spaApp').controller('PortfolioCtrl', ['$rootScope', '$scope', '$
 
                     switch ( value.account_type ) {
                         case 'DEP':
-                            value.displayName = value.name + ' ' + value.maskedAccountNumber + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
+                            value.displayName = value.name + ' ' + value.masked_account_number + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
                             value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
                             $scope.ownAccounts.push( value );
                             $scope.depositAccounts.push(value );
