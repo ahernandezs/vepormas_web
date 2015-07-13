@@ -14,7 +14,7 @@
 	  accountsProvider.getAccounts().then(
           function(data) {
             $scope.accounts = $rootScope.accounts;
-            $scope.selectNavigatOption('accounts'); 
+            $scope.selectNavigatOption('accounts');
             $scope.selectAccount( $scope.accounts[0]);
             //console.log('Getting accounts ......');
             //console.log($scope.accounts);
@@ -56,7 +56,7 @@
     $scope.activeClass = accountId;
     $scope.selectedAcccountId = accountId;
     $scope.selectedAccountType = type;
-    $scope.activeAccountName = accountSelected.name + ' ' + accountSelected.maskedAccountNumber;
+    $scope.activeAccountName = accountSelected.name + ' ' + accountSelected.masked_account_number;
     $scope.investmetCategory = accountSelected.category;
     $scope.statementStatus.showStatement = false;
 
@@ -99,7 +99,7 @@
         $scope.activeClass = $scope.returnData.prevId;
         $scope.selectedAcccountId = $scope.returnData.prevId;
         $scope.selectedAccountType = $scope.returnData.prevtType;
-        $scope.activeAccountName = $scope.returnData.prevAccount.name + ' ' + $scope.returnData.prevAccount.maskedAccountNumber;
+        $scope.activeAccountName = $scope.returnData.prevAccount.name + ' ' + $scope.returnData.prevAccount.masked_account_number;
         $scope.investmetCategory = $scope.returnData.prevAccount.category;
         $scope.statementStatus.showStatement = false;
 

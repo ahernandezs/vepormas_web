@@ -1,7 +1,7 @@
 <div class="header small">
     <h2 class="title">
         <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'ico-menos' : 'ico-mas'"></i></a>
-        {{investmentHeader.product.productName}}
+        {{investmentHeader.product.product_name}}
         <span>Inversi&oacute;n</span>
     </h2>
     <div class="payment-actions">
@@ -18,7 +18,7 @@
 <div ng-hide="investmetCategory=='VISTA'">
     <div class="box" ng-show='showAccountHeader'>
         <ul>
-            <li>Fecha de inicio de inversi&oacute;n:    <span>{{investmentHeader.startDate | date:'dd-MM-yyyy' }}</span></li>
+            <li>Fecha de inicio de inversi&oacute;n:    <span>{{investmentHeader.start_date | date:'dd-MM-yyyy' }}</span></li>
             <li>Plazo de inversi&oacute;n:              <span>{{investmentHeader.expiration_date | date:'dd-MM-yyyy'}}</span></li>
             <li>Fecha de vencimiento de inversi&oacute;n:<span>{{investmentHeader.last_renewal_date | date:'dd-MM-yyyy' }}</span></li>
             <li>Fecha de vencimiento de inter&eacute;s:  <span>{{investmentHeader.expiration_date | date:'dd-MM-yyyy' }}</span></li>
@@ -34,7 +34,7 @@
 <div ng-show="investmetCategory=='VISTA'">
     <div class="box" ng-show='showAccountHeader'>
         <ul>
-            <li>Periodo:        <span>{{investmentHeader.startDate | date:'dd-MM-yyyy' }} a {{investmentHeader.expiration_date | date:'dd-MM-yyyy' }}</span></li>
+            <li>Periodo:        <span>{{investmentHeader.start_date | date:'dd-MM-yyyy' }} a {{investmentHeader.expiration_date | date:'dd-MM-yyyy' }}</span></li>
         </ul>
         <ul>
             <li>Saldo Invertido:                                    <span class="amount">{{investmentHeader.amount | currency}}</span></li>
