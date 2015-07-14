@@ -32,7 +32,7 @@
                 </p>
                 <div>
                     <p class="amount">{{account.balance | currency}}</p>
-                    <p class="info">Disponible</p>
+                    <p class="info">Saldo</p>
                 </div>
             </div>
             <div class="product" ng-repeat="account in accounts | filter:{account_type:'INV'}:true | filter:{category:'CEDE'}:true"
@@ -43,7 +43,7 @@
                 </p>
                 <div>
                     <p class="amount">{{account.balance | currency}}</p>
-                    <p class="info">Disponible</p>
+                    <p class="info">Saldo</p>
                 </div>
             </div>
             <div class="product" ng-repeat="account in accounts | filter:{account_type:'INV'}:true | filter:{category:'PRLV'}:true"
@@ -54,7 +54,7 @@
                 </p>
                 <div>
                     <p class="amount">{{account.balance | currency}}</p>
-                    <p class="info">Disponible</p>
+                    <p class="info">Saldo</p>
                 </div>
             </div>
         </div>

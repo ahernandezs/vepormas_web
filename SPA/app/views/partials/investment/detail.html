@@ -8,7 +8,7 @@
         <div>
             <div>
                 <p class="amount">{{investmentHeader.amount | currency}}</p>
-                <span>Saldo</span>
+                <span>Saldo disponible</span>
             </div>
         </div>
     </div>
@@ -37,7 +37,6 @@
             <li>Periodo:        <span>{{investmentHeader.start_date | date:'dd-MM-yyyy' }} a {{investmentHeader.expiration_date | date:'dd-MM-yyyy' }}</span></li>
         </ul>
         <ul>
-            <li>Saldo Invertido:                                    <span class="amount">{{investmentHeader.amount | currency}}</span></li>
             <li>Tasa de inter&eacute;s del &uacute;ltimo periodo:   <span>{{investmentHeader.interest_rate}}%</span></li>
         </ul>
     </div>
