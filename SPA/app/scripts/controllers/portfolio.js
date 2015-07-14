@@ -62,8 +62,8 @@ angular.module('spaApp').controller('PortfolioCtrl', ['$rootScope', '$scope', '$
                             break;
                         case 'INV':
                             if ( value.category === 'VISTA' ) {
-                                value.displayName = value.name + ' ' + value.masked_account_number + ' - ' + value.currency + ': ' + $filter('currency')(value.balance, '$');
-                                value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.balance, '$');
+                                value.displayName = value.name + ' ' + value.masked_account_number + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
+                                value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
                                 $scope.vistaAccounts.push(value);
                             }
                             break;

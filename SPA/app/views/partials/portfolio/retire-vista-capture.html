@@ -14,7 +14,7 @@
         <div class="dropdown">
           <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="investment.vistaAccount != '' ? 'selected' : ''">
             <span>Producto de inversi&oacute;n</span>
-            <p>{{investment.vistaAccount == '' ? 'Producto de inversi&oacute;n' : investment.vistaAccount.maskedAccountNumber}}<br>
+            <p>{{investment.vistaAccount == '' ? 'Producto de inversi&oacute;n' : investment.vistaAccount.masked_account_number}}<br>
                 <span>{{investment.vistaAccount.detail}}</span></p>
           </div>
           <ul class="dropdown-menu" role="menu">
@@ -26,7 +26,7 @@
         <div class="dropdown">
           <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="investment.depositAccount != '' ? 'selected' : ''">
             <span>Cuenta destino</span>
-            <p>{{investment.depositAccount == '' ? 'Cuenta destino' : investment.depositAccount.maskedAccountNumber}}<br>
+            <p>{{investment.depositAccount == '' ? 'Cuenta destino' : investment.depositAccount.masked_account_number}}<br>
                 <span>{{investment.depositAccount.detail}}</span></p>
           </div>
           <ul class="dropdown-menu" role="menu">
