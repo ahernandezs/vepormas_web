@@ -16,7 +16,7 @@
         <div class="dropdown">
             <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="transfer.account !== undefined ? 'selected' : ''">
                 <span>Cuenta retiro</span>
-                <p>{{transfer.account === undefined ? 'Cuenta retiro' : transfer.account.maskedAccountNumber}}<br>
+                <p>{{transfer.account === undefined ? 'Cuenta retiro' : transfer.account.masked_account_number}}<br>
                     <span>{{transfer.account.detail}}</span></p>
             </div>
             <ul class="dropdown-menu" role="menu">
@@ -29,7 +29,7 @@
         <div class="dropdown">
             <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="transfer.destiny !== undefined ? 'selected' : ''">
                 <span>Cuenta dep&oacute;sito</span>
-                <p>{{transfer.destiny === undefined ? 'Cuenta dep&oacute;sito' : transfer.destiny.maskedAccountNumber}}<br>
+                <p>{{transfer.destiny === undefined ? 'Cuenta dep&oacute;sito' : transfer.destiny.masked_account_number}}<br>
                     <span>{{transfer.destiny.detail}}</span></p>
             </div>
             <ul class="dropdown-menu" role="menu">
