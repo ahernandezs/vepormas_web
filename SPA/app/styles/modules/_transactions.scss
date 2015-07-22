@@ -163,7 +163,7 @@ form[name="investmentForm"], form[name="transferForm"], form[name="paymentForm"]
         text-align: center;
         width:32%;
         position: absolute;
-        background:#4da3d4;
+        background:#3bb0c9;
         color:white;
         height: 100%;
         line-height: 410%;
@@ -271,7 +271,7 @@ table input[type="submit"]{font-weight: bold;}
             position:relative;
         }
         .progress-fill{
-            background-color:#FC651B;
+            background-color:$orange;
             width:33%;
             height:10px;
             @include border-radius(10px);
@@ -479,7 +479,7 @@ table input[type="submit"]{font-weight: bold;}
         padding: 20px 10px;
         @include border-radius(4px);
         a{
-            color:$blue;
+            color:$green;
             font-size: 14px;
             display: block;
             margin-bottom: 8px;

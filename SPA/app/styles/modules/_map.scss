@@ -41,7 +41,7 @@ h2.sucursales{
 		float:left;
 		width:15%;
 		text-align:center;
-		color:#FC651B,
+		color:$orange,
 	}
 	.mapinputs{
 		width: 45%;
@@ -96,13 +96,18 @@ h2.sucursales{
 			width: 10%;
 			height: 38px;
 			cursor: pointer;
-			background: url(../images/ico-lupa-w.png) no-repeat, #FC651B;
+			background: url(../images/ico-lupa-w.png) no-repeat, $blue;
 			background-position: 5px;
 			background-size: 25px;
 			border-radius: 3px;
 			color: white;
 			text-align: center;
 			padding-top: 10px;
+			&:hover, &:active{
+				background: url(../images/ico-lupa-w.png) no-repeat, $orange;
+				background-position: 5px;
+				background-size: 25px;
+			}
 		}
 	}
 }
@@ -157,7 +162,7 @@ h2.sucursales{
 				margin:0 0 2px 25%;
 				color:$dgray;
 				a{
-					color:$blue;
+					color:$green;
 					text-decoration: underline;
 					font-size: 0.9em;
 				}
@@ -220,7 +225,7 @@ h2.sucursales{
 }
 
 .naranja {
-	background-color: #FC651B;
+	background-color: $blue;
 }
 
 .resultado{
