@@ -10,9 +10,12 @@ $fullWidth: 90%;
 //	Grises
 $gris03: #F7F7F7; $gris06: #F0F0F0; $gris10: #E6E6E6; $gris20: #CCC; $gris30: #B3B3B3; $gris40: #999; $gris50: #808080; $gris60: #666; $gris70: #4D4D4D; $gris80: #333;
 
-$orange: 		#FC651B;
-$blue: 			#2976b6;
-$lblue: 		#4CA1D8;
+$orange: 		#c3d500;
+$lorange:		#dae100;
+
+$blue: 			#343e48;
+$lblue: 		#3bb0c9;
+
 $bwhite:		lighten($lblue,30);
 $green:			#42B129;
 $inactiveText: 	$gris40;
