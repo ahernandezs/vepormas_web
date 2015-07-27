@@ -27,7 +27,7 @@
 	 			position: relative;
 
 				h2 {
-					@include text-shadow(#000);
+					//@include text-shadow(#000);
 					text-transform: uppercase;
 					margin-bottom: 16px;
 					font-size: 2em;
@@ -36,9 +36,16 @@
 	 	}
 	}
 }
+.pull-left{
+	h2, p, strong{
+		color:$green;
+		text-shadow:none;
+	}
+}
 .welcome {
+	h2, p{color:$green; box-shadow:none;}
 	p {
-		@include text-shadow(#000);
+		//@include text-shadow(#000);
 		font-size: 1.9em;
 		strong:first-child {
 			display: block;
