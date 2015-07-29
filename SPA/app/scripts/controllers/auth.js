@@ -68,8 +68,7 @@ angular.module('spaApp')
       $http({
         url: $scope.restAPIBaseUrl+'/checkLogin',
         method: 'POST',
-        data: json,
-        headers: {'Content-Type': 'application/json','X-BANK-TOKEN': '4'}
+        data: json
       }).
       success(function(data, status, headers) {
         $scope.step = 1;
@@ -109,8 +108,7 @@ angular.module('spaApp')
         $http({
           url: $scope.restAPIBaseUrl+'/login',
           method: 'POST',
-          data: JSON.stringify({'user_login':$scope.loginData.username, 'password':$scope.loginData.password,'client_application_id': 'PROSA-DIG' , 'image_id': $scope.loginData.selectedImage.toString() }) ,
-          headers: {'Content-Type': 'application/json','X-BANK-TOKEN': '4'}
+          data: JSON.stringify({'user_login':$scope.loginData.username, 'password':$scope.loginData.password,'client_application_id': 'PROSA-DIG' , 'image_id': $scope.loginData.selectedImage.toString() })
         }).success(
           function(data, status, headers) {
             $scope.isLogin = false;
