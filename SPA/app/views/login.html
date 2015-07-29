@@ -1,3 +1,37 @@
+<script>
+    var request = new XMLHttpRequest();
+    var json;
+    request.open('GET', 'https://api.contentful.com/spaces/69jpb9w0eza4/entries/6MdplwKWWcGiWw2EASW8sG');
+
+    request.setRequestHeader('Authorization', 'Bearer e335366b43dfb30e136a88c67fa93dc0548e74d4e00d8d5e0c90db3ace89aca0');
+
+    request.onreadystatechange = function () {
+    if (this.readyState === 4) {
+        json = JSON.parse(this.responseText);
+        //console.log('Status:', this.status);
+        //console.log('Headers:', this.getAllResponseHeaders());
+        console.log('Body:', this.responseText);
+        var titulo = JSON.stringify(json.fields.titulo["en-US"]);
+        titulo = titulo.replace(/\"/g, "");
+        var frase = JSON.stringify(json.fields.frase["en-US"]);
+        frase = frase.replace(/\"/g, "");
+        var descubrelo = JSON.stringify(json.fields.descubrelo["en-US"]);
+        descubrelo = descubrelo.replace(/\"/g, "");
+        var tituloTelefonos = JSON.stringify(json.fields.tituloTelefonos["en-US"]);
+        tituloTelefonos = tituloTelefonos.replace(/\"/g, "");
+        var descripcionTelefonos = JSON.stringify(json.fields.descripcionTelefonos["en-US"]);
+        descripcionTelefonos = descripcionTelefonos.replace(/\"/g, "");                            
+        document.getElementById("titulo").innerHTML = titulo;
+        document.getElementById("frase").innerHTML = frase;
+        document.getElementById("descubrelo").innerHTML = descubrelo;
+        document.getElementById("tituloTelefonos").innerHTML = tituloTelefonos;
+        document.getElementById("descripcionTelefonos").innerHTML = descripcionTelefonos;
+    }
+    };
+
+    request.send();
+</script>
+
 <div class="login">
     <div class="outter"> <!-- sticky footer wrapper -->
       <header ng-include="'views/partials/layout/login-header.html'">
@@ -10,21 +44,21 @@
                     |
                     |   Fisrt Column
                     |____________________________________________________________________________
-                    -->
+                    -->                    
                     <div>
                         <div class="welcome">
-                            <h2>¡Bienvenido a BX+!</h2>
+                            <h2 id="titulo">¡Bienvenido a BX+!</h2>
                             <p>
-                                <strong>Un gran beneficio, un gran Banco.</strong>
-                                <strong>¡Desc&uacute;brelo!</strong>
+                                <strong id="frase">Un gran beneficio, un gran Banco.</strong>
+                                <strong id="descubrelo">¡Desc&uacute;brelo!</strong>
                             </p>
                         </div>
                         <div class="pull-left app-link-box">
                             <div class="pull-left phone-img"></div>
                             <div class="pull-left stores-text-box">
-                                <p><strong>¡Porque queremos estar siempre contigo!</strong>
+                                <p><strong id="tituloTelefonos">¡Porque queremos estar siempre contigo!</strong>
                                 </p>
-                                <p>
+                                <p id="descripcionTelefonos">
                                 Descarga nuestra nueva aplicación, ahora estaremos cada vez m&aacute;s conectados</p>
                                 <a href="#play"><img src="images/logo-google-play.svg" alt="" class="pull-left"></a>
                                 <a href="#apple">
