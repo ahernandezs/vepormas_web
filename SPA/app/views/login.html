@@ -7,10 +7,7 @@
 
     request.onreadystatechange = function () {
     if (this.readyState === 4) {
-        json = JSON.parse(this.responseText);
-        //console.log('Status:', this.status);
-        //console.log('Headers:', this.getAllResponseHeaders());
-        console.log('Body:', this.responseText);
+        json = JSON.parse(this.responseText);        
         var titulo = JSON.stringify(json.fields.titulo["en-US"]);
         titulo = titulo.replace(/\"/g, "");
         var frase = JSON.stringify(json.fields.frase["en-US"]);
