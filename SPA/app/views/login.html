@@ -1,3 +1,55 @@
+<script>
+    //--------------------------------------------------------------------------------------------------------------
+    //SCRIPT TO CHANGE THE LOGIN TEXT
+    //{space_id} = y667k7zttbaq
+    //{cdn_access_token} = ce7cea09fb1f8a26090bb4112100f89ca2553f790b3320d7592f70bc33d52192
+    //{api_access_token} = 438e7c8ed912c000558bd6ebfe2252b1739d0d99883f17c39cb077b4f51bbfa0
+    //{entry_id} = 4peauS8dIAY2eAIYqoSoq4
+    var request = new XMLHttpRequest();
+    var json;
+    request.open('GET', 'https://api.contentful.com/spaces/y667k7zttbaq/entries/4peauS8dIAY2eAIYqoSoq4');
+
+    request.setRequestHeader('Authorization', 'Bearer 438e7c8ed912c000558bd6ebfe2252b1739d0d99883f17c39cb077b4f51bbfa0');
+
+    request.onreadystatechange = function () {
+    if (this.readyState === 4) {
+        json = JSON.parse(this.responseText);        
+        var titulo = JSON.stringify(json.fields.titulo["es-MX"]);
+        titulo = titulo.replace(/\"/g, "");
+        var frase = JSON.stringify(json.fields.frase["es-MX"]);
+        frase = frase.replace(/\"/g, "");
+        var descubrelo = JSON.stringify(json.fields.descubrelo["es-MX"]);
+        descubrelo = descubrelo.replace(/\"/g, "");
+        var tituloTelefonos = JSON.stringify(json.fields.tituloTelefonos["es-MX"]);
+        tituloTelefonos = tituloTelefonos.replace(/\"/g, "");
+        var descripcionTelefonos = JSON.stringify(json.fields.descripcionTelefonos["es-MX"]);
+        descripcionTelefonos = descripcionTelefonos.replace(/\"/g, "");      
+        var copyright = JSON.stringify(json.fields.copyright["es-MX"]);
+        copyright = copyright.replace(/\"/g, "");                      
+        document.getElementById("titulo").innerHTML = titulo;
+        document.getElementById("frase").innerHTML = frase;
+        document.getElementById("descubrelo").innerHTML = descubrelo;
+        document.getElementById("tituloTelefonos").innerHTML = tituloTelefonos;
+        document.getElementById("descripcionTelefonos").innerHTML = descripcionTelefonos;
+        document.getElementById("copyright").innerHTML = copyright;
+    }
+    };
+    request.send();
+    //END SCRIPT TO CHANGE LOGIN TEXT
+    //-------------------------------------------------------------------------------------------------------------------
+    //SCRIPT TO CHANGE THE IMAGES
+    // var requestImage = new XMLHttpRequest();
+    // var jsonImage;
+    // requestImage.open();
+    // requestImage.setRequestHeader('Authorization', 'Bearer e335366b43dfb30e136a88c67fa93dc0548e74d4e00d8d5e0c90db3ace89aca0');
+    // requestImage.onreadystatechange = function(){
+    //     if(this.readyState == 4){
+    //         var jsonImage = JSON.parse(this.responseText);
+    //         var image = JSON.stringify(jsonImage.fields.file.en-US.details["url"])
+    //     }
+    // }
+</script>
+
 <div class="login">
     <div class="outter"> <!-- sticky footer wrapper -->
       <header ng-include="'views/partials/layout/login-header.html'">
@@ -10,21 +62,21 @@
                     |
                     |   Fisrt Column
                     |____________________________________________________________________________
-                    -->
+                    -->                    
                     <div>
                         <div class="welcome">
-                            <h2>¡Bienvenido a BX+!</h2>
+                            <h2 id="titulo">¡Bienvenido a BX+!</h2>
                             <p>
-                                <strong>Un gran beneficio, un gran Banco.</strong>
-                                <strong>¡Desc&uacute;brelo!</strong>
+                                <strong id="frase">Un gran beneficio, un gran Banco.</strong>
+                                <strong id="descubrelo">¡Desc&uacute;brelo!</strong>
                             </p>
                         </div>
                         <div class="pull-left app-link-box">
                             <div class="pull-left phone-img"></div>
                             <div class="pull-left stores-text-box">
-                                <p><strong>¡Porque queremos estar siempre contigo!</strong>
+                                <p><strong id="tituloTelefonos">¡Porque queremos estar siempre contigo!</strong>
                                 </p>
-                                <p>
+                                <p id="descripcionTelefonos">
                                 Descarga nuestra nueva aplicación, ahora estaremos cada vez m&aacute;s conectados</p>
                                 <a href="#play"><img src="images/logo-google-play.svg" alt="" class="pull-left"></a>
                                 <a href="#apple">
