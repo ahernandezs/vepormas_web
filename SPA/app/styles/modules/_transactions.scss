@@ -58,20 +58,7 @@ form[name="investmentForm"], form[name="transferForm"], form[name="paymentForm"]
     .inv-sec-select{
         margin-top: 17px;
         span{
-            background:$blue;
-            color:white !important;
-            &:before{
-                content:"";
-                position: absolute;
-                display: block;
-                background:$blue !important;
-                margin: 10px 0 0 -10px;
-                width: 10px;
-                height: 10px;
-                -ms-transform: rotate(45deg);
-                -webkit-transform: rotate(45deg); 
-                transform: rotate(45deg);    
-            }
+            
         }
     }
     .select-style:last-child:after{display: none;}
@@ -166,10 +153,13 @@ form[name="investmentForm"], form[name="transferForm"], form[name="paymentForm"]
         background:#3bb0c9;
         color:white;
         height: 100%;
-        line-height: 410%;
+        line-height: 420%;
         vertical-align: middle;
         font-size:1em;
         float:left;
+        &.single{
+            line-height: 300%;
+        }
     }
     select {
         float:left;
@@ -482,7 +472,7 @@ table input[type="submit"]{font-weight: bold;}
             color:$green;
             font-size: 14px;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 17px;
         }
         a:hover{
             text-decoration: underline;
