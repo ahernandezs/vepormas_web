@@ -3,7 +3,52 @@
 |	Administration
 |-------------------------------------------------------------------------------------
 */
-
+//USER DATA
+.user-data{
+	position: relative;
+	h1{
+		font-size: 1.2em;
+		margin-bottom: 30px;
+		padding-bottom: 5px;
+		border-bottom:1px solid #ccc;
+		span{
+			display: block;
+			margin-top: 5px;
+		}
+	}
+	button{
+		position: absolute;
+		right:1em;
+		top:0.3em;
+		width: 20%;
+		margin: 0;
+	}
+	.tables{
+			background:white;
+			border:1px solid #ccc;
+			display: inline-block;
+			width: 40%;
+			padding:15px 2%;
+			margin-right: 3%;
+			min-height: 300px;
+			@include border_radius(4px);
+			table{
+				width: 100%;
+				tr{
+					border-bottom: 1px solid #ccc;
+					td{
+						padding:15px 5px;
+						&:first-child{
+							font-weight: bold;
+						}
+						&:last-child{
+							text-align: right;
+						}
+					}
+				}
+			}
+		}
+}
 //CONTRATO
 .contrato{
 	margin: 30px 0;
