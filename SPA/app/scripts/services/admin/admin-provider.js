@@ -65,15 +65,27 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 			return deferred.promise;
 		},
 
-    getUserActivity: function() {
-      var deferred = $q.defer();
-      adminService.getUserActivity().success(function(data, status, headers) {
-        deferred.resolve(data);
-      }).error(function(data, status) {
-        return deferred.reject('Error getting user activity');
-      });
-      return deferred.promise;
-    }
+		getUserActivity: function() {
+			var deferred = $q.defer();
+			adminService.getUserActivity().success(function(data, status, headers) {
+				deferred.resolve(data);
+			}).error(function(data, status) {
+				return deferred.reject('Error getting user activity');
+			});
+			return deferred.promise;
+		},
+
+		getUserData: function(){
+			var deferred = $q.defer();
+			adminService.getUserData().success(function(){
+				deferred.resolve();
+			}).error(function(data, status){
+				var result = {'response' : data, 'status': status};
+		        return deferred.reject(result);
+			});
+			return deferred.promise;
+		}
+
 	};
 
 }]);
