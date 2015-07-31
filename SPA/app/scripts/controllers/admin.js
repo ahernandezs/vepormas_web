@@ -313,4 +313,12 @@ Adding a beneficary actions
         $scope.errorMessage = errorMessage;
     };
 
+	console.log('getting user data....');
+/*	adminProvider.getUserData().then(
+		function(data){
+				$scope.userData = data;
+			}
+		}
+	)*/
+
 }]);
