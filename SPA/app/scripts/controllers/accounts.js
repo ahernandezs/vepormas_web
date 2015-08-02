@@ -6,10 +6,10 @@
  angular.module('spaApp').controller('AccountsCtrl', ['$rootScope', '$scope', '$location', 'accountsProvider', 'codeStatusErrors', function ( $rootScope, $scope, $location, accountsProvider, codeStatusErrors) {
 
     $scope.statementStatus = [];
-    $scope.showTDCAccount = false;
-    $scope.showInvestmentAccount = false;
-    $scope.showSavingAccount = false;
-    $scope.showCreditAccount = false;
+//    $scope.showTDCAccount = false;
+//    $scope.showInvestmentAccount = false;
+//    $scope.showSavingAccount = false;
+//    $scope.showCreditAccount = false;
 	//console.log('Load account dashboard information');
 	  accountsProvider.getAccounts().then(
           function(data) {
@@ -18,7 +18,7 @@
             $scope.selectAccount( $scope.accounts[0]);
             //console.log('Getting accounts ......');
             //console.log($scope.accounts);
-            verifyExistAccount();
+            //verifyExistAccount();
           },
           function(errorObject) {
             var status = errorObject.status;
@@ -52,12 +52,14 @@
 
     var accountId = accountSelected._account_id;
     var type = accountSelected.account_type;
+    var nroCliente = accountSelected.nro_cliente;
+    var accountNumber = accountSelected.account_number;
 
     $scope.activeClass = accountId;
     $scope.selectedAcccountId = accountId;
     $scope.selectedAccountType = type;
     $scope.activeAccountName = accountSelected.name + ' ' + accountSelected.masked_account_number;
-    $scope.investmetCategory = accountSelected.category;
+    //$scope.investmetCategory = accountSelected.category;
     $scope.statementStatus.showStatement = false;
 
     $scope.returnData.prevAccount = accountSelected;
@@ -65,6 +67,10 @@
     $scope.returnData.prevType = accountSelected.account_type
 
 
+    console.log(accountId);
+    $location.path('/accounts/' + accountId + '/deposit');
+
+    /*
     switch (type) {
         case 'TDC':
             //console.log('Tarjeta de Credito');
@@ -89,6 +95,7 @@
         default:
             break;
     }
+    */
   };
 
     $scope.returnData = {};

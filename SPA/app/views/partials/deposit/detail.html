@@ -2,12 +2,11 @@
     <h2 class="title">
         <a ng-click='showAccountHeader = !showAccountHeader'><i ng-class="showAccountHeader ? 'ico-menos' : 'ico-mas'"></i></a>
         {{activeAccountName}}
-        <span>Cuenta</span>
     </h2>
     <div class="payment-actions">
         <div>
             <div>
-                <p class="amount">{{accountDetail.available_balance | currency}}</p>
+                <p class="amount">{{accountDetail.saldoDisponible | currency}}</p>
                 <span>Saldo disponible</span>
             </div>
         </div>
@@ -17,11 +16,17 @@
 <hr ng-show='!showAccountHeader'>
 <div class="box" ng-show='showAccountHeader'>
     <ul>
-        <li>Periodo:        <span>Del {{accountDetail.start_date | date:'dd-MM-yyyy' }} al {{accountDetail.end_date | date:'dd-MM-yyyy' }}</span></li>
-        <li>Dep&oacute;sitos en tr&aacute;nsito:          <span class="amount">{{accountDetail.confirmation_balance | currency}}</span></li>
+      <li>Nombre del cliente: <span>{{accountDetail.nombreCliente}}</span></li>
+      <li>Moneda: <span>{{accountDetail.monedaCuenta}}</span></li>
+      <li>Saldo disponible: <span class="amount">{{accountDetail.signoSaldoDisponibleCuenta}} {{accountDetail.saldoDisponible | currency}}</span></li>
+      <li>Estado de la cuenta: <span>{{accountDetail.estatusCuenta}}</span></li>
+      <li>Fecha de apertura: <span>{{accountDetail.fechaApertura | date: 'dd-MM-yyyy'}}</span></li>
     </ul>
     <ul>
-        <li>Monto &uacute;ltimo dep&oacute;sito:     <span class="amount">{{accountDetail.last_amount_deposit | currency}}</span></li>
-        <li>Monto &uacute;ltimo retiro:                <span class="amount">{{accountDetail.last_amount_withdrawal | currency}}</span></li>
+      <li>Saldo subcuenta: <span class="amount">{{accountDetail.signoSaldoSbc}} {{accountDetail.saldoSbcCuenta | currency}}</span></li>
+      <li>Saldo inicio del d&iacute;a: <span class="amount">{{accountDetail.signoSaldoInicioDia}} {{accountDetail.saldoInicioDiaCuenta | currency}}</span></li>
+      <li>Saldo libros: <span class="amount">{{accountDetail.signoSaldoLibros}} {{accountDetail.saldoLibroCuenta | currency}}</span></li>
+      <li>Saldo retenido: <span class="amount">{{accountDetail.signoSaldoRetenido}} {{accountDetail.saldoRetenidoCuenta | currency}}</span></li>
+      <li>Fecha de consulta: <span>{{accountDetail.fechaConsulta | date: 'dd-MM-yyyy'}}</span></li>
     </ul>
 </div>
