@@ -76,7 +76,7 @@ angular.module('spaApp').service('adminService', ['$http','$rootScope', function
 	};
 
 	this.getUserData = function(){
-		return $http.get($rootScope.restAPIBaseUrl + '/userdata');
+		return $http.get($rootScope.restAPIBaseUrl + '/userInformation');
 	}
 
 }]);

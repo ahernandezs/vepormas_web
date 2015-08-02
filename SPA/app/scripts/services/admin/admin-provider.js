@@ -77,8 +77,8 @@ angular.module('spaApp').factory('adminProvider', ['$rootScope', 'adminService',
 
 		getUserData: function(){
 			var deferred = $q.defer();
-			adminService.getUserData().success(function(){
-				deferred.resolve();
+			adminService.getUserData().success(function(data, status, headers){
+				deferred.resolve(data);
 			}).error(function(data, status){
 				var result = {'response' : data, 'status': status};
 		        return deferred.reject(result);
