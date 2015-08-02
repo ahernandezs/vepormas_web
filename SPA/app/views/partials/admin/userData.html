@@ -5,24 +5,40 @@
         <table>
         <tbody>
             <tr>
-                <td>Número de cliente:</td>
-                <td>3212131232</td>
+                <td>N&uacute;mero de cliente:</td>
+                <td>{{userData.nro_cliente}}</td>
             </tr>
             <tr>
-                <td>Domicilio:</td>
-                <td>Calle 10 No. 234 Col. el Arenal</td>
+                <td>Estatus:</td>
+                <td>{{userData.estatus}}</td>
             </tr>
             <tr>
-                <td>Ciudad:</td>
-                <td>Ciudad de México</td>
+                <td>Fecha Inicio:</td>
+                <td>{{userData.fechaInicio | date:'medium'}}</td>
+            </tr>
+            <tr>
+                <td>Nombre:</td>
+                <td>{{userData.nombre}}</td>
             </tr>
             <tr>
                 <td>Estado:</td>
-                <td>D.F.</td>
+                <td>{{userData.estado}}</td>
             </tr>
             <tr>
-                <td>Código Postal:</td>
-                <td>32321</td>
+                <td>Ciudad:</td>
+                <td>{{userData.ciudad}}</td>
+            </tr>
+            <tr>
+                <td>Poblaci&oacute;n:</td>
+                <td>{{userData.estado}}</td>
+            </tr>
+            <tr>
+                <td>Domicilio:</td>
+                <td>{{userData.domicilio}}</td>
+            </tr>
+            <tr>
+                <td>C&oacute;digo Postal:</td>
+                <td>{{userData.cp}}</td>
             </tr>
         </tbody>
     </table>
@@ -33,19 +49,39 @@
         <tbody>
             <tr>
                 <td>Tel Oficina:</td>
-                <td>3212131232</td>
+                <td>{{userData.telOfi}}</td>
             </tr>
             <tr>
                 <td>Tel Casa:</td>
-                <td>Calle 10 No. 234 Col. el Arenal</td>
+                <td>{{userData.telDom}}</td>
             </tr>
             <tr>
                 <td>Celular:</td>
-                <td>Ciudad de México</td>
+                <td>{{userData.telCel}}</td>
             </tr>
             <tr>
                 <td>Email:</td>
-                <td>D.F.</td>
+                <td>{{userData.email}}</td>
+            </tr>
+            <tr>
+                <td>RFC:</td>
+                <td>{{userData.rfc}}</td>
+            </tr>
+            <tr>
+                <td>Clasificaci&oacute;n:</td>
+                <td>{{userData.clasific}}</td>
+            </tr>
+            <tr>
+                <td>Nombre del Promotor:</td>
+                <td>{{userData.promotorNombre}}</td>
+            </tr>
+            <tr>
+                <td>Email del Promotor:</td>
+                <td>{{userData.promotorEmail}}</td>
+            </tr>
+            <tr>
+                <td>Promotor en la oficina:</td>
+                <td>{{userData.promotorOficina}}</td>
             </tr>
         </tbody>
     </table>

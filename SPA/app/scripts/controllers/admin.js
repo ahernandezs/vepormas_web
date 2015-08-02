@@ -19,7 +19,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
     $scope.stage = 1;
     $scope.beneficiary = {};
 	$scope.today = new Date();
-	loadBeneficiary();
+//	loadBeneficiary();
 
 	 $scope.errorMessage = null;
 
@@ -214,6 +214,7 @@ Adding a beneficary actions
         );
     }
 
+    /*
 	adminProvider.getLimits().then(
 		function(){		
 			if($rootScope.limits.length > 0){			
@@ -307,18 +308,18 @@ Adding a beneficary actions
 
     return statuses[activityStatus];
   };
-
+*/
   function setError(errorMessage){
         $scope.error = true;
         $scope.errorMessage = errorMessage;
     };
 
 	console.log('getting user data....');
-/*	adminProvider.getUserData().then(
+	adminProvider.getUserData().then(
 		function(data){
+      console.log(data);
 				$scope.userData = data;
 			}
-		}
-	)*/
+	);
 
 }]);
