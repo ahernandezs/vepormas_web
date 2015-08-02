@@ -6,10 +6,10 @@
  angular.module('spaApp').controller('AccountsCtrl', ['$rootScope', '$scope', '$location', 'accountsProvider', 'codeStatusErrors', function ( $rootScope, $scope, $location, accountsProvider, codeStatusErrors) {
 
     $scope.statementStatus = [];
-    $scope.showTDCAccount = false;
-    $scope.showInvestmentAccount = false;
-    $scope.showSavingAccount = false;
-    $scope.showCreditAccount = false;
+//    $scope.showTDCAccount = false;
+//    $scope.showInvestmentAccount = false;
+//    $scope.showSavingAccount = false;
+//    $scope.showCreditAccount = false;
 	//console.log('Load account dashboard information');
 	  accountsProvider.getAccounts().then(
           function(data) {
@@ -18,7 +18,7 @@
             $scope.selectAccount( $scope.accounts[0]);
             //console.log('Getting accounts ......');
             //console.log($scope.accounts);
-            verifyExistAccount();
+            //verifyExistAccount();
           },
           function(errorObject) {
             var status = errorObject.status;
