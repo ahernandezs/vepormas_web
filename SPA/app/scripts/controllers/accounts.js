@@ -52,12 +52,14 @@
 
     var accountId = accountSelected._account_id;
     var type = accountSelected.account_type;
+    var nroCliente = accountSelected.nro_cliente;
+    var accountNumber = accountSelected.account_number;
 
     $scope.activeClass = accountId;
     $scope.selectedAcccountId = accountId;
     $scope.selectedAccountType = type;
     $scope.activeAccountName = accountSelected.name + ' ' + accountSelected.masked_account_number;
-    $scope.investmetCategory = accountSelected.category;
+    //$scope.investmetCategory = accountSelected.category;
     $scope.statementStatus.showStatement = false;
 
     $scope.returnData.prevAccount = accountSelected;
@@ -65,6 +67,10 @@
     $scope.returnData.prevType = accountSelected.account_type
 
 
+    console.log(accountId);
+    $location.path('/accounts/' + accountId + '/deposit');
+
+    /*
     switch (type) {
         case 'TDC':
             //console.log('Tarjeta de Credito');
@@ -89,6 +95,7 @@
         default:
             break;
     }
+    */
   };
 
     $scope.returnData = {};
