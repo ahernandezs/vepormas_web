@@ -19,7 +19,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
     $scope.stage = 1;
     $scope.beneficiary = {};
 	$scope.today = new Date();
-//	loadBeneficiary();
+	loadBeneficiary();
 
 	 $scope.errorMessage = null;
 
@@ -82,20 +82,20 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 					third_accounts_others.push(acc);
 				}
 			});
-		}				
+		}
 		if(third_accounts_own.length > 0){
 			for(var i=0; i <  third_accounts_own.length; i++){
-				var account_type= third_accounts_own[i].account_type;				
+				var account_type= third_accounts_own[i].account_type;
 				if(account_type == "TDC_T"){
 					third_accounts_own[i].account_type_name="Tarjeta de Crédito Propia Mismo Banco";
 				}else if(account_type == "DEB_T"){
 					third_accounts_own[i].account_type_name="Débito Propia Mismo Banco";
 				}
 			}
-		}//End if validate			
+		}//End if validate
 		if(third_accounts_others.length > 0){
-			for(var i=0; i < third_accounts_others.length; i++){		
-				var account_type = third_accounts_others[i].account_type;		
+			for(var i=0; i < third_accounts_others.length; i++){
+				var account_type = third_accounts_others[i].account_type;
 				if(account_type == "DEB_T") {
 					third_accounts_others[i].account_type_name="Débito Propia Otros Bancos";
 				}
@@ -103,6 +103,7 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 		}//End if validate
 		$scope.third_accounts_own = third_accounts_own;
 		$scope.third_accounts_others = third_accounts_others;
+		$scope.third_accounts_others = $scope.third_accounts;
 	}
 
 	/**
@@ -216,15 +217,15 @@ Adding a beneficary actions
 
     /*
 	adminProvider.getLimits().then(
-		function(){		
-			if($rootScope.limits.length > 0){			
-				for(var i=0; i <  $rootScope.limits.length; i++){										
-					var type_name = $rootScope.limits[i].type;								
-					if(type_name == "PAYCARD_CONSUBANCO"){					
+		function(){
+			if($rootScope.limits.length > 0){
+				for(var i=0; i <  $rootScope.limits.length; i++){
+					var type_name = $rootScope.limits[i].type;
+					if(type_name == "PAYCARD_CONSUBANCO"){
 						 $rootScope.limits[i].type_name="Pago a TDC Terceros Consubanco";
-					}else if (type_name == "TRANSFER_CONSUBANCO") {							
+					}else if (type_name == "TRANSFER_CONSUBANCO") {
 						 $rootScope.limits[i].type_name="Transferencia Terceros Consubanco";
-					}else if (type_name == "TRANSFER_SPEI"){ 							
+					}else if (type_name == "TRANSFER_SPEI"){
 						 $rootScope.limits[i].type_name="Transferencia Terceros Otro Banco";
 					}
 				}
@@ -238,16 +239,16 @@ Adding a beneficary actions
 				adminProvider.getLimits().then(
 					function(){
 						var limits= $rootScope.limits;
-						for(var i=0; i <  limits.length; i++){							
-							var type_name = limits[i].type;														
-							if(type_name == "PAYCARD_CONSUBANCO"){					
+						for(var i=0; i <  limits.length; i++){
+							var type_name = limits[i].type;
+							if(type_name == "PAYCARD_CONSUBANCO"){
 								 limits[i].type_name="Pago a TDC Terceros Consubanco";
-							}else if (type_name == "TRANSFER_CONSUBANCO") {							
+							}else if (type_name == "TRANSFER_CONSUBANCO") {
 								 limits[i].type_name="Transferencia Terceros Consubanco";
-							}else if (type_name == "TRANSFER_SPEI"){ 							
+							}else if (type_name == "TRANSFER_SPEI"){
 								 limits[i].type_name="Transferencia Terceros Otro Banco";
 							}
-						}						
+						}
 						$scope.limits = $rootScope.limits;
 					}
 				);
