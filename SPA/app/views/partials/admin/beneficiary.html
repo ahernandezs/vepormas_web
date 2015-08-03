@@ -8,28 +8,22 @@
             <tr>
                <th>Nombre del beneficiario</th>
                 <th>Cuenta / Referencia</th>
-                <th>Alias</th>
+                <th>Banco</th>
+                <th>Status</th>
                 <th>Tipo de cuenta</th>
-            </tr>   
+                <th>Moneda</th>
+                <th>Mongo m&aacute;ximo</th>
+            </tr>
         </thead>
         <tbody>
-            <tr>
-                <td colspan="4">Terceros Consubanco</td>
-            </tr>
-            <tr ng-repeat="accounts in third_accounts_own | filter:busqueda" ng-click="selectBeneficiary(accounts);">
-                <td>{{accounts.name}}</td>
-                <td>{{accounts.masked_account_number}}</td>
-                <td>{{accounts.short_name}}</td>
-                <td>{{accounts.account_type_name}}</td>
-            </tr>
-            <tr>
-                <td colspan="4">Terceros Otros Bancos</td>
-            </tr>
             <tr ng-repeat="accounts in third_accounts_others | filter:busqueda" ng-click="selectBeneficiary(accounts);">
                 <td>{{accounts.name}}</td>
                 <td>{{accounts.masked_account_number}}</td>
-                <td>{{accounts.short_name}}</td>
-                <td>{{accounts.account_type_name}}</td>
+                <td>{{accounts.bancoBeneficiarioNombre}}</td>
+                <td>{{accounts.estatusPreRegistro}}</td>
+                <td>{{accounts.tipoCuentaDestino}}</td>
+                <td>{{accounts.monedaCtaDestino}}</td>
+                <td>{{accounts.montoMaximoTrx}}</td>
             </tr>
 
         </tbody>
