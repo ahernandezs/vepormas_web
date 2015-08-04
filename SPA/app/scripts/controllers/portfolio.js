@@ -13,6 +13,8 @@ angular.module('spaApp').controller('PortfolioCtrl', ['$rootScope', '$scope', '$
     productProvider.getProductsList().then(
       function(data) {
           $scope.investmentProducts = data.products;
+          console.log(data.products);
+          console.log(data.investment_vista_allowed);
           if(data.investment_vista_allowed){
           	$scope.vistaInvestmentAllowed = true;
             $scope.invType = 'VISTA';
@@ -38,6 +40,12 @@ angular.module('spaApp').controller('PortfolioCtrl', ['$rootScope', '$scope', '$
               $scope.setServiceError('Ningún producto disponible');
             }
           }
+
+          $scope.investmentProducts.forEach(function(value, index, ar) {
+            value.displayName = value.name + ' ' + value.masked_account_number + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
+            value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
+            $scope.vistaAccounts.push(value);
+          });
       },
       function(data) {
           var message = data.response.message;
@@ -52,6 +60,7 @@ angular.module('spaApp').controller('PortfolioCtrl', ['$rootScope', '$scope', '$
         function(data) {
             $rootScope.accounts.forEach(
                 function (value, index, ar) {
+                    value.account_type = "DEP";
 
                     switch ( value.account_type ) {
                         case 'DEP':
