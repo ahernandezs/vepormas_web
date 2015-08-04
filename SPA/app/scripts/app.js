@@ -145,7 +145,7 @@ app.run(['api', '$window', '$rootScope',function(api, $window, $rootScope) {
   $rootScope.requestStack = new Array();
 
   $window.onbeforeunload = function(e) {
-    var message = 'Te vas a salir de Consubanco, ¿estás seguro?';
+    var message = 'Te vas a salir de BX+, ¿estás seguro?';
     e = e || $window.event;
     e.preventDefault = true;
     e.cancelBubble = true;

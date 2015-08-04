@@ -31,7 +31,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 							$scope.theAccounts.push( value );
 							break;
 						case 'TDC':
-							value.displayName = 'Consubanco - ' + value.name + ' ' + value.masked_account_number + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
+							value.displayName = 'BX+ - ' + value.name + ' ' + value.masked_account_number + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
 							value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
 							$scope.theAccounts.push( value );
 							break;
