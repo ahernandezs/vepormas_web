@@ -114,11 +114,16 @@ angular.module('spaApp').controller('AdminCtrl', ['$rootScope', '$scope', 'admin
 			function(data) {
 				dispatchThirdAccountByType(data);
 			},function(errorObject) {
+				console.log(errorObject);
 				var status = errorObject.status;
 		        if(status === 403){
 		        $scope.manageOtpErrorMessage(errorObject.response.message);
 			    } else {
-			    	var msg = codeStatusErrors.errorMessage(status);
+						if(errorObject.response.message) {
+			    		var msg = errorObject.response.message;
+						} else {
+			    		var msg = codeStatusErrors.errorMessage(status);
+						}
 					if (status === 500){
 		            	$scope.setServiceError(msg + errorObject.response.message);
 		        	} else {
