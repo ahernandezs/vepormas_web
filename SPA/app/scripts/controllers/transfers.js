@@ -36,6 +36,11 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 							$scope.theAccounts.push( value );
 							break;
 						default:
+						  console.log("Loading default accounts");
+							value.displayName = 'BX+ - ' + value.name + ' ' + value.masked_account_number + ' - ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
+							value.detail = value.name + ' | ' + value.currency + ': ' + $filter('currency')(value.current_balance, '$');
+							value.account_type = 'DEP';
+							$scope.theAccounts.push( value );
 							break;
 					}
 				}
@@ -71,10 +76,11 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
         function(data) {
             data.forEach(
                 function (value, index, ar) {
-					if ( value.account_type == 'TDC_T' || value.account_type == 'DEB_T' ) {
+					if ( value.account_type == 'TDC_T' || value.account_type == 'DEB_T' || true) {
 	                    value.group = 'Cuentas Terceros';
-						value.displayName = value.bank_name + ' - ' + value.name + ' ' + value.masked_account_number + ' - ' + value.short_name;
-						value.detail = value.bank_name + ' | ' + value.name;
+						value.displayName = value.bancoBeneficiarioNombre + ' - ' + value.name + ' ' + value.masked_account_number;
+						value.detail = value.bancoBeneficiarioNombre + ' | ' + value.name;
+						value.account_type = 'DEB_T';
 	                    $scope.theAccounts.push( value );
 					}
                 }

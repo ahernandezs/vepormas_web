@@ -17,7 +17,7 @@
         <div class="dropdown">
             <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="payment.account !== undefined ? 'selected' : ''">
                 <span>Cuenta retiro</span>
-                <p>{{payment.account === undefined ? 'Cuenta retiro' : payment.account.masked_account_number}}
+                <p>{{payment.account === undefined ? 'Cuenta retiro' : payment.account.masked_account_number}}<br>
                     <span>{{payment.account.detail}}</span></p>
             </div>
             <ul class="dropdown-menu" role="menu" ng-model="payment.account">
