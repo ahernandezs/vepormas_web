@@ -26,12 +26,12 @@ angular.module('spaApp').factory('api', ['$http', '$rootScope', '$window', funct
     },
     config: function(){
       // Use this link for deployment
-      //$rootScope.restAPIBaseUrl = $("#linkApiRoot").attr("href");
+      $rootScope.restAPIBaseUrl = $("#linkApiRoot").attr("href");
       // Use these or similar link for development
       //$rootScope.restAPIBaseUrl = "http://192.168.99.100/SBD";
       //$rootScope.restAPIBaseUrl = "http://localhost:8090/SBD";
       //$rootScope.restAPIBaseUrl = 'http://192.168.0.10:80/Abanking-Core';
-      $rootScope.restAPIBaseUrl = 'http://192.168.0.10:80/SBD';
+      //$rootScope.restAPIBaseUrl = 'http://192.168.0.10:80/SBD';
       $rootScope.useMocks = false;
     }
   };
