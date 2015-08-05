@@ -12,29 +12,36 @@
             <p>comprobaci&oacute;n</p>
         </div>
     </div>
-    <table>
-      <tbody>
-        <tr>
-          <td>Cuenta retiro:</td>
-          <td>***1234</td>
-        </tr>
-        <tr>
-          <td>Servicio:</td>
-          <td>CFE Mamá</td>
-        </tr>
-        <tr>
-          <td>Línea de captura:</td>
-          <td>12345 67890 12345 67890 12345 67890</td>
-        </tr>
-        <tr>
-          <td>Importe:</td>
-          <td class="bolder">$300.00</td>
-        </tr>
-      </tbody>
-    </table>
+    <form name="paymentForm">
+      <input type="password" ng-model="payment.otp" class="input-confirm-token" ng-required="true" numbers-only minlength="6" maxlength="6" placeholder="Introduce el c&oacute;digo que se ha generado en tu Token F&iacute;sico">
+      <table>
+        <tbody>
+          <tr>
+            <td>Cuenta retiro:</td>
+            <td>{{payment.account.displayName}}</td>
+          </tr>
+          <tr>
+            <td>Servicio:</td>
+            <td>{{payment.destiny.displayName}}</td>
+          </tr>
+          <tr>
+            <td>Línea de captura:</td>
+            <td>{{payment.serviceLine}}</td>
+          </tr>
+          <tr>
+            <td>Importe:</td>
+            <td class="bolder">{{ payment.amount | currency: "$"}}</td>
+          </tr>
+          <tr>
+              <td>Hora de la transferencia:</td>
+              <td>{{today | date:'HH:mm'}} hrs.</td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
     <div class="double-btn">
   <input type="submit" value="Cancelar" ng-click="goToStep(1, true)">
-  <input type="submit" value="Continuar" ng-click="assignValue()" ng-disabled="paymentForm.$invalid">
+  <input type="submit" value="Continuar" ng-click="payService()" ng-disabled="paymentForm.$invalid">
 </div>
 </div>
 <!--div class="right-section">

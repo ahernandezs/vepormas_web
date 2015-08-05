@@ -18,23 +18,23 @@
     <table>
          <tr>
           <td>Cuenta retiro:</td>
-          <td>***1234</td>
+          <td>{{payment.account.displayName}}</td>
         </tr>
         <tr>
           <td>Servicio:</td>
-          <td>CFE Mamá</td>
+          <td>{{payment.destiny.displayName}}</td>
         </tr>
         <tr>
           <td>Línea de captura:</td>
-          <td>12345 67890 12345 67890 12345 67890</td>
+          <td>{{payment.serviceLine}}</td>
         </tr>
         <tr>
           <td>Importe:</td>
-          <td class="bolder">$300.00</td>
+          <td class="bolder">{{ payment.amount | currency: "$"}}</td>
         </tr>
         <tr>
           <td>Hora de la transferencia:</td>
-            <td>Jueves 31 de Julio 16:28:00 hrs.</td>
+          <td>{{today | date:'HH:mm'}} hrs.</td>
         </tr>
     </table>
     <div class="double-btn">

@@ -28,29 +28,25 @@
         </div>
         <i class="inv-sec-select"><span>Servicio a pagar</span></i>
         <div class="dropdown">
-            <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="payment.account !== undefined ? 'selected' : ''">
+            <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="payment.destiny !== undefined ? 'selected' : ''">
                 <span>Servicios</span>
-                <p>{{payment.account === undefined ? 'Servicios' : payment.account.masked_account_number}}<br>
-                    <span>{{payment.account.detail}}</span></p>
+                <p>{{payment.destiny === undefined ? 'Servicios' : payment.destiny.displayName}}<br>
+                    <span>{{payment.destiny.longName}}</span></p>
             </div>
-            <ul class="dropdown-menu" role="menu" ng-model="payment.account">
-                <li ng-required="true">CFE Casa</li>
+            <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">Servicios</li>
+                <li ng-repeat="item in services" ng-model="payment.destiny" ng-click="payment.destiny = item" ng-required="true">{{item.displayName}}</li>
             </ul>
         </div>
-        
+
 
         <div class="photo-capture">
           <p>Paga tus servicios fotografiando el recibo con tu aplicaci&oacute;n ABanking o con la c&aacute;mara de tu computadora</p>
           <div class="photo"></div>
           <div class="services-data">
-            <label class="cfe">
-              <span>Línea de captura</span>
-              <input type="number" placeholder="00000">
-              <input type="number" placeholder="00000">
-              <input type="number" placeholder="00000">
-              <input type="number" placeholder="00000">
-              <input type="number" placeholder="00000">
-              <input type="number" placeholder="00000">
+            <label class="fieldContainer" ng-class="!paymentForm.line.$error.required ? 'selected' : ''">
+              <span class="big">L&iacute;nea de captura</span>
+              <input name="line" type="text" placeholder="Línea de captura" ng-model="payment.serviceLine" ng-required="true">
             </label>
             <label class="fieldContainer" ng-class="!paymentForm.amount.$error.required ? 'selected' : ''">
                 <span class="big">Importe</span>
@@ -151,7 +147,7 @@
           <li><a href="">4</a></li>
           <li><a href="">&raquo;</a></li>
         </ul>
-      </div>  
+      </div>
     </div>
 
 </div>
