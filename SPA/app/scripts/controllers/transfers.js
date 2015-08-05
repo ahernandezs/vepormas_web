@@ -14,6 +14,10 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.transfer = {};
     $scope.theAccounts = [];
     $scope.today = new Date();
+		$scope.services = [
+			{displayName: 'CFE Casa', _service_id: 1, longName: 'Comisión Federal de Electricidad'},
+			{displayName: 'TELMEX Casa', _service_id: 2, longName: 'Comisión Federal de Electricidad'}
+		];
 
 	/**
      * Get the own accounts.
@@ -370,4 +374,9 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
     $scope.isCompleteUser = function(){
         return userProvider.isCompleteUser();
     }
+
+		$scope.payService = function() {
+			$scope.selection = 3;
+			$scope.updateProgress(3);
+		}
 }]);
