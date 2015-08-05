@@ -1,4 +1,49 @@
-<div class="right-section">
+<div class="content pagosytransf">
+    <div class="header">
+        <h2>Pago de servicios</h2>
+        <p>&nbsp;</p>
+        <div class="progress-div" id="progressWrapper">
+            <div class="progress-fill"  ng-style="stepStyle"></div>
+        </div>
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p class="orange">confirmaci&oacute;n</p>
+            <p class="orange">comprobaci&oacute;n</p>
+        </div>
+    </div>
+    <div class="message">
+        <p>Tu pago se ha realizado con &eacute;xito con n&uacute;mero de autorizaci&oacute;n <span>123456</span></p>
+         <div class="print"><i></i>Imprimir</div>
+    </div>
+    <table>
+         <tr>
+          <td>Cuenta retiro:</td>
+          <td>***1234</td>
+        </tr>
+        <tr>
+          <td>Servicio:</td>
+          <td>CFE Mamá</td>
+        </tr>
+        <tr>
+          <td>Línea de captura:</td>
+          <td>12345 67890 12345 67890 12345 67890</td>
+        </tr>
+        <tr>
+          <td>Importe:</td>
+          <td class="bolder">$300.00</td>
+        </tr>
+        <tr>
+          <td>Hora de la transferencia:</td>
+            <td>Jueves 31 de Julio 16:28:00 hrs.</td>
+        </tr>
+    </table>
+    <div class="double-btn">
+        <input type="submit" value="Realizar otro pago" style="min-width:250px" ng-click="goToStep(1, true)">
+    </div>
+</div>
+
+
+<!--<div class="right-section">
 
   <div class="submenu-green">
     <h5>
@@ -121,4 +166,4 @@
 </div>
 
   </div>
-</div>
+</div>-->

@@ -105,6 +105,7 @@ angular.module('spaApp').controller('TransfersCtrl', ['$rootScope', '$scope', '$
 		$scope.selection = 1;
 		$scope.payment = {};
 		$scope.transfer = {};
+        $scope.services = {};
 	};
 
 	/**

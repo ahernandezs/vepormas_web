@@ -8,6 +8,9 @@
             <li class="option cursor-pointer" ng-class="section == 'TRA'?'active' : ''" ng-click="changeSection('TRA')">
                 <a>Hacer una transferencia</a>
             </li>
+            <li class="option cursor-pointer" ng-class="section == 'SRV'?'active' : ''" ng-click="changeSection('SRV')">
+                <a>Pagar un servicio</a>
+            </li>
         </ul>
     </div>
     <div>
@@ -45,6 +48,19 @@
             </div>
             <div class="animate-switch" ng-switch-when="3">
                 <div ng-include="'views/partials/transfers/transfer-result.html'"></div>
+            </div>
+        </div>
+    </div>
+    <div class="animate-switch" ng-switch-when="SRV">
+        <div ng-switch on="selection">
+            <div class="animate-switch" ng-switch-when="1">
+                <div ng-include="'views/partials/services/services.html'"></div>
+            </div>
+            <div class="animate-switch" ng-switch-when="2">
+                <div ng-include="'views/partials/services/services-payment.html'"></div>
+            </div>
+            <div class="animate-switch" ng-switch-when="3">
+                <div ng-include="'views/partials/services/service-applied.html'"></div>
             </div>
         </div>
     </div>

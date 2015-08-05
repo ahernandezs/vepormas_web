@@ -1,3 +1,71 @@
+<div class="content pagosytransf">
+    <div class="header">
+        <h2>Pago de Servicios</h2>
+        <p>Ingresa los datos para el pago</p>
+        <div class="progress-div" id="progressWrapper">
+            <div class="progress-fill"  ng-style="stepStyle"></div>
+        </div>
+        <!--<progress max="3" value="{{selection}}"></progress>-->
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p>confirmaci&oacute;n</p>
+            <p>comprobaci&oacute;n</p>
+        </div>
+    </div>
+
+<form name="paymentForm">
+        <i class="inv-first-select"><span>Cuenta de la cual se har&aacute; el retiro</span></i>
+        <div class="dropdown">
+            <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="payment.account !== undefined ? 'selected' : ''">
+                <span>Cuenta retiro</span>
+                <p>{{payment.account === undefined ? 'Cuenta retiro' : payment.account.masked_account_number}}<br>
+                    <span>{{payment.account.detail}}</span></p>
+            </div>
+            <ul class="dropdown-menu" role="menu" ng-model="payment.account">
+                <li class="dropdown-header">Cuentas propias</li>
+                <li ng-repeat="item in theAccounts | filter: { account_type: 'DEP' }" ng-model="payment.account" ng-click="payment.account = item" ng-required="true">{{item.displayName}}</li>
+            </ul>
+        </div>
+        <i class="inv-sec-select"><span>Servicio a pagar</span></i>
+        <div class="dropdown">
+            <div class="dropdown-toggle select-style" type="button" data-toggle="dropdown" ng-class="payment.account !== undefined ? 'selected' : ''">
+                <span>Servicios</span>
+                <p>{{payment.account === undefined ? 'Servicios' : payment.account.masked_account_number}}<br>
+                    <span>{{payment.account.detail}}</span></p>
+            </div>
+            <ul class="dropdown-menu" role="menu" ng-model="payment.account">
+                <li ng-required="true">CFE Casa</li>
+            </ul>
+        </div>
+        
+
+        <div class="photo-capture">
+          <p>Paga tus servicios fotografiando el recibo con tu aplicaci&oacute;n ABanking o con la c&aacute;mara de tu computadora</p>
+          <div class="photo"></div>
+          <div class="services-data">
+            <label class="cfe">
+              <span>Línea de captura</span>
+              <input type="number" placeholder="00000">
+              <input type="number" placeholder="00000">
+              <input type="number" placeholder="00000">
+              <input type="number" placeholder="00000">
+              <input type="number" placeholder="00000">
+              <input type="number" placeholder="00000">
+            </label>
+            <label class="fieldContainer" ng-class="!paymentForm.amount.$error.required ? 'selected' : ''">
+                <span class="big">Importe</span>
+                <input name="amount" type="text" currency numbers-only ng-model="payment.amount" placeholder="Importe" class="input-importe" ng-required="true" maxlength="15">
+            </label>
+          </div>
+        </div>
+</form>
+
+<div class="double-btn">
+  <input type="submit" value="Cancelar" ng-click="goToStep(1, true)">
+  <input type="submit" value="Continuar" ng-click="assignValue()" ng-disabled="paymentForm.$invalid">
+</div>
+</div>
+<!--
 <div class="right-section">
 
   <div class="submenu-blue">
@@ -29,14 +97,14 @@
         <a href="" class="thumbnail">
           <img class="img-rounded" src="/images/services/cfe.png">
         </a>
-      </div>
+      </div>-->
       <!--div class="col-md-6">
         <a href="" class="thumbnail">
           <img class="img-rounded" src="/images/services/conagua.png">
         </a>
-      </div-->
+      </div
     </div>
-  </div>
+  </div>-->
 
 <!--
   <div class="services">
@@ -85,9 +153,9 @@
         </ul>
       </div>  
     </div>
--->
+
 </div>
 
   </div>
 
-</div>
+</div>-->

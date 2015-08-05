@@ -1,4 +1,43 @@
-<div class="right-section">
+<div class="content pagosytransf">
+    <div class="header">
+        <h2>Pago de Servicios</h2>
+        <p>Ingresa los datos para el pago</p>
+        <div class="progress-div" id="progressWrapper">
+            <div class="progress-fill"  ng-style="stepStyle"></div>
+        </div>
+        <!--<progress max="3" value="{{selection}}"></progress>-->
+        <div class="progress">
+            <p class="orange">captura</p>
+            <p>confirmaci&oacute;n</p>
+            <p>comprobaci&oacute;n</p>
+        </div>
+    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td>Cuenta retiro:</td>
+          <td>***1234</td>
+        </tr>
+        <tr>
+          <td>Servicio:</td>
+          <td>CFE Mamá</td>
+        </tr>
+        <tr>
+          <td>Línea de captura:</td>
+          <td>12345 67890 12345 67890 12345 67890</td>
+        </tr>
+        <tr>
+          <td>Importe:</td>
+          <td class="bolder">$300.00</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="double-btn">
+  <input type="submit" value="Cancelar" ng-click="goToStep(1, true)">
+  <input type="submit" value="Continuar" ng-click="assignValue()" ng-disabled="paymentForm.$invalid">
+</div>
+</div>
+<!--div class="right-section">
 
   <div class="submenu-blue">
     <h5>Pagar servicio
@@ -61,4 +100,4 @@
 
 </div>
 
-</div>
+</div-->
